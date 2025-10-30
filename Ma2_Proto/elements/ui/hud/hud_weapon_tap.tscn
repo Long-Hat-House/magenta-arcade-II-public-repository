@@ -1,0 +1,824 @@
+[gd_scene load_steps=28 format=3 uid="uid://cujk0ei64atp"]
+
+[ext_resource type="Script" uid="uid://brcgut6ienr5m" path="res://elements/ui/hud/hud_weapon_tap.gd" id="1_kr5aq"]
+[ext_resource type="Script" uid="uid://c6ymv2moh8tth" path="res://elements/ui/hud/hud_weapon_unit.gd" id="2_j7iws"]
+[ext_resource type="WwiseEvent" uid="uid://yvbfkwonkrn4" path="res://Wwise/resources/Event/{3B54CA39-33E6-4368-BDB6-58B9219B8A2B}.tres" id="2_vilyv"]
+[ext_resource type="Texture2D" uid="uid://j876qwxtwrwq" path="res://elements/ui/ui_art/ui_tap_BG.png" id="3_yvrjo"]
+[ext_resource type="Texture2D" uid="uid://nelvyaghmtga" path="res://elements/ui/ui_art/ui_tap_FG.png" id="4_b15p8"]
+[ext_resource type="Texture2D" uid="uid://qswlmf2ky81v" path="res://elements/icons/icon_bg_sparkle.png" id="5_3l2ve"]
+[ext_resource type="Script" uid="uid://c3yme4hxpatpv" path="res://systems/utils/control_shaker.gd" id="5_7t26v"]
+[ext_resource type="Texture2D" uid="uid://dvwkxrwcvh5an" path="res://elements/icons/icon_tap_blue.png" id="5_wypsp"]
+[ext_resource type="Script" uid="uid://b57jkab70en74" path="res://systems/ui/progress_bar_float_multiple.gd" id="6_v6kur"]
+[ext_resource type="PackedScene" uid="uid://drmco6m78p50s" path="res://elements/ui/hud/hud_weapon_tap_bar.tscn" id="7_6kmms"]
+[ext_resource type="PackedScene" uid="uid://bdkf1xu66hwds" path="res://elements/ui/hud/hud_poweup_text.tscn" id="8_f4y6u"]
+[ext_resource type="Script" uid="uid://bi4yfgewvcvwq" path="res://systems/switchable/switch_oning_offing_animation_player.gd" id="9_6krme"]
+[ext_resource type="Script" uid="uid://qsy034oknost" path="res://systems/ui/progress_bar_indexed.gd" id="9_p3mrt"]
+[ext_resource type="PackedScene" uid="uid://ckbh041hdtjfq" path="res://elements/ui/hud/hud_weapon_tap_projectiles_bar_element.tscn" id="10_eyso2"]
+[ext_resource type="PackedScene" uid="uid://dsl61evw7m3sq" path="res://elements/ui/hud/hud_weapon_tap_recover_bar_element.tscn" id="11_wineb"]
+[ext_resource type="Texture2D" uid="uid://8e4o400u7f5c" path="res://elements/icons/icons_upgrades/icon_upgrade_tap_recover_arrow.png" id="12_wineb"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ai50y"]
+blend_mode = 1
+
+[sub_resource type="Animation" id="Animation_ggnwf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale:shake_amplitude_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon2:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon2:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.785398]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5rr7s"]
+resource_name = "off"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale:shake_amplitude_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(2),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.5),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon2:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2.98023e-08),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.588235)]
+}
+
+[sub_resource type="Animation" id="Animation_poc6m"]
+resource_name = "offing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale:shake_amplitude_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [10.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.4),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 2), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon2:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.588235)]
+}
+
+[sub_resource type="Animation" id="Animation_cg3rt"]
+resource_name = "on"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale:shake_amplitude_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1.5),
+"transitions": PackedFloat32Array(2, -0.5, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 1.5),
+"transitions": PackedFloat32Array(2, -2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon2:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.133333, 1.46667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.588235), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.133333, 1.46667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.588235), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.46667),
+"transitions": PackedFloat32Array(-0.5, -0.5),
+"update": 0,
+"values": [0.785398, 7.06858]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon2:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.46667),
+"transitions": PackedFloat32Array(-0.5, -0.5),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_trrpw"]
+resource_name = "oning"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale:shake_amplitude_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.233333, 0.3, 1),
+"transitions": PackedFloat32Array(2, 0.5, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0, 2.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon2:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.8, 1),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
+"update": 0,
+"values": [0.0, -4.36332, -6.28319, -6.28319]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon2:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.8, 1),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
+"update": 0,
+"values": [0.785398, 1.5708, 7.06858, 7.06858]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gphve"]
+_data = {
+&"RESET": SubResource("Animation_ggnwf"),
+&"off": SubResource("Animation_5rr7s"),
+&"offing": SubResource("Animation_poc6m"),
+&"on": SubResource("Animation_cg3rt"),
+&"oning": SubResource("Animation_trrpw")
+}
+
+[sub_resource type="Animation" id="Animation_d3npc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale:shake_amplitude_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_p7ch0"]
+resource_name = "fail"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale:shake_amplitude_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.366667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_n6ek8"]
+resource_name = "success"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale:shake_amplitude_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b2wc6"]
+_data = {
+&"RESET": SubResource("Animation_d3npc"),
+&"fail": SubResource("Animation_p7ch0"),
+&"success": SubResource("Animation_n6ek8")
+}
+
+[node name="HUD Weapon Tap" type="MarginContainer" node_paths=PackedStringArray("_progress_bar", "_progress_bar_recover", "_progress_bar_recover_container", "_progress_bar_projectiles", "_weapon_unit", "_tap_available_animation", "_tap_animations", "_powerup_text")]
+offset_right = 180.0
+offset_bottom = 169.0
+size_flags_horizontal = 0
+mouse_filter = 2
+script = ExtResource("1_kr5aq")
+_progress_bar = NodePath("HUD Tap Unit/BoxContainer")
+_progress_bar_recover = NodePath("HUD Tap Unit/MarginContainer/BarRecover/MarginContainer/ProgressBarRecover")
+_progress_bar_recover_container = NodePath("HUD Tap Unit/MarginContainer/BarRecover")
+_progress_bar_projectiles = NodePath("HUD Tap Unit/MarginContainer/BarProjectiles/MarginContainer/ProgressBarProjectiles")
+_weapon_unit = NodePath("HUD Tap Unit")
+_extra_bar_size = 5.0
+_tap_available_animation = NodePath("OnOffAnimation Tap Ready")
+_tap_animations = NodePath("TapAnimations")
+_powerup_text = NodePath("HUD Tap Unit/MarginContainer/HUDPoweupText")
+_sfx_tap_ready = ExtResource("2_vilyv")
+
+[node name="HUD Tap Unit" type="BoxContainer" parent="." node_paths=PackedStringArray("_trect_to_set_icon", "_to_set_color", "_to_set_color_highlight")]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+mouse_filter = 2
+vertical = true
+script = ExtResource("2_j7iws")
+_trect_to_set_icon = [NodePath("MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon")]
+_to_set_color = [NodePath("MarginContainer/Tap BG")]
+_to_set_color_highlight = [NodePath("MarginContainer/Tap FG"), NodePath("MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon2"), NodePath("MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon/SparkleBGIcon")]
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD Tap Unit"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Tap BG" type="TextureRect" parent="HUD Tap Unit/MarginContainer"]
+modulate = Color(0, 0.360784, 0.658824, 1)
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("3_yvrjo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Tap FG" type="TextureRect" parent="HUD Tap Unit/MarginContainer"]
+modulate = Color(0.709804, 0.94902, 1, 1)
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("4_b15p8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Margin Center" type="Control" parent="HUD Tap Unit/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="TapAnimations Modulate Shake Scale" type="Control" parent="HUD Tap Unit/MarginContainer/Margin Center"]
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("5_7t26v")
+shake_amplitude_ratio = 0.0
+
+[node name="TapReady Modulate Shake Scale" type="Control" parent="HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale"]
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("5_7t26v")
+shake_amplitude_ratio = 0.0
+shake_amplitude = 3.0
+shake_frequency = 1.0
+
+[node name="Tap Icon" type="TextureRect" parent="HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("5_wypsp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SparkleBGIcon" type="TextureRect" parent="HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+material = SubResource("CanvasItemMaterial_ai50y")
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.295
+offset_top = -49.9594
+offset_right = 45.705
+offset_bottom = 50.0406
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(50, 50)
+mouse_filter = 2
+texture = ExtResource("5_3l2ve")
+expand_mode = 1
+
+[node name="SparkleBGIcon2" type="TextureRect" parent="HUD Tap Unit/MarginContainer/Margin Center/TapAnimations Modulate Shake Scale/TapReady Modulate Shake Scale/Tap Icon"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+material = SubResource("CanvasItemMaterial_ai50y")
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.4296
+offset_top = -52.3889
+offset_right = 51.5704
+offset_bottom = 47.6111
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.785398
+pivot_offset = Vector2(50, 50)
+mouse_filter = 2
+texture = ExtResource("5_3l2ve")
+expand_mode = 1
+
+[node name="HUDPoweupText" parent="HUD Tap Unit/MarginContainer" instance=ExtResource("8_f4y6u")]
+layout_mode = 2
+
+[node name="BarProjectiles" type="Control" parent="HUD Tap Unit/MarginContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD Tap Unit/MarginContainer/BarProjectiles"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 25.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 25
+
+[node name="ProgressBarProjectiles" type="BoxContainer" parent="HUD Tap Unit/MarginContainer/BarProjectiles/MarginContainer" node_paths=PackedStringArray("_elements_container")]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 30
+vertical = true
+script = ExtResource("9_p3mrt")
+_elements_container = NodePath(".")
+
+[node name="HUD Weapon Tap Projectiles Bar Element" parent="HUD Tap Unit/MarginContainer/BarProjectiles/MarginContainer/ProgressBarProjectiles" instance=ExtResource("10_eyso2")]
+layout_mode = 2
+
+[node name="BarRecover" type="Control" parent="HUD Tap Unit/MarginContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="MarginContainer" type="BoxContainer" parent="HUD Tap Unit/MarginContainer/BarRecover"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 25.0
+grow_horizontal = 2
+vertical = true
+
+[node name="Spacer" type="Control" parent="HUD Tap Unit/MarginContainer/BarRecover/MarginContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="ProgressBarRecover" type="BoxContainer" parent="HUD Tap Unit/MarginContainer/BarRecover/MarginContainer" node_paths=PackedStringArray("_elements_container")]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 14
+vertical = true
+script = ExtResource("9_p3mrt")
+_elements_container = NodePath(".")
+
+[node name="HUD Weapon Tap Recover Bar Element" parent="HUD Tap Unit/MarginContainer/BarRecover/MarginContainer/ProgressBarRecover" instance=ExtResource("11_wineb")]
+layout_mode = 2
+
+[node name="HUD Weapon Tap Recover Bar Element2" parent="HUD Tap Unit/MarginContainer/BarRecover/MarginContainer/ProgressBarRecover" instance=ExtResource("11_wineb")]
+layout_mode = 2
+
+[node name="Arrow TextureRect" type="TextureRect" parent="HUD Tap Unit/MarginContainer/BarRecover/MarginContainer"]
+custom_minimum_size = Vector2(20, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("12_wineb")
+stretch_mode = 5
+
+[node name="BoxContainer" type="BoxContainer" parent="HUD Tap Unit"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+alignment = 1
+vertical = true
+script = ExtResource("6_v6kur")
+
+[node name="HUD Weapon Tap Bar" parent="HUD Tap Unit/BoxContainer" instance=ExtResource("7_6kmms")]
+layout_mode = 2
+mouse_filter = 2
+fill_mode = 2
+
+[node name="OnOffAnimation Tap Ready" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_gphve")
+}
+script = ExtResource("9_6krme")
+
+[node name="TapAnimations" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_b2wc6")
+}

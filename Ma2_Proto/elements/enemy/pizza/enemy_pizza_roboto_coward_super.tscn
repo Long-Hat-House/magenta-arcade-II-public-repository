@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://d4mxbt6t150m0"]
+
+[ext_resource type="PackedScene" uid="uid://d124alssqbr44" path="res://elements/enemy/pizza/enemy_pizza_roboto_coward.tscn" id="1_7ysjq"]
+[ext_resource type="Texture2D" uid="uid://dns8cwpuuywb4" path="res://elements/enemy/pizza/Texture/M_Pizza_BaseColor.png" id="2_0vkys"]
+[ext_resource type="Resource" uid="uid://qpq672a4a0sn" path="res://elements/score/score_info_pizza_super.tres" id="2_1nqxr"]
+[ext_resource type="Texture2D" uid="uid://c3sbrjkkf560h" path="res://elements/enemy/pizza/Texture/M_Pizza_Emission.png" id="3_8c47p"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jie0d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sesyk"]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(1, 0, 1, 1)
+albedo_texture = ExtResource("2_0vkys")
+metallic = 0.15
+metallic_specular = 0.15
+roughness = 0.4
+emission_enabled = true
+emission_energy_multiplier = 16.0
+emission_texture = ExtResource("3_8c47p")
+rim_enabled = true
+rim_tint = 1.0
+clearcoat = 0.2
+clearcoat_roughness = 0.59
+anisotropy = 0.33
+ao_texture = SubResource("CompressedTexture2D_jie0d")
+backlight = Color(0.0313726, 0.0313726, 0.0313726, 1)
+
+[node name="PizzaRoboto_Coward_Super" instance=ExtResource("1_7ysjq")]
+
+[node name="Health" parent="Body" index="1"]
+max_amount = 0.5
+
+[node name="ScoreGiver" parent="Body" index="2"]
+info = ExtResource("2_1nqxr")
+
+[node name="Corpo" parent="Body/Render/Pizza_Roboto/Rig_Pizza/Skeleton3D" index="2"]
+material_override = SubResource("StandardMaterial3D_sesyk")
+
+[editable path="Body/Render/Pizza_Roboto"]

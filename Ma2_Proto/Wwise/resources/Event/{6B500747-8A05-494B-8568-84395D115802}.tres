@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://d2eme3khfke0e"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_FinalBoss_Lv4_Final_Drag"
+id = 575187776
+guid = "{6B500747-8A05-494B-8568-84395D115802}"
+dummy = true

@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4qay5vslx1jn"]
+
+[ext_resource type="Script" path="res://elements/ui/menus/level_selection_menu/level_set_viewer.gd" id="1_t77du"]
+[ext_resource type="PackedScene" uid="uid://bqvatru1l02ct" path="res://elements/ui/menus/level_selection_menu/level_set_select_button.tscn" id="2_1a8os"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ibehe"]
+
+[node name="Level Set Viewer" type="VBoxContainer" node_paths=PackedStringArray("level_selection_button", "set_foldout_button", "child_container", "setbox")]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 47.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_t77du")
+level_selection_button = NodePath("PanelContainer/HBoxContainer/VBox/ParentBox/level_set_select_button")
+set_foldout_button = NodePath("PanelContainer/HBoxContainer/VBox/ParentBox/Fold Out Button")
+child_container = NodePath("PanelContainer/HBoxContainer/VBox/SetBox/Sub Level Container")
+setbox = NodePath("PanelContainer/HBoxContainer/VBox/SetBox")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+material = SubResource("CanvasItemMaterial_ibehe")
+layout_mode = 2
+mouse_filter = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBox" type="VBoxContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ParentBox" type="HBoxContainer" parent="PanelContainer/HBoxContainer/VBox"]
+layout_mode = 2
+
+[node name="level_set_select_button" parent="PanelContainer/HBoxContainer/VBox/ParentBox" instance=ExtResource("2_1a8os")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+
+[node name="Fold Out Button" type="CheckButton" parent="PanelContainer/HBoxContainer/VBox/ParentBox"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="SetBox" type="HBoxContainer" parent="PanelContainer/HBoxContainer/VBox"]
+layout_mode = 2
+
+[node name="Sub Level Container" type="VBoxContainer" parent="PanelContainer/HBoxContainer/VBox/SetBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1

@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://njw5nxg1s501"]
+
+[ext_resource type="PackedScene" uid="uid://dmhsj83nuxio2" path="res://elements/neutral/props/Factory/mesh/lamp_tube_factory.glb" id="1_gnt40"]
+[ext_resource type="Material" uid="uid://dvb3etner4tpy" path="res://elements/neutral/props/Factory/material/m_lamp_box_tube_factory.tres" id="2_645vx"]
+[ext_resource type="Script" uid="uid://0wf4obm88h88" path="res://elements/neutral/props/generic_tumbler.gd" id="3_q30ih"]
+[ext_resource type="Resource" uid="uid://bv7gqtc7bxel0" path="res://elements/neutral/props/vegetation/element_tree_tumble_data.tres" id="4_ltmaf"]
+[ext_resource type="Script" uid="uid://biqjvlcudqx0t" path="res://elements/player/force_receiver.gd" id="5_qwj3q"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="6_ltmaf"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_q30ih"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vs80q"]
+albedo_color = Color(0.901961, 0.858824, 0, 1)
+emission_enabled = true
+emission = Color(0.901961, 0.858824, 0, 1)
+emission_energy_multiplier = 10.0
+
+[node name="lamp_tube_factory" instance=ExtResource("1_gnt40")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.25, 0.0745678)
+material_override = ExtResource("2_645vx")
+mesh = SubResource("CylinderMesh_q30ih")
+skeleton = NodePath("../lamp_tube")
+
+[node name="lamp_tube" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
+surface_material_override/0 = ExtResource("2_645vx")
+surface_material_override/1 = SubResource("StandardMaterial3D_vs80q")
+
+[node name="GenericTumbler" type="Node3D" parent="." index="2" node_paths=PackedStringArray("receiver", "to_tumble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.75, 0)
+script = ExtResource("3_q30ih")
+receiver = NodePath("ForceReceiver")
+to_tumble = NodePath("../lamp_tube")
+tumble_data = ExtResource("4_ltmaf")
+tumble_radius = 0.1
+up_from_circle_relative = Vector3(0, -1, 1)
+metadata/_custom_type_script = "uid://0wf4obm88h88"
+
+[node name="ForceReceiver" type="Node3D" parent="GenericTumbler" index="0"]
+script = ExtResource("5_qwj3q")
+metadata/_custom_type_script = "uid://biqjvlcudqx0t"
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="." index="3"]
+script = ExtResource("6_ltmaf")
+high_contrast_group = &"neutral"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"

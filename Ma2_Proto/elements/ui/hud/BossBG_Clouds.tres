@@ -1,0 +1,29 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://dkcegkcvgcvkh"]
+
+[ext_resource type="Shader" uid="uid://r81a8chulneq" path="res://elements/ui/themes/shaders_and_materials/s_ui_clouds.tres" id="1_bdvdg"]
+
+[sub_resource type="Gradient" id="Gradient_q2amu"]
+offsets = PackedFloat32Array(0.184859, 0.778169)
+colors = PackedColorArray(0.396889, 0.396889, 0.396889, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dhmw3"]
+noise_type = 0
+frequency = 0.012
+fractal_weighted_strength = 0.7
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0x3k6"]
+width = 128
+height = 128
+generate_mipmaps = false
+seamless = true
+seamless_blend_skirt = 0.257
+color_ramp = SubResource("Gradient_q2amu")
+noise = SubResource("FastNoiseLite_dhmw3")
+
+[resource]
+shader = ExtResource("1_bdvdg")
+shader_parameter/cloud_1_scale = Vector2(0.7, 6)
+shader_parameter/cloud_1_speed = Vector2(0.7, 0.5)
+shader_parameter/Texture2DParameter = SubResource("NoiseTexture2D_0x3k6")
+shader_parameter/cloud_2_scale2 = Vector2(0.4, 3.01)
+shader_parameter/cloud_2_speed2 = Vector2(0.4, -0.1)

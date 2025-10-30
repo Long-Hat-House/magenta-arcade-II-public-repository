@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddtx26w7mxdgg"]
+
+[ext_resource type="Script" uid="uid://8hf0drm7xhdk" path="res://elements/enemy/projectiles/cannon/ai_cannon.gd" id="1_8bhsj"]
+[ext_resource type="PackedScene" uid="uid://dhmi2sv2mhuqe" path="res://elements/enemy/projectiles/proj_basic/proj_enemy_basic.tscn" id="2_agvir"]
+[ext_resource type="PackedScene" uid="uid://col7heulxdugn" path="res://elements/enemy/projectiles/cannon/mesh/cannon.tscn" id="3_c8wga"]
+
+[sub_resource type="GDScript" id="GDScript_u8xq1"]
+script/source = "extends Node3D
+
+@export var cannon:AI_Cannon;
+@export var percentage_screen_min:float;
+@export var percentage_screen_max:float;
+@export var angle_max:float;
+@export var angle_min:float;
+
+var angle_max_rad:float;
+var angle_min_rad:float;
+
+func _ready() -> void:
+	angle_max_rad = deg_to_rad(angle_max);
+	angle_min_rad = deg_to_rad(angle_min);
+
+func _process(delta: float) -> void:
+	var rect:Rect2 = get_viewport().get_visible_rect();
+	var screen_position:Vector2 = LevelCameraController.main_camera.unproject_position(global_position);
+	
+	var min_pos:float = rect.position.y + rect.size.y * (1.0 - percentage_screen_min);
+	var max_pos:float = rect.position.y + rect.size.y * (1.0 - percentage_screen_max);
+	var pos:float = clampf(rect.position.y, min_pos, max_pos);
+	
+	#cannon.max_angle_from_front_radians = remap(pos, min_pos, max_pos, angle_min_rad, angle_max_rad)
+	#print(\"CANNON %s\" % cannon.max_angle_from_front_radians);
+"
+
+[node name="Cannon" type="Marker3D"]
+script = ExtResource("1_8bhsj")
+projectile = ExtResource("2_agvir")
+lerpAngle = 60.0
+lookAtPlayer = true
+
+[node name="cannon" parent="." instance=ExtResource("3_c8wga")]
+
+[node name="InstantiatePlace" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.906605)
+
+[node name="CanShoot" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-0.283225, -1, -0.187354, 0.566449, 2, 0.599317)
+
+[node name="Cannon Cant Aim Up If it is in Player Area" type="Node3D" parent="." node_paths=PackedStringArray("cannon")]
+script = SubResource("GDScript_u8xq1")
+cannon = NodePath("..")
+percentage_screen_min = 0.4
+percentage_screen_max = 0.6
+angle_max = 95.0
+angle_min = 180.0
+
+[connection signal="screen_entered" from="CanShoot" to="." method="_on_can_shoot_screen_entered"]
+[connection signal="screen_exited" from="CanShoot" to="." method="_on_can_shoot_screen_exited"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyenvktvio8p"]
+
+[ext_resource type="PackedScene" uid="uid://w4rp1k7nawvd" path="res://elements/neutral/props/poles/mesh/mesh_small_pole.glb" id="1_hqvje"]
+[ext_resource type="Material" uid="uid://rj7n8wsin3vi" path="res://elements/neutral/props/poles/material/m_small_pole.tres" id="2_g8k6j"]
+
+[node name="small_pole" instance=ExtResource("1_hqvje")]
+
+[node name="pole_small" parent="." index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+material_override = ExtResource("2_g8k6j")

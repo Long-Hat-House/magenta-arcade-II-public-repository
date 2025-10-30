@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0qgy65hjjrru"]
+
+[ext_resource type="Script" uid="uid://db6tliyv2a0no" path="res://elements/vfx/simple_vfx.gd" id="1_or75c"]
+[ext_resource type="Script" uid="uid://daxqix7g0q5bj" path="res://systems/pooling/poolable.gd" id="2_a6jcw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gmvmn"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"play",
+"speed": 24.0
+}]
+
+[node name="SimpleVfxBase" type="Node3D"]
+script = ExtResource("1_or75c")
+
+[node name="Sprite3D" type="AnimatedSprite3D" parent="."]
+pixel_size = 0.0156
+billboard = 1
+double_sided = false
+no_depth_test = true
+sprite_frames = SubResource("SpriteFrames_gmvmn")
+animation = &"play"
+
+[node name="Poolable" type="Node" parent="."]
+script = ExtResource("2_a6jcw")

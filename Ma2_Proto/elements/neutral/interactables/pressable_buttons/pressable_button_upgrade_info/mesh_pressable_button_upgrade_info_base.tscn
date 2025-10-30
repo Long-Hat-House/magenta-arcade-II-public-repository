@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cocgwpsfs1ai2"]
+
+[ext_resource type="PackedScene" uid="uid://lb2eq4dctnwy" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_upgrade_info/pressable_button_upgrade_info_base.glb" id="1_6pwcd"]
+[ext_resource type="Material" uid="uid://dqagykf2km85s" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_upgrade_info/material/m_pressable_button_upgrade_info_base.tres" id="2_3w5hy"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="3_t7huy"]
+
+[node name="button_base" type="Node3D"]
+
+[node name="pressable_button_upgrade_info_base" parent="." instance=ExtResource("1_6pwcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00784566, 0)
+
+[node name="button_upgrade_info_base" parent="pressable_button_upgrade_info_base" index="0"]
+surface_material_override/0 = ExtResource("2_3w5hy")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="pressable_button_upgrade_info_base"]
+script = ExtResource("3_t7huy")
+high_contrast_group = &"interactable"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[editable path="pressable_button_upgrade_info_base"]

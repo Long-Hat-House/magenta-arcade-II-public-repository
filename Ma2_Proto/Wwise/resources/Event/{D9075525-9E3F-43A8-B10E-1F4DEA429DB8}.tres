@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://b2yl767euh45u"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_NPC_Death"
+id = 3888855080
+guid = "{D9075525-9E3F-43A8-B10E-1F4DEA429DB8}"
+dummy = true

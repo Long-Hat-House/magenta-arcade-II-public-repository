@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7wmwv7dl6kfj"]
+
+[ext_resource type="PackedScene" uid="uid://c3u7h6imp12ke" path="res://elements/enemy/projectiles/explosion_square/big_explosion/crack_floor.glb" id="1_axyws"]
+[ext_resource type="Material" uid="uid://bcb5ccvthstrm" path="res://elements/enemy/projectiles/explosion_donut/little_explosion/material/crack_floor.tres" id="2_61utw"]
+
+[node name="crack_floor" instance=ExtResource("1_axyws")]
+
+[node name="piso_low" parent="." index="0"]
+material_override = ExtResource("2_61utw")
+cast_shadow = 0

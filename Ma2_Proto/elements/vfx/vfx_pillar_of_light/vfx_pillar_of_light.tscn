@@ -1,0 +1,101 @@
+[gd_scene load_steps=10 format=3 uid="uid://d30kpprvaaie3"]
+
+[ext_resource type="Script" uid="uid://qcl3vwwdul7g" path="res://elements/vfx/vfx_pillar_of_light/vfx_pillar_of_light.gd" id="1_m5bxa"]
+[ext_resource type="WwiseEvent" uid="uid://uwp2gge0ue7r" path="res://Wwise/resources/Event/{51A6A93D-8426-4209-B681-E36E36FB6998}.tres" id="2_0qf6n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xvfj"]
+cull_mode = 2
+no_depth_test = true
+diffuse_mode = 3
+specular_mode = 2
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 6.50135
+
+[sub_resource type="Curve" id="Curve_3gv8n"]
+_data = [Vector2(0, 0.989011), 0.0, -0.662701, 0, 1, Vector2(1, 0.32631), -0.662701, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_tann4"]
+shape = 0
+sections = 2
+section_length = 15.0
+curve = SubResource("Curve_3gv8n")
+
+[sub_resource type="Animation" id="Animation_vfa6c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scaler:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gtdos"]
+resource_name = "appearing"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scaler:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.150004),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1), Vector3(1.5, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mfu6v"]
+resource_name = "on"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scaler:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0451383, 0.0876777),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1.5, 1, 1), Vector3(1.2, 1, 1), Vector3(2, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tkc14"]
+_data = {
+&"RESET": SubResource("Animation_vfa6c"),
+&"appearing": SubResource("Animation_gtdos"),
+&"on": SubResource("Animation_mfu6v")
+}
+
+[node name="VfxPillarOfLight" type="Node3D" node_paths=PackedStringArray("anim")]
+transform = Transform3D(1, -1.74846e-07, 0, 1.74846e-07, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_m5bxa")
+anim = NodePath("anim")
+
+[node name="Scaler" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Scaler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+material_override = SubResource("StandardMaterial3D_0xvfj")
+mesh = SubResource("RibbonTrailMesh_tann4")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tkc14")
+}
+
+[node name="AkEvent3D" type="AkEvent3D" parent="."]
+event = ExtResource("2_0qf6n")
+trigger_on = 1
+stop_on = 3

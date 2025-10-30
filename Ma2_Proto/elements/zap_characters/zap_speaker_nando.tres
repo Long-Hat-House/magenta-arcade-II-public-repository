@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TextFlowZapSpeaker" load_steps=4 format=3 uid="uid://h4so8aln0gis"]
+
+[ext_resource type="Script" path="res://modules/text_flow/zap/src/text_flow_zap_speaker.gd" id="1_pvekr"]
+[ext_resource type="Texture2D" uid="uid://cfx8kqcw4h428" path="res://modules/text_flow/zap/textures/text_flow_zap_speaker_icon_nando.png" id="2_basmn"]
+[ext_resource type="Texture2D" uid="uid://115e0tveyqv6" path="res://elements/icons/icons_magenta_nando.png" id="2_e6cxc"]
+
+[resource]
+script = ExtResource("1_pvekr")
+id = "nando"
+color = Color(0.34902, 0.717647, 1, 1)
+icon_1 = ExtResource("2_basmn")
+icon_2 = ExtResource("2_e6cxc")

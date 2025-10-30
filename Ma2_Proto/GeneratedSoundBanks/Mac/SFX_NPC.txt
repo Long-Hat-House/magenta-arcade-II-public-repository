@@ -1,0 +1,73 @@
+Event	ID	Name			Wwise Object Path	Notes
+	253233444	Play_NPC_Voice			\NPC\Play_NPC_Voice	
+	1051341570	Play_Revolution_Entry			\NPC\Revolution\Play_Revolution_Entry	
+	3888855080	Play_NPC_Death			\NPC\Play_NPC_Death	
+
+Switch Group	ID	Name			Wwise Object Path	Notes
+	2571308781	NPC_Voice			\Default Work Unit\NPC_Voice	
+	3499340336	NPC_Voice_Type			\Default Work Unit\NPC_Voice_Type	
+
+Switch	ID	Name	Switch Group			Notes
+	1377093687	Follower	NPC_Voice			
+	1514842588	Fanactic	NPC_Voice			
+	3064974266	Special	NPC_Voice			
+	3254822759	Believer	NPC_Voice			
+	1977129223	Char_Turing	NPC_Voice_Type			
+	2129643512	Hub_Fanactic	NPC_Voice_Type			
+	2674630308	Char_Nene	NPC_Voice_Type			
+	2930593888	Hub_Priest	NPC_Voice_Type			
+	3167559564	Generic_A	NPC_Voice_Type			
+	3167559566	Generic_C	NPC_Voice_Type			
+	3167559567	Generic_B	NPC_Voice_Type			
+	3187773810	Char_Eva	NPC_Voice_Type			
+	3239039443	Char_Ju	NPC_Voice_Type			
+	3867125212	Char_Nando	NPC_Voice_Type			
+	4032430747	Char_Adao	NPC_Voice_Type			
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	290359181	chr_VoicePitch			\Default Work Unit\chr_VoicePitch	
+	3465040348	chr_TextLenght			\Default Work Unit\chr_TextLenght	
+
+Modulator Envelope	ID	Name			Wwise Object Path	Notes
+	179233706	Modulator Envelope (Custom)				
+	952888710	Modulator Envelope (Custom)				
+
+Effect plug-ins	ID	Name	Type				Notes
+	707423996	Compressor (Custom)	Wwise Compressor			
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	60162200	chr_npc_voice_fanactic_c_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\BB\{BBC4DE69-458B-6B14-EDC7-017436C60EA3}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Voice_Character\Fanactic\chr_npc_voice_fanactic_c_loop_01		29696
+	83892511	chr_npc_voice_nene_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\D6\{D6611F02-41BF-C1E4-3AF2-98C15902542C}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Voice_Character\Special\chr_npc_voice_nene_loop_01		104335
+	90676896	chr_npc_reaction_generic_03	I:\MA2\Magenta-Arcade_Wwise\.cache\E8\{E8F6E37E-957E-8139-7A92-E50580290066}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Reactions\Reaction_Generic\chr_npc_reaction_generic_03		4574
+	124525188	chr_npc_death_04	I:\MA2\Magenta-Arcade_Wwise\.cache\36\{36125D16-8E9E-B540-8E6E-E6C6818C1095}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Death\VFX\chr_npc_death_04		8379
+	139818189	chr_npc_reaction_generic_10	I:\MA2\Magenta-Arcade_Wwise\.cache\09\{09AEF272-1749-D8DD-2AA5-5B2A41371553}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Reactions\Reaction_Generic\chr_npc_reaction_generic_10		6048
+	165726099	chr_npc_voice_follower_a_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\B8\{B8BD5024-99CE-486D-9801-66DAA22EEC82}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Voice_Character\Follower\chr_npc_voice_follower_a_loop_01		71445
+	221880871	chr_npc_reaction_generic_01	I:\MA2\Magenta-Arcade_Wwise\.cache\2E\{2E720E6A-6BA7-FFD9-51EF-D86447FF1337}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Reactions\Reaction_Generic\chr_npc_reaction_generic_01		3476
+	241306261	chr_npc_reaction_generic_09	I:\MA2\Magenta-Arcade_Wwise\.cache\E3\{E38944E3-B55C-323C-57D8-E7B60A231FA5}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Reactions\Reaction_Generic\chr_npc_reaction_generic_09		4620
+	278142286	chr_npc_reaction_generic_04	I:\MA2\Magenta-Arcade_Wwise\.cache\2B\{2BBE517E-2CC3-57FB-2657-D67FC8A24E8F}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Reactions\Reaction_Generic\chr_npc_reaction_generic_04		3692
+	329805836	chr_npc_voice_priest_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\5C\{5C172424-200B-7E81-6E4D-9B60CDB220A5}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Voice_Character\Special\chr_npc_voice_priest_loop_01		153420
+	409592141	chr_npc_reaction_generic_06	I:\MA2\Magenta-Arcade_Wwise\.cache\10\{10E4FA05-0828-5473-3112-93567EE69E1E}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Reactions\Reaction_Generic\chr_npc_reaction_generic_06		4309
+	423310687	chr_npc_death_01	I:\MA2\Magenta-Arcade_Wwise\.cache\50\{50E90C34-DD20-4949-5DE7-34E006DD3FC6}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Death\VFX\chr_npc_death_01		8573
+	440211649	chr_npc_death_05	I:\MA2\Magenta-Arcade_Wwise\.cache\49\{49EF2A3A-7A16-5EBC-73B2-5015B9C4185E}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Death\VFX\chr_npc_death_05		7709
+	503687277	chr_npc_voice_adao_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\13\{13DD06E7-EC37-9EED-6795-621A432A358C}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Voice_Character\Special\chr_npc_voice_adao_loop_01		95548
+	508058933	chr_npc_reaction_generic_05	I:\MA2\Magenta-Arcade_Wwise\.cache\7F\{7F8D3B71-D6BD-70F7-67AC-9AF239F97796}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Reactions\Reaction_Generic\chr_npc_reaction_generic_05		4039
+	513688268	chr_npc_voice_fanactic_b_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\58\{58C7D251-0661-6324-1702-E1D4A029FC67}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Voice_Character\Fanactic\chr_npc_voice_fanactic_b_loop_01		46244
+	519822842	chr_npc_death_02	I:\MA2\Magenta-Arcade_Wwise\.cache\C3\{C392F3F0-64E9-0A60-92B4-C5F2899E02B1}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Death\VFX\chr_npc_death_02		8404
+	527475305	chr_npc_voice_believer_b_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\07\{0711EEE0-B219-EF3C-ECA5-9CA1E63B02DC}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Voice_Character\Believer\chr_npc_voice_believer_b_loop_01		113201
+	563533017	chr_npc_voice_believer_a_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\E6\{E6FE23B1-DDDD-06A5-B377-EF302ADCC545}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Death\Voice\chr_npc_voice_believer_a_loop_01		97122
+	571218306	chr_npc_voice_follower_b_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\25\{2538A3A5-0F11-D30B-9C2A-E2E91BE696C3}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Voice_Character\Follower\chr_npc_voice_follower_b_loop_01		61608
+	573956174	chr_npc_reaction_generic_02	I:\MA2\Magenta-Arcade_Wwise\.cache\EA\{EA55CF59-53AF-3705-42E5-49D9BB08897F}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Reactions\Reaction_Generic\chr_npc_reaction_generic_02		4488
+	585868783	chr_npc_reaction_generic_08	I:\MA2\Magenta-Arcade_Wwise\.cache\7D\{7DFC79AC-A4C0-6C75-4861-82A9F43ABE94}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Reactions\Reaction_Generic\chr_npc_reaction_generic_08		4142
+	626311289	chr_npc_voice_follower_c_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\FD\{FDB5168F-992F-F932-59B1-EB0B1CF61E04}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Voice_Character\Follower\chr_npc_voice_follower_c_loop_01		103930
+	666419838	chr_npc_voice_fanactic_a_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\82\{82059A5D-6FD6-3AED-CB7E-77F9E12332E9}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Voice_Character\Special\chr_npc_voice_fanactic_a_loop_01		146138
+	673029271	chr_npc_voice_believer_c_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\BC\{BCAD5D2F-A6FD-91A0-BAF8-87E399BB779D}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Voice_Character\Believer\chr_npc_voice_believer_c_loop_01		106506
+	678347974	chr_npc_voice_believer_c_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\15\{150625C0-C9EF-6F46-B7E5-F17EDD6958D1}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Death\Voice\chr_npc_voice_believer_c_loop_01		106472
+	754044765	chr_npc_reaction_generic_07	I:\MA2\Magenta-Arcade_Wwise\.cache\D5\{D58C8D8E-D32E-7E8F-E226-32C376A2B741}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Reactions\Reaction_Generic\chr_npc_reaction_generic_07		4081
+	766311415	chr_npc_voice_eva_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\B4\{B4B7223A-70C0-389A-3992-B967222CDE70}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Voice_Character\Special\chr_npc_voice_eva_loop_01		120555
+	789221143	chr_npc_voice_nando_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\44\{44BF716D-CBF4-E04A-28F2-B098348C8BCD}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Voice_Character\Special\chr_npc_voice_nando_loop_01		226985
+	799825061	chr_npc_voice_ju_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\EF\{EF04DD5F-559C-C275-9F18-699B4D4E15AD}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Voice_Character\Special\chr_npc_voice_ju_loop_01		118047
+	869918099	chr_npc_voice_believer_b_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\2F\{2F942503-3F42-CD9E-EC91-11AB5CC28432}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Death\Voice\chr_npc_voice_believer_b_loop_01		113167
+	896914284	chr_npc_voice_turing_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\BF\{BFDF773B-A7D6-BC02-13EA-162D1F7D33A3}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Voice_Character\Special\chr_npc_voice_turing_loop_01		114956
+	910433898	chr_npc_voice_believer_a_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\AC\{AC452CB2-B5E8-2AB5-1C28-CEC9F8F9B51F}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Voice_Character\Believer\chr_npc_voice_believer_a_loop_01		97156
+	1008907154	chr_npc_death_03	I:\MA2\Magenta-Arcade_Wwise\.cache\A2\{A2D54638-CEF1-DC53-2402-C50A1CD7F26D}.wem		\Actor-Mixer Hierarchy\NPC\NPC_Reactions\Death\VFX\chr_npc_death_03		7615
+

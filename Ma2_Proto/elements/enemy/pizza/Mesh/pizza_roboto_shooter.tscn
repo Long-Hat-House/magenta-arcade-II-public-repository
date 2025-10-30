@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://chxijt10i3xyi"]
+
+[ext_resource type="PackedScene" uid="uid://6t6ufvydxwoh" path="res://elements/enemy/pizza/Mesh/Pizza_Roboto_Shooter.glb" id="1_u4488"]
+[ext_resource type="Material" uid="uid://dqhd0rjfjra3v" path="res://elements/enemy/pizza/Material/M_Pizza.tres" id="2_08nb6"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="2_my6sd"]
+
+[node name="Pizza_Roboto_Shooter" instance=ExtResource("1_u4488")]
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="." index="0" node_paths=PackedStringArray("excluded_nodes")]
+script = ExtResource("2_my6sd")
+high_contrast_group = &"enemy"
+excluded_nodes = [NodePath("../Rig_Pizza/Skeleton3D/Oculos")]
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="Skeleton3D" parent="Rig_Pizza" index="0"]
+bones/3/position = Vector3(0, 0.240809, 0.159185)
+bones/4/position = Vector3(0, 0.222603, -0.497376)
+bones/5/position = Vector3(0.377006, 0.196704, 0.253451)
+bones/5/rotation = Quaternion(0, -1.19209e-07, 0, 1)
+bones/6/position = Vector3(0.0923182, -0.197125, 0.0676085)
+bones/6/rotation = Quaternion(0.293316, 0.921573, 0.107021, 0.230687)
+bones/7/position = Vector3(0.340569, 0.196704, -0.231589)
+bones/7/rotation = Quaternion(0, 1.19209e-07, 0, 1)
+bones/8/position = Vector3(0.0922214, -0.0953346, -0.0675431)
+bones/8/rotation = Quaternion(-0.30471, 0.119023, -0.795838, 0.509537)
+bones/9/position = Vector3(-0.377006, 0.196704, 0.253451)
+bones/9/rotation = Quaternion(0, 1.19209e-07, 0, 1)
+bones/10/position = Vector3(-0.0923182, -0.197125, 0.0676085)
+bones/10/rotation = Quaternion(-0.293316, 0.921573, 0.107021, -0.230687)
+bones/11/position = Vector3(-0.377006, 0.196704, -0.253451)
+bones/11/rotation = Quaternion(0, -1.19209e-07, 0, 1)
+bones/12/position = Vector3(-0.0922215, -0.0953347, -0.067543)
+bones/12/rotation = Quaternion(-0.30471, -0.119023, 0.795838, 0.509537)
+
+[node name="base_Pe" parent="Rig_Pizza/Skeleton3D" index="0"]
+material_override = ExtResource("2_08nb6")
+
+[node name="Boca" parent="Rig_Pizza/Skeleton3D" index="1"]
+material_override = ExtResource("2_08nb6")
+
+[node name="Corpo" parent="Rig_Pizza/Skeleton3D" index="2"]
+material_override = ExtResource("2_08nb6")
+
+[node name="Oculos" parent="Rig_Pizza/Skeleton3D" index="3"]
+material_override = ExtResource("2_08nb6")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="Rig_Pizza/Skeleton3D/Oculos" index="0"]
+script = ExtResource("2_my6sd")
+high_contrast_group = &"danger"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="Pe" parent="Rig_Pizza/Skeleton3D" index="4"]
+material_override = ExtResource("2_08nb6")
+
+[node name="Tampa" parent="Rig_Pizza/Skeleton3D" index="5"]
+material_override = ExtResource("2_08nb6")
+
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = "PIZZA_SHOOTER_WALK"

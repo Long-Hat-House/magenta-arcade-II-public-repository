@@ -1,0 +1,1016 @@
+[gd_scene load_steps=26 format=3 uid="uid://dbq7i8so0rokv"]
+
+[ext_resource type="Material" uid="uid://c3lvc8wwb4v4h" path="res://elements/ui/themes/shaders_and_materials/m_ui_clouds.tres" id="1_fgcd2"]
+[ext_resource type="Texture2D" uid="uid://de43wm5wch3ah" path="res://elements/ui/logos/logo_full_withbg.png" id="1_jtjyj"]
+[ext_resource type="PackedScene" uid="uid://tj873bsytgsq" path="res://marketing_tools/marketing_team_person_box.tscn" id="2_fgcd2"]
+[ext_resource type="Material" uid="uid://dkcegkcvgcvkh" path="res://elements/ui/hud/BossBG_Clouds.tres" id="4_enrvo"]
+[ext_resource type="Script" uid="uid://bi4yfgewvcvwq" path="res://systems/switchable/switch_oning_offing_animation_player.gd" id="5_yeflp"]
+[ext_resource type="Script" uid="uid://c3yme4hxpatpv" path="res://systems/utils/control_shaker.gd" id="6_yuqvf"]
+
+[sub_resource type="GDScript" id="GDScript_kuwpb"]
+script/source = "extends Control
+
+const SCREENSHOT_RESOLUTION:Vector2 = Vector2(1080,1350)
+
+var _screenshot_path:String = \"C:/Users/lraso/Desktop/Long Hat/Temp/ScreenshotsForMarketing\"
+var _original_window_size:Vector2
+var _selecting_folder:bool
+
+func _ready() -> void:
+	GameInit.queue_free();
+	DevManager.hide();
+
+
+func select_screenshot_folder():
+	_selecting_folder = true
+	print(\"[DEV MANAGER] SELECTING FOLDER \")
+	var dialog := FileDialog.new()
+	dialog.access = FileDialog.ACCESS_FILESYSTEM
+	dialog.file_mode = FileDialog.FILE_MODE_OPEN_DIR
+	dialog.title = \"Select Screenshot Folder\"
+
+	add_child(dialog)  # fallback, just in case
+
+	# Connect signal
+	dialog.dir_selected.connect(_on_screenshot_folder_selected)
+
+	# Show the dialog
+	dialog.popup_centered()
+
+func _on_screenshot_folder_selected(path:String):
+	print(\"[DEV MANAGER] SELECTED FOLDER: \" + path)
+	_screenshot_path = path
+	_selecting_folder = false
+
+func _set_screen_resolution(res:Vector2 = Vector2.ZERO, safe_area_top_margin:int = -1):
+	# If not Original, temporarily set window size
+	if res != Vector2.ZERO:
+		if _original_window_size == Vector2.ZERO:
+			_original_window_size = DisplayServer.window_get_size()
+		print(\"[DEV MANAGER] WILL SET WINDOW SIZE: \" + str(res))
+	else:
+		# Restore original size
+		if _original_window_size != Vector2.ZERO:
+			res = _original_window_size
+			print(\"[DEV MANAGER] WILL RESET window size: \" + str(_original_window_size))
+
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+	DisplayServer.window_set_size(res)
+	get_viewport().get_window().size = res
+	SafeAreaMarginContainer.set_top_margin_override(safe_area_top_margin)
+	print(\"[DEV MANAGER] JUST SET window size: \" + str(res) + \" and margin: \" + str(safe_area_top_margin))
+
+func _take_screenshot(res:Vector2 = Vector2.ZERO):
+	if _selecting_folder: return
+	if _screenshot_path == \"\":
+		select_screenshot_folder()
+		while _selecting_folder:
+			await get_tree().process_frame
+	if _screenshot_path == \"\": return
+
+	var _screenshot_resolution_title = \"Screen_\"
+
+	var screenshot_resolution = res
+	_set_screen_resolution(Vector2(screenshot_resolution.x, screenshot_resolution.y), 0)
+
+	var now = Time.get_datetime_dict_from_system(false) # false = local time, true = UTC
+	var datetime_str = \"%04d-%02d-%02d_%02d-%02d-%02d\" % [
+		now.year, now.month, now.day, now.hour, now.minute, now.second
+	]
+	var filename = \"MA2_%s_%s_%dx%d_%s.png\" % [TextManager.get_current_locale(), _screenshot_resolution_title, int(get_viewport().size.x), int(get_viewport().size.y), datetime_str]
+
+	# build folder for this resolution option
+	var folder = _screenshot_path + \"/\" + _screenshot_resolution_title
+	DirAccess.make_dir_recursive_absolute(folder)
+
+	var path = folder + \"/\" + filename
+	print(\"[DEV] Will take Screenshot to: \", path)
+
+	await RenderingServer.frame_post_draw
+	var img:Image = get_viewport().get_texture().get_image()
+
+	img.save_png(path)
+	print(\"[DEV] Screenshot saved to: \", path)
+
+	_set_screen_resolution()
+
+func take_screenshot_shortcut_pressed():
+	if Input.is_key_pressed(KEY_P):
+		_take_screenshot(SCREENSHOT_RESOLUTION)
+
+func _process(delta):
+	take_screenshot_shortcut_pressed()
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kuwpb"]
+content_margin_left = 15.0
+content_margin_top = 135.0
+content_margin_right = 15.0
+content_margin_bottom = 135.0
+bg_color = Color(0.745098, 0, 0.784314, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5rvka"]
+font_size = 70
+shadow_size = 10
+shadow_color = Color(0.0392157, 0.0352941, 0.278431, 1)
+
+[sub_resource type="GDScript" id="GDScript_fgcd2"]
+script/source = "@tool
+extends Control
+
+@export var person_name:String:
+	get:
+		return label_name.text if label_name else person_name
+	set(value):
+		person_name = value
+		if label_name: label_name.text = value
+
+@export var person_role:String:
+	get:
+		return label_role.text if label_role else person_role
+	set(value):
+		person_role = value
+		if label_role: label_role.text = value
+
+@export var person_description:String:
+	get:
+		return label_description.text if label_description else person_description
+	set(value):
+		person_description = value
+		if label_description: label_description.text = value
+
+@export var person_extra1:String:
+	get:
+		return label_extra1.text if label_extra1 else person_extra1
+	set(value):
+		person_extra1 = value
+		if label_extra1: label_extra1.text = value
+
+@export var person_extra2:String:
+	get:
+		return label_extra2.text if label_extra2 else person_extra2
+	set(value):
+		person_extra2 = value
+		if label_extra2: label_extra2.text = value
+
+@export var label_name:Label
+@export var label_role:Label
+@export var label_description:Label
+@export var label_extra1:Label
+@export var label_extra2:Label
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1chb"]
+content_margin_left = 15.0
+content_margin_top = 135.0
+content_margin_right = 15.0
+content_margin_bottom = 135.0
+bg_color = Color(0, 0.545098, 0.521569, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fgcd2"]
+bg_color = Color(0, 0.12549, 0.388235, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.294118, 0.905882, 0.843137, 1)
+border_blend = true
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+corner_radius_bottom_right = 80
+corner_radius_bottom_left = 80
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0m6sm"]
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+corner_radius_bottom_right = 80
+corner_radius_bottom_left = 80
+corner_detail = 20
+
+[sub_resource type="Gradient" id="Gradient_fgcd2"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_e1chb"]
+gradient = SubResource("Gradient_fgcd2")
+width = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_0m6sm"]
+font_size = 70
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 30
+shadow_color = Color(0, 0.0156863, 0.278431, 1)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fgcd2"]
+font_size = 45
+shadow_size = 10
+shadow_color = Color(0, 0.0156863, 0.278431, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_e1chb"]
+font_size = 40
+shadow_size = 10
+shadow_color = Color(0, 0.0156863, 0.278431, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_odfu5"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.745098, 0, 0.784314, 1)
+border_width_top = 30
+border_width_bottom = 30
+border_color = Color(0.999999, 0.812242, 0.944969, 1)
+border_blend = true
+
+[sub_resource type="Animation" id="Animation_7swrv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SafeAreaRect - HUD/MarginContainer/Top Right/Boss Hud Area:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBoss:shake_amplitude_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Panel:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBossPresentation:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBossPresentation:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBoss:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBossPresentation/LabelBossPresentationPivot:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBoss/LabelBossPivot:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(30, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SafeAreaRect - HUD/MarginContainer/Top Right/Boss Hud Area/BossProgress:custom_minimum_size")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(16, 800)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SafeAreaRect - HUD/MarginContainer/Top Right/Boss Hud Area/BossIconContainer/Boss Icon:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_oyd1u"]
+resource_name = "off"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SafeAreaRect - HUD/MarginContainer/Top Right/Boss Hud Area:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_or5mg"]
+resource_name = "offing"
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_d5p4l"]
+resource_name = "on"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SafeAreaRect - HUD/MarginContainer/Top Right/Boss Hud Area:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ts0a1"]
+resource_name = "oning"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SafeAreaRect - HUD/MarginContainer/Top Right/Boss Hud Area:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.23333, 3.26667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBoss:shake_amplitude_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.533333, 1.3, 2.5, 3.5),
+"transitions": PackedFloat32Array(0.5, 0.5, 2, 2, 1),
+"update": 0,
+"values": [2.0, 1.0, 0.2, 0.2, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Panel:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.433333, 0.633333, 1.36667, 2.16667, 3.16667, 3.46667),
+"transitions": PackedFloat32Array(2, 0.5, -2, -2, -2, -2, 0.5, 1),
+"update": 0,
+"values": [Vector2(0, 0.1), Vector2(1, 0.1), Vector2(1, 1.1), Vector2(1, 0.9), Vector2(1, 1), Vector2(1, 0.9), Vector2(1, 1), Vector2(1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBossPresentation:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBossPresentation:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 2.96667, 3.23333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBoss:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.533333, 0.8, 3.1, 3.23333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBossPresentation/LabelBossPresentationPivot:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 3.23333),
+"transitions": PackedFloat32Array(-0.0980731, 1),
+"update": 0,
+"values": [Vector2(200, 0), Vector2(-200, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBoss/LabelBossPivot:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.533333, 0.866667, 2.9, 3.23333),
+"transitions": PackedFloat32Array(1, 0.5, -0.5, 2, 1),
+"update": 0,
+"values": [Vector2(-200, 0), Vector2(-200, 0), Vector2(-40, 0), Vector2(40, 0), Vector2(200, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SafeAreaRect - HUD/MarginContainer/Top Right/Boss Hud Area/BossProgress:custom_minimum_size")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(3.23333, 3.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(16, 0), Vector2(16, 800)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SafeAreaRect - HUD/MarginContainer/Top Right/Boss Hud Area/BossIconContainer/Boss Icon:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(3.23333, 3.43333, 3.5),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2qxp4"]
+_data = {
+&"RESET": SubResource("Animation_7swrv"),
+&"off": SubResource("Animation_oyd1u"),
+&"offing": SubResource("Animation_or5mg"),
+&"on": SubResource("Animation_d5p4l"),
+&"oning": SubResource("Animation_ts0a1")
+}
+
+[node name="Control" type="Control"]
+texture_filter = 6
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_kuwpb")
+
+[node name="MeetTheTeam" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -720.0
+offset_top = -900.0
+offset_right = 720.0
+offset_bottom = 900.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="PanelContainer" parent="MeetTheTeam"]
+material = ExtResource("1_fgcd2")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kuwpb")
+
+[node name="PanelContainer" type="PanelContainer" parent="MeetTheTeam/Control"]
+layout_mode = 2
+theme_type_variation = &"panelcontainer_sub1"
+
+[node name="MarginContainer" type="MarginContainer" parent="MeetTheTeam/Control/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MeetTheTeam/Control/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="BoxContainer" type="GridContainer" parent="MeetTheTeam/Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 30
+columns = 2
+
+[node name="MarketingTeamPersonBox" parent="MeetTheTeam/Control/PanelContainer/MarginContainer/VBoxContainer/BoxContainer" instance=ExtResource("2_fgcd2")]
+layout_mode = 2
+
+[node name="MarketingTeamPersonBox2" parent="MeetTheTeam/Control/PanelContainer/MarginContainer/VBoxContainer/BoxContainer" instance=ExtResource("2_fgcd2")]
+layout_mode = 2
+person_name = "Lucas Mattos"
+person_role = "Produção e Desenvolvimento"
+
+[node name="MarketingTeamPersonBox3" parent="MeetTheTeam/Control/PanelContainer/MarginContainer/VBoxContainer/BoxContainer" instance=ExtResource("2_fgcd2")]
+layout_mode = 2
+person_name = "Juliendrios Oliveira"
+person_role = "Arte e Animação 3D"
+
+[node name="MarketingTeamPersonBox4" parent="MeetTheTeam/Control/PanelContainer/MarginContainer/VBoxContainer/BoxContainer" instance=ExtResource("2_fgcd2")]
+layout_mode = 2
+person_name = "Tavos Mata Machado"
+person_role = "Roteiro & Tradução"
+
+[node name="MarketingTeamPersonBox5" parent="MeetTheTeam/Control/PanelContainer/MarginContainer/VBoxContainer/BoxContainer" instance=ExtResource("2_fgcd2")]
+layout_mode = 2
+person_name = "Laila Alves"
+person_role = "Arte e Animação 2D"
+
+[node name="MarketingTeamPersonBox6" parent="MeetTheTeam/Control/PanelContainer/MarginContainer/VBoxContainer/BoxContainer" instance=ExtResource("2_fgcd2")]
+layout_mode = 2
+person_name = "Thommaz Kauffmann"
+person_role = "Música e Efeitos Sonoros"
+
+[node name="Control2" type="Control" parent="MeetTheTeam"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="MeetTheTeam/Control2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -498.0
+offset_top = 97.0
+offset_right = 498.0
+offset_bottom = 239.0
+grow_horizontal = 2
+theme_type_variation = &"panel_magenta"
+
+[node name="MarginContainer" type="MarginContainer" parent="MeetTheTeam/Control2/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="MeetTheTeam/Control2/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "Conheça nossa equipe!"
+label_settings = SubResource("LabelSettings_5rvka")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MeetTheTeam/Control2"]
+texture_filter = 2
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -288.0
+offset_top = 1376.0
+offset_right = 289.0
+offset_bottom = 1899.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_jtjyj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Team1" type="Control" parent="." node_paths=PackedStringArray("label_name", "label_role", "label_description", "label_extra1", "label_extra2")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -720.0
+offset_top = -900.0
+offset_right = 720.0
+offset_bottom = 900.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_fgcd2")
+person_name = "Thommaz Kauffmann"
+person_role = "Música e Efeitos Sonoros"
+person_description = "Quem não conhece Thommaz pelo nosso jogo anterior, Dandara, talvez vá conhecer pelo Hell Clock, ou Oniken.. o fato é: Que música foda que ele faz!"
+person_extra1 = "São Paulo, SP"
+person_extra2 = "Fone de ouvido é recomendado!"
+label_name = NodePath("Control2/PanelContainer/MarginContainer/Label")
+label_role = NodePath("Control/PanelContainer/MarginContainer2/BoxContainer/Label")
+label_description = NodePath("Control/PanelContainer/MarginContainer2/BoxContainer/PanelContainer/MarginContainer/Label2")
+label_extra1 = NodePath("Control/PanelContainer/MarginContainer2/BoxContainer/HBoxContainer/Label2")
+label_extra2 = NodePath("Control/PanelContainer/MarginContainer2/BoxContainer/HBoxContainer/Label3")
+
+[node name="Control" type="PanelContainer" parent="Team1"]
+material = ExtResource("1_fgcd2")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e1chb")
+
+[node name="PanelContainer" type="PanelContainer" parent="Team1/Control"]
+layout_mode = 2
+theme_type_variation = &"panelcontainer_sub2"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Team1/Control/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 150
+
+[node name="BoxContainer" type="BoxContainer" parent="Team1/Control/PanelContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 30
+vertical = true
+
+[node name="PanelContainer2" type="PanelContainer" parent="Team1/Control/PanelContainer/MarginContainer2/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_fgcd2")
+
+[node name="PanelContainer" type="PanelContainer" parent="Team1/Control/PanelContainer/MarginContainer2/BoxContainer/PanelContainer2"]
+clip_children = 1
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_0m6sm")
+
+[node name="TextureRect" type="TextureRect" parent="Team1/Control/PanelContainer/MarginContainer2/BoxContainer/PanelContainer2/PanelContainer"]
+custom_minimum_size = Vector2(512, 512)
+layout_mode = 2
+texture = SubResource("GradientTexture1D_e1chb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HSeparator2" type="HSeparator" parent="Team1/Control/PanelContainer/MarginContainer2/BoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Team1/Control/PanelContainer/MarginContainer2/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Música e Efeitos Sonoros"
+label_settings = SubResource("LabelSettings_0m6sm")
+
+[node name="PanelContainer" type="PanelContainer" parent="Team1/Control/PanelContainer/MarginContainer2/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"panel_outline_round"
+
+[node name="MarginContainer" type="MarginContainer" parent="Team1/Control/PanelContainer/MarginContainer2/BoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Label2" type="Label" parent="Team1/Control/PanelContainer/MarginContainer2/BoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Quem não conhece Thommaz pelo nosso jogo anterior, Dandara, talvez vá conhecer pelo Hell Clock, ou Oniken.. o fato é: Que música foda que ele faz!"
+label_settings = SubResource("LabelSettings_fgcd2")
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Team1/Control/PanelContainer/MarginContainer2/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 50
+
+[node name="Label2" type="Label" parent="Team1/Control/PanelContainer/MarginContainer2/BoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "São Paulo, SP"
+label_settings = SubResource("LabelSettings_e1chb")
+
+[node name="VSeparator" type="VSeparator" parent="Team1/Control/PanelContainer/MarginContainer2/BoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="Team1/Control/PanelContainer/MarginContainer2/BoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Fone de ouvido é recomendado!"
+label_settings = SubResource("LabelSettings_e1chb")
+
+[node name="Control2" type="Control" parent="Team1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="Team1/Control2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -498.0
+offset_top = 97.0
+offset_right = 498.0
+offset_bottom = 239.0
+grow_horizontal = 2
+theme_type_variation = &"panel_magenta"
+
+[node name="MarginContainer" type="MarginContainer" parent="Team1/Control2/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="Team1/Control2/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "Thommaz Kauffmann"
+label_settings = SubResource("LabelSettings_5rvka")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Team1/Control2"]
+texture_filter = 2
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -288.0
+offset_top = 1376.0
+offset_right = 289.0
+offset_bottom = 1899.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_jtjyj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Boss Show" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="Boss Show"]
+material = ExtResource("4_enrvo")
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1000.0
+offset_top = -135.0
+offset_right = 1000.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(450, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_odfu5")
+
+[node name="Panel2" type="Panel" parent="Boss Show/Panel"]
+use_parent_material = true
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_odfu5")
+
+[node name="Panel3" type="Panel" parent="Boss Show/Panel"]
+use_parent_material = true
+custom_minimum_size = Vector2(120, 15)
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_odfu5")
+
+[node name="BossShow On Off" type="AnimationPlayer" parent="Boss Show"]
+root_node = NodePath("../../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_2qxp4")
+}
+script = ExtResource("5_yeflp")
+
+[node name="Shake Container" type="Control" parent="Boss Show"]
+layout_mode = 2
+anchors_preset = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="ShakeBoss" type="Control" parent="Boss Show/Shake Container"]
+anchors_preset = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("6_yuqvf")
+shake_amplitude_ratio = 0.0
+shake_frequency = 15.0
+
+[node name="LabelBossPivot" type="Control" parent="Boss Show/Shake Container/ShakeBoss"]
+anchors_preset = 0
+offset_left = 30.0
+offset_right = 30.0
+
+[node name="LabelBoss" type="Label" parent="Boss Show/Shake Container/ShakeBoss/LabelBossPivot"]
+visible = false
+custom_minimum_size = Vector2(900, 250)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -110.0
+offset_right = 450.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_type_variation = &"label_challenge_title"
+theme_override_constants/line_spacing = -50
+text = "Pirulito da 
+Praça 7 "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+justification_flags = 0
+
+[node name="ShakeBossPresentation" type="Control" parent="Boss Show/Shake Container"]
+anchors_preset = 0
+offset_left = -0.822481
+offset_top = -0.404677
+offset_right = -0.822481
+offset_bottom = -0.404677
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("6_yuqvf")
+shake_amplitude_ratio = 0.1
+shake_frequency = 5.0
+
+[node name="LabelBossPresentationPivot" type="Control" parent="Boss Show/Shake Container/ShakeBossPresentation"]
+anchors_preset = 0
+
+[node name="LabelBossPresentation" type="Label" parent="Boss Show/Shake Container/ShakeBossPresentation/LabelBossPresentationPivot"]
+visible = false
+custom_minimum_size = Vector2(600, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -260.28
+offset_right = 300.0
+offset_bottom = 39.72
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.745098, 0, 0.784314, 1)
+theme_override_colors/font_outline_color = Color(0.993765, 0.752564, 1, 1)
+theme_override_constants/line_spacing = -35
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 50
+text = "Personagem Apresenta"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+justification_flags = 0

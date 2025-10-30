@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=3 uid="uid://k3jy1ul1afvc"]
+
+[ext_resource type="Script" uid="uid://bs5lf852f6g31" path="res://elements/player/projectiles/proj_tap_forward.gd" id="1_wagvx"]
+[ext_resource type="PackedScene" uid="uid://cqlmiiyyfqe3w" path="res://elements/vfx/vfx_hit/vfx_hit_blue.tscn" id="2_otjpf"]
+[ext_resource type="Resource" uid="uid://dmhdkw8urmjwc" path="res://systems/ma2_meta/upgrades/upgrade_tap_damage.tres" id="3_lseq7"]
+[ext_resource type="Material" uid="uid://by2ylqngsrx1p" path="res://elements/player/projectiles/materials/proj_blue.tres" id="3_o6j03"]
+[ext_resource type="PackedScene" uid="uid://375y6mcmkvlm" path="res://elements/player/projectiles/tap_blue/proj_tap_blue_mesh.tscn" id="4_r1vlu"]
+[ext_resource type="Script" uid="uid://d2rhxuigqg21b" path="res://systems/audio_wwise/AkEvent3DLoop.gd" id="5_04xg7"]
+[ext_resource type="WwiseEvent" uid="uid://dnuqlt1bsyhsy" path="res://Wwise/resources/Event/{E2FC2C39-65C6-404F-B0B1-86F88FA9BFC5}.tres" id="7_6t0li"]
+[ext_resource type="WwiseEvent" uid="uid://etddp8djaetn" path="res://Wwise/resources/Event/{1939B9DB-3F4C-4F48-A675-2B6EF1DACD41}.tres" id="8_cwhlx"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_2hthe"]
+size = Vector3(0.5, 1, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pm1mn"]
+size = Vector3(3, 0.5, 1)
+
+[node name="proj_tap_blue" type="Area3D"]
+collision_layer = 8
+collision_mask = 132
+script = ExtResource("1_wagvx")
+projectileVelocityRelative = Vector3(0, 0, 0)
+projectileVelocityAbsolute = Vector3(0, 0, -25)
+camera_multiplier = Vector3(0, 0, 1)
+amountDamage = 2.3
+vfxHit = ExtResource("2_otjpf")
+bonus_resource = ExtResource("3_lseq7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, 0)
+visible = false
+material_override = ExtResource("3_o6j03")
+cast_shadow = 0
+mesh = SubResource("PrismMesh_2hthe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_pm1mn")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-1.51568, -0.259705, -0.37709, 3.03136, 0.51941, 13.75)
+
+[node name="proj_tap_blue_Mesh" parent="." instance=ExtResource("4_r1vlu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.108778)
+
+[node name="SFX Loop" type="Node3D" parent="." node_paths=PackedStringArray("loop_begin_event", "loop_finish_event")]
+script = ExtResource("5_04xg7")
+_start_loop_on = 2
+_stop_loop_on = 3
+loop_begin_event = NodePath("Begin")
+loop_finish_event = NodePath("End")
+
+[node name="Begin" type="AkEvent3D" parent="SFX Loop"]
+event = ExtResource("7_6t0li")
+
+[node name="End" type="AkEvent3D" parent="SFX Loop"]
+event = ExtResource("8_cwhlx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

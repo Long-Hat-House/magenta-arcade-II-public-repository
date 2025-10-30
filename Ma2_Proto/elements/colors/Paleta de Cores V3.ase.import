@@ -1,0 +1,18 @@
+[remap]
+
+importer="aseprite_wizard.plugin"
+type="SpriteFrames"
+uid="uid://b57f8r0eph4my"
+path="res://.godot/imported/Paleta de Cores V3.ase-ece085040462eaaf0713bf3fc0ed0c8e.res"
+
+[deps]
+
+source_file="res://elements/colors/Paleta de Cores V3.ase"
+dest_files=["res://.godot/imported/Paleta de Cores V3.ase-ece085040462eaaf0713bf3fc0ed0c8e.res"]
+
+[params]
+
+split_layers=false
+exclude_layers_pattern="#.*"
+only_visible_layers=false
+sheet_type="Packed"

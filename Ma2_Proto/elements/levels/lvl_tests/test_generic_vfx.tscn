@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://db70ijpf67j67"]
+
+[ext_resource type="Script" uid="uid://cwpevnqe6rjel" path="res://elements/levels/lvl_tests/test_generic_vfx.gd" id="1_0wueq"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="2_eq528"]
+[ext_resource type="Resource" uid="uid://bd6x1krvri6b7" path="res://systems/time/frame_freeze_minimal.tres" id="3_c1ev0"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_kikv2"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fxvo7"]
+height = 1.0
+
+[node name="TestGenericVFX" type="Node3D"]
+script = ExtResource("1_0wueq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = SubResource("SphereMesh_kikv2")
+
+[node name="Body" type="CharacterBody3D" parent="." groups=["enemy_position"]]
+collision_layer = 4
+collision_mask = 2
+axis_lock_linear_y = true
+
+[node name="Health" type="Node" parent="Body" node_paths=PackedStringArray("feedback") groups=["enemy_healths"]]
+script = ExtResource("2_eq528")
+max_amount = 99999.0
+feedback = [NodePath("../../MeshInstance3D")]
+feedback_scale_multiplier = Vector3(0.4, -0.2, 0.4)
+frame_freeze_on_death = ExtResource("3_c1ev0")
+feedback_deepness = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_fxvo7")
+
+[connection signal="hit_parameterless" from="Body/Health" to="." method="_on_health_hit_parameterless"]

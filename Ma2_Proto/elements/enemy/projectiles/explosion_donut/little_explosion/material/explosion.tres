@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c41pddggvlyxu"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 10
+disable_ambient_light = true
+disable_fog = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.0
+rim = 0.5
+rim_tint = 1.0
+clearcoat_roughness = 1.0
+anisotropy = 1.0
+backlight = Color(0.901961, 0, 0.494118, 1)
+disable_receive_shadows = true
+grow_amount = -0.252

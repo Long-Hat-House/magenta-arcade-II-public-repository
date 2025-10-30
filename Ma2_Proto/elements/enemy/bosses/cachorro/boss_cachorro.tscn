@@ -1,0 +1,378 @@
+[gd_scene load_steps=44 format=3 uid="uid://j5gd0d5631dy"]
+
+[ext_resource type="Script" uid="uid://chcluc2opta7u" path="res://elements/levels/lvl_4/ai_boss_cachorro.gd" id="1_mdea5"]
+[ext_resource type="PackedScene" uid="uid://cxhyjw4pv7rxq" path="res://elements/enemy/bosses/cachorro/boss_cachorro_food.tscn" id="2_5gllr"]
+[ext_resource type="Script" uid="uid://b8jp2y0sjfgna" path="res://systems/state_machine/simple_state_machine.gd" id="2_43pc6"]
+[ext_resource type="PackedScene" uid="uid://q8wgckpumwas" path="res://elements/enemy/bosses/cachorro/mesh/mesh_boss_cachorro.tscn" id="2_jyrqf"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="3_2iva4"]
+[ext_resource type="WwiseEvent" uid="uid://dy5fpteehmx6m" path="res://Wwise/resources/Event/{6C562770-2923-4133-BEA2-81B9411BF10F}.tres" id="4_e0vcn"]
+[ext_resource type="Script" uid="uid://btarw8dul5iyd" path="res://elements/enemy/bosses/cachorro/boss_cachorro_disco.gd" id="4_nosm0"]
+[ext_resource type="PackedScene" uid="uid://cldmf33qdr6vk" path="res://elements/attack_previews/screen_attack_preview/screen_attack_preview.tscn" id="4_obcwv"]
+[ext_resource type="Resource" uid="uid://iesh2ok5qwkx" path="res://systems/screen/camera_shake_small.tres" id="5_43pc6"]
+[ext_resource type="Script" uid="uid://hbsjipy3xak5" path="res://systems/pressable/pressable.gd" id="5_o1mjc"]
+[ext_resource type="WwiseEvent" uid="uid://dxqbyrnb5qbj4" path="res://Wwise/resources/Event/{31C9C2B6-A21A-48DA-9F32-D0FAC2A4FA33}.tres" id="5_wqww3"]
+[ext_resource type="Script" uid="uid://bms7t1qig04jc" path="res://elements/enemy/bosses/cachorro/boss_cachorro_item_distributor.gd" id="5_ymljr"]
+[ext_resource type="Script" uid="uid://ctxomlo7k8733" path="res://elements/enemy/bosses/cachorro/boss_cachorro_shooter.gd" id="7_6ikw7"]
+[ext_resource type="PackedScene" uid="uid://bdypmotd6a3d5" path="res://elements/enemy/bosses/cachorro/mesh/mesh_boss_cachorro_disco.tscn" id="7_k1ew2"]
+[ext_resource type="PackedScene" uid="uid://dhmi2sv2mhuqe" path="res://elements/enemy/projectiles/proj_basic/proj_enemy_basic.tscn" id="8_o2mop"]
+[ext_resource type="Script" uid="uid://bls4vce0lfvfc" path="res://elements/vfx/spawn_area.gd" id="8_yd602"]
+[ext_resource type="PackedScene" uid="uid://ywymskkj85vs" path="res://elements/vfx/vfx_explosion/vfx_explosion.tscn" id="9_rbkji"]
+[ext_resource type="PackedScene" uid="uid://c6gv2ejlr58a2" path="res://elements/enemy/projectiles/proj_super/proj_enemy_super.tscn" id="10_dqit4"]
+[ext_resource type="Script" uid="uid://dj2x7ekyg32b7" path="res://systems/score/score_giver.gd" id="10_krc3h"]
+[ext_resource type="Resource" uid="uid://dioolvf4sb7og" path="res://elements/score/score_info_boss_dog.tres" id="11_m8j58"]
+[ext_resource type="Script" uid="uid://cccnp54xda20b" path="res://elements/enemy/constant_rotation.gd" id="12_4qghy"]
+[ext_resource type="PackedScene" uid="uid://bbyxanpfrv7cb" path="res://elements/enemy/projectiles/proj_big_follower/enemy_proj_big_follower_go_through.tscn" id="13_k1ew2"]
+[ext_resource type="PackedScene" uid="uid://elu46raggotb" path="res://elements/enemy/projectiles/proj_laser/laser_area.tscn" id="13_odtcs"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="15_m8j58"]
+[ext_resource type="WwiseEvent" uid="uid://3y7rpd6llc0a" path="res://Wwise/resources/Event/{B788D23C-0537-43C2-8DA5-398090868BC2}.tres" id="18_im6mu"]
+[ext_resource type="WwiseEvent" uid="uid://purgu8ncl7uj" path="res://Wwise/resources/Event/{B3491413-4A2D-4724-BEBF-22E4F6CD5445}.tres" id="19_p5auw"]
+[ext_resource type="WwiseEvent" uid="uid://c4tiuy27767ut" path="res://Wwise/resources/Event/{8110A6DE-CCD5-4951-8802-E04413DAA0DD}.tres" id="20_bqbne"]
+[ext_resource type="Script" uid="uid://d2rhxuigqg21b" path="res://systems/audio_wwise/AkEvent3DLoop.gd" id="21_dcwd7"]
+[ext_resource type="WwiseEvent" uid="uid://c4vbst8dl12io" path="res://Wwise/resources/Event/{4AFFCF2C-0B6B-4628-90A2-8B89A116646E}.tres" id="21_tgdif"]
+[ext_resource type="WwiseEvent" uid="uid://xn0hrj3aldfw" path="res://Wwise/resources/Event/{ACABCD40-4941-48D7-9C0F-A2313ED00834}.tres" id="22_e0vcn"]
+[ext_resource type="WwiseEvent" uid="uid://djpx5vrysge2c" path="res://Wwise/resources/Event/{13357172-3EFB-450C-915D-336F6F084E38}.tres" id="23_krc3h"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yl23j"]
+radius = 2.0
+height = 6.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w2bng"]
+radius = 2.0
+height = 6.0
+
+[sub_resource type="GDScript" id="GDScript_fxdsq"]
+script/source = "extends Area3D
+
+@onready var mesh: MeshInstance3D = $MeshInstance3D
+
+const color_selected:Color = MA2Colors.SKY_BLUE;
+const color_search:Color = Color(1,1,1,0);
+
+var tween:Tween;
+
+var mat:StandardMaterial3D:
+	get:
+		if mat == null:
+			mat = mesh.get_active_material(0);
+		return mat;
+
+var amount_inside:int = 0;
+
+func _ready() -> void:
+	self.area_entered.connect(on_area_entered);
+	self.area_exited.connect(on_area_exited);
+	mat.albedo_color = color_search;
+	
+func on_area_entered(area:Area3D):
+	if tween and tween.is_running():
+		tween.kill();
+	tween = create_tween();
+	tween.tween_property(mat, \"albedo_color\", color_selected, 0.05).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC);
+	tween.tween_property(mat, \"albedo_color\", color_search, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC);
+	amount_inside += 1;
+	
+func on_area_exited(area:Area3D):
+	
+	amount_inside -= 1;
+	
+"
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_us1vy"]
+points = PackedVector3Array(0.8, -2, 16, 0, -2, 0, -0.8, -2, 16, 0.8, 2, 16, 0, 2, 0, -0.8, 2, 16)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b3b4v"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_lodi0"]
+material = SubResource("StandardMaterial3D_b3b4v")
+size = Vector3(3, 16, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wbq4h"]
+height = 0.75
+radius = 10.5
+
+[sub_resource type="GDScript" id="GDScript_43pc6"]
+script/source = "extends Node
+
+@export var velocity_multiplier:float = 0.7;
+
+func _on_shooter_center_instantiated_projectile_scene(projectile: Node3D, scene: PackedScene) -> void:
+	if projectile.has_method(&\"set_velocity_multiplier\"):
+		projectile.set_velocity_multiplier(velocity_multiplier);
+"
+
+[sub_resource type="Animation" id="Animation_43pc6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BossCachorroBody:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.25, 4.25)]
+}
+
+[sub_resource type="Animation" id="Animation_k1ew2"]
+resource_name = "start"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BossCachorroBody:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -14, 4.25)]
+}
+
+[sub_resource type="Animation" id="Animation_5xr8n"]
+resource_name = "begin"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BossCachorroBody:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.866667, 1),
+"transitions": PackedFloat32Array(2.37841, 1, 1),
+"update": 0,
+"values": [Vector3(0, -14, 4.25), Vector3(0, 3.5, 4.25), Vector3(0, 3.25, 4.25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4cbvt"]
+_data = {
+&"RESET": SubResource("Animation_43pc6"),
+&"first_frame": SubResource("Animation_k1ew2"),
+&"start_boss": SubResource("Animation_5xr8n")
+}
+
+[node name="BossCachorro" type="Node3D" node_paths=PackedStringArray("first_food", "sfx_suck", "sfx_warning", "lasers", "lasers_rotation")]
+script = ExtResource("1_mdea5")
+suck_max_velocity = 10.0
+first_food = NodePath("BossCachorroDisco/Items/BossCachorro_Food")
+base_duration_screen_attack = 14.0
+sfx_appear = ExtResource("18_im6mu")
+sfx_death = ExtResource("19_p5auw")
+sfx_eat = ExtResource("4_e0vcn")
+sfx_attack = ExtResource("5_wqww3")
+sfx_suck = NodePath("Sounds/SFX_Suck_Loop")
+sfx_warning = NodePath("Sounds/SFX_Attack_Loop")
+lasers = [NodePath("Lasers/ConstantRotation/LaserArea"), NodePath("Lasers/ConstantRotation/LaserArea3"), NodePath("Lasers/ConstantRotation/LaserArea2"), NodePath("Lasers/ConstantRotation/LaserArea4")]
+lasers_rotation = NodePath("Lasers/ConstantRotation")
+
+[node name="AnimationsStateMachine" type="Node" parent="."]
+script = ExtResource("2_43pc6")
+check_every_physics_frame = true
+debug = true
+metadata/_custom_type_script = "uid://b8jp2y0sjfgna"
+
+[node name="BossCachorroBody" type="AnimatableBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 4.25)
+collision_layer = 4
+collision_mask = 0
+sync_to_physics = false
+
+[node name="boss_cachorro" parent="BossCachorroBody" instance=ExtResource("2_jyrqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.81357, 0.383415)
+
+[node name="explosion_aabb" type="VisibleOnScreenNotifier3D" parent="BossCachorroBody/boss_cachorro"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+aabb = AABB(-2, -2.75, -1.5, 4, 5.5, 3)
+
+[node name="SpawnArea" type="VisibleOnScreenNotifier3D" parent="BossCachorroBody/boss_cachorro" node_paths=PackedStringArray("parent")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+aabb = AABB(-2, -1, -2, 4, 2, 4)
+script = ExtResource("8_yd602")
+scenes = Array[PackedScene]([ExtResource("9_rbkji")])
+spawn_multiple_default = 16
+spawn_multiple_default_duration = 0.8
+spawn_multiple_default_trans = 4
+parent = NodePath("..")
+metadata/_custom_type_script = "uid://bls4vce0lfvfc"
+
+[node name="BossHealth" type="Node" parent="BossCachorroBody" node_paths=PackedStringArray("feedback")]
+script = ExtResource("3_2iva4")
+max_amount = 200.0
+feedback = [NodePath("../boss_cachorro")]
+screen_shake_on_damaged = ExtResource("5_43pc6")
+feedback_ignore_contains_divided_by_commas = "eye_"
+
+[node name="ScoreGiver" type="Node" parent="BossCachorroBody/BossHealth" node_paths=PackedStringArray("health", "point_position")]
+script = ExtResource("10_krc3h")
+info = ExtResource("11_m8j58")
+health = NodePath("..")
+point_position = NodePath("../../ScoreTarget")
+metadata/_custom_type_script = "uid://dj2x7ekyg32b7"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BossCachorroBody"]
+visible = false
+mesh = SubResource("CapsuleMesh_yl23j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BossCachorroBody"]
+shape = SubResource("CapsuleShape3D_w2bng")
+
+[node name="FoodArea" type="Area3D" parent="BossCachorroBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+collision_layer = 0
+collision_mask = 512
+script = SubResource("GDScript_fxdsq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BossCachorroBody/FoodArea"]
+shape = SubResource("ConvexPolygonShape3D_us1vy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BossCachorroBody/FoodArea"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.5, 8)
+mesh = SubResource("PrismMesh_lodi0")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="BossCachorroBody/FoodArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 1.75)
+
+[node name="FoodReceiveArea" type="Area3D" parent="BossCachorroBody"]
+collision_layer = 0
+collision_mask = 512
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BossCachorroBody/FoodReceiveArea"]
+shape = SubResource("CapsuleShape3D_w2bng")
+
+[node name="ScreenAttackPreview" parent="BossCachorroBody" instance=ExtResource("4_obcwv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 1.75)
+
+[node name="ScoreTarget" type="Marker3D" parent="BossCachorroBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 2)
+
+[node name="BossCachorroDisco" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 4.5)
+script = ExtResource("4_nosm0")
+angle_velocity = 6.0
+
+[node name="boss_cachorro_disco" parent="BossCachorroDisco" instance=ExtResource("7_k1ew2")]
+transform = Transform3D(1.22, 0, 0, 0, 1.22, 0, 0, 0, 1.22, 0, 0, 0)
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="BossCachorroDisco/boss_cachorro_disco"]
+script = ExtResource("15_m8j58")
+high_contrast_group = &"interactable"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="DiscoPressable" type="Node3D" parent="BossCachorroDisco" node_paths=PackedStringArray("pressable_area")]
+transform = Transform3D(1.22, 0, 0, 0, 1.22, 0, 0, 0, 1.22, 0, 0, 0)
+script = ExtResource("5_o1mjc")
+pressable_priority = -1
+pressable_area = NodePath("Area3D")
+
+[node name="Area3D" type="Area3D" parent="BossCachorroDisco/DiscoPressable"]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BossCachorroDisco/DiscoPressable/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
+shape = SubResource("CylinderShape3D_wbq4h")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="BossCachorroDisco"]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BossCachorroDisco/StaticBody3D"]
+shape = SubResource("CylinderShape3D_wbq4h")
+
+[node name="Items" type="Node3D" parent="BossCachorroDisco"]
+
+[node name="BossCachorro_Food" parent="BossCachorroDisco/Items" instance=ExtResource("2_5gllr")]
+transform = Transform3D(0.991819, 0, -0.127653, 0, 1, 0, 0.127653, 0, 0.991819, -3.2254, 0.25, 6.22864)
+
+[node name="ShooterCenter" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 4)
+script = ExtResource("7_6ikw7")
+projectiles = Array[PackedScene]([ExtResource("8_o2mop"), ExtResource("10_dqit4")])
+chances = Array[int]([50, 2])
+range_angle = 300.0
+
+[node name="OnShootSlowdown" type="Node" parent="ShooterCenter"]
+script = SubResource("GDScript_43pc6")
+
+[node name="ShooterCenter_Secondary" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.25, 4)
+script = ExtResource("7_6ikw7")
+projectiles = Array[PackedScene]([ExtResource("13_k1ew2")])
+chances = Array[int]([1])
+range_angle = 200.0
+
+[node name="ItemDistributor" type="Node" parent="." node_paths=PackedStringArray("items_parent")]
+script = ExtResource("5_ymljr")
+items_parent = NodePath("../BossCachorroDisco/Items")
+food_scene = ExtResource("2_5gllr")
+height_item = 0.25
+min_radius = 5.5
+max_radius = 9.5
+
+[node name="Lasers" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.7, 4.5)
+
+[node name="ConstantRotation" type="Node3D" parent="Lasers"]
+script = ExtResource("12_4qghy")
+angleVelocity = 20.0
+angle_degrees = true
+
+[node name="LaserArea" parent="Lasers/ConstantRotation" instance=ExtResource("13_odtcs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.75)
+no_light = true
+
+[node name="LaserArea3" parent="Lasers/ConstantRotation" instance=ExtResource("13_odtcs")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.5299e-07, 0, -1.75)
+no_light = true
+
+[node name="LaserArea2" parent="Lasers/ConstantRotation" instance=ExtResource("13_odtcs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.75, 0, -7.64949e-08)
+no_light = true
+
+[node name="LaserArea4" parent="Lasers/ConstantRotation" instance=ExtResource("13_odtcs")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -1.75, 0, 2.08685e-08)
+no_light = true
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.5)
+aabb = AABB(-11.1573, -1, -10.8444, 22.3145, 2, 21.6889)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4cbvt")
+}
+
+[node name="Sounds" type="Node3D" parent="."]
+
+[node name="SFX_Attack_Loop" type="Node3D" parent="Sounds"]
+script = ExtResource("21_dcwd7")
+metadata/_custom_type_script = "uid://d2rhxuigqg21b"
+
+[node name="Begin" type="AkEvent3D" parent="Sounds/SFX_Attack_Loop"]
+event = ExtResource("23_krc3h")
+
+[node name="End" type="AkEvent3D" parent="Sounds/SFX_Attack_Loop"]
+event = ExtResource("20_bqbne")
+
+[node name="SFX_Suck_Loop" type="Node3D" parent="Sounds"]
+script = ExtResource("21_dcwd7")
+metadata/_custom_type_script = "uid://d2rhxuigqg21b"
+
+[node name="Begin" type="AkEvent3D" parent="Sounds/SFX_Suck_Loop"]
+event = ExtResource("21_tgdif")
+
+[node name="End" type="AkEvent3D" parent="Sounds/SFX_Suck_Loop"]
+event = ExtResource("22_e0vcn")
+
+[connection signal="hit_parameterless" from="BossCachorroBody/BossHealth" to="BossCachorroBody/boss_cachorro/SpawnArea" method="do_spawn_default"]
+[connection signal="area_entered" from="BossCachorroBody/FoodArea" to="." method="_on_food_area_area_entered"]
+[connection signal="area_exited" from="BossCachorroBody/FoodArea" to="." method="_on_food_area_area_exited"]
+[connection signal="area_entered" from="BossCachorroBody/FoodReceiveArea" to="." method="_on_food_receive_area_area_entered"]
+[connection signal="pressed_process" from="BossCachorroDisco/DiscoPressable" to="BossCachorroDisco" method="_on_pressable_pressed_process"]
+[connection signal="instantiated_projectile_scene" from="ShooterCenter" to="ShooterCenter/OnShootSlowdown" method="_on_shooter_center_instantiated_projectile_scene"]
+[connection signal="item_fell" from="ItemDistributor" to="." method="_on_item_distributor_item_fell"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

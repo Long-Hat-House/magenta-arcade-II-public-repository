@@ -1,0 +1,145 @@
+[gd_scene load_steps=19 format=3 uid="uid://bnx7eoym2cjp1"]
+
+[ext_resource type="Script" uid="uid://tvnxgk03kdwa" path="res://elements/levels/lvl_hub/hub_elements/hub_buttons/hub_level_pressable_button.gd" id="1_yiw73"]
+[ext_resource type="WwiseEvent" uid="uid://ghrncq2n2d6q" path="res://Wwise/resources/Event/{E4427C81-6C18-4D19-AD97-3962C1FC91EA}.tres" id="3_an4ip"]
+[ext_resource type="PackedScene" uid="uid://c5n0vistvwftq" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_level_selection/graphic_button_level_selection.tscn" id="4_7n6yf"]
+[ext_resource type="Texture2D" uid="uid://c048wbyfm8dnc" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_level_selection/texture/t_button_BaseColor.png" id="4_53htp"]
+[ext_resource type="WwiseEvent" uid="uid://bfwyfnoemxam0" path="res://Wwise/resources/Event/{9CCBF66C-396A-4426-84FB-F11A31ECA62F}.tres" id="4_iiga1"]
+[ext_resource type="Texture2D" uid="uid://b3s6bubwjtovt" path="res://elements/icons/icon_hold_yellow.png" id="5_rty4b"]
+[ext_resource type="Texture2D" uid="uid://cm5belis6bq0x" path="res://elements/icons/icon_star.png" id="6_08f0e"]
+[ext_resource type="Script" uid="uid://0wf4obm88h88" path="res://elements/neutral/props/generic_tumbler.gd" id="8_iiga1"]
+[ext_resource type="Script" uid="uid://biqjvlcudqx0t" path="res://elements/player/force_receiver.gd" id="9_240b0"]
+[ext_resource type="Script" uid="uid://bgdocsgotim3u" path="res://elements/player/force_tumble_data.gd" id="9_fosjy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fo14q"]
+resource_local_to_scene = true
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("6_08f0e")
+emission_enabled = true
+emission = Color(0.972549, 0.933333, 0.894118, 1)
+emission_energy_multiplier = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8pplw"]
+resource_local_to_scene = true
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_color = Color(0.45098, 0.45098, 0.560784, 1)
+albedo_texture = ExtResource("6_08f0e")
+
+[sub_resource type="QuadMesh" id="QuadMesh_a76pt"]
+size = Vector2(0.9, 0.9)
+orientation = 1
+
+[sub_resource type="Gradient" id="Gradient_jwtwq"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.537841, 0.616838, 0.723474, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c5w3d"]
+gradient = SubResource("Gradient_jwtwq")
+width = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hdksv"]
+resource_local_to_scene = true
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0, 0.360784, 0.658824, 1)
+emission_enabled = true
+emission = Color(0.28, 0.28, 0.28, 1)
+emission_energy_multiplier = 0.0
+detail_enabled = true
+detail_mask = ExtResource("4_53htp")
+detail_albedo = SubResource("GradientTexture1D_c5w3d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0bdph"]
+resource_local_to_scene = true
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("5_rty4b")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="Resource" id="Resource_c1bus"]
+script = ExtResource("9_fosjy")
+force_response_multiplier = 72.0
+return_force_multiplier = 70.0
+mass = 0.4
+scaled_mass = true
+min_velocity = 2.0
+min_force_to_min_velocity = 4.5
+velocity_dissipation = 3.0
+tumble_sensitivity = 0.2
+vibration_max_value_amplitude = 0.4
+vibration_frequency = 32.0
+vibration_increase = 4.0
+vibration_decrease = 32.0
+force_min_to_increase_vibration = 0.5
+max_tumble = 20.0
+max_tumble_velocity = 400.0
+add_tumble_hit_multiplier = 1.0
+add_tumble_hit_velocity_multiplier = 1.0
+add_vibration_influence_on_hit = 0.8
+
+[node name="HUBLevelPressableButton" type="Node3D" node_paths=PackedStringArray("stars_info", "graphic")]
+script = ExtResource("1_yiw73")
+stars_info = NodePath("pressable_button_level_selection/button_base/Stars Info")
+material_star_unlocked = SubResource("StandardMaterial3D_fo14q")
+material_star_normal = SubResource("StandardMaterial3D_8pplw")
+toggle_mode = true
+graphic = NodePath("pressable_button_level_selection")
+_sfx_toggled_on = ExtResource("3_an4ip")
+_sfx_toggled_off = ExtResource("4_iiga1")
+metadata/_edit_group_ = true
+
+[node name="pressable_button_level_selection" parent="." instance=ExtResource("4_7n6yf")]
+
+[node name="Stars Info" type="Node3D" parent="pressable_button_level_selection/button_base" index="2"]
+transform = Transform3D(1, 0, -2.38419e-07, 0, 1, 0, 2.38419e-07, 0, 1, 0, 0, 0)
+
+[node name="star_1" type="MeshInstance3D" parent="pressable_button_level_selection/button_base/Stars Info"]
+transform = Transform3D(0.233045, -0.122417, -0.301171, 0.131897, 0.374293, -0.0500779, 0.297141, -0.0701331, 0.258434, -0.4923, 0.247488, -0.423507)
+material_override = SubResource("StandardMaterial3D_fo14q")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_a76pt")
+
+[node name="star_2" type="MeshInstance3D" parent="pressable_button_level_selection/button_base/Stars Info"]
+transform = Transform3D(-1.00285e-08, -0.142982, -0.373572, -4.03396e-08, 0.373572, -0.142982, 0.4, 3.40897e-08, -2.37855e-08, -0.598, 0.242578, 0)
+material_override = SubResource("StandardMaterial3D_fo14q")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_a76pt")
+
+[node name="star_3" type="MeshInstance3D" parent="pressable_button_level_selection/button_base/Stars Info"]
+transform = Transform3D(0.364489, -0.119251, 0.113694, 0.128541, 0.378482, -0.0151086, -0.103073, 0.050303, 0.383205, -0.493446, 0.247488, 0.422171)
+material_override = SubResource("StandardMaterial3D_8pplw")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_a76pt")
+
+[node name="button" parent="pressable_button_level_selection/button_base/button_mesh" index="0"]
+material_override = SubResource("StandardMaterial3D_hdksv")
+
+[node name="icon_mesh" parent="pressable_button_level_selection/button_base/button_mesh" index="1"]
+material_override = SubResource("StandardMaterial3D_0bdph")
+
+[node name="Area3D" parent="pressable_button_level_selection" index="2"]
+transform = Transform3D(0.9, 0, 0, 0, 1, 0, 0, 0, 0.8, 0.0415686, 0.205323, 0)
+
+[node name="GenericTumbler" type="Node3D" parent="." node_paths=PackedStringArray("receiver", "to_tumble")]
+script = ExtResource("8_iiga1")
+receiver = NodePath("ForceReceiver")
+to_tumble = NodePath("../pressable_button_level_selection")
+tumble_data = SubResource("Resource_c1bus")
+tumble_radius = 1.1
+random_force = 0.25
+metadata/_custom_type_script = "uid://0wf4obm88h88"
+
+[node name="ForceReceiver" type="Node3D" parent="GenericTumbler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+script = ExtResource("9_240b0")
+metadata/_custom_type_script = "uid://biqjvlcudqx0t"
+
+[editable path="pressable_button_level_selection"]
+[editable path="pressable_button_level_selection/button_base/button_mesh"]

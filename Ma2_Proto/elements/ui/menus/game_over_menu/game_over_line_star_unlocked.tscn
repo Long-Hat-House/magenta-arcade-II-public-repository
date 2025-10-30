@@ -1,0 +1,152 @@
+[gd_scene load_steps=11 format=3 uid="uid://cmepigx2jkmlq"]
+
+[ext_resource type="Script" path="res://systems/game/game_over_line.gd" id="1_1rak3"]
+[ext_resource type="Texture2D" uid="uid://cm5belis6bq0x" path="res://elements/icons/icon_star.png" id="1_baaum"]
+[ext_resource type="Script" path="res://systems/switchable/switch_oning_offing_animation_player.gd" id="2_4ok84"]
+[ext_resource type="Texture2D" uid="uid://dnqs8qritl02a" path="res://elements/icons/icon_score.png" id="3_cyxnw"]
+
+[sub_resource type="Animation" id="Animation_2efu3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_856hy"]
+resource_name = "off"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tp7k3"]
+resource_name = "offing"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4cxdq"]
+resource_name = "on"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cg343"]
+resource_name = "oning"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u65ty"]
+_data = {
+"RESET": SubResource("Animation_2efu3"),
+"off": SubResource("Animation_856hy"),
+"offing": SubResource("Animation_tp7k3"),
+"on": SubResource("Animation_4cxdq"),
+"oning": SubResource("Animation_cg343")
+}
+
+[node name="GameOverLineStar" type="HBoxContainer" node_paths=PackedStringArray("_animation", "_label_title_text", "_icon")]
+offset_right = 638.0
+offset_bottom = 60.0
+theme_override_constants/separation = 20
+script = ExtResource("1_1rak3")
+_animation = NodePath("Switch_Oning_Offing_AnimationPlayer")
+_label_title_text = NodePath("BoxContainer/StarText")
+_icon = NodePath("BoxContainer/Icon")
+
+[node name="StarContainer" type="Control" parent="."]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+
+[node name="StarIcon" type="TextureRect" parent="StarContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(30, 30)
+texture = ExtResource("1_baaum")
+expand_mode = 1
+
+[node name="VSeparator" type="VSeparator" parent="."]
+layout_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="BoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_cyxnw")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="StarText" type="Label" parent="BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "120.000"
+vertical_alignment = 1
+
+[node name="Switch_Oning_Offing_AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_u65ty")
+}
+script = ExtResource("2_4ok84")

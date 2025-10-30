@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://cucwi1gda47u5"]
+
+[ext_resource type="Script" path="res://systems/stage/level_stage_piece.gd" id="1_al84t"]
+[ext_resource type="PackedScene" uid="uid://dq80q0mj0xxfn" path="res://elements/background/element_factory_wall.tscn" id="2_p8npw"]
+[ext_resource type="PackedScene" uid="uid://l2ytgjefawwd" path="res://elements/background/element_factory_floor.tscn" id="3_4j31p"]
+
+[node name="Stage Piece Fabrica Room _ToSide" type="Node3D" node_paths=PackedStringArray("pivot_forward", "pivot_backward", "pivot_right", "pivot_left")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.25, 0, -30)
+script = ExtResource("1_al84t")
+pivot_forward = NodePath("Config/forward")
+pivot_backward = NodePath("Config/back")
+pivot_right = NodePath("Config/right")
+pivot_left = NodePath("Config/left")
+
+[node name="Config" type="Node3D" parent="."]
+
+[node name="Wind Direction" type="Node3D" parent="Config"]
+transform = Transform3D(-2.04648e-07, 0, -1, 0, 1, 0, 1, 0, -2.04648e-07, 0.25, 6, 0)
+
+[node name="forward" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 0.025)
+gizmo_extents = 1.0
+
+[node name="back" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 30)
+gizmo_extents = 1.0
+
+[node name="right" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 6)
+gizmo_extents = 1.0
+
+[node name="left" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+gizmo_extents = 1.0
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6259, 0, 18.0952)
+aabb = AABB(-7.7505, 0, -18.0803, 15.5, 13.796, 30)
+
+[node name="Scenery" type="Node3D" parent="."]
+
+[node name="FactoryWall4" parent="Scenery" instance=ExtResource("2_p8npw")]
+transform = Transform3D(10.5, 0, 0, 0, 4, 0, 0, 0, 1, -0.25, 0, 1.25)
+
+[node name="FactoryWall7" parent="Scenery" instance=ExtResource("2_p8npw")]
+transform = Transform3D(1.73205, 0, -0.5, 0, 4, 0, 1, 0, 0.866025, 13.5, 0, 3.25)
+
+[node name="FactoryFloor" parent="Scenery" instance=ExtResource("3_4j31p")]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 30, 0, 0, 0)

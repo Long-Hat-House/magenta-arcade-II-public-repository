@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3agqc0dwanvy"]
+
+[ext_resource type="Script" uid="uid://deq066lsjb36v" path="res://elements/player/weapons/player_weapon_hold.gd" id="1_0ics3"]
+[ext_resource type="Curve" uid="uid://ernxmpp76nsa" path="res://elements/player/player_hold_basic_curve_interval_per_upgrade.tres" id="2_6y2sv"]
+[ext_resource type="Script" uid="uid://dra7nitmq3ukf" path="res://elements/player/weapons/player_weapon_level_instantiate.gd" id="2_lpr3j"]
+[ext_resource type="Texture2D" uid="uid://cyidm6wsfq4u0" path="res://elements/icons/icon_hold_blue.png" id="2_qet0g"]
+[ext_resource type="PackedScene" uid="uid://dyfqihdhaiywa" path="res://elements/player/projectiles/hold_blue/proj_hold_blue.tscn" id="3_524up"]
+[ext_resource type="PackedScene" uid="uid://de1gi31yfvvt6" path="res://elements/player/projectiles/hold_blue/proj_blue_hold_big.tscn" id="5_3ovl2"]
+
+[node name="Weapon_Blue Hold" type="Node"]
+script = ExtResource("1_0ics3")
+hold_interval_multiplier_per_fire_rate_level = ExtResource("2_6y2sv")
+icon = ExtResource("2_qet0g")
+title = "powerup_hold_blue_title"
+color = Color(0, 0.360784, 0.658824, 1)
+color_highlight = Color(0.34902, 0.717647, 1, 1)
+
+[node name="Level1" type="Node3D" parent="."]
+script = ExtResource("2_lpr3j")
+projectile = ExtResource("3_524up")
+random_offset = Vector3(0.01, 0, 0.01)
+holdInterval = 0.2
+
+[node name="Marker3D" type="Marker3D" parent="Level1"]
+
+[node name="Level2" type="Node3D" parent="."]
+script = ExtResource("2_lpr3j")
+projectile = ExtResource("3_524up")
+random_offset = Vector3(0.01, 0, 0.01)
+holdInterval = 0.32
+
+[node name="Marker3D" type="Marker3D" parent="Level2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="Level2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 0)
+
+[node name="Level3" type="Node3D" parent="."]
+script = ExtResource("2_lpr3j")
+projectile = ExtResource("3_524up")
+random_offset = Vector3(0.01, 0, 0.01)
+holdInterval = 0.4
+
+[node name="Marker3D" type="Marker3D" parent="Level3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="Level3"]
+
+[node name="Marker3D3" type="Marker3D" parent="Level3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0)
+
+[node name="Level4" type="Node3D" parent="."]
+script = ExtResource("2_lpr3j")
+projectile = ExtResource("5_3ovl2")
+random_offset = Vector3(0.01, 0, 0.01)
+holdInterval = 0.171
+
+[node name="Marker3D" type="Marker3D" parent="Level4"]
+
+[node name="Level5" type="Node3D" parent="."]
+script = ExtResource("2_lpr3j")
+projectile = ExtResource("5_3ovl2")
+random_offset = Vector3(0.01, 0, 0.01)
+random_offset_each_shot = Vector3(0.005, 0, 0.005)
+holdInterval = 0.3
+
+[node name="Marker3D" type="Marker3D" parent="Level5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="Level5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, 0)
+
+[node name="Level6" type="Node3D" parent="."]
+script = ExtResource("2_lpr3j")
+projectile = ExtResource("5_3ovl2")
+delayBetweenProjectilesContainsName = "change"
+random_offset = Vector3(0.01, 0, 0.01)
+random_offset_each_shot = Vector3(0.01, 0, 0.01)
+holdInterval = 0.4
+
+[node name="Marker3D" type="Marker3D" parent="Level6"]
+
+[node name="Marker3D2_change" type="Marker3D" parent="Level6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, 0)
+
+[node name="Marker3D3" type="Marker3D" parent="Level6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, 0)

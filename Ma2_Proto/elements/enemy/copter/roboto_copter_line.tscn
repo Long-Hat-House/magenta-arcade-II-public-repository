@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cghcfyakwknlc"]
+
+[ext_resource type="Script" path="res://elements/enemy/copter/enemy_roboto_copter_line.gd" id="1_rwhgu"]
+[ext_resource type="PackedScene" uid="uid://bxouk3hnvcybx" path="res://elements/enemy/copter/mesh/robotocopter_graphic.tscn" id="2_otxn5"]
+
+[node name="EnemyRobotoCopterLine" type="VisibleOnScreenNotifier3D"]
+aabb = AABB(-6, -1, -1, 12, 2, 2)
+script = ExtResource("1_rwhgu")
+
+[node name="robotocopter_graphic" parent="." instance=ExtResource("2_otxn5")]
+
+[connection signal="screen_entered" from="." to="." method="_on_screen_entered"]
+[connection signal="screen_exited" from="." to="." method="_on_screen_exited"]

@@ -1,0 +1,143 @@
+[gd_scene load_steps=13 format=3 uid="uid://d0umqyuupwxy7"]
+
+[ext_resource type="Script" uid="uid://cbhi3508ahyy7" path="res://elements/ui/hud/hud_weapon_hold.gd" id="1_magik"]
+[ext_resource type="Script" uid="uid://c6ymv2moh8tth" path="res://elements/ui/hud/hud_weapon_unit.gd" id="2_53uj3"]
+[ext_resource type="Texture2D" uid="uid://cyidm6wsfq4u0" path="res://elements/icons/icon_hold_blue.png" id="2_ua1t8"]
+[ext_resource type="Texture2D" uid="uid://u8st7b4hkfnj" path="res://elements/ui/ui_art/ui_hold_FG.png" id="3_8e2pv"]
+[ext_resource type="Texture2D" uid="uid://caphkey2t6qms" path="res://elements/ui/ui_art/ui_hold_BG.png" id="3_go7ls"]
+[ext_resource type="PackedScene" uid="uid://ckfix8a0uvdsa" path="res://elements/ui/hud/hud_weapon_hold_extrashot_bar_element.tscn" id="3_rlobn"]
+[ext_resource type="Script" uid="uid://qsy034oknost" path="res://systems/ui/progress_bar_indexed.gd" id="6_r0fjd"]
+[ext_resource type="Script" uid="uid://b57jkab70en74" path="res://systems/ui/progress_bar_float_multiple.gd" id="6_uwk41"]
+[ext_resource type="PackedScene" uid="uid://camrkcnslbwd4" path="res://elements/ui/hud/hud_weapon_hold_bar.tscn" id="7_skxrc"]
+[ext_resource type="PackedScene" uid="uid://u0itmfopu8s5" path="res://elements/ui/hud/hud_weapon_hold_firerate_bar_element.tscn" id="7_wbo85"]
+[ext_resource type="PackedScene" uid="uid://c7a0gwlduhgi0" path="res://elements/ui/hud/hud_weapon_hold_warmup_bar_element.tscn" id="8_r0fjd"]
+[ext_resource type="PackedScene" uid="uid://bdkf1xu66hwds" path="res://elements/ui/hud/hud_poweup_text.tscn" id="9_cfc23"]
+
+[node name="HUD Weapon Hold" type="VBoxContainer" node_paths=PackedStringArray("_progress_bar", "_progress_bar_fire_rate", "_progress_bar_warm_up", "_progress_bar_extra_shots", "_weapon_unit", "_powerup_text")]
+offset_right = 159.0
+offset_bottom = 88.0
+size_flags_horizontal = 0
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 1
+script = ExtResource("1_magik")
+_progress_bar = NodePath("HUD Hold Unit/BoxContainer")
+_progress_bar_fire_rate = NodePath("HUD Hold Unit/MarginContainer/Left/ProgressBarFireRate")
+_progress_bar_warm_up = NodePath("HUD Hold Unit/ProgressBarWarmup")
+_progress_bar_extra_shots = NodePath("BoxContainer/ProgressBarExtraShots")
+_weapon_unit = NodePath("HUD Hold Unit")
+_powerup_text = NodePath("HUD Hold Unit/MarginContainer/HUDPoweupText")
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ProgressBarExtraShots" type="HBoxContainer" parent="BoxContainer" node_paths=PackedStringArray("_elements_container")]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+alignment = 1
+script = ExtResource("6_r0fjd")
+_elements_container = NodePath(".")
+
+[node name="HUD Weapon Hold Warmup Bar Element" parent="BoxContainer/ProgressBarExtraShots" instance=ExtResource("3_rlobn")]
+layout_mode = 2
+
+[node name="HUD Weapon Hold Warmup Bar Element2" parent="BoxContainer/ProgressBarExtraShots" instance=ExtResource("3_rlobn")]
+layout_mode = 2
+
+[node name="HUD Hold Unit" type="BoxContainer" parent="." node_paths=PackedStringArray("_trect_to_set_icon", "_to_set_color", "_to_set_color_highlight")]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+vertical = true
+script = ExtResource("2_53uj3")
+_trect_to_set_icon = [NodePath("MarginContainer/Hold Icon")]
+_to_set_color = [NodePath("MarginContainer/Hold BG")]
+_to_set_color_highlight = [NodePath("MarginContainer/Hold FG")]
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD Hold Unit"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="Hold BG" type="TextureRect" parent="HUD Hold Unit/MarginContainer"]
+modulate = Color(0, 0.220854, 0.418591, 1)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("3_go7ls")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Hold FG" type="TextureRect" parent="HUD Hold Unit/MarginContainer"]
+modulate = Color(0, 0.360784, 0.658824, 1)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("3_8e2pv")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Hold Icon" type="TextureRect" parent="HUD Hold Unit/MarginContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("2_ua1t8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Left" type="HBoxContainer" parent="HUD Hold Unit/MarginContainer"]
+layout_mode = 2
+
+[node name="ProgressBarFireRate" type="VBoxContainer" parent="HUD Hold Unit/MarginContainer/Left" node_paths=PackedStringArray("_elements_container")]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_constants/separation = 13
+alignment = 1
+script = ExtResource("6_r0fjd")
+_elements_container = NodePath(".")
+
+[node name="HUD Weapon Hold Firerate Bar Element" parent="HUD Hold Unit/MarginContainer/Left/ProgressBarFireRate" instance=ExtResource("7_wbo85")]
+layout_mode = 2
+
+[node name="HUD Weapon Hold Firerate Bar Element2" parent="HUD Hold Unit/MarginContainer/Left/ProgressBarFireRate" instance=ExtResource("7_wbo85")]
+layout_mode = 2
+
+[node name="Bottom" type="VBoxContainer" parent="HUD Hold Unit/MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="HUDPoweupText" parent="HUD Hold Unit/MarginContainer" instance=ExtResource("9_cfc23")]
+layout_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="HUD Hold Unit"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 3
+alignment = 1
+script = ExtResource("6_uwk41")
+
+[node name="HUD Weapon Hold Bar" parent="HUD Hold Unit/BoxContainer" instance=ExtResource("7_skxrc")]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ProgressBarWarmup" type="HBoxContainer" parent="HUD Hold Unit" node_paths=PackedStringArray("_elements_container")]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_constants/separation = 13
+alignment = 1
+script = ExtResource("6_r0fjd")
+_elements_container = NodePath(".")
+
+[node name="HUD Weapon Hold Warmup Bar Element" parent="HUD Hold Unit/ProgressBarWarmup" instance=ExtResource("8_r0fjd")]
+layout_mode = 2
+
+[node name="HUD Weapon Hold Warmup Bar Element2" parent="HUD Hold Unit/ProgressBarWarmup" instance=ExtResource("8_r0fjd")]
+layout_mode = 2
+
+[node name="HUD Weapon Hold Warmup Bar Element3" parent="HUD Hold Unit/ProgressBarWarmup" instance=ExtResource("8_r0fjd")]
+layout_mode = 2

@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://bqlsobhuorx7g"]
+
+[ext_resource type="Script" uid="uid://ugudbj57w4gw" path="res://elements/player/projectiles/tap_green/proj_tap_green.gd" id="1_aapxe"]
+[ext_resource type="Script" uid="uid://cccnp54xda20b" path="res://elements/enemy/constant_rotation.gd" id="2_cauxa"]
+[ext_resource type="PackedScene" uid="uid://bwjbwfeflpdnq" path="res://elements/player/projectiles/tap_green/proj_green_tap_attack.tscn" id="2_vpckp"]
+[ext_resource type="PackedScene" uid="uid://c2s45dcy61pfu" path="res://elements/player/projectiles/tap_green/proj_green_tap_attack_super.tscn" id="3_yb4bq"]
+[ext_resource type="PackedScene" uid="uid://dtwgyesoph668" path="res://elements/player/projectiles/tap_green/mesh/mesh_tap_green.tscn" id="4_ybd80"]
+[ext_resource type="Script" uid="uid://d2rhxuigqg21b" path="res://systems/audio_wwise/AkEvent3DLoop.gd" id="6_7tmul"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="6_h723n"]
+[ext_resource type="WwiseEvent" uid="uid://c7cu4odol77nw" path="res://Wwise/resources/Event/{BF0DB284-04E1-4C35-9EE4-BEE9E7B37C51}.tres" id="7_h723n"]
+[ext_resource type="WwiseEvent" uid="uid://b4ux5gh81vvfw" path="res://Wwise/resources/Event/{A6A0A351-898C-4094-BB3A-483FDE510184}.tres" id="8_aemvk"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5dkpv"]
+radius = 0.65
+
+[node name="ProjTapGreen" type="Node3D" node_paths=PackedStringArray("projectile_origin")]
+script = ExtResource("1_aapxe")
+proj_to_instantiate = Array[PackedScene]([ExtResource("2_vpckp"), ExtResource("3_yb4bq")])
+projectile_origin = NodePath(".")
+interval_between_projectiles = 0.13
+projectiles = PackedByteArray(1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1)
+
+[node name="Scale" type="Node3D" parent="."]
+
+[node name="ConstantRotation" type="Node3D" parent="Scale"]
+script = ExtResource("2_cauxa")
+angleVelocity = 12.0
+
+[node name="Rotated" type="Node3D" parent="Scale/ConstantRotation"]
+
+[node name="tap_green" parent="Scale/ConstantRotation/Rotated" instance=ExtResource("4_ybd80")]
+transform = Transform3D(0.475797, -0.153678, 0, 0.153678, 0.475797, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="ConstantRotation2" type="Node3D" parent="Scale"]
+script = ExtResource("2_cauxa")
+angleVelocity = -10.0
+
+[node name="Rotated" type="Node3D" parent="Scale/ConstantRotation2"]
+
+[node name="tap_green" parent="Scale/ConstantRotation2/Rotated" instance=ExtResource("4_ybd80")]
+transform = Transform3D(0.570957, 0.184414, 0, -0.184414, 0.570957, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="Scale/ConstantRotation2/Rotated/tap_green"]
+script = ExtResource("6_h723n")
+high_contrast_group = &"player"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
+collision_mask = 20
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("SphereShape3D_5dkpv")
+
+[node name="SFX Loop" type="Node3D" parent="." node_paths=PackedStringArray("loop_begin_event", "loop_finish_event")]
+script = ExtResource("6_7tmul")
+_start_loop_on = 2
+_stop_loop_on = 3
+loop_begin_event = NodePath("Begin")
+loop_finish_event = NodePath("End")
+
+[node name="Begin" type="AkEvent3D" parent="SFX Loop"]
+event = ExtResource("7_h723n")
+
+[node name="End" type="AkEvent3D" parent="SFX Loop"]
+event = ExtResource("8_aemvk")

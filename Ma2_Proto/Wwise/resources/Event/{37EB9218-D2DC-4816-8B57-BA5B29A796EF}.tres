@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://0d8qj0a6y1p"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Boss_Shield_Enable"
+id = 16796003
+guid = "{37EB9218-D2DC-4816-8B57-BA5B29A796EF}"
+dummy = true

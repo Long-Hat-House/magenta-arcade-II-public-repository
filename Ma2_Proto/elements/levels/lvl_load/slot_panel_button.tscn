@@ -1,0 +1,492 @@
+[gd_scene load_steps=27 format=3 uid="uid://cawg0jvmypmd"]
+
+[ext_resource type="Script" uid="uid://d4ccb7c8djnx4" path="res://elements/levels/lvl_load/slot_panel_button.gd" id="1_wixqy"]
+[ext_resource type="Script" uid="uid://r36vu12ey5m8" path="res://systems/level/level_info.gd" id="2_dtty5"]
+[ext_resource type="Texture2D" uid="uid://cm5belis6bq0x" path="res://elements/icons/icon_star.png" id="2_i0yx7"]
+[ext_resource type="Texture2D" uid="uid://b47xfaanjqpjr" path="res://elements/icons/icon_lvl_0.png" id="3_ngc1m"]
+[ext_resource type="Resource" uid="uid://cndppwxry5osd" path="res://elements/levels/lvl_info_0.tres" id="3_tc7uc"]
+[ext_resource type="Resource" uid="uid://bhfkl03ttf2f7" path="res://elements/levels/lvl_info_1.tres" id="4_c4snx"]
+[ext_resource type="Texture2D" uid="uid://dqof0e6v4t62b" path="res://elements/icons/icon_lvl_1.png" id="4_v4chj"]
+[ext_resource type="Resource" uid="uid://dktlaonjhsc2n" path="res://elements/levels/lvl_info_2.tres" id="5_q0abh"]
+[ext_resource type="Texture2D" uid="uid://ucp4n02dw8ib" path="res://elements/icons/icon_lvl_2.png" id="5_yyjdl"]
+[ext_resource type="Texture2D" uid="uid://busam0x24ady8" path="res://elements/icons/icon_locked.png" id="6_fcvxn"]
+[ext_resource type="Resource" uid="uid://ckdox715wnsxj" path="res://elements/levels/lvl_info_3.tres" id="6_jv2a8"]
+[ext_resource type="StyleBox" uid="uid://bu325l8dloady" path="res://button_tab_style.tres" id="6_y232a"]
+[ext_resource type="Resource" uid="uid://cqocyay2fuac" path="res://elements/levels/lvl_info_4.tres" id="7_qsc0h"]
+[ext_resource type="Texture2D" uid="uid://bg17nj7c2mmt3" path="res://elements/icons/icon_coin.png" id="7_xw55n"]
+[ext_resource type="Resource" uid="uid://e1ssc2huivlu" path="res://elements/levels/lvl_info_arcade.tres" id="8_7qel2"]
+[ext_resource type="Texture2D" uid="uid://jilmsrrwxdw4" path="res://elements/icons/icon_delete.png" id="12_08y2e"]
+[ext_resource type="Texture2D" uid="uid://c3o0ox4v28hop" path="res://elements/icons/icon_back.png" id="13_7jxn8"]
+[ext_resource type="Texture2D" uid="uid://b21xih7kom404" path="res://elements/icons/icon_lvl_arcade.png" id="13_m1ey1"]
+[ext_resource type="Texture2D" uid="uid://ylca6djn4ec4" path="res://elements/icons/icon_play.png" id="14_jbrja"]
+[ext_resource type="Texture2D" uid="uid://c51h11h3l3nng" path="res://elements/icons/icon_time.png" id="18_4mi8d"]
+[ext_resource type="Texture2D" uid="uid://d361hsgoaed1c" path="res://elements/icons/icon_save.png" id="18_yoe0p"]
+[ext_resource type="Script" uid="uid://b1njn8wc1dxbf" path="res://modules/ui_factory/extended_button.gd" id="21_8fb2g"]
+[ext_resource type="WwiseEvent" uid="uid://cr6uey7yafdtc" path="res://Wwise/resources/Event/{B5B97AF8-AEF5-4059-AC9A-6757843105AA}.tres" id="22_duslk"]
+[ext_resource type="WwiseEvent" uid="uid://nrcrxxvcns7x" path="res://Wwise/resources/Event/{E243F890-06D3-494B-83D3-2D18EB834259}.tres" id="24_20dnh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_81sgc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mi8d"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.0235294, 0.117647, 0.368627, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.431373, 1, 0.827451, 0.27451)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Slot Panel Button" type="PanelContainer" node_paths=PackedStringArray("arcade_icon_texture_rect", "tab_container", "controler_info", "label_slot_name", "label_slot_number", "label_slot_creation", "label_star_count", "label_coins_amount", "label_playtime", "label_playtime_full", "label_last_played", "level_info_container")]
+custom_minimum_size = Vector2(750, 250)
+offset_right = 750.0
+offset_bottom = 250.0
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_81sgc")
+script = ExtResource("1_wixqy")
+slot_id = &"slot_1"
+level_infos = Array[ExtResource("2_dtty5")]([ExtResource("3_tc7uc"), ExtResource("4_c4snx"), ExtResource("5_q0abh"), ExtResource("6_jv2a8"), ExtResource("7_qsc0h")])
+arcade_info = ExtResource("8_7qel2")
+arcade_icon_texture_rect = NodePath("TabContainer/World Info Container/File Slot Info Container/VBoxContainer/Levels Line/All Levels Container/Arcade Space/ArcadeIcon")
+tab_container = NodePath("TabContainer")
+controler_info = NodePath("TabContainer/World Info Container")
+label_slot_name = NodePath("TabContainer/Edit Container/HBoxContainer/VBoxContainer/BoxContainer4/BoxContainer/Label Slot Name")
+label_slot_number = NodePath("TabContainer/World Info Container/File Slot Info Container/VBoxContainer/TOP/StartEditButton/Slot Number")
+label_slot_creation = NodePath("TabContainer/Edit Container/HBoxContainer/VBoxContainer/BoxContainer4/BoxContainer3/Label Save Creation")
+label_star_count = NodePath("TabContainer/World Info Container/File Slot Info Container/VBoxContainer/TOP/Info Line/PanelContainer2/Star Info Container/StarCountLabel")
+label_coins_amount = NodePath("TabContainer/World Info Container/File Slot Info Container/VBoxContainer/TOP/Info Line/PanelContainer/Coin Info Container/CoinCountLabel")
+label_playtime = NodePath("TabContainer/World Info Container/File Slot Info Container/VBoxContainer/TOP/Info Line/PanelContainer3/Playtime Container/Playtime")
+label_playtime_full = NodePath("TabContainer/Edit Container/HBoxContainer/VBoxContainer/BoxContainer4/BoxContainer4/Label Total Playtime")
+label_last_played = NodePath("TabContainer/Edit Container/HBoxContainer/VBoxContainer/BoxContainer4/BoxContainer2/Label Last Played")
+level_info_container = NodePath("TabContainer/World Info Container/File Slot Info Container/VBoxContainer/Levels Line/All Levels Container/Seq Levels Container")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("6_y232a")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+current_tab = 3
+clip_tabs = false
+tabs_visible = false
+use_hidden_tabs_for_min_size = true
+
+[node name="Empty Slot Container" type="MarginContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+metadata/_tab_index = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Empty Slot Container"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="New Game Label" type="Label" parent="TabContainer/Empty Slot Container/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "menu_files_new"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="Button" parent="TabContainer/Empty Slot Container/HBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+icon = ExtResource("14_jbrja")
+icon_alignment = 1
+
+[node name="World Info Container" type="MarginContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+metadata/_tab_index = 1
+
+[node name="File Slot Info Container" type="HBoxContainer" parent="TabContainer/World Info Container"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/World Info Container/File Slot Info Container"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="TOP" type="BoxContainer" parent="TabContainer/World Info Container/File Slot Info Container/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="StartEditButton" type="Button" parent="TabContainer/World Info Container/File Slot Info Container/VBoxContainer/TOP"]
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("18_yoe0p")
+icon_alignment = 1
+script = ExtResource("21_8fb2g")
+_sfx_press = ExtResource("22_duslk")
+
+[node name="Slot Number" type="Label" parent="TabContainer/World Info Container/File Slot Info Container/VBoxContainer/TOP/StartEditButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.675
+offset_left = -9.0
+offset_top = -11.0
+offset_right = 9.0
+offset_bottom = 12.8
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 3
+
+[node name="Info Line" type="HBoxContainer" parent="TabContainer/World Info Container/File Slot Info Container/VBoxContainer/TOP"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="TabContainer/World Info Container/File Slot Info Container/VBoxContainer/TOP/Info Line"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_4mi8d")
+
+[node name="Coin Info Container" type="HBoxContainer" parent="TabContainer/World Info Container/File Slot Info Container/VBoxContainer/TOP/Info Line/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="CoinCountLabel" type="Label" parent="TabContainer/World Info Container/File Slot Info Container/VBoxContainer/TOP/Info Line/PanelContainer/Coin Info Container"]
+custom_minimum_size = Vector2(110, 55)
+layout_mode = 2
+text = "000000"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="CoinIcon" type="TextureRect" parent="TabContainer/World Info Container/File Slot Info Container/VBoxContainer/TOP/Info Line/PanelContainer/Coin Info Container"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("7_xw55n")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer2" type="PanelContainer" parent="TabContainer/World Info Container/File Slot Info Container/VBoxContainer/TOP/Info Line"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_4mi8d")
+
+[node name="Star Info Container" type="HBoxContainer" parent="TabContainer/World Info Container/File Slot Info Container/VBoxContainer/TOP/Info Line/PanelContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="StarCountLabel" type="Label" parent="TabContainer/World Info Container/File Slot Info Container/VBoxContainer/TOP/Info Line/PanelContainer2/Star Info Container"]
+custom_minimum_size = Vector2(40, 55)
+layout_mode = 2
+text = "00"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="StarIcon" type="TextureRect" parent="TabContainer/World Info Container/File Slot Info Container/VBoxContainer/TOP/Info Line/PanelContainer2/Star Info Container"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("2_i0yx7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer3" type="PanelContainer" parent="TabContainer/World Info Container/File Slot Info Container/VBoxContainer/TOP/Info Line"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_4mi8d")
+
+[node name="Playtime Container" type="HBoxContainer" parent="TabContainer/World Info Container/File Slot Info Container/VBoxContainer/TOP/Info Line/PanelContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="Playtime" type="Label" parent="TabContainer/World Info Container/File Slot Info Container/VBoxContainer/TOP/Info Line/PanelContainer3/Playtime Container"]
+custom_minimum_size = Vector2(90, 55)
+layout_mode = 2
+text = "00:10"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/World Info Container/File Slot Info Container/VBoxContainer/TOP/Info Line/PanelContainer3/Playtime Container"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("18_4mi8d")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Levels Line" type="HBoxContainer" parent="TabContainer/World Info Container/File Slot Info Container/VBoxContainer"]
+custom_minimum_size = Vector2(0, 104)
+layout_mode = 2
+
+[node name="All Levels Container" type="HBoxContainer" parent="TabContainer/World Info Container/File Slot Info Container/VBoxContainer/Levels Line"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+alignment = 2
+
+[node name="Arcade Space" type="CenterContainer" parent="TabContainer/World Info Container/File Slot Info Container/VBoxContainer/Levels Line/All Levels Container"]
+custom_minimum_size = Vector2(104, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ArcadeIcon" type="TextureRect" parent="TabContainer/World Info Container/File Slot Info Container/VBoxContainer/Levels Line/All Levels Container/Arcade Space"]
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+texture = ExtResource("13_m1ey1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Seq Levels Container" type="HBoxContainer" parent="TabContainer/World Info Container/File Slot Info Container/VBoxContainer/Levels Line/All Levels Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/World Info Container/File Slot Info Container/VBoxContainer/Levels Line/All Levels Container/Seq Levels Container"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("3_ngc1m")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/World Info Container/File Slot Info Container/VBoxContainer/Levels Line/All Levels Container/Seq Levels Container"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("4_v4chj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="TabContainer/World Info Container/File Slot Info Container/VBoxContainer/Levels Line/All Levels Container/Seq Levels Container"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("5_yyjdl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="TabContainer/World Info Container/File Slot Info Container/VBoxContainer/Levels Line/All Levels Container/Seq Levels Container"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("6_fcvxn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect5" type="TextureRect" parent="TabContainer/World Info Container/File Slot Info Container/VBoxContainer/Levels Line/All Levels Container/Seq Levels Container"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("6_fcvxn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PlayButton" type="Button" parent="TabContainer/World Info Container/File Slot Info Container"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("14_jbrja")
+icon_alignment = 1
+script = ExtResource("21_8fb2g")
+_sfx_press = ExtResource("22_duslk")
+
+[node name="Edit Container" type="MarginContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+metadata/_tab_index = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Edit Container"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Edit Container/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="BoxContainer4" type="BoxContainer" parent="TabContainer/Edit Container/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/Edit Container/HBoxContainer/VBoxContainer/BoxContainer4"]
+layout_mode = 2
+vertical = true
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Edit Container/HBoxContainer/VBoxContainer/BoxContainer4/BoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("18_yoe0p")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label Slot Name" type="Label" parent="TabContainer/Edit Container/HBoxContainer/VBoxContainer/BoxContainer4/BoxContainer"]
+layout_mode = 2
+text = "Slot 1"
+
+[node name="BoxContainer3" type="BoxContainer" parent="TabContainer/Edit Container/HBoxContainer/VBoxContainer/BoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+vertical = true
+
+[node name="Label" type="Label" parent="TabContainer/Edit Container/HBoxContainer/VBoxContainer/BoxContainer4/BoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "menu_files_created"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Label Save Creation" type="Label" parent="TabContainer/Edit Container/HBoxContainer/VBoxContainer/BoxContainer4/BoxContainer3"]
+layout_mode = 2
+text = " 2024/05/01"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BoxContainer2" type="BoxContainer" parent="TabContainer/Edit Container/HBoxContainer/VBoxContainer/BoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+vertical = true
+
+[node name="Label" type="Label" parent="TabContainer/Edit Container/HBoxContainer/VBoxContainer/BoxContainer4/BoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "menu_files_last_played"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Label Last Played" type="Label" parent="TabContainer/Edit Container/HBoxContainer/VBoxContainer/BoxContainer4/BoxContainer2"]
+layout_mode = 2
+text = " 2024/05/01"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BoxContainer4" type="BoxContainer" parent="TabContainer/Edit Container/HBoxContainer/VBoxContainer/BoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+vertical = true
+
+[node name="Label" type="Label" parent="TabContainer/Edit Container/HBoxContainer/VBoxContainer/BoxContainer4/BoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "menu_files_playtime"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Label Total Playtime" type="Label" parent="TabContainer/Edit Container/HBoxContainer/VBoxContainer/BoxContainer4/BoxContainer4"]
+layout_mode = 2
+text = " 2024/05/01"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons Container" type="HBoxContainer" parent="TabContainer/Edit Container/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ClearSaveButton" type="Button" parent="TabContainer/Edit Container/HBoxContainer/VBoxContainer/Buttons Container"]
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"button_magenta"
+text = "menu_files_delete"
+icon = ExtResource("12_08y2e")
+icon_alignment = 2
+script = ExtResource("21_8fb2g")
+_sfx_press = ExtResource("22_duslk")
+
+[node name="ExitEditsButton" type="Button" parent="TabContainer/Edit Container/HBoxContainer/VBoxContainer/Buttons Container"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "menu_back"
+icon = ExtResource("13_7jxn8")
+icon_alignment = 2
+script = ExtResource("21_8fb2g")
+_sfx_press = ExtResource("24_20dnh")
+
+[node name="Loading Container" type="MarginContainer" parent="TabContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+metadata/_tab_index = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Loading Container"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="New Game Label" type="Label" parent="TabContainer/Loading Container/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "Loading..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="TabContainer/Empty Slot Container/HBoxContainer/PlayButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="TabContainer/World Info Container/File Slot Info Container/VBoxContainer/TOP/StartEditButton" to="." method="_on_start_edit_button_pressed"]
+[connection signal="pressed" from="TabContainer/World Info Container/File Slot Info Container/PlayButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="TabContainer/Edit Container/HBoxContainer/VBoxContainer/Buttons Container/ClearSaveButton" to="." method="_on_clear_save_button_pressed"]
+[connection signal="pressed" from="TabContainer/Edit Container/HBoxContainer/VBoxContainer/Buttons Container/ExitEditsButton" to="." method="_on_exit_edits_button_pressed"]

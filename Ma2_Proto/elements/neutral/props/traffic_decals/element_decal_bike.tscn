@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://8clihqgqklqi"]
+
+[ext_resource type="Material" uid="uid://douqgg71vxs4c" path="res://elements/neutral/props/traffic_decals/materials/m_decal_bike.tres" id="1_ryymf"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bbaer"]
+size = Vector2(1.5, 1.5)
+
+[node name="Decal Bike" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 6.3573e-08, 0, 1, 0, -6.3573e-08, 0, 1, 0, 0, 0)
+layers = 3
+material_override = ExtResource("1_ryymf")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_bbaer")
+skeleton = NodePath("")

@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://d30g67aonwicp"]
+
+[ext_resource type="Script" uid="uid://dkl4kbiful52" path="res://elements/attack_previews/base_attack_preview.gd" id="1_4pw7c"]
+[ext_resource type="Texture2D" uid="uid://ifqv60g1ie" path="res://elements/attack_previews/attack_preview_square.aseprite" id="2_ojcwh"]
+
+[node name="BaseAttackPreview" type="Node3D"]
+script = ExtResource("1_4pw7c")
+
+[node name="Border" type="Sprite3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
+cast_shadow = 0
+axis = 1
+shaded = true
+double_sided = false
+no_depth_test = true
+texture_filter = 0
+texture = ExtResource("2_ojcwh")
+
+[node name="Expander" type="Sprite3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 1.09278e-09)
+cast_shadow = 0
+axis = 1
+shaded = true
+double_sided = false
+no_depth_test = true
+texture_filter = 0
+texture = ExtResource("2_ojcwh")

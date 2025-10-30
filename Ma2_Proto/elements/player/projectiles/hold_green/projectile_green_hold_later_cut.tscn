@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bas4mkfdl61bm"]
+
+[ext_resource type="PackedScene" uid="uid://c3fu6kgipt726" path="res://elements/player/projectiles/hold_green/proj_hold_green.tscn" id="1_h45y7"]
+[ext_resource type="PackedScene" uid="uid://tf8a3ac804mj" path="res://elements/proj_hold_green_cut.tscn" id="2_o5ar7"]
+[ext_resource type="Material" uid="uid://r1m6m874b01v" path="res://elements/m_simple_color_emission.tres" id="3_o5ar7"]
+
+[node name="ProjectileGreenHold_LaterCut" instance=ExtResource("1_h45y7")]
+time_out = 0.25
+time_out_range = 0.125
+time_outVFX = ExtResource("2_o5ar7")
+amountDamage = 0.04
+metadata/_edit_pinned_properties_ = [&"time_outVFX", &"time_out", &"time_out_range", &"amountDamage"]
+
+[node name="VisibleOnScreenNotifier3D" parent="WaveMovement/Area3D" index="1"]
+aabb = AABB(-10, -0.528831, -10, 20, 1.05766, 20)
+
+[node name="leaf" parent="WaveMovement/Area3D/leaf" index="0"]
+material_override = ExtResource("3_o5ar7")
+instance_shader_parameters/color = Color(0.0392157, 0.239216, 0, 1)
+instance_shader_parameters/emissive = Color(0, 0.686275, 0.654902, 1)
+metadata/_edit_pinned_properties_ = [&"material_override"]
+
+[editable path="WaveMovement/Area3D/leaf"]

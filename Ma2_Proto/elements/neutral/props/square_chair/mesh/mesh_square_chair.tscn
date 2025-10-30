@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d366qtu5jvsn8"]
+
+[ext_resource type="PackedScene" uid="uid://c4byqacg56n8b" path="res://elements/neutral/props/square_chair/mesh/square_chair.glb" id="1_esorc"]
+[ext_resource type="Material" uid="uid://c47u3w28sb0w5" path="res://elements/neutral/props/square_chair/material/m_square_chair.tres" id="2_pcjia"]
+
+[node name="square_chair" instance=ExtResource("1_esorc")]
+
+[node name="square_chair" parent="." index="0"]
+material_override = ExtResource("2_pcjia")
+
+[node name="tissue" parent="." index="1"]
+transform = Transform3D(0.753222, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.270664, 1)
+material_override = ExtResource("2_pcjia")

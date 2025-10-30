@@ -1,0 +1,67 @@
+[gd_scene load_steps=12 format=3 uid="uid://cn28msj0s013g"]
+
+[ext_resource type="PackedScene" uid="uid://b27s0w4ku18gm" path="res://elements/stage_pieces/shop/stage_piece_shop.tscn" id="1_lo4dt"]
+[ext_resource type="Script" uid="uid://dbvews5vjmnxf" path="res://elements/stage_pieces/shop/shop_object_info.gd" id="2_mvo7s"]
+[ext_resource type="PackedScene" uid="uid://cfuplhe2nrpje" path="res://elements/powerups/button/sacrifice_button_health.tscn" id="3_j8u3k"]
+[ext_resource type="PackedScene" uid="uid://cnyvamjd1vxv5" path="res://elements/powerups/button/sacrifice_button_hold.tscn" id="4_h25wp"]
+[ext_resource type="PackedScene" path="res://elements/powerups/button/sacrifice_button_extra_shot.tscn" id="5_cpgol"]
+[ext_resource type="PackedScene" uid="uid://ct2usghwibgvw" path="res://elements/powerups/button/sacrifice_button_score.tscn" id="6_3b6fu"]
+
+[sub_resource type="GDScript" id="GDScript_l8y77"]
+resource_name = "LVL SHOP"
+script/source = "extends Level
+
+@export var stage_piece_shop: LevelShopStagePiece
+
+func _ready() -> void:
+	await await_for_level_ready()
+
+	stage.set_attachment_direction(LevelStagePiece.AttachmentDirection.FORWARD)
+	stage.attach_piece(stage_piece_shop)
+	stage.set_pivot_offset(Vector3(0,0,40))
+	stage.set_grid_spacing(1,1)
+	stage.repivot()
+
+	cam.set_instant_position(stage.get_pos())
+
+	stage_piece_shop.start_shop()
+
+	HUD.instance.make_screen_add(Color.WHITE, Color.TRANSPARENT, 0.6)
+	
+	ObjectPool.clear_all();
+
+	cmd_array([
+		CMD_Wait_Signal.new(stage_piece_shop.shop_finished),
+		CMD_Music_Event.new(AK.EVENTS.MUSIC_SHOP_END)
+	], false);
+"
+
+[sub_resource type="Resource" id="Resource_x7jw5"]
+script = ExtResource("2_mvo7s")
+object_scene = ExtResource("3_j8u3k")
+object_cost = 0
+
+[sub_resource type="Resource" id="Resource_sy7s6"]
+script = ExtResource("2_mvo7s")
+object_scene = ExtResource("4_h25wp")
+object_cost = 0
+
+[sub_resource type="Resource" id="Resource_rl8iu"]
+script = ExtResource("2_mvo7s")
+object_scene = ExtResource("5_cpgol")
+object_cost = 0
+metadata/_custom_type_script = "uid://dbvews5vjmnxf"
+
+[sub_resource type="Resource" id="Resource_3iy7e"]
+script = ExtResource("2_mvo7s")
+object_scene = ExtResource("6_3b6fu")
+object_cost = 0
+
+[node name="LVL SHOP" type="Node3D" node_paths=PackedStringArray("stage_piece_shop")]
+script = SubResource("GDScript_l8y77")
+stage_piece_shop = NodePath("Stage Piece Shop")
+
+[node name="Stage Piece Shop" parent="." instance=ExtResource("1_lo4dt")]
+sacrifice_line = Array[ExtResource("2_mvo7s")]([SubResource("Resource_x7jw5"), SubResource("Resource_sy7s6"), SubResource("Resource_rl8iu"), SubResource("Resource_3iy7e")])
+repeated_sacrifices_setup = Array[int]([0, 1, 2, 3, 3, 3, 0])
+second_sacrifices_text = Array[String](["shop_sacrifice2", "shop_sacrifice3", "shop_sacrifice4"])

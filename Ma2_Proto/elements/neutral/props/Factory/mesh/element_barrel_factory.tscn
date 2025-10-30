@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://d0twtk6f36p1c"]
+
+[ext_resource type="PackedScene" uid="uid://doceojd5k21yc" path="res://elements/neutral/props/Factory/mesh/barrel_factory.glb" id="1_4ssr0"]
+[ext_resource type="Material" uid="uid://cf6kwofsp3oym" path="res://elements/neutral/props/Factory/material/m_barrel.tres" id="2_8hfe3"]
+[ext_resource type="PackedScene" uid="uid://bk3c6a8vre6yr" path="res://elements/neutral/props/generic_body_and_presseable.tscn" id="3_8pham"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="3_penpf"]
+[ext_resource type="Script" uid="uid://0wf4obm88h88" path="res://elements/neutral/props/generic_tumbler.gd" id="4_hhu7l"]
+[ext_resource type="Resource" uid="uid://ch2sx8gskxgfw" path="res://elements/neutral/props/totem/element_iron_box_tumble_data.tres" id="5_o4ipq"]
+[ext_resource type="Script" uid="uid://biqjvlcudqx0t" path="res://elements/player/force_receiver.gd" id="6_penpf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8pham"]
+
+[node name="barrel_factory" instance=ExtResource("1_4ssr0")]
+
+[node name="barrel" parent="." index="0"]
+material_override = ExtResource("2_8hfe3")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="barrel" index="0"]
+script = ExtResource("3_penpf")
+high_contrast_group = &"scenery"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="GenericBodyAndPresseable" parent="." index="1" node_paths=PackedStringArray("on_kill_queue_free", "generic_tumbler", "visual_feedback_of_health") instance=ExtResource("3_8pham")]
+life_value = 0.5
+on_kill_queue_free = [NodePath("..")]
+generic_tumbler = NodePath("../GenericTumbler")
+visual_feedback_of_health = [NodePath("../barrel")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GenericBodyAndPresseable" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("CapsuleShape3D_8pham")
+
+[node name="ExplosionNode" type="Node3D" parent="GenericBodyAndPresseable" index="4"]
+
+[node name="ExplosionNode2" type="Node3D" parent="GenericBodyAndPresseable" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="ExplosionNode3" type="Node3D" parent="GenericBodyAndPresseable" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+
+[node name="GenericTumbler" type="Node3D" parent="." index="2" node_paths=PackedStringArray("receiver", "to_tumble")]
+script = ExtResource("4_hhu7l")
+receiver = NodePath("ForceReceiver")
+to_tumble = NodePath("../barrel")
+tumble_data = ExtResource("5_o4ipq")
+metadata/_custom_type_script = "uid://0wf4obm88h88"
+
+[node name="ForceReceiver" type="Node3D" parent="GenericTumbler" index="0"]
+script = ExtResource("6_penpf")
+metadata/_custom_type_script = "uid://biqjvlcudqx0t"

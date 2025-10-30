@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://dp4rt0l3f2yd4"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_UI_Challenge_Fail"
+id = 4012712557
+guid = "{D86C4F8B-D224-4572-B385-297F58CDE444}"
+dummy = true

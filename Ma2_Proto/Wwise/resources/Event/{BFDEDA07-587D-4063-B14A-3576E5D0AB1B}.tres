@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://c5ausye44wl0"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Int_Holdable_Button_On"
+id = 579027082
+guid = "{BFDEDA07-587D-4063-B14A-3576E5D0AB1B}"
+dummy = true

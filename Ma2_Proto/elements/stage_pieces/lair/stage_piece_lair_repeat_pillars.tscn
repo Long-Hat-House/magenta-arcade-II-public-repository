@@ -1,0 +1,144 @@
+[gd_scene load_steps=11 format=3 uid="uid://bqctexj56a26y"]
+
+[ext_resource type="PackedScene" uid="uid://bb728fxgflnuf" path="res://elements/stage_pieces/lair/stage_piece_lair_repeat.tscn" id="1_qbcjk"]
+[ext_resource type="PackedScene" uid="uid://c00kqth38jmst" path="res://systems/stage/stage_screen_measure.tscn" id="2_iyh14"]
+[ext_resource type="PackedScene" uid="uid://d0ljskkckqxgx" path="res://elements/neutral/props/Lab_mountain/mesh/mesh_mountain.tscn" id="2_n16qw"]
+[ext_resource type="PackedScene" uid="uid://cl5uv7qchkiti" path="res://elements/background/element_clay_floor.tscn" id="3_5kuvd"]
+[ext_resource type="PackedScene" uid="uid://cqjsikkq0oj4j" path="res://elements/background/element_lair_chase_pillar.tscn" id="3_rxljk"]
+[ext_resource type="PackedScene" uid="uid://l3dy36lol626" path="res://elements/neutral/props/rock/mesh/mesh_rock.tscn" id="4_5kuvd"]
+[ext_resource type="PackedScene" uid="uid://bi0er5gq7oqo" path="res://elements/neutral/props/rock/mesh/mesh_rock_cavern_01.tscn" id="5_flrdt"]
+[ext_resource type="PackedScene" uid="uid://bnxchwgajg4dl" path="res://elements/neutral/props/rock/mesh/mesh_rock_cavern_03.tscn" id="6_ld2ct"]
+[ext_resource type="PackedScene" uid="uid://6876gixvum6" path="res://elements/neutral/props/rock/mesh/mesh_rock_cavern_02.tscn" id="7_gq4au"]
+[ext_resource type="Resource" uid="uid://b4sm3a668ml1i" path="res://elements/levels/level_structure/camera_movement_data_by_duration.tres" id="9_ld2ct"]
+
+[node name="Stage Piece Lair Repeat Pillars" instance=ExtResource("1_qbcjk")]
+
+[node name="FactoryFloor" parent="Scenery" index="0"]
+visible = false
+
+[node name="mountain" parent="Scenery" index="1" instance=ExtResource("2_n16qw")]
+transform = Transform3D(-0.999899, 0, 0.011496, 0, 1, 0, -0.0142413, 0, -0.807153, -12.5372, -0.25, 3.70593)
+
+[node name="mountain2" parent="Scenery" index="2" instance=ExtResource("2_n16qw")]
+transform = Transform3D(-0.999899, 0, 0.011496, 0, 1, 0, -0.0142413, 0, -0.807153, 14.688, -0.25, 4.50391)
+
+[node name="Clay" parent="Scenery" index="3" instance=ExtResource("3_5kuvd")]
+transform = Transform3D(19.14, 0, 0, 0, 1, 0, 0, 0, 40, -9.5, 0, -5)
+
+[node name="rock" parent="Scenery" index="4" instance=ExtResource("4_5kuvd")]
+transform = Transform3D(0.016052, 1.67097, 0.0313687, 0.801513, -0.030606, -0.247267, -0.0868992, 0.0263682, -2.27487, 2.26439, -0.317464, 6.43009)
+
+[node name="ROCKS" type="Node3D" parent="Scenery" index="5"]
+
+[node name="rock2" parent="Scenery/ROCKS" index="0" instance=ExtResource("4_5kuvd")]
+transform = Transform3D(-0.0906987, 0.0447816, -2.56396, 0.836558, -0.0519791, -0.278691, -0.0167539, -2.83786, -0.0353551, 1.91475, -0.367464, -2.2879)
+
+[node name="rock3" parent="Scenery/ROCKS" index="1" instance=ExtResource("4_5kuvd")]
+transform = Transform3D(-0.0078678, 1.88185, -0.92793, 0.897591, 0.0879806, 0.551589, 0.137799, -0.465642, -3.64593, -3.89212, -0.380226, 15.7668)
+
+[node name="rock4" parent="Scenery/ROCKS" index="2" instance=ExtResource("4_5kuvd")]
+transform = Transform3D(-0.0404086, -1.58681, -0.030262, 1.09611, -0.0606122, 0.186446, -0.113894, -0.020342, 1.80509, 2.99057, -0.319525, 32.1502)
+
+[node name="rock5" parent="Scenery/ROCKS" index="3" instance=ExtResource("4_5kuvd")]
+transform = Transform3D(-0.201443, -1.92572, -0.930695, 1.75561, -0.0855709, -0.294489, 0.207598, -1.14498, 1.58733, 5.10058, -0.699476, 10.5919)
+
+[node name="rock6" parent="Scenery/ROCKS" index="4" instance=ExtResource("4_5kuvd")]
+transform = Transform3D(-0.47789, 1.1835, -0.90149, 0.466286, 0.374481, -1.23897, -0.193692, -2.0185, -0.758429, -3.17271, -0.327509, 1.97904)
+
+[node name="rock7" parent="Scenery/ROCKS" index="5" instance=ExtResource("4_5kuvd")]
+transform = Transform3D(0.169529, 1.09893, 1.61296, 1.06962, -0.0858601, -0.296936, -0.0481701, 1.96104, -0.916878, 1.6689, -0.424476, 20.7959)
+
+[node name="rock8" parent="Scenery/ROCKS" index="6" instance=ExtResource("4_5kuvd")]
+transform = Transform3D(0.247209, 0.146676, -3.03324, 1.62889, 0.432235, 0.491751, 0.403774, -1.83351, -0.126726, -2.65174, -0.71746, 26.6004)
+
+[node name="rock_cavern01" parent="Scenery/ROCKS" index="7" instance=ExtResource("5_flrdt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9691, 0, 8.34734)
+
+[node name="rock_cavern03" parent="Scenery/ROCKS" index="8" instance=ExtResource("6_ld2ct")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09895, 0, 9.34353)
+
+[node name="rock_cavern04" parent="Scenery/ROCKS" index="9" instance=ExtResource("6_ld2ct")]
+transform = Transform3D(-0.309316, 0, -0.950959, 0, 1, 0, 0.950959, 0, -0.309316, 4.93712, -0.201874, 11.4665)
+
+[node name="rock_cavern02" parent="Scenery/ROCKS" index="10" instance=ExtResource("7_gq4au")]
+transform = Transform3D(-0.740453, 0, -0.672108, 0, 0.58434, 0, 0.672108, 0, -0.740453, 3.67004, -0.110138, 10.6951)
+
+[node name="rock_cavern09" parent="Scenery/ROCKS" index="11" instance=ExtResource("5_flrdt")]
+transform = Transform3D(1, 0, 0, 0, 1.52234, 0, 0, 0, 1, -4.78116, -0.0749512, 24.4829)
+
+[node name="rock_cavern14" parent="Scenery/ROCKS" index="12" instance=ExtResource("5_flrdt")]
+transform = Transform3D(-0.332556, 0, 0.943083, 0, 1.52234, 0, -0.943083, 0, -0.332556, -4.103, 0, 21.8255)
+
+[node name="rock_cavern15" parent="Scenery/ROCKS" index="13" instance=ExtResource("5_flrdt")]
+transform = Transform3D(-0.905421, 0, -0.424515, 0, 2.55073, 0, 0.424515, 0, -0.905421, -5.4708, 0, 21.1884)
+
+[node name="rock_cavern10" parent="Scenery/ROCKS" index="14" instance=ExtResource("6_ld2ct")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09895, -0.0934753, 24.2051)
+
+[node name="rock_cavern13" parent="Scenery/ROCKS" index="15" instance=ExtResource("6_ld2ct")]
+transform = Transform3D(-0.309006, 0, 0.83553, 0, 1.30916, 0, -0.969529, 0, -0.266298, -3.71558, -0.093689, 23.6677)
+
+[node name="rock_cavern16" parent="Scenery/ROCKS" index="16" instance=ExtResource("5_flrdt")]
+transform = Transform3D(-0.360762, 0, -0.932658, 0, 1.52234, 0, 0.932658, 0, -0.360762, -5.24812, -0.112396, 11.8954)
+
+[node name="rock_cavern17" parent="Scenery/ROCKS" index="17" instance=ExtResource("5_flrdt")]
+transform = Transform3D(-0.566603, 0, -0.826914, 0, 2.28245, 0, 0.826914, 0, -0.566603, -3.84721, -0.0935974, 9.53763)
+
+[node name="rock_cavern18" parent="Scenery/ROCKS" index="18" instance=ExtResource("5_flrdt")]
+transform = Transform3D(-0.988444, 0, -0.151589, 0, 1.4717, 0, 0.151589, 0, -0.988444, -4.97948, 0, 8.54032)
+
+[node name="rock_cavern19" parent="Scenery/ROCKS" index="19" instance=ExtResource("6_ld2ct")]
+transform = Transform3D(-0.974227, 0, 0.253244, 0, 1.30916, 0, -0.293858, 0, -0.839579, -3.99573, -0.187317, 10.9655)
+
+[node name="rock_cavern20" parent="Scenery/ROCKS" index="20" instance=ExtResource("5_flrdt")]
+transform = Transform3D(0.169809, 4.24875e-10, -0.987923, -3.12179e-11, 2.28245, 1.83968e-10, 0.987923, -9.03896e-13, 0.169809, -3.58831, -0.09021, -3.89564)
+
+[node name="rock_cavern21" parent="Scenery/ROCKS" index="21" instance=ExtResource("6_ld2ct")]
+transform = Transform3D(-0.974227, 0, 0.253244, 0, 1.30916, 0, -0.293858, 0, -0.839579, -5.33785, -0.097229, -1.74121)
+
+[node name="rock_cavern11" parent="Scenery/ROCKS" index="22" instance=ExtResource("6_ld2ct")]
+transform = Transform3D(-0.309316, 0, -0.950959, 0, 1, 0, 0.950959, 0, -0.309316, 4.3889, -0.149475, 22.4139)
+
+[node name="rock_cavern12" parent="Scenery/ROCKS" index="23" instance=ExtResource("7_gq4au")]
+transform = Transform3D(-0.47095, 0, 0.88216, 0, 0.58434, 0, -0.88216, 0, -0.47095, 5.26617, 0, 24.3249)
+
+[node name="rock_cavern05" parent="Scenery/ROCKS" index="24" instance=ExtResource("5_flrdt")]
+transform = Transform3D(0.67523, 0, 0.737607, 0, 1, 0, -0.737607, 0, 0.67523, 6.44237, 0, -1.81767)
+
+[node name="rock_cavern06" parent="Scenery/ROCKS" index="25" instance=ExtResource("6_ld2ct")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.92939, -0.14209, -3.85483)
+
+[node name="rock_cavern07" parent="Scenery/ROCKS" index="26" instance=ExtResource("6_ld2ct")]
+transform = Transform3D(-0.309316, 0, -0.950959, 0, 1, 0, 0.950959, 0, -0.309316, 5.70103, -0.172058, -1.63137)
+
+[node name="rock_cavern08" parent="Scenery/ROCKS" index="27" instance=ExtResource("7_gq4au")]
+transform = Transform3D(0.280215, 0, -0.959938, 0, 0.58434, 0, 0.959938, 0, 0.280215, 4.52945, -0.0897827, -2.47098)
+
+[node name="rock_cavern22" parent="Scenery/ROCKS" index="28" instance=ExtResource("6_ld2ct")]
+transform = Transform3D(-0.465512, 0, 0.854555, 0, 0.662458, 0, -0.811352, 0, -0.4903, -4.69512, -0.321704, 3.02241)
+
+[node name="rock_cavern23" parent="Scenery/ROCKS" index="29" instance=ExtResource("6_ld2ct")]
+transform = Transform3D(0.772488, 0, -0.770879, 0, 0.753, 0, 0.731682, 0, 0.813872, 2.20898, -0.321704, 28.4037)
+
+[node name="StageScreenMeasure" parent="." index="2" instance=ExtResource("2_iyh14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+default_movement = ExtResource("9_ld2ct")
+
+[node name="Element_Lair_Chase_Pillar" parent="." index="3" instance=ExtResource("3_rxljk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25, 0, -3.5)
+
+[node name="Element_Lair_Chase_Pillar2" parent="." index="4" instance=ExtResource("3_rxljk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25, 0, 10)
+
+[node name="Element_Lair_Chase_Pillar3" parent="." index="5" instance=ExtResource("3_rxljk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25, 0, 23)
+
+[node name="Element_Lair_Chase_Pillar4" parent="." index="6" instance=ExtResource("3_rxljk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, -3.5)
+
+[node name="Element_Lair_Chase_Pillar5" parent="." index="7" instance=ExtResource("3_rxljk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 10)
+
+[node name="Element_Lair_Chase_Pillar6" parent="." index="8" instance=ExtResource("3_rxljk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 23)

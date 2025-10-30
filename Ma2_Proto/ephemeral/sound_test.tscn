@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsfgvwdfksn4u"]
+
+[ext_resource type="Script" path="res://ephemeral/sound_test.gd" id="1_e37hv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_orwnn"]
+
+[node name="Sound Test" type="Node3D"]
+script = ExtResource("1_e37hv")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.74646)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.819152, 0.324877, -0.472699, 0, 0.824126, 0.566406, 0.573576, -0.463973, 0.675085, 0, 0, 0)
+mesh = SubResource("BoxMesh_orwnn")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, 0)
+light_color = Color(1, 0.298039, 1, 1)
+light_energy = 8.634
+
+[node name="AkBank" type="AkBank" parent="."]
+bank = {
+"id": 1031089514,
+"name": "DEBUG"
+}
+load_on = 2
+
+[node name="AkEvent3D" type="AkEvent3D" parent="."]
+event = {
+"id": 3197276267,
+"name": "Play_MAGIC_01"
+}
+trigger_on = 2
+
+[node name="AkListener3D" type="AkListener3D" parent="."]
+is_spatial = true

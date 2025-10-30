@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhnvri2r370cj"]
+
+[ext_resource type="Texture2D" uid="uid://bcay7we1qn0ur" path="res://elements/neutral/props/Factory/texture/t_factory_floor_Icon_ivo_BaseColor.png" id="1_yenvc"]
+[ext_resource type="Texture2D" uid="uid://b7rarhrqgpbov" path="res://elements/neutral/props/Factory/texture/t_factory_floor_Icon_ivo_Normal.png" id="2_03335"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wc73w"]
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("1_yenvc")
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = ExtResource("2_03335")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ry8qa"]
+size = Vector2(4.5, 4.5)
+
+[node name="FactoryIconIvoFloor" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_wc73w")
+mesh = SubResource("QuadMesh_ry8qa")

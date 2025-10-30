@@ -1,0 +1,543 @@
+[gd_resource type="Resource" script_class="CreditsInfo" load_steps=75 format=3 uid="uid://o2o2pjgyt07u"]
+
+[ext_resource type="Script" uid="uid://cm1ao1cp6e5h0" path="res://elements/ui/menus/credits_menu/scripts/credits_info.gd" id="1_n22ty"]
+[ext_resource type="Script" uid="uid://brm0i2bj1yuok" path="res://elements/ui/menus/credits_menu/scripts/credits_section_info.gd" id="2_7x61e"]
+[ext_resource type="Script" uid="uid://bkle5ca8utscg" path="res://elements/ui/menus/credits_menu/scripts/credits_entry_info.gd" id="3_q4lwx"]
+[ext_resource type="Resource" uid="uid://chmmi5588r7jd" path="res://elements/ui/menus/credits_menu/credits_data/credits_entries_data.tres" id="4_q4lwx"]
+[ext_resource type="Texture2D" uid="uid://lg2aioyb3c1f" path="res://elements/ui/logos/Long Hat - Logo White.png" id="4_x3i7c"]
+[ext_resource type="Texture2D" uid="uid://bhafqdo5dlyxr" path="res://elements/ui/logos/Fund - Logos - Vertical.png" id="5_5ifdq"]
+[ext_resource type="Resource" uid="uid://i4mtiey625s1" path="res://elements/ui/menus/credits_menu/credits_data/credits_sets_data.tres" id="5_ik0mp"]
+[ext_resource type="Texture2D" uid="uid://onvoko17bdjo" path="res://elements/ui/logos/logo_godot.png" id="6_b7lh7"]
+[ext_resource type="Texture2D" uid="uid://cl1pnj22i6oga" path="res://elements/ui/logos/logo_wwise.png" id="7_2w2dp"]
+
+[sub_resource type="Resource" id="Resource_x3i7c"]
+script = ExtResource("3_q4lwx")
+entry_name = &""
+entry_role = &""
+entry_information = &""
+entry_texture = ExtResource("4_x3i7c")
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_5ifdq"]
+script = ExtResource("2_7x61e")
+section_title = &"credits_dev_studio"
+section_info = &""
+section_color_highlight = Color(1, 1, 1, 1)
+section_color_bg = Color(0, 0.831373, 0.792157, 1)
+entries_list = Array[ExtResource("3_q4lwx")]([SubResource("Resource_x3i7c")])
+
+[sub_resource type="Resource" id="Resource_b7lh7"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Lucas Mattos"
+entry_role = &"credits_dev_production"
+entry_information = &"@LRasoMattos"
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_2w2dp"]
+script = ExtResource("3_q4lwx")
+entry_name = &"João Brant"
+entry_role = &"credits_dev_design"
+entry_information = &"@jobrantjo"
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_hv1tw"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Laila Alves"
+entry_role = &"credits_dev_art2d"
+entry_information = &"@lailalory"
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_p7c37"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Juliendrios Oliveira"
+entry_role = &"credits_dev_art3d"
+entry_information = &"@end_z_"
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_i2fcp"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Tavos Mata Machado"
+entry_role = &"credits_dev_narrative"
+entry_information = &"@tavosmm"
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_bt53b"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Thommaz Kauffmann"
+entry_role = &"credits_dev_audio"
+entry_information = &"@thommaz"
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_fyrb4"]
+script = ExtResource("2_7x61e")
+section_title = &"credits_dev_team"
+section_info = &""
+section_color_highlight = Color(1, 1, 1, 1)
+section_color_bg = Color(0, 0.831373, 0.792157, 1)
+entries_list = Array[ExtResource("3_q4lwx")]([SubResource("Resource_b7lh7"), SubResource("Resource_2w2dp"), SubResource("Resource_hv1tw"), SubResource("Resource_p7c37"), SubResource("Resource_i2fcp"), SubResource("Resource_bt53b")])
+
+[sub_resource type="Resource" id="Resource_5vd8x"]
+script = ExtResource("3_q4lwx")
+entry_name = &"COLTEC - UFMG"
+entry_role = &"credits_ufmg_partner"
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_2vlpu"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Virgínia Fernandes Mota"
+entry_role = &"credits_ufmg_coordinator"
+entry_information = &"credits_ufmg_coordinator_info"
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_8112w"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Helena Muniz"
+entry_role = &"credits_ufmg_master"
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_e65ya"]
+script = ExtResource("3_q4lwx")
+entry_name = &"João Smolinski"
+entry_role = &"credits_ufmg_grad"
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_jiwx3"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Heitor Henrique dos Santos"
+entry_role = &"credits_ufmg_grad"
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_bujp8"]
+script = ExtResource("2_7x61e")
+section_title = &"credits_ufmg"
+section_info = &""
+section_color_highlight = Color(1, 1, 1, 1)
+section_color_bg = Color(0, 0.831373, 0.792157, 1)
+entries_list = Array[ExtResource("3_q4lwx")]([SubResource("Resource_5vd8x"), SubResource("Resource_2vlpu"), SubResource("Resource_8112w"), SubResource("Resource_e65ya"), SubResource("Resource_jiwx3")])
+
+[sub_resource type="Resource" id="Resource_8l06r"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Eduardo Santos Birchal"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_c3v6j"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Kailainy Cardoso"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_nbbvj"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Layla Barcala Leão"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_rhi71"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Thaís Mayara Rodrigues de Almeida Oliveira"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_f7j5p"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Tuender Durães de Lima"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_wc3vx"]
+script = ExtResource("2_7x61e")
+section_title = &"credits_ufmg_testing"
+section_info = &""
+section_color_highlight = Color(1, 1, 1, 1)
+section_color_bg = Color(0, 0.831373, 0.792157, 1)
+entries_list = Array[ExtResource("3_q4lwx")]([SubResource("Resource_8l06r"), SubResource("Resource_c3v6j"), SubResource("Resource_nbbvj"), SubResource("Resource_rhi71"), SubResource("Resource_f7j5p")])
+
+[sub_resource type="Resource" id="Resource_ecnpx"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Gil Barbosa Reis"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_8kq2k"]
+script = ExtResource("2_7x61e")
+section_title = &"credits_integrations"
+section_info = &""
+section_color_highlight = Color(1, 1, 1, 1)
+section_color_bg = Color(0, 0.831373, 0.792157, 1)
+entries_list = Array[ExtResource("3_q4lwx")]([SubResource("Resource_ecnpx")])
+
+[sub_resource type="Resource" id="Resource_1g1qc"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Andrés GM González"
+entry_role = &"credits_localization_spanish"
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_2cy7y"]
+script = ExtResource("2_7x61e")
+section_title = &"credits_localization"
+section_info = &""
+section_color_highlight = Color(1, 1, 1, 1)
+section_color_bg = Color(0, 0.831373, 0.792157, 1)
+entries_list = Array[ExtResource("3_q4lwx")]([SubResource("Resource_1g1qc")])
+
+[sub_resource type="Resource" id="Resource_vbvsn"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Camila Laranjeira"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_8dfaa"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Renata Padilha"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_hvjap"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Lucas Mello"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_3b48u"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Lourenço Lage"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_gubdd"]
+script = ExtResource("3_q4lwx")
+entry_name = &"eDChronos"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_x26g6"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Beheks"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_8k6lb"]
+script = ExtResource("3_q4lwx")
+entry_name = &"DaniloMalzao"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_xqvh7"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Hugo Vellozo"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_4oepr"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Matheus Felicetti"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_mp3cl"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Dani Serranú"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_8v7yi"]
+script = ExtResource("2_7x61e")
+section_title = &"credits_testing"
+section_info = &""
+section_color_highlight = Color(1, 1, 1, 1)
+section_color_bg = Color(0, 0.831373, 0.792157, 1)
+entries_list = Array[ExtResource("3_q4lwx")]([SubResource("Resource_vbvsn"), SubResource("Resource_8dfaa"), SubResource("Resource_hvjap"), SubResource("Resource_3b48u"), SubResource("Resource_gubdd"), SubResource("Resource_x26g6"), SubResource("Resource_8k6lb"), SubResource("Resource_xqvh7"), SubResource("Resource_4oepr"), SubResource("Resource_mp3cl")])
+
+[sub_resource type="Resource" id="Resource_f5cp7"]
+script = ExtResource("3_q4lwx")
+entry_name = &""
+entry_role = &""
+entry_information = &""
+entry_texture = ExtResource("5_5ifdq")
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_3c1ui"]
+script = ExtResource("2_7x61e")
+section_title = &"credits_support"
+section_info = &"credits_support_text"
+section_color_highlight = Color(1, 1, 1, 1)
+section_color_bg = Color(0, 0.831373, 0.792157, 1)
+entries_list = Array[ExtResource("3_q4lwx")]([SubResource("Resource_f5cp7")])
+
+[sub_resource type="Resource" id="Resource_lan2j"]
+script = ExtResource("3_q4lwx")
+entry_name = &""
+entry_role = &"credits_tools_godot_info"
+entry_information = &""
+entry_texture = ExtResource("6_b7lh7")
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_mee04"]
+script = ExtResource("3_q4lwx")
+entry_name = &""
+entry_role = &"credits_tools_wwise_info"
+entry_information = &""
+entry_texture = ExtResource("7_2w2dp")
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_6682t"]
+script = ExtResource("2_7x61e")
+section_title = &"credits_tools"
+section_info = &""
+section_color_highlight = Color(1, 1, 1, 1)
+section_color_bg = Color(0, 0.831373, 0.792157, 1)
+entries_list = Array[ExtResource("3_q4lwx")]([SubResource("Resource_lan2j"), SubResource("Resource_mee04")])
+
+[sub_resource type="Resource" id="Resource_pllpd"]
+script = ExtResource("3_q4lwx")
+entry_name = &"AC Jogos - MG"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_q6bsh"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Amigos do Gujo"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_obubp"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Bia Pappone"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_4mftf"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Hannah Pinheiro"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_q23ii"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Ieda Maria C. Pinto Alves"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_8e7ck"]
+script = ExtResource("3_q4lwx")
+entry_name = &"José Silva Tavares"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_f80j7"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Julival Caetano"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_5o00j"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Laércio Mattos"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_cvjcv"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Luana Darque"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_13yge"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Luis Guilherme Kauffmann"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_m2h4p"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Marcela Raso"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_6xyi2"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Marcelo Costa"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_5r027"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Maria da Gloria"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_c5vk8"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Maria Inez Raso"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_n27lx"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Norton José Caldeira"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_aj4ko"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Paula Raso"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_jg1aa"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Rafaela Pascoal"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_ip3xg"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Renata Padilha"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_6qg0d"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Sandra Hévila Reis"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_qae43"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Tarsila Kauffmann"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_1ifbw"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Thaïs Pappone Kauffmann"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_7rilp"]
+script = ExtResource("3_q4lwx")
+entry_name = &"Tiago Gualter"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_hh5qs"]
+script = ExtResource("3_q4lwx")
+entry_name = &"credits_thanks_you"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+
+[sub_resource type="Resource" id="Resource_hptma"]
+script = ExtResource("2_7x61e")
+section_title = &"credits_thanks"
+section_info = &""
+section_color_highlight = Color(1, 1, 1, 1)
+section_color_bg = Color(0, 0.831373, 0.792157, 1)
+entries_list = Array[ExtResource("3_q4lwx")]([SubResource("Resource_pllpd"), SubResource("Resource_q6bsh"), SubResource("Resource_obubp"), SubResource("Resource_4mftf"), SubResource("Resource_q23ii"), SubResource("Resource_8e7ck"), SubResource("Resource_f80j7"), SubResource("Resource_5o00j"), SubResource("Resource_cvjcv"), SubResource("Resource_13yge"), SubResource("Resource_m2h4p"), SubResource("Resource_6xyi2"), SubResource("Resource_5r027"), SubResource("Resource_c5vk8"), SubResource("Resource_n27lx"), SubResource("Resource_aj4ko"), SubResource("Resource_jg1aa"), SubResource("Resource_ip3xg"), SubResource("Resource_6qg0d"), SubResource("Resource_qae43"), SubResource("Resource_1ifbw"), SubResource("Resource_7rilp"), SubResource("Resource_hh5qs")])
+
+[resource]
+script = ExtResource("1_n22ty")
+reimport = true
+sheet_sets = ExtResource("5_ik0mp")
+sheet_entries = ExtResource("4_q4lwx")
+sections_list = Array[ExtResource("2_7x61e")]([SubResource("Resource_5ifdq"), SubResource("Resource_fyrb4"), SubResource("Resource_bujp8"), SubResource("Resource_wc3vx"), SubResource("Resource_8kq2k"), SubResource("Resource_2cy7y"), SubResource("Resource_8v7yi"), SubResource("Resource_3c1ui"), SubResource("Resource_6682t"), SubResource("Resource_hptma")])
+metadata/_custom_type_script = "uid://cm1ao1cp6e5h0"

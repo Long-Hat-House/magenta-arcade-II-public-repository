@@ -1,0 +1,213 @@
+[gd_scene load_steps=31 format=3 uid="uid://cjcigmwmyr5q2"]
+
+[ext_resource type="PackedScene" uid="uid://bikmyqcfitu5t" path="res://elements/enemy/roboto_jacare/mesh/mesh_jacare_catapulta.tscn" id="1_2t7re"]
+[ext_resource type="Script" uid="uid://cxa7vol8n58er" path="res://elements/enemy/roboto_jacare/mesh/graphic_jacare_catapulta.gd" id="2_xfudv"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5vneo"]
+animation = &"IDLE"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bi5un"]
+animation = &"WALK"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1un87"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6dpan"]
+xfade_time = 0.1
+advance_mode = 2
+advance_expression = "walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wpajv"]
+xfade_time = 0.1
+priority = 2
+advance_mode = 2
+advance_expression = "!walk"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_my80k"]
+states/IDLE/node = SubResource("AnimationNodeAnimation_5vneo")
+states/IDLE/position = Vector2(341, 100)
+states/WALK/node = SubResource("AnimationNodeAnimation_bi5un")
+states/WALK/position = Vector2(470, 100)
+transitions = ["Start", "IDLE", SubResource("AnimationNodeStateMachineTransition_1un87"), "IDLE", "WALK", SubResource("AnimationNodeStateMachineTransition_6dpan"), "WALK", "IDLE", SubResource("AnimationNodeStateMachineTransition_wpajv")]
+graph_offset = Vector2(56, 20)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dvnda"]
+animation = &"POS_ATTACK_FINAL"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_biqad"]
+animation = &"POS_ATTACK_LEFT"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g18xl"]
+animation = &"POS_ATTACK_RIGHT"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4ttk7"]
+animation = &"PRE_ATTACK_LEFT"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bc85w"]
+animation = &"PRE_ATTACK_LEFT_BEGIN"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n0a2w"]
+animation = &"PRE_ATTACK_RIGHT"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_idnhg"]
+animation = &"PRE_ATTACK_RIGHT_BEGIN"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mbycx"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1jmdu"]
+xfade_time = 0.1
+advance_mode = 2
+advance_expression = "attack && right"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6u8xa"]
+xfade_time = 0.1
+advance_mode = 2
+advance_expression = "attack && !right"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_omy6y"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yy7cv"]
+advance_mode = 2
+advance_expression = "!attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lvdky"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l5c5j"]
+advance_mode = 2
+advance_expression = "!attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1lav4"]
+xfade_time = 0.8
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jvh42"]
+xfade_time = 0.8
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ot1cr"]
+advance_mode = 2
+advance_expression = "!attack or interrupt"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0lw8t"]
+advance_mode = 2
+advance_expression = "!attack or interrupt"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_17xmg"]
+advance_mode = 2
+advance_expression = "interrupt"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_goiw5"]
+advance_mode = 2
+advance_expression = "interrupt"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_faywv"]
+states/Basic/node = SubResource("AnimationNodeStateMachine_my80k")
+states/Basic/position = Vector2(240.847, 111)
+states/End/position = Vector2(1006, 111)
+states/POS_ATTACK_FINAL/node = SubResource("AnimationNodeAnimation_dvnda")
+states/POS_ATTACK_FINAL/position = Vector2(863, 111)
+states/POS_ATTACK_LEFT/node = SubResource("AnimationNodeAnimation_biqad")
+states/POS_ATTACK_LEFT/position = Vector2(887, 230)
+states/POS_ATTACK_RIGHT/node = SubResource("AnimationNodeAnimation_g18xl")
+states/POS_ATTACK_RIGHT/position = Vector2(906, -13)
+states/PRE_ATTACK_LEFT/node = SubResource("AnimationNodeAnimation_4ttk7")
+states/PRE_ATTACK_LEFT/position = Vector2(659, 230)
+states/PRE_ATTACK_LEFT_BEGIN/node = SubResource("AnimationNodeAnimation_bc85w")
+states/PRE_ATTACK_LEFT_BEGIN/position = Vector2(400, 230)
+states/PRE_ATTACK_RIGHT/node = SubResource("AnimationNodeAnimation_n0a2w")
+states/PRE_ATTACK_RIGHT/position = Vector2(659, -13)
+states/PRE_ATTACK_RIGHT_BEGIN/node = SubResource("AnimationNodeAnimation_idnhg")
+states/PRE_ATTACK_RIGHT_BEGIN/position = Vector2(400, -18)
+states/Start/position = Vector2(100, 111)
+transitions = ["Start", "Basic", SubResource("AnimationNodeStateMachineTransition_mbycx"), "Basic", "PRE_ATTACK_RIGHT_BEGIN", SubResource("AnimationNodeStateMachineTransition_1jmdu"), "Basic", "PRE_ATTACK_LEFT_BEGIN", SubResource("AnimationNodeStateMachineTransition_6u8xa"), "PRE_ATTACK_RIGHT_BEGIN", "PRE_ATTACK_RIGHT", SubResource("AnimationNodeStateMachineTransition_omy6y"), "PRE_ATTACK_RIGHT", "POS_ATTACK_RIGHT", SubResource("AnimationNodeStateMachineTransition_yy7cv"), "PRE_ATTACK_LEFT_BEGIN", "PRE_ATTACK_LEFT", SubResource("AnimationNodeStateMachineTransition_lvdky"), "PRE_ATTACK_LEFT", "POS_ATTACK_LEFT", SubResource("AnimationNodeStateMachineTransition_l5c5j"), "POS_ATTACK_LEFT", "POS_ATTACK_FINAL", SubResource("AnimationNodeStateMachineTransition_1lav4"), "POS_ATTACK_RIGHT", "POS_ATTACK_FINAL", SubResource("AnimationNodeStateMachineTransition_jvh42"), "PRE_ATTACK_RIGHT_BEGIN", "POS_ATTACK_FINAL", SubResource("AnimationNodeStateMachineTransition_ot1cr"), "PRE_ATTACK_LEFT_BEGIN", "POS_ATTACK_FINAL", SubResource("AnimationNodeStateMachineTransition_0lw8t"), "PRE_ATTACK_RIGHT", "POS_ATTACK_FINAL", SubResource("AnimationNodeStateMachineTransition_17xmg"), "PRE_ATTACK_LEFT", "POS_ATTACK_FINAL", SubResource("AnimationNodeStateMachineTransition_goiw5")]
+graph_offset = Vector2(-70.153, -54)
+
+[sub_resource type="GDScript" id="GDScript_frls4"]
+resource_name = "jacare_tree"
+script/source = "extends AnimationTree
+
+@export var walk:bool;
+@export var attack:bool;
+@export var right:bool;
+@export var interrupt:bool;
+"
+
+[node name="graphic_jacare" node_paths=PackedStringArray("instantiate_place_right", "instantiate_place_left") instance=ExtResource("1_2t7re")]
+script = ExtResource("2_xfudv")
+instantiate_place_right = NodePath("rig_jacare_roboto/Skeleton3D/BoneAttachment3D/InstantiatePlaceRight")
+instantiate_place_left = NodePath("rig_jacare_roboto/Skeleton3D/BoneAttachment3D/InstantiatePlaceLeft")
+
+[node name="Skeleton3D" parent="rig_jacare_roboto" index="0"]
+bones/0/position = Vector3(-0.000253879, -0.000253879, 0)
+bones/1/position = Vector3(7.1594e-17, 0.322431, 0.529175)
+bones/1/rotation = Quaternion(0.0591861, 0, -1.3142e-17, 0.998247)
+bones/2/rotation = Quaternion(0.644929, -2.73317e-07, -2.30647e-07, 0.764243)
+bones/3/position = Vector3(0.224506, 0.162026, -0.339316)
+bones/4/position = Vector3(-0.224506, 0.162026, -0.339316)
+bones/5/rotation = Quaternion(0.786359, 1.40509e-05, -7.24813e-06, 0.617769)
+bones/6/rotation = Quaternion(-0.771629, -0.027962, -0.0220883, 0.635073)
+bones/7/rotation = Quaternion(1.17868e-07, 9.50192e-09, -0.0855579, 0.996333)
+bones/8/rotation = Quaternion(-1.38585e-09, -3.98648e-09, -0.170872, 0.985293)
+
+[node name="lamp_off_01" parent="rig_jacare_roboto/Skeleton3D" index="1"]
+visible = true
+
+[node name="lamp_off_02" parent="rig_jacare_roboto/Skeleton3D" index="2"]
+visible = true
+
+[node name="lamp_off_03" parent="rig_jacare_roboto/Skeleton3D" index="3"]
+visible = true
+
+[node name="lamp_off_04" parent="rig_jacare_roboto/Skeleton3D" index="4"]
+visible = true
+
+[node name="lamp_off_05" parent="rig_jacare_roboto/Skeleton3D" index="5"]
+visible = true
+
+[node name="lamp_off_06" parent="rig_jacare_roboto/Skeleton3D" index="6"]
+visible = true
+
+[node name="lamp_on_01" parent="rig_jacare_roboto/Skeleton3D" index="7"]
+visible = false
+
+[node name="lamp_on_02" parent="rig_jacare_roboto/Skeleton3D" index="8"]
+visible = false
+
+[node name="lamp_on_03" parent="rig_jacare_roboto/Skeleton3D" index="9"]
+visible = false
+
+[node name="lamp_on_04" parent="rig_jacare_roboto/Skeleton3D" index="10"]
+visible = false
+
+[node name="lamp_on_05" parent="rig_jacare_roboto/Skeleton3D" index="11"]
+visible = false
+
+[node name="lamp_on_06" parent="rig_jacare_roboto/Skeleton3D" index="12"]
+visible = false
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="rig_jacare_roboto/Skeleton3D" index="20"]
+transform = Transform3D(1, 3.10534e-05, 5.96109e-06, 1.6449e-05, -0.34987, -0.936798, -2.70051e-05, 0.936798, -0.34987, -0.000253879, 0.322177, 0.529175)
+bone_name = "b_mouth_inf"
+bone_idx = 5
+
+[node name="InstantiatePlaceRight" type="Marker3D" parent="rig_jacare_roboto/Skeleton3D/BoneAttachment3D" index="0"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -0.587785, 0.809017, 0, -0.809017, -0.587785, 0, 0, 0)
+
+[node name="InstantiatePlaceLeft" type="Marker3D" parent="rig_jacare_roboto/Skeleton3D/BoneAttachment3D" index="1"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -0.587785, 0.809017, 0, -0.809017, -0.587785, 0, 0, 0)
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="3"]
+tree_root = SubResource("AnimationNodeStateMachine_faywv")
+anim_player = NodePath("../AnimationPlayer")
+script = SubResource("GDScript_frls4")

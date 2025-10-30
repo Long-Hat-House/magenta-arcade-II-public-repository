@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="LevelSet" load_steps=9 format=3 uid="uid://c8h7trnmhoj20"]
+
+[ext_resource type="PackedScene" uid="uid://bqvvqbd5pophb" path="res://elements/levels/lvl_arcade/lvl_arcade.tscn" id="1_47ywn"]
+[ext_resource type="Script" uid="uid://vg7ppcjjqdpt" path="res://systems/level/level_set.gd" id="2_n4h06"]
+[ext_resource type="Resource" uid="uid://dy16ciqvfojs5" path="res://elements/levels/lvl_0/lvl_0_set.tres" id="3_vu2ep"]
+[ext_resource type="Resource" uid="uid://x12ssq58o52m" path="res://elements/levels/lvl_1/lvl_1_set.tres" id="4_3m0pq"]
+[ext_resource type="PackedScene" uid="uid://m0qvpf8rg7n" path="res://elements/levels/lvl_shop_pre_sub.tscn" id="4_8qmou"]
+[ext_resource type="Resource" uid="uid://c3rxa6fdllcr7" path="res://elements/levels/lvl_2/lvl_2_set.tres" id="5_m26la"]
+[ext_resource type="Resource" uid="uid://e1puhfyo2c7r" path="res://elements/levels/lvl_3/lvl_3_set.tres" id="6_fvfp7"]
+[ext_resource type="Resource" uid="uid://bceynb10d3li3" path="res://elements/levels/lvl_4/lvl_4_set.tres" id="7_ochpk"]
+
+[resource]
+script = ExtResource("2_n4h06")
+open = false
+parent_level = ExtResource("1_47ywn")
+sub_levels = Array[Resource]([ExtResource("3_vu2ep"), ExtResource("4_8qmou"), ExtResource("4_3m0pq"), ExtResource("4_8qmou"), ExtResource("5_m26la"), ExtResource("4_8qmou"), ExtResource("6_fvfp7"), ExtResource("4_8qmou"), ExtResource("7_ochpk")])

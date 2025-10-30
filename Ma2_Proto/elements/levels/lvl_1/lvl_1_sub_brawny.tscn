@@ -1,0 +1,478 @@
+[gd_scene load_steps=11 format=3 uid="uid://chs84t4vpnwmy"]
+
+[ext_resource type="PackedScene" uid="uid://dcxopovxim3xx" path="res://elements/powerups/button/holdable_button_fire_rate.tscn" id="1_bxhiy"]
+[ext_resource type="Script" uid="uid://dsvfipg4mxr7k" path="res://systems/line3d/child_line_3d.gd" id="1_i3umk"]
+[ext_resource type="PackedScene" uid="uid://bcmggsmmlhf30" path="res://elements/powerups/button/powerup_weapon_button_tap_green.tscn" id="2_bdcet"]
+[ext_resource type="PackedScene" uid="uid://djhown2ulvtjc" path="res://elements/powerups/button/powerup_weapon_button_tap_blue.tscn" id="3_ail3x"]
+[ext_resource type="PackedScene" uid="uid://4qqcmtywm6p0" path="res://elements/powerups/button/holdable_button_holdlvlup.tscn" id="4_26w1c"]
+[ext_resource type="Script" uid="uid://0t4w0o45yp3e" path="res://systems/general_ai/path_road.gd" id="6_bdcet"]
+[ext_resource type="PackedScene" uid="uid://n3wojvvtiyfl" path="res://elements/stage_pieces/stage_piece_afonso_pena_av_brasil.tscn" id="7_ail3x"]
+
+[sub_resource type="GDScript" id="GDScript_rulm3"]
+script/source = "extends Level
+
+## stage pieces
+const STAGE_PIECE_AFONSO_PENA_LANES_3 = preload(\"res://elements/stage_pieces/stage_piece_afonso_pena_lanes3.tscn\")
+
+const VFX_SIDE_WARNING = preload(\"res://elements/attack_previews/vfx_side_warning.tscn\")
+
+const ENEMY_PIZZA_ROBOTO = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto.tscn\")
+const ENEMY_PIZZA_ROBOTO_SHOOTER = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto_shooter.tscn\")
+const ENEMY_PIZZA_ROBOTO_RUSTY = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto_rusty.tscn\")
+const ENEMY_PIZZA_ROBOTO_RUSTY_CANNON = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto_rusty_cannon.tscn\")
+const COPTER = preload(\"res://elements/enemy/copter/enemy_roboto_copter.tscn\")
+const ENEMY_CHASER = preload(\"res://elements/enemy/chaser/enemy_chaser.tscn\")
+const ENEMY_BRAWNY = preload(\"res://elements/enemy/brawny/enemy_brawny.tscn\")
+const ENEMY_LASER_ROBOTO = preload(\"res://elements/enemy/laser/enemy_laser_roboto.tscn\")
+const POWERUP_ALTAR = preload(\"res://elements/powerups/altar/powerup_altar.tscn\")
+const POWERUP_WEAPON_BUTTON_HOLD_BLUE = preload(\"res://elements/powerups/button/powerup_weapon_button_hold_blue.tscn\")
+const POWERUP_WEAPON_BUTTON_HOLD_YELLOW = preload(\"res://elements/powerups/button/powerup_weapon_button_hold_yellow.tscn\")
+const POWERUP_WEAPON_BUTTON_TAP_BLUE = preload(\"res://elements/powerups/button/powerup_weapon_button_tap_blue.tscn\")
+
+var _wait_group:String = \"WaitGroup\"
+
+@export var first_altars:Array[PackedScene];
+@export var second_altars:Array[PackedScene];
+
+@export var path_big:PathRoad;
+@export var path_small:PathRoad;
+
+signal twirling_1_complete;
+
+@export var brawny_hp_multiplier:float = 0.6;
+
+func _ready():
+	await await_for_level_ready()
+
+	var brawny = {
+		brawny = null,
+	}
+	
+	var onPizzaDown = func(pizza:AI_WalkAndDo):
+		pizza.walkVelocity = pizza.walkVelocity.length() * Vector3.BACK;
+		pizza.walkAndStop = false;
+	var onFinalPizza = func(pizza:AI_WalkAndDo):
+		pizza.walkVelocity = pizza.walkVelocity.length() * Vector3.BACK;
+		pizza.distanceMax = 15;
+		pizza.walkAndStop = true;
+
+	var spawnNormal = func():
+		onPizzaDown.call(objs.create_object(ENEMY_PIZZA_ROBOTO_RUSTY, \"\", stage.get_grid(-4,-1)));
+		onPizzaDown.call(objs.create_object(ENEMY_PIZZA_ROBOTO_RUSTY, \"\", stage.get_grid(4,-1)));
+	var spawnShooter = func():
+		onPizzaDown.call(objs.create_object(ENEMY_PIZZA_ROBOTO_RUSTY_CANNON, \"\", stage.get_grid(-4,-1)));
+		onPizzaDown.call(objs.create_object(ENEMY_PIZZA_ROBOTO_RUSTY_CANNON, \"\", stage.get_grid(4,-1)));
+	var waitBetweenPizzasTime:float = 1;
+	
+
+	cmd_array([
+		CMD_Callable.new(func():
+			stage.set_pivot_offset_x(6); #Leave Grid as before (so links to statue grid and to starting with no scene grid)
+			cam.tween_position_vector(stage.get_grid(0,0), 2);
+			),
+		CMD_Wait_Seconds.new(1.5),
+		CMD_Callable.new(func():
+			var go_forever = func(pizza):
+				pizza.walkAndStop = false;
+
+			var stop = func(pizza:AI_WalkAndDo):
+				pizza.distanceMax += 10;
+				pizza.walkAndStop = true;
+
+			var positions = [-4, -2, 0, 2, 4];
+			var matrix = [
+				[2, 1, 2, 1, 2],
+				[1, 2, 1, 2, 1],
+				[1, 0, 0, 0, 1],
+			];
+
+			var scenes:Array[PackedScene] = [null, ENEMY_PIZZA_ROBOTO, ENEMY_PIZZA_ROBOTO_SHOOTER];
+
+			for y:int in range(matrix.size()):
+				for x:int in range(matrix[y].size()):
+					var obj := scenes[matrix[y][x]];
+					if obj:
+						var inst = objs.create_object(obj, _wait_group, stage.get_grid(-4 + x * 2, -3 + y * 1.8))
+						if y >= 2:
+							go_forever.call(inst);
+						else:
+							stop.call(inst);
+			),
+
+		objs.cmd_wait_group(_wait_group, 1),
+		Level.CMD_Wait_Seconds.new(0.5),
+		
+		## First altars
+		Level_Cmd_Utils.cmd_multiple_altars_right_to_left(POWERUP_ALTAR, first_altars, self, _wait_group),
+		objs.cmd_wait_group_or_time(_wait_group, 4.5),
+		
+		## First chasers
+		objs.cmd_create_object_grid(ENEMY_CHASER, Vector2(-4,-0.5), self, Vector3.ZERO, _wait_group),
+		objs.cmd_create_object_grid(ENEMY_CHASER, Vector2(4,-0.5), self, Vector3.ZERO, _wait_group),
+		objs.cmd_wait_group(_wait_group),
+
+		CMD_Callable.new(func():
+			stage.fill_with([STAGE_PIECE_AFONSO_PENA_LANES_3], 46);
+			stage.repivot();
+			cam.tween_position(stage.get_pos_x(), 2, LevelCameraController.MovementAxis.X, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+			),
+
+		#Crazy transit of pizzas
+		CMD_Callable.new(func():
+			stage.set_pivot_offset_z(38);
+			cam.tween_position_vector(stage.get_grid(0,0), 2);
+			),
+		CMD_Wait_Seconds.new(1.8),
+		CMD_Await_AsyncCallable.new(func():
+
+			var data = {
+				groups = [
+					{group = \"l1\", z = 1 * 3 + 2, max_v = 99},
+					{group = \"l2\", z = 2 * 3 + 2, max_v = 99},
+					{group = \"l3\", z = 3 * 3 + 2, max_v = 99},
+					{group = \"l4\", z = 5 * 3 + 2, max_v = 99},
+					{group = \"l5\", z = 6 * 3 + 0, max_v = 99},
+				],
+				order = [1,0,2,0,5,0,5,5,0,0],
+				randomizer = Randomizer.get_randomizer(\"transito\", 11),
+				last_choice = -1,
+				cannon_shoot = false,
+			}
+
+			var makeRun = func make_running_pizza(pizza, velocity:float):
+				var pizzaWD:AI_WalkAndDo = pizza as AI_WalkAndDo;
+				pizzaWD.walkVelocity = Vector3.RIGHT * velocity;
+				pizzaWD.walkAndStop = false;
+				var cannon:AI_Cannon = pizzaWD.get(\"cannon\") as AI_Cannon;
+				if cannon:
+					if data.cannon_shoot:
+						cannon.set_delay(0.35 + randf() * 0.1);
+					data.cannon_shoot = not data.cannon_shoot;
+
+			var chooseRandomLine = func choose_random_line(iteration:int)->int:
+				var line:int = data.order[iteration];
+				if line == 0: return -1;
+				if line > (data.groups.size() - 1):
+					line = data.randomizer.randi() % data.groups.size();
+				var initial_line:int = line;
+				while line == data.last_choice:
+					line = (line + 1) % data.groups.size();
+					if line == initial_line: return -1;
+				#while objs.has_any_objects(data.groups[line].group):
+					#line = (line + 1) % data.groups.size();
+					#if line == initial_line: return -1;
+				data.last_choice = line;
+				return line;
+
+			var makeLineOfPizzas = func make_lines_of_pizzas(i:int, pizzas:Array):
+				var line:int = chooseRandomLine.call(i);
+				if line == -1: return;
+
+				var velocity:float = data.randomizer.randf_range(3.5, 6.5);
+				velocity = minf(data.groups[line].max_v - data.randomizer.randf_range(0.25, 0.75), velocity);
+				data.groups[line].max_v = velocity;
+				var x:float = 5;
+				for pizza in pizzas:
+					makeRun.call(objs.create_object(pizza, data.groups[line].group, stage.get_grid(-7 - x * 1.2, data.groups[line].z)), velocity)
+					x += 1;
+
+			var pizzas:Array = [ENEMY_PIZZA_ROBOTO_SHOOTER, ENEMY_PIZZA_ROBOTO, ENEMY_PIZZA_ROBOTO, ENEMY_PIZZA_ROBOTO, ENEMY_PIZZA_ROBOTO_SHOOTER]
+
+			await get_tree().create_timer(0.5).timeout;
+			var time:float = 0.6;
+			if !self or !is_instance_valid(self): return;
+			for iteration:int in range(data.order.size()):
+				makeLineOfPizzas.call(iteration, pizzas);
+				await get_tree().create_timer(time).timeout;
+				time *= 0.995;
+				iteration += 1;
+				if !self or !is_instance_valid(self): return;
+			, self),
+			
+		Level.CMD_Wait_Seconds.new(3),
+			
+		CMD_Parallel_Complete.new([
+			
+			## Copters
+			CMD_Sequence.new([
+				CMD_Wait_Seconds.new(3),
+				AI_Roboto_Copter.cmd_make_copters_quick(self, [COPTER], [0,0,0,-1,0,0,0], func(): return stage.get_grid(-8,14), Vector3.RIGHT, [100], \"copters\"),
+				CMD_Wait_Signal.new(twirling_1_complete),
+				CMD_Wait_Seconds.new(2),
+				AI_Roboto_Copter.cmd_make_copters_quick(self, [COPTER], [0,0,0,0], func(): return stage.get_grid(-8,8), Vector3.RIGHT, [100], \"copters\"),
+				CMD_Wait_Seconds.new(2.5),
+				AI_Roboto_Copter.cmd_make_copters_quick(self, [COPTER], [0,0,0,0], func(): return stage.get_grid(-8,8), Vector3.RIGHT, [100], \"copters\"),
+				CMD_Wait_Seconds.new(2.5),
+				AI_Roboto_Copter.cmd_make_copters_quick(self, [COPTER], [0,0,0,0], func(): return stage.get_grid(-8,8), Vector3.RIGHT, [100], \"copters\"),
+				objs.cmd_wait_group(\"copters\"),
+			]),
+			
+			#Twirling thing
+			CMD_Await_AsyncCallable.new(func():
+				var time:float = 0.6;
+				
+				var pizzas:Array[PackedScene] = [ENEMY_PIZZA_ROBOTO, ENEMY_PIZZA_ROBOTO_SHOOTER];
+				## Example: #var twirling_one:Array[int] = [1,1,1,1,1,2]
+				
+				var parent:Node3D = Node3D.new();
+				parent.name = \"twirling_pizzas\";
+				InstantiateUtils.get_topmost_instantiate_node().add_child(parent);
+				
+				var distance_between:float = 1.1;
+				
+				var create_twirl := func create_twirl(arr_indices:Array, path:PathRoad, origin:Transform3D, velocity:float, time_between:float):
+					var pizza_place:int = 0;
+					for index:int in arr_indices:
+						if index <= 0:
+							pass;
+						else:
+							var pizza:AI_WalkAndDo = pizzas[index - 1].instantiate();
+							pizza.distanceMax = 0;
+							pizza.walkAndStop = true;
+							parent.add_child(pizza);
+							path.add_element(pizza, origin, velocity, pizza_place * distance_between);
+						pizza_place += 1;
+							
+						await get_tree().create_timer(time_between).timeout;
+				
+				await create_twirl.call([1,1,1,2,0,0,1,2,1,2,0,2,1], path_small, Transform3D(Basis.IDENTITY, stage.get_grid(-6.5, 10)), 5, 0.25);
+				while(parent.get_child_count() > 0):
+					await get_tree().create_timer(0.25).timeout;
+				twirling_1_complete.emit();
+				await create_twirl.call([1,1,0,1,2,2,2,0,1,1,1,1,0,1,2], path_small, Transform3D(Basis.IDENTITY, stage.get_grid(-6.5, 15)), 6, 0.25);
+				#await get_tree().create_timer(path_small.get_time_to_cross(5)).timeout;
+				#await create_twirl.call([1,1,2,2,0,1,1,2,2], path_small, Transform3D(Basis.IDENTITY, stage.get_grid(-6.5, 9)), 7, 0.25);
+				#while(parent.get_child_count() > 0):
+					#await get_tree().create_timer(0.25).timeout;
+				#await create_twirl.call([2,1,1,1,0,1,1,1,1,0,1,1,2,2,0,1,1,1,2,0,1,1,1,1,0,1,1,1,1], path_big, Transform3D(Basis.IDENTITY, stage.get_grid(-6.5, 12)), 9, 0.25);
+				#await get_tree().create_timer(path_big.get_time_to_cross(18)).timeout;
+				#await create_twirl.call([2,1,1,1,0,1,1,1,1,0,1,1,2,2,0,1,2,2,1,0,1,1,1,1,0,1,1,1,2], path_big, Transform3D(Basis(Vector3.LEFT, Vector3.UP, Vector3.BACK), stage.get_grid(6.5, 6)), 10, 0.25);
+				#
+				while(parent.get_child_count() > 0):
+					await get_tree().create_timer(0.25).timeout;
+				
+				, self),
+		]),
+			
+		
+		## Second chasers
+		objs.cmd_create_object_grid(ENEMY_CHASER, Vector2(-2,-1), self, Vector3.ZERO, _wait_group),
+		objs.cmd_create_object_grid(ENEMY_CHASER, Vector2(2,-1), self, Vector3.ZERO, _wait_group),
+		CMD_Wait_Seconds.new(1),
+		objs.cmd_create_object_grid(ENEMY_CHASER, Vector2(-4,-1), self, Vector3.ZERO, _wait_group),
+		objs.cmd_create_object_grid(ENEMY_CHASER, Vector2(4,-1), self, Vector3.ZERO, _wait_group),
+		objs.cmd_wait_group(_wait_group,1),
+		CMD_Wait_Seconds.new(2.2),
+		
+		#Second altars
+		CMD_Wait_Seconds.new(0.15),		
+		Level_Cmd_Utils.cmd_multiple_altars_left_to_right(POWERUP_ALTAR, second_altars, self, _wait_group),
+		objs.cmd_wait_group(_wait_group),
+		CMD_Wait_Seconds.new(0.15),
+
+		#First brawny
+		CMD_Sequence.new([
+			##Camera work
+			CMD_Callable.new(func():
+				cam.tween_position(stage.get_pos_x(), 1.8, LevelCameraController.MovementAxis.X, Tween.TRANS_QUAD, Tween.EASE_IN_OUT);
+				),
+			#cam.cmd_position_wait(stage.get_pos_z(), 2, LevelCameraController.MovementAxis.Z, Tween.TRANS_QUAD, Tween.EASE_IN),
+			cam.cmd_speed(-30, 1.5, LevelCameraController.MovementAxis.Z, Tween.TRANS_QUAD, Tween.EASE_IN),
+			CMD_Wait_Seconds.new(1.5),
+			CMD_Await_AsyncCallable.new(func():
+				stage.repivot();
+				stage.set_pivot_offset_z(10);
+				brawny.brawny = objs.create_object(ENEMY_BRAWNY, _wait_group, stage.get_grid(0,5));
+				var h:Health = brawny.brawny.health;
+				h.set_max_health(h.get_health() * brawny_hp_multiplier);
+				await brawny.brawny.fall_finished;
+				, self),
+			cam.cmd_speed_wait(0, .6, LevelCameraController.MovementAxis.Z, Tween.TRANS_QUAD, Tween.EASE_OUT),
+
+			#cam.cmd_position_wait(stage.get_pos_z()-10, 1, LevelCameraController.MovementAxis.Z, Tween.TRANS_QUAD, Tween.EASE_OUT),
+			#cam.cmd_speed_move_position(-70, stage.get_pos_z(), LevelCameraController.MovementAxis.Z, 1.5, .5, Tween.TRANS_SINE, Tween.EASE_IN,  Tween.TRANS_CIRC, Tween.EASE_OUT),
+			#CMD_Wait_Seconds.new(1),
+			CMD_Callable.new(func():
+				cam.tween_position_vector(stage.get_grid(0,0), 3,  Tween.TRANS_EXPO, Tween.EASE_IN_OUT);
+				),
+
+			CMD_Parallel.new([ ## Keep generating rusty pizzas while brawny is high hp
+				CMD_Sequence.new([
+					CMD_Wait_Callable.new(func():
+						return !brawny.brawny or brawny.brawny.health.get_health_percentage() < 0.6;
+						),
+					CMD_Wait_Seconds.new(2),
+					CMD_Callable.new(func():
+						##generate two lines of healthy pizzas that stay
+						for zPos in [-2,-4,-6]:
+							onFinalPizza.call(objs.create_object(ENEMY_PIZZA_ROBOTO, _wait_group, stage.get_grid(-4, zPos)));
+							onFinalPizza.call(objs.create_object(ENEMY_PIZZA_ROBOTO, _wait_group, stage.get_grid(4, zPos)));
+						for zPos in [-8,-10]:
+							onFinalPizza.call(objs.create_object(ENEMY_PIZZA_ROBOTO_SHOOTER, _wait_group, stage.get_grid(-4, zPos)));
+							onFinalPizza.call(objs.create_object(ENEMY_PIZZA_ROBOTO_SHOOTER, _wait_group, stage.get_grid(4, zPos)));
+						),
+				]),
+				CMD_Sequence.new([
+					CMD_Wait_Seconds.new(8.25),
+					CMD_Sequence.new([
+						CMD_Callable.new(spawnNormal),
+						CMD_Wait_Seconds.new(waitBetweenPizzasTime),
+						CMD_Callable.new(spawnNormal),
+						CMD_Wait_Seconds.new(waitBetweenPizzasTime),
+						CMD_Callable.new(spawnNormal),
+						CMD_Wait_Seconds.new(waitBetweenPizzasTime),
+						CMD_Callable.new(spawnNormal),
+						CMD_Wait_Seconds.new(waitBetweenPizzasTime * 1.5),
+						CMD_Callable.new(spawnShooter),
+						CMD_Wait_Seconds.new(waitBetweenPizzasTime),
+					], -1),
+					CMD_Wait_Seconds.new(8.25),
+					
+					CMD_Sequence.new([
+						CMD_Callable.new(spawnNormal),
+						CMD_Wait_Seconds.new(waitBetweenPizzasTime),
+						CMD_Callable.new(spawnNormal),
+						CMD_Wait_Seconds.new(waitBetweenPizzasTime),
+						CMD_Callable.new(spawnNormal),
+						CMD_Wait_Seconds.new(waitBetweenPizzasTime),
+						CMD_Callable.new(spawnNormal),
+						CMD_Wait_Seconds.new(waitBetweenPizzasTime * 1.5),
+						CMD_Callable.new(spawnNormal),
+						CMD_Wait_Seconds.new(waitBetweenPizzasTime),
+					], -1),
+				]),
+			]),
+			CMD_Wait_Callable.new(func():
+				return !is_instance_valid(brawny.brawny) or !brawny.brawny.health.is_alive();
+				),
+			objs.cmd_wait_group(_wait_group, 2),
+		]),
+		Level.CMD_Wait_Seconds.new(1.5),
+	], false);
+"
+
+[sub_resource type="Curve3D" id="Curve3D_bxhiy"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -0.692727, 0, -0.00761258, 0.692727, 0, 0.00761258, 2.36763, 0, 0.0114184, -0.862617, 0, -0.53674, 0.862617, 0, 0.53674, 5.59024, 0, 1.02556, 0.115015, 0, -0.977634, -0.115015, 0, 0.977634, 6.71504, 0, 3.72099, 0.862616, 0, 0.115015, -0.862616, 0, -0.115015, 3.75247, 0, 5.66266, 0.306709, 0, 0.536739, -0.306709, 0, -0.536739, 1.79968, 0, 3.95968, -0.555908, 0, 0.613416, 0.555908, 0, -0.613416, 1.85223, 0, 1.67731, -0.862617, 0, -0.345047, 0.862617, 0, 0.345047, 3.96086, 0, 1.02556, 0.0383377, 0, -0.920125, -0.0383377, 0, 0.920125, 5.74174, 0, 2.95795, 0.977347, 0, 0.0997, -0.977347, 0, -0.0997, 3.95096, 0, 4.651, -0.295357, 0, 0.713366, 0.295357, 0, -0.713366, 2.75196, 0, 2.26478, -0.541383, 0, -0.421931, 0.541383, 0, 0.421931, 4.59592, 0, 2.41563, 0.5, 0, 2, -0.465762, 0, -0.596644, 3.75, 0, 3),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 13
+
+[sub_resource type="Curve3D" id="Curve3D_bdcet"]
+_data = {
+"points": PackedVector3Array(-1, 0, -0.25, 1, 0, 0.25, 0, 0, 0, -1, 0, 0.5, 1, 0, -0.5, 9.5, 0, 0, 0.961211, 0, 0.417845, -0.961211, 0, -0.417845, 9.5, 0, -1, 1, 0, 0.5, -1, 0, -0.5, 1.72412, 0, -1.02955, -1.5, 0, 0, 1.5, 0, 0, 1.9795, 0, -2.20288, -1.03065, 0, 0.275839, 1.03065, 0, -0.275839, 9.5037, 0, -2.10455, 1.25877, 0, 0.46123, -1.25877, 0, -0.46123, 9.4987, 0, -3.25958, 1.34591, 0, 0.399847, -1.34591, 0, -0.399847, 2.9019, 0, -3.42829),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[node name="LVL BRAWNY" type="Node3D" node_paths=PackedStringArray("path_big", "path_small")]
+script = SubResource("GDScript_rulm3")
+first_altars = Array[PackedScene]([ExtResource("3_ail3x"), ExtResource("1_bxhiy")])
+second_altars = Array[PackedScene]([ExtResource("4_26w1c"), ExtResource("2_bdcet")])
+path_big = NodePath("Path Spiral")
+path_small = NodePath("Path Twirl")
+
+[node name="Lines" type="Node" parent="."]
+
+[node name="Line_Straight" type="Node3D" parent="Lines"]
+script = ExtResource("1_i3umk")
+
+[node name="Marker3D" type="Marker3D" parent="Lines/Line_Straight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="Lines/Line_Straight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+
+[node name="Line_Curvy" type="Node3D" parent="Lines"]
+script = ExtResource("1_i3umk")
+
+[node name="Marker3D" type="Marker3D" parent="Lines/Line_Curvy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
+
+[node name="Marker3D3" type="Marker3D" parent="Lines/Line_Curvy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="Marker3D4" type="Marker3D" parent="Lines/Line_Curvy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2)
+
+[node name="Marker3D5" type="Marker3D" parent="Lines/Line_Curvy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2)
+
+[node name="Marker3D6" type="Marker3D" parent="Lines/Line_Curvy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="Lines/Line_Curvy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+
+[node name="Line_ForwardThenBack" type="Node3D" parent="Lines"]
+script = ExtResource("1_i3umk")
+
+[node name="Marker3D" type="Marker3D" parent="Lines/Line_ForwardThenBack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
+
+[node name="Marker3D3" type="Marker3D" parent="Lines/Line_ForwardThenBack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="Marker3D4" type="Marker3D" parent="Lines/Line_ForwardThenBack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
+
+[node name="Marker3D5" type="Marker3D" parent="Lines/Line_ForwardThenBack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -2)
+
+[node name="Line_EntireScreen_Crazy" type="Node3D" parent="Lines"]
+script = ExtResource("1_i3umk")
+
+[node name="Marker3D" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+
+[node name="Marker3D2" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="Marker3D3" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
+
+[node name="Marker3D4" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 5)
+
+[node name="Marker3D5" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 5)
+
+[node name="Marker3D6" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 8)
+
+[node name="Marker3D7" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 8)
+
+[node name="Marker3D8" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 11)
+
+[node name="Marker3D9" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 11)
+
+[node name="Marker3D10" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 14)
+
+[node name="Marker3D11" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 14)
+
+[node name="Marker3D12" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 17)
+
+[node name="Marker3D13" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 17)
+
+[node name="Marker3D14" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 20)
+
+[node name="Marker3D15" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 20)
+
+[node name="Path Spiral" type="Path3D" parent="."]
+curve = SubResource("Curve3D_bxhiy")
+script = ExtResource("6_bdcet")
+
+[node name="Path Twirl" type="Path3D" parent="."]
+curve = SubResource("Curve3D_bdcet")
+script = ExtResource("6_bdcet")
+
+[node name="Av Brasil" parent="." instance=ExtResource("7_ail3x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.25)

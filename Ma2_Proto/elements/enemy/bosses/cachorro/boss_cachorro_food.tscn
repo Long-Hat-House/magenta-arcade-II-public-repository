@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxhyjw4pv7rxq"]
+
+[ext_resource type="PackedScene" path="res://elements/enemy/bosses/cachorro/mesh/mesh_biscoito_cachorro.tscn" id="1_xc5fe"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="2_yqv4q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3o6rw"]
+albedo_color = Color(1, 0.603922, 0.282353, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4en3q"]
+material = SubResource("StandardMaterial3D_3o6rw")
+top_radius = 1.0
+bottom_radius = 1.25
+height = 0.5
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nnrnd"]
+height = 0.5
+radius = 1.25
+
+[node name="BossCachorro_Food" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25, 0.5, 7.5)
+collision_layer = 512
+collision_mask = 0
+
+[node name="Mesh" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh"]
+visible = false
+mesh = SubResource("CylinderMesh_4en3q")
+
+[node name="biscoito_cachorro" parent="Mesh" instance=ExtResource("1_xc5fe")]
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="Mesh/biscoito_cachorro"]
+script = ExtResource("2_yqv4q")
+high_contrast_group = &"player"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="Label3D" type="Label3D" parent="Mesh"]
+transform = Transform3D(0.995406, 0.0957415, 0, 4.18499e-09, -4.35106e-08, 1, 0.0957415, -0.995406, -4.37114e-08, 0, 0.280457, 0)
+visible = false
+modulate = Color(0.521569, 0.329412, 0.164706, 1)
+outline_modulate = Color(1, 0.756863, 0.411765, 1)
+text = "Comida de
+cachorro"
+font_size = 72
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("CylinderShape3D_nnrnd")

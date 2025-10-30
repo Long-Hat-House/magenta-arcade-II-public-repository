@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://did4qoda8dsqp"]
+
+[ext_resource type="PackedScene" uid="uid://dfkcpw64lu2dy" path="res://elements/neutral/props/belt/mesh/belt.glb" id="1_hanij"]
+[ext_resource type="Material" uid="uid://clvkufg7fr61p" path="res://elements/neutral/props/belt/material/m_belt.tres" id="2_cg13n"]
+[ext_resource type="Material" uid="uid://cqkrfrd6hmwe2" path="res://elements/neutral/props/belt/material/m_belt_border.tres" id="3_lc03l"]
+
+[sub_resource type="Animation" id="Animation_jnp41"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("belt:surface_material_override/0:uv1_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_t1gff"]
+resource_name = "anim_belt"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("belt:surface_material_override/0:uv1_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oqsdq"]
+_data = {
+"RESET": SubResource("Animation_jnp41"),
+"anim_belt": SubResource("Animation_t1gff")
+}
+
+[node name="belt" instance=ExtResource("1_hanij")]
+
+[node name="belt" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_cg13n")
+surface_material_override/1 = ExtResource("3_lc03l")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_oqsdq")
+}
+autoplay = "anim_belt"

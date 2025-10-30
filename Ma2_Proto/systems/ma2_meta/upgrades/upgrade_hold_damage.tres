@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UpgradeInfo" load_steps=2 format=3 uid="uid://com3qf7kk6fby"]
+
+[ext_resource type="Script" uid="uid://dospanm60t0v5" path="res://systems/ma2_meta/upgrade_info.gd" id="1_4ljwo"]
+
+[resource]
+script = ExtResource("1_4ljwo")
+upgrade_id = &"DEPRECATED"
+upgrade_description = &"DEPRECATED"
+stars_per_progress = Array[int]([3, 3, 3])
+upgrade_developer_instruction = "DEPRECATED"
+float_val = 0.0
+float_val_array = Array[float]([])

@@ -1,0 +1,22 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://dafjnh1qmd0bx"]
+
+[ext_resource type="Texture2D" uid="uid://cml48rb6mvhdt" path="res://elements/background/texture/generic_street_texture/box_plant_basecolor.png" id="1_yqf0b"]
+[ext_resource type="Texture2D" uid="uid://62w2p7tpemss" path="res://elements/background/texture/generic_street_texture/box_plant_normal.png" id="3_yjqf3"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sb6ck"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("1_yqf0b")
+emission_energy_multiplier = 16.0
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = ExtResource("3_yjqf3")
+rim_tint = 1.0
+clearcoat = 0.2
+clearcoat_roughness = 0.59
+anisotropy = 0.33
+ao_texture = SubResource("CompressedTexture2D_sb6ck")
+backlight = Color(0.0313726, 0.0313726, 0.0313726, 1)
+uv1_offset = Vector3(0, -0.095, 0)

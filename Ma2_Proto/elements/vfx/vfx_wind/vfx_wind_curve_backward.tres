@@ -1,0 +1,9 @@
+[gd_resource type="CurveTexture" load_steps=2 format=3 uid="uid://cf6wvx414dwjb"]
+
+[sub_resource type="Curve" id="Curve_4cbvt"]
+_data = [Vector2(0, 1), 0.0, -1.54831, 0, 0, Vector2(0.212264, 0.651685), 0.0, 0.0, 0, 0, Vector2(0.764151, 0.393258), -1.66741, -1.66741, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[resource]
+width = 128
+curve = SubResource("Curve_4cbvt")

@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://ippkhx7fhfpp"]
+
+[ext_resource type="Script" uid="uid://c41w8m6vndkdi" path="res://elements/enemy/bosses/pirulito/nando_and_nene/graphic_pirulito_nando_and_nene.gd" id="1_03yi0"]
+[ext_resource type="PackedScene" uid="uid://cux5kcyvhvhq4" path="res://modules/text_flow/scenes/text_flow_player_bubbles.tscn" id="1_0602u"]
+[ext_resource type="Script" uid="uid://bj8qwbado7bkt" path="res://systems/utils/look_at_camera.gd" id="2_iv5pr"]
+[ext_resource type="SpriteFrames" uid="uid://c336ukf28tpy5" path="res://elements/enemy/bosses/pirulito/nando_and_nene/pirulito_nando_and_nene.aseprite" id="3_330ed"]
+[ext_resource type="PackedScene" uid="uid://dskpdh8c11ga7" path="res://elements/npc/npc_high_contrast_sprite.tscn" id="5_7egny"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gw8kh"]
+size = Vector3(1, 1.64307, 1)
+
+[node name="Enemy_Boss_Nando_And_Nene" type="Node3D" node_paths=PackedStringArray("position_bubble")]
+script = ExtResource("1_03yi0")
+position_bubble = NodePath("BubblePosition_Hidden")
+
+[node name="TextFlowPlayerBubbles" parent="." instance=ExtResource("1_0602u")]
+
+[node name="BubblePosition_Hidden" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Graphic" type="Node3D" parent="."]
+
+[node name="Look At Camera" type="Node3D" parent="Graphic"]
+script = ExtResource("2_iv5pr")
+
+[node name="BubblePosition" type="Node3D" parent="Graphic/Look At Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.174, 3, 0)
+
+[node name="BubblePosition_Appear1" type="Node3D" parent="Graphic/Look At Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.930787, 3.14549, 0)
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Graphic/Look At Camera"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.214844)
+offset = Vector2(0, 128)
+pixel_size = 0.0078
+billboard = 1
+texture_filter = 0
+sprite_frames = ExtResource("3_330ed")
+animation = &"part_1_open_speak"
+
+[node name="NPC_HighContrastSprite" parent="Graphic/Look At Camera/AnimatedSprite3D" instance=ExtResource("5_7egny")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0)
+
+[node name="NPC_HighContrastSprite2" parent="Graphic/Look At Camera/AnimatedSprite3D" instance=ExtResource("5_7egny")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="Graphic"]
+collision_layer = 4
+collision_mask = 10
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Graphic/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.741456, 0)
+shape = SubResource("BoxShape3D_gw8kh")
+
+[connection signal="area_entered" from="Graphic/Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="body_entered" from="Graphic/Area3D" to="." method="_on_area_3d_body_entered"]

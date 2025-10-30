@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://csji88heofro4"]
+
+[ext_resource type="Texture2D" uid="uid://7gjyslcj4vq5" path="res://elements/neutral/setpieces/ivo_flag_pole/texture/ivo_flag.png" id="1_axend"]
+
+[resource]
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("1_axend")
+rim = 0.33
+rim_tint = 1.0
+backlight = Color(0.65098, 0.615686, 0.580392, 1)
+texture_filter = 0
+texture_repeat = false

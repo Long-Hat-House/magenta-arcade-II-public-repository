@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://bwdpamu8o51h6"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "VFX_PowerUp_Button_Finished"
+id = 3488687394
+guid = "{36F3802A-1E3E-4498-90A0-CFFA1DA560D6}"
+dummy = true

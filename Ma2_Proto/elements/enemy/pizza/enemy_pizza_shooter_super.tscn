@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://cyrihpv5hlptt"]
+
+[ext_resource type="PackedScene" uid="uid://bfp6hll5p8pd" path="res://elements/enemy/pizza/enemy_pizza_roboto_shooter.tscn" id="1_fk5t4"]
+[ext_resource type="Texture2D" uid="uid://dns8cwpuuywb4" path="res://elements/enemy/pizza/Texture/M_Pizza_BaseColor.png" id="2_6lsjx"]
+[ext_resource type="PackedScene" uid="uid://d4mxbt6t150m0" path="res://elements/enemy/pizza/enemy_pizza_roboto_coward_super.tscn" id="2_dcb3h"]
+[ext_resource type="PackedScene" uid="uid://c6gv2ejlr58a2" path="res://elements/enemy/projectiles/proj_super/proj_enemy_super.tscn" id="2_rx0tp"]
+[ext_resource type="Texture2D" uid="uid://c3sbrjkkf560h" path="res://elements/enemy/pizza/Texture/M_Pizza_Emission.png" id="3_2fko7"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jie0d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w6xig"]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(1, 0, 1, 1)
+albedo_texture = ExtResource("2_6lsjx")
+metallic = 0.15
+metallic_specular = 0.15
+roughness = 0.4
+emission_enabled = true
+emission_energy_multiplier = 16.0
+emission_texture = ExtResource("3_2fko7")
+rim_enabled = true
+rim_tint = 1.0
+clearcoat = 0.2
+clearcoat_roughness = 0.59
+anisotropy = 0.33
+ao_texture = SubResource("CompressedTexture2D_jie0d")
+backlight = Color(0.0313726, 0.0313726, 0.0313726, 1)
+
+[node name="PizzaShooter_Super" instance=ExtResource("1_fk5t4")]
+instantiateInPlace = ExtResource("2_dcb3h")
+await_to_kill_self_on_collision = 0.1
+
+[node name="Health" parent="Body" index="1"]
+max_amount = 3.5
+
+[node name="Corpo" parent="Body/Render/Pizza_Roboto_Shooter/Rig_Pizza/Skeleton3D" index="2"]
+material_override = SubResource("StandardMaterial3D_w6xig")
+
+[node name="Cannon_Invisible" parent="Body" index="6"]
+projectile = ExtResource("2_rx0tp")
+
+[editable path="Body/Render/Pizza_Roboto_Shooter"]

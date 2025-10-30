@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://fktp5jcw60rv"]
+
+[ext_resource type="PackedScene" uid="uid://bjyartpafpk0e" path="res://elements/enemy/chaser/mesh/roboto_bomba_perseguidora.glb" id="1_4uon0"]
+[ext_resource type="Material" uid="uid://b5cn3og4dn4fi" path="res://elements/enemy/chaser/material/m_roboto_bomba_perseguidora.tres" id="2_bdkpc"]
+
+[node name="roboto_bomba_perseguidora" instance=ExtResource("1_4uon0")]
+
+[node name="Skeleton3D" parent="rig_roboto_perseguidor" index="0"]
+bones/0/rotation = Quaternion(-1.92025e-08, 1.09564e-07, 0.0696317, 0.997573)
+bones/1/rotation = Quaternion(-5.1028e-16, 0.707107, 2.5514e-16, 0.707107)
+bones/2/position = Vector3(2.24993, 0.756033, 6.84216e-07)
+bones/3/position = Vector3(-1.17721e-10, -0.426438, 2.4126e-09)
+bones/4/position = Vector3(-3.52467e-09, 0.396418, 1.28258e-08)
+bones/5/rotation = Quaternion(0.41071, -0.312743, -0.278943, 0.809753)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(-0.0367756, -0.0324396, -0.0650189, 0.996678)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(0.0136675, 0.02961, -0.133624, 0.990495)
+bones/7/scale = Vector3(1.62393, 1.62393, 1.62393)
+bones/8/rotation = Quaternion(0.41071, 0.312743, 0.278943, 0.809753)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(-0.0367756, 0.0324396, 0.0650189, 0.996678)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.0136675, -0.02961, 0.133624, 0.990495)
+
+[node name="esfera" parent="rig_roboto_perseguidor/Skeleton3D" index="0"]
+material_override = ExtResource("2_bdkpc")
+"blend_shapes/Key 1" = 0.531693
+
+[node name="roboto_bomba_perseguidor" parent="rig_roboto_perseguidor/Skeleton3D" index="1"]
+material_override = ExtResource("2_bdkpc")

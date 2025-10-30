@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ScoreInfo" load_steps=2 format=3 uid="uid://cusj3l6d4ylci"]
+
+[ext_resource type="Script" uid="uid://xfqoedvnoauc" path="res://systems/score/score_info.gd" id="1_yntps"]
+
+[resource]
+script = ExtResource("1_yntps")
+score_title = &"Brawnyie"
+score_value = 100
+world_positioned = true
+works_in_shop_mode = false
+adds_to_combo = true
+ignore_boost_multiplier = false

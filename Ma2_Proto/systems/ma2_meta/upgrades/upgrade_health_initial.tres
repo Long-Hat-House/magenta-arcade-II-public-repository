@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="UpgradeInfo" load_steps=3 format=3 uid="uid://dwbt1t0wi1gt0"]
+
+[ext_resource type="Script" uid="uid://dospanm60t0v5" path="res://systems/ma2_meta/upgrade_info.gd" id="1_vght0"]
+[ext_resource type="Texture2D" uid="uid://bhgklq4s1nagr" path="res://elements/icons/icons_upgrades/icon_upgrade_health_initial.png" id="2_dqdgt"]
+
+[resource]
+script = ExtResource("1_vght0")
+upgrade_id = &"upgrade_health_initial"
+upgrade_description = &"upgrade_health_initial_dialogue"
+upgrade_icon = ExtResource("2_dqdgt")
+stars_per_progress = Array[int]([1, 3, 5])
+upgrade_developer_instruction = "Player _ready():
+player.hp = player.maxHP + this.progress()"
+float_val = 0.0
+float_val_array = Array[float]([])

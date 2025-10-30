@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dotqnvbaucd8j"]
+
+[ext_resource type="PackedScene" uid="uid://cgkulnofapvy" path="res://elements/neutral/props/vegetation/mesh/palm.glb" id="1_u6o3t"]
+[ext_resource type="Material" uid="uid://rgr81g0v4g5c" path="res://elements/neutral/props/vegetation/material/m_palm.tres" id="2_l3njv"]
+
+[node name="Mesh Palm" instance=ExtResource("1_u6o3t")]
+
+[node name="leaf" parent="." index="0"]
+material_override = ExtResource("2_l3njv")
+
+[node name="trunk" parent="." index="1"]
+material_override = ExtResource("2_l3njv")

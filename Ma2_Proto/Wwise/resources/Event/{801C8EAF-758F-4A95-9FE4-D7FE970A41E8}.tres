@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" load_steps=0 format=3 uid="uid://d1md3i4oy2noi"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_FinalBoss_Lv4_Final_Laser_Charge"
+id = 2062636802
+guid = "{801C8EAF-758F-4A95-9FE4-D7FE970A41E8}"
+dummy = true

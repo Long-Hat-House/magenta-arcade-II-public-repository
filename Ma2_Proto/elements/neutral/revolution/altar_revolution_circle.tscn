@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvh1lqyy0b4d5"]
+
+[ext_resource type="Script" uid="uid://nmi7nu7xqfhq" path="res://elements/general_use/children_in_circle.gd" id="1_7g7ps"]
+[ext_resource type="Script" uid="uid://bv4iuxy64aq50" path="res://elements/neutral/revolution/altar_revolution_circle.gd" id="1_tty23"]
+[ext_resource type="PackedScene" uid="uid://bty1g36mrus4" path="res://elements/powerups/altar/powerup_altar_tweenable.tscn" id="2_pes4k"]
+[ext_resource type="PackedScene" uid="uid://dbxuel5aj5o6c" path="res://elements/powerups/button/holdable_button_challenge_wish.tscn" id="3_x33d3"]
+
+[node name="AltarRevolutionCircle" type="Node3D"]
+script = ExtResource("1_tty23")
+altar_scene = ExtResource("2_pes4k")
+velocity_angle = 45.0
+normal_button_scene = ExtResource("3_x33d3")
+
+[node name="Circle" type="Node3D" parent="."]
+script = ExtResource("1_7g7ps")
+radius = 0.0
+walk_max_arc = 6.28319

@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" load_steps=0 format=3 uid="uid://dnad1gtiv1hs1"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Boss_Lv0_Shoot_Charge"
+id = 911650709
+guid = "{AFF64546-93FA-473A-B983-444CCBAFA7BE}"
+dummy = true

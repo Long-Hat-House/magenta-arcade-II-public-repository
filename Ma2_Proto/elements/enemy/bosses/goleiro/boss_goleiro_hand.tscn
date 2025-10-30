@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://bbg6jxj582g6s"]
+
+[ext_resource type="Script" uid="uid://b1vbteuwwb2xb" path="res://elements/enemy/bosses/goleiro/bossGoleiro/boss_goleiro_hand.gd" id="1_3n63v"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="1_5je2a"]
+[ext_resource type="Resource" uid="uid://bvs8v0jcs1hln" path="res://systems/time/frame_freeze_small.tres" id="2_5sioe"]
+[ext_resource type="Script" uid="uid://12n3djyfivsg" path="res://systems/graphics/reactive_floating_animation.gd" id="2_p72jd"]
+[ext_resource type="Resource" uid="uid://iesh2ok5qwkx" path="res://systems/screen/camera_shake_small.tres" id="3_omd8x"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sxfq8"]
+radius = 0.75
+
+[node name="BossGoleiroHand" type="Node3D" node_paths=PackedStringArray("target")]
+script = ExtResource("1_3n63v")
+time_multiplier = 3.0
+radius = 0.75
+circle_multiplier = Vector2(0.25, 1)
+circle_normal = Vector3(0, -0.1, 1)
+target = NodePath("Graphic")
+
+[node name="Graphic" type="Node3D" parent="."]
+script = ExtResource("2_p72jd")
+yaw_multiplier = 0.2
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Health" type="Node" parent="Area3D" node_paths=PackedStringArray("feedback")]
+script = ExtResource("1_5je2a")
+max_amount = 5.0
+feedback = [NodePath("../../Graphic")]
+frame_freeze_on_death = ExtResource("2_5sioe")
+screen_shake_on_death = ExtResource("3_omd8x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.100227, 0.559568, 0.320185)
+shape = SubResource("SphereShape3D_sxfq8")

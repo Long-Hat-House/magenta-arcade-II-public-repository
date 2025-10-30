@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://ny8m2vrq0djt"]
+
+[ext_resource type="PackedScene" uid="uid://ccn6065djpwhr" path="res://elements/powerups/button/powerup_holdable_button.tscn" id="1_1jhgf"]
+[ext_resource type="Texture2D" uid="uid://cp6hntr4j50gx" path="res://elements/icons/icon_sacrifice_tap.png" id="2_otvmg"]
+[ext_resource type="Script" uid="uid://cwaq3i3ph60hk" path="res://systems/tasks/specific/player_effect_task.gd" id="3_qi6me"]
+[ext_resource type="Script" uid="uid://ca23kchksh7la" path="res://systems/condition/specific/condition_has_anything_to_sacrifice.gd" id="4_4dfwb"]
+
+[node name="SacrificeButton-DOWNGRADE_HOLD" node_paths=PackedStringArray("condition_false_task") instance=ExtResource("1_1jhgf")]
+condition_false_task = NodePath("Task_PlayerEffect")
+
+[node name="button_graphic" parent="Area3D" index="1"]
+default_icon = ExtResource("2_otvmg")
+default_color = Color(0.745098, 0, 0.784314, 1)
+default_color_highlight = Color(0.87451, 0.576471, 0.796078, 1)
+
+[node name="Task_PlayerEffect" type="Node" parent="." index="4"]
+script = ExtResource("3_qi6me")
+
+[node name="Condition_HasAnythingToSacrifice" type="Node" parent="." index="7"]
+script = ExtResource("4_4dfwb")
+metadata/_custom_type_script = "uid://ca23kchksh7la"

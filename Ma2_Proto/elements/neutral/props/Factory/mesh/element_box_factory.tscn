@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://cd77fkxpi0jxa"]
+
+[ext_resource type="PackedScene" uid="uid://cjbjsqj8ss8he" path="res://elements/neutral/props/Factory/mesh/box_factory.glb" id="1_njsbs"]
+[ext_resource type="Material" uid="uid://chct5jgl33x5t" path="res://elements/neutral/props/Factory/material/m_box_megaphone_cabinet.tres" id="2_gwum2"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="3_6cokf"]
+[ext_resource type="PackedScene" uid="uid://bk3c6a8vre6yr" path="res://elements/neutral/props/generic_body_and_presseable.tscn" id="3_y0m4d"]
+[ext_resource type="Script" uid="uid://0wf4obm88h88" path="res://elements/neutral/props/generic_tumbler.gd" id="4_jr5db"]
+[ext_resource type="Resource" uid="uid://xjo63p51vb5t" path="res://elements/neutral/props/totem/element_paper_box_tumble_data.tres" id="5_6cokf"]
+[ext_resource type="Script" uid="uid://biqjvlcudqx0t" path="res://elements/player/force_receiver.gd" id="6_kb2bt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t3hem"]
+
+[node name="factory_box" instance=ExtResource("1_njsbs")]
+
+[node name="box" parent="." index="0"]
+material_override = ExtResource("2_gwum2")
+
+[node name="Marker3D" type="Marker3D" parent="box" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="box" index="1"]
+script = ExtResource("3_6cokf")
+high_contrast_group = &"scenery"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="GenericBodyAndPresseable" parent="." index="1" node_paths=PackedStringArray("on_kill_queue_free", "generic_tumbler", "visual_feedback_of_health") instance=ExtResource("3_y0m4d")]
+on_kill_queue_free = [NodePath("..")]
+generic_tumbler = NodePath("../GenericTumbler")
+visual_feedback_of_health = [NodePath("../box")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GenericBodyAndPresseable" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_t3hem")
+
+[node name="Explosion" type="Node3D" parent="GenericBodyAndPresseable" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="GenericTumbler" type="Node3D" parent="." index="2" node_paths=PackedStringArray("receiver", "to_tumble", "tumble_box_corner")]
+script = ExtResource("4_jr5db")
+receiver = NodePath("ForceReceiver")
+to_tumble = NodePath("../box")
+tumble_data = ExtResource("5_6cokf")
+tumble_box_corner = NodePath("../box/Marker3D")
+metadata/_custom_type_script = "uid://0wf4obm88h88"
+
+[node name="ForceReceiver" type="Node3D" parent="GenericTumbler" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("6_kb2bt")
+metadata/_custom_type_script = "uid://biqjvlcudqx0t"

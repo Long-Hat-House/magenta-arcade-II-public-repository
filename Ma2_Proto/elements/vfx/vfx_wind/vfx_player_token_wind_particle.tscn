@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://cjlt1p8ua4t6s"]
+
+[ext_resource type="Texture2D" uid="uid://da1c3vx7yckc7" path="res://elements/vfx/vfx_wind/vfx_wind_curve_forward.tres" id="1_xda73"]
+[ext_resource type="Texture2D" uid="uid://b7loyt1pktps8" path="res://elements/vfx/vfx_wind/vfx_wind2.png" id="2_g0n1s"]
+
+[sub_resource type="Curve" id="Curve_g0n1s"]
+_data = [Vector2(0, 0), 0.0, 4.56442, 0, 0, Vector2(0.205069, 0.36766), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.985852, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_g71ru"]
+width = 128
+texture_mode = 1
+curve = SubResource("Curve_g0n1s")
+
+[sub_resource type="Curve" id="Curve_xda73"]
+_data = [Vector2(0, 0.168273), 0.0, 1.52147, 0, 0, Vector2(1, 0.723874), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_g0n1s"]
+curve = SubResource("Curve_xda73")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xda73"]
+lifetime_randomness = 0.75
+particle_flag_rotate_y = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.5
+emission_ring_radius = 7.0
+emission_ring_inner_radius = 1.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 2, 0)
+damping_min = 2.0
+damping_max = 5.0
+scale_over_velocity_min = 0.1
+scale_over_velocity_max = 5.0
+scale_over_velocity_curve = SubResource("CurveTexture_g0n1s")
+color = Color(0.76662, 0.76662, 0.76662, 1)
+alpha_curve = SubResource("CurveTexture_g71ru")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+anim_speed_curve = ExtResource("1_xda73")
+anim_offset_max = 0.0874
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4fywx"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_g0n1s")
+metallic = 0.1
+metallic_specular = 0.0
+texture_filter = 0
+texture_repeat = false
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 3
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_iipj4"]
+material = SubResource("StandardMaterial3D_4fywx")
+size = Vector2(0.5, 0.5)
+
+[node name="VFX Wind" type="GPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+amount = 50
+lifetime = 1.2
+explosiveness = 0.25
+randomness = 0.4
+fixed_fps = 60
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_xda73")
+draw_pass_1 = SubResource("QuadMesh_iipj4")

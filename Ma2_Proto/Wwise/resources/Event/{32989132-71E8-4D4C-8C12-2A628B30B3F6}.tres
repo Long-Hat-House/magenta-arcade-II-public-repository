@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://7bupa8r7082p"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Int_Phone_Open"
+id = 2601660719
+guid = "{32989132-71E8-4D4C-8C12-2A628B30B3F6}"
+dummy = true

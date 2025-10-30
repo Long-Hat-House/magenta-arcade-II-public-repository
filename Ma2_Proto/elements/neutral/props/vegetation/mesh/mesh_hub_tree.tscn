@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4nqw3ytrdqq5"]
+
+[ext_resource type="Script" uid="uid://0wf4obm88h88" path="res://elements/neutral/props/generic_tumbler.gd" id="1_1tpbx"]
+[ext_resource type="PackedScene" uid="uid://c444c2ol5myg" path="res://elements/neutral/props/vegetation/mesh/mesh_trunk_02.tscn" id="1_246rm"]
+[ext_resource type="Resource" uid="uid://bv7gqtc7bxel0" path="res://elements/neutral/props/vegetation/element_tree_tumble_data.tres" id="2_84a20"]
+[ext_resource type="PackedScene" uid="uid://ctrdkp2sk2x0n" path="res://elements/neutral/props/vegetation/mesh/mesh_leaf_tree.tscn" id="2_eyikb"]
+[ext_resource type="Script" uid="uid://biqjvlcudqx0t" path="res://elements/player/force_receiver.gd" id="5_ha3aq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r72yb"]
+radius = 0.801389
+height = 7.5
+
+[node name="hub_tree" type="Node3D"]
+
+[node name="Tumbler" type="Node3D" parent="." node_paths=PackedStringArray("receiver", "to_tumble", "tumble_box_corner")]
+script = ExtResource("1_1tpbx")
+receiver = NodePath("ForceReceiver")
+to_tumble = NodePath(".")
+tumble_data = ExtResource("2_84a20")
+tumble_radius = 1.7
+tumble_box_corner = NodePath("Corner")
+
+[node name="tree" type="Node3D" parent="Tumbler"]
+
+[node name="trunk" parent="Tumbler/tree" instance=ExtResource("1_246rm")]
+
+[node name="leaf_tree4" parent="Tumbler/tree" instance=ExtResource("2_eyikb")]
+transform = Transform3D(0.318102, -0.0986365, 0.39282, 0.178038, 0.4827, -0.0229683, -0.363784, 0.149987, 0.33225, -1.76602, 6.0025, -0.0697543)
+
+[node name="leaf_tree6" parent="Tumbler/tree" instance=ExtResource("2_eyikb")]
+transform = Transform3D(0.60357, 0, 0.660854, 0, 0.895, 0, -0.660854, 0, 0.60357, 0.661304, 6.53221, -0.290455)
+
+[node name="leaf_tree8" parent="Tumbler/tree" instance=ExtResource("2_eyikb")]
+transform = Transform3D(0.78228, 0, 0.856526, -0.0305646, 1.15926, 0.0279152, -0.855981, -0.0413939, 0.781782, -0.969764, 6.12604, -1.08579)
+visible = false
+
+[node name="leaf_tree9" parent="Tumbler/tree" instance=ExtResource("2_eyikb")]
+transform = Transform3D(0.660892, -1.82539e-09, 0.723617, -0.0258218, 0.979376, 0.0235835, -0.723156, -0.0349707, 0.660471, -1.64187, 6.43229, -1.62347)
+visible = false
+
+[node name="leaf_tree10" parent="Tumbler/tree" instance=ExtResource("2_eyikb")]
+transform = Transform3D(0.518005, -0.1371, 0.55991, 0.0724186, 0.762275, 0.119653, -0.571884, -0.0276554, 0.522311, -0.553207, 6.30229, 0.173692)
+
+[node name="leaf_tree7" parent="Tumbler/tree" instance=ExtResource("2_eyikb")]
+transform = Transform3D(0.726096, -0.0279288, 0.789104, 0.0997201, 1.15145, -0.0556699, -0.789158, 0.119803, 0.719011, 0.759778, 6.09755, 1.25313)
+
+[node name="leaf_tree5" parent="Tumbler/tree" instance=ExtResource("2_eyikb")]
+transform = Transform3D(0.333882, 0.126341, 0.319377, 0.0203374, 0.437361, -0.194274, -0.342856, 0.148977, 0.299494, -2.39564, 6.12721, -0.607221)
+
+[node name="leaf_tree" parent="Tumbler/tree" instance=ExtResource("2_eyikb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7937, 5.94205, 0.318474)
+
+[node name="leaf_tree2" parent="Tumbler/tree" instance=ExtResource("2_eyikb")]
+transform = Transform3D(0.660553, 0.169687, 0, -0.163908, 0.638054, -0.17648, -0.0439097, 0.17093, 0.658771, -5.45365, 5.94205, 1.11366)
+
+[node name="leaf_tree3" parent="Tumbler/tree" instance=ExtResource("2_eyikb")]
+transform = Transform3D(0.563698, 0.144806, -3.16391e-09, -0.139874, 0.544498, -0.150603, -0.0374713, 0.145867, 0.562177, -5.39517, 6.22714, 0.775594)
+
+[node name="ForceReceiver" type="Node3D" parent="Tumbler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5)
+script = ExtResource("5_ha3aq")
+
+[node name="Corner" type="Marker3D" parent="Tumbler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 0, -1.25)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="ground" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 2.5, 0)
+shape = SubResource("CapsuleShape3D_r72yb")
+
+[connection signal="force_received" from="Tumbler/ForceReceiver" to="Tumbler" method="_on_force_receiver_force_received"]

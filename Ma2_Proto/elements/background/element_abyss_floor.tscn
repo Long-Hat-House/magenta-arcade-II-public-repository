@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://26upksxb7pph"]
+
+[ext_resource type="Material" uid="uid://b1j3cq2y2j1px" path="res://elements/background/material/m_abyss.tres" id="1_b3dmm"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ao4am"]
+size = Vector2(1, 1)
+center_offset = Vector3(0.5, 0, 0.5)
+
+[node name="Clay" type="Node3D"]
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0)
+layers = 3
+material_override = ExtResource("1_b3dmm")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_ao4am")

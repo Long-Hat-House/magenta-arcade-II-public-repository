@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxeo3sqv5l8o4"]
+
+[ext_resource type="Script" uid="uid://caa8h3xyq27yk" path="res://modules/menu_system/menu_agregator.gd" id="1_bp4hr"]
+[ext_resource type="Script" uid="uid://dkfbksfshet22" path="res://modules/ui_factory/extended_label.gd" id="2_fqqv3"]
+[ext_resource type="PackedScene" uid="uid://bpnc27oayiiy0" path="res://elements/ui/menus/pause_menu/pause_sub_3.tscn" id="3_tg01f"]
+
+[node name="Pause Sub 2" type="PanelContainer" node_paths=PackedStringArray("_container_subaggregators", "_container_elements", "_label_title", "_label_subtitle")]
+offset_right = 644.0
+offset_bottom = 321.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+mouse_filter = 2
+theme_type_variation = &"panelcontainer_sub2"
+script = ExtResource("1_bp4hr")
+_subaggregator_scene = ExtResource("3_tg01f")
+_container_subaggregators = NodePath("Container - All/Container Elements & AGs")
+_container_elements = NodePath("Container - All/Container Elements & AGs")
+_label_title = NodePath("Container - All/Title")
+_label_subtitle = NodePath("Container - All/Subtitle")
+
+[node name="Container - All" type="VBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="Container - All"]
+layout_mode = 2
+mouse_filter = 1
+theme_type_variation = &"label_menu_score"
+text = "Title"
+horizontal_alignment = 1
+script = ExtResource("2_fqqv3")
+
+[node name="Subtitle" type="Label" parent="Container - All"]
+layout_mode = 2
+mouse_filter = 1
+text = "Information"
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("2_fqqv3")
+
+[node name="Container Elements & AGs" type="VBoxContainer" parent="Container - All"]
+layout_mode = 2
+mouse_filter = 2

@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b72j76g53xolg"]
+
+[ext_resource type="Texture2D" uid="uid://b2ccar5wr6xr6" path="res://elements/general_use/texture/t_tests_triplanar.png" id="1_60wt8"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("1_60wt8")
+normal_enabled = true
+ao_on_uv2 = true
+ao_texture_channel = 4
+heightmap_scale = 12.085
+backlight = Color(0.921569, 0.443137, 0.470588, 1)
+uv1_triplanar = true
+uv1_world_triplanar = true

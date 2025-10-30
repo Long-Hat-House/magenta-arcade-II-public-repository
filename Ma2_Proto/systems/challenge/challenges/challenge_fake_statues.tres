@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ChallengeInfo" load_steps=5 format=3 uid="uid://djusr4e8al1qu"]
+
+[ext_resource type="PackedScene" uid="uid://ta33edhasg1x" path="res://elements/powerups/button/holdable_button_health.tscn" id="1_vhq86"]
+[ext_resource type="PackedScene" uid="uid://ci8clax7whhvw" path="res://elements/powerups/button/holdable_button_extrashot.tscn" id="2_xs8b5"]
+[ext_resource type="PackedScene" uid="uid://4qqcmtywm6p0" path="res://elements/powerups/button/holdable_button_holdlvlup.tscn" id="3_lpruu"]
+[ext_resource type="Script" uid="uid://cuefq27ccwdoc" path="res://systems/challenge/challenge_info.gd" id="4_cuoho"]
+
+[resource]
+script = ExtResource("4_cuoho")
+challenge_begin_title = &"menu_challenge_begin_title"
+challenge_fail_title = &"menu_challenge_fail_title"
+challenge_victory_title = &"menu_challenge_victory_title"
+challenge_victory_subtitle = &"menu_challenge_victory_subtitle"
+challenge_instruction_text = &"challenge_lair_statues_begin"
+challenge_victory_text = &"challenge_lair_statues_victory"
+general_prizes = Array[int]([])
+scene_prizes = Array[PackedScene]([ExtResource("1_vhq86"), ExtResource("2_xs8b5"), ExtResource("3_lpruu")])

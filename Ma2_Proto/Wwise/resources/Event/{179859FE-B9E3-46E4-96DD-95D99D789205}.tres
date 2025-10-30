@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://b2nd3owh5nvqv"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_UI_LevelClear_Stars"
+id = 2323905208
+guid = "{179859FE-B9E3-46E4-96DD-95D99D789205}"
+dummy = true

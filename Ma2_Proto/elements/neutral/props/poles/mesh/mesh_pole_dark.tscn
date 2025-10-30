@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqu7ohn46rew1"]
+
+[ext_resource type="PackedScene" uid="uid://i5iulc4s2it5" path="res://elements/neutral/props/poles/mesh/mesh_pole_dark.glb" id="1_ltaaj"]
+[ext_resource type="Material" uid="uid://jd3sh32wkwiq" path="res://elements/neutral/props/poles/material/m_pole_traffic.tres" id="2_bt3hr"]
+
+[node name="pole_dark" instance=ExtResource("1_ltaaj")]
+
+[node name="pole_traffic" parent="." index="0"]
+material_override = ExtResource("2_bt3hr")

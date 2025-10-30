@@ -1,0 +1,251 @@
+[gd_scene load_steps=27 format=3 uid="uid://232ljvownc1d"]
+
+[ext_resource type="Script" uid="uid://bt3rgk2gx218p" path="res://systems/stage/level_stage_piece.gd" id="1_15w14"]
+[ext_resource type="PackedScene" uid="uid://cd6ymp4wmjksa" path="res://elements/background/element_asphalt.tscn" id="2_5jtsn"]
+[ext_resource type="PackedScene" uid="uid://dfi4oip83lo3f" path="res://elements/background/element_grass.tscn" id="3_4yxtk"]
+[ext_resource type="PackedScene" uid="uid://cxqe15ub6mrk1" path="res://elements/neutral/props/vegetation/element_tree.tscn" id="3_j2ycr"]
+[ext_resource type="PackedScene" uid="uid://daethslhep56i" path="res://elements/background/element_sidewalk.tscn" id="4_c17wj"]
+[ext_resource type="PackedScene" uid="uid://c4sknhwemfrtu" path="res://elements/background/element_curb_sidewalk_path.tscn" id="5_il05t"]
+[ext_resource type="PackedScene" uid="uid://cfqb1t3qdu78v" path="res://elements/neutral/props/traffic_decals/element_decal_lane_arrow.tscn" id="6_wbu0o"]
+[ext_resource type="PackedScene" uid="uid://bli56i7oi7ylq" path="res://elements/neutral/props/traffic_decals/element_decal_lane_line.tscn" id="7_g2ofg"]
+[ext_resource type="Script" uid="uid://c3a6dlovwpka" path="res://systems/variators/variator_over_position.gd" id="8_luey4"]
+[ext_resource type="PackedScene" uid="uid://icr3nye254ru" path="res://elements/neutral/props/traffic_decals/element_decal_white_line.tscn" id="8_y25ww"]
+[ext_resource type="PackedScene" uid="uid://dai2gw3u8skq" path="res://elements/background/element_tree_hole.tscn" id="10_723j0"]
+[ext_resource type="PackedScene" uid="uid://d0ttq2bgxj0nf" path="res://elements/background/element_clay.tscn" id="12_gbopx"]
+[ext_resource type="PackedScene" uid="uid://b51ftqa2kfff6" path="res://elements/neutral/props/poles/element_pole_double_side.tscn" id="13_yxhvh"]
+[ext_resource type="PackedScene" uid="uid://bw2hylvp70n01" path="res://elements/neutral/props/pole_pieces/element_traffic_sign_1x2_base.tscn" id="14_ifrah"]
+[ext_resource type="Texture2D" uid="uid://b2s6x6fjchad5" path="res://elements/neutral/props/pole_pieces/signs/trafficsign_busstation_2x3.png" id="15_n268r"]
+[ext_resource type="Texture2D" uid="uid://c2w420l173u2j" path="res://elements/neutral/props/pole_pieces/signs/trafficsign_crossing_1x2.png" id="16_ciays"]
+[ext_resource type="PackedScene" uid="uid://cmhgj367yxoi1" path="res://elements/neutral/props/poles/element_pole_dark_over.tscn" id="17_oxgb4"]
+[ext_resource type="PackedScene" uid="uid://b1x13fa0nh2cw" path="res://elements/neutral/props/pole_pieces/element_traffic_sign_3x2.tscn" id="18_whdjo"]
+[ext_resource type="PackedScene" uid="uid://bmkpxdlg3a6rf" path="res://elements/neutral/props/pole_pieces/element_traffic_sign_1x3.tscn" id="19_0c5tt"]
+[ext_resource type="Texture2D" uid="uid://hmvpawc4835y" path="res://elements/neutral/props/pole_pieces/signs/trafficsign_afonsopena_1x3.png" id="20_4duhe"]
+
+[sub_resource type="Curve3D" id="Curve3D_vgh3o"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, -6),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_56625"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, -6),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_ny1vo"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, -6),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_mpjtx"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_cmrq6"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_dtmok"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Lanes 2" type="Node3D" node_paths=PackedStringArray("pivot_forward", "pivot_backward")]
+script = ExtResource("1_15w14")
+pivot_forward = NodePath("Config/forward")
+pivot_backward = NodePath("Config/back")
+
+[node name="Config" type="Node3D" parent="."]
+
+[node name="forward" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+gizmo_extents = 1.0
+
+[node name="back" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+gizmo_extents = 1.0
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Config"]
+aabb = AABB(-11, -0.0703306, -11.2565, 22, 8.75101, 22.5129)
+
+[node name="StreetBase" type="Node3D" parent="."]
+
+[node name="Asphalt" parent="StreetBase" instance=ExtResource("2_5jtsn")]
+transform = Transform3D(28, 0, 0, 0, 1, 0, 0, 0, 6.1, -14, 0, -3.05)
+
+[node name="Sidewalk" type="Node3D" parent="StreetBase"]
+
+[node name="Grass" parent="StreetBase/Sidewalk" instance=ExtResource("3_4yxtk")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 6, -1.5, 0, -3)
+
+[node name="Sidewalk" parent="StreetBase/Sidewalk" instance=ExtResource("4_c17wj")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 6, -15, 0, -3)
+
+[node name="Curb Sidewalk Path4" parent="StreetBase/Sidewalk" instance=ExtResource("5_il05t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 3)
+curve = SubResource("Curve3D_vgh3o")
+
+[node name="Curb Sidewalk Path2" parent="StreetBase/Sidewalk" instance=ExtResource("5_il05t")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -10.5, 0, -3)
+curve = SubResource("Curve3D_56625")
+
+[node name="Curb Sidewalk Path3" parent="StreetBase/Sidewalk" instance=ExtResource("5_il05t")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.5, 0, -3)
+curve = SubResource("Curve3D_ny1vo")
+
+[node name="StreetMarks" type="Node3D" parent="StreetBase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+
+[node name="Right" type="Node3D" parent="StreetBase/StreetMarks"]
+
+[node name="Lanes" type="Node3D" parent="StreetBase/StreetMarks/Right"]
+
+[node name="Side Lines" type="Node3D" parent="StreetBase/StreetMarks/Right"]
+
+[node name="Decal White Square 1x1" parent="StreetBase/StreetMarks/Right/Side Lines" instance=ExtResource("8_y25ww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+curve = SubResource("Curve3D_mpjtx")
+
+[node name="StreetMarks2" type="Node3D" parent="StreetBase"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Right" type="Node3D" parent="StreetBase/StreetMarks2"]
+
+[node name="Lanes" type="Node3D" parent="StreetBase/StreetMarks2/Right"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+
+[node name="Decal Lane Line" parent="StreetBase/StreetMarks2/Right/Lanes" instance=ExtResource("7_g2ofg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -1)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Line2" parent="StreetBase/StreetMarks2/Right/Lanes" instance=ExtResource("7_g2ofg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Line3" parent="StreetBase/StreetMarks2/Right/Lanes" instance=ExtResource("7_g2ofg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -1)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Line4" parent="StreetBase/StreetMarks2/Right/Lanes" instance=ExtResource("7_g2ofg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Line5" parent="StreetBase/StreetMarks2/Right/Lanes" instance=ExtResource("7_g2ofg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -1)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Line6" parent="StreetBase/StreetMarks2/Right/Lanes" instance=ExtResource("7_g2ofg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 2)
+skeleton = NodePath("../../..")
+
+[node name="Variator Arrows" type="Node3D" parent="StreetBase/StreetMarks2/Right/Lanes"]
+script = ExtResource("8_luey4")
+expected_position = 30.0
+
+[node name="Decal Lane Arrow" parent="StreetBase/StreetMarks2/Right/Lanes/Variator Arrows" instance=ExtResource("6_wbu0o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+skeleton = NodePath("../../../..")
+
+[node name="Decal Lane Arrow2" parent="StreetBase/StreetMarks2/Right/Lanes/Variator Arrows" instance=ExtResource("6_wbu0o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+skeleton = NodePath("../../../..")
+
+[node name="Side Lines" type="Node3D" parent="StreetBase/StreetMarks2/Right"]
+
+[node name="Decal White Square 1x1" parent="StreetBase/StreetMarks2/Right/Side Lines" instance=ExtResource("8_y25ww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+curve = SubResource("Curve3D_cmrq6")
+
+[node name="Decal White Square 1x2" parent="StreetBase/StreetMarks2/Right/Side Lines" instance=ExtResource("8_y25ww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+curve = SubResource("Curve3D_dtmok")
+
+[node name="Objs" type="Node3D" parent="."]
+
+[node name="Variator Tree" type="Node3D" parent="Objs"]
+script = ExtResource("8_luey4")
+expected_position = 25.0
+
+[node name="Tree Hole" parent="Objs/Variator Tree" instance=ExtResource("10_723j0")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -13.5, 0, -1)
+
+[node name="Tree" parent="Objs/Variator Tree" instance=ExtResource("3_j2ycr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, 0)
+
+[node name="Variator Middle Tree" type="Node3D" parent="Objs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5778)
+
+[node name="Variator Tree2" type="Node3D" parent="Objs/Variator Middle Tree"]
+script = ExtResource("8_luey4")
+expected_position = 30.0
+invert = true
+
+[node name="Tree" parent="Objs/Variator Middle Tree/Variator Tree2" instance=ExtResource("3_j2ycr")]
+transform = Transform3D(0.685, 0, 0, 0, 0.685, 0, 0, 0, 0.685, 0, 0, 0)
+
+[node name="Variator Tree BIG" type="Node3D" parent="Objs/Variator Middle Tree"]
+script = ExtResource("8_luey4")
+expected_position = 30.0
+
+[node name="Tree" parent="Objs/Variator Middle Tree/Variator Tree BIG" instance=ExtResource("3_j2ycr")]
+transform = Transform3D(1.31539, 0.227987, 0, -0.227987, 1.31539, 0, 0, 0, 1.335, 0, 0, 0)
+
+[node name="Variator Middle Path" type="Node3D" parent="Objs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.012, 0)
+script = ExtResource("8_luey4")
+expected_position = 40.0
+
+[node name="Clay" parent="Objs/Variator Middle Path" instance=ExtResource("12_gbopx")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 3, -1.5, 0, -2.50966)
+
+[node name="Sidewalk" parent="Objs/Variator Middle Path" instance=ExtResource("4_c17wj")]
+transform = Transform3D(3.53, 0, 0, 0, 1, 0, 0, 0, 2.836, -1.77932, 0.0199995, -2.43892)
+
+[node name="Variator Double Sided" type="Node3D" parent="Objs"]
+script = ExtResource("8_luey4")
+expected_position = -170.0
+repeat = false
+
+[node name="Pole Double Side" parent="Objs/Variator Double Sided" instance=ExtResource("13_yxhvh")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6, 0, -2.5)
+"GenericTumbler First/Parent/Mesh Pole Dark Over/L Slot - Over 2*scene" = ExtResource("14_ifrah")
+"GenericTumbler First/Parent/Mesh Pole Dark Over/L Slot - Over 2/Traffic Sign*texture" = ExtResource("15_n268r")
+"GenericTumbler First/Parent/Mesh Pole Dark Over2/R Slot - Over 2*scene" = ExtResource("14_ifrah")
+"GenericTumbler First/Parent/Mesh Pole Dark Over2/R Slot - Over 2/Traffic Sign*texture" = ExtResource("16_ciays")
+
+[node name="Variator Pole" type="Node3D" parent="Objs"]
+script = ExtResource("8_luey4")
+expected_position = -200.0
+repeat = false
+
+[node name="Pole Dark Over" parent="Objs/Variator Pole" instance=ExtResource("17_oxgb4")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.28891, 0, -0.422434)
+"GenericTumbler First/Parent/Mesh Pole Dark/GenericTumbler Second/Mesh Pole Dark Over/Slot - Over 1*scene" = ExtResource("18_whdjo")
+"GenericTumbler First/Parent/Mesh Pole Dark/GenericTumbler Second/Mesh Pole Dark Over/Slot - Over 1/Traffic Sign*texture" = ExtResource("15_n268r")
+"GenericTumbler First/Parent/Mesh Pole Dark/GenericTumbler Second/Mesh Pole Dark Over/Slot - Over 3*scene" = ExtResource("19_0c5tt")
+"GenericTumbler First/Parent/Mesh Pole Dark/GenericTumbler Second/Mesh Pole Dark Over/Slot - Over 3/Traffic Sign*texture" = ExtResource("20_4duhe")
+
+[connection signal="screen_entered" from="Config/VisibleOnScreenNotifier3D" to="." method="_on_screen_entered"]
+[connection signal="screen_exited" from="Config/VisibleOnScreenNotifier3D" to="." method="_on_screen_exited"]

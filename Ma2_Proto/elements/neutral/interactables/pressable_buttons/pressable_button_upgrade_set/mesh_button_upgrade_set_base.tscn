@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkgletrgc3pan"]
+
+[ext_resource type="PackedScene" uid="uid://nfubmfeg7xe5" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_upgrade_set/button_upgrade_set_base.glb" id="1_iw56v"]
+[ext_resource type="Material" uid="uid://du2qh248wdhjw" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_upgrade_set/material/m_base_button_upgrade_set.tres" id="3_8v35o"]
+[ext_resource type="PackedScene" uid="uid://b8am1iucdbetr" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_upgrade_set/button_upgrade_set_slide.glb" id="3_w587q"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="4_cm70d"]
+
+[node name="button_base" type="Node3D"]
+
+[node name="button_upgrade_set_base" parent="." instance=ExtResource("1_iw56v")]
+transform = Transform3D(1, 0, 0, 0, 1.25, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="button_upgrade_set_base" parent="button_upgrade_set_base" index="0"]
+material_override = ExtResource("3_8v35o")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="button_upgrade_set_base"]
+script = ExtResource("4_cm70d")
+high_contrast_group = &"interactable"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="button_base_slide" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.596, 0.136, 0)
+
+[node name="button_upgrade_set_slide" parent="button_base_slide" instance=ExtResource("3_w587q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0518283, 0)
+
+[node name="button_upgrade_set_" parent="button_base_slide/button_upgrade_set_slide" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0276024, -0.134461, 0)
+surface_material_override/0 = ExtResource("3_8v35o")
+
+[editable path="button_upgrade_set_base"]
+[editable path="button_base_slide/button_upgrade_set_slide"]

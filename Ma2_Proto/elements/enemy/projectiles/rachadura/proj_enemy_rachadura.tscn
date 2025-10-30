@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsdfm1kqlrxmn"]
+
+[ext_resource type="Script" uid="uid://dcpjb1tq0af6h" path="res://elements/enemy/projectiles/rachadura/proj_enemy_rachadura.gd" id="1_mplei"]
+[ext_resource type="PackedScene" uid="uid://bwj5rhitp4gpn" path="res://elements/enemy/projectiles/rachadura/proj_enemy_rachadura_part.tscn" id="2_4bvot"]
+
+[node name="ProjEnemyRachadura" type="Node3D"]
+script = ExtResource("1_mplei")
+part_scene = ExtResource("2_4bvot")
+total_length = 30.0
+time_between_max = 0.5
+angle_max = 30.0
+range_random_length = 0.1

@@ -1,0 +1,301 @@
+[gd_scene load_steps=49 format=3 uid="uid://bbt2761h71dd4"]
+
+[ext_resource type="Script" uid="uid://dc0ennksjndwh" path="res://elements/levels/lvl_tests/test_generic_object.gd" id="1_51pto"]
+[ext_resource type="PackedScene" uid="uid://d24xkg0nym42w" path="res://elements/neutral/props/mineirao_stadium/mesh/mesh_mineirao_stadium.tscn" id="1_juogd"]
+[ext_resource type="PackedScene" uid="uid://bfp6hll5p8pd" path="res://elements/enemy/pizza/enemy_pizza_roboto_shooter.tscn" id="2_cistt"]
+[ext_resource type="PackedScene" uid="uid://bikmyqcfitu5t" path="res://elements/enemy/roboto_jacare/mesh/mesh_jacare_catapulta.tscn" id="3_74853"]
+[ext_resource type="PackedScene" uid="uid://k0kg78hfmalj" path="res://elements/npc/npc_graphic_base.tscn" id="4_gfiob"]
+[ext_resource type="PackedScene" uid="uid://cny45il3f6qhu" path="res://elements/enemy/roboto_tucano/mesh/mesh_roboto_tucano.tscn" id="4_uu2pp"]
+[ext_resource type="PackedScene" uid="uid://busv6sx15qccg" path="res://elements/npc/npc_graphic_regular.tscn" id="5_n6cca"]
+[ext_resource type="PackedScene" uid="uid://tlfhh2r1inw3" path="res://elements/enemy/laser/mesh/laserroboto_graphic.tscn" id="5_uufi1"]
+[ext_resource type="PackedScene" uid="uid://sbnc0uylbyp5" path="res://elements/npc/capybara/npc_capybara.tscn" id="6_7rp51"]
+[ext_resource type="PackedScene" uid="uid://ce55vfa4assok" path="res://elements/enemy/pizza/Mesh/pizza_roboto_rusty.tscn" id="7_lan62"]
+[ext_resource type="PackedScene" uid="uid://5m6gwnynp3sa" path="res://elements/enemy/bomb/mesh/bomb_graphic.tscn" id="7_v4si1"]
+[ext_resource type="SpriteFrames" uid="uid://ch7jlno74qjee" path="res://elements/levels/lvl_hub/hub_elements/hub_npc/hub_npc_fanatic.ase" id="8_4sa7q"]
+[ext_resource type="PackedScene" uid="uid://bsrp6kl536a5i" path="res://elements/enemy/pizza/Mesh/pizza_roboto.tscn" id="8_i1mgx"]
+[ext_resource type="PackedScene" uid="uid://bqiu5ttqsaaf0" path="res://elements/enemy/pizza/Mesh/pizza_roboto_rusty_shooter.tscn" id="9_ob4sm"]
+[ext_resource type="PackedScene" uid="uid://yjglagfjn8er" path="res://elements/npc/npc.tscn" id="9_vlsb1"]
+[ext_resource type="PackedScene" uid="uid://bxouk3hnvcybx" path="res://elements/enemy/copter/mesh/robotocopter_graphic.tscn" id="10_juwxy"]
+[ext_resource type="SpriteFrames" uid="uid://csmsln4gem53w" path="res://elements/enemy/bosses/cachorro/turing/enemy_boss_turing_magenta.ase" id="10_ofb41"]
+[ext_resource type="PackedScene" uid="uid://cuonuihp4gsws" path="res://elements/powerups/button/powerup_weapon_button_hold_blue.tscn" id="11_7rrqa"]
+[ext_resource type="PackedScene" uid="uid://cmekr0guqqnyd" path="res://elements/npc/npc_basic_regular.tscn" id="11_ht3ty"]
+[ext_resource type="PackedScene" uid="uid://cnenkck32v7w8" path="res://elements/powerups/button/powerup_weapon_button_hold_green.tscn" id="12_f4ohk"]
+[ext_resource type="PackedScene" uid="uid://bqf8spkpeqp02" path="res://elements/powerups/button/powerup_weapon_button_hold_red.tscn" id="13_t0q28"]
+[ext_resource type="PackedScene" uid="uid://dnob4476tuq1s" path="res://elements/powerups/button/powerup_weapon_button_hold_touch_only.tscn" id="14_buxdi"]
+[ext_resource type="PackedScene" uid="uid://dj8mnwvx36mu7" path="res://elements/powerups/button/powerup_weapon_button_hold_yellow.tscn" id="15_mts7d"]
+[ext_resource type="PackedScene" uid="uid://djhown2ulvtjc" path="res://elements/powerups/button/powerup_weapon_button_tap_blue.tscn" id="16_a34mv"]
+[ext_resource type="PackedScene" uid="uid://bcmggsmmlhf30" path="res://elements/powerups/button/powerup_weapon_button_tap_green.tscn" id="17_eop8c"]
+[ext_resource type="PackedScene" uid="uid://dvd0yb0c66fjj" path="res://elements/powerups/button/powerup_weapon_button_tap_red.tscn" id="18_sasx3"]
+[ext_resource type="PackedScene" uid="uid://cyh3qxcb2s7gv" path="res://elements/powerups/button/powerup_weapon_button_tap_yellow.tscn" id="19_ifkr7"]
+[ext_resource type="PackedScene" uid="uid://d3i7oo0v7rbl3" path="res://elements/powerups/button/sacrifice_button_coins.tscn" id="20_a34mv"]
+[ext_resource type="PackedScene" uid="uid://cfuplhe2nrpje" path="res://elements/powerups/button/sacrifice_button_health.tscn" id="21_eop8c"]
+[ext_resource type="PackedScene" uid="uid://cnyvamjd1vxv5" path="res://elements/powerups/button/sacrifice_button_hold.tscn" id="22_sasx3"]
+[ext_resource type="PackedScene" uid="uid://ct2usghwibgvw" path="res://elements/powerups/button/sacrifice_button_score.tscn" id="23_ifkr7"]
+[ext_resource type="PackedScene" uid="uid://ny8m2vrq0djt" path="res://elements/powerups/button/sacrifice_button_tap.tscn" id="24_xc2w1"]
+[ext_resource type="PackedScene" uid="uid://ci8clax7whhvw" path="res://elements/powerups/button/holdable_button_extrashot.tscn" id="25_ifkr7"]
+[ext_resource type="PackedScene" uid="uid://dcxopovxim3xx" path="res://elements/powerups/button/holdable_button_fire_rate.tscn" id="26_xc2w1"]
+[ext_resource type="PackedScene" uid="uid://1w3067r22ffa" path="res://elements/powerups/button/holdable_button_warmup.tscn" id="27_nelu7"]
+[ext_resource type="PackedScene" uid="uid://4qqcmtywm6p0" path="res://elements/powerups/button/holdable_button_holdlvlup.tscn" id="28_xc2w1"]
+[ext_resource type="PackedScene" uid="uid://ta33edhasg1x" path="res://elements/powerups/button/holdable_button_health.tscn" id="29_nelu7"]
+[ext_resource type="PackedScene" uid="uid://db70ijpf67j67" path="res://elements/levels/lvl_tests/test_generic_vfx.tscn" id="31_xhirg"]
+[ext_resource type="PackedScene" uid="uid://ci4xfbipmpkca" path="res://elements/vfx/vfx_altar_destroy.tscn" id="33_t8i6w"]
+[ext_resource type="PackedScene" uid="uid://derqc4swptgl3" path="res://elements/vfx/vfx_destroy_wood/vfx_destroy_wood.tscn" id="34_22toj"]
+[ext_resource type="PackedScene" uid="uid://diqpx0aj2pk0a" path="res://elements/vfx/vfx_destroy_metal/vfx_destroy_metal.tscn" id="35_i2vsr"]
+[ext_resource type="PackedScene" uid="uid://dvvewkod8whps" path="res://elements/neutral/props/vegetation/mesh/vfx_leaf_explosion.tscn" id="36_gfiob"]
+[ext_resource type="PackedScene" uid="uid://cya5dbvbjhrvy" path="res://elements/vfx/vfx_explosion_small/vfx_explosion_small.tscn" id="37_n6cca"]
+[ext_resource type="PackedScene" uid="uid://b75dpejvolw5a" path="res://elements/vfx/vfx_explosion/vfx_explosion_unshaded.tscn" id="38_7rp51"]
+[ext_resource type="SpriteFrames" uid="uid://c336ukf28tpy5" path="res://elements/enemy/bosses/pirulito/nando_and_nene/pirulito_nando_and_nene.aseprite" id="39_t8i6w"]
+[ext_resource type="PackedScene" uid="uid://bf0068slach5r" path="res://elements/vfx/vfx_boss_explosion.tscn" id="39_yroyp"]
+[ext_resource type="PackedScene" uid="uid://cuvluixwm8sqv" path="res://elements/enemy/bosses/pirulito/nando_and_nene/nando_magenta/boss_nando_defeat_graphic.tscn" id="40_22toj"]
+
+[sub_resource type="GDScript" id="GDScript_a34mv"]
+script/source = "extends Node3D
+
+@export var _credits_path:NodePath = \"res://elements/ui/menus/credits_menu/scenes/credits_endgame.tscn\"
+var _credits:CreditsEndgame
+var _showing:bool = false
+
+func _process(delta: float) -> void:
+	if Input.is_key_pressed(KEY_C):
+		show_credits()
+
+func show_credits():
+	if _showing:
+		return
+
+	_showing = true
+	ResourceLoader.load_threaded_request(_credits_path)
+	while ResourceLoader.load_threaded_get_status(_credits_path) == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+		await get_tree().process_frame
+	var scene:PackedScene = ResourceLoader.load_threaded_get(_credits_path)
+
+	if scene:
+		_credits = scene.instantiate()
+		get_tree().root.add_child(_credits)
+		await _credits.play_credits()
+
+	_showing = false
+"
+
+[node name="TestGenericObject" type="Node3D" node_paths=PackedStringArray("objs_container")]
+script = ExtResource("1_51pto")
+objs_container = NodePath("OBJS")
+
+[node name="CreditsTester" type="Node3D" parent="."]
+script = SubResource("GDScript_a34mv")
+
+[node name="OBJS" type="Node3D" parent="."]
+
+[node name="Sprites" type="Node3D" parent="OBJS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, 12.5)
+
+[node name="Label3D" type="Label3D" parent="OBJS/Sprites"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 1, -3)
+text = "Sprites"
+font_size = 262
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="OBJS/Sprites"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.214844)
+offset = Vector2(0, 128)
+pixel_size = 0.0078
+billboard = 1
+texture_filter = 0
+sprite_frames = ExtResource("39_t8i6w")
+animation = &"part_1_open_speak"
+
+[node name="Boss_Nando_Defeat_Graphic" parent="OBJS/Sprites" instance=ExtResource("40_22toj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.43072)
+flip_h = true
+animation = &"pirulito_nando_cry"
+frame_progress = 0.0
+
+[node name="Shadow" parent="OBJS/Sprites/Boss_Nando_Defeat_Graphic" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0.0487123, 0)
+
+[node name="NPC_Graphic" parent="OBJS/Sprites" instance=ExtResource("4_gfiob")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.87289, 0, 1.13865)
+
+[node name="NPC_Graphic_Regular" parent="OBJS/Sprites" instance=ExtResource("5_n6cca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.43074, 0, 1.10886)
+
+[node name="Npc_Capybara" parent="OBJS/Sprites" instance=ExtResource("6_7rp51")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.32196, -4.76837e-07, -2.4694)
+
+[node name="Npc2" parent="OBJS/Sprites" instance=ExtResource("9_vlsb1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.939144, 4.76837e-07, -1.38014)
+graphic_mode = 1
+
+[node name="Npc3" parent="OBJS/Sprites" instance=ExtResource("9_vlsb1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.59132, 4.76837e-07, -1.2657)
+graphic_mode = 2
+
+[node name="Npc4" parent="OBJS/Sprites" instance=ExtResource("9_vlsb1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.50815, 9.53674e-07, 2.07247)
+graphic_mode = 3
+custom_spriteframes = ExtResource("8_4sa7q")
+custom_kind = 2
+
+[node name="Npc_Basic" parent="OBJS/Sprites" instance=ExtResource("11_ht3ty")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.65196, 0, 0.047183)
+
+[node name="NPC_Graphic2" parent="OBJS/Sprites" instance=ExtResource("4_gfiob")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90364, 0, 2.4169)
+
+[node name="Sprite" type="AnimatedSprite3D" parent="OBJS/Sprites"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00056, -2.38419e-07, 2.7436)
+cast_shadow = 0
+offset = Vector2(0, 80)
+pixel_size = 0.0078
+billboard = 1
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = ExtResource("10_ofb41")
+animation = &"parry1"
+frame_progress = 0.901045
+speed_scale = 1.5
+
+[node name="EndTests" type="Node3D" parent="OBJS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 0, 0)
+
+[node name="mineirao_stadium" parent="OBJS/EndTests" instance=ExtResource("1_juogd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.40324)
+
+[node name="PizzaShooter" parent="OBJS/EndTests" instance=ExtResource("2_cistt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53342, 0, 8.92841)
+
+[node name="Pizza_Roboto" parent="OBJS/EndTests" instance=ExtResource("8_i1mgx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51826, 0, 14.9297)
+
+[node name="Skeleton3D" parent="OBJS/EndTests/Pizza_Roboto/Rig_Pizza" index="0"]
+bones/2/position = Vector3(0, 0.240809, 0.159185)
+bones/3/position = Vector3(0, 0.222603, -0.497376)
+bones/6/position = Vector3(0.340569, 0.196704, -0.231589)
+bones/7/position = Vector3(0.0922214, -0.0953346, -0.067543)
+bones/10/position = Vector3(-0.377006, 0.196704, -0.253451)
+bones/11/position = Vector3(-0.0922214, -0.0953346, -0.067543)
+
+[node name="AnimationPlayer" parent="OBJS/EndTests/Pizza_Roboto" index="2"]
+autoplay = ""
+
+[node name="Pizza_Roboto_Rusty" parent="OBJS/EndTests" instance=ExtResource("7_lan62")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.180158, 0, 14.9422)
+
+[node name="jacare_catapulta" parent="OBJS/EndTests" instance=ExtResource("3_74853")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 12)
+
+[node name="roboto_tucano" parent="OBJS/EndTests" instance=ExtResource("4_uu2pp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.04788, 3.29458, 12.8528)
+
+[node name="laserroboto_graphic" parent="OBJS/EndTests" instance=ExtResource("5_uufi1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.0161)
+script = null
+
+[node name="roboto_bomba_relogio" parent="OBJS/EndTests" instance=ExtResource("7_v4si1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71819, 0, 12.2574)
+
+[node name="Pizza_Roboto_Shooter_Rusty" parent="OBJS/EndTests" instance=ExtResource("9_ob4sm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25319, 0, 14.9238)
+
+[node name="robotocopter_graphic" parent="OBJS/EndTests" instance=ExtResource("10_juwxy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.452046, 0, 10.8366)
+
+[node name="Buttons" type="Node3D" parent="OBJS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.5)
+
+[node name="WeaponButton_Hold_Blue" parent="OBJS/Buttons" instance=ExtResource("11_7rrqa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -1.5)
+
+[node name="WeaponButton_Hold_Green" parent="OBJS/Buttons" instance=ExtResource("12_f4ohk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1.5)
+
+[node name="WeaponButton_Hold_Red" parent="OBJS/Buttons" instance=ExtResource("13_t0q28")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+
+[node name="WeaponButton_Hold_TOUCH" parent="OBJS/Buttons" instance=ExtResource("14_buxdi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1.5)
+
+[node name="WeaponButton_Hold_Yellow2" parent="OBJS/Buttons" instance=ExtResource("15_mts7d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -1.5)
+
+[node name="WeaponButton_Tap_Blue" parent="OBJS/Buttons" instance=ExtResource("16_a34mv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0.5)
+
+[node name="WeaponButton_Tap_Green" parent="OBJS/Buttons" instance=ExtResource("17_eop8c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0.5)
+
+[node name="WeaponButton_Tap_Red" parent="OBJS/Buttons" instance=ExtResource("18_sasx3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0.5)
+
+[node name="WeaponButton_Tap_Yellow" parent="OBJS/Buttons" instance=ExtResource("19_ifkr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0.5)
+
+[node name="SacrificeButton-HEALTH" parent="OBJS/Buttons" instance=ExtResource("20_a34mv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 9)
+
+[node name="SacrificeButton-HEALTH2" parent="OBJS/Buttons" instance=ExtResource("21_eop8c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+
+[node name="SacrificeButton-DOWNGRADE_HOLD" parent="OBJS/Buttons" instance=ExtResource("22_sasx3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 9)
+
+[node name="SacrificeButton-SCORE" parent="OBJS/Buttons" instance=ExtResource("23_ifkr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 11)
+
+[node name="SacrificeButton-DOWNGRADE_HOLD2" parent="OBJS/Buttons" instance=ExtResource("24_xc2w1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 11)
+
+[node name="HoldableButton-EXTRASHOT" parent="OBJS/Buttons" instance=ExtResource("25_ifkr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 5)
+
+[node name="HoldableButton-FIRERATE" parent="OBJS/Buttons" instance=ExtResource("26_xc2w1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="HoldableButton-WARMUP" parent="OBJS/Buttons" instance=ExtResource("27_nelu7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 5)
+
+[node name="HoldableButton-HOLD_LEVELUP" parent="OBJS/Buttons" instance=ExtResource("28_xc2w1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 5)
+
+[node name="HoldableButton-HEALTH" parent="OBJS/Buttons" instance=ExtResource("29_nelu7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
+
+[node name="VFXs" type="Node3D" parent="OBJS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5, 0, 10.5)
+
+[node name="TestGenericVFX" parent="OBJS/VFXs" instance=ExtResource("31_xhirg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -1.5)
+_vfx_scene = ExtResource("33_t8i6w")
+
+[node name="TestGenericVFX2" parent="OBJS/VFXs" instance=ExtResource("31_xhirg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 1.5)
+_vfx_scene = ExtResource("34_22toj")
+
+[node name="TestGenericVFX3" parent="OBJS/VFXs" instance=ExtResource("31_xhirg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+_vfx_scene = ExtResource("35_i2vsr")
+
+[node name="TestGenericVFX4" parent="OBJS/VFXs" instance=ExtResource("31_xhirg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+_vfx_scene = ExtResource("36_gfiob")
+
+[node name="TestGenericVFX5" parent="OBJS/VFXs" instance=ExtResource("31_xhirg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+_vfx_scene = ExtResource("37_n6cca")
+
+[node name="TestGenericVFX6" parent="OBJS/VFXs" instance=ExtResource("31_xhirg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 1.5)
+_vfx_scene = ExtResource("38_7rp51")
+
+[node name="TestGenericVFX7" parent="OBJS/VFXs" instance=ExtResource("31_xhirg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -1.5)
+_vfx_scene = ExtResource("39_yroyp")
+
+[node name="Label3D" type="Label3D" parent="OBJS/VFXs"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 1, -3)
+text = "VFXS!"
+font_size = 262
+
+[editable path="OBJS/Sprites/Boss_Nando_Defeat_Graphic"]
+[editable path="OBJS/EndTests/Pizza_Roboto"]

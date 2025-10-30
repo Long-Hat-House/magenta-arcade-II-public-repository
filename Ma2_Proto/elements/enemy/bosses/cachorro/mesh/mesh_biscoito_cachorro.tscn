@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://basyiwh6cafng"]
+
+[ext_resource type="PackedScene" uid="uid://b3aoase2tjnc6" path="res://elements/enemy/bosses/cachorro/mesh/biscoito_cachorro.glb" id="1_ke4lp"]
+[ext_resource type="Material" uid="uid://craujywlmue1u" path="res://elements/enemy/bosses/cachorro/material/m_biscoito_cachorro.tres" id="2_ch7tl"]
+
+[node name="biscoito_cachorro" instance=ExtResource("1_ke4lp")]
+
+[node name="biscoito_cachorro" parent="." index="0"]
+material_override = ExtResource("2_ch7tl")
+
+[node name="prato" parent="." index="1"]
+material_override = ExtResource("2_ch7tl")

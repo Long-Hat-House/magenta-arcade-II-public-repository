@@ -1,0 +1,321 @@
+[gd_scene load_steps=39 format=3 uid="uid://c0e05rbg1yhbg"]
+
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="1_i5nwy"]
+[ext_resource type="Script" uid="uid://c7w1apd8ptx6e" path="res://elements/player/player_token.gd" id="1_qkyew"]
+[ext_resource type="PackedScene" uid="uid://1hsjfwbjawv6" path="res://elements/vfx/vfx_player/movement_particle_vfx.tscn" id="2_e5vhf"]
+[ext_resource type="PackedScene" uid="uid://p70y6lajcb5n" path="res://elements/player/player_token_extra_projectile_position.tscn" id="2_h34cv"]
+[ext_resource type="Resource" uid="uid://ds1vwrf0jj1pp" path="res://elements/player/player_vibration_profile.tres" id="2_r3r83"]
+[ext_resource type="Shader" uid="uid://cydf7ixf545sq" path="res://elements/vfx/vfx_movement_smoke/movement_smoke_shader.tres" id="2_te753"]
+[ext_resource type="PackedScene" uid="uid://cvbvb2j5608tn" path="res://elements/player/player_trail_foam.tscn" id="2_ug4ct"]
+[ext_resource type="PackedScene" uid="uid://dcglxxfdieqag" path="res://elements/player/player_trail_ground.tscn" id="2_vl5t6"]
+[ext_resource type="Material" uid="uid://bch7ktm2n5jsr" path="res://elements/vfx/vfx_movement_smoke/movement_smoke_visual.tres" id="2_y1ibm"]
+[ext_resource type="Script" uid="uid://jm3lxljcpfkn" path="res://systems/vibration/vibration_wave_data.gd" id="3_vwihh"]
+[ext_resource type="PackedScene" uid="uid://j7pyxuqdhbrx" path="res://elements/player/player_stat_visualizer.tscn" id="3_xfanr"]
+[ext_resource type="Script" uid="uid://c5qldoihrwskj" path="res://elements/player/force_generator_spherical_waves.gd" id="5_ek7x3"]
+[ext_resource type="Script" uid="uid://d2rhxuigqg21b" path="res://systems/audio_wwise/AkEvent3DLoop.gd" id="6_gj248"]
+[ext_resource type="PackedScene" uid="uid://bg5sj7todqorp" path="res://elements/player/player_trail_cloud.tscn" id="6_hcsr1"]
+[ext_resource type="PackedScene" uid="uid://bnof3eu5oxwx1" path="res://elements/vfx/vfx_player/movement_particle_vfx_rocks.tscn" id="6_u8yqa"]
+[ext_resource type="Material" uid="uid://bn0kbf3xq0qta" path="res://elements/player/m_player_foam_particle.tres" id="8_pu0xx"]
+[ext_resource type="Material" uid="uid://5ra46jjkoflf" path="res://elements/neutral/clouds/m_clouds.tres" id="10_esp2l"]
+[ext_resource type="Script" uid="uid://dpkgpseuvyv0j" path="res://modules/graphic_settings_manager/graphic_settings_enabler_3D.gd" id="10_rog08"]
+[ext_resource type="WwiseEvent" uid="uid://bhug4fyq0a1pw" path="res://Wwise/resources/Event/{73EFAB3C-4F8E-4EA0-A553-D6C7A1AA0E18}.tres" id="15_ho7q2"]
+[ext_resource type="WwiseEvent" uid="uid://k8i7tucjobke" path="res://Wwise/resources/Event/{1FB600F4-F852-4CA4-A5C5-061D4956A4E6}.tres" id="16_vu5sa"]
+[ext_resource type="WwiseEvent" uid="uid://bb8dk5xb4ypw" path="res://Wwise/resources/Event/{8F72D0AC-B1B4-447A-8F45-1F187275605E}.tres" id="16_xsw1r"]
+[ext_resource type="WwiseEvent" uid="uid://dttfct1sy64s8" path="res://Wwise/resources/Event/{343DE484-FAC2-4105-8954-E7F2F6ECB94D}.tres" id="17_ho7q2"]
+[ext_resource type="Script" uid="uid://b1vjfgpjix2od" path="res://elements/player/extra_projectile_positions_moving.gd" id="21_ep3oc"]
+[ext_resource type="PackedScene" uid="uid://cjlt1p8ua4t6s" path="res://elements/vfx/vfx_wind/vfx_player_token_wind_particle.tscn" id="23_g2vs8"]
+
+[sub_resource type="Curve" id="Curve_vfin4"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_563g0"]
+script = ExtResource("3_vwihh")
+curve_amplitude_multiplier = SubResource("Curve_vfin4")
+sample_duration_ms = 50
+pause_duration_base_ms = 0
+disable_curve = false
+duration_ms = 500.0
+amplitude = 0.6
+priority = 1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8piui"]
+height = 1.0
+radius = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hs8c3"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_7f4pc"]
+radius = 1.0
+height = 2.0
+radial_segments = 12
+rings = 12
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_swfcy"]
+no_depth_test = true
+shading_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_hvp1t"]
+size = Vector2(0.25, 0.25)
+orientation = 1
+
+[sub_resource type="SphereMesh" id="SphereMesh_pt1ue"]
+material = ExtResource("8_pu0xx")
+radius = 0.05
+height = 0.1
+radial_segments = 8
+rings = 8
+
+[sub_resource type="SphereMesh" id="SphereMesh_udr21"]
+material = ExtResource("10_esp2l")
+radial_segments = 7
+rings = 3
+
+[sub_resource type="Curve" id="Curve_2c13m"]
+_data = [Vector2(0, 0), 0.0, 7.59664, 0, 0, Vector2(0.193609, 0.617388), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.560106, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8amrn"]
+shader = ExtResource("2_te753")
+shader_parameter/totalAnimations = 4
+shader_parameter/maxAngle = 45.0
+shader_parameter/direction = Vector3(0, 0, -1)
+shader_parameter/spread = 120.0
+shader_parameter/flatness = 0.0
+shader_parameter/inherit_emitter_velocity_ratio = 0.0
+shader_parameter/initial_linear_velocity_min = 1.0
+shader_parameter/initial_linear_velocity_max = 10.0
+shader_parameter/directional_velocity_min = 1.0
+shader_parameter/directional_velocity_max = 1.0
+shader_parameter/angular_velocity_min = 0.0
+shader_parameter/angular_velocity_max = 0.0
+shader_parameter/orbit_velocity_min = 0.0
+shader_parameter/orbit_velocity_max = 0.0
+shader_parameter/radial_velocity_min = 0.0
+shader_parameter/radial_velocity_max = 0.0
+shader_parameter/linear_accel_min = 0.0
+shader_parameter/linear_accel_max = 0.0
+shader_parameter/radial_accel_min = 0.0
+shader_parameter/radial_accel_max = 0.0
+shader_parameter/tangent_accel_min = 0.0
+shader_parameter/tangent_accel_max = 0.0
+shader_parameter/damping_min = 0.3
+shader_parameter/damping_max = 6.91
+shader_parameter/initial_angle_min = 0.0
+shader_parameter/initial_angle_max = 0.0
+shader_parameter/scale_min = 0.3
+shader_parameter/scale_max = 0.7
+shader_parameter/hue_variation_min = 0.0
+shader_parameter/hue_variation_max = 0.0
+shader_parameter/anim_speed_min = 1.0
+shader_parameter/anim_speed_max = 1.0
+shader_parameter/anim_offset_min = 0.0
+shader_parameter/anim_offset_max = 0.0
+shader_parameter/lifetime_randomness = 0.0
+shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
+shader_parameter/emission_shape_scale = Vector3(4, 0, 2)
+shader_parameter/velocity_pivot = Vector3(0, 1, 0)
+shader_parameter/emission_sphere_radius = 0.2
+shader_parameter/color_value = Color(1, 1, 1, 1)
+shader_parameter/gravity = Vector3(0, -3, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_1dd8q"]
+material = ExtResource("2_y1ibm")
+
+[sub_resource type="Curve" id="Curve_5gvrx"]
+_data = [Vector2(0, 1), 0.0, -2.61539, 0, 0, Vector2(1, 0), -2.49084, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_vis68"]
+_data = [Vector2(0.00675675, 1), 0.0, -3.18498, 0, 0, Vector2(0.993243, 0.010989), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="PlayerToken" type="CharacterBody3D" node_paths=PackedStringArray("sfx_tap_attempt", "sfx_hurt", "all_movement_particles", "particles_one_shot", "trail_particles_ground", "trail_particles_water", "trail_particles_cloud", "vfx_wind")]
+collision_layer = 2
+collision_mask = 308
+script = ExtResource("1_qkyew")
+extra_projectile_target_scene = ExtResource("2_h34cv")
+vibration_profile = ExtResource("2_r3r83")
+vibration_damaged = SubResource("Resource_563g0")
+sfx_tap_attempt = NodePath("SFX TapAttempt")
+sfx_hurt = NodePath("SFX Hurt")
+energy_addition = 38.0
+energy_dissipation = 4.0
+all_movement_particles = NodePath("ParticleEnabled/MovementParticleVFX")
+particles_one_shot = NodePath("ParticleEnabled/GPUParticles3D_OneShot")
+trail_particles_ground = NodePath("ParticleEnabled/MovementParticleVFX_Rocks")
+trail_particles_water = NodePath("ParticleEnabled/MovementParticleVFX_Water")
+trail_particles_cloud = NodePath("ParticleEnabled/CloudParticles")
+trail_vfx_ground = ExtResource("2_vl5t6")
+trail_vfx_water = ExtResource("2_ug4ct")
+trail_vfx_cloud = ExtResource("6_hcsr1")
+trail_randomness = 0.5
+vfx_wind = NodePath("ParticleEnabled/WindDisperser/VFX Wind")
+
+[node name="Player Health" type="Node" parent="."]
+script = ExtResource("1_i5nwy")
+frames_of_damage_delay = 2
+
+[node name="Visualizers" type="Node3D" parent="."]
+visible = false
+
+[node name="Energy" parent="Visualizers" instance=ExtResource("3_xfanr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
+map_in_max = 1.0
+map_out_min = 1.0
+vector_multiplier = 1.0
+color = Color(0, 0.960784, 0.960784, 1)
+
+[node name="Energy_Cam" parent="Visualizers" instance=ExtResource("3_xfanr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0)
+map_in_max = 1.0
+map_out_min = 1.0
+vector_multiplier = 1.0
+color = Color(0, 0.960784, 0, 1)
+
+[node name="Translation" parent="Visualizers" instance=ExtResource("3_xfanr")]
+visible = false
+vector_multiplier = 0.25
+color = Color(1, 0.505882, 0, 1)
+
+[node name="Player Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_8piui")
+
+[node name="Player Shadow" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+visible = false
+material_override = SubResource("StandardMaterial3D_hs8c3")
+cast_shadow = 3
+mesh = SubResource("SphereMesh_7f4pc")
+skeleton = NodePath("../Player Mesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_swfcy")
+
+[node name="Player Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+visible = false
+cast_shadow = 0
+mesh = SubResource("QuadMesh_hvp1t")
+surface_material_override/0 = SubResource("StandardMaterial3D_swfcy")
+
+[node name="ParticleEnabled" type="Node3D" parent="."]
+script = ExtResource("10_rog08")
+special_condition = 1
+metadata/_custom_type_script = "uid://dpkgpseuvyv0j"
+
+[node name="MovementParticleVFX" parent="ParticleEnabled" instance=ExtResource("2_e5vhf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+layers = 2
+
+[node name="MovementParticleVFX_Rocks" parent="ParticleEnabled" instance=ExtResource("6_u8yqa")]
+layers = 2
+amount = 20
+
+[node name="MovementParticleVFX_Water" parent="ParticleEnabled" instance=ExtResource("6_u8yqa")]
+layers = 2
+amount = 60
+draw_pass_1 = SubResource("SphereMesh_pt1ue")
+
+[node name="CloudParticles" type="CPUParticles3D" parent="ParticleEnabled"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.150494, -0.111354, -0.00627221)
+amount = 10
+lifetime = 0.5
+mesh = SubResource("SphereMesh_udr21")
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.5
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 0, 1)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+angular_velocity_min = 2.0
+angular_velocity_max = 4.0
+linear_accel_min = 10.0
+linear_accel_max = 50.0
+radial_accel_min = -2.0
+damping_min = 2.5
+damping_max = 2.5
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_2c13m")
+
+[node name="GPUParticles3D_OneShot" type="GPUParticles3D" parent="ParticleEnabled"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+cast_shadow = 0
+emitting = false
+amount = 28
+lifetime = 0.35
+one_shot = true
+explosiveness = 0.9
+randomness = 0.21
+fixed_fps = 60
+transform_align = 1
+process_material = SubResource("ShaderMaterial_8amrn")
+draw_pass_1 = SubResource("QuadMesh_1dd8q")
+
+[node name="WindDisperser" type="GPUParticlesAttractorSphere3D" parent="ParticleEnabled"]
+layers = 4
+strength = -80.0
+attenuation = 1.1892
+directionality = 0.05
+cull_mask = 4293918724
+radius = 8.0
+
+[node name="VFX Wind" parent="ParticleEnabled/WindDisperser" instance=ExtResource("23_g2vs8")]
+
+[node name="ForceGenerator" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5_ek7x3")
+another_curve = SubResource("Curve_5gvrx")
+min_distance = 1.0
+max_distance = 30.0
+curve = SubResource("Curve_vis68")
+
+[node name="SFX Hurt" type="AkEvent3D" parent="."]
+event = ExtResource("15_ho7q2")
+
+[node name="SFX TapAttempt" type="AkEvent3D" parent="."]
+event = ExtResource("16_xsw1r")
+
+[node name="Hold Loop" type="Node3D" parent="." node_paths=PackedStringArray("loop_begin_event", "loop_finish_event")]
+script = ExtResource("6_gj248")
+_start_loop_on = 2
+_stop_loop_on = 3
+loop_begin_event = NodePath("Begin")
+loop_finish_event = NodePath("End")
+_debug = true
+
+[node name="Begin" type="AkEvent3D" parent="Hold Loop"]
+event = ExtResource("16_vu5sa")
+
+[node name="End" type="AkEvent3D" parent="Hold Loop"]
+event = ExtResource("17_ho7q2")
+
+[node name="Extra Projectile Positions" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+script = ExtResource("21_ep3oc")
+velocity_physics_degrees = 15.0
+radius = 2.25
+automatically_add_children_to_circle_equally_spaced = true
+metadata/_custom_type_script = "uid://nmi7nu7xqfhq"
+
+[node name="PressableFeeler" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="Player Collision" type="CollisionShape3D" parent="PressableFeeler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_8piui")
+
+[connection signal="energy_process" from="." to="Visualizers/Energy" method="visualize_vector3"]
+[connection signal="energy_screen_process" from="." to="Visualizers/Energy_Cam" method="visualize_vector3"]
+[connection signal="translation_process" from="." to="Visualizers/Translation" method="visualize_vector3"]
+[connection signal="hit" from="Player Health" to="." method="_on_player_health_hit"]
+[connection signal="area_entered" from="PressableFeeler" to="." method="_on_pressable_feeler_area_entered"]

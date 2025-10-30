@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://o6ue1gp0726q"]
+
+[ext_resource type="PackedScene" uid="uid://dxcugp0ytt4h7" path="res://elements/neutral/props/mineirao_stadium/mesh/mineirao_bloco_planta.glb" id="1_bhh6b"]
+
+[node name="mineirao_bloco_planta" instance=ExtResource("1_bhh6b")]

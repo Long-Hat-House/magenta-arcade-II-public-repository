@@ -1,0 +1,22 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://d07c8ccs3h37b"]
+
+[ext_resource type="Texture2D" uid="uid://chmsqvjqh7mma" path="res://elements/neutral/props/mineirao_football_grass/texture/t_mineirao_football_grass_BaseColor.png" id="1_fat2r"]
+[ext_resource type="Texture2D" uid="uid://cgvj00n8tpybh" path="res://elements/enemy/brawny/Texture/M_brawny_Box_Emission.png" id="2_prr0g"]
+[ext_resource type="Material" uid="uid://dg6b7og6mbtm8" path="res://elements/background/material/m_grass_full.tres" id="3_g7yq4"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jie0d"]
+
+[resource]
+next_pass = ExtResource("3_g7yq4")
+transparency = 1
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("1_fat2r")
+roughness = 0.65
+emission_energy_multiplier = 9.0
+emission_texture = ExtResource("2_prr0g")
+clearcoat = 0.69
+anisotropy = 0.33
+ao_texture = SubResource("CompressedTexture2D_jie0d")
+backlight = Color(0.0313726, 0.0313726, 0.0313726, 1)

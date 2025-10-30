@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://chntth7pr2jn8"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_FinalBoss_Lv4_Final_Cry"
+id = 2151835758
+guid = "{CAE4C3D5-FDF7-4ABF-A624-58416DF09AB3}"
+dummy = true

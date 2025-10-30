@@ -1,0 +1,150 @@
+[gd_scene load_steps=15 format=3 uid="uid://dn075fo0pbgxl"]
+
+[ext_resource type="Script" uid="uid://dsvfipg4mxr7k" path="res://systems/line3d/child_line_3d.gd" id="1_1eyyh"]
+[ext_resource type="Script" uid="uid://jb0kesd2jx73" path="res://elements/neutral/boeing/element_plane_boeing.gd" id="1_20mn2"]
+[ext_resource type="Script" uid="uid://c2ervhy7ph3fd" path="res://systems/line3d/constant_creator_line_3d.gd" id="3_kx710"]
+[ext_resource type="PackedScene" uid="uid://cmekr0guqqnyd" path="res://elements/npc/npc_basic_regular.tscn" id="4_aqrm2"]
+[ext_resource type="PackedScene" uid="uid://b2kjae1mx8vaj" path="res://elements/neutral/cargo/element_cargo_box.tscn" id="5_444yq"]
+[ext_resource type="PackedScene" uid="uid://clj52ihk416ib" path="res://elements/levels/lvl_hub/hub_elements/hub_belt/hub_belt.tscn" id="5_b13fb"]
+[ext_resource type="PackedScene" uid="uid://bqf8spkpeqp02" path="res://elements/powerups/button/powerup_weapon_button_hold_red.tscn" id="7_6rvrj"]
+[ext_resource type="PackedScene" uid="uid://4qqcmtywm6p0" path="res://elements/powerups/button/holdable_button_holdlvlup.tscn" id="7_bp2jh"]
+[ext_resource type="PackedScene" uid="uid://dcxopovxim3xx" path="res://elements/powerups/button/holdable_button_fire_rate.tscn" id="8_k0mug"]
+[ext_resource type="PackedScene" uid="uid://dunold50u758q" path="res://elements/neutral/boeing/mesh/mesh_boeing.tscn" id="10_3ubub"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="10_54tx7"]
+[ext_resource type="PackedScene" uid="uid://did4qoda8dsqp" path="res://elements/neutral/props/belt/mesh/mesh_belt.tscn" id="11_dhdn4"]
+
+[sub_resource type="GDScript" id="GDScript_bp2jh"]
+script/source = "extends Node
+
+@export var all_type:GraphicNPC_RegularRandomizer.Type;
+
+func _on_npcs_created(instance: Node3D) -> void:
+	var npc := instance as NPC_Basic;
+	if npc:
+		npc.graphic.randomize_sprite_frames.make_type(all_type);
+		
+"
+
+[sub_resource type="GDScript" id="GDScript_r6j3t"]
+script/source = "extends Node
+
+@export var items_added:Array[PackedScene];
+var items:Array[PackedScene];
+@export var destinations:Array[Node3D];
+@export var vfx:PackedScene;
+
+
+func _ready():
+	items = items_added.duplicate(false);
+	items.shuffle();
+	
+func _on_boxes_created(instance: Node3D) -> void:
+	instance.rotation.y = randf() * 2 * PI;
+	instance.position += Vector3(randf() * 0.5, 0, randf() * 0.5)
+	
+func _on_boxes_dead(instance: Node3D) -> void:
+	print(\"[BOXES DEAD] %s %s\" % [items.is_empty(), destinations.is_empty()]);
+	
+	if items.is_empty() or destinations.is_empty():
+		return;
+		
+	
+	var item_pack = items.pop_back();
+	if item_pack:
+		var item = item_pack.instantiate();
+		get_parent().add_child(item);
+		Element_Compartiment.give_item(item, instance, destinations.pop_front(), vfx);
+"
+
+[node name="ElementBoeing" type="Node3D"]
+script = ExtResource("1_20mn2")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Box Line" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.294, 0.5, 2.281)
+script = ExtResource("1_1eyyh")
+
+[node name="Node3D3" type="Node3D" parent="Box Line"]
+
+[node name="Node3D4" type="Node3D" parent="Box Line"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.72, 0, -4.783)
+
+[node name="ChildLine3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.50823, 2.72392, 7.49882)
+script = ExtResource("1_1eyyh")
+
+[node name="Node3D3" type="Node3D" parent="ChildLine3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42192, 0.201196, 0)
+
+[node name="Node3D4" type="Node3D" parent="ChildLine3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.78192, -1.71302, 0)
+
+[node name="ChildLine3D2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.50823, 2.72392, 7.49882)
+script = ExtResource("1_1eyyh")
+
+[node name="Node3D5" type="Node3D" parent="ChildLine3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.86534, -2.72406, 0)
+
+[node name="Node3D2" type="Node3D" parent="ChildLine3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8471, -2.72862, 0)
+
+[node name="NPCS" type="Node3D" parent="." node_paths=PackedStringArray("lines")]
+script = ExtResource("3_kx710")
+lines = [NodePath("../ChildLine3D"), NodePath("../ChildLine3D2")]
+scenes = Array[PackedScene]([ExtResource("4_aqrm2")])
+create_interval = 1.8
+create_interval_random_plus = 0.2
+move_velocity = 1.5
+warmed_time = 5.0
+stop_moving_dead_healths = true
+
+[node name="MakeNPCMagenta" type="Node" parent="NPCS"]
+script = SubResource("GDScript_bp2jh")
+all_type = 2
+
+[node name="Boxes" type="Node3D" parent="." node_paths=PackedStringArray("lines")]
+script = ExtResource("3_kx710")
+lines = [NodePath("../Box Line")]
+scenes = Array[PackedScene]([ExtResource("5_444yq")])
+create_interval = 3.0
+warmed_time = 8.0
+stop_moving_dead_healths = true
+
+[node name="Boxes Add Stuff" type="Node" parent="Boxes" node_paths=PackedStringArray("destinations")]
+script = SubResource("GDScript_r6j3t")
+items_added = Array[PackedScene]([ExtResource("7_6rvrj"), null, ExtResource("7_bp2jh"), ExtResource("8_k0mug")])
+destinations = [NodePath("../Space1"), NodePath("../Space2"), NodePath("../Space3")]
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.25, 0, 0)
+
+[node name="Space1" type="Node3D" parent="Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.89937, 0, 5.35063)
+
+[node name="Space2" type="Node3D" parent="Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.73238, 0, 5.3195)
+
+[node name="Space3" type="Node3D" parent="Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0654, 0, 4.75)
+
+[node name="HubBelt" parent="." instance=ExtResource("5_b13fb")]
+transform = Transform3D(0.993361, 0, 0.115041, 0, 1, 0, -0.115041, 0, 0.993361, 29.535, 0.3, -1.663)
+visible = false
+
+[node name="boeing" parent="." instance=ExtResource("10_3ubub")]
+transform = Transform3D(-1, 5.55392e-10, 8.7421e-08, 0, 0.99998, -0.00635301, -8.74228e-08, -0.00635301, -0.99998, 1.705e-07, -0.0528551, -1.95029)
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="boeing"]
+script = ExtResource("10_54tx7")
+high_contrast_group = &"scenery"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="belt" parent="." instance=ExtResource("11_dhdn4")]
+transform = Transform3D(0.0765972, 0, -0.997062, 0, 1, 0, 0.997062, 0, 0.0765972, 0.130773, 0, 1.35146)
+
+[connection signal="created" from="NPCS" to="NPCS/MakeNPCMagenta" method="_on_npcs_created"]
+[connection signal="created" from="Boxes" to="Boxes/Boxes Add Stuff" method="_on_boxes_created"]
+[connection signal="dead" from="Boxes" to="Boxes/Boxes Add Stuff" method="_on_boxes_dead"]
+[connection signal="screen_entered" from="Boxes/VisibleOnScreenNotifier3D" to="Boxes/Boxes Add Stuff" method="start_adding_items"]

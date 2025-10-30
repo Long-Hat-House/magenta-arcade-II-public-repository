@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0nlinkrfh1ew"]
+
+[ext_resource type="PackedScene" uid="uid://bfputog7afpe8" path="res://elements/neutral/props/praca_bandeira/steel_cable.glb" id="1_obd1n"]
+[ext_resource type="Material" uid="uid://cb8hki3r3tofp" path="res://elements/neutral/props/praca_bandeira/material/M_metal.tres" id="2_nlsn3"]
+
+[node name="steel_cable" instance=ExtResource("1_obd1n")]
+
+[node name="steel_cable" parent="." index="0"]
+material_override = ExtResource("2_nlsn3")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://tpk6qi2ts2go"]
+
+[ext_resource type="PackedScene" uid="uid://r5hbiso3v7c" path="res://elements/neutral/props/gear/mesh_gear.tscn" id="1_p3yps"]
+[ext_resource type="Script" path="res://elements/levels/lvl_hub/hub_elements/hub_lane_movement_listener.gd" id="2_52g25"]
+
+[node name="element_hub_lane_gear" type="Node3D" node_paths=PackedStringArray("to_move")]
+script = ExtResource("2_52g25")
+rotate_z = true
+conversion = 1.7
+multiplier = -1.0
+to_move = NodePath("gear")
+
+[node name="gear" parent="." instance=ExtResource("1_p3yps")]

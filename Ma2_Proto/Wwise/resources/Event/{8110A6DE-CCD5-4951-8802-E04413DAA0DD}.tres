@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://c4tiuy27767ut"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Stop_MiniBoss_Lv4_Attack_Warning"
+id = 1313647561
+guid = "{8110A6DE-CCD5-4951-8802-E04413DAA0DD}"
+dummy = true

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://f6mcqglxentj"]
+
+[ext_resource type="Script" path="res://elements/levels/burst.gd" id="1_rkcgc"]
+
+[node name="LevelGizmoTest" type="Node3D"]
+
+[node name="Burst" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24685, 0.0488665, 0.0571294)
+script = ExtResource("1_rkcgc")
+
+[node name="Burst2" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0853242, 0.206748, 0.720767)
+script = ExtResource("1_rkcgc")

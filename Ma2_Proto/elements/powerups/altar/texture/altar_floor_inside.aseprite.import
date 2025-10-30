@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://cypp4tgv88r33"
+path="res://.godot/imported/altar_floor_inside.aseprite-a31ac0789c496c644186f4edee6e1ea9.res"
+
+[deps]
+
+source_file="res://elements/powerups/altar/texture/altar_floor_inside.aseprite"
+dest_files=["res://.godot/imported/altar_floor_inside.aseprite-a31ac0789c496c644186f4edee6e1ea9.res"]
+
+[params]
+
+exclude_layers_pattern="#.*"
+only_visible_layers=false

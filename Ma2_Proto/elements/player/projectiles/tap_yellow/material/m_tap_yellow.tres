@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://btp82ysunbocy"]
+
+[resource]
+resource_local_to_scene = true
+cull_mode = 2
+albedo_color = Color(0.920523, 0.885553, 0.189329, 1)
+emission_enabled = true
+emission = Color(0.91295, 0.872527, 0.178848, 1)
+rim = 0.3
+rim_tint = 1.0
+anisotropy = 1.0
+disable_receive_shadows = true

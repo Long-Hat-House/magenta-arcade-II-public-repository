@@ -1,0 +1,7 @@
+[gd_resource type="WwiseRTPC" format=3 uid="uid://c4g3x4vib2x3w"]
+
+[resource]
+name = "plr_HoldPotential"
+id = 1577788187
+guid = "{197FD55B-878B-4BDC-A7B5-61D0FF014F88}"
+dummy = true

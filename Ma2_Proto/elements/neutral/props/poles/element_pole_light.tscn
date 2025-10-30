@@ -1,0 +1,94 @@
+[gd_scene load_steps=11 format=3 uid="uid://cklahqgo1utte"]
+
+[ext_resource type="PackedScene" uid="uid://bf8igomixrgsv" path="res://elements/neutral/props/poles/mesh/mesh_pole_light.tscn" id="1_00hwa"]
+[ext_resource type="Script" uid="uid://dq10y5jeco3ay" path="res://systems/element_scene_structure/exposer_node_3d.gd" id="1_qicso"]
+[ext_resource type="Script" uid="uid://bebxjxq1gjo10" path="res://systems/element_scene_structure/exposable_node_3d_child_scene.gd" id="2_2grbt"]
+[ext_resource type="PackedScene" uid="uid://dfxxlalekm52f" path="res://elements/neutral/props/pole_pieces/meshes/mesh_arm_light.tscn" id="2_gl1v4"]
+[ext_resource type="Script" uid="uid://0wf4obm88h88" path="res://elements/neutral/props/generic_tumbler.gd" id="3_ecigm"]
+[ext_resource type="Resource" uid="uid://7jb1h4bglavu" path="res://elements/neutral/props/pole_pieces/element_iron_pole_tumble_data.tres" id="4_1ig7p"]
+[ext_resource type="Script" uid="uid://biqjvlcudqx0t" path="res://elements/player/force_receiver.gd" id="6_u1q0q"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="7_v7dxr"]
+[ext_resource type="PackedScene" uid="uid://bk3c6a8vre6yr" path="res://elements/neutral/props/generic_body_and_presseable.tscn" id="8_e7ery"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gugje"]
+radius = 0.327506
+height = 8.77205
+
+[node name="Pole Light" type="Node3D"]
+script = ExtResource("1_qicso")
+"GenericTumbler/Transform/Slot - Top Left*scene" = ExtResource("2_gl1v4")
+"GenericTumbler/Transform/Slot - Top Right*scene" = null
+"GenericTumbler/Transform/Slot - Bottom Back*scene" = null
+"GenericTumbler/Transform/Slot - Bottom Forward*scene" = null
+
+[node name="GenericBodyAndPresseable" parent="." node_paths=PackedStringArray("on_kill_queue_free", "generic_tumbler", "visual_feedback_of_health") instance=ExtResource("8_e7ery")]
+on_kill_queue_free = [NodePath("..")]
+generic_tumbler = NodePath("../GenericTumbler")
+visual_feedback_of_health = [NodePath("../GenericTumbler/Transform")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shape = SubResource("CapsuleShape3D_gugje")
+
+[node name="Explosion" type="Node3D" parent="GenericBodyAndPresseable"]
+
+[node name="Explosion2" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Explosion3" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Explosion4" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+
+[node name="Explosion5" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.75, 0)
+
+[node name="Explosion6" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="Explosion7" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.75, 0)
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.79108, 2.59001, 0)
+aabb = AABB(-0.601981, -3.25248, -0.485289, 6.00181, 9.79207, 0.970577)
+enable_node_path = NodePath("../..")
+
+[node name="GenericTumbler" type="Node3D" parent="." node_paths=PackedStringArray("receiver", "to_tumble")]
+script = ExtResource("3_ecigm")
+receiver = NodePath("ForceReceiver")
+to_tumble = NodePath(".")
+tumble_data = ExtResource("4_1ig7p")
+tumble_radius = 0.32
+
+[node name="Transform" type="Node3D" parent="GenericTumbler"]
+
+[node name="pole_light" parent="GenericTumbler/Transform" instance=ExtResource("1_00hwa")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="GenericTumbler/Transform/pole_light"]
+script = ExtResource("7_v7dxr")
+high_contrast_group = &"scenery"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="Slot - Top Left" type="Node3D" parent="GenericTumbler/Transform"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.1, 6.7946, 0)
+script = ExtResource("2_2grbt")
+scene = ExtResource("2_gl1v4")
+
+[node name="Slot - Top Right" type="Node3D" parent="GenericTumbler/Transform"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.1, 6.7946, 0)
+script = ExtResource("2_2grbt")
+
+[node name="Slot - Bottom Back" type="Node3D" parent="GenericTumbler/Transform"]
+transform = Transform3D(1, 2.22045e-16, 4.9738e-14, 2.22045e-16, 0.999825, 0.0186914, 0, -0.0186914, 0.999825, -5.32907e-15, 3, 0.268175)
+script = ExtResource("2_2grbt")
+
+[node name="Slot - Bottom Forward" type="Node3D" parent="GenericTumbler/Transform"]
+transform = Transform3D(-1, 1.63406e-09, -8.74075e-08, -2.05508e-09, 0.99911, 0.0421895, 8.73986e-08, 0.0421895, -0.99911, 1.17147e-08, 3, -0.268)
+script = ExtResource("2_2grbt")
+
+[node name="ForceReceiver" type="Node3D" parent="GenericTumbler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.87964, 0)
+script = ExtResource("6_u1q0q")

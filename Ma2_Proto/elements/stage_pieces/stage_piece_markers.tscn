@@ -1,0 +1,301 @@
+[gd_scene load_steps=8 format=3 uid="uid://nciytm3vu83f"]
+
+[ext_resource type="Script" path="res://systems/stage/level_stage_piece.gd" id="1_u25wv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lsg3g"]
+transparency = 1
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.443137, 0.447059, 0.466667, 0.117647)
+
+[sub_resource type="QuadMesh" id="QuadMesh_m0vva"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rmk1r"]
+transparency = 1
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.592157, 0.584314, 0.592157, 0.117647)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v6ed7"]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.898039, 0.878431, 0.34902, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ub2h7"]
+size = Vector2(0.1, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fy2al"]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.0862745, 0.878431, 0.741176, 1)
+
+[node name="StagePieceMarkers" type="Node3D" node_paths=PackedStringArray("pivot_forward", "pivot_backward", "pivot_right", "pivot_left")]
+script = ExtResource("1_u25wv")
+pivot_forward = NodePath("Pivots Container/FORWARD")
+pivot_backward = NodePath("Pivots Container/BACKWARD")
+pivot_right = NodePath("Pivots Container/RIGHT")
+pivot_left = NodePath("Pivots Container/LEFT")
+
+[node name="Pivots Container" type="Node3D" parent="."]
+
+[node name="FORWARD" type="Marker3D" parent="Pivots Container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="BACKWARD" type="Marker3D" parent="Pivots Container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="RIGHT" type="Marker3D" parent="Pivots Container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+
+[node name="LEFT" type="Marker3D" parent="Pivots Container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+
+[node name="Meshes" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.5, 0, 0.5)
+material_override = SubResource("StandardMaterial3D_lsg3g")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.5, 0, 0.5)
+material_override = SubResource("StandardMaterial3D_lsg3g")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.5, 0, 0.5)
+material_override = SubResource("StandardMaterial3D_lsg3g")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.5, 0, 0.5)
+material_override = SubResource("StandardMaterial3D_lsg3g")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3.5, 0, 0.5)
+material_override = SubResource("StandardMaterial3D_lsg3g")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 5.5, 0, 0.5)
+material_override = SubResource("StandardMaterial3D_lsg3g")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.5, 0, 0.5)
+material_override = SubResource("StandardMaterial3D_rmk1r")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.5, 0, 0.5)
+material_override = SubResource("StandardMaterial3D_rmk1r")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 7.5, 0, 0.5)
+material_override = SubResource("StandardMaterial3D_lsg3g")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D19" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 6.5, 0, 0.5)
+material_override = SubResource("StandardMaterial3D_rmk1r")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.5, 0, 0.5)
+material_override = SubResource("StandardMaterial3D_rmk1r")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.5, 0, 0.5)
+material_override = SubResource("StandardMaterial3D_rmk1r")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.5, 0, 0.5)
+material_override = SubResource("StandardMaterial3D_rmk1r")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5.5, 0, 0.5)
+material_override = SubResource("StandardMaterial3D_rmk1r")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.5, 0, 0.5)
+material_override = SubResource("StandardMaterial3D_lsg3g")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -7.5, 0, 0.5)
+material_override = SubResource("StandardMaterial3D_rmk1r")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0.5, 0, -0.5)
+material_override = SubResource("StandardMaterial3D_lsg3g")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 2.5, 0, -0.5)
+material_override = SubResource("StandardMaterial3D_lsg3g")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 4.5, 0, -0.5)
+material_override = SubResource("StandardMaterial3D_lsg3g")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D20" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, -1.5, 0, -0.5)
+material_override = SubResource("StandardMaterial3D_lsg3g")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D21" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, -3.5, 0, -0.5)
+material_override = SubResource("StandardMaterial3D_lsg3g")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D22" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, -5.5, 0, -0.5)
+material_override = SubResource("StandardMaterial3D_lsg3g")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D23" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, -0.5, 0, -0.5)
+material_override = SubResource("StandardMaterial3D_rmk1r")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D24" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, -2.5, 0, -0.5)
+material_override = SubResource("StandardMaterial3D_rmk1r")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D25" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, -7.5, 0, -0.499999)
+material_override = SubResource("StandardMaterial3D_lsg3g")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D26" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, -6.5, 0, -0.499999)
+material_override = SubResource("StandardMaterial3D_rmk1r")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D27" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, -4.5, 0, -0.5)
+material_override = SubResource("StandardMaterial3D_rmk1r")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D28" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 1.5, 0, -0.5)
+material_override = SubResource("StandardMaterial3D_rmk1r")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D29" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 3.5, 0, -0.5)
+material_override = SubResource("StandardMaterial3D_rmk1r")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D30" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 5.5, 0, -0.5)
+material_override = SubResource("StandardMaterial3D_rmk1r")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D31" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 6.5, 0, -0.500001)
+material_override = SubResource("StandardMaterial3D_lsg3g")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D32" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 7.5, 0, -0.500001)
+material_override = SubResource("StandardMaterial3D_rmk1r")
+mesh = SubResource("QuadMesh_m0vva")
+skeleton = NodePath("../..")
+
+[node name="lines" type="Node3D" parent="."]
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="lines"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.01, 0)
+material_override = SubResource("StandardMaterial3D_v6ed7")
+mesh = SubResource("QuadMesh_ub2h7")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D20" type="MeshInstance3D" parent="lines"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0.01, 0)
+material_override = SubResource("StandardMaterial3D_v6ed7")
+mesh = SubResource("QuadMesh_ub2h7")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D23" type="MeshInstance3D" parent="lines"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 7, 0.01, 0)
+material_override = SubResource("StandardMaterial3D_v6ed7")
+mesh = SubResource("QuadMesh_ub2h7")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D24" type="MeshInstance3D" parent="lines"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -7, 0.01, 0)
+material_override = SubResource("StandardMaterial3D_v6ed7")
+mesh = SubResource("QuadMesh_ub2h7")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="lines"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4, 0.01, 0)
+material_override = SubResource("StandardMaterial3D_fy2al")
+mesh = SubResource("QuadMesh_ub2h7")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D22" type="MeshInstance3D" parent="lines"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -4, 0.01, 0)
+material_override = SubResource("StandardMaterial3D_fy2al")
+mesh = SubResource("QuadMesh_ub2h7")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="lines"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4, 0.01, 0)
+material_override = SubResource("StandardMaterial3D_fy2al")
+mesh = SubResource("QuadMesh_ub2h7")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D21" type="MeshInstance3D" parent="lines"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 4, 0.01, 0)
+material_override = SubResource("StandardMaterial3D_fy2al")
+mesh = SubResource("QuadMesh_ub2h7")
+skeleton = NodePath("../..")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-8, 0, -1, 16, 2, 2)
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="_on_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_screen_exited"]

@@ -1,0 +1,537 @@
+[gd_scene load_steps=23 format=3 uid="uid://blqujpngannf2"]
+
+[ext_resource type="Script" uid="uid://cwdiwlngodbqn" path="res://elements/powerups/altar/generic_altar.gd" id="1_v1wot"]
+[ext_resource type="Script" uid="uid://bi4yfgewvcvwq" path="res://systems/switchable/switch_oning_offing_animation_player.gd" id="2_qyrij"]
+[ext_resource type="Script" uid="uid://bjnpmcrptfb85" path="res://systems/utils/random_rotation_local.gd" id="3_rqxlh"]
+[ext_resource type="Material" uid="uid://5ra46jjkoflf" path="res://elements/neutral/clouds/m_clouds.tres" id="3_vj3ur"]
+[ext_resource type="Script" uid="uid://b7n1kj0lt03wh" path="res://systems/utils/node3d_shaker.gd" id="4_jop21"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="6_aoohr"]
+
+[sub_resource type="Animation" id="Animation_lbonl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphics:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphics:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Graphics:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fhnn7"]
+resource_name = "off"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphics:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphics:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Graphics:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ryc5h"]
+resource_name = "offing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphics:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.933333),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.3, 1.3, 1.3), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphics:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.933333),
+"transitions": PackedFloat32Array(2, -2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.5, -0.716), Vector3(0, -5, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Graphics:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(0.5, -0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.389208, 0, 0), Vector3(-0.546288, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pmyjp"]
+resource_name = "on"
+loop_mode = 1
+capture_included = true
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphics:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
+"update": 2,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphics:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.266667, 0.7),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 2,
+"values": [Vector3(0, -0.8, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Graphics:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.166667, 0.466667, 0.8),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 2,
+"values": [Vector3(0, 0, 0), Vector3(0.174533, 0, 0), Vector3(-0.0872665, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_d5qvb"]
+resource_name = "oning"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphics:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphics:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.366667, 1.43333, 1.76667, 2.13333, 2.5, 3),
+"transitions": PackedFloat32Array(-2, -2, -2, 0.5, 0.5, -2, 1),
+"update": 0,
+"values": [Vector3(0, -3, 0), Vector3(0, -1.5, 0), Vector3(0, -1, 0), Vector3(0, 0.5, 0), Vector3(0, -1, 0), Vector3(0, 0.3, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Graphics:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.73333, 1.93333, 2.3, 2.5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.148353, 0, 0), Vector3(0.136136, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kango"]
+_data = {
+&"RESET": SubResource("Animation_lbonl"),
+&"off": SubResource("Animation_fhnn7"),
+&"offing": SubResource("Animation_ryc5h"),
+&"on": SubResource("Animation_pmyjp"),
+&"oning": SubResource("Animation_d5qvb")
+}
+
+[sub_resource type="Animation" id="Animation_aoohr"]
+resource_name = "off"
+
+[sub_resource type="Animation" id="Animation_kpxia"]
+resource_name = "offing"
+
+[sub_resource type="Animation" id="Animation_jo6gu"]
+resource_name = "on"
+
+[sub_resource type="Animation" id="Animation_d2vql"]
+resource_name = "oning"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ay3nx"]
+_data = {
+&"off": SubResource("Animation_aoohr"),
+&"offing": SubResource("Animation_kpxia"),
+&"on": SubResource("Animation_jo6gu"),
+&"oning": SubResource("Animation_d2vql")
+}
+
+[sub_resource type="SphereMesh" id="SphereMesh_26nnp"]
+radial_segments = 10
+rings = 3
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_td4s2"]
+noise_type = 5
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hsau4"]
+width = 32
+height = 32
+seamless = true
+seamless_blend_skirt = 0.823
+noise = SubResource("FastNoiseLite_td4s2")
+
+[sub_resource type="SphereMesh" id="SphereMesh_si4mc"]
+material = ExtResource("3_vj3ur")
+radial_segments = 7
+rings = 3
+
+[sub_resource type="Curve" id="Curve_alk3x"]
+_data = [Vector2(0, 0), 0.0, 7.59664, 0, 0, Vector2(0.193609, 0.617388), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.560106, 0.0, 0, 0]
+point_count = 3
+
+[node name="CloudAltar" type="Node3D" node_paths=PackedStringArray("_anim_onoff", "_anim_pressed_onoff", "_obj_pivot")]
+script = ExtResource("1_v1wot")
+_anim_onoff = NodePath("AnimOnOff")
+_anim_pressed_onoff = NodePath("AnimPressedOnOff")
+_obj_pivot = NodePath("Graphics/ObjPivot")
+
+[node name="AnimOnOff" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_kango")
+}
+script = ExtResource("2_qyrij")
+
+[node name="AnimPressedOnOff" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ay3nx")
+}
+script = ExtResource("2_qyrij")
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="ObjPivot" type="Node3D" parent="Graphics"]
+
+[node name="CloudSpheres" type="Node3D" parent="Graphics"]
+transform = Transform3D(1, 0, 0, 0, 0.68, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("3_rqxlh")
+
+[node name="CloudSphere" type="Node3D" parent="Graphics/CloudSpheres"]
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Graphics/CloudSpheres/CloudSphere"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.110784, 0.0578431, -0.0127451)
+material_override = ExtResource("3_vj3ur")
+mesh = SubResource("SphereMesh_26nnp")
+skeleton = NodePath("../../..")
+script = ExtResource("4_jop21")
+noise_texture = SubResource("NoiseTexture2D_hsau4")
+shake_frequency = 0.05
+
+[node name="CloudSphere2" type="Node3D" parent="Graphics/CloudSpheres"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.356329, 0, 0.671128)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Graphics/CloudSpheres/CloudSphere2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0107843, 0.0362745, 0.0696079)
+material_override = ExtResource("3_vj3ur")
+mesh = SubResource("SphereMesh_26nnp")
+skeleton = NodePath("../../..")
+script = ExtResource("4_jop21")
+noise_texture = SubResource("NoiseTexture2D_hsau4")
+shake_frequency = 0.05
+
+[node name="CloudSphere3" type="Node3D" parent="Graphics/CloudSpheres"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.359337, 0, 0.622689)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Graphics/CloudSpheres/CloudSphere3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0519608, 0.104902, 0.102941)
+material_override = ExtResource("3_vj3ur")
+mesh = SubResource("SphereMesh_26nnp")
+skeleton = NodePath("../../..")
+script = ExtResource("4_jop21")
+noise_texture = SubResource("NoiseTexture2D_hsau4")
+shake_frequency = 0.05
+
+[node name="CloudSphere4" type="Node3D" parent="Graphics/CloudSpheres"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.749342, 0, -0.0143559)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Graphics/CloudSpheres/CloudSphere4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0441177, 0.077451, 0.0107843)
+material_override = ExtResource("3_vj3ur")
+mesh = SubResource("SphereMesh_26nnp")
+skeleton = NodePath("../../..")
+script = ExtResource("4_jop21")
+noise_texture = SubResource("NoiseTexture2D_hsau4")
+shake_frequency = 0.05
+
+[node name="CloudSphere5" type="Node3D" parent="Graphics/CloudSpheres"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.424606, 0, -0.646957)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Graphics/CloudSpheres/CloudSphere5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0715686, -0.0186274, 0.0676471)
+material_override = ExtResource("3_vj3ur")
+mesh = SubResource("SphereMesh_26nnp")
+skeleton = NodePath("../../..")
+script = ExtResource("4_jop21")
+noise_texture = SubResource("NoiseTexture2D_hsau4")
+shake_frequency = 0.05
+
+[node name="CloudSphere10" type="Node3D" parent="Graphics/CloudSpheres"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.02542, 1.75308e-07, -0.562925)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Graphics/CloudSpheres/CloudSphere10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0480392, -0.0715686, 0.0107843)
+material_override = ExtResource("3_vj3ur")
+mesh = SubResource("SphereMesh_26nnp")
+skeleton = NodePath("../../..")
+script = ExtResource("4_jop21")
+noise_texture = SubResource("NoiseTexture2D_hsau4")
+shake_frequency = 0.05
+
+[node name="CloudSphere6" type="Node3D" parent="Graphics/CloudSpheres"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.288679, 1.75308e-07, -0.726864)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Graphics/CloudSpheres/CloudSphere6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00294119, -0.000980392, 0.0343137)
+material_override = ExtResource("3_vj3ur")
+mesh = SubResource("SphereMesh_26nnp")
+skeleton = NodePath("../../..")
+script = ExtResource("4_jop21")
+noise_texture = SubResource("NoiseTexture2D_hsau4")
+shake_frequency = 0.05
+
+[node name="CloudSphere11" type="Node3D" parent="Graphics/CloudSpheres"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.320661, 0.552947, -1.05369)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Graphics/CloudSpheres/CloudSphere11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00294119, 0.0794118, 0.0107843)
+material_override = ExtResource("3_vj3ur")
+mesh = SubResource("SphereMesh_26nnp")
+skeleton = NodePath("../../..")
+script = ExtResource("4_jop21")
+noise_texture = SubResource("NoiseTexture2D_hsau4")
+shake_frequency = 0.05
+
+[node name="CloudSphere13" type="Node3D" parent="Graphics/CloudSpheres"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -1.11272, 1.13416, -0.752104)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Graphics/CloudSpheres/CloudSphere13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022549, -0.0480392, 0.095098)
+material_override = ExtResource("3_vj3ur")
+mesh = SubResource("SphereMesh_26nnp")
+skeleton = NodePath("../../..")
+script = ExtResource("4_jop21")
+noise_texture = SubResource("NoiseTexture2D_hsau4")
+shake_frequency = 0.05
+
+[node name="CloudSphere14" type="Node3D" parent="Graphics/CloudSpheres"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.72396, 1.99074, 0.393554)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Graphics/CloudSpheres/CloudSphere14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.104902, 0.0558824, 0.0539216)
+material_override = ExtResource("3_vj3ur")
+mesh = SubResource("SphereMesh_26nnp")
+skeleton = NodePath("../../..")
+script = ExtResource("4_jop21")
+noise_texture = SubResource("NoiseTexture2D_hsau4")
+shake_frequency = 0.05
+
+[node name="CloudSphere15" type="Node3D" parent="Graphics/CloudSpheres"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.4809, -0.46044, 1.4342)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Graphics/CloudSpheres/CloudSphere15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.095098, -0.0323529, 0.0362745)
+material_override = ExtResource("3_vj3ur")
+mesh = SubResource("SphereMesh_26nnp")
+skeleton = NodePath("../../..")
+script = ExtResource("4_jop21")
+noise_texture = SubResource("NoiseTexture2D_hsau4")
+shake_frequency = 0.05
+
+[node name="CloudSphere16" type="Node3D" parent="Graphics/CloudSpheres"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1.03782, -0.46044, 1.16216)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Graphics/CloudSpheres/CloudSphere16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.136471, 0.139608, -0.0862745)
+material_override = ExtResource("3_vj3ur")
+mesh = SubResource("SphereMesh_26nnp")
+skeleton = NodePath("../../..")
+script = ExtResource("4_jop21")
+noise_texture = SubResource("NoiseTexture2D_hsau4")
+shake_amplitude = 0.8
+shake_frequency = 0.075
+
+[node name="CloudSphere17" type="Node3D" parent="Graphics/CloudSpheres"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -1.74809, -1.70316, 0.266821)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Graphics/CloudSpheres/CloudSphere17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.127059, -0.0894118, 0.042353)
+material_override = ExtResource("3_vj3ur")
+mesh = SubResource("SphereMesh_26nnp")
+skeleton = NodePath("../../..")
+script = ExtResource("4_jop21")
+noise_texture = SubResource("NoiseTexture2D_hsau4")
+shake_amplitude = 0.8
+shake_frequency = 0.075
+
+[node name="CloudSphere12" type="Node3D" parent="Graphics/CloudSpheres"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.934005, 0.154027, 0.513836)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Graphics/CloudSpheres/CloudSphere12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0813726, 0.0186275, 0.0539216)
+material_override = ExtResource("3_vj3ur")
+mesh = SubResource("SphereMesh_26nnp")
+skeleton = NodePath("../../..")
+script = ExtResource("4_jop21")
+noise_texture = SubResource("NoiseTexture2D_hsau4")
+shake_frequency = 0.05
+
+[node name="CloudSphere7" type="Node3D" parent="Graphics/CloudSpheres"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.710228, 1.75308e-07, -0.121014)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Graphics/CloudSpheres/CloudSphere7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0362745, 0.0441177, -0.0794118)
+material_override = ExtResource("3_vj3ur")
+mesh = SubResource("SphereMesh_26nnp")
+skeleton = NodePath("../../..")
+script = ExtResource("4_jop21")
+noise_texture = SubResource("NoiseTexture2D_hsau4")
+shake_frequency = 0.05
+
+[node name="CloudSphere8" type="Node3D" parent="Graphics/CloudSpheres"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.627787, 0.0853854, 0.441674)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Graphics/CloudSpheres/CloudSphere8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0303922, 0.0480392, 0.0480392)
+material_override = ExtResource("3_vj3ur")
+mesh = SubResource("SphereMesh_26nnp")
+skeleton = NodePath("../../..")
+script = ExtResource("4_jop21")
+noise_texture = SubResource("NoiseTexture2D_hsau4")
+shake_frequency = 0.05
+
+[node name="CloudSphere9" type="Node3D" parent="Graphics/CloudSpheres"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.0947563, -0.12558, 1.01765)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Graphics/CloudSpheres/CloudSphere9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0598039, 0.022549, -0.00490196)
+material_override = ExtResource("3_vj3ur")
+mesh = SubResource("SphereMesh_26nnp")
+skeleton = NodePath("../../..")
+script = ExtResource("4_jop21")
+noise_texture = SubResource("NoiseTexture2D_hsau4")
+shake_frequency = 0.05
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="Graphics/CloudSpheres"]
+script = ExtResource("6_aoohr")
+high_contrast_group = &"neutral"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="CloudParticles" type="CPUParticles3D" parent="Graphics"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.150494, -0.310366, 0.161184)
+amount = 10
+lifetime = 0.5
+mesh = SubResource("SphereMesh_si4mc")
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.5
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 0, 1)
+spread = 27.8
+flatness = 1.0
+gravity = Vector3(0, 0, 30)
+initial_velocity_min = 1.0
+initial_velocity_max = 5.0
+angular_velocity_min = 2.0
+angular_velocity_max = 4.0
+radial_accel_min = -5.0
+damping_min = 20.0
+damping_max = 20.0
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_alk3x")

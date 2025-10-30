@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://3yk50xbrq31"]
+
+[ext_resource type="PackedScene" uid="uid://cexqkrjsxgfl7" path="res://elements/levels/level_structure/level_base.tscn" id="1_su1de"]
+[ext_resource type="PackedScene" uid="uid://cyiqxp2186057" path="res://elements/levels/level_structure/level_environment_sunset.tscn" id="4_e34r2"]
+
+[sub_resource type="GDScript" id="GDScript_icqhh"]
+resource_name = "BASE"
+script/source = "extends Level
+
+func _ready() -> void:
+	await await_for_level_ready()
+
+	stage.set_stage_size(Vector3(12,0,27))
+	cam.set_offset(Vector3(0,26,28))
+
+	AudioManager.post_music_event(AK.EVENTS.MUSIC_LEVEL2_START)
+"
+
+[node name="LevelBase" instance=ExtResource("1_su1de")]
+script = SubResource("GDScript_icqhh")
+
+[node name="LevelEnvironmentSunset" parent="." index="0" instance=ExtResource("4_e34r2")]

@@ -1,0 +1,1895 @@
+[gd_scene load_steps=70 format=3 uid="uid://cy04dckpnrfv"]
+
+[ext_resource type="Theme" uid="uid://bfqq5qjsvg8no" path="res://elements/ui/themes/menu/menu_theme.tres" id="1_hv6wg"]
+[ext_resource type="Script" uid="uid://bkp1518pckb2d" path="res://elements/ui/hud/HUD.gd" id="1_jak8r"]
+[ext_resource type="Script" uid="uid://bggyv1ala304h" path="res://elements/ui/hud/hud_timer.gd" id="3_35ju2"]
+[ext_resource type="Script" uid="uid://bq2kcnfgursag" path="res://systems/ui/safe_area_margin_container.gd" id="4_yxj4h"]
+[ext_resource type="PackedScene" uid="uid://drba74dos8ekp" path="res://elements/score/score_hud/score_show.tscn" id="5_qlm8g"]
+[ext_resource type="Script" uid="uid://bi4yfgewvcvwq" path="res://systems/switchable/switch_oning_offing_animation_player.gd" id="5_r401q"]
+[ext_resource type="PackedScene" uid="uid://68whaio4r5xs" path="res://elements/score/score_hud/unpositioned_score_show.tscn" id="6_1i4lr"]
+[ext_resource type="PackedScene" uid="uid://dpqh00uf2yyc8" path="res://elements/score/score_hud/score_combo_show.tscn" id="6_m45x2"]
+[ext_resource type="PackedScene" uid="uid://dghw6owsoir7n" path="res://elements/ui/hud/hud_hp.tscn" id="6_owuol"]
+[ext_resource type="Script" uid="uid://shll8mfyouts" path="res://systems/score/score_hud.gd" id="7_2hw6r"]
+[ext_resource type="PackedScene" uid="uid://d0umqyuupwxy7" path="res://elements/ui/hud/hud_weapon_hold.tscn" id="7_j75jx"]
+[ext_resource type="Script" uid="uid://c0m7dkmqqyxv" path="res://systems/score/score_display.gd" id="8_j40mi"]
+[ext_resource type="Script" uid="uid://b57jkab70en74" path="res://systems/ui/progress_bar_float_multiple.gd" id="8_nfsrj"]
+[ext_resource type="PackedScene" uid="uid://cujk0ei64atp" path="res://elements/ui/hud/hud_weapon_tap.tscn" id="9_3k8ru"]
+[ext_resource type="PackedScene" uid="uid://b74wjp2rmdf0u" path="res://elements/score/score_hud/score_display_letter.tscn" id="9_83dgb"]
+[ext_resource type="Texture2D" uid="uid://byexxw12pbghc" path="res://elements/icons/icons_boss_0.png" id="9_gesl2"]
+[ext_resource type="PackedScene" uid="uid://cxhiskft7i83e" path="res://elements/score/score_hud/score_boost_bar.tscn" id="9_ktg8w"]
+[ext_resource type="Texture2D" uid="uid://dtq1gn0qd0f08" path="res://elements/icons/icon_score_boost.png" id="9_x1rgv"]
+[ext_resource type="PackedScene" uid="uid://c6t106ui5bhhe" path="res://elements/ui/hud/hud_coins.tscn" id="10_2s0ya"]
+[ext_resource type="Script" uid="uid://c3yme4hxpatpv" path="res://systems/utils/control_shaker.gd" id="10_7vs8g"]
+[ext_resource type="Texture2D" uid="uid://cffmyt3lljfn8" path="res://elements/icons/icons_upgrades/icon_upgrade_health_revenge.png" id="15_udoh6"]
+[ext_resource type="Texture2D" uid="uid://cbtctmy5imbk4" path="res://elements/icons/icons_upgrades/icon_upgrade_health_heal.png" id="16_p2yg3"]
+[ext_resource type="Material" uid="uid://dkcegkcvgcvkh" path="res://elements/ui/hud/BossBG_Clouds.tres" id="19_s0g14"]
+[ext_resource type="PackedScene" uid="uid://cxw2x3dautj1o" path="res://elements/ui/hud/hud_crack/ui_vfx_crack.tscn" id="23_yxj4h"]
+
+[sub_resource type="Curve" id="Curve_ay5l6"]
+bake_resolution = 200
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.25, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_udoh6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ScoreBoostBarMultiple:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Overtime Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Overtime Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_x4q3p"]
+resource_name = "off"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ScoreBoostBarMultiple:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Overtime Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_p2yg3"]
+resource_name = "offing"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ScoreBoostBarMultiple:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Overtime Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_i1gum"]
+resource_name = "on"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ScoreBoostBarMultiple:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Overtime Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.392157)]
+}
+
+[sub_resource type="Animation" id="Animation_yxj4h"]
+resource_name = "onning"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ScoreBoostBarMultiple:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Overtime Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Overtime Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.166667, 0.5),
+"transitions": PackedFloat32Array(-2, -2, 0.5, -2),
+"update": 0,
+"values": [Color(0.9, 0, 1, 1), Color(1, 1, 1, 1), Color(0.9, 0, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.392157)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yxj4h"]
+_data = {
+&"RESET": SubResource("Animation_udoh6"),
+&"off": SubResource("Animation_x4q3p"),
+&"offing": SubResource("Animation_p2yg3"),
+&"on": SubResource("Animation_i1gum"),
+&"oning": SubResource("Animation_yxj4h")
+}
+
+[sub_resource type="Animation" id="Animation_yfvf1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.376471, 0.360784, 0.301961)]
+}
+
+[sub_resource type="Animation" id="Animation_wy8m4"]
+resource_name = "off"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.376471, 0.360784, 0.301961)]
+}
+
+[sub_resource type="Animation" id="Animation_o4oln"]
+resource_name = "offing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.615572, 1),
+"update": 0,
+"values": [Color(1, 0, 1, 0.301961), Color(0, 0.376471, 0.360784, 0.301961)]
+}
+
+[sub_resource type="Animation" id="Animation_k0dhp"]
+resource_name = "on"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Color(0.6219, 0.000251628, 0.611833, 0.301961), Color(1, 0, 1, 0.870588)]
+}
+
+[sub_resource type="Animation" id="Animation_f1rte"]
+resource_name = "oning"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.615572, 1),
+"update": 0,
+"values": [Color(1, 0.654902, 0.984314, 0.858824), Color(1, 0, 1, 0.301961)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bj6iv"]
+_data = {
+&"RESET": SubResource("Animation_yfvf1"),
+&"off": SubResource("Animation_wy8m4"),
+&"offing": SubResource("Animation_o4oln"),
+&"on": SubResource("Animation_k0dhp"),
+&"oning": SubResource("Animation_f1rte")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0v5a4"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 80
+border_width_right = 80
+border_color = Color(1, 1, 1, 0)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="GDScript" id="GDScript_p2yg3"]
+script/source = "extends Control
+@export var _anim:AnimationPlayer
+@export var _heal_bar:TextureProgressBar
+
+func _ready() -> void:
+	visible = Player.instance.currentState.emergency_heal_level > 0
+
+	if !visible:
+		return
+
+	await get_tree().process_frame
+	Player.instance.hp_change.connect(_on_hp_change)
+	Player.instance.emergency_heal.healing_start.connect(_on_healing_start)
+	Player.instance.emergency_heal.healing_decayed.connect(_on_healing_start)
+	Player.instance.emergency_heal.healing_completed.connect(_on_healing_start)
+	Player.instance.emergency_heal.healing_change_total.connect(_on_healing_change_total)
+	_heal_bar.value = 0
+	_heal_bar.visible = false
+
+func _update_heal_animation():
+	if Player.instance.emergency_heal.is_healing():
+		_anim.play(\"healing\")
+		_heal_bar.visible = true
+	elif Player.instance.emergency_heal.can_heal():
+		_anim.play(\"warning\")
+		_heal_bar.visible = false
+	else:
+		_anim.play(\"off\")
+		_heal_bar.visible = false
+
+func _on_hp_change(hp:int, position:Vector3):
+	_update_heal_animation()
+
+func _on_healing_start():
+	_update_heal_animation()
+
+func _on_healing_decayed():
+	_update_heal_animation()
+
+func _on_healing_completed():
+	_update_heal_animation()
+
+func _on_healing_change_total(val:float):
+	_heal_bar.value = val
+"
+
+[sub_resource type="Gradient" id="Gradient_p2yg3"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.712153, 0.782516, 0.923241, 1)
+colors = PackedColorArray(0.698039, 0.968627, 0.882353, 0, 0.989715, 0.998931, 0.995993, 0.96594, 1, 1, 1, 1, 0.698039, 0.968627, 0.882353, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_i1gum"]
+gradient = SubResource("Gradient_p2yg3")
+width = 90
+height = 90
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Animation" id="Animation_y5pkf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.392157)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_g5k4k"]
+resource_name = "healing"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Color(0.658824, 1, 0.909804, 1), Color(1, 1, 1, 1), Color(0.658824, 1, 0.909804, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.0666667, 0.2, 0.933333),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ks463"]
+resource_name = "off"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.392157)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_byt57"]
+resource_name = "warning"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.5),
+"transitions": PackedFloat32Array(0.5, 2.14355, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.392157), Color(1, 0, 1, 1), Color(1, 1, 1, 0.392157)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_byt57"]
+_data = {
+&"RESET": SubResource("Animation_y5pkf"),
+&"healing": SubResource("Animation_g5k4k"),
+&"off": SubResource("Animation_ks463"),
+&"warning": SubResource("Animation_byt57")
+}
+
+[sub_resource type="GDScript" id="GDScript_udoh6"]
+resource_name = "Revenge"
+script/source = "extends Control
+@export var _anim:AnimationPlayer
+
+func _ready() -> void:
+	await get_tree().process_frame
+	Player.instance.finger_took_damage.connect(_on_take_damage)
+	visible = Player.instance.currentState.revenge_level > 0
+
+func _on_take_damage(token:PlayerToken):
+	_anim.play(\"use\")
+"
+
+[sub_resource type="Animation" id="Animation_d8cnd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.392157)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bxj1w"]
+resource_name = "use"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 1.4, 2),
+"transitions": PackedFloat32Array(2, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.392157), Color(0.741176, 0.996078, 0.929412, 1), Color(1, 1, 1, 1), Color(0.772549, 0.996078, 0.945098, 1), Color(1, 1, 1, 1), Color(0.741176, 0.996078, 0.929412, 1), Color(1, 1, 1, 1), Color(0.772549, 0.996078, 0.945098, 1), Color(1, 1, 1, 1), Color(0.772549, 0.996078, 0.945098, 1), Color(1, 1, 1, 0.392157)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5, 0.6, 0.8, 2),
+"transitions": PackedFloat32Array(2, 2, 0.5, 2, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1), Vector2(1.4, 1.4), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ks463"]
+_data = {
+&"RESET": SubResource("Animation_d8cnd"),
+&"use": SubResource("Animation_bxj1w")
+}
+
+[sub_resource type="GDScript" id="GDScript_4aq2t"]
+resource_name = "ArcadeHUD"
+script/source = "extends BoxContainer
+
+func _ready() -> void:
+	visible = LevelManager.current_level_info.is_arcade_mode
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_owpy4"]
+bg_color = Color(0.25098, 0.0117647, 0.176471, 0.588235)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wemsl"]
+bg_color = Color(1, 0, 1, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 0.658824, 0.909804, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_857ca"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.745098, 0, 0.784314, 1)
+border_width_top = 30
+border_width_bottom = 30
+border_color = Color(0.999999, 0.812242, 0.944969, 1)
+border_blend = true
+
+[sub_resource type="Animation" id="Animation_7swrv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SafeAreaRect - HUD/MarginContainer/Top Right/Boss Hud Area:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBoss:shake_amplitude_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Panel:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBossPresentation:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBossPresentation:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBoss:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBossPresentation/LabelBossPresentationPivot:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBoss/LabelBossPivot:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(30, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SafeAreaRect - HUD/MarginContainer/Top Right/Boss Hud Area/BossProgress:custom_minimum_size")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(16, 800)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SafeAreaRect - HUD/MarginContainer/Top Right/Boss Hud Area/BossIconContainer/Boss Icon:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_oyd1u"]
+resource_name = "off"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SafeAreaRect - HUD/MarginContainer/Top Right/Boss Hud Area:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_or5mg"]
+resource_name = "offing"
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_d5p4l"]
+resource_name = "on"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SafeAreaRect - HUD/MarginContainer/Top Right/Boss Hud Area:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ts0a1"]
+resource_name = "oning"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SafeAreaRect - HUD/MarginContainer/Top Right/Boss Hud Area:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.23333, 3.26667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBoss:shake_amplitude_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.533333, 1.3, 2.5, 3.5),
+"transitions": PackedFloat32Array(0.5, 0.5, 2, 2, 1),
+"update": 0,
+"values": [2.0, 1.0, 0.2, 0.2, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Panel:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.433333, 0.633333, 1.36667, 2.16667, 3.16667, 3.46667),
+"transitions": PackedFloat32Array(2, 0.5, -2, -2, -2, -2, 0.5, 1),
+"update": 0,
+"values": [Vector2(0, 0.1), Vector2(1, 0.1), Vector2(1, 1.1), Vector2(1, 0.9), Vector2(1, 1), Vector2(1, 0.9), Vector2(1, 1), Vector2(1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBossPresentation:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBossPresentation:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 2.96667, 3.23333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBoss:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.533333, 0.8, 3.1, 3.23333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBossPresentation/LabelBossPresentationPivot:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 3.23333),
+"transitions": PackedFloat32Array(-0.0980731, 1),
+"update": 0,
+"values": [Vector2(200, 0), Vector2(-200, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBoss/LabelBossPivot:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.533333, 0.866667, 2.9, 3.23333),
+"transitions": PackedFloat32Array(1, 0.5, -0.5, 2, 1),
+"update": 0,
+"values": [Vector2(-200, 0), Vector2(-200, 0), Vector2(-40, 0), Vector2(40, 0), Vector2(200, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SafeAreaRect - HUD/MarginContainer/Top Right/Boss Hud Area/BossProgress:custom_minimum_size")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(3.23333, 3.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(16, 0), Vector2(16, 800)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SafeAreaRect - HUD/MarginContainer/Top Right/Boss Hud Area/BossIconContainer/Boss Icon:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(3.23333, 3.43333, 3.5),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2qxp4"]
+_data = {
+&"RESET": SubResource("Animation_7swrv"),
+&"off": SubResource("Animation_oyd1u"),
+&"offing": SubResource("Animation_or5mg"),
+&"on": SubResource("Animation_d5p4l"),
+&"oning": SubResource("Animation_ts0a1")
+}
+
+[sub_resource type="Gradient" id="Gradient_8w1l3"]
+offsets = PackedFloat32Array(0, 0.154867, 0.849558, 1)
+colors = PackedColorArray(0.337255, 0.337255, 0.427451, 1, 0.615686, 0.615686, 0.686275, 1, 0.615686, 0.615686, 0.686275, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o72jd"]
+gradient = SubResource("Gradient_8w1l3")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7ayy"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(1, 1, 1, 1)
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 35
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5wlg"]
+content_margin_left = 30.0
+content_margin_top = 50.0
+content_margin_right = 30.0
+content_margin_bottom = 50.0
+draw_center = false
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 45
+corner_radius_top_right = 45
+corner_radius_bottom_right = 45
+corner_radius_bottom_left = 45
+
+[sub_resource type="Animation" id="Animation_bsg0i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/PanelContainer2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_j0tce"]
+resource_name = "show"
+length = 3.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.9, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 2.4),
+"transitions": PackedFloat32Array(0.189465, 9.51365, 1),
+"update": 0,
+"values": [1.5708, 0.0, -1.5708]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/PanelContainer2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.7, 0.9, 1.7, 2.4),
+"transitions": PackedFloat32Array(0.5, 0.5, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0.541176), Color(1, 1, 1, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_43km1"]
+_data = {
+&"RESET": SubResource("Animation_bsg0i"),
+&"show": SubResource("Animation_j0tce")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_x2ndc"]
+light_mode = 1
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6gbs7"]
+blend_mode = 1
+light_mode = 1
+
+[node name="HUD" type="Control" node_paths=PackedStringArray("_boss_hud_animation", "_boss_label", "_boss_progress", "_boss_icon", "_boss_presentation_label", "alpha", "add", "timer", "_level_show_animation", "_level_name_label", "_level_to_set_sign_color", "instantiate_place_center", "instantiate_place_high_center")]
+z_index = 1
+texture_filter = 4
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme = ExtResource("1_hv6wg")
+script = ExtResource("1_jak8r")
+_boss_hud_animation = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/BossShow On Off")
+_boss_label = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBoss/LabelBossPivot/LabelBoss")
+_boss_progress = NodePath("SafeAreaRect - HUD/MarginContainer/Top Right/Boss Hud Area/BossProgress")
+_boss_progress_curve = SubResource("Curve_ay5l6")
+_boss_icon = NodePath("SafeAreaRect - HUD/MarginContainer/Top Right/Boss Hud Area/BossIconContainer/Boss Icon")
+_boss_presentation_label = NodePath("SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBossPresentation/LabelBossPresentationPivot/LabelBossPresentation")
+alpha = NodePath("MaskedHUD/Screen FX/Alpha")
+add = NodePath("MaskedHUD/Screen FX/Add")
+damage_vfx_scene = ExtResource("23_yxj4h")
+timer = NodePath("SafeAreaRect - HUD/MarginContainer/Top Right/Pause Container/Time Container")
+_level_show_animation = NodePath("MaskedHUD/Control/LevelName AnimationPlayer")
+_level_name_label = NodePath("MaskedHUD/Control/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/LevelNameLabel")
+_level_to_set_sign_color = NodePath("MaskedHUD/Control/PanelContainer")
+instantiate_place_center = NodePath("SafeAreaRect - HUD/MarginContainer/Center")
+instantiate_place_high_center = NodePath("SafeAreaRect - HUD/MarginContainer/All/High Center")
+
+[node name="SafeAreaRect - HUD" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -450.0
+offset_right = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 39
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 39
+script = ExtResource("4_yxj4h")
+metadata/_custom_type_script = "uid://bq2kcnfgursag"
+
+[node name="Score HUD" type="Control" parent="SafeAreaRect - HUD" node_paths=PackedStringArray("_score_display", "_score_show_container", "_unpositioned_score_show_container", "_score_combo_show_container", "_score_boost_progress", "_max_boost_animation", "_overtime_animation")]
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+script = ExtResource("7_2hw6r")
+_score_display = NodePath("VBoxContainer/ScoreDisplay")
+_score_show_scene = ExtResource("5_qlm8g")
+_score_show_container = NodePath("ScoreShowContainer")
+_unpositioned_score_show_scene = ExtResource("6_1i4lr")
+_unpositioned_score_show_container = NodePath("UnpositionedScoreShowContainer")
+_score_combo_show_scene = ExtResource("6_m45x2")
+_score_combo_show_container = NodePath("VBoxContainer/ScoreComboShowContainer")
+_score_boost_progress = NodePath("VBoxContainer/ScoreBoostBarMultiple")
+_max_boost_animation = NodePath("VBoxContainer/MaxBoostAnimationSwitch")
+_overtime_animation = NodePath("VBoxContainer/OvertimeAnimationSwitch")
+
+[node name="ScoreShowContainer" type="Control" parent="SafeAreaRect - HUD/Score HUD"]
+z_index = -1
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="UnpositionedScoreShowContainer" type="BoxContainer" parent="SafeAreaRect - HUD/Score HUD"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+alignment = 1
+vertical = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SafeAreaRect - HUD/Score HUD"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="OvertimeAnimationSwitch" type="AnimationPlayer" parent="SafeAreaRect - HUD/Score HUD/VBoxContainer"]
+root_node = NodePath("../ScoreDisplay")
+libraries = {
+&"": SubResource("AnimationLibrary_yxj4h")
+}
+script = ExtResource("5_r401q")
+
+[node name="MaxBoostAnimationSwitch" type="AnimationPlayer" parent="SafeAreaRect - HUD/Score HUD/VBoxContainer"]
+root_node = NodePath("../ScoreDisplay")
+libraries = {
+&"": SubResource("AnimationLibrary_bj6iv")
+}
+script = ExtResource("5_r401q")
+
+[node name="ScoreBoostBarMultiple" type="BoxContainer" parent="SafeAreaRect - HUD/Score HUD/VBoxContainer"]
+texture_filter = 4
+layout_mode = 2
+theme_override_constants/separation = -8
+alignment = 1
+script = ExtResource("8_nfsrj")
+
+[node name="TextureRect" type="TextureRect" parent="SafeAreaRect - HUD/Score HUD/VBoxContainer/ScoreBoostBarMultiple"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("9_x1rgv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Score Boost Bar" parent="SafeAreaRect - HUD/Score HUD/VBoxContainer/ScoreBoostBarMultiple" instance=ExtResource("9_ktg8w")]
+layout_mode = 2
+
+[node name="Score Boost Bar2" parent="SafeAreaRect - HUD/Score HUD/VBoxContainer/ScoreBoostBarMultiple" instance=ExtResource("9_ktg8w")]
+layout_mode = 2
+
+[node name="Score Boost Bar3" parent="SafeAreaRect - HUD/Score HUD/VBoxContainer/ScoreBoostBarMultiple" instance=ExtResource("9_ktg8w")]
+layout_mode = 2
+
+[node name="Overtime Label" type="Label" parent="SafeAreaRect - HUD/Score HUD/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"label_hud_time"
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 32
+text = "hud_score_overtime"
+horizontal_alignment = 1
+
+[node name="ScoreDisplay" type="PanelContainer" parent="SafeAreaRect - HUD/Score HUD/VBoxContainer" node_paths=PackedStringArray("_score_letters_container")]
+self_modulate = Color(0, 0.376471, 0.360784, 0.301961)
+show_behind_parent = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0v5a4")
+script = ExtResource("8_j40mi")
+_score_letter_scene = ExtResource("9_83dgb")
+_score_letters_container = NodePath("MarginContainer/ScoreLettersContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="SafeAreaRect - HUD/Score HUD/VBoxContainer/ScoreDisplay"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_right = 0
+
+[node name="ScoreLettersContainer" type="HBoxContainer" parent="SafeAreaRect - HUD/Score HUD/VBoxContainer/ScoreDisplay/MarginContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="Score Letter Container" parent="SafeAreaRect - HUD/Score HUD/VBoxContainer/ScoreDisplay/MarginContainer/ScoreLettersContainer" instance=ExtResource("9_83dgb")]
+layout_mode = 2
+
+[node name="Score Letter Container2" parent="SafeAreaRect - HUD/Score HUD/VBoxContainer/ScoreDisplay/MarginContainer/ScoreLettersContainer" instance=ExtResource("9_83dgb")]
+layout_mode = 2
+
+[node name="Score Letter Container3" parent="SafeAreaRect - HUD/Score HUD/VBoxContainer/ScoreDisplay/MarginContainer/ScoreLettersContainer" instance=ExtResource("9_83dgb")]
+layout_mode = 2
+
+[node name="Score Letter Container4" parent="SafeAreaRect - HUD/Score HUD/VBoxContainer/ScoreDisplay/MarginContainer/ScoreLettersContainer" instance=ExtResource("9_83dgb")]
+layout_mode = 2
+
+[node name="Score Letter Container5" parent="SafeAreaRect - HUD/Score HUD/VBoxContainer/ScoreDisplay/MarginContainer/ScoreLettersContainer" instance=ExtResource("9_83dgb")]
+layout_mode = 2
+
+[node name="Score Letter Container6" parent="SafeAreaRect - HUD/Score HUD/VBoxContainer/ScoreDisplay/MarginContainer/ScoreLettersContainer" instance=ExtResource("9_83dgb")]
+layout_mode = 2
+
+[node name="Score Letter Container7" parent="SafeAreaRect - HUD/Score HUD/VBoxContainer/ScoreDisplay/MarginContainer/ScoreLettersContainer" instance=ExtResource("9_83dgb")]
+layout_mode = 2
+
+[node name="ScoreComboShowContainer" type="VBoxContainer" parent="SafeAreaRect - HUD/Score HUD/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="SafeAreaRect - HUD"]
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 0
+
+[node name="Top Left" type="VBoxContainer" parent="SafeAreaRect - HUD/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 32
+
+[node name="HP Container" type="HBoxContainer" parent="SafeAreaRect - HUD/MarginContainer/Top Left"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HUD HP" parent="SafeAreaRect - HUD/MarginContainer/Top Left/HP Container" instance=ExtResource("6_owuol")]
+layout_mode = 2
+
+[node name="Health Upgrades" type="HBoxContainer" parent="SafeAreaRect - HUD/MarginContainer/Top Left"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+alignment = 1
+
+[node name="HUD Emergency Heal" type="Control" parent="SafeAreaRect - HUD/MarginContainer/Top Left/Health Upgrades" node_paths=PackedStringArray("_anim", "_heal_bar")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+script = SubResource("GDScript_p2yg3")
+_anim = NodePath("Emergency Heal Animation")
+_heal_bar = NodePath("Pivot/TextureProgressBar")
+
+[node name="Pivot" type="Control" parent="SafeAreaRect - HUD/MarginContainer/Top Left/Health Upgrades/HUD Emergency Heal"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="SafeAreaRect - HUD/MarginContainer/Top Left/Health Upgrades/HUD Emergency Heal/Pivot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.0
+value = 0.59
+fill_mode = 4
+texture_progress = SubResource("GradientTexture2D_i1gum")
+
+[node name="TextureRect" type="TextureRect" parent="SafeAreaRect - HUD/MarginContainer/Top Left/Health Upgrades/HUD Emergency Heal/Pivot"]
+modulate = Color(1, 1, 1, 0.392157)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("16_p2yg3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Emergency Heal Animation" type="AnimationPlayer" parent="SafeAreaRect - HUD/MarginContainer/Top Left/Health Upgrades/HUD Emergency Heal"]
+libraries = {
+&"": SubResource("AnimationLibrary_byt57")
+}
+
+[node name="HUD Revenge" type="Control" parent="SafeAreaRect - HUD/MarginContainer/Top Left/Health Upgrades" node_paths=PackedStringArray("_anim")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+script = SubResource("GDScript_udoh6")
+_anim = NodePath("Revenge Animation")
+
+[node name="Pivot" type="Control" parent="SafeAreaRect - HUD/MarginContainer/Top Left/Health Upgrades/HUD Revenge"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="SafeAreaRect - HUD/MarginContainer/Top Left/Health Upgrades/HUD Revenge/Pivot"]
+modulate = Color(1, 1, 1, 0.392157)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("15_udoh6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Revenge Animation" type="AnimationPlayer" parent="SafeAreaRect - HUD/MarginContainer/Top Left/Health Upgrades/HUD Revenge"]
+libraries = {
+&"": SubResource("AnimationLibrary_ks463")
+}
+
+[node name="HUD Weapon Hold" parent="SafeAreaRect - HUD/MarginContainer/Top Left" instance=ExtResource("7_j75jx")]
+layout_mode = 2
+
+[node name="HUD Weapon Tap" parent="SafeAreaRect - HUD/MarginContainer/Top Left" instance=ExtResource("9_3k8ru")]
+layout_mode = 2
+
+[node name="Top Right" type="VBoxContainer" parent="SafeAreaRect - HUD/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 32
+
+[node name="Pause Container" type="BoxContainer" parent="SafeAreaRect - HUD/MarginContainer/Top Right"]
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_filter = 2
+theme_override_constants/separation = 6
+alignment = 2
+vertical = true
+
+[node name="MarginContainer" type="MarginContainer" parent="SafeAreaRect - HUD/MarginContainer/Top Right/Pause Container"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Time Container" type="VBoxContainer" parent="SafeAreaRect - HUD/MarginContainer/Top Right/Pause Container" node_paths=PackedStringArray("label")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+mouse_filter = 2
+script = ExtResource("3_35ju2")
+label = NodePath("Timer")
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Label" parent="SafeAreaRect - HUD/MarginContainer/Top Right/Pause Container/Time Container"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_type_variation = &"label_hud_score"
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 40
+text = "01:30
+"
+vertical_alignment = 1
+
+[node name="BoxContainer" type="BoxContainer" parent="SafeAreaRect - HUD/MarginContainer/Top Right/Pause Container"]
+layout_mode = 2
+vertical = true
+script = SubResource("GDScript_4aq2t")
+
+[node name="Arcade Label" type="Label" parent="SafeAreaRect - HUD/MarginContainer/Top Right/Pause Container/BoxContainer"]
+modulate = Color(1, 0, 1, 1)
+layout_mode = 2
+size_flags_vertical = 0
+theme_type_variation = &"label_hud_score"
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 24
+text = "ARCADE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Boss Hud Area" type="BoxContainer" parent="SafeAreaRect - HUD/MarginContainer/Top Right"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = 32
+alignment = 1
+vertical = true
+
+[node name="BossIconContainer" type="Control" parent="SafeAreaRect - HUD/MarginContainer/Top Right/Boss Hud Area"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Boss Icon" type="TextureRect" parent="SafeAreaRect - HUD/MarginContainer/Top Right/Boss Hud Area/BossIconContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+size_flags_horizontal = 8
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("9_gesl2")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="BossProgress" type="ProgressBar" parent="SafeAreaRect - HUD/MarginContainer/Top Right/Boss Hud Area"]
+unique_name_in_owner = true
+auto_translate_mode = 2
+custom_minimum_size = Vector2(16, 800)
+layout_mode = 2
+size_flags_horizontal = 4
+localize_numeral_system = false
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_owpy4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wemsl")
+max_value = 1.0
+step = 0.0
+value = 0.35
+fill_mode = 2
+show_percentage = false
+
+[node name="Boss Show" type="Control" parent="SafeAreaRect - HUD/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="SafeAreaRect - HUD/MarginContainer/Boss Show"]
+material = ExtResource("19_s0g14")
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -135.0
+offset_right = 450.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(450, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_857ca")
+
+[node name="Panel2" type="Panel" parent="SafeAreaRect - HUD/MarginContainer/Boss Show/Panel"]
+use_parent_material = true
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_857ca")
+
+[node name="Panel3" type="Panel" parent="SafeAreaRect - HUD/MarginContainer/Boss Show/Panel"]
+use_parent_material = true
+custom_minimum_size = Vector2(120, 15)
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_857ca")
+
+[node name="BossShow On Off" type="AnimationPlayer" parent="SafeAreaRect - HUD/MarginContainer/Boss Show"]
+root_node = NodePath("../../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_2qxp4")
+}
+script = ExtResource("5_r401q")
+
+[node name="Shake Container" type="Control" parent="SafeAreaRect - HUD/MarginContainer/Boss Show"]
+layout_mode = 2
+anchors_preset = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="ShakeBoss" type="Control" parent="SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container"]
+anchors_preset = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("10_7vs8g")
+shake_amplitude_ratio = 0.0
+shake_frequency = 15.0
+
+[node name="LabelBossPivot" type="Control" parent="SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBoss"]
+anchors_preset = 0
+offset_left = 30.0
+offset_right = 30.0
+
+[node name="LabelBoss" type="Label" parent="SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBoss/LabelBossPivot"]
+custom_minimum_size = Vector2(900, 250)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -110.0
+offset_right = 450.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_type_variation = &"label_challenge_title"
+theme_override_constants/line_spacing = -50
+text = "Pirulito da 
+Praça 7 "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+justification_flags = 0
+
+[node name="ShakeBossPresentation" type="Control" parent="SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container"]
+anchors_preset = 0
+offset_left = -0.524976
+offset_top = -0.846917
+offset_right = -0.524976
+offset_bottom = -0.846917
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("10_7vs8g")
+shake_amplitude_ratio = 0.1
+shake_frequency = 5.0
+
+[node name="LabelBossPresentationPivot" type="Control" parent="SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBossPresentation"]
+anchors_preset = 0
+
+[node name="LabelBossPresentation" type="Label" parent="SafeAreaRect - HUD/MarginContainer/Boss Show/Shake Container/ShakeBossPresentation/LabelBossPresentationPivot"]
+custom_minimum_size = Vector2(600, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -260.28
+offset_right = 300.0
+offset_bottom = 39.72
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.745098, 0, 0.784314, 1)
+theme_override_colors/font_outline_color = Color(0.993765, 0.752564, 1, 1)
+theme_override_constants/line_spacing = -35
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 50
+text = "Personagem Apresenta"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+justification_flags = 0
+
+[node name="Center" type="Control" parent="SafeAreaRect - HUD/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="All" type="Control" parent="SafeAreaRect - HUD/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="High Center" type="Control" parent="SafeAreaRect - HUD/MarginContainer/All"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.25
+anchor_right = 0.5
+anchor_bottom = 0.25
+size_flags_horizontal = 4
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="FarRight" type="Control" parent="SafeAreaRect - HUD/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_filter = 2
+
+[node name="MaskedHUD" type="Control" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -450.0
+offset_right = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="HudCoins" parent="MaskedHUD" instance=ExtResource("10_2s0ya")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 900.0
+offset_right = 900.0
+offset_bottom = 1800.0
+size_flags_horizontal = 8
+
+[node name="Control" type="Control" parent="MaskedHUD"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="ColorRect" type="TextureRect" parent="MaskedHUD/Control"]
+custom_minimum_size = Vector2(40, 1550)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -1480.65
+offset_right = 20.0
+offset_bottom = 69.355
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_o72jd")
+
+[node name="PanelContainer" type="PanelContainer" parent="MaskedHUD/Control"]
+self_modulate = Color(0.360784, 0.141176, 0.0627451, 1)
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -1440.0
+offset_right = 400.0
+offset_bottom = -1440.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h7ayy")
+
+[node name="MarginContainer" type="MarginContainer" parent="MaskedHUD/Control/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="PanelContainer" type="PanelContainer" parent="MaskedHUD/Control/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_s5wlg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MaskedHUD/Control/PanelContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="LevelNameLabel2" type="Label" parent="MaskedHUD/Control/PanelContainer/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"label_hud_text"
+text = "hud_level_destination"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 0
+
+[node name="LevelNameLabel" type="Label" parent="MaskedHUD/Control/PanelContainer/MarginContainer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+theme_type_variation = &"label_challenge_title"
+text = "Pampulha"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+justification_flags = 0
+
+[node name="PanelContainer2" type="PanelContainer" parent="MaskedHUD/Control/PanelContainer"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h7ayy")
+
+[node name="LevelName AnimationPlayer" type="AnimationPlayer" parent="MaskedHUD/Control"]
+libraries = {
+&"": SubResource("AnimationLibrary_43km1")
+}
+
+[node name="Screen FX" type="Control" parent="MaskedHUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="Alpha" type="ColorRect" parent="MaskedHUD/Screen FX"]
+unique_name_in_owner = true
+visible = false
+material = SubResource("CanvasItemMaterial_x2ndc")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Add" type="ColorRect" parent="MaskedHUD/Screen FX"]
+unique_name_in_owner = true
+visible = false
+material = SubResource("CanvasItemMaterial_6gbs7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)

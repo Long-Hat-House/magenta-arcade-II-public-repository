@@ -1,0 +1,425 @@
+[gd_scene load_steps=10 format=3 uid="uid://u36w554cukc4"]
+
+[ext_resource type="Script" uid="uid://deq066lsjb36v" path="res://elements/player/weapons/player_weapon_hold.gd" id="1_yodk6"]
+[ext_resource type="Texture2D" uid="uid://b18ksna62fuoq" path="res://elements/icons/icon_hold_green.png" id="2_bc2pb"]
+[ext_resource type="Curve" uid="uid://ernxmpp76nsa" path="res://elements/player/player_hold_basic_curve_interval_per_upgrade.tres" id="2_e0n7x"]
+[ext_resource type="Script" uid="uid://dra7nitmq3ukf" path="res://elements/player/weapons/player_weapon_level_instantiate.gd" id="3_8x66w"]
+[ext_resource type="PackedScene" uid="uid://c3fu6kgipt726" path="res://elements/player/projectiles/hold_green/proj_hold_green.tscn" id="4_7wjv1"]
+[ext_resource type="Script" uid="uid://re2v2m55dc6k" path="res://elements/player/weapons/instantiated_proxy.gd" id="5_3ofy1"]
+[ext_resource type="Script" uid="uid://cbs13i23wvqg8" path="res://elements/player/weapons/player_weapon_level_instantiate_speciifc_packedscene.gd" id="6_syblv"]
+[ext_resource type="PackedScene" uid="uid://bas4mkfdl61bm" path="res://elements/player/projectiles/hold_green/projectile_green_hold_later_cut.tscn" id="7_e0n7x"]
+
+[sub_resource type="GDScript" id="GDScript_wpeeq"]
+script/source = "extends Node
+
+@export var is_inverted:bool = true;
+@export var velocity_multiplier:float = 1.0;
+@export var turning_speed_multiplier:float = 1.0;
+@export var turning_speed_duration_multiplier:float = 1.0;
+
+
+func invert_projectile(proj: Node3D) -> void:
+	for child in proj.get_children():
+		if child.name.contains(\"Wave\"):
+			child.set_inverted(is_inverted);
+			
+			proj.linear_velocity_multiplier = velocity_multiplier;
+			proj.turning_speed_multiplier = turning_speed_multiplier;
+			proj.turning_speed_duration_multiplier = turning_speed_duration_multiplier;
+			return;
+	push_error(\"Couldn't find 'Wave' named first child in %s\" % proj);
+"
+
+[node name="Weapon_Green Hold" type="Node"]
+script = ExtResource("1_yodk6")
+hold_interval_multiplier_per_fire_rate_level = ExtResource("2_e0n7x")
+icon = ExtResource("2_bc2pb")
+title = "powerup_hold_green_title"
+id = 3
+color = Color(0.0196078, 0.439216, 0, 1)
+color_highlight = Color(0.0392157, 0.796078, 0, 1)
+
+[node name="Level1" type="Node3D" parent="."]
+script = ExtResource("3_8x66w")
+projectile = ExtResource("4_7wjv1")
+delayBetweenProjectilesContainsName = "_time"
+holdInterval = 0.2
+
+[node name="Marker3D" type="Marker3D" parent="Level1"]
+script = ExtResource("5_3ofy1")
+
+[node name="Correct Projectile" type="Node" parent="Level1/Marker3D"]
+script = SubResource("GDScript_wpeeq")
+is_inverted = false
+turning_speed_multiplier = 1.2
+
+[node name="Marker3D2" type="Marker3D" parent="Level1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 0)
+script = ExtResource("5_3ofy1")
+
+[node name="Invert Projectile" type="Node" parent="Level1/Marker3D2"]
+script = SubResource("GDScript_wpeeq")
+turning_speed_multiplier = 1.5
+turning_speed_duration_multiplier = 0.7
+
+[node name="Level2" type="Node3D" parent="."]
+script = ExtResource("3_8x66w")
+projectile = ExtResource("4_7wjv1")
+delayBetweenProjectilesContainsName = "_time"
+holdInterval = 0.32
+
+[node name="Marker3D" type="Marker3D" parent="Level2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0)
+script = ExtResource("5_3ofy1")
+
+[node name="Correct Projectile" type="Node" parent="Level2/Marker3D"]
+script = SubResource("GDScript_wpeeq")
+is_inverted = false
+
+[node name="Marker3D2" type="Marker3D" parent="Level2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 0)
+script = ExtResource("5_3ofy1")
+
+[node name="Invert Projectile" type="Node" parent="Level2/Marker3D2"]
+script = SubResource("GDScript_wpeeq")
+turning_speed_multiplier = 1.5
+turning_speed_duration_multiplier = 0.7
+
+[node name="Marker3D_DifferentProjectile_time" type="Marker3D" parent="Level2"]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0, 0, 0)
+script = ExtResource("6_syblv")
+projectile = ExtResource("7_e0n7x")
+
+[node name="Invert Projectile" type="Node" parent="Level2/Marker3D_DifferentProjectile_time"]
+script = SubResource("GDScript_wpeeq")
+
+[node name="Marker3D_DifferentProjectile2" type="Marker3D" parent="Level2"]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0, 0, 0)
+script = ExtResource("6_syblv")
+projectile = ExtResource("7_e0n7x")
+
+[node name="Invert Projectile" type="Node" parent="Level2/Marker3D_DifferentProjectile2"]
+script = SubResource("GDScript_wpeeq")
+
+[node name="Level3" type="Node3D" parent="."]
+script = ExtResource("3_8x66w")
+projectile = ExtResource("4_7wjv1")
+delayBetweenProjectilesContainsName = "_time"
+holdInterval = 0.4
+
+[node name="Marker3D" type="Marker3D" parent="Level3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0)
+script = ExtResource("5_3ofy1")
+
+[node name="Correct Projectile" type="Node" parent="Level3/Marker3D"]
+script = SubResource("GDScript_wpeeq")
+is_inverted = false
+turning_speed_multiplier = 1.25
+turning_speed_duration_multiplier = 0.9
+
+[node name="Marker3D2" type="Marker3D" parent="Level3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 0)
+script = ExtResource("5_3ofy1")
+
+[node name="Invert Projectile" type="Node" parent="Level3/Marker3D2"]
+script = SubResource("GDScript_wpeeq")
+turning_speed_multiplier = 1.5
+turning_speed_duration_multiplier = 0.7
+
+[node name="Marker3D_DifferentProjectile_time" type="Marker3D" parent="Level3"]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0, 0, 0)
+script = ExtResource("6_syblv")
+projectile = ExtResource("7_e0n7x")
+
+[node name="Invert Projectile" type="Node" parent="Level3/Marker3D_DifferentProjectile_time"]
+script = SubResource("GDScript_wpeeq")
+
+[node name="Marker3D_DifferentProjectile3" type="Marker3D" parent="Level3"]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0, 0, 0)
+script = ExtResource("6_syblv")
+projectile = ExtResource("7_e0n7x")
+
+[node name="Direct" type="Node" parent="Level3/Marker3D_DifferentProjectile3"]
+script = SubResource("GDScript_wpeeq")
+is_inverted = false
+
+[node name="Marker3D_DifferentProjectile2" type="Marker3D" parent="Level3"]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0, 0, 0)
+script = ExtResource("6_syblv")
+projectile = ExtResource("7_e0n7x")
+
+[node name="Invert Projectile" type="Node" parent="Level3/Marker3D_DifferentProjectile2"]
+script = SubResource("GDScript_wpeeq")
+
+[node name="Marker3D_DifferentProjectile4" type="Marker3D" parent="Level3"]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0, 0, 0)
+script = ExtResource("6_syblv")
+projectile = ExtResource("7_e0n7x")
+
+[node name="Direct" type="Node" parent="Level3/Marker3D_DifferentProjectile4"]
+script = SubResource("GDScript_wpeeq")
+is_inverted = false
+
+[node name="Level4" type="Node3D" parent="."]
+script = ExtResource("3_8x66w")
+projectile = ExtResource("4_7wjv1")
+delayBetweenProjectilesContainsName = "_time"
+holdInterval = 0.342
+
+[node name="Marker3D" type="Marker3D" parent="Level4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0)
+script = ExtResource("5_3ofy1")
+
+[node name="Correct Projectile" type="Node" parent="Level4/Marker3D"]
+script = SubResource("GDScript_wpeeq")
+is_inverted = false
+turning_speed_multiplier = 1.5
+turning_speed_duration_multiplier = 0.7
+
+[node name="Marker3D2" type="Marker3D" parent="Level4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 0)
+script = ExtResource("5_3ofy1")
+
+[node name="Invert Projectile" type="Node" parent="Level4/Marker3D2"]
+script = SubResource("GDScript_wpeeq")
+turning_speed_multiplier = 1.5
+turning_speed_duration_multiplier = 0.7
+
+[node name="Marker3D_DifferentProjectile_time" type="Marker3D" parent="Level4"]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0, 0, 0)
+script = ExtResource("6_syblv")
+projectile = ExtResource("7_e0n7x")
+
+[node name="Invert Projectile" type="Node" parent="Level4/Marker3D_DifferentProjectile_time"]
+script = SubResource("GDScript_wpeeq")
+
+[node name="Marker3D_DifferentProjectile3" type="Marker3D" parent="Level4"]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0, 0, 0)
+script = ExtResource("6_syblv")
+projectile = ExtResource("7_e0n7x")
+
+[node name="Direct" type="Node" parent="Level4/Marker3D_DifferentProjectile3"]
+script = SubResource("GDScript_wpeeq")
+is_inverted = false
+
+[node name="Marker3D_DifferentProjectile2" type="Marker3D" parent="Level4"]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0, 0, 0)
+script = ExtResource("6_syblv")
+projectile = ExtResource("7_e0n7x")
+
+[node name="Invert Projectile" type="Node" parent="Level4/Marker3D_DifferentProjectile2"]
+script = SubResource("GDScript_wpeeq")
+
+[node name="Marker3D_DifferentProjectile4" type="Marker3D" parent="Level4"]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0, 0, 0)
+script = ExtResource("6_syblv")
+projectile = ExtResource("7_e0n7x")
+
+[node name="Direct" type="Node" parent="Level4/Marker3D_DifferentProjectile4"]
+script = SubResource("GDScript_wpeeq")
+is_inverted = false
+
+[node name="Level5" type="Node3D" parent="."]
+script = ExtResource("3_8x66w")
+projectile = ExtResource("4_7wjv1")
+delayBetweenProjectilesContainsName = "_time"
+holdInterval = 0.4
+
+[node name="Marker3D" type="Marker3D" parent="Level5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0)
+script = ExtResource("5_3ofy1")
+
+[node name="Correct Projectile" type="Node" parent="Level5/Marker3D"]
+script = SubResource("GDScript_wpeeq")
+is_inverted = false
+turning_speed_multiplier = 1.75
+turning_speed_duration_multiplier = 0.7
+
+[node name="Marker3D2" type="Marker3D" parent="Level5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 0)
+script = ExtResource("5_3ofy1")
+
+[node name="Invert Projectile" type="Node" parent="Level5/Marker3D2"]
+script = SubResource("GDScript_wpeeq")
+turning_speed_multiplier = 1.75
+turning_speed_duration_multiplier = 0.7
+
+[node name="Marker3D_DifferentProjectile_time" type="Marker3D" parent="Level5"]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0, 0, 0)
+script = ExtResource("6_syblv")
+projectile = ExtResource("7_e0n7x")
+
+[node name="Invert Projectile" type="Node" parent="Level5/Marker3D_DifferentProjectile_time"]
+script = SubResource("GDScript_wpeeq")
+
+[node name="Marker3D_DifferentProjectile3" type="Marker3D" parent="Level5"]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0, 0, 0)
+script = ExtResource("6_syblv")
+projectile = ExtResource("7_e0n7x")
+
+[node name="Direct" type="Node" parent="Level5/Marker3D_DifferentProjectile3"]
+script = SubResource("GDScript_wpeeq")
+is_inverted = false
+
+[node name="Marker3D_DifferentProjectile2" type="Marker3D" parent="Level5"]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0, 0, 0)
+script = ExtResource("6_syblv")
+projectile = ExtResource("7_e0n7x")
+
+[node name="Invert Projectile" type="Node" parent="Level5/Marker3D_DifferentProjectile2"]
+script = SubResource("GDScript_wpeeq")
+
+[node name="Marker3D_DifferentProjectile4" type="Marker3D" parent="Level5"]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0, 0, 0)
+script = ExtResource("6_syblv")
+projectile = ExtResource("7_e0n7x")
+
+[node name="Direct" type="Node" parent="Level5/Marker3D_DifferentProjectile4"]
+script = SubResource("GDScript_wpeeq")
+is_inverted = false
+
+[node name="Marker3D_DifferentProjectile5_time" type="Marker3D" parent="Level5"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("6_syblv")
+projectile = ExtResource("7_e0n7x")
+
+[node name="Invert Projectile" type="Node" parent="Level5/Marker3D_DifferentProjectile5_time"]
+script = SubResource("GDScript_wpeeq")
+
+[node name="Marker3D_DifferentProjectile7" type="Marker3D" parent="Level5"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("6_syblv")
+projectile = ExtResource("7_e0n7x")
+
+[node name="Invert Projectile" type="Node" parent="Level5/Marker3D_DifferentProjectile7"]
+script = SubResource("GDScript_wpeeq")
+
+[node name="Level6" type="Node3D" parent="."]
+script = ExtResource("3_8x66w")
+projectile = ExtResource("4_7wjv1")
+delayBetweenProjectilesContainsName = "_time"
+holdInterval = 0.444
+
+[node name="Marker3D" type="Marker3D" parent="Level6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0)
+script = ExtResource("5_3ofy1")
+
+[node name="Correct Projectile" type="Node" parent="Level6/Marker3D"]
+script = SubResource("GDScript_wpeeq")
+is_inverted = false
+turning_speed_multiplier = 1.85
+turning_speed_duration_multiplier = 0.65
+
+[node name="Marker3D2" type="Marker3D" parent="Level6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 0)
+script = ExtResource("5_3ofy1")
+
+[node name="Invert Projectile" type="Node" parent="Level6/Marker3D2"]
+script = SubResource("GDScript_wpeeq")
+turning_speed_multiplier = 1.85
+turning_speed_duration_multiplier = 0.65
+
+[node name="Marker3D_DifferentProjectile_time" type="Marker3D" parent="Level6"]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0, 0, 0)
+script = ExtResource("6_syblv")
+projectile = ExtResource("7_e0n7x")
+
+[node name="Invert Projectile" type="Node" parent="Level6/Marker3D_DifferentProjectile_time"]
+script = SubResource("GDScript_wpeeq")
+
+[node name="Marker3D_DifferentProjectile3" type="Marker3D" parent="Level6"]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0, 0, 0)
+script = ExtResource("6_syblv")
+projectile = ExtResource("7_e0n7x")
+
+[node name="Direct" type="Node" parent="Level6/Marker3D_DifferentProjectile3"]
+script = SubResource("GDScript_wpeeq")
+is_inverted = false
+
+[node name="Marker3D_DifferentProjectile2" type="Marker3D" parent="Level6"]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0, 0, 0)
+script = ExtResource("6_syblv")
+projectile = ExtResource("7_e0n7x")
+
+[node name="Invert Projectile" type="Node" parent="Level6/Marker3D_DifferentProjectile2"]
+script = SubResource("GDScript_wpeeq")
+
+[node name="Marker3D_DifferentProjectile4" type="Marker3D" parent="Level6"]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0, 0, 0)
+script = ExtResource("6_syblv")
+projectile = ExtResource("7_e0n7x")
+
+[node name="Direct" type="Node" parent="Level6/Marker3D_DifferentProjectile4"]
+script = SubResource("GDScript_wpeeq")
+is_inverted = false
+
+[node name="Marker3D_DifferentProjectile5_time" type="Marker3D" parent="Level6"]
+transform = Transform3D(-0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, -0.34202, 0, 0, 0)
+script = ExtResource("6_syblv")
+projectile = ExtResource("7_e0n7x")
+
+[node name="Invert Projectile" type="Node" parent="Level6/Marker3D_DifferentProjectile5_time"]
+script = SubResource("GDScript_wpeeq")
+
+[node name="Marker3D_DifferentProjectile6" type="Marker3D" parent="Level6"]
+transform = Transform3D(-0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, -0.34202, 0, 0, 0)
+script = ExtResource("6_syblv")
+projectile = ExtResource("7_e0n7x")
+
+[node name="Direct" type="Node" parent="Level6/Marker3D_DifferentProjectile6"]
+script = SubResource("GDScript_wpeeq")
+is_inverted = false
+
+[node name="Marker3D_DifferentProjectile7" type="Marker3D" parent="Level6"]
+transform = Transform3D(-0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, -0.34202, 0, 0, 0)
+script = ExtResource("6_syblv")
+projectile = ExtResource("7_e0n7x")
+
+[node name="Invert Projectile" type="Node" parent="Level6/Marker3D_DifferentProjectile7"]
+script = SubResource("GDScript_wpeeq")
+
+[node name="Marker3D_DifferentProjectile8" type="Marker3D" parent="Level6"]
+transform = Transform3D(-0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, -0.34202, 0, 0, 0)
+script = ExtResource("6_syblv")
+projectile = ExtResource("7_e0n7x")
+
+[node name="Direct" type="Node" parent="Level6/Marker3D_DifferentProjectile8"]
+script = SubResource("GDScript_wpeeq")
+is_inverted = false
+
+[connection signal="instantiated" from="Level1/Marker3D" to="Level1/Marker3D/Correct Projectile" method="invert_projectile"]
+[connection signal="instantiated" from="Level1/Marker3D2" to="Level1/Marker3D2/Invert Projectile" method="invert_projectile"]
+[connection signal="instantiated" from="Level2/Marker3D" to="Level2/Marker3D/Correct Projectile" method="invert_projectile"]
+[connection signal="instantiated" from="Level2/Marker3D2" to="Level2/Marker3D2/Invert Projectile" method="invert_projectile"]
+[connection signal="instantiated" from="Level2/Marker3D_DifferentProjectile_time" to="Level2/Marker3D_DifferentProjectile_time/Invert Projectile" method="invert_projectile"]
+[connection signal="instantiated" from="Level2/Marker3D_DifferentProjectile2" to="Level2/Marker3D_DifferentProjectile2/Invert Projectile" method="invert_projectile"]
+[connection signal="instantiated" from="Level3/Marker3D" to="Level3/Marker3D/Correct Projectile" method="invert_projectile"]
+[connection signal="instantiated" from="Level3/Marker3D2" to="Level3/Marker3D2/Invert Projectile" method="invert_projectile"]
+[connection signal="instantiated" from="Level3/Marker3D_DifferentProjectile_time" to="Level3/Marker3D_DifferentProjectile_time/Invert Projectile" method="invert_projectile"]
+[connection signal="instantiated" from="Level3/Marker3D_DifferentProjectile3" to="Level3/Marker3D_DifferentProjectile3/Direct" method="invert_projectile"]
+[connection signal="instantiated" from="Level3/Marker3D_DifferentProjectile2" to="Level3/Marker3D_DifferentProjectile2/Invert Projectile" method="invert_projectile"]
+[connection signal="instantiated" from="Level3/Marker3D_DifferentProjectile4" to="Level3/Marker3D_DifferentProjectile4/Direct" method="invert_projectile"]
+[connection signal="instantiated" from="Level4/Marker3D" to="Level4/Marker3D/Correct Projectile" method="invert_projectile"]
+[connection signal="instantiated" from="Level4/Marker3D2" to="Level4/Marker3D2/Invert Projectile" method="invert_projectile"]
+[connection signal="instantiated" from="Level4/Marker3D_DifferentProjectile_time" to="Level4/Marker3D_DifferentProjectile_time/Invert Projectile" method="invert_projectile"]
+[connection signal="instantiated" from="Level4/Marker3D_DifferentProjectile3" to="Level4/Marker3D_DifferentProjectile3/Direct" method="invert_projectile"]
+[connection signal="instantiated" from="Level4/Marker3D_DifferentProjectile2" to="Level4/Marker3D_DifferentProjectile2/Invert Projectile" method="invert_projectile"]
+[connection signal="instantiated" from="Level4/Marker3D_DifferentProjectile4" to="Level4/Marker3D_DifferentProjectile4/Direct" method="invert_projectile"]
+[connection signal="instantiated" from="Level5/Marker3D" to="Level5/Marker3D/Correct Projectile" method="invert_projectile"]
+[connection signal="instantiated" from="Level5/Marker3D2" to="Level5/Marker3D2/Invert Projectile" method="invert_projectile"]
+[connection signal="instantiated" from="Level5/Marker3D_DifferentProjectile_time" to="Level5/Marker3D_DifferentProjectile_time/Invert Projectile" method="invert_projectile"]
+[connection signal="instantiated" from="Level5/Marker3D_DifferentProjectile3" to="Level5/Marker3D_DifferentProjectile3/Direct" method="invert_projectile"]
+[connection signal="instantiated" from="Level5/Marker3D_DifferentProjectile2" to="Level5/Marker3D_DifferentProjectile2/Invert Projectile" method="invert_projectile"]
+[connection signal="instantiated" from="Level5/Marker3D_DifferentProjectile4" to="Level5/Marker3D_DifferentProjectile4/Direct" method="invert_projectile"]
+[connection signal="instantiated" from="Level5/Marker3D_DifferentProjectile5_time" to="Level5/Marker3D_DifferentProjectile5_time/Invert Projectile" method="invert_projectile"]
+[connection signal="instantiated" from="Level5/Marker3D_DifferentProjectile7" to="Level5/Marker3D_DifferentProjectile7/Invert Projectile" method="invert_projectile"]
+[connection signal="instantiated" from="Level6/Marker3D" to="Level6/Marker3D/Correct Projectile" method="invert_projectile"]
+[connection signal="instantiated" from="Level6/Marker3D2" to="Level6/Marker3D2/Invert Projectile" method="invert_projectile"]
+[connection signal="instantiated" from="Level6/Marker3D_DifferentProjectile_time" to="Level6/Marker3D_DifferentProjectile_time/Invert Projectile" method="invert_projectile"]
+[connection signal="instantiated" from="Level6/Marker3D_DifferentProjectile3" to="Level6/Marker3D_DifferentProjectile3/Direct" method="invert_projectile"]
+[connection signal="instantiated" from="Level6/Marker3D_DifferentProjectile2" to="Level6/Marker3D_DifferentProjectile2/Invert Projectile" method="invert_projectile"]
+[connection signal="instantiated" from="Level6/Marker3D_DifferentProjectile4" to="Level6/Marker3D_DifferentProjectile4/Direct" method="invert_projectile"]
+[connection signal="instantiated" from="Level6/Marker3D_DifferentProjectile5_time" to="Level6/Marker3D_DifferentProjectile5_time/Invert Projectile" method="invert_projectile"]
+[connection signal="instantiated" from="Level6/Marker3D_DifferentProjectile6" to="Level6/Marker3D_DifferentProjectile6/Direct" method="invert_projectile"]
+[connection signal="instantiated" from="Level6/Marker3D_DifferentProjectile7" to="Level6/Marker3D_DifferentProjectile7/Invert Projectile" method="invert_projectile"]
+[connection signal="instantiated" from="Level6/Marker3D_DifferentProjectile8" to="Level6/Marker3D_DifferentProjectile8/Direct" method="invert_projectile"]

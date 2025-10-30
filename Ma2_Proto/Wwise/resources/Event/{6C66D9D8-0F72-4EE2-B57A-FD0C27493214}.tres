@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://gy3mdci6by3s"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Power_Hold_Green"
+id = 2882235395
+guid = "{6C66D9D8-0F72-4EE2-B57A-FD0C27493214}"
+dummy = true

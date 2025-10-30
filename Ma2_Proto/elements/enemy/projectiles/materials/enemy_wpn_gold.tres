@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cenn7gfju1jgu"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(1, 1, 0.282353, 1)
+emission_enabled = true
+emission = Color(1, 0.603922, 0.282353, 1)
+rim = 0.5
+rim_tint = 1.0
+clearcoat_roughness = 1.0
+anisotropy = 1.0
+backlight = Color(0.901961, 0, 0.494118, 1)
+disable_receive_shadows = true
+grow_amount = -0.252

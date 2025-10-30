@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://cqalh5ngwq802"]
+
+[ext_resource type="Texture2D" uid="uid://dwjumsc6wr6c0" path="res://elements/enemy/laser/texture/M_LaserRoboto_Belt_BaseColor.png" id="1_km3ad"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_oy7hw"]
+
+[resource]
+albedo_texture = ExtResource("1_km3ad")
+emission_texture = SubResource("CompressedTexture2D_oy7hw")

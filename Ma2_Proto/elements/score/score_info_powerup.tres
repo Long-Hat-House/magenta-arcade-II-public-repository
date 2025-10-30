@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ScoreInfo" load_steps=2 format=3 uid="uid://d2obhj6lfdhjd"]
+
+[ext_resource type="Script" uid="uid://xfqoedvnoauc" path="res://systems/score/score_info.gd" id="1_5xaxp"]
+
+[resource]
+script = ExtResource("1_5xaxp")
+score_title = &"score_info_powerup"
+score_value = 100
+world_positioned = false
+works_in_shop_mode = false
+adds_to_combo = false
+ignore_boost_multiplier = true

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dawc3xcmx11ww"]
+
+[ext_resource type="Script" uid="uid://66nh82wxa5m2" path="res://elements/powerups/powerup_sign.gd" id="1_bxqkf"]
+[ext_resource type="Texture2D" uid="uid://eohd3w654qew" path="res://elements/icons/icon_hold_red.png" id="2_h1at8"]
+
+[sub_resource type="Gradient" id="Gradient_n2ge6"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hlti3"]
+gradient = SubResource("Gradient_n2ge6")
+width = 32
+height = 32
+fill_to = Vector2(0.132979, 0.148936)
+
+[node name="PowerupSign" type="Node3D"]
+script = ExtResource("1_bxqkf")
+
+[node name="Icon" type="Sprite3D" parent="."]
+sorting_offset = 1.0
+modulate = Color(0.838897, 0.838897, 0.838897, 1)
+texture = ExtResource("2_h1at8")
+
+[node name="BG" type="Sprite3D" parent="."]
+modulate = Color(0.151276, 0.151276, 0.151276, 1)
+pixel_size = 0.05
+texture = SubResource("GradientTexture2D_hlti3")

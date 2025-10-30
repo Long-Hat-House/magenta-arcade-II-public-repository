@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://bo5wfjfhvx1lp"]
+
+[ext_resource type="PackedScene" uid="uid://cos3g8nj05qhs" path="res://elements/neutral/props/praca_bandeira/bridge.glb" id="1_jmi0j"]
+[ext_resource type="Material" uid="uid://5a545wt1ctk2" path="res://elements/neutral/props/praca_bandeira/material/m_bridge.tres" id="2_fnv1w"]
+[ext_resource type="Material" uid="uid://b2e8ntr4sv03e" path="res://elements/background/material/m_grass.tres" id="3_2tl5m"]
+
+[node name="bridge" instance=ExtResource("1_jmi0j")]
+
+[node name="bridge" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_fnv1w")
+surface_material_override/1 = ExtResource("3_2tl5m")

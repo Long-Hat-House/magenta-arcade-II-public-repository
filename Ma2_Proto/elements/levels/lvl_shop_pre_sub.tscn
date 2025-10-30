@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://5uoto1yayl6k"]
+
+[sub_resource type="GDScript" id="GDScript_nq7i0"]
+script/source = "extends Level
+
+func _ready() -> void:
+	await await_for_level_ready()
+
+	cmd_array([
+		CMD_Wait_Seconds.new(1),
+		CMD_Callable.new(func():
+			HUD.instance.make_screen_add(Color.TRANSPARENT, Color.WHITE, 1)
+			),
+		CMD_Wait_Seconds.new(.9)
+	], false);
+"
+
+[node name="LVL SHOP" type="Node3D"]
+script = SubResource("GDScript_nq7i0")

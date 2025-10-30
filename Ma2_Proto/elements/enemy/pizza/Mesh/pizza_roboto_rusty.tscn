@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce55vfa4assok"]
+
+[ext_resource type="PackedScene" uid="uid://bsrp6kl536a5i" path="res://elements/enemy/pizza/Mesh/pizza_roboto.tscn" id="1_iufpn"]
+[ext_resource type="Material" uid="uid://o7vmhxyjw7p5" path="res://elements/enemy/pizza/Material/M_Pizza_Rust.tres" id="2_u2b0l"]
+
+[node name="Pizza_Roboto_Rusty" instance=ExtResource("1_iufpn")]
+
+[node name="base_Pe" parent="Rig_Pizza/Skeleton3D" index="0"]
+material_override = ExtResource("2_u2b0l")
+
+[node name="Boca" parent="Rig_Pizza/Skeleton3D" index="1"]
+material_override = ExtResource("2_u2b0l")
+
+[node name="Corpo" parent="Rig_Pizza/Skeleton3D" index="2"]
+material_override = ExtResource("2_u2b0l")
+
+[node name="Pe" parent="Rig_Pizza/Skeleton3D" index="3"]
+material_override = ExtResource("2_u2b0l")
+
+[node name="Tampa" parent="Rig_Pizza/Skeleton3D" index="4"]
+material_override = ExtResource("2_u2b0l")
+
+[node name="AnimatedSprite3D" parent="Rig_Pizza/Skeleton3D/BoneAttachment3D" index="0"]
+animation = &"rusty"
+frame_progress = 0.644341

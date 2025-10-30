@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://onsluxoljgfn"]
+
+[ext_resource type="Shader" uid="uid://byaixiy4o4lqy" path="res://elements/powerups/altar/graphic_altar.tres" id="1_a1v81"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_a1v81")
+shader_parameter/Color = Color(0, 0.0156863, 0.278431, 1)

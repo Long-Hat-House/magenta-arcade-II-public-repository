@@ -1,0 +1,10 @@
+[gd_resource type="FontVariation" load_steps=3 format=3 uid="uid://b4lmocaxyw000"]
+
+[ext_resource type="FontFile" uid="uid://bogv4tg0kqs1" path="res://elements/ui/fonts/BalooBhaina2-Medium.ttf" id="1_i0frn"]
+[ext_resource type="FontVariation" uid="uid://dcvesr7vb4a6o" path="res://elements/ui/fonts/NotoColorEmoji.tres" id="2_0ilgg"]
+
+[resource]
+fallbacks = Array[Font]([ExtResource("2_0ilgg")])
+base_font = ExtResource("1_i0frn")
+spacing_top = -26
+spacing_bottom = -36

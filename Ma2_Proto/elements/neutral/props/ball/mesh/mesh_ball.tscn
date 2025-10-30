@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp4lajdqy2rqe"]
+
+[ext_resource type="PackedScene" uid="uid://4dk4psfwl5es" path="res://elements/neutral/props/ball/mesh/ball.glb" id="1_jcifc"]
+[ext_resource type="Material" uid="uid://w33yrvbfwum1" path="res://elements/neutral/props/ball/material/m_ball.tres" id="2_8e2p7"]
+
+[node name="ball" instance=ExtResource("1_jcifc")]
+
+[node name="ball" parent="." index="0"]
+material_override = ExtResource("2_8e2p7")

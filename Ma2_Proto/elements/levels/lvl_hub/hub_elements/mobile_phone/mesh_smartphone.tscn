@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0mgsrcyne68w"]
+
+[ext_resource type="PackedScene" uid="uid://bum35qinoe75g" path="res://elements/levels/lvl_hub/hub_elements/mobile_phone/smartphone.glb" id="1_q8n2x"]
+[ext_resource type="Material" uid="uid://xy7yuvdpxprl" path="res://elements/levels/lvl_hub/hub_elements/mobile_phone/m_mobile_phone.tres" id="2_8fu1n"]
+
+[node name="smartphone" instance=ExtResource("1_q8n2x")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="smartphone" parent="." index="0"]
+material_override = ExtResource("2_8fu1n")

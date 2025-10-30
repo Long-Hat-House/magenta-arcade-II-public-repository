@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://chf2s4abcxjfj"]
+
+[ext_resource type="PackedScene" uid="uid://bkhxe20jvjtam" path="res://elements/enemy/toupeira/mesh/toupeira_hole.glb" id="1_s785y"]
+[ext_resource type="Material" uid="uid://bkwc4o5lphh1i" path="res://elements/enemy/toupeira/material/m_toupeira.tres" id="2_yf3bt"]
+
+[node name="toupeira_hole" instance=ExtResource("1_s785y")]
+
+[node name="hole" parent="." index="0"]
+material_override = ExtResource("2_yf3bt")

@@ -1,0 +1,20 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://d1srrway4a3wn"]
+
+[ext_resource type="Texture2D" uid="uid://d3rlghc77a6fq" path="res://elements/enemy/statue_ivo/texture/m_statue_BaseColor.png" id="1_hkjjs"]
+[ext_resource type="Texture2D" uid="uid://r41m4c17isw0" path="res://elements/enemy/statue_ivo/texture/m_statue_Normal.png" id="2_ccuku"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jie0d"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("1_hkjjs")
+roughness = 0.65
+emission_energy_multiplier = 2.21
+normal_enabled = true
+normal_texture = ExtResource("2_ccuku")
+rim_tint = 1.0
+clearcoat = 0.69
+anisotropy = 0.33
+ao_texture = SubResource("CompressedTexture2D_jie0d")
+backlight = Color(0.0313726, 0.0313726, 0.0313726, 1)

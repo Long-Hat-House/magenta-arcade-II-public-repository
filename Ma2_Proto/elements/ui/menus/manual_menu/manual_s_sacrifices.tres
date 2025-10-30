@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="CreditsSectionInfo" load_steps=16 format=3 uid="uid://d02nvranuqlfy"]
+
+[ext_resource type="Script" uid="uid://bkle5ca8utscg" path="res://elements/ui/menus/credits_menu/scripts/credits_entry_info.gd" id="2_0jup6"]
+[ext_resource type="Texture2D" uid="uid://cvggxjuwa0cat" path="res://elements/icons/icon_sacrifice_coin.png" id="2_48v5l"]
+[ext_resource type="Texture2D" uid="uid://d3v87fgglk6ib" path="res://elements/ui/ui_art/ui_icon_manual_bg.png" id="3_3dcup"]
+[ext_resource type="Texture2D" uid="uid://bkdqdnsj1y2hf" path="res://elements/icons/icon_sacrifice_score.png" id="3_336s7"]
+[ext_resource type="Texture2D" uid="uid://cj48nxplm8t0j" path="res://elements/icons/icon_sacrifice_health.png" id="4_0jup6"]
+[ext_resource type="Texture2D" uid="uid://dafenvijeg8hy" path="res://elements/icons/icon_sacrifice_hold.png" id="5_3dcup"]
+[ext_resource type="Texture2D" uid="uid://cp6hntr4j50gx" path="res://elements/icons/icon_sacrifice_tap.png" id="6_x44t0"]
+[ext_resource type="Script" uid="uid://brm0i2bj1yuok" path="res://elements/ui/menus/credits_menu/scripts/credits_section_info.gd" id="7_5ugiq"]
+[ext_resource type="Texture2D" uid="uid://u8st7b4hkfnj" path="res://elements/ui/ui_art/ui_hold_FG.png" id="7_x44t0"]
+[ext_resource type="Texture2D" uid="uid://nelvyaghmtga" path="res://elements/ui/ui_art/ui_tap_FG.png" id="9_4nb1t"]
+
+[sub_resource type="Resource" id="Resource_46spu"]
+script = ExtResource("2_0jup6")
+entry_name = &"manual_sacrifice_coin_title"
+entry_role = &"manual_sacrifice_coin_description"
+entry_information = &""
+entry_texture = ExtResource("2_48v5l")
+entry_texture_2 = ExtResource("3_3dcup")
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0.52549, 0, 0.286275, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[sub_resource type="Resource" id="Resource_kojme"]
+script = ExtResource("2_0jup6")
+entry_name = &"manual_sacrifice_score_title"
+entry_role = &"manual_sacrifice_score_description"
+entry_information = &""
+entry_texture = ExtResource("3_336s7")
+entry_texture_2 = ExtResource("3_3dcup")
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0.52549, 0, 0.286275, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[sub_resource type="Resource" id="Resource_6wg5m"]
+script = ExtResource("2_0jup6")
+entry_name = &"manual_sacrifice_health_title"
+entry_role = &"manual_sacrifice_health_description"
+entry_information = &""
+entry_texture = ExtResource("4_0jup6")
+entry_texture_2 = ExtResource("3_3dcup")
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0.52549, 0, 0.286275, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[sub_resource type="Resource" id="Resource_66dk0"]
+script = ExtResource("2_0jup6")
+entry_name = &"manual_sacrifice_hold_title"
+entry_role = &"manual_sacrifice_hold_description"
+entry_information = &""
+entry_texture = ExtResource("5_3dcup")
+entry_texture_2 = ExtResource("7_x44t0")
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0.52549, 0, 0.286275, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[sub_resource type="Resource" id="Resource_48v5l"]
+script = ExtResource("2_0jup6")
+entry_name = &"manual_sacrifice_tap_title"
+entry_role = &"manual_sacrifice_tap_description"
+entry_information = &""
+entry_texture = ExtResource("6_x44t0")
+entry_texture_2 = ExtResource("9_4nb1t")
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0.52549, 0, 0.286275, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[resource]
+script = ExtResource("7_5ugiq")
+section_title = &"manual_s_sacrifices_title"
+section_info = &"manual_s_sacrifices_description"
+section_color_highlight = Color(1, 1, 1, 1)
+section_color_bg = Color(0, 0.831373, 0.792157, 1)
+entries_list = Array[ExtResource("2_0jup6")]([SubResource("Resource_46spu"), SubResource("Resource_kojme"), SubResource("Resource_6wg5m"), SubResource("Resource_66dk0"), SubResource("Resource_48v5l")])
+metadata/_custom_type_script = "uid://brm0i2bj1yuok"

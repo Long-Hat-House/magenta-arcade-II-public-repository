@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="LevelInfo" load_steps=4 format=3 uid="uid://ca6fdocfqlofa"]
+
+[ext_resource type="Script" path="res://systems/level/level_info.gd" id="1_ve00w"]
+[ext_resource type="Script" path="res://systems/ma2_meta/star_info.gd" id="2_m2t0y"]
+[ext_resource type="Script" path="res://modules/text_flow/zap/src/text_flow_zap_speaker.gd" id="3_gda71"]
+
+[resource]
+script = ExtResource("1_ve00w")
+lvl_id = &"lvl_test"
+lvl_resource_path = "res://elements/levels/lvl_tests/lvl_test_set.tres"
+zap_speaker_bosses = Array[ExtResource("3_gda71")]([])
+star_list = Array[ExtResource("2_m2t0y")]([])
+lvl_color = Color(0.34902, 0.717647, 1, 1)
+lvl_color_highlight = Color(0, 0.831373, 0.792157, 1)
+map_coordinate = Vector3(0, 0, 0)
+map_scale = 0.0
+dial_zap = "zap_lvl"
+dial_hub_win = "dial_hub_win"
+dial_hub_pre_unlock = "dial_hub_pre_unlock"
+dial_hub_pos_unlock = "dial_hub_pos_unlock"

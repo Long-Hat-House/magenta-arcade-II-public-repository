@@ -1,0 +1,120 @@
+[gd_scene load_steps=17 format=3 uid="uid://d4jauiwmtup0j"]
+
+[ext_resource type="Script" uid="uid://cyvu4sway5xwq" path="res://elements/enemy/smoke/ai_enemy_smoke.gd" id="1_vijjp"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="2_5j3aj"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="2_qgd77"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i1obg"]
+depth_draw_mode = 1
+shading_mode = 0
+albedo_color = Color(0.45098, 0.45098, 0.560784, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_34oyt"]
+material = SubResource("StandardMaterial3D_i1obg")
+radius = 1.0
+height = 1.75
+radial_segments = 11
+rings = 5
+
+[sub_resource type="Curve" id="Curve_ybcth"]
+_limits = [-2.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, -2), 0.0, 0.0, 0, 0, Vector2(1, -2), -3.97232, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_h3j7p"]
+_limits = [-2.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0.00819671, -2), 0.0, 0.0, 0, 0, Vector2(1, -2), -6.55433, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_rvj54"]
+_limits = [-2.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0.0659342), 0.0, -6.15126, 0, 0, Vector2(1, 0.0219781), -6.18766, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_jof1o"]
+curve_x = SubResource("Curve_ybcth")
+curve_y = SubResource("Curve_h3j7p")
+curve_z = SubResource("Curve_rvj54")
+
+[sub_resource type="Curve" id="Curve_aely5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.991803, 0), -4.29011, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8sgyk"]
+curve = SubResource("Curve_aely5")
+
+[sub_resource type="Curve" id="Curve_vsoa6"]
+_data = [Vector2(0, 0.461538), 0.0, 2.29827, 0, 0, Vector2(1, 0), -4.82636, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gnabb"]
+curve = SubResource("Curve_vsoa6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iglfn"]
+lifetime_randomness = 0.65
+particle_flag_align_y = true
+particle_flag_damping_as_friction = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -300.8
+angle_max = 300.8
+direction = Vector3(1, 1, 0)
+orbit_velocity_min = -0.0499999
+orbit_velocity_max = 0.0500001
+orbit_velocity_curve = SubResource("CurveXYZTexture_jof1o")
+radial_velocity_min = -1.00002
+radial_velocity_max = 1.99998
+radial_velocity_curve = SubResource("CurveTexture_8sgyk")
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_gnabb")
+
+[sub_resource type="SphereMesh" id="SphereMesh_jmmvh"]
+radius = 0.36
+height = 0.65
+radial_segments = 4
+rings = 2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ujk0b"]
+custom_solver_bias = 0.05
+radius = 1.0
+height = 3.0
+
+[node name="EnemySmoke" type="Node3D"]
+script = ExtResource("1_vijjp")
+
+[node name="Scaler" type="Node3D" parent="."]
+
+[node name="graphic" type="Node3D" parent="Scaler"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Scaler/graphic"]
+mesh = SubResource("SphereMesh_34oyt")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="Scaler/graphic/MeshInstance3D"]
+script = ExtResource("2_5j3aj")
+high_contrast_group = &"scenery"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Scaler/graphic"]
+visible = false
+lifetime = 2.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_iglfn")
+draw_pass_1 = SubResource("SphereMesh_jmmvh")
+
+[node name="Area3D" type="Area3D" parent="Scaler"]
+collision_layer = 161
+collision_mask = 10
+
+[node name="Health" type="Node" parent="Scaler/Area3D" node_paths=PackedStringArray("feedback")]
+script = ExtResource("2_qgd77")
+max_amount = 0.4
+feedback = [NodePath("../../graphic/MeshInstance3D")]
+visual_style = 1
+use_default_sound = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Scaler/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.625, 0)
+shape = SubResource("CapsuleShape3D_ujk0b")
+
+[connection signal="body_entered" from="Scaler/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="dead" from="Scaler/Area3D/Health" to="." method="_on_health_dead"]

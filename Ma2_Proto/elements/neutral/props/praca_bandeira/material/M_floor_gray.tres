@@ -1,0 +1,51 @@
+[gd_resource type="StandardMaterial3D" load_steps=9 format=3 uid="uid://fd5v1bojtocd"]
+
+[ext_resource type="Texture2D" uid="uid://5ii8ogxqmnej" path="res://elements/neutral/props/praca_bandeira/textura/floor_gray_BaseColor.png" id="1_ca1f4"]
+[ext_resource type="Texture2D" uid="uid://c3sbrjkkf560h" path="res://elements/enemy/pizza/Texture/M_Pizza_Emission.png" id="2_d47b3"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jie0d"]
+
+[sub_resource type="Gradient" id="Gradient_562ed"]
+offsets = PackedFloat32Array(0.454054, 1)
+colors = PackedColorArray(0.796078, 0.741176, 0.705882, 1, 0.541176, 0.490196, 0.454902, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_v3urq"]
+gradient = SubResource("Gradient_562ed")
+
+[sub_resource type="Gradient" id="Gradient_6i41a"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.620879, 0.741758)
+colors = PackedColorArray(0.106208, 0.106208, 0.106208, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_64hv6"]
+noise_type = 3
+offset = Vector3(90.91, 121.21, 0)
+fractal_octaves = 10
+fractal_lacunarity = 1.795
+fractal_gain = 0.88
+fractal_weighted_strength = 0.71
+domain_warp_type = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d10ry"]
+generate_mipmaps = false
+seamless = true
+seamless_blend_skirt = 0.105
+color_ramp = SubResource("Gradient_6i41a")
+noise = SubResource("FastNoiseLite_64hv6")
+
+[resource]
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("1_ca1f4")
+emission_energy_multiplier = 16.0
+emission_texture = ExtResource("2_d47b3")
+rim_tint = 1.0
+clearcoat = 0.2
+clearcoat_roughness = 0.59
+anisotropy = 0.33
+ao_texture = SubResource("CompressedTexture2D_jie0d")
+backlight = Color(0.0313726, 0.0313726, 0.0313726, 1)
+detail_mask = SubResource("NoiseTexture2D_d10ry")
+detail_albedo = SubResource("GradientTexture1D_v3urq")
+uv1_triplanar_sharpness = 1.93187
+uv1_world_triplanar = true

@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="LevelInfo" load_steps=6 format=3 uid="uid://wm7inyyeld75"]
+
+[ext_resource type="Script" uid="uid://dbvews5vjmnxf" path="res://elements/stage_pieces/shop/shop_object_info.gd" id="1_vnxxn"]
+[ext_resource type="Script" uid="uid://r36vu12ey5m8" path="res://systems/level/level_info.gd" id="1_xyqfw"]
+[ext_resource type="Script" uid="uid://yt80jeaa705j" path="res://systems/ma2_meta/star_info.gd" id="2_bisln"]
+[ext_resource type="Texture2D" uid="uid://6hxv4upxrqcr" path="res://elements/icons/icon_lvl_selection_screen.png" id="2_lmmnx"]
+[ext_resource type="Script" uid="uid://cwxu6khojrwjt" path="res://modules/text_flow/zap/src/text_flow_zap_speaker.gd" id="3_ay4s8"]
+
+[resource]
+script = ExtResource("1_xyqfw")
+lvl_id = &"lvl_hub"
+lvl_resource_path = "res://elements/levels/lvl_hub/lvl_hub.tscn"
+zap_speaker_bosses = Array[ExtResource("3_ay4s8")]([])
+is_arcade_mode = false
+npc_mode = 0
+church_npc_max_count = 0
+always_unlocked = false
+time_target_seconds = 300
+time_max_seconds = 480
+level_goal_text = "Encontre e derrote!"
+star_list = Array[ExtResource("2_bisln")]([])
+lvl_icon = ExtResource("2_lmmnx")
+lvl_color = Color(0.34902, 0.717647, 1, 1)
+lvl_color_highlight = Color(0, 0.831373, 0.792157, 1)
+map_coordinate = Vector3(0, 0, 0)
+map_scale = 0.0
+dial_zap = "zap_lvl"
+dial_hub_welcome = "dial_hub_welcome"
+dial_hub_win = "dial_hub_win"
+dial_hub_win_array = Array[String]([])
+dial_hub_pre_unlock = "dial_hub_pre_unlock"
+dial_hub_pos_unlock = "dial_hub_pos_unlock"
+dial_hub_lvl_still_locked = "dial_hub_lvl_still_locked"
+dial_hub_stars_locked = "dial_hub_stars_locked"
+dial_hub_stars_unlocked_first = "dial_hub_stars_unlocked_first"
+dial_hub_stars_unlocked_full = "dial_hub_stars_unlocked_full"
+buy_as_many = Array[ExtResource("1_vnxxn")]([])
+buy_one = Array[ExtResource("1_vnxxn")]([])
+buy_start = Array[ExtResource("1_vnxxn")]([])

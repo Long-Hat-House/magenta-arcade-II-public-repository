@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://rd8y0n1krn8l"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Int_Pressable_Button_Cassette_Open"
+id = 124492286
+guid = "{FCD29B19-591B-4DB4-81FF-0BBD47898073}"
+dummy = true

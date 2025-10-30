@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://bqa1qhggmj2d5"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_NPC_Evil_Cheer"
+id = 3536216082
+guid = "{CBACA5D3-F592-4147-89DC-3AD24F07BD05}"
+dummy = true

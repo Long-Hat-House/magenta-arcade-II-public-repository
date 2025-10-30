@@ -1,0 +1,712 @@
+[gd_scene load_steps=30 format=3 uid="uid://b1n8lkpoiq8mj"]
+
+[ext_resource type="Script" uid="uid://bwkeq6vnu35fv" path="res://systems/pressable/pressable_button_graphic.gd" id="1_4iyar"]
+[ext_resource type="Script" uid="uid://bi4yfgewvcvwq" path="res://systems/switchable/switch_oning_offing_animation_player.gd" id="2_12xev"]
+[ext_resource type="PackedScene" uid="uid://dkgletrgc3pan" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_upgrade_set/mesh_button_upgrade_set_base.tscn" id="3_wisnb"]
+[ext_resource type="Script" uid="uid://cccnp54xda20b" path="res://elements/enemy/constant_rotation.gd" id="4_2kt2f"]
+[ext_resource type="PackedScene" uid="uid://c8nj6y7qoqkhq" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_upgrade_set/mesh_button_upgrade_set_button.tscn" id="5_1pk7y"]
+[ext_resource type="Texture2D" uid="uid://cc2f1a3pp2h0e" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_upgrade_set/texture/t_mesh_button_upgrade_set_button_BaseColor.png" id="5_5m1q4"]
+[ext_resource type="Texture2D" uid="uid://b3s6bubwjtovt" path="res://elements/icons/icon_hold_yellow.png" id="7_o8xts"]
+[ext_resource type="Texture2D" uid="uid://qn56g55gh8l7" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_upgrade_set/texture/t_mesh_button_upgrade_set_base_BaseColor.png" id="8_3bllb"]
+
+[sub_resource type="Animation" id="Animation_4di45"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("visuals/button_mesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("visuals/button_mesh/button_glb/button_upgrade_set_button:material_override:emission_energy_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("visuals:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("visuals:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("visuals:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("visuals/button_mesh/icon_mesh:material_override:emission_energy_multiplier")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("visuals/CircleAura:material_override:emission_energy_multiplier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("visuals/CircleAura:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("visuals/button_base/button_base_slide:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.596183, 0.135908, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sea0h"]
+resource_name = "off"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("visuals/button_mesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("visuals/button_mesh/button_glb/button_upgrade_set_button:material_override:emission_energy_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("visuals:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("visuals:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("visuals:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("visuals/button_mesh/icon_mesh:material_override:emission_energy_multiplier")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("visuals/CircleAura:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("visuals/button_base/button_base_slide:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.596183, 0.135908, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ieduv"]
+resource_name = "offing"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("visuals/button_mesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5, 1),
+"update": 0,
+"values": [Vector3(1, 0.2, 1), Vector3(1, 2, 1), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("visuals/button_mesh/button_glb/button_upgrade_set_button:material_override:emission_energy_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [2.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("visuals:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.2, 0.333333),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, -2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.1, 0), Vector3(0, 0.0391246, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("visuals:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.2, 0.233333, 0.333333),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.0265116), Vector3(0, 0, 0.0265116), Vector3(0, 0, -0.0356745), Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("visuals:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1.1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("visuals/button_mesh/icon_mesh:material_override:emission_energy_multiplier")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("visuals/CircleAura:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("visuals/button_base/button_base_slide:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0.128306, 0.135908, 0), Vector3(-0.596183, 0.135908, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tyje3"]
+resource_name = "on"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("visuals/button_mesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 0.1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("visuals/button_mesh/button_glb/button_upgrade_set_button:material_override:emission_energy_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [4.0, 6.0, 4.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("visuals:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("visuals:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("visuals:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("visuals/button_mesh/icon_mesh:material_override:emission_energy_multiplier")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [16.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("visuals/CircleAura:material_override:emission_energy_multiplier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.566667),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [0.5, 0.5]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("visuals/CircleAura:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("visuals/button_base/button_base_slide:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.5, 0.136, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hkpis"]
+resource_name = "oning"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("visuals/button_mesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.5),
+"update": 0,
+"values": [Vector3(1, 0.1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("visuals/button_mesh/button_glb/button_upgrade_set_button:material_override:emission_energy_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.307786, 1),
+"update": 0,
+"values": [50.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("visuals:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.25),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.3, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("visuals:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.2),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.122173), Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("visuals:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1, 0.166667, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 0.5, 0.5, 1),
+"update": 0,
+"values": [Vector3(1, 0.6, 1), Vector3(1.1, 0.5, 1.1), Vector3(1, 1.2, 1), Vector3(1, 1, 1), Vector3(1.2, 1.2, 1.2), Vector3(1, 1.0004, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("visuals/CircleAura:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("visuals/CircleAura:material_override:emission_energy_multiplier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.2, 0.25),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
+"update": 0,
+"values": [0.5, 2.0, 0.5, 0.5]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("visuals/button_base/button_base_slide:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25),
+"transitions": PackedFloat32Array(-2, 0.5, 1),
+"update": 0,
+"values": [Vector3(-0.6, 0.136, 0), Vector3(0.1, 0.136, 0), Vector3(0.5, 0.136, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jrvwv"]
+_data = {
+&"RESET": SubResource("Animation_4di45"),
+&"off": SubResource("Animation_sea0h"),
+&"offing": SubResource("Animation_ieduv"),
+&"on": SubResource("Animation_tyje3"),
+&"oning": SubResource("Animation_hkpis")
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5nvwn"]
+height = 0.651012
+radius = 1.0109
+
+[sub_resource type="Gradient" id="Gradient_ovn4b"]
+offsets = PackedFloat32Array(0.109442, 1)
+colors = PackedColorArray(1, 0.490196, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lrby7"]
+gradient = SubResource("Gradient_ovn4b")
+width = 7
+height = 7
+fill_from = Vector2(0.470086, 1)
+fill_to = Vector2(0.435897, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hcwyr"]
+blend_mode = 1
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission_energy_multiplier = 2.0
+emission_texture = SubResource("GradientTexture2D_lrby7")
+uv1_scale = Vector3(10, 1.2, 1)
+uv1_offset = Vector3(0, 0.1, 0)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_dasok"]
+top_radius = 2.0
+height = 0.05
+radial_segments = 32
+rings = 0
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="Gradient" id="Gradient_jwtwq"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.537841, 0.616838, 0.723474, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c5w3d"]
+gradient = SubResource("Gradient_jwtwq")
+width = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_js8o6"]
+resource_local_to_scene = true
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0, 0.360784, 0.658824, 1)
+emission_enabled = true
+emission = Color(0.28, 0.28, 0.28, 1)
+emission_energy_multiplier = 0.0
+detail_enabled = true
+detail_mask = ExtResource("5_5m1q4")
+detail_albedo = SubResource("GradientTexture1D_c5w3d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_60djd"]
+resource_local_to_scene = true
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("7_o8xts")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_qx82g"]
+orientation = 1
+
+[sub_resource type="Gradient" id="Gradient_00xjj"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.545098, 0.623529, 0.729412, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fswf6"]
+gradient = SubResource("Gradient_00xjj")
+width = 1
+
+[sub_resource type="Gradient" id="Gradient_y1v31"]
+offsets = PackedFloat32Array(0.288608, 0.387342, 0.529114)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g3hpg"]
+gradient = SubResource("Gradient_y1v31")
+width = 1
+height = 8
+fill = 2
+fill_to = Vector2(0.239316, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dq2ky"]
+resource_local_to_scene = true
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("8_3bllb")
+emission_enabled = true
+emission = Color(0.877616, 0.877616, 0.877616, 1)
+emission_energy_multiplier = 0.0
+detail_mask = SubResource("GradientTexture2D_g3hpg")
+detail_albedo = SubResource("GradientTexture1D_fswf6")
+
+[node name="Graphic Button Upgrade Set" type="Node3D" node_paths=PackedStringArray("_icon_mesh", "_button_mesh", "_area_3d", "_on_off_animation_player")]
+script = ExtResource("1_4iyar")
+_icon_mesh = NodePath("visuals/button_mesh/icon_mesh")
+_button_mesh = NodePath("visuals/button_mesh/button_glb/button_upgrade_set_button")
+_area_3d = NodePath("Area3D")
+_on_off_animation_player = NodePath("Switch_Oning_Offing_AnimationPlayer")
+
+[node name="Switch_Oning_Offing_AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jrvwv")
+}
+script = ExtResource("2_12xev")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(0.84, 0, 0, 0, 0.84, 0, 0, 0, 0.84, 0.0415686, 0.205323, 0)
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0252655, -0.0697861, 0)
+shape = SubResource("CylinderShape3D_5nvwn")
+
+[node name="visuals" type="Node3D" parent="."]
+
+[node name="CircleAura" type="MeshInstance3D" parent="visuals"]
+transform = Transform3D(0.379014, 0, 0.925391, 0, 1, 0, -0.925391, 0, 0.379014, -0.0506811, 0.401086, 0)
+material_override = SubResource("StandardMaterial3D_hcwyr")
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_dasok")
+skeleton = NodePath("../button_mesh")
+script = ExtResource("4_2kt2f")
+angleVelocity = 2.0
+
+[node name="button_mesh" parent="visuals" instance=ExtResource("5_1pk7y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00403208, 0.352521, 0)
+
+[node name="button_glb" parent="visuals/button_mesh" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.124243, 0)
+
+[node name="button_upgrade_set_button" parent="visuals/button_mesh/button_glb" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0622836, 0)
+material_override = SubResource("StandardMaterial3D_js8o6")
+
+[node name="icon_mesh" type="MeshInstance3D" parent="visuals/button_mesh"]
+transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, -0.034642, 0.48959, -0.00168774)
+material_override = SubResource("StandardMaterial3D_60djd")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_qx82g")
+skeleton = NodePath("../../..")
+
+[node name="button_base" parent="visuals" instance=ExtResource("3_wisnb")]
+
+[node name="button_upgrade_set_base" parent="visuals/button_base/button_upgrade_set_base" index="0"]
+material_override = SubResource("StandardMaterial3D_dq2ky")
+
+[node name="AccessibilityHighContrastObject" parent="visuals/button_base/button_upgrade_set_base" index="1" node_paths=PackedStringArray("affected_nodes")]
+affected_nodes = [NodePath("../../../CircleAura")]
+
+[node name="button_base_slide" parent="visuals/button_base" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.596183, 0.135908, 0)
+
+[node name="button_upgrade_set_" parent="visuals/button_base/button_base_slide/button_upgrade_set_slide" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_dq2ky")
+
+[editable path="visuals/button_mesh"]
+[editable path="visuals/button_mesh/button_glb"]
+[editable path="visuals/button_base"]
+[editable path="visuals/button_base/button_upgrade_set_base"]
+[editable path="visuals/button_base/button_base_slide/button_upgrade_set_slide"]

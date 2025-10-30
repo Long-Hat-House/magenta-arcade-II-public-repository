@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjclcksyf7gw5"]
+
+[ext_resource type="PackedScene" uid="uid://b0sayg31vfcg" path="res://elements/neutral/props/traffic_decals/decall_triangle_red.glb" id="1_s6os4"]
+[ext_resource type="Material" uid="uid://bgw08081tgpwk" path="res://elements/neutral/props/traffic_decals/materials/m_decal_street_red.tres" id="2_aremp"]
+
+[node name="decall_triangle_red" instance=ExtResource("1_s6os4")]
+
+[node name="triangle" parent="." index="0"]
+material_override = ExtResource("2_aremp")

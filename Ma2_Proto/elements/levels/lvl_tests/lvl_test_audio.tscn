@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://60agsv6jn850"]
+
+[ext_resource type="PackedScene" uid="uid://c7ft4lc6ukiy0" path="res://elements/levels/level_structure/level_game_pack.tscn" id="2_yuyb8"]
+[ext_resource type="PackedScene" uid="uid://cqrb2x17wcl14" path="res://elements/levels/level_structure/level_environment_day_bright.tscn" id="4_x6py1"]
+
+[sub_resource type="GDScript" id="GDScript_an7n0"]
+resource_name = "lvl_test"
+script/source = "extends Level
+
+const STAGE_PIECE_AFONSO_PENA_LANES = preload(\"res://elements/stage_pieces/stage_piece_afonso_pena_lanes3.tscn\")
+
+#powerups
+const WEAPON_BUTTON_TAP_BLUE = preload(\"res://elements/powerups/button/powerup_weapon_button_tap_blue.tscn\")
+const WEAPON_BUTTON_HOLD_BLUE = preload(\"res://elements/powerups/button/powerup_weapon_button_hold_blue.tscn\")
+const POWERUP_WEAPON_BUTTON_HOLD_YELLOW = preload(\"res://elements/powerups/button/powerup_weapon_button_hold_yellow.tscn\")
+
+const ELEMENT_CAR = preload(\"res://elements/neutral/car/element_car.tscn\")
+
+@onready var _pieces_street:Array[PackedScene] = [STAGE_PIECE_AFONSO_PENA_LANES]
+
+func _ready():
+	prepare_level()
+	cmd_array([
+		CMD_Callable.new(scene_1),
+	])
+
+func prepare_level():
+	stage.set_stage_size(Vector3(12,0,27))
+	cam.set_offset(Vector3(0,26,28))
+
+func scene_1(invert:bool = false):
+
+	stage.fill_with(_pieces_street, stage._stage_size.z)
+	stage.set_pivot_offset(Vector3(-6 if invert else 6,0,0))
+	stage.repivot()
+
+	stage.set_grid_spacing(2, 2)
+
+	var btn = objs.create_object(WEAPON_BUTTON_TAP_BLUE)
+	btn.position = stage.get_grid_line(0, 11)
+
+	var obj = objs.create_object(WEAPON_BUTTON_HOLD_BLUE)
+	obj.position = stage.get_grid_line(-2, 11)
+
+	obj = objs.create_object(POWERUP_WEAPON_BUTTON_HOLD_YELLOW)
+	obj.position = stage.get_grid_line(2, 11)
+
+	obj = objs.create_object(ELEMENT_CAR, \"e\", stage.get_grid(-2, 1));
+	obj = objs.create_object(ELEMENT_CAR, \"e\", stage.get_grid(2, 2));
+
+	cmd(CMD_Sequence.new([
+		cam.cmd_position(stage.get_pos_x(), 1, LevelCameraController.MovementAxis.X),
+		cam.cmd_position_wait(stage.get_pos_z(), 1.5, LevelCameraController.MovementAxis.Z),
+		objs.cmd_wait_group(\"e\"),
+		CMD_Callable.new(scene_1.bind(!invert)),
+	]))
+"
+
+[node name="LVL1_TEST" type="Node3D"]
+script = SubResource("GDScript_an7n0")
+
+[node name="LevelEnvironmentDayBright" parent="." instance=ExtResource("4_x6py1")]
+
+[node name="LevelGamePack" parent="." instance=ExtResource("2_yuyb8")]

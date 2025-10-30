@@ -1,0 +1,154 @@
+[gd_scene load_steps=10 format=3 uid="uid://br7dcu5it8nhi"]
+
+[ext_resource type="PackedScene" uid="uid://j0s8fg53i224" path="res://elements/enemy/bosses/pirulito/pirulito_piece/mesh_column_door_r.tscn" id="1_gx3ft"]
+[ext_resource type="PackedScene" uid="uid://bcen33kv1m7oq" path="res://elements/enemy/bosses/pirulito/pirulito_piece/mesh_sound.tscn" id="2_atkst"]
+[ext_resource type="Script" path="res://elements/enemy/bosses/pirulito/pirulito_piece/graphic_column_door_sound.gd" id="2_ctmjm"]
+
+[sub_resource type="Animation" id="Animation_bqu20"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("colunm_door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.62232, 0.117326, 3.0609)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("colunm_door:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sound:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cg4ba"]
+resource_name = "closed"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("colunm_door")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -2.62232, 0.105729, 3.0609)
+
+[sub_resource type="Animation" id="Animation_dqtg6"]
+resource_name = "open"
+length = 0.366668
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("colunm_door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.62232, -1.14142, 3.0609)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sound:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.4, 1.4, 1.4), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_q58id"]
+resource_name = "open_not_playing"
+
+[sub_resource type="Animation" id="Animation_lkq6o"]
+resource_name = "opening"
+length = 1.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("colunm_door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(0.466517, 2.54912, 1),
+"update": 0,
+"values": [Vector3(-2.62232, 0.105729, 3.0609), Vector3(-2.622, 0.196, 3.061), Vector3(-2.622, -1.13606, 3.061)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("colunm_door:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 0.9, 1), Vector3(1, 0.9, 1), Vector3(1, 1.4, 1), Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sound:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.2, 1.2, 1.2), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7gsnl"]
+_data = {
+"RESET": SubResource("Animation_bqu20"),
+"closed": SubResource("Animation_cg4ba"),
+"open": SubResource("Animation_dqtg6"),
+"open_not_playing": SubResource("Animation_q58id"),
+"opening": SubResource("Animation_lkq6o")
+}
+
+[node name="graphic_boss_pirulito_column_sound" instance=ExtResource("1_gx3ft")]
+script = ExtResource("2_ctmjm")
+
+[node name="colunm_door" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62232, 0.117326, 3.0609)
+
+[node name="sound" parent="." index="1" instance=ExtResource("2_atkst")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62167, 0.670178, 3.00807)
+
+[node name="aim Position" type="Node3D" parent="sound" index="0"]
+transform = Transform3D(0.780714, 0, 0, 0, 0.780714, 0, 0, 0, 0.780714, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_7gsnl")
+}
+autoplay = "closed"

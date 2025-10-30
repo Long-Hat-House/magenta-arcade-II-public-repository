@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3fu6kgipt726"]
+
+[ext_resource type="Script" uid="uid://udl5or2m66bf" path="res://elements/player/projectiles/proj_hold_follow.gd" id="1_vubfb"]
+[ext_resource type="PackedScene" uid="uid://sc68vnyvfha1" path="res://elements/vfx/vfx_hit/vfx_hit_green.tscn" id="2_l15pg"]
+[ext_resource type="Script" uid="uid://gptvvxbslgxc" path="res://elements/player/projectiles/proj_wave_movement.gd" id="2_xk5lq"]
+[ext_resource type="Resource" uid="uid://com3qf7kk6fby" path="res://systems/ma2_meta/upgrades/upgrade_hold_damage.tres" id="3_3u0x5"]
+[ext_resource type="PackedScene" uid="uid://tf8a3ac804mj" path="res://elements/proj_hold_green_cut.tscn" id="3_qhdyk"]
+[ext_resource type="PackedScene" uid="uid://dxdked2kwk44o" path="res://elements/player/projectiles/hold_green/mesh/mesh_leaf.tscn" id="5_ccmge"]
+[ext_resource type="WwiseEvent" uid="uid://gy3mdci6by3s" path="res://Wwise/resources/Event/{6C66D9D8-0F72-4EE2-B57A-FD0C27493214}.tres" id="7_qhdyk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ljl45"]
+radius = 0.25
+height = 1.5
+
+[node name="ProjectileGreenHold" type="Node3D"]
+script = ExtResource("1_vubfb")
+vanish_on_area_hit = false
+hitVFX = ExtResource("2_l15pg")
+time_outVFX = ExtResource("3_qhdyk")
+linear_velocity_min = 12.0
+linear_velocity_max = 35.0
+full_turning_speed = 5.0
+type = 1
+time_until_full_follow = 2.5
+ease_full_follow = 1
+trans_full_follow = 4
+amountDamage = 0.15
+damage_per_bonus = 0.05
+bonus_resource = ExtResource("3_3u0x5")
+damagePriority = 3
+
+[node name="WaveMovement" type="Node3D" parent="."]
+script = ExtResource("2_xk5lq")
+amplitude = 0.75
+frequency = 1.4
+rotation_factor = -12.568
+
+[node name="Area3D" type="Area3D" parent="WaveMovement"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+collision_layer = 8
+collision_mask = 132
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WaveMovement/Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.163574)
+shape = SubResource("CapsuleShape3D_ljl45")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="WaveMovement/Area3D"]
+aabb = AABB(-1.15958, -0.528831, -1, 2.31915, 1.05766, 2)
+
+[node name="leaf" parent="WaveMovement/Area3D" instance=ExtResource("5_ccmge")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0.244258)
+
+[node name="SFX" type="AkEvent3D" parent="."]
+event = ExtResource("7_qhdyk")
+trigger_on = 1
+
+[connection signal="area_entered" from="WaveMovement/Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="body_entered" from="WaveMovement/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="screen_exited" from="WaveMovement/Area3D/VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

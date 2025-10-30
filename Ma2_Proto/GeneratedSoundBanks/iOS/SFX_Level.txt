@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3924071479	Play_Lvl2_Church_Destroy			\Level\Pampulha\Play_Lvl2_Church_Destroy	
+

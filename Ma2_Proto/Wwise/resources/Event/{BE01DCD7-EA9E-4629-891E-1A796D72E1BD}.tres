@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://qkfwivb1chts"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Amb_Hub"
+id = 1268101726
+guid = "{BE01DCD7-EA9E-4629-891E-1A796D72E1BD}"
+dummy = true

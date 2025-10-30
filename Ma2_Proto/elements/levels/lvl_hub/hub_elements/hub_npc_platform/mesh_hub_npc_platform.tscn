@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu2b7ogkhlvrs"]
+
+[ext_resource type="PackedScene" uid="uid://chvj80vflrasm" path="res://elements/levels/lvl_hub/hub_elements/hub_npc_platform/hub_npc_platform.glb" id="1_hq8kv"]
+[ext_resource type="Material" uid="uid://cfgrdfglnfjyb" path="res://elements/levels/lvl_hub/hub_elements/hub_npc_platform/material/m_hub_npc_platform.tres" id="2_hq7hs"]
+
+[node name="hub_npc_platform" instance=ExtResource("1_hq8kv")]
+
+[node name="hub_npc_platform" parent="." index="0"]
+material_override = ExtResource("2_hq7hs")

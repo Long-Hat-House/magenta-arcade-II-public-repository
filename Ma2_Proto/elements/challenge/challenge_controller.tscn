@@ -1,0 +1,333 @@
+[gd_scene load_steps=16 format=3 uid="uid://olufkwgaqicj"]
+
+[ext_resource type="Script" uid="uid://cbmkk4uddfhn" path="res://systems/challenge/challenge_controller.gd" id="1_vh0q0"]
+[ext_resource type="WwiseEvent" uid="uid://b01gkqn7jphxt" path="res://Wwise/resources/Event/{B4F3359C-9ADA-403E-85F6-79156CA0D7AA}.tres" id="2_oaaqm"]
+[ext_resource type="Script" uid="uid://cy67bq7bk7w17" path="res://systems/challenge/challenge_text_pop.gd" id="2_p8fjn"]
+[ext_resource type="Script" uid="uid://c3yme4hxpatpv" path="res://systems/utils/control_shaker.gd" id="2_qbq3e"]
+[ext_resource type="PackedScene" uid="uid://bsro58pt56ii4" path="res://elements/challenge/challenge_panel_begin.tscn" id="2_vd3fb"]
+[ext_resource type="WwiseEvent" uid="uid://dp4rt0l3f2yd4" path="res://Wwise/resources/Event/{D86C4F8B-D224-4572-B385-297F58CDE444}.tres" id="3_tyw2v"]
+[ext_resource type="PackedScene" uid="uid://cgdnc2s6uni1l" path="res://elements/challenge/challenge_panel_victory.tscn" id="3_uub4x"]
+[ext_resource type="PackedScene" uid="uid://cq7pvxdip73e" path="res://elements/challenge/challenge_panel_metrics.tscn" id="4_3dgsp"]
+[ext_resource type="WwiseEvent" uid="uid://ckx2o72wkml2l" path="res://Wwise/resources/Event/{98EF530B-A5A4-4FD8-88E2-B3B1D8F36289}.tres" id="4_vs108"]
+[ext_resource type="LabelSettings" uid="uid://dbjstirp1y8x4" path="res://elements/challenge/theme/challenge_title_label.tres" id="7_x5ti7"]
+[ext_resource type="WwiseEvent" uid="uid://brurnwoubxlxj" path="res://Wwise/resources/Event/{A0D1353C-3941-4C7C-A3F4-6DCA726E642C}.tres" id="9_vs108"]
+
+[sub_resource type="Animation" id="Animation_vs108"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextContainer/Text Pivot:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextContainer/Text Pivot:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextContainer/Text Pivot:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextContainer/Text Pivot:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TextContainer/Text Pivot/Shaker:shake_amplitude_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_kr8j8"]
+resource_name = "fail"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.88808, 1.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextContainer/Text Pivot:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextContainer/Text Pivot:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 1.5, 1.66667, 1.96667),
+"transitions": PackedFloat32Array(0.5, 2, 1, 2, 2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.5, 1.5), Vector2(1, 1), Vector2(1, 1), Vector2(1.5, 1.5), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextContainer/Text Pivot:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.133333, 1.66667, 1.96667),
+"transitions": PackedFloat32Array(0.5, 2, 2, 1),
+"update": 0,
+"values": [-1.11701, 0.0, 0.0, 6.28319]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextContainer/Text Pivot:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 1.96667),
+"transitions": PackedFloat32Array(0.5, 2, 1, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -50), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TextContainer/Text Pivot/Shaker:shake_amplitude_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.333333, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_tyw2v"]
+resource_name = "show"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.42142, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextContainer/Text Pivot:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.470588, 0.764706, 0.984314, 1), Color(1, 1, 1, 1), Color(0.470588, 0.764706, 0.984314, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextContainer/Text Pivot:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 1.03333, 1.16667, 1.5),
+"transitions": PackedFloat32Array(0.5, 2, 1, 2, 2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.5, 1.5), Vector2(1, 1), Vector2(1, 1), Vector2(1.5, 1.5), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextContainer/Text Pivot:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 1.5),
+"transitions": PackedFloat32Array(0.5, 2, 1, 2),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextContainer/Text Pivot:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 1.5),
+"transitions": PackedFloat32Array(0.5, 2, 1, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TextContainer/Text Pivot/Shaker:shake_amplitude_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.333333, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vs108"]
+_data = {
+&"RESET": SubResource("Animation_vs108"),
+&"fail": SubResource("Animation_kr8j8"),
+&"show": SubResource("Animation_tyw2v")
+}
+
+[node name="Challenge Controller" type="Control" node_paths=PackedStringArray("_panel_begin", "_panel_victory", "_panel_metrics", "_text_pop")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("1_vh0q0")
+_panel_begin = NodePath("Challenge Panel Begin")
+_panel_victory = NodePath("Challenge Panel Victory")
+_panel_metrics = NodePath("Challenge Panel Metrics")
+_text_pop = NodePath("Text Pop")
+_sfx_begin = ExtResource("2_oaaqm")
+_sfx_fail = ExtResource("3_tyw2v")
+_sfx_victory = ExtResource("4_vs108")
+
+[node name="Challenge Panel Begin" parent="." instance=ExtResource("2_vd3fb")]
+visible = false
+layout_mode = 1
+
+[node name="Challenge Panel Victory" parent="." instance=ExtResource("3_uub4x")]
+layout_mode = 1
+
+[node name="Challenge Panel Metrics" parent="." instance=ExtResource("4_3dgsp")]
+layout_mode = 1
+
+[node name="Text Pop" type="MarginContainer" parent="." node_paths=PackedStringArray("text_label", "animation")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_p8fjn")
+text_label = NodePath("TextContainer/Text Pivot/Shaker/Label")
+animation = NodePath("TextPopAnimation")
+_sfx_pop = ExtResource("9_vs108")
+
+[node name="TextContainer" type="Control" parent="Text Pop"]
+layout_mode = 2
+
+[node name="Text Pivot" type="Control" parent="Text Pop/TextContainer"]
+anchors_preset = 0
+
+[node name="Shaker" type="Control" parent="Text Pop/TextContainer/Text Pivot"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 2.15864
+offset_top = 3.29988
+offset_right = 2.15864
+offset_bottom = 3.29988
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("2_qbq3e")
+
+[node name="Label" type="Label" parent="Text Pop/TextContainer/Text Pivot/Shaker"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -70.0
+offset_right = 57.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "12"
+label_settings = ExtResource("7_x5ti7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextPopAnimation" type="AnimationPlayer" parent="Text Pop"]
+libraries = {
+&"": SubResource("AnimationLibrary_vs108")
+}

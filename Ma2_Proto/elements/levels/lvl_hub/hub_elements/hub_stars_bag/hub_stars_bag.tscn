@@ -1,0 +1,794 @@
+[gd_scene load_steps=30 format=3 uid="uid://bi21nqr24ykop"]
+
+[ext_resource type="Script" uid="uid://bjnpmcrptfb85" path="res://systems/utils/random_rotation_local.gd" id="1_6b4lx"]
+[ext_resource type="WwiseEvent" uid="uid://bi1nnmbbodjrg" path="res://Wwise/resources/Event/{A5DCDF37-66F6-4191-B45D-984A9A7D45EC}.tres" id="1_h03f0"]
+[ext_resource type="Script" uid="uid://bi4yfgewvcvwq" path="res://systems/switchable/switch_oning_offing_animation_player.gd" id="1_jmaks"]
+[ext_resource type="PackedScene" uid="uid://bg3iobmqmrnbr" path="res://elements/neutral/star_3d/star_3d.tscn" id="1_t65bv"]
+[ext_resource type="Script" uid="uid://b7n1kj0lt03wh" path="res://systems/utils/node3d_shaker.gd" id="2_4g0bq"]
+[ext_resource type="WwiseEvent" uid="uid://p6gv5p4e24e0" path="res://Wwise/resources/Event/{AFD1946D-7773-40DA-B6D3-B51849012213}.tres" id="2_vjhap"]
+[ext_resource type="WwiseEvent" uid="uid://butec5773ak50" path="res://Wwise/resources/Event/{C86A4BA1-DADD-4291-A90F-7C80224AEF41}.tres" id="3_0wng6"]
+[ext_resource type="Texture2D" uid="uid://dr2x1oqniupe3" path="res://elements/general_use/texture/t_basic_shake_noise.tres" id="3_ofdjc"]
+[ext_resource type="PackedScene" uid="uid://b6g8bjpv3tawg" path="res://elements/neutral/props/bag/mesh/mesh_bag.tscn" id="5_6b5fb"]
+[ext_resource type="Texture2D" uid="uid://cm5belis6bq0x" path="res://elements/icons/icon_star.png" id="8_qrbgc"]
+[ext_resource type="PackedScene" uid="uid://clllkc1rlykqo" path="res://elements/neutral/props/bag/mesh/mesh_bag_counter.tscn" id="9_7pxjp"]
+
+[sub_resource type="GDScript" id="GDScript_dp6a2"]
+script/source = "extends Node3D
+
+@export var _animswitch_insuficient:Switch_Oning_Offing_AnimationPlayer
+@export var _anims_bag:AnimationPlayer
+@export var _stars3d_inside_container:Node3D
+@export var _stars_many:Node3D
+@export var _stars_base:Node3D
+@export var _stars_base_max:int = 12
+@export var _stars_base_min_y:float = .1
+@export var _stars_base_max_y:float = .5
+@export var _stars_base_min_scale:float = 1
+@export var _stars_base_max_scale:float = 1.11
+@export var _label_stars_inside:Label3D
+
+@export_category(\"Audio\")
+@export var _sfx_star_up:WwiseEvent
+@export var _sfx_star_down:WwiseEvent
+@export var _sfx_star_insuficient:WwiseEvent
+
+var _stars3d_inside:Array[Star3D]
+var _stars_inside:int = -1
+var _stars_outside:int = 0
+var _target_outside:int = 0
+
+func _ready() -> void:
+
+	for child in _stars3d_inside_container.get_children():
+		if child is Star3D:
+			_stars3d_inside.append(child)
+
+	HUBLevel.instance.upgrading_stats_updated.connect(_on_hub_upgrading_stats_updated)
+	Ma2MetaManager.meta_updated.connect(_on_meta_updated)
+	_on_meta_updated()
+
+func _on_hub_upgrading_stats_updated(start:int, end:int, current:int):
+	if end > start:
+		if end != -1 && current != 0:
+			_sfx_star_up.post(self)
+		_stars_outside = current
+		_target_outside = end
+	else:
+		if end != -1 && current != start:
+			_sfx_star_down.post(self)
+		_stars_outside = 0
+		_target_outside = 0
+		_animswitch_insuficient.set_switch(false)
+	_on_meta_updated()
+
+func _on_meta_updated() -> void:
+	#will wait for a frame bc multiple things can change in the same frame causing exess in feedback
+	await get_tree().process_frame
+	if !is_instance_valid(self): return
+
+	_set_stars_inside(Ma2MetaManager.get_unused_stars_count()-_stars_outside)
+
+	if (_target_outside > _stars_outside) && (_stars_inside <= 0):
+		_animswitch_insuficient.set_switch(true)
+		_sfx_star_insuficient.post(self)
+	else:
+		_animswitch_insuficient.set_switch(false)
+
+func _set_stars_inside(val:int):
+	if val == _stars_inside: return
+
+	_stars_inside = val
+
+	var i:int = 0
+	for star in _stars3d_inside:
+		if i >= _stars_inside:
+			star.set_star_on(false)
+		else:
+			star.set_star_on(true)
+		i += 1
+
+	var dif:int = _stars_inside - _stars3d_inside.size()
+	var ratio:float = clampf((dif as float)/_stars_base_max, 0, 1)
+	if dif > 0:
+		_stars_many.visible = true
+	else:
+		_stars_many.visible = false
+
+	_stars_base.position.y = lerpf(_stars_base_min_y, _stars_base_max_y, ratio)
+	_stars_base.scale = Vector3.ONE * lerpf(_stars_base_min_scale, _stars_base_max_scale, ratio)
+
+	_anims_bag.stop()
+	_anims_bag.play(\"change\")
+
+	if _label_stars_inside:
+		_label_stars_inside.text = str(_stars_inside)
+"
+
+[sub_resource type="Animation" id="Animation_j6ojw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bag Shaker/Bag RandomRotation/Bag Itself/Glow:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bag Shaker/Bag RandomRotation/Bag Itself/Glow:material_override:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bag Shaker/Bag RandomRotation/Bag Itself:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bag Shaker/Bag RandomRotation/Bag Itself:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Bag Shaker/Bag RandomRotation/Bag Itself:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7wl0t"]
+resource_name = "change"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bag Shaker/Bag RandomRotation/Bag Itself/Glow:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bag Shaker/Bag RandomRotation/Bag Itself/Glow:material_override:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1, 0.5),
+"transitions": PackedFloat32Array(2, 0.5, 0.5, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0.658824, 1, 0.909804, 1), Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bag Shaker/Bag RandomRotation/Bag Itself:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.2, 0.3, 0.366667, 0.5),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.3, 0), Vector3(0, 0.0259224, 0), Vector3(0, 0.030766, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bag Shaker/Bag RandomRotation/Bag Itself:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.3, 0.366667, 0.5),
+"transitions": PackedFloat32Array(0.5, -2, 2, 0.5, 2, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0872665, 0, -0.122173), Vector3(0.0802851, 0, 0.136136), Vector3(-0.0353299, -0.000428318, -0.00142906), Vector3(0.0384801, -0.000428368, -0.00146067), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Bag Shaker/Bag RandomRotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"randomize_rotation_local"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bag Shaker/Bag RandomRotation/Bag Itself:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.366667, 0.5),
+"transitions": PackedFloat32Array(0.5, -2, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.2, 1.2, 1.2), Vector3(1, 1, 1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_reqs4"]
+_data = {
+&"RESET": SubResource("Animation_j6ojw"),
+&"change": SubResource("Animation_7wl0t")
+}
+
+[sub_resource type="Animation" id="Animation_moarm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bag Shaker:shake_amplitude_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bag Counter Pivot/Bag Counter Shaker/Bag Counter:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bag Counter Pivot/Bag Counter Shaker/Bag Counter:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bag Counter Pivot/Bag Counter Shaker/Bag Counter:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.67, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Bag Counter Pivot/Bag Counter Shaker:shake_amplitude_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bag Counter Pivot/Bag Counter Shaker/Bag Counter/CountLabel:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_riebw"]
+resource_name = "off"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bag Shaker:shake_amplitude_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bag Counter Pivot/Bag Counter Shaker/Bag Counter:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bag Counter Pivot/Bag Counter Shaker/Bag Counter:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bag Counter Pivot/Bag Counter Shaker/Bag Counter:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.67, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Bag Counter Pivot/Bag Counter Shaker:shake_amplitude_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bag Counter Pivot/Bag Counter Shaker/Bag Counter/CountLabel:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rh0xp"]
+resource_name = "offing"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bag Shaker:shake_amplitude_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [0.6, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bag Counter Pivot/Bag Counter Shaker/Bag Counter:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(-0.00260473, 0.0404461, -0.0361609), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bag Counter Pivot/Bag Counter Shaker/Bag Counter:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bag Counter Pivot/Bag Counter Shaker/Bag Counter:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(0.00897348, 0.670221, -0.000581294), Vector3(0, 0.67, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Bag Counter Pivot/Bag Counter Shaker:shake_amplitude_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bag Counter Pivot/Bag Counter Shaker/Bag Counter/CountLabel:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gqqth"]
+resource_name = "on"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bag Shaker:shake_amplitude_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6),
+"transitions": PackedFloat32Array(0.5, 1, 1),
+"update": 0,
+"values": [0.6, 0.15, 0.15]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bag Counter Pivot/Bag Counter Shaker/Bag Counter:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.6),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(-0.00260473, 0.0404461, -0.0361609), Vector3(-0.00360388, 0.113033, -0.101087), Vector3(-0.00260473, 0.0404461, -0.0361609)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bag Counter Pivot/Bag Counter Shaker/Bag Counter:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.6),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bag Counter Pivot/Bag Counter Shaker/Bag Counter:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.6),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(0.00897348, 0.670221, -0.000581294), Vector3(0.0527852, 0.702174, 0.0311216), Vector3(0.00897348, 0.670221, -0.000581294)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Bag Counter Pivot/Bag Counter Shaker:shake_amplitude_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bag Counter Pivot/Bag Counter Shaker/Bag Counter/CountLabel:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_dase6"]
+resource_name = "oning"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bag Shaker:shake_amplitude_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [1.0, 0.15]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bag Counter Pivot/Bag Counter Shaker/Bag Counter:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.5),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bag Counter Pivot/Bag Counter Shaker/Bag Counter:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.6),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 1),
+"update": 0,
+"values": [Vector3(1.2, 1.2, 1.2), Vector3(1.3, 1.3, 1.3), Vector3(1.1, 1.1, 1.1), Vector3(1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bag Counter Pivot/Bag Counter Shaker/Bag Counter:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.5),
+"update": 0,
+"values": [Vector3(0, 0.67, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Bag Counter Pivot/Bag Counter Shaker:shake_amplitude_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [2.0, 1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bag Counter Pivot/Bag Counter Shaker/Bag Counter/CountLabel:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.6),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 1),
+"update": 0,
+"values": [Color(1, 0, 1, 1), Color(1, 1, 1, 1), Color(1, 0.209877, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xmreo"]
+_data = {
+&"RESET": SubResource("Animation_moarm"),
+&"off": SubResource("Animation_riebw"),
+&"offing": SubResource("Animation_rh0xp"),
+&"on": SubResource("Animation_gqqth"),
+&"oning": SubResource("Animation_dase6")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lhq02"]
+albedo_color = Color(0, 0.686275, 0.654902, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5b1c2"]
+top_radius = 0.0
+bottom_radius = 0.6
+height = 0.001
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="Gradient" id="Gradient_3jbgb"]
+offsets = PackedFloat32Array(0.410211, 0.765845, 0.977113)
+colors = PackedColorArray(1, 1, 1, 1, 0.180124, 0.180124, 0.180124, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0bqkx"]
+gradient = SubResource("Gradient_3jbgb")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_voyno"]
+blend_mode = 1
+shading_mode = 0
+albedo_texture = SubResource("GradientTexture2D_0bqkx")
+proximity_fade_enabled = true
+proximity_fade_distance = 0.15
+
+[sub_resource type="QuadMesh" id="QuadMesh_bt2yb"]
+size = Vector2(3, 3)
+orientation = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wm282"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("8_qrbgc")
+emission = Color(0.41598, 0.41598, 0.41598, 1)
+emission_energy_multiplier = 4.85
+
+[sub_resource type="QuadMesh" id="QuadMesh_l54vx"]
+size = Vector2(0.6, 0.6)
+
+[node name="HubStarsBag" type="Node3D" node_paths=PackedStringArray("_animswitch_insuficient", "_anims_bag", "_stars3d_inside_container", "_stars_many", "_stars_base", "_label_stars_inside")]
+script = SubResource("GDScript_dp6a2")
+_animswitch_insuficient = NodePath("SwitchAnimInsuficient")
+_anims_bag = NodePath("BagAnimationPlayer")
+_stars3d_inside_container = NodePath("Bag Shaker/Bag RandomRotation/Bag Itself/Bag Inside/Stars Container")
+_stars_many = NodePath("Bag Shaker/Bag RandomRotation/Bag Itself/Bag Inside/Stars Many Visuals")
+_stars_base = NodePath("Bag Shaker/Bag RandomRotation/Bag Itself/Bag Inside")
+_stars_base_max = 15
+_stars_base_max_y = 0.35
+_stars_base_min_scale = 0.85
+_stars_base_max_scale = 1.0
+_label_stars_inside = NodePath("Bag Counter Pivot/Bag Counter Shaker/Bag Counter/CountLabel")
+_sfx_star_up = ExtResource("1_h03f0")
+_sfx_star_down = ExtResource("2_vjhap")
+_sfx_star_insuficient = ExtResource("3_0wng6")
+
+[node name="BagAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_reqs4")
+}
+
+[node name="SwitchAnimInsuficient" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xmreo")
+}
+script = ExtResource("1_jmaks")
+
+[node name="Bag Shaker" type="Node3D" parent="."]
+script = ExtResource("2_4g0bq")
+noise_texture = ExtResource("3_ofdjc")
+shake_amplitude_ratio = 0.0
+shake_amplitude = 0.3
+shake_frequency = 0.3
+shake_y = false
+
+[node name="Bag RandomRotation" type="Node3D" parent="Bag Shaker"]
+script = ExtResource("1_6b4lx")
+_range_min = -30.0
+_range_max = 30.0
+
+[node name="Bag Itself" type="Node3D" parent="Bag Shaker/Bag RandomRotation"]
+
+[node name="bag" parent="Bag Shaker/Bag RandomRotation/Bag Itself" instance=ExtResource("5_6b5fb")]
+transform = Transform3D(0.984432, 0, 0.175762, 0, 1, 0, -0.175762, 0, 0.984432, 0, 0, 0)
+
+[node name="Bag Inside" type="Node3D" parent="Bag Shaker/Bag RandomRotation/Bag Itself"]
+transform = Transform3D(0.85, 1.88738e-16, 0, -1.88738e-16, 0.85, 0, 0, 0, 0.85, 0, 0.1, 0)
+
+[node name="Stars Many Visuals" type="MeshInstance3D" parent="Bag Shaker/Bag RandomRotation/Bag Itself/Bag Inside"]
+material_override = SubResource("StandardMaterial3D_lhq02")
+mesh = SubResource("CylinderMesh_5b1c2")
+
+[node name="Stars Container" type="Node3D" parent="Bag Shaker/Bag RandomRotation/Bag Itself/Bag Inside"]
+
+[node name="Star3D" parent="Bag Shaker/Bag RandomRotation/Bag Itself/Bag Inside/Stars Container" instance=ExtResource("1_t65bv")]
+transform = Transform3D(1, -6.98077e-18, -1.46502e-16, 1.37312e-16, 0.395609, 0.918418, 5.1546e-17, -0.918418, 0.395609, 0.01618, 0.102811, -0.214107)
+
+[node name="Star3D2" parent="Bag Shaker/Bag RandomRotation/Bag Itself/Bag Inside/Stars Container" instance=ExtResource("1_t65bv")]
+transform = Transform3D(0.844104, -0.528628, -0.0896657, 0.241458, 0.225458, 0.943857, -0.478733, -0.818364, 0.317952, 0.193811, 0.119153, -0.0610271)
+
+[node name="Star3D3" parent="Bag Shaker/Bag RandomRotation/Bag Itself/Bag Inside/Stars Container" instance=ExtResource("1_t65bv")]
+transform = Transform3D(0.978943, 0.0739793, 0.190254, -0.202509, 0.234694, 0.950741, 0.0256837, -0.96925, 0.244734, -0.220279, 0.102408, -0.0446931)
+
+[node name="Star3D4" parent="Bag Shaker/Bag RandomRotation/Bag Itself/Bag Inside/Stars Container" instance=ExtResource("1_t65bv")]
+transform = Transform3D(0.902914, 0.424209, -0.0692282, 0.0306943, 0.0970146, 0.99481, 0.428724, -0.900352, 0.0745751, -0.0665768, 0.128303, 0.221135)
+
+[node name="Star3D5" parent="Bag Shaker/Bag RandomRotation/Bag Itself/Bag Inside/Stars Container" instance=ExtResource("1_t65bv")]
+transform = Transform3D(0.304949, 0.952367, 0.000729955, -0.0751972, 0.0233142, 0.996896, 0.949395, -0.304058, 0.0787251, 0.188319, 0.16648, 0.10907)
+
+[node name="Glow" type="MeshInstance3D" parent="Bag Shaker/Bag RandomRotation/Bag Itself"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.551589, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_voyno")
+mesh = SubResource("QuadMesh_bt2yb")
+skeleton = NodePath("../../../..")
+
+[node name="Bag Counter Pivot" type="Node3D" parent="."]
+transform = Transform3D(0.997606, 0.0246126, -0.0646247, 0.031723, 0.667512, 0.743922, 0.0614476, -0.744192, 0.665133, 1.26372, 2.38419e-07, 0.466675)
+metadata/_edit_group_ = true
+
+[node name="Bag Counter Shaker" type="Node3D" parent="Bag Counter Pivot"]
+script = ExtResource("2_4g0bq")
+noise_texture = ExtResource("3_ofdjc")
+shake_amplitude_ratio = 0.0
+shake_amplitude = 0.1
+shake_frequency = 0.2
+shake_y = false
+
+[node name="Bag Counter" type="Node3D" parent="Bag Counter Pivot/Bag Counter Shaker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.67, 0)
+
+[node name="CountLabel" type="Label3D" parent="Bag Counter Pivot/Bag Counter Shaker/Bag Counter"]
+transform = Transform3D(1, -1.49012e-08, 1.49012e-08, -1.49012e-08, 1, 0, 0, 2.98023e-08, 1, -1.19209e-07, -0.269, 0.07)
+shaded = true
+outline_modulate = Color(0.223529, 0.160784, 0.133333, 1)
+text = "12"
+font_size = 100
+outline_size = 0
+
+[node name="StarIcon" type="MeshInstance3D" parent="Bag Counter Pivot/Bag Counter Shaker/Bag Counter/CountLabel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.545, 0)
+material_override = SubResource("StandardMaterial3D_wm282")
+mesh = SubResource("QuadMesh_l54vx")
+skeleton = NodePath("../../../../../..")
+
+[node name="bag_counter" parent="Bag Counter Pivot/Bag Counter Shaker/Bag Counter" instance=ExtResource("9_7pxjp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.92085e-09, -0.638077, 0.0133715)

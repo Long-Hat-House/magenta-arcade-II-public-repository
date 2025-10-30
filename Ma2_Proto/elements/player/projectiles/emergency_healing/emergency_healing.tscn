@@ -1,0 +1,124 @@
+[gd_scene load_steps=18 format=3 uid="uid://7oxmnkddsgqs"]
+
+[ext_resource type="Script" uid="uid://d3pcxe8ugkx4q" path="res://elements/player/projectiles/emergency_healing/emergency_healing_element.gd" id="1_31q21"]
+[ext_resource type="Texture2D" uid="uid://cbtctmy5imbk4" path="res://elements/icons/icons_upgrades/icon_upgrade_health_heal.png" id="2_7k82g"]
+[ext_resource type="Script" uid="uid://bj8qwbado7bkt" path="res://systems/utils/look_at_camera.gd" id="2_mlsa0"]
+[ext_resource type="Texture2D" uid="uid://jvl2nsob4yl7" path="res://elements/ui/ui_art/ui_icon_health_lined.png" id="3_7k82g"]
+[ext_resource type="Material" uid="uid://b6ik2po3vh765" path="res://elements/enemy/projectiles/explosion_donut/little_explosion/material/explosion_white.tres" id="4_khhkn"]
+[ext_resource type="Material" uid="uid://4xwtdtro7tn5" path="res://elements/enemy/projectiles/explosion_donut/little_explosion/material/explosion_black.tres" id="6_8lyat"]
+
+[sub_resource type="Curve" id="Curve_7k82g"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.130573, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_mlsa0"]
+curve = SubResource("Curve_7k82g")
+
+[sub_resource type="Curve" id="Curve_khhkn"]
+_limits = [0.0, 3.0, 0.0, 100.0]
+_data = [Vector2(0, 3), 0.0, -0.104918, 0, 0, Vector2(100, 0), -0.00326402, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8lyat"]
+width = 64
+curve = SubResource("Curve_khhkn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mlsa0"]
+emission_shape_scale = Vector3(10, 10, 10)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -88.75
+radial_accel_max = -27.65
+tangential_accel_min = -21.86
+tangential_accel_max = -6.43
+damping_min = 10.932
+damping_max = 25.402
+scale_min = 0.1
+scale_max = 0.2
+scale_over_velocity_curve = SubResource("CurveTexture_8lyat")
+alpha_curve = SubResource("CurveTexture_mlsa0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_khhkn"]
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_7k82g")
+emission_enabled = true
+emission = Color(0.658824, 1, 0.909804, 1)
+emission_energy_multiplier = 1.46
+disable_receive_shadows = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+proximity_fade_enabled = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_rp6vh"]
+material = SubResource("StandardMaterial3D_khhkn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mlsa0"]
+albedo_color = Color(0.00392157, 0.231373, 0.188235, 1)
+rim_enabled = true
+rim = 0.19
+rim_tint = 1.0
+disable_receive_shadows = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_khhkn"]
+material = SubResource("StandardMaterial3D_mlsa0")
+flip_faces = true
+radius = 0.7
+radial_segments = 32
+rings = 1
+
+[sub_resource type="TorusMesh" id="TorusMesh_khhkn"]
+material = ExtResource("4_khhkn")
+inner_radius = 0.6
+outer_radius = 0.8
+rings = 32
+ring_segments = 3
+
+[sub_resource type="TorusMesh" id="TorusMesh_rp6vh"]
+material = ExtResource("6_8lyat")
+flip_faces = true
+inner_radius = 0.6
+outer_radius = 0.8
+rings = 32
+ring_segments = 3
+
+[node name="EmergencyHealing" type="Node3D" node_paths=PackedStringArray("sprite_3d", "fill_feedback")]
+script = ExtResource("1_31q21")
+sprite_3d = NodePath("LookAtCamera/Sprite3D")
+fill_feedback = NodePath("LookAtCamera/White")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_mlsa0")
+draw_pass_1 = SubResource("QuadMesh_rp6vh")
+
+[node name="LookAtCamera" type="Node3D" parent="."]
+script = ExtResource("2_mlsa0")
+metadata/_custom_type_script = "uid://bj8qwbado7bkt"
+
+[node name="InternalBG" type="MeshInstance3D" parent="LookAtCamera"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("SphereMesh_khhkn")
+skeleton = NodePath("../..")
+
+[node name="Sprite3D" type="Sprite3D" parent="LookAtCamera"]
+modulate = Color(0.658824, 1, 0.909804, 1)
+pixel_size = 0.0078
+no_depth_test = true
+texture = ExtResource("2_7k82g")
+
+[node name="White" type="MeshInstance3D" parent="LookAtCamera"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("TorusMesh_khhkn")
+skeleton = NodePath("../..")
+
+[node name="Black" type="MeshInstance3D" parent="LookAtCamera"]
+transform = Transform3D(1.2, 0, 0, 0, -5.24537e-08, -1.2, 0, 1.2, -5.24537e-08, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("TorusMesh_rp6vh")
+skeleton = NodePath("../..")

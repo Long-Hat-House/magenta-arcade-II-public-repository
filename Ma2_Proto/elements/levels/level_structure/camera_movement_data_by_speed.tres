@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CameraMovementData" load_steps=2 format=3 uid="uid://rqo67vcv2o8o"]
+
+[ext_resource type="Script" uid="uid://b56c3dq1oftud" path="res://systems/level/level_camera_movement_data.gd" id="1_p6yrs"]
+
+[resource]
+script = ExtResource("1_p6yrs")
+camera_duration = 1.9
+camera_speed = 24.0
+camera_duration_style = 0
+ease_x = 2
+trans_x = 2
+duration_multiplier_x = 1.15
+ease_z = 2
+trans_z = 4
+duration_multiplier_z = 1.0
+metadata/_custom_type_script = "uid://b56c3dq1oftud"

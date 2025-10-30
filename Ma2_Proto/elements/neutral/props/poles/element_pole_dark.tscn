@@ -1,0 +1,103 @@
+[gd_scene load_steps=14 format=3 uid="uid://bl0etejkcs63v"]
+
+[ext_resource type="Script" uid="uid://dq10y5jeco3ay" path="res://systems/element_scene_structure/exposer_node_3d.gd" id="1_c2pm3"]
+[ext_resource type="PackedScene" uid="uid://cqu7ohn46rew1" path="res://elements/neutral/props/poles/mesh/mesh_pole_dark.tscn" id="1_dmh2m"]
+[ext_resource type="PackedScene" uid="uid://cqak21sgiaxw0" path="res://elements/neutral/props/pole_pieces/element_traffic_light_side.tscn" id="2_m7g7w"]
+[ext_resource type="Script" uid="uid://bebxjxq1gjo10" path="res://systems/element_scene_structure/exposable_node_3d_child_scene.gd" id="3_sesn1"]
+[ext_resource type="Script" uid="uid://0wf4obm88h88" path="res://elements/neutral/props/generic_tumbler.gd" id="3_utrdk"]
+[ext_resource type="Resource" uid="uid://7jb1h4bglavu" path="res://elements/neutral/props/pole_pieces/element_iron_pole_tumble_data.tres" id="4_0kwxg"]
+[ext_resource type="Script" uid="uid://biqjvlcudqx0t" path="res://elements/player/force_receiver.gd" id="7_yf3o4"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="8_hihay"]
+[ext_resource type="Script" uid="uid://dn83sg6631tiv" path="res://elements/neutral/props/generic_exploder.gd" id="8_xe57d"]
+[ext_resource type="PackedScene" uid="uid://ywymskkj85vs" path="res://elements/vfx/vfx_explosion/vfx_explosion.tscn" id="9_cpqfu"]
+[ext_resource type="Script" uid="uid://3r76e6oallgw" path="res://systems/pressable/pressable_kill.gd" id="9_eb0ig"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="9_hp3kx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ygl36"]
+radius = 0.22
+height = 5.5347
+
+[node name="Pole Dark" type="Node3D"]
+script = ExtResource("1_c2pm3")
+"Tumbler/Mesh Pole Dark/Slot - Pole Center*scene" = ExtResource("2_m7g7w")
+"Tumbler/Mesh Pole Dark/Slot - Pole Top*scene" = null
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+collision_mask = 24
+
+[node name="Health" type="Node" parent="AnimatableBody3D" node_paths=PackedStringArray("to_queue_free_on_death", "feedback")]
+script = ExtResource("8_hihay")
+to_queue_free_on_death = [NodePath("../..")]
+feedback = [NodePath("../../Tumbler/Mesh Pole Dark")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49953, 0)
+shape = SubResource("CapsuleShape3D_ygl36")
+
+[node name="Pressable_Kill" type="Node3D" parent="AnimatableBody3D" node_paths=PackedStringArray("health_to_kill")]
+script = ExtResource("9_eb0ig")
+health_to_kill = NodePath("../Health")
+search_for_area_inside = true
+
+[node name="Area3D" type="Area3D" parent="AnimatableBody3D/Pressable_Kill"]
+collision_layer = 32
+collision_mask = 30
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D/Pressable_Kill/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49953, 0)
+shape = SubResource("CapsuleShape3D_ygl36")
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.59001, 0)
+aabb = AABB(-0.485289, -2.90346, -0.485289, 0.970577, 5.80692, 0.970577)
+enable_node_path = NodePath("../..")
+
+[node name="Tumbler" type="Node3D" parent="." node_paths=PackedStringArray("receiver", "to_tumble", "tumble_box_corner", "health")]
+script = ExtResource("3_utrdk")
+receiver = NodePath("ForceReceiver")
+to_tumble = NodePath(".")
+tumble_data = ExtResource("4_0kwxg")
+tumble_box_corner = NodePath("Box Corner")
+health = NodePath("../AnimatableBody3D/Health")
+
+[node name="Mesh Pole Dark" parent="Tumbler" instance=ExtResource("1_dmh2m")]
+
+[node name="Slot - Pole Center" type="Node3D" parent="Tumbler/Mesh Pole Dark"]
+transform = Transform3D(0.949393, 0, 0.314092, 0, 1, 0, -0.314092, 0, 0.949393, 0, 3.41668, 0)
+script = ExtResource("3_sesn1")
+scene = ExtResource("2_m7g7w")
+
+[node name="Slot - Pole Top" type="Node3D" parent="Tumbler/Mesh Pole Dark"]
+transform = Transform3D(0.949393, 0, 0.314092, 0, 1, 0, -0.314092, 0, 0.949393, 0.0909314, 4.62274, 0.272944)
+script = ExtResource("3_sesn1")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="Tumbler/Mesh Pole Dark"]
+script = ExtResource("9_hp3kx")
+high_contrast_group = &"scenery"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="ForceReceiver" type="Node3D" parent="Tumbler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("7_yf3o4")
+
+[node name="Box Corner" type="Node3D" parent="Tumbler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.280276, 0, 0.245241)
+
+[node name="GenericExploder" type="Node3D" parent="Tumbler" node_paths=PackedStringArray("health_on_die_explode")]
+script = ExtResource("8_xe57d")
+explosion_VFX = ExtResource("9_cpqfu")
+include_self = true
+add_all_children_as_places = true
+health_on_die_explode = NodePath("../../AnimatableBody3D/Health")
+
+[node name="Node3D" type="Node3D" parent="Tumbler/GenericExploder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Node3D2" type="Node3D" parent="Tumbler/GenericExploder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="Node3D3" type="Node3D" parent="Tumbler/GenericExploder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Node3D4" type="Node3D" parent="Tumbler/GenericExploder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)

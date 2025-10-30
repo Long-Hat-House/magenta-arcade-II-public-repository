@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://bfp6hll5p8pd"]
+
+[ext_resource type="PackedScene" uid="uid://t7wocwarj2c3" path="res://elements/enemy/pizza/enemy_pizza_roboto.tscn" id="1_lks4w"]
+[ext_resource type="Script" uid="uid://dpcws1b8lxrnk" path="res://elements/enemy/pizza/ai_pizza_roboto_shooter.gd" id="2_ntstq"]
+[ext_resource type="PackedScene" uid="uid://d124alssqbr44" path="res://elements/enemy/pizza/enemy_pizza_roboto_coward.tscn" id="3_bkeoq"]
+[ext_resource type="PackedScene" uid="uid://cya5dbvbjhrvy" path="res://elements/vfx/vfx_explosion_small/vfx_explosion_small.tscn" id="4_rw8qy"]
+[ext_resource type="PackedScene" uid="uid://ogo51q0i36xw" path="res://elements/enemy/projectiles/cannon/enemy_cannon_invisible.tscn" id="4_wicp4"]
+[ext_resource type="PackedScene" uid="uid://chxijt10i3xyi" path="res://elements/enemy/pizza/Mesh/pizza_roboto_shooter.tscn" id="5_y8s6q"]
+[ext_resource type="Script" uid="uid://cjeyn47cfqk8y" path="res://systems/graphics/animation_player_proxy.gd" id="6_85atc"]
+
+[node name="PizzaShooter" node_paths=PackedStringArray("simpleAnimation", "cannon") instance=ExtResource("1_lks4w")]
+script = ExtResource("2_ntstq")
+instantiateInPlace = ExtResource("3_bkeoq")
+simpleAnimation = NodePath("Body/Render/Pizza_Roboto_Shooter")
+vfxVanish = ExtResource("4_rw8qy")
+cannon = NodePath("Body/Cannon_Invisible")
+await_to_kill_self_on_collision = 0.1
+walkAndStop = true
+
+[node name="Health" parent="Body" index="1" node_paths=PackedStringArray("feedback")]
+max_amount = 1.0
+feedback = [NodePath("../Render/Pizza_Roboto_Shooter")]
+
+[node name="ScoreGiver" parent="Body" index="2"]
+info = null
+
+[node name="Pizza_Roboto" parent="Body/Render" index="0"]
+visible = false
+
+[node name="Pizza_Roboto_Shooter" parent="Body/Render" index="1" instance=ExtResource("5_y8s6q")]
+script = ExtResource("6_85atc")
+
+[node name="SpawnPlace" type="Marker3D" parent="Body" index="5"]
+
+[node name="Cannon_Invisible" parent="Body" index="6" instance=ExtResource("4_wicp4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+firstDelay = 2.0
+delayBetweenProjectiles = 2.1
+
+[node name="Shoot Animation" parent="AI" index="1" node_paths=PackedStringArray("animation_player_proxy")]
+animation_player_proxy = NodePath("../../Body/Render/Pizza_Roboto_Shooter")
+
+[connection signal="shot" from="Body/Cannon_Invisible" to="AI/Shoot Animation" method="_on_cannon_invisible_shot"]

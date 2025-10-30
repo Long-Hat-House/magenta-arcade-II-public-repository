@@ -1,0 +1,52 @@
+[gd_resource type="StandardMaterial3D" load_steps=9 format=3 uid="uid://d0fmpw0usi6lc"]
+
+[ext_resource type="Texture2D" uid="uid://ucwa3d0q1o7t" path="res://elements/levels/lvl_hub/hub_elements/hub_floor/texture/t_hubFloor_BaseColor.png" id="1_p73ls"]
+[ext_resource type="Texture2D" uid="uid://bn8kfedh2tgr5" path="res://elements/background/texture/generic_street_texture/clay_base.png" id="2_3s5fe"]
+[ext_resource type="Texture2D" uid="uid://cg6m460jnp4na" path="res://elements/background/texture/generic_street_texture/grass_normal.png" id="3_ndi31"]
+[ext_resource type="Texture2D" uid="uid://c3sbrjkkf560h" path="res://elements/enemy/pizza/Texture/M_Pizza_Emission.png" id="4_qxh35"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jie0d"]
+
+[sub_resource type="Gradient" id="Gradient_skecc"]
+offsets = PackedFloat32Array(0.504348, 0.7)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0uu5b"]
+seed = 1
+frequency = 0.0095
+fractal_type = 0
+fractal_octaves = 2
+fractal_gain = 0.695
+fractal_weighted_strength = 1.0
+domain_warp_enabled = true
+domain_warp_amplitude = 59.705
+domain_warp_frequency = 0.055
+domain_warp_fractal_type = 0
+domain_warp_fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w3ibq"]
+width = 128
+height = 128
+generate_mipmaps = false
+seamless = true
+seamless_blend_skirt = 0.418
+bump_strength = 12.0
+color_ramp = SubResource("Gradient_skecc")
+noise = SubResource("FastNoiseLite_0uu5b")
+
+[resource]
+diffuse_mode = 3
+albedo_texture = ExtResource("1_p73ls")
+emission_energy_multiplier = 16.0
+emission_texture = ExtResource("4_qxh35")
+normal_enabled = true
+normal_texture = ExtResource("3_ndi31")
+rim_tint = 1.0
+clearcoat = 0.2
+clearcoat_roughness = 0.59
+anisotropy = 0.33
+ao_texture = SubResource("CompressedTexture2D_jie0d")
+backlight = Color(0.0313726, 0.0313726, 0.0313726, 1)
+detail_mask = SubResource("NoiseTexture2D_w3ibq")
+detail_albedo = ExtResource("2_3s5fe")
+detail_normal = ExtResource("3_ndi31")
+uv1_world_triplanar = true

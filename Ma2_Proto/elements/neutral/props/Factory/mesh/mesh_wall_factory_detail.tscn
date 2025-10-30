@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cghivwea3224v"]
+
+[ext_resource type="PackedScene" uid="uid://ccpvb5wcqec3n" path="res://elements/neutral/props/Factory/mesh/wall_factory_detail.glb" id="1_3yg2o"]
+[ext_resource type="Material" uid="uid://3qhwx7ei4o5u" path="res://elements/neutral/props/Factory/material/m_wall_factory.tres" id="2_5hwh5"]
+
+[node name="wall_factory_detail" instance=ExtResource("1_3yg2o")]
+
+[node name="wall_factory_detail" parent="." index="0"]
+material_override = ExtResource("2_5hwh5")

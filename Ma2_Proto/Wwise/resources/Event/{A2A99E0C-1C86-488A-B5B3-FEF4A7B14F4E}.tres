@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://bp8rumpl4ldlh"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Int_Holdable_Button_Charge"
+id = 3531596961
+guid = "{A2A99E0C-1C86-488A-B5B3-FEF4A7B14F4E}"
+dummy = true

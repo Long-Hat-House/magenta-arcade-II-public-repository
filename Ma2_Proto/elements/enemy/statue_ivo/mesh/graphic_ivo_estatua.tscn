@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://drwnr3myd5tst"]
+
+[ext_resource type="PackedScene" uid="uid://bb77434brl2ea" path="res://elements/enemy/statue_ivo/mesh/ivo_estatua.glb" id="1_tlnmf"]
+[ext_resource type="Material" uid="uid://colv0fym6jmrl" path="res://elements/enemy/statue_ivo/material/m_statue_ivo_destroyed.tres" id="2_0i0to"]
+[ext_resource type="Script" uid="uid://dyc7iwc8omrn" path="res://elements/enemy/statue_ivo/mesh/graphic_ivo_estatua.gd" id="2_5u78p"]
+[ext_resource type="Material" uid="uid://d1srrway4a3wn" path="res://elements/enemy/statue_ivo/material/m_statue_ivo.tres" id="4_1oum6"]
+[ext_resource type="Material" uid="uid://867qx703x45w" path="res://elements/enemy/statue_ivo/material/m_statue_ivo_eye.tres" id="4_xn8gh"]
+[ext_resource type="PackedScene" uid="uid://cno5acmsj5pop" path="res://elements/enemy/bosses/vfx_magenta_energy_particles_package.tscn" id="6_0dwvv"]
+
+[sub_resource type="Curve" id="Curve_nmd2s"]
+_data = [Vector2(0, 0), 0.0, 2.13919, 0, 0, Vector2(0.771689, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.34799, 0.0, 0, 0]
+point_count = 3
+
+[node name="graphic_ivo_estatua" node_paths=PackedStringArray("sneezers_big", "sneezers_small") instance=ExtResource("1_tlnmf")]
+script = ExtResource("2_5u78p")
+material_ok = ExtResource("4_1oum6")
+material_destroyed = ExtResource("2_0i0to")
+sneezers_big = [NodePath("estatua_ivo_base/estatua_ivo_corpo/estatua_ivo_cabeca/estatua_ivo_olho/VFX_MagentaEnergyParticles_Package/LongParticlesLeft"), NodePath("estatua_ivo_base/estatua_ivo_corpo/estatua_ivo_cabeca/estatua_ivo_olho/VFX_MagentaEnergyParticles_Package/LongParticlesRight")]
+sneezers_small = [NodePath("estatua_ivo_base/estatua_ivo_corpo/estatua_ivo_cabeca/estatua_ivo_olho/VFX_MagentaEnergyParticles_Package/ShortParticlesLeft"), NodePath("estatua_ivo_base/estatua_ivo_corpo/estatua_ivo_cabeca/estatua_ivo_olho/VFX_MagentaEnergyParticles_Package/ShortParticlesRight")]
+shake_default_curve = SubResource("Curve_nmd2s")
+
+[node name="estatua_ivo_base" parent="." index="0"]
+surface_material_override/0 = ExtResource("4_1oum6")
+
+[node name="estatua_ivo_corpo" parent="estatua_ivo_base" index="0"]
+surface_material_override/0 = ExtResource("4_1oum6")
+
+[node name="PositionHead_A" type="Node3D" parent="estatua_ivo_base/estatua_ivo_corpo" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.123818, 0.805475)
+
+[node name="PositionHead_B" type="Node3D" parent="estatua_ivo_base/estatua_ivo_corpo" index="1"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.704566, 0.704566, -0.0847039, 0.0598947, 0.0598947, 0.996406, 3.1097, 1.34732, 0.626837)
+
+[node name="estatua_ivo_cabeca" parent="estatua_ivo_base/estatua_ivo_corpo" index="2"]
+surface_material_override/0 = ExtResource("4_1oum6")
+
+[node name="estatua_ivo_olho" parent="estatua_ivo_base/estatua_ivo_corpo/estatua_ivo_cabeca" index="0"]
+surface_material_override/0 = ExtResource("4_xn8gh")
+
+[node name="InstantiatePlace" type="Node3D" parent="estatua_ivo_base/estatua_ivo_corpo/estatua_ivo_cabeca/estatua_ivo_olho" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.73547, -0.214933)
+
+[node name="VFX_MagentaEnergyParticles_Package" parent="estatua_ivo_base/estatua_ivo_corpo/estatua_ivo_cabeca/estatua_ivo_olho" index="1" instance=ExtResource("6_0dwvv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.75, -0.205215)
+
+[editable path="estatua_ivo_base/estatua_ivo_corpo/estatua_ivo_cabeca/estatua_ivo_olho/VFX_MagentaEnergyParticles_Package"]

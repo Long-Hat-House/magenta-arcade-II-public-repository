@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxouk3hnvcybx"]
+
+[ext_resource type="PackedScene" uid="uid://d4dt27s34g8pk" path="res://elements/enemy/copter/mesh/robotocopter.tscn" id="1_sboqh"]
+[ext_resource type="Script" uid="uid://edyse54cj3yi" path="res://elements/enemy/copter/mesh/graphic_robotocopter.gd" id="2_tfclc"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="3_kglo8"]
+
+[node name="robotocopter_graphic" instance=ExtResource("1_sboqh")]
+script = ExtResource("2_tfclc")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="." index="0"]
+script = ExtResource("3_kglo8")
+high_contrast_group = &"enemy"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"

@@ -1,0 +1,98 @@
+[gd_scene load_steps=10 format=3 uid="uid://b2qs0nfokpns8"]
+
+[ext_resource type="Script" uid="uid://d1paq4x7d6g7l" path="res://elements/player/projectiles/proj_hold_forward.gd" id="1_ogwq1"]
+[ext_resource type="PackedScene" uid="uid://b7fdi63i7pbst" path="res://elements/player/projectiles/rotating_ball/vfx_hit_extra.tscn" id="2_16uyy"]
+[ext_resource type="PackedScene" uid="uid://cb3v7wgh283h8" path="res://elements/player/projectiles/hold_blue/proj_hold_blue_v2/proj_hold_blue_v_2_mesh.tscn" id="3_p2w4f"]
+[ext_resource type="Shader" uid="uid://clbaserrhs5so" path="res://elements/player/projectiles/instance_color_albedo.gdshader" id="4_k1qqa"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ogwq1"]
+radius = 0.25
+height = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_565cl"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_k1qqa")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2581r"]
+resource_local_to_scene = true
+cull_mode = 2
+shading_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+albedo_color = Color(0.427451, 0.866667, 1, 1)
+emission_enabled = true
+emission = Color(0.427451, 0.866667, 1, 1)
+emission_energy_multiplier = 0.5
+rim = 0.3
+rim_tint = 1.0
+detail_blend_mode = 1
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nmduf"]
+resource_local_to_scene = true
+cull_mode = 1
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0.470588, 0.764706, 0.984314, 1)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 2.0
+rim = 0.3
+rim_tint = 1.0
+anisotropy = 1.0
+disable_receive_shadows = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k1qqa"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_k1qqa")
+
+[node name="ProjPlayerExtraAttack" type="Area3D"]
+collision_layer = 8
+collision_mask = 132
+script = ExtResource("1_ogwq1")
+vanish_on_hit_area = true
+time_out = 3.0
+hitVFX = ExtResource("2_16uyy")
+projectileVelocityRelative = Vector3(0, 0, -15)
+projectileVelocityAbsolute = Vector3(0, 0, 0)
+tween_on_start = 2
+projectileTweenDistance = Vector3(0, 0, -20)
+projectileTweenDuration = 0.6
+amountDamage = 0.15
+damage_per_bonus = 0.0
+recovers_mana = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ogwq1")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-0.25, -0.25, -0.25, 0.5, 0.5, 0.5)
+
+[node name="proj_hold_blue_V2_Mesh" parent="." instance=ExtResource("3_p2w4f")]
+
+[node name="projectil_blue" parent="proj_hold_blue_V2_Mesh" index="0"]
+material_override = SubResource("ShaderMaterial_565cl")
+instance_shader_parameters/energy = 0.5
+
+[node name="projectil_blue_front" parent="proj_hold_blue_V2_Mesh" index="1"]
+visible = false
+material_override = SubResource("StandardMaterial3D_2581r")
+
+[node name="proj_hold_water_effect" parent="proj_hold_blue_V2_Mesh" index="2"]
+material_override = SubResource("StandardMaterial3D_nmduf")
+
+[node name="projectil_blue_interno" parent="proj_hold_blue_V2_Mesh" index="3"]
+visible = false
+material_override = SubResource("ShaderMaterial_k1qqa")
+instance_shader_parameters/energy = 0.5
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
+
+[editable path="proj_hold_blue_V2_Mesh"]

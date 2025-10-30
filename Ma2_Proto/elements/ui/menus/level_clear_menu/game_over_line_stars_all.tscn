@@ -1,0 +1,135 @@
+[gd_scene load_steps=10 format=3 uid="uid://djcur4sak1kyv"]
+
+[ext_resource type="Script" uid="uid://bo2a4d6j7tiqf" path="res://elements/ui/menus/level_clear_menu/game_over_line_stars_all.gd" id="1_3stqg"]
+[ext_resource type="PackedScene" uid="uid://bpfmn8kdkn5vd" path="res://elements/ui/menus/level_clear_menu/game_over_line_star_all_group.tscn" id="2_isesb"]
+[ext_resource type="Script" uid="uid://bi4yfgewvcvwq" path="res://systems/switchable/switch_oning_offing_animation_player.gd" id="4_vjtvd"]
+
+[sub_resource type="Animation" id="Animation_2efu3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_856hy"]
+resource_name = "off"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tp7k3"]
+resource_name = "offing"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4cxdq"]
+resource_name = "on"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cg343"]
+resource_name = "oning"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u65ty"]
+_data = {
+&"RESET": SubResource("Animation_2efu3"),
+&"off": SubResource("Animation_856hy"),
+&"offing": SubResource("Animation_tp7k3"),
+&"on": SubResource("Animation_4cxdq"),
+&"oning": SubResource("Animation_cg343")
+}
+
+[node name="GameOverLineStarsAll" type="HBoxContainer" node_paths=PackedStringArray("groups", "_animation")]
+custom_minimum_size = Vector2(0, 240)
+offset_right = 638.0
+offset_bottom = 260.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+alignment = 1
+script = ExtResource("1_3stqg")
+groups = [NodePath("GameOverLineStarAllGroup"), NodePath("GameOverLineStarAllGroup2"), NodePath("GameOverLineStarAllGroup3")]
+_animation = NodePath("Switch_Oning_Offing_AnimationPlayer")
+
+[node name="GameOverLineStarAllGroup" parent="." instance=ExtResource("2_isesb")]
+layout_mode = 2
+
+[node name="GameOverLineStarAllGroup2" parent="." instance=ExtResource("2_isesb")]
+layout_mode = 2
+
+[node name="StarContainer" parent="GameOverLineStarAllGroup2" index="0"]
+custom_minimum_size = Vector2(128, 128)
+
+[node name="StarIcon" parent="GameOverLineStarAllGroup2/StarContainer/Center/Pivot/ControlShaker" index="0"]
+custom_minimum_size = Vector2(128, 128)
+
+[node name="GameOverLineStarAllGroup3" parent="." instance=ExtResource("2_isesb")]
+layout_mode = 2
+
+[node name="StarContainer" parent="GameOverLineStarAllGroup3" index="0"]
+custom_minimum_size = Vector2(160, 160)
+
+[node name="StarIcon" parent="GameOverLineStarAllGroup3/StarContainer/Center/Pivot/ControlShaker" index="0"]
+custom_minimum_size = Vector2(160, 160)
+
+[node name="Switch_Oning_Offing_AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_u65ty")
+}
+script = ExtResource("4_vjtvd")
+
+[editable path="GameOverLineStarAllGroup2"]
+[editable path="GameOverLineStarAllGroup3"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b75dpejvolw5a"]
+
+[ext_resource type="PackedScene" uid="uid://ywymskkj85vs" path="res://elements/vfx/vfx_explosion/vfx_explosion.tscn" id="1_y7so3"]
+
+[node name="VfxExplosion" instance=ExtResource("1_y7so3")]
+
+[node name="Sprite3D" parent="." index="0"]
+shaded = false
+double_sided = true

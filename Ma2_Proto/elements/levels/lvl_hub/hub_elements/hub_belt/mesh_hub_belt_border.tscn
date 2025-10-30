@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b84vnel2p14uw"]
+
+[ext_resource type="PackedScene" uid="uid://mxxj67mm06rm" path="res://elements/levels/lvl_hub/hub_elements/hub_belt/hub_belt_border.glb" id="1_ullrr"]
+[ext_resource type="Material" uid="uid://j2sggf3d0suo" path="res://elements/levels/lvl_hub/hub_elements/hub_belt/m_lvl_hub_border_belt.tres" id="2_8wkqp"]
+
+[node name="hub_belt_border" instance=ExtResource("1_ullrr")]
+
+[node name="belt_border" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00134969, -0.00525296, 0.000520706)
+material_override = ExtResource("2_8wkqp")

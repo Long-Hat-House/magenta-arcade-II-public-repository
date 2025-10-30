@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://l288mv63o44q"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Power_Tap_Red_Explosion"
+id = 158080595
+guid = "{B7D1B8F9-DC27-4CB0-B22D-6666A150243C}"
+dummy = true

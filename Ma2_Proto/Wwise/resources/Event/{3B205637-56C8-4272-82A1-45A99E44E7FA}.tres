@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://bm4xln7h6t573"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_UI_Coins_NotEnough"
+id = 341840977
+guid = "{3B205637-56C8-4272-82A1-45A99E44E7FA}"
+dummy = true

@@ -1,0 +1,68 @@
+[gd_scene load_steps=13 format=3 uid="uid://ccn6065djpwhr"]
+
+[ext_resource type="Script" uid="uid://cnawvctgilepd" path="res://systems/pressable/holdable.gd" id="1_1ybvo"]
+[ext_resource type="PackedScene" uid="uid://ij8h5j2w4sp2" path="res://elements/powerups/button/mesh/powerup_button_graphic.tscn" id="2_3bym4"]
+[ext_resource type="PackedScene" uid="uid://7u3jb3qum3ff" path="res://elements/vfx/vfx_burst_metallic/vfx_burst_metallic.tscn" id="2_q73wl"]
+[ext_resource type="PackedScene" uid="uid://d25cx71rhsk35" path="res://elements/vfx/vfx_powerup_button_hold_finished.tscn" id="2_vsrob"]
+[ext_resource type="PackedScene" uid="uid://brxg5f374xr1a" path="res://elements/powerups/button/holdable_charging_feedback.tscn" id="3_rbupb"]
+[ext_resource type="PackedScene" uid="uid://do1glvxx8f5jb" path="res://elements/neutral/interactables/coins_changer_tag/coins_changer_tag.tscn" id="4_ghyk7"]
+[ext_resource type="WwiseEvent" uid="uid://c5ausye44wl0" path="res://Wwise/resources/Event/{BFDEDA07-587D-4063-B14A-3576E5D0AB1B}.tres" id="4_qahj3"]
+[ext_resource type="WwiseEvent" uid="uid://covnkj8eim0g1" path="res://Wwise/resources/Event/{B4199BE6-29B8-4E6F-B05C-0025FBC4AD50}.tres" id="5_ue62w"]
+[ext_resource type="Script" uid="uid://dj2x7ekyg32b7" path="res://systems/score/score_giver.gd" id="7_64om4"]
+[ext_resource type="Resource" uid="uid://d2obhj6lfdhjd" path="res://elements/score/score_info_powerup.tres" id="8_565k3"]
+[ext_resource type="Script" uid="uid://gp330idf3b2i" path="res://systems/pressable/pressable_feedback.gd" id="11_ue62w"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jt5hf"]
+height = 0.5
+radius = 0.7
+
+[node name="HoldableButton" type="Node3D" node_paths=PackedStringArray("button_pressed_feedback", "button_graphic", "score_giver_on_finish", "_coins_changer_tag")]
+script = ExtResource("1_1ybvo")
+hold_finished_mode = 3
+vfx_destroy = ExtResource("2_q73wl")
+vfx_hold_finished = ExtResource("2_vsrob")
+button_pressed_feedback = NodePath("button_pressed_feedback")
+button_graphic = NodePath("Area3D/button_graphic")
+score_giver_on_finish = NodePath("ScoreGiver")
+_coins_changer_tag = NodePath("CoinsChangerTag")
+pressable_priority = 1
+pressable_tether_distance = 3.5
+_sfx_pressed = ExtResource("4_qahj3")
+_sfx_released = ExtResource("5_ue62w")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 544
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2502, 0)
+shape = SubResource("CylinderShape3D_jt5hf")
+
+[node name="button_graphic" parent="Area3D" instance=ExtResource("2_3bym4")]
+
+[node name="button_pressed_feedback" parent="." instance=ExtResource("3_rbupb")]
+visible = false
+initial_speed = 1.75
+
+[node name="CoinsChangerTag" parent="." instance=ExtResource("4_ghyk7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.500017, 0, -0.606438)
+
+[node name="ScoreGiver" type="Node" parent="." node_paths=PackedStringArray("point_position")]
+script = ExtResource("7_64om4")
+info = ExtResource("8_565k3")
+point_position = NodePath("../Area3D")
+
+[node name="PressableFeedback" type="Node" parent="." node_paths=PackedStringArray("mesh_getter", "only_if_seen")]
+script = ExtResource("11_ue62w")
+mesh_getter = [NodePath("../Area3D/button_graphic")]
+cancel_names = Array[String](["label", "base", "icon"])
+random_wait_before_max = 2.5
+only_if_seen = NodePath("../VisibleOnScreenNotifier3D")
+effect_tween_delay_random = 0.2
+metadata/_custom_type_script = "uid://gp330idf3b2i"
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-0.75, -0.25, -0.75, 1.5, 1, 1.5)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

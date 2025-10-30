@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=3 uid="uid://b3ffi3rxts67g"]
+
+[ext_resource type="Script" uid="uid://bj8qwbado7bkt" path="res://systems/utils/look_at_camera.gd" id="1_i7sru"]
+[ext_resource type="Script" uid="uid://bxrckbe1rhug1" path="res://elements/enemy/bosses/estatua/eva_sidekick/enemy_statue_ivo_eva_sidekick.gd" id="1_ogk0n"]
+[ext_resource type="SpriteFrames" uid="uid://b7m05k8tslrlm" path="res://elements/enemy/bosses/estatua/eva_sidekick/enemy_statue_ivo_eva_sidekick.ase" id="3_nfa3t"]
+[ext_resource type="PackedScene" uid="uid://cux5kcyvhvhq4" path="res://modules/text_flow/scenes/text_flow_player_bubbles.tscn" id="4_dv1x3"]
+[ext_resource type="SpriteFrames" uid="uid://ivkc4qu5d2gn" path="res://elements/enemy/bosses/estatua/eva_sidekick/enemy_statue_ivo_eva_sidekick_part2.ase" id="5_s2kib"]
+[ext_resource type="PackedScene" uid="uid://bc8er7wjckssi" path="res://elements/npc/npc_high_contrast_sprite_boss.tscn" id="5_ssqhx"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_kcxs0"]
+height = 0.5
+radial_segments = 12
+rings = 1
+is_hemisphere = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gw8kh"]
+size = Vector3(1, 3.12598, 1)
+
+[node name="Enemy_StatueIvo_EvaSidekick" type="Node3D" node_paths=PackedStringArray("sprite0", "sprite1", "flow_player", "bubble_position_default", "bubble_position_appear1", "bubble_position_hidden")]
+script = ExtResource("1_ogk0n")
+sprite0 = NodePath("Graphic/Look At Camera/AnimatedSprite3D Part1")
+sprite1 = NodePath("Graphic/Look At Camera/AnimatedSprite3D Part2")
+flow_player = NodePath("TextFlowPlayerBubbles")
+bubble_position_default = NodePath("Graphic/Look At Camera/BubblePosition")
+bubble_position_appear1 = NodePath("Graphic/Look At Camera/BubblePosition_Appear1")
+bubble_position_hidden = NodePath("BubblePosition_Hidden")
+
+[node name="TextFlowPlayerBubbles" parent="." instance=ExtResource("4_dv1x3")]
+
+[node name="BubblePosition_Hidden" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="Graphic" type="Node3D" parent="."]
+
+[node name="Look At Camera" type="Node3D" parent="Graphic"]
+script = ExtResource("1_i7sru")
+
+[node name="BubblePosition" type="Node3D" parent="Graphic/Look At Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.174, 3, 0)
+
+[node name="BubblePosition_Appear1" type="Node3D" parent="Graphic/Look At Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.930787, 3.14549, 0)
+
+[node name="AnimatedSprite3D Part1" type="AnimatedSprite3D" parent="Graphic/Look At Camera"]
+offset = Vector2(0, 200)
+pixel_size = 0.0078
+billboard = 1
+shaded = true
+texture_filter = 0
+sprite_frames = ExtResource("3_nfa3t")
+animation = &"pump"
+autoplay = "pump"
+
+[node name="NPC_HighContrastSprite_Boss" parent="Graphic/Look At Camera/AnimatedSprite3D Part1" instance=ExtResource("5_ssqhx")]
+
+[node name="AnimatedSprite3D Part2" type="AnimatedSprite3D" parent="Graphic/Look At Camera"]
+offset = Vector2(0, 200)
+pixel_size = 0.0078
+billboard = 1
+shaded = true
+texture_filter = 0
+sprite_frames = ExtResource("5_s2kib")
+animation = &"speech"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Graphic/Look At Camera/AnimatedSprite3D Part2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.195132, -1.42155)
+cast_shadow = 3
+mesh = SubResource("SphereMesh_kcxs0")
+
+[node name="NPC_HighContrastSprite_Boss" parent="Graphic/Look At Camera/AnimatedSprite3D Part2" instance=ExtResource("5_ssqhx")]
+
+[node name="Area3D" type="Area3D" parent="Graphic"]
+collision_layer = 4
+collision_mask = 10
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Graphic/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06299, 0)
+shape = SubResource("BoxShape3D_gw8kh")
+
+[connection signal="area_entered" from="Graphic/Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="body_entered" from="Graphic/Area3D" to="." method="_on_area_3d_body_entered"]

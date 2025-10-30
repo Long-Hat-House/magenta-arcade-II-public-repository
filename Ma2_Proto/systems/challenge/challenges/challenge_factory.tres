@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ChallengeInfo" load_steps=5 format=3 uid="uid://datoxrdyegf4c"]
+
+[ext_resource type="Script" uid="uid://cuefq27ccwdoc" path="res://systems/challenge/challenge_info.gd" id="1_p7lii"]
+[ext_resource type="PackedScene" uid="uid://ta33edhasg1x" path="res://elements/powerups/button/holdable_button_health.tscn" id="1_ytgbd"]
+[ext_resource type="PackedScene" uid="uid://ci8clax7whhvw" path="res://elements/powerups/button/holdable_button_extrashot.tscn" id="2_84l20"]
+[ext_resource type="PackedScene" uid="uid://4qqcmtywm6p0" path="res://elements/powerups/button/holdable_button_holdlvlup.tscn" id="3_ytgbd"]
+
+[resource]
+script = ExtResource("1_p7lii")
+challenge_begin_title = &"menu_challenge_begin_title"
+challenge_fail_title = &"menu_challenge_fail_title"
+challenge_victory_title = &"menu_challenge_victory_title"
+challenge_victory_subtitle = &"menu_challenge_victory_subtitle"
+challenge_instruction_text = &"challenge_factory_1_begin"
+scene_prizes = Array[PackedScene]([ExtResource("1_ytgbd"), ExtResource("2_84l20"), ExtResource("3_ytgbd")])

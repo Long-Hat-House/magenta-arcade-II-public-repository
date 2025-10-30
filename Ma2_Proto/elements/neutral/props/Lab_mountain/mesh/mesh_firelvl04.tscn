@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbxjl2oorljv5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b4768"]
+blend_mode = 1
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 2
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_kmc11"]
+material = SubResource("StandardMaterial3D_b4768")
+radius = 0.05
+height = 0.1
+radial_segments = 5
+rings = 2
+
+[sub_resource type="Curve" id="Curve_8ilc8"]
+_data = [Vector2(0, 1), 0.0, 0.141262, 0, 0, Vector2(1, 0), -2.29543, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_vr03s"]
+offsets = PackedFloat32Array(0, 0.842424, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_w4cua"]
+colors = PackedColorArray(0.719454, 2.55093e-06, 5.77569e-07, 1, 0.78526, 0.403997, 0, 1)
+
+[node name="particle_fire" type="Node3D"]
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+amount = 12
+lifetime = 2.0
+randomness = 0.5
+lifetime_randomness = 0.8
+mesh = SubResource("SphereMesh_kmc11")
+emission_shape = 3
+emission_box_extents = Vector3(10, 0.1, 0.1)
+direction = Vector3(0, 0, -1)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 3.0
+tangential_accel_min = 0.5
+tangential_accel_max = 0.5
+angle_min = 45.0
+angle_max = 90.0
+scale_amount_min = 2.5
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_8ilc8")
+color_ramp = SubResource("Gradient_vr03s")
+color_initial_ramp = SubResource("Gradient_w4cua")
+hue_variation_min = -0.11
+hue_variation_max = 0.11

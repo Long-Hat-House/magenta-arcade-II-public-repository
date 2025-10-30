@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0npn6bnp3bwy"]
+
+[ext_resource type="PackedScene" uid="uid://bi3tdegef7ou4" path="res://elements/enemy/bosses/goleiro/boss_goleiro_crowd_instance.tscn" id="1_5fe3n"]
+
+[node name="BossGoleiroCrowd_Side" type="Node3D"]
+
+[node name="BossGoleiroCrowdInstance" parent="." instance=ExtResource("1_5fe3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0, -3)
+
+[node name="BossGoleiroCrowdInstance2" parent="." instance=ExtResource("1_5fe3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0, -2.75)
+
+[node name="BossGoleiroCrowdInstance3" parent="." instance=ExtResource("1_5fe3n")]
+transform = Transform3D(0.924978, 0, 0.380021, 0, 1, 0, -0.380021, 0, 0.924978, -4.25, 0, -2.4479)
+
+[node name="BossGoleiroCrowdInstance4" parent="." instance=ExtResource("1_5fe3n")]
+transform = Transform3D(0.89762, 0, 0.44077, 0, 1, 0, -0.44077, 0, 0.89762, -5.59895, 0, -1.8687)
+
+[node name="BossGoleiroCrowdInstance5" parent="." instance=ExtResource("1_5fe3n")]
+transform = Transform3D(0.871599, 0, 0.490219, 0, 1, 0, -0.490219, 0, 0.871599, -6.75, 0, -1.1793)
+
+[node name="BossGoleiroCrowdInstance6" parent="." instance=ExtResource("1_5fe3n")]
+transform = Transform3D(0.845653, 0, 0.533733, 0, 1, 0, -0.533733, 0, 0.845653, -7.99798, 0, -0.625198)
+
+[node name="BossGoleiroCrowdInstance7" parent="." instance=ExtResource("1_5fe3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.60367, 1, -5.0231)
+
+[node name="BossGoleiroCrowdInstance8" parent="." instance=ExtResource("1_5fe3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03442, 1, -4.9307)
+
+[node name="BossGoleiroCrowdInstance9" parent="." instance=ExtResource("1_5fe3n")]
+transform = Transform3D(0.956483, 0, 0.291787, 0, 1, 0, -0.291787, 0, 0.956483, -3.37284, 1, -4.6999)
+
+[node name="BossGoleiroCrowdInstance10" parent="." instance=ExtResource("1_5fe3n")]
+transform = Transform3D(0.941512, 0, 0.33698, 0, 1, 0, -0.33698, 0, 0.941512, -4.76134, 1, -4.3768)
+
+[node name="BossGoleiroCrowdInstance11" parent="." instance=ExtResource("1_5fe3n")]
+transform = Transform3D(0.90872, 0, 0.417407, 0, 1, 0, -0.417407, 0, 0.90872, -6.10367, 1, -3.9382)
+
+[node name="BossGoleiroCrowdInstance12" parent="." instance=ExtResource("1_5fe3n")]
+transform = Transform3D(0.901417, 0, 0.432951, 0, 1, 0, -0.432951, 0, 0.901417, -7.43426, 1, -3.3842)
+
+[node name="BossGoleiroCrowdInstance13" parent="." instance=ExtResource("1_5fe3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.43827, 2, -6.673)
+
+[node name="BossGoleiroCrowdInstance14" parent="." instance=ExtResource("1_5fe3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.93827, 2, -6.6102)
+
+[node name="BossGoleiroCrowdInstance15" parent="." instance=ExtResource("1_5fe3n")]
+transform = Transform3D(0.973714, 0, 0.227773, 0, 1, 0, -0.227773, 0, 0.973714, -4.42291, 2, -6.4875)
+
+[node name="BossGoleiroCrowdInstance16" parent="." instance=ExtResource("1_5fe3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.78249, 2, -6.2333)
+
+[node name="BossGoleiroCrowdInstance17" parent="." instance=ExtResource("1_5fe3n")]
+transform = Transform3D(0.92147, 0, 0.388449, 0, 1, 0, -0.388449, 0, 0.92147, -8.06868, 2, -5.1923)
+
+[node name="BossGoleiroCrowdInstance18" parent="." instance=ExtResource("1_5fe3n")]
+transform = Transform3D(0.880113, 0, 0.474764, 0, 1, 0, -0.474764, 0, 0.880113, -9.33608, 2, -4.3132)

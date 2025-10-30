@@ -1,0 +1,353 @@
+[gd_scene load_steps=32 format=3 uid="uid://bs2aaip5lllgx"]
+
+[ext_resource type="PackedScene" uid="uid://b7dkgcskhn08g" path="res://elements/enemy/bosses/ivo/mesh/caixao_ivo.glb" id="1_mpfkw"]
+[ext_resource type="Material" uid="uid://bhs7oak4cjsmk" path="res://elements/enemy/bosses/ivo/material/m_caixao.tres" id="2_gue3c"]
+[ext_resource type="Script" uid="uid://5174bgp6eof0" path="res://elements/enemy/bosses/ivo/mesh/mesh_caixao_ivo.gd" id="2_tapwl"]
+[ext_resource type="Material" uid="uid://b38h0hiuck26k" path="res://elements/enemy/bosses/ivo/material/m_statua_caixao.tres" id="3_gue3c"]
+[ext_resource type="Material" uid="uid://bf25m1gbr230x" path="res://elements/enemy/bosses/trem/material/m_emissive.tres" id="4_tapwl"]
+[ext_resource type="Script" uid="uid://0di5vii0iinm" path="res://elements/enemy/bosses/ivo/boss_ivo_animation_tree.gd" id="5_n20k0"]
+
+[sub_resource type="Animation" id="Animation_n20k0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gaveta:blend_shapes/Key 1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("tampa_inf:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("tampa_Sup:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("gaveta:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("caixao:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_f8dcy"]
+resource_name = "desligado"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gaveta:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("tampa_Sup:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("tampa_inf:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("caixao:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gue3c"]
+resource_name = "gaveta_aberta"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gaveta:blend_shapes/Key 1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_helak"]
+resource_name = "gaveta_fechado"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gaveta:blend_shapes/Key 1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_tapwl"]
+resource_name = "porta_inf_aberta"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tampa_inf:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 2.51327)]
+}
+
+[sub_resource type="Animation" id="Animation_mmjf3"]
+resource_name = "porta_inf_fechada"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tampa_inf:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mctgg"]
+resource_name = "porta_sup_aberta"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tampa_Sup:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 2.51327)]
+}
+
+[sub_resource type="Animation" id="Animation_u7ver"]
+resource_name = "porta_sup_fechada"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tampa_Sup:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_helak"]
+_data = {
+&"RESET": SubResource("Animation_n20k0"),
+&"desligado": SubResource("Animation_f8dcy"),
+&"gaveta_aberta": SubResource("Animation_gue3c"),
+&"gaveta_fechado": SubResource("Animation_helak"),
+&"porta_inf_aberta": SubResource("Animation_tapwl"),
+&"porta_inf_fechada": SubResource("Animation_mmjf3"),
+&"porta_sup_aberta": SubResource("Animation_mctgg"),
+&"porta_sup_fechada": SubResource("Animation_u7ver")
+}
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_tapwl"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_mmjf3"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_u7ver"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_mctgg"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_helak"]
+animation = &"gaveta_fechado"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f8dcy"]
+animation = &"gaveta_aberta"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hmigr"]
+animation = &"desligado"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_jth87"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rjkkv"]
+animation = &"porta_inf_fechada"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_if8vp"]
+animation = &"porta_inf_aberta"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_as5kh"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4r5q3"]
+animation = &"porta_sup_fechada"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wh76u"]
+animation = &"porta_sup_aberta"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_bk2s8"]
+graph_offset = Vector2(-726.207, 58.781)
+nodes/add_gaveta/node = SubResource("AnimationNodeAdd2_tapwl")
+nodes/add_gaveta/position = Vector2(-320, -60)
+nodes/add_porta_inf/node = SubResource("AnimationNodeAdd2_mmjf3")
+nodes/add_porta_inf/position = Vector2(220, -20)
+nodes/add_porta_sup/node = SubResource("AnimationNodeAdd2_u7ver")
+nodes/add_porta_sup/position = Vector2(860, 20)
+nodes/gaveta/node = SubResource("AnimationNodeBlend2_mctgg")
+nodes/gaveta/position = Vector2(-540, 260)
+nodes/gaveta_off/node = SubResource("AnimationNodeAnimation_helak")
+nodes/gaveta_off/position = Vector2(-920, 220)
+nodes/gaveta_on/node = SubResource("AnimationNodeAnimation_f8dcy")
+nodes/gaveta_on/position = Vector2(-920, 440)
+nodes/neutro/node = SubResource("AnimationNodeAnimation_hmigr")
+nodes/neutro/position = Vector2(-620, -40)
+nodes/output/position = Vector2(1140, 20)
+nodes/porta_inf/node = SubResource("AnimationNodeBlend2_jth87")
+nodes/porta_inf/position = Vector2(-20, 300)
+nodes/porta_inf_off/node = SubResource("AnimationNodeAnimation_rjkkv")
+nodes/porta_inf_off/position = Vector2(-320, 280)
+nodes/porta_inf_on/node = SubResource("AnimationNodeAnimation_if8vp")
+nodes/porta_inf_on/position = Vector2(-300, 480)
+nodes/porta_sup/node = SubResource("AnimationNodeBlend2_as5kh")
+nodes/porta_sup/position = Vector2(540, 320)
+nodes/porta_sup_off/node = SubResource("AnimationNodeAnimation_4r5q3")
+nodes/porta_sup_off/position = Vector2(260, 320)
+nodes/porta_sup_on/node = SubResource("AnimationNodeAnimation_wh76u")
+nodes/porta_sup_on/position = Vector2(280, 500)
+node_connections = [&"add_gaveta", 0, &"neutro", &"add_gaveta", 1, &"gaveta", &"add_porta_inf", 0, &"add_gaveta", &"add_porta_inf", 1, &"porta_inf", &"add_porta_sup", 0, &"add_porta_inf", &"add_porta_sup", 1, &"porta_sup", &"gaveta", 0, &"gaveta_off", &"gaveta", 1, &"gaveta_on", &"output", 0, &"add_porta_sup", &"porta_inf", 0, &"porta_inf_off", &"porta_inf", 1, &"porta_inf_on", &"porta_sup", 0, &"porta_sup_off", &"porta_sup", 1, &"porta_sup_on"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n20k0"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_gue3c"]
+states/BlendTree/node = SubResource("AnimationNodeBlendTree_bk2s8")
+states/BlendTree/position = Vector2(386, 81)
+transitions = ["Start", "BlendTree", SubResource("AnimationNodeStateMachineTransition_n20k0")]
+graph_offset = Vector2(-234, -25)
+
+[node name="caixao_ivo" node_paths=PackedStringArray("instantiate_place_sup", "instantiate_place_inf") instance=ExtResource("1_mpfkw")]
+script = ExtResource("2_tapwl")
+instantiate_place_sup = NodePath("tampa_Sup/InstantiateSup")
+instantiate_place_inf = NodePath("tampa_inf/InstantiateInf")
+
+[node name="caixao" parent="." index="0"]
+material_override = ExtResource("2_gue3c")
+
+[node name="tampa_inf" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.40263, 1.09065, 1.4399)
+surface_material_override/0 = ExtResource("2_gue3c")
+surface_material_override/1 = ExtResource("3_gue3c")
+
+[node name="InstantiateInf" type="Node3D" parent="tampa_inf" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, -0.25, 0)
+
+[node name="tampa_Sup" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39902, 1.08385, -1.66559)
+surface_material_override/0 = ExtResource("2_gue3c")
+surface_material_override/1 = ExtResource("3_gue3c")
+surface_material_override/2 = ExtResource("4_tapwl")
+
+[node name="InstantiateSup" type="Node3D" parent="tampa_Sup" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, -0.25, 0)
+
+[node name="gaveta" parent="." index="3"]
+"blend_shapes/Key 1" = 1.0
+surface_material_override/0 = ExtResource("2_gue3c")
+surface_material_override/1 = ExtResource("4_tapwl")
+
+[node name="anim" type="AnimationPlayer" parent="." index="4"]
+libraries = {
+&"": SubResource("AnimationLibrary_helak")
+}
+
+[node name="ivo" parent="." index="5"]
+material_override = ExtResource("4_tapwl")
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="6"]
+tree_root = SubResource("AnimationNodeStateMachine_gue3c")
+anim_player = NodePath("../anim")
+parameters/BlendTree/add_gaveta/add_amount = 1.0
+parameters/BlendTree/add_porta_inf/add_amount = 1.0
+parameters/BlendTree/add_porta_sup/add_amount = 1.0
+parameters/BlendTree/gaveta/blend_amount = 0.0
+parameters/BlendTree/porta_inf/blend_amount = 0.0
+parameters/BlendTree/porta_sup/blend_amount = 0.0
+script = ExtResource("5_n20k0")

@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://c155i5bhm2w7t"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Stop_Int_Holdable_Button_Charge"
+id = 2524483255
+guid = "{83AA4E02-2A2D-4595-9676-6E3BB25690FD}"
+dummy = true

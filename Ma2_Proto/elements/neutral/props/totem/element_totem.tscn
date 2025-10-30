@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://bh0unwmk4murx"]
+
+[ext_resource type="Script" uid="uid://0wf4obm88h88" path="res://elements/neutral/props/generic_tumbler.gd" id="1_oomcd"]
+[ext_resource type="PackedScene" uid="uid://byinqc0c4y0vd" path="res://elements/neutral/props/totem/mesh/mesh_totem.tscn" id="2_lafpb"]
+[ext_resource type="Resource" uid="uid://ch2sx8gskxgfw" path="res://elements/neutral/props/totem/element_iron_box_tumble_data.tres" id="2_r1ksy"]
+[ext_resource type="PackedScene" uid="uid://bk3c6a8vre6yr" path="res://elements/neutral/props/generic_body_and_presseable.tscn" id="4_k2kjk"]
+[ext_resource type="Script" uid="uid://biqjvlcudqx0t" path="res://elements/player/force_receiver.gd" id="4_m5kd4"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="5_pux0f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6moxb"]
+size = Vector3(1.07227, 1.97015, 0.768066)
+
+[node name="Totem" type="Node3D"]
+
+[node name="Tumbler" type="Node3D" parent="." node_paths=PackedStringArray("receiver", "to_tumble", "tumble_box_corner")]
+script = ExtResource("1_oomcd")
+receiver = NodePath("ForceReceiver")
+to_tumble = NodePath(".")
+tumble_data = ExtResource("2_r1ksy")
+tumble_box_corner = NodePath("CornerRadius")
+
+[node name="CornerRadius" type="Marker3D" parent="Tumbler"]
+transform = Transform3D(0.88609, 0, 0.463513, 0, 1, 0, -0.463513, 0, 0.88609, 0.566838, 0, 0.437279)
+
+[node name="ForceReceiver" type="Node3D" parent="Tumbler"]
+script = ExtResource("4_m5kd4")
+
+[node name="totem" parent="Tumbler" instance=ExtResource("2_lafpb")]
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="Tumbler/totem"]
+script = ExtResource("5_pux0f")
+high_contrast_group = &"scenery"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="GenericBodyAndPresseable" parent="Tumbler" node_paths=PackedStringArray("on_kill_queue_free", "generic_tumbler", "visual_feedback_of_health") instance=ExtResource("4_k2kjk")]
+on_kill_queue_free = [NodePath("../..")]
+generic_tumbler = NodePath("..")
+visual_feedback_of_health = [NodePath("../totem")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tumbler/GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_6moxb")
+
+[node name="Node3D" type="Node3D" parent="Tumbler/GenericBodyAndPresseable"]
+
+[node name="Node3D2" type="Node3D" parent="Tumbler/GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Node3D3" type="Node3D" parent="Tumbler/GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Node3D4" type="Node3D" parent="Tumbler/GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.548913, 2.03467, 0)
+
+[node name="Node3D5" type="Node3D" parent="Tumbler/GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.548913, 2.03467, 0)
+
+[node name="Node3D6" type="Node3D" parent="Tumbler/GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.548913, 0.0346699, 0)
+
+[node name="Node3D7" type="Node3D" parent="Tumbler/GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.548913, 0.0346699, 0)
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="."]
+aabb = AABB(-1.49999, -0.506472, -0.999995, 3, 3, 2)
+
+[connection signal="force_received" from="Tumbler/ForceReceiver" to="Tumbler" method="_on_force_receiver_force_received"]

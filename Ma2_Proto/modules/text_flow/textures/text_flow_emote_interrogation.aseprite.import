@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://c38x8nnjmodnc"
+path="res://.godot/imported/text_flow_emote_interrogation.aseprite-7462c4dc916de0f5d088f5831d00aa27.res"
+
+[deps]
+
+source_file="res://modules/text_flow/textures/text_flow_emote_interrogation.aseprite"
+dest_files=["res://.godot/imported/text_flow_emote_interrogation.aseprite-7462c4dc916de0f5d088f5831d00aa27.res"]
+
+[params]
+
+exclude_layers_pattern="#.*"
+only_visible_layers=false

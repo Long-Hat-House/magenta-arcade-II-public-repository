@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://ctptvyhjmf835"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_UI_Score_Combo_Points"
+id = 2579295914
+guid = "{5CFCA43C-1ED1-4336-B641-A206C41FCD88}"
+dummy = true

@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqnt5c2dlv0b"]
+
+[ext_resource type="Script" uid="uid://b8074irv1kspu" path="res://elements/enemy/projectiles/screen_projectile/screen_projectile.gd" id="1_nbr7t"]
+
+[sub_resource type="Curve" id="Curve_3nup1"]
+_data = [Vector2(0, 0), 0.0, 0.44289, 0, 0, Vector2(0.505263, 0.494505), 4.02669, 4.02669, 0, 0, Vector2(1, 1), 0.307046, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_wepxk"]
+_data = [Vector2(0, 0), 0.0, -0.0868952, 0, 0, Vector2(0.964233, 0.955409), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.33187, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_7p2r7"]
+_data = [Vector2(0, 0.794146), 0.0, 0.0, 0, 0, Vector2(0.753117, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_0m2ol"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_coj3r"]
+bake_interval = 0.15
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, -10, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="ScreenProjectile" type="Node3D"]
+script = ExtResource("1_nbr7t")
+lerp_between_two_curves = SubResource("Curve_3nup1")
+ease = SubResource("Curve_wepxk")
+total_projectile_time = 1.5
+amount_basis_is_translations = SubResource("Curve_7p2r7")
+
+[node name="TheProjectile" type="Node3D" parent="."]
+
+[node name="Path3D OUT CANNON" type="Path3D" parent="."]
+curve = SubResource("Curve3D_0m2ol")
+
+[node name="Path3D IN CAMERA" type="Path3D" parent="."]
+curve = SubResource("Curve3D_coj3r")

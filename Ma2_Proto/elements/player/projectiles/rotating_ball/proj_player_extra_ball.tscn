@@ -1,0 +1,197 @@
+[gd_scene load_steps=16 format=3 uid="uid://q262rmgn7vv7"]
+
+[ext_resource type="Script" uid="uid://c1a23qdrmn8d1" path="res://elements/enemy/projectiles/damage_area/damage_area.gd" id="1_lnygn"]
+[ext_resource type="Script" uid="uid://cc35oey8xrts8" path="res://elements/player/projectiles/rotating_ball/proj_player_extra.gd" id="1_uvl88"]
+[ext_resource type="PackedScene" uid="uid://b2qs0nfokpns8" path="res://elements/player/projectiles/rotating_ball/proj_player_extra_attack.tscn" id="2_laq2n"]
+[ext_resource type="Material" uid="uid://b200fu03q7lck" path="res://elements/m_simple_color_emission_cull_front.tres" id="4_f48sy"]
+[ext_resource type="Material" uid="uid://r1m6m874b01v" path="res://elements/m_simple_color_emission.tres" id="4_tag1h"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="4_yjad6"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lnygn"]
+radius = 0.35
+
+[sub_resource type="Curve" id="Curve_f48sy"]
+_data = [Vector2(0, 0.573034), 0.0, 2.10112, 0, 0, Vector2(0.502674, 1), 0.39751, 0.39751, 0, 0, Vector2(0.994652, 0), -9.45508, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_f48sy"]
+curve = SubResource("Curve_f48sy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jrj1f"]
+lifetime_randomness = 0.1
+emission_shape = 1
+emission_sphere_radius = 0.3
+gravity = Vector3(0, 0.2, 0)
+attractor_interaction_enabled = false
+scale_curve = SubResource("CurveTexture_f48sy")
+
+[sub_resource type="SphereMesh" id="SphereMesh_m0aid"]
+material = ExtResource("4_f48sy")
+radius = 0.15
+height = 0.32
+radial_segments = 7
+rings = 5
+
+[sub_resource type="SphereMesh" id="SphereMesh_uvl88"]
+radius = 0.35
+height = 0.8
+radial_segments = 8
+rings = 8
+
+[sub_resource type="Animation" id="Animation_lb64g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/BigBall/Jewel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.5, 0.5, 0.7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/BigBall:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/BigBall:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_f48sy"]
+resource_name = "idle"
+length = 0.47
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/BigBall/Jewel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.6, 0.6, 0.6), Vector3(0.4, 0.4, 0.7), Vector3(0.6, 0.6, 0.6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/BigBall:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.466667),
+"transitions": PackedFloat32Array(2.07053, 0.420448, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 3.14159, 0), Vector3(0, 6.28319, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/BigBall:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jrj1f"]
+_data = {
+&"RESET": SubResource("Animation_lb64g"),
+&"idle": SubResource("Animation_f48sy")
+}
+
+[node name="ProjPlayerExtraBall" type="Node3D"]
+script = ExtResource("1_uvl88")
+time_between_shots = 4.0
+speed_max = 60.0
+initial_speed = -2.0
+speed_accel_relative = 800.0
+speed_accel_absolute = 45.0
+player_avoidance_force_quad = 3000.0
+player_avoidance_force_linear = 700.0
+player_avoidance_distance = 2.225
+shot = ExtResource("2_laq2n")
+
+[node name="DamageArea" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 132
+script = ExtResource("1_lnygn")
+metadata/_custom_type_script = "uid://c1a23qdrmn8d1"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
+shape = SubResource("SphereShape3D_lnygn")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+instance_shader_parameters/color = Color(0, 0.686275, 0.654902, 1)
+instance_shader_parameters/emissive = Color(0.658824, 1, 0.909804, 1)
+instance_shader_parameters/energy = 0.1
+amount = 14
+lifetime = 0.3
+explosiveness = 0.02
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_jrj1f")
+draw_pass_1 = SubResource("SphereMesh_m0aid")
+
+[node name="Visuals" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+
+[node name="BigBall" type="MeshInstance3D" parent="Visuals"]
+material_override = ExtResource("4_f48sy")
+instance_shader_parameters/color = Color(0, 0.686275, 0.654902, 1)
+instance_shader_parameters/emissive = Color(0.658824, 1, 0.909804, 1)
+instance_shader_parameters/energy = 0.1
+mesh = SubResource("SphereMesh_uvl88")
+skeleton = NodePath("../..")
+
+[node name="Jewel" type="MeshInstance3D" parent="Visuals/BigBall"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.7, 0.1, 0, 0)
+material_override = ExtResource("4_tag1h")
+instance_shader_parameters/color = Color(0, 0.0352941, 0.768627, 1)
+instance_shader_parameters/emissive = Color(0.717647, 0.717647, 1, 1)
+instance_shader_parameters/energy = 0.05
+mesh = SubResource("SphereMesh_uvl88")
+skeleton = NodePath("../../..")
+
+[node name="Body" type="StaticBody3D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
+shape = SubResource("SphereShape3D_lnygn")
+
+[node name="Health" type="Node" parent="Body"]
+script = ExtResource("4_yjad6")
+max_amount = 0.01
+metadata/_custom_type_script = "uid://b3g5atumyrird"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jrj1f")
+}
+
+[connection signal="dead_parameterless" from="Body/Health" to="." method="_on_health_dead_parameterless"]

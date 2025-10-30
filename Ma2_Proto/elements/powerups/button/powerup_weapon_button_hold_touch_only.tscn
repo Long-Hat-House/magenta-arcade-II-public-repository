@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnob4476tuq1s"]
+
+[ext_resource type="PackedScene" uid="uid://drbtolhhj7dys" path="res://elements/powerups/button/powerup_weapon_button_hold.tscn" id="1_je33b"]
+[ext_resource type="PackedScene" uid="uid://b2mi2f662lici" path="res://elements/player/weapons/weapon_hold_touch_only.tscn" id="3_b5im5"]
+
+[node name="WeaponButton_TOUCH_ONLY" instance=ExtResource("1_je33b")]
+
+[node name="Weapon Hold Touch Only" parent="ParallelTask/Task_AddWeapon" index="0" instance=ExtResource("3_b5im5")]

@@ -1,0 +1,164 @@
+[gd_scene load_steps=11 format=3 uid="uid://b0725vypyiy6m"]
+
+[ext_resource type="Script" uid="uid://dria4aa5ljnst" path="res://elements/enemy/projectiles/explosion_square/enemy_square_explosion_part.gd" id="1_xc5gh"]
+[ext_resource type="Script" uid="uid://c1a23qdrmn8d1" path="res://elements/enemy/projectiles/damage_area/damage_area.gd" id="2_j78lt"]
+[ext_resource type="PackedScene" uid="uid://bsojqu6cv8gbi" path="res://elements/enemy/projectiles/explosion_square/big_explosion/explosion_grande_graphic.tscn" id="3_u66wr"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="4_3dihx"]
+[ext_resource type="Shader" uid="uid://clbaserrhs5so" path="res://elements/player/projectiles/instance_color_albedo.gdshader" id="4_a4mt4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qx5wi"]
+size = Vector3(1.75, 2, 1.75)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_654hb"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_a4mt4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a4mt4"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_a4mt4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_654hb"]
+resource_local_to_scene = true
+render_priority = 10
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0.368627, 0.313726, 0.298039, 1)
+emission = Color(1, 0, 1, 1)
+emission_energy_multiplier = 5.0
+rim = 0.5
+rim_tint = 1.0
+clearcoat_roughness = 1.0
+anisotropy = 1.0
+backlight = Color(0.901961, 0, 0.494118, 1)
+disable_receive_shadows = true
+grow_amount = -0.252
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3gbq"]
+resource_local_to_scene = true
+render_priority = 10
+specular_mode = 2
+albedo_color = Color(0.478431, 0.415686, 0.380392, 1)
+emission = Color(1, 0, 1, 1)
+emission_energy_multiplier = 5.0
+rim = 0.5
+rim_tint = 1.0
+clearcoat_roughness = 1.0
+anisotropy = 1.0
+backlight = Color(0.901961, 0, 0.494118, 1)
+disable_receive_shadows = true
+grow_amount = -0.252
+
+[node name="Square Explosion Part" type="Node3D"]
+script = ExtResource("1_xc5gh")
+
+[node name="Square Explosion Part" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 24
+collision_mask = 134
+script = ExtResource("2_j78lt")
+amountDamage = 15
+enabled = null
+scores = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Square Explosion Part"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.08095, 0)
+shape = SubResource("BoxShape3D_qx5wi")
+
+[node name="Graphic" type="Node3D" parent="."]
+
+[node name="explosionGrande_graphic" parent="Graphic" instance=ExtResource("3_u66wr")]
+
+[node name="cube_001" parent="Graphic/explosionGrande_graphic" index="0"]
+material_override = SubResource("ShaderMaterial_654hb")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="Graphic/explosionGrande_graphic/cube_001" index="0"]
+script = ExtResource("4_3dihx")
+high_contrast_group = &"danger"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="cube_002" parent="Graphic/explosionGrande_graphic" index="1"]
+material_override = SubResource("ShaderMaterial_a4mt4")
+
+[node name="cube_003" parent="Graphic/explosionGrande_graphic" index="2"]
+material_override = SubResource("ShaderMaterial_a4mt4")
+
+[node name="cube_004" parent="Graphic/explosionGrande_graphic" index="3"]
+material_override = SubResource("ShaderMaterial_a4mt4")
+
+[node name="cube_005" parent="Graphic/explosionGrande_graphic" index="4"]
+material_override = SubResource("ShaderMaterial_a4mt4")
+
+[node name="cube_006" parent="Graphic/explosionGrande_graphic" index="5"]
+material_override = SubResource("ShaderMaterial_a4mt4")
+
+[node name="cube_007" parent="Graphic/explosionGrande_graphic" index="6"]
+material_override = SubResource("ShaderMaterial_a4mt4")
+
+[node name="cube_008" parent="Graphic/explosionGrande_graphic" index="7"]
+material_override = SubResource("ShaderMaterial_a4mt4")
+
+[node name="cube_009" parent="Graphic/explosionGrande_graphic" index="8"]
+material_override = SubResource("ShaderMaterial_a4mt4")
+
+[node name="cube_010" parent="Graphic/explosionGrande_graphic" index="9"]
+material_override = SubResource("ShaderMaterial_a4mt4")
+
+[node name="cube_011" parent="Graphic/explosionGrande_graphic/Pink" index="0"]
+material_override = SubResource("ShaderMaterial_a4mt4")
+
+[node name="cube_012" parent="Graphic/explosionGrande_graphic/Pink" index="1"]
+material_override = SubResource("ShaderMaterial_a4mt4")
+
+[node name="cube_013" parent="Graphic/explosionGrande_graphic/Pink" index="2"]
+material_override = SubResource("ShaderMaterial_a4mt4")
+
+[node name="cube_014" parent="Graphic/explosionGrande_graphic/Pink" index="3"]
+material_override = SubResource("ShaderMaterial_a4mt4")
+
+[node name="cube_015" parent="Graphic/explosionGrande_graphic/Pink" index="4"]
+material_override = SubResource("ShaderMaterial_a4mt4")
+
+[node name="cube_016" parent="Graphic/explosionGrande_graphic/Pink" index="5"]
+material_override = SubResource("ShaderMaterial_a4mt4")
+
+[node name="cube_017" parent="Graphic/explosionGrande_graphic/Pink" index="6"]
+material_override = SubResource("ShaderMaterial_a4mt4")
+
+[node name="cube_018" parent="Graphic/explosionGrande_graphic/Pink" index="7"]
+material_override = SubResource("ShaderMaterial_a4mt4")
+
+[node name="cube_019" parent="Graphic/explosionGrande_graphic/Pink" index="8"]
+material_override = SubResource("ShaderMaterial_a4mt4")
+
+[node name="cube_020" parent="Graphic/explosionGrande_graphic/Pink" index="9"]
+material_override = SubResource("ShaderMaterial_a4mt4")
+
+[node name="rock_03" parent="Graphic/explosionGrande_graphic" index="11"]
+material_override = SubResource("StandardMaterial3D_654hb")
+
+[node name="rock_02" parent="Graphic/explosionGrande_graphic" index="12"]
+material_override = SubResource("StandardMaterial3D_654hb")
+
+[node name="rock_01" parent="Graphic/explosionGrande_graphic" index="13"]
+material_override = SubResource("StandardMaterial3D_654hb")
+
+[node name="rock_04" parent="Graphic/explosionGrande_graphic" index="14"]
+material_override = SubResource("StandardMaterial3D_f3gbq")
+
+[node name="rock_05" parent="Graphic/explosionGrande_graphic" index="15"]
+material_override = SubResource("StandardMaterial3D_f3gbq")
+
+[node name="rock_06" parent="Graphic/explosionGrande_graphic" index="16"]
+material_override = SubResource("StandardMaterial3D_f3gbq")
+
+[node name="rock_07" parent="Graphic/explosionGrande_graphic" index="17"]
+material_override = SubResource("StandardMaterial3D_f3gbq")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="Graphic/explosionGrande_graphic"]
+script = ExtResource("4_3dihx")
+high_contrast_group = &"danger"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[editable path="Graphic/explosionGrande_graphic"]

@@ -1,0 +1,117 @@
+[gd_scene load_steps=13 format=4 uid="uid://b2kjae1mx8vaj"]
+
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="1_4s4cy"]
+[ext_resource type="Script" uid="uid://b7stqt2ob1tjb" path="res://elements/neutral/cargo/element_cargo_box.gd" id="1_254yt"]
+[ext_resource type="Script" uid="uid://c3hu8ggatndrt" path="res://elements/general_use/feedback/squish_feedback.gd" id="2_mack2"]
+[ext_resource type="PackedScene" uid="uid://diqpx0aj2pk0a" path="res://elements/vfx/vfx_destroy_metal/vfx_destroy_metal.tscn" id="2_qk0vs"]
+[ext_resource type="Material" uid="uid://chct5jgl33x5t" path="res://elements/neutral/props/Factory/material/m_box_megaphone_cabinet.tres" id="3_hbl2p"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="3_qk0vs"]
+[ext_resource type="Script" uid="uid://gp330idf3b2i" path="res://systems/pressable/pressable_feedback.gd" id="5_a3uxa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_posh6"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ppiav"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1, 1),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAD//wAA////////AAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_r3wln"]
+resource_name = "box_factory_box"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1, 1),
+"attribute_data": PackedByteArray("Pj1rgaAAzUQ+Pc1EoABrgRx7b1d+PtEaHHvRGn4+b1c9PXdDnwDZBj092QafAHdDpOVf/wapwcKk5cHCBqlf//f+uwFZwlk+WcK7Aff+WT6k5SOGBqnBwgapI4ak5cHC"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_posh6"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP///78AAP//AAD/vwAA//////+/AAAAAAAA/78AAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAP+//////////7//////AAD/v///AAD///+///8AAP//AIAAAP////8AgP///////wCAAAAAAP//AIAAAAAAAAD/////AAD///////8AAAAA//8AAAAA//////////8AAP+/AAD//////78AAP//AAD/v/////////+//3/+//9//v//f////3/+//9/////f////3////9/////fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9//z//f/8//3//P/9//z/+//9//v//f/7//3/+//9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ppiav")
+
+[sub_resource type="GDScript" id="GDScript_78k4s"]
+script/source = "extends Area3D
+
+signal entered;
+signal exited;
+
+func _on_body_entered(body: Node3D) -> void:
+	entered.emit();
+
+func _on_body_exited(body: Node3D) -> void:
+	exited.emit();
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_famiv"]
+size = Vector3(2, 1, 2)
+
+[node name="ElementCargoBox" type="Node3D"]
+script = ExtResource("1_254yt")
+explosion = ExtResource("2_qk0vs")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="."]
+script = ExtResource("3_qk0vs")
+high_contrast_group = &"neutral"
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenEnabler3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+aabb = AABB(-1, -0.5, -1, 2, 1, 2)
+
+[node name="Squished" type="Node3D" parent="."]
+
+[node name="box" type="MeshInstance3D" parent="Squished"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
+material_override = ExtResource("3_hbl2p")
+mesh = SubResource("ArrayMesh_r3wln")
+skeleton = NodePath("")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="Squished"]
+script = ExtResource("3_qk0vs")
+high_contrast_group = &"interactable"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 32
+collision_mask = 2
+script = SubResource("GDScript_78k4s")
+
+[node name="Health" type="Node" parent="Area3D"]
+script = ExtResource("1_4s4cy")
+max_amount = 0.4
+debug = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_famiv")
+
+[node name="Feedback_Squish" type="Node" parent="." node_paths=PackedStringArray("scaler")]
+script = ExtResource("2_mack2")
+scaler = NodePath("../Squished")
+
+[node name="PressableFeedback" type="Node" parent="." node_paths=PackedStringArray("mesh_getter", "only_if_seen")]
+script = ExtResource("5_a3uxa")
+mesh_getter = [NodePath("../Squished")]
+random_wait_before_min = 0.0
+random_wait_before_max = 0.25
+only_if_seen = NodePath("")
+effect_tween_delay = 0.5
+effect_tween_delay_random = 1.0
+metadata/_custom_type_script = "uid://gp330idf3b2i"
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area3D" to="Area3D" method="_on_body_exited"]
+[connection signal="entered" from="Area3D" to="Feedback_Squish" method="squish"]
+[connection signal="exited" from="Area3D" to="Feedback_Squish" method="unsquish"]
+[connection signal="dead_parameterless" from="Area3D/Health" to="." method="explode"]
+[connection signal="unsquished" from="Feedback_Squish" to="Area3D/Health" method="kill"]

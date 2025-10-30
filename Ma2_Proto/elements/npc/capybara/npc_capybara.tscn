@@ -1,0 +1,126 @@
+[gd_scene load_steps=5 format=3 uid="uid://sbnc0uylbyp5"]
+
+[ext_resource type="PackedScene" uid="uid://bgmbotnii0mn5" path="res://elements/npc/npc_base.tscn" id="1_oshui"]
+[ext_resource type="PackedScene" uid="uid://de5mf4olk25pj" path="res://elements/npc/capybara/capybara_graphic.tscn" id="2_faq66"]
+[ext_resource type="Texture2D" uid="uid://cxdb1yyd5uo3o" path="res://elements/npc/capybara/npc_capybara.png" id="3_fdtsd"]
+
+[sub_resource type="GDScript" id="GDScript_bl4fm"]
+resource_name = "AICapybara"
+script/source = "extends Node
+
+@onready var npc: NPC_Basic = $\"..\"
+@onready var graphic: Graphic_NPC = $\"../NPC_Graphic_Capybara\"
+
+@export var wait_time_min:float;
+@export var wait_time_max:float = 1.0;
+@export var walking_time_min:float;
+@export var walking_time_max:float = 1.0;
+@export var walk_velocity:float = 3;
+@export var running_velocity:float = 12;
+@export var boop_scale_idle:Vector3 = Vector3(0.9, 1.2, 1.0);
+@export var boop_scale_sleep:Vector3 = Vector3(1.2, 0.8, 1.0);
+@export var boop_duration:float = 0.35;
+@export var boop_up_percentage:float = 0.2;
+
+var count:float;
+
+enum State
+{
+	Idle,
+	Walking,
+	Sleep,
+	Running,
+}
+
+var state:State;
+
+var velocity:Vector3;
+
+func _process(delta:float):
+	count -= delta;
+	if count < 0:
+		var new_state:State;
+		match state:
+			State.Idle:
+				new_state = State.Walking if randf() < 0.5 else State.Sleep;
+			State.Walking:
+				new_state = State.Idle;
+			State.Sleep:
+				new_state = State.Idle;
+			State.Running:
+				count = 100;
+				return;
+		match new_state:
+			State.Idle:
+				change_velocity(Vector3.ZERO);
+				count += randf_range(wait_time_min, wait_time_max);
+				boop(boop_scale_idle);
+				graphic.play_animation(&\"sit\");
+			State.Walking:
+				change_velocity(VectorUtils.get_random_unitary_circle_point_xz() * walk_velocity);
+				count += randf_range(walking_time_min, walking_time_max);
+				graphic.play_animation(&\"default\");
+			State.Sleep:
+				change_velocity(Vector3.ZERO);
+				count += randf_range(wait_time_min, wait_time_max);
+				boop(boop_scale_sleep);
+				graphic.play_animation(&\"sleep\");
+		state = new_state;
+	
+	npc.position += velocity * delta;
+	
+func boop(scale:Vector3):
+	var t := create_tween();
+	t.tween_property(graphic, \"scale\", 
+			scale, boop_duration * boop_up_percentage)\\
+			.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE);
+	t.tween_property(graphic, \"scale\", 
+			Vector3.ONE, boop_duration * (1.0 - boop_up_percentage))\\
+			.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE);
+
+func change_velocity(new_vel:Vector3):
+	velocity = new_vel;
+	if new_vel.x != 0:
+		graphic.flip_h = new_vel.x > 0.0;
+
+
+func _on_health_hit_parameterless() -> void:
+	state = State.Running;
+	change_velocity(VectorUtils.get_random_unitary_circle_point_xz() * running_velocity);
+	graphic.play_animation(&\"default\");
+	graphic.speed_scale = running_velocity / walk_velocity;
+	
+	running_velocity += 0.2;
+"
+
+[node name="Npc_Capybara" node_paths=PackedStringArray("graphic") instance=ExtResource("1_oshui")]
+graphic = NodePath("NPC_Graphic_Capybara")
+control_animation = false
+
+[node name="Capybara_behaviour" type="Node" parent="." index="0"]
+script = SubResource("GDScript_bl4fm")
+wait_time_min = 2.0
+wait_time_max = 3.0
+walking_time_min = 0.5
+walking_time_max = 1.5
+running_velocity = 14.0
+
+[node name="NPC_Graphic_Capybara" parent="." index="1" instance=ExtResource("2_faq66")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+cast_shadow = 1
+animation = &"sleep"
+anim_hit = &""
+anim_press_idle = &""
+anim_press_walk = &""
+
+[node name="NPC_HighContrastSprite" parent="NPC_Graphic_Capybara/NPC_HighContrastSprite" index="0"]
+texture = ExtResource("3_fdtsd")
+size = Vector2(2, 1.2)
+uv_amount = Vector2i(3, 2)
+uv_frame = Vector2i(1, 1)
+center_offset = Vector3(0, 0.55, 0)
+
+[connection signal="hit_parameterless" from="HitArea/Health" to="Capybara_behaviour" method="_on_health_hit_parameterless"]
+
+[editable path="NPC_Graphic_Capybara"]
+[editable path="NPC_Graphic_Capybara/NPC_HighContrastSprite"]

@@ -1,0 +1,136 @@
+[gd_scene load_steps=5 format=3 uid="uid://bi3tdegef7ou4"]
+
+[ext_resource type="PackedScene" uid="uid://bsrp6kl536a5i" path="res://elements/enemy/pizza/Mesh/pizza_roboto.tscn" id="1_bb0lm"]
+[ext_resource type="PackedScene" uid="uid://ce55vfa4assok" path="res://elements/enemy/pizza/Mesh/pizza_roboto_rusty.tscn" id="2_x4isn"]
+[ext_resource type="PackedScene" uid="uid://busv6sx15qccg" path="res://elements/npc/npc_graphic_regular.tscn" id="3_wubqh"]
+
+[sub_resource type="GDScript" id="GDScript_o7jg3"]
+resource_name = "BossGoleiroCrowd"
+script/source = "extends Node3D
+
+@onready var graphic: Node3D = $Graphic
+
+@export var animation_players:Array[AnimationPlayer];
+@export var animation_sprite:Array[AnimatedSprite3D];
+
+@export var sprite_anim:StringName;
+@export var player_anim:StringName;
+
+var tween:Tween;
+var count:float;
+		
+func reset_count()->float:
+	return randf_range(2.0, 7.0);
+
+func _ready():
+	var children := graphic.get_children();
+	var children_rand:Array = []
+	var i:int = 0;
+	for child in children:
+		var num:int = children.size() - i + 1;
+		while num > 0:
+			children_rand.push_back(child);
+			num -= 1;
+		i+=1;
+		
+	var rand:int = Randomizer.get_randomizer(\"crowd\", 8).randi() % children_rand.size();
+	for child:Node3D in children:
+		child.visible = (child == children_rand[rand]);
+	
+	count = reset_count();
+	
+	start_animation();
+	
+	hoop(get_hoop_duration());
+	
+func get_hoop_duration()->float:
+	return randf_range(0.8, 1.2);
+	
+func hoop(duration:float):
+	var tween := create_tween();
+	tween.tween_property(graphic, \"scale\", Vector3(0.8, 1.8, 0.8), duration * 0.2)\\
+			.set_ease(Tween.EASE_IN)\\
+			.set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(graphic, \"scale\", Vector3(1, 1, 1), duration * 0.8)\\
+			.set_ease(Tween.EASE_OUT)\\
+			.set_trans(Tween.TRANS_ELASTIC)
+	tween.tween_interval(randf_range(0.05, 0.2))
+	tween.tween_callback(func():
+		hoop(get_hoop_duration());
+		)
+	
+func start_animation():
+	for anim in animation_players:
+		anim.play(player_anim, -1, randf_range(0.9, 1.1));
+	for anim in animation_sprite:
+		anim.play(sprite_anim, randf_range(0.9, 1.1), randf() < 0.05);
+"
+
+[node name="BossGoleiroCrowdInstance" type="Node3D" node_paths=PackedStringArray("animation_players", "animation_sprite")]
+script = SubResource("GDScript_o7jg3")
+animation_players = [NodePath("Graphic/Pizza_Roboto/AnimationPlayer"), NodePath("Graphic/Pizza_Roboto_Rusty/AnimationPlayer")]
+animation_sprite = [NodePath("Graphic/NPC_Graphic_Regular")]
+sprite_anim = &"idle"
+player_anim = &"PIZZA_SHOOTER_DANCE"
+
+[node name="Graphic" type="Node3D" parent="."]
+
+[node name="NPC_Graphic_Regular" parent="Graphic" instance=ExtResource("3_wubqh")]
+billboard = 2
+shaded = false
+
+[node name="RandomizeSpriteFrames" parent="Graphic/NPC_Graphic_Regular" index="1"]
+type_on_ready = 2
+
+[node name="Pizza_Roboto" parent="Graphic" instance=ExtResource("1_bb0lm")]
+
+[node name="Skeleton3D" parent="Graphic/Pizza_Roboto/Rig_Pizza" index="0"]
+bones/1/position = Vector3(-1.54974e-17, 0.0777346, 0.00260197)
+bones/1/rotation = Quaternion(-0.0621569, -0.0134728, -0.0165233, 0.997839)
+bones/2/position = Vector3(0, 0.240809, 0.229185)
+bones/3/position = Vector3(0, 0.162603, -0.497376)
+bones/4/position = Vector3(0.377006, 0.196704, 0.253451)
+bones/4/rotation = Quaternion(0, -0.34202, 0, 0.939693)
+bones/5/position = Vector3(0.0923132, -0.197125, 0.112234)
+bones/5/rotation = Quaternion(0.273904, 0.876446, 0.14988, 0.366544)
+bones/6/position = Vector3(0.343694, 0.196704, -0.230993)
+bones/6/rotation = Quaternion(0, 0.34202, 0, 0.939693)
+bones/7/position = Vector3(0.0746037, -0.0953346, -0.0807325)
+bones/7/rotation = Quaternion(-0.428979, 0.199581, -0.73633, 0.483696)
+bones/8/position = Vector3(-0.377006, 0.196704, 0.253451)
+bones/8/rotation = Quaternion(0, 0.34202, 0, 0.939693)
+bones/9/position = Vector3(-0.0923132, -0.197125, 0.112234)
+bones/9/rotation = Quaternion(-0.273904, 0.876446, 0.14988, -0.366544)
+bones/10/position = Vector3(-0.380131, 0.196704, -0.252856)
+bones/10/rotation = Quaternion(0, -0.34202, 0, 0.939693)
+bones/11/position = Vector3(-0.0605762, -0.0953347, -0.0925029)
+bones/11/rotation = Quaternion(-0.42898, -0.199581, 0.73633, 0.483696)
+
+[node name="BoneAttachment3D" parent="Graphic/Pizza_Roboto/Rig_Pizza/Skeleton3D" index="5"]
+transform = Transform3D(0.999091, 0.03465, -0.0248332, -0.0313003, 0.991727, 0.12449, 0.0289414, -0.1236, 0.99191, -1.54974e-17, 0.0777346, 0.00260197)
+
+[node name="Nothing" type="Node3D" parent="Graphic"]
+
+[node name="Pizza_Roboto_Rusty" parent="Graphic" instance=ExtResource("2_x4isn")]
+
+[node name="Skeleton3D" parent="Graphic/Pizza_Roboto_Rusty/Rig_Pizza" index="0"]
+bones/4/position = Vector3(0.420646, 0.196704, 0.286711)
+bones/4/rotation = Quaternion(0, -1.19209e-07, 0, 1)
+bones/5/position = Vector3(0.0923181, -0.197125, 0.0676085)
+bones/5/rotation = Quaternion(0.293316, 0.921573, 0.107021, 0.230687)
+bones/6/position = Vector3(0.350074, 0.196704, -0.220535)
+bones/6/rotation = Quaternion(0, 1.19209e-07, 0, 1)
+bones/7/position = Vector3(0.0922214, -0.0953346, -0.0675431)
+bones/7/rotation = Quaternion(-0.30471, 0.119023, -0.795838, 0.509537)
+bones/8/position = Vector3(-0.420646, 0.196704, 0.286711)
+bones/8/rotation = Quaternion(0, 1.19209e-07, 0, 1)
+bones/9/position = Vector3(-0.0923181, -0.197125, 0.0676085)
+bones/9/rotation = Quaternion(-0.293316, 0.921573, 0.107021, -0.230687)
+bones/10/position = Vector3(-0.386511, 0.196704, -0.242397)
+bones/10/rotation = Quaternion(0, -1.19209e-07, 0, 1)
+bones/11/position = Vector3(-0.0922214, -0.0953347, -0.0675431)
+bones/11/rotation = Quaternion(-0.30471, -0.119023, 0.795838, 0.509537)
+
+[editable path="Graphic/NPC_Graphic_Regular"]
+[editable path="Graphic/Pizza_Roboto"]
+[editable path="Graphic/Pizza_Roboto_Rusty"]

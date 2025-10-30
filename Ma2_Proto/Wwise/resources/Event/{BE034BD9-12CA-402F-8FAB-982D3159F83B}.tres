@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://dtn1ophn5wxy0"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_UI_LevelClear_Step"
+id = 3409627799
+guid = "{BE034BD9-12CA-402F-8FAB-982D3159F83B}"
+dummy = true

@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" load_steps=0 format=3 uid="uid://bcda3a0wn4qjv"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Boss_Lv0_Shoot_Release_Multiple"
+id = 3027531151
+guid = "{16105FEA-20F0-499A-A12F-CC234D4B9714}"
+dummy = true

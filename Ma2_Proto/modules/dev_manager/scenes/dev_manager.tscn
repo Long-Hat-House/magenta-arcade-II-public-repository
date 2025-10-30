@@ -1,0 +1,400 @@
+[gd_scene load_steps=5 format=3 uid="uid://crhdil17uphe6"]
+
+[ext_resource type="Script" uid="uid://dc1e0vr6mga3w" path="res://modules/dev_manager/src/dev_manager.gd" id="1_4cel2"]
+[ext_resource type="PackedScene" uid="uid://n3tjqxfua88o" path="res://modules/dev_manager/scenes/debug_process_box.tscn" id="2_qhmp4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lltge"]
+bg_color = Color(0.6, 0.6, 0.6, 0.278431)
+
+[sub_resource type="GDScript" id="GDScript_r6ddj"]
+resource_name = "DevActions"
+script/source = "extends PanelContainer
+
+const UPGRADE_HEALTH_INITIAL = preload(\"res://systems/ma2_meta/upgrades/upgrade_health_initial.tres\")
+
+const UPGRADESET_HOLD = preload(\"res://systems/ma2_meta/upgrades/upgradeset_hold.tres\")
+const UPGRADESET_HEALTH = preload(\"res://systems/ma2_meta/upgrades/upgradeset_health.tres\")
+const UPGRADESET_TAP = preload(\"res://systems/ma2_meta/upgrades/upgradeset_tap.tres\")
+
+const WEAPON_BLUE_HOLD = preload(\"res://elements/player/weapons/weapon_blue_hold.tscn\")
+const WEAPON_BLUE_TAP = preload(\"res://elements/player/weapons/weapon_blue_tap.tscn\")
+const WEAPON_GREEN_HOLD = preload(\"res://elements/player/weapons/weapon_green_hold.tscn\")
+const WEAPON_GREEN_TAP = preload(\"res://elements/player/weapons/weapon_green_tap.tscn\")
+const WEAPON_HOLD_TOUCH_ONLY = preload(\"res://elements/player/weapons/weapon_hold_touch_only.tscn\")
+const WEAPON_PURPLE_HOLD = preload(\"res://elements/player/weapons/weapon_purple_hold.tscn\")
+const WEAPON_RED_HOLD = preload(\"res://elements/player/weapons/weapon_red_hold.tscn\")
+const WEAPON_RED_TAP = preload(\"res://elements/player/weapons/weapon_red_tap.tscn\")
+const WEAPON_YELLOW_HOLD = preload(\"res://elements/player/weapons/weapon_yellow_hold.tscn\")
+const WEAPON_YELLOW_TAP = preload(\"res://elements/player/weapons/weapon_yellow_tap.tscn\")
+
+const ICON_HEALTH = preload(\"res://elements/icons/icon_health.png\")
+const ICON_FIRERATE = preload(\"res://elements/icons/hud_icon_firerate.png\")
+const ICON_WARMUP = preload(\"res://elements/icons/hud_icon_speed.png\")
+
+
+@export var _container_control:Control
+
+var _initialized:bool
+
+func toggle_show(toggle:bool):
+	if toggle:
+		show_actions()
+	else:
+		hide_actions()
+
+func show_actions():
+	if !_initialized:
+		var h:HBoxContainer
+		var b:Button
+		var l:Label
+
+		l = Label.new()
+		l.text = \"Upgrades:\"
+		_container_control.add_child(l)
+
+		## HOLD UPGRADES
+		h = HBoxContainer.new()
+		for upg in UPGRADESET_HOLD.get_upgrades_list():
+			if upg is UpgradeInfo:
+				_prepare_upgrade(upg, h)
+		_container_control.add_child(h)
+
+		## Tap UPGRADES
+		h = HBoxContainer.new()
+		for upg in UPGRADESET_TAP.get_upgrades_list():
+			if upg is UpgradeInfo:
+				_prepare_upgrade(upg, h)
+		_container_control.add_child(h)
+
+		## HEALTH UPGRADES
+		h = HBoxContainer.new()
+		for upg in UPGRADESET_HEALTH.get_upgrades_list():
+			if upg is UpgradeInfo:
+				_prepare_upgrade(upg, h)
+		_container_control.add_child(h)
+
+		## PLAYER:
+		l = Label.new()
+		l.text = \"Player:\"
+		_container_control.add_child(l)
+
+		## HOLD:
+		h = HBoxContainer.new()
+
+		b = Button.new()
+		b.text = \"+\"
+		b.icon = ICON_FIRERATE
+		b.pressed.connect(action_firerate)
+		h.add_child(b)
+
+		b = Button.new()
+		b.text = \"-\"
+		b.icon = ICON_FIRERATE
+		b.pressed.connect(action_firerate.bind(true))
+		h.add_child(b)
+
+		b = Button.new()
+		b.text = \"+\"
+		b.icon = ICON_WARMUP
+		b.pressed.connect(action_warmup)
+		h.add_child(b)
+
+		b = Button.new()
+		b.text = \"-\"
+		b.icon = ICON_WARMUP
+		b.pressed.connect(action_warmup.bind(true))
+		h.add_child(b)
+
+		b = Button.new()
+		b.text = \"+lv\"
+		b.pressed.connect(action_hold_lvl)
+		h.add_child(b)
+
+		b = Button.new()
+		b.text = \"-lv\"
+		b.pressed.connect(action_hold_lvl.bind(true))
+		h.add_child(b)
+
+		_container_control.add_child(h)
+
+		## HOLD WEAPONS
+		h = HBoxContainer.new()
+		l = Label.new()
+		l.text = \"Hold:\"
+		h.add_child(l)
+		_prepare_weapon(WEAPON_RED_HOLD, h, \"R\")
+		_prepare_weapon(WEAPON_GREEN_HOLD, h, \"G\")
+		_prepare_weapon(WEAPON_BLUE_HOLD, h, \"B\")
+		_prepare_weapon(WEAPON_YELLOW_HOLD, h, \"Y\")
+		_prepare_weapon(WEAPON_PURPLE_HOLD, h, \"P\")
+		_prepare_weapon(WEAPON_HOLD_TOUCH_ONLY, h, \"T\")
+
+		_container_control.add_child(h)
+
+		## TAP WEAPONS
+		h = HBoxContainer.new()
+		l = Label.new()
+		l.text = \"Tap:\"
+		h.add_child(l)
+		_prepare_weapon(WEAPON_RED_TAP, h, \"R\")
+		_prepare_weapon(WEAPON_GREEN_TAP, h, \"G\")
+		_prepare_weapon(WEAPON_BLUE_TAP, h, \"B\")
+		_prepare_weapon(WEAPON_YELLOW_TAP, h, \"Y\")
+		_prepare_weapon(null, h, \"T\")
+
+		_container_control.add_child(h)
+
+		_initialized = true
+
+
+		## HEALTH STUFF
+		h = HBoxContainer.new()
+		l = Label.new()
+		l.text = \"Health:\"
+		h.add_child(l)
+
+		b = Button.new()
+		b.text = \"+\"
+		b.icon = ICON_HEALTH
+		b.pressed.connect(action_health.bind(1))
+		h.add_child(b)
+
+		b = Button.new()
+		b.text = \"-\"
+		b.icon = ICON_HEALTH
+		b.pressed.connect(action_health.bind(-1))
+		h.add_child(b)
+
+		b = Button.new()
+		b.text = \"0\"
+		b.icon = ICON_HEALTH
+		b.pressed.connect(action_health.bind(-1000))
+		h.add_child(b)
+
+		_container_control.add_child(h)
+
+
+		## SHORTCUTS
+		h = HBoxContainer.new()
+		l = Label.new()
+		l.text = \"Shortcut:\"
+		h.add_child(l)
+		_prepare_shorcut(KEY_K,h)
+		_prepare_shorcut(KEY_F,h)
+		_prepare_shorcut(KEY_S,h)
+		_prepare_shorcut(KEY_1,h)
+		_prepare_shorcut(KEY_2,h)
+
+		_container_control.add_child(h)
+
+		var _control_toggle:ExtendedCheckBox = UIFactory.get_check_box(\"Time Controller\",
+			func(toggled:bool):
+				if toggled:
+					TimeManager.add_control_requester(DevManager)
+				else:
+					TimeManager.remove_control_requester(DevManager)
+		)
+
+		_container_control.add_child(_control_toggle)
+
+		_initialized = true
+
+	_container_control.show()
+
+func hide_actions():
+	_container_control.hide()
+
+func _prepare_shorcut(key:Key, container:Control):
+	var b:Button
+	b = Button.new()
+	b.text = OS.get_keycode_string(key)
+	b.button_down.connect(func():
+		var ev = InputEventKey.new()
+		ev.keycode = key    # Use the constant for the \"K\" key.
+		ev.pressed = true   # Simulate a key press (set to false for a release).
+		Input.parse_input_event(ev)
+		)
+	b.button_up.connect(func():
+		var ev = InputEventKey.new()
+		ev.keycode = key    # Use the constant for the \"K\" key.
+		ev.pressed = false   # Simulate a key press (set to false for a release).
+		Input.parse_input_event(ev)
+		)
+
+	container.add_child(b)
+
+func _prepare_upgrade(upgrade:UpgradeInfo, container:Control):
+
+
+	var sep:VSeparator = VSeparator.new()
+	container.add_child(sep)
+
+	var b:Button
+	b = Button.new()
+	b.icon = null#upgrade.upgrade_icon
+	b.text = \"+\"
+	b.pressed.connect(action_upgrade.bind(upgrade, true))
+	container.add_child(b)
+
+	var t:TextureRect = TextureRect.new()
+	t.texture = upgrade.upgrade_icon
+	t.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	t.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	t.custom_minimum_size = Vector2(64,64)
+	container.add_child(t)
+	b = Button.new()
+	b.icon = null#upgrade.upgrade_icon
+	b.text = \"-\"
+	b.pressed.connect(action_upgrade.bind(upgrade, false))
+	container.add_child(b)
+
+func _prepare_weapon(weapon:PackedScene, container:Control, text:String):
+	var b:Button
+	b = Button.new()
+	b.text = text
+	b.pressed.connect(action_weapon.bind(weapon))
+	container.add_child(b)
+
+func action_upgrade(upgrade:UpgradeInfo, up:bool = true):
+	if up:
+		upgrade.set_progress_upgrade(true)
+	else:
+		upgrade.set_progress_downgrade()
+
+func action_weapon(weapon:PackedScene):
+	if Player.instance:
+		if weapon:
+			Player.instance.add_weapon(weapon.instantiate())
+		else:
+			Player.instance.add_tap(null)
+
+func action_health(change:int):
+	if Player.instance:
+		if change > 0:
+			Player.instance.heal(change)
+		elif change < 0:
+			Player.instance.damage(abs(change))
+
+func action_firerate(down:bool = false):
+	if Player.instance:
+		if down:
+			Player.instance.downgrade_hold_firerate_level()
+		else:
+			Player.instance.upgrade_hold_firerate_level()
+
+func action_warmup(down:bool = false):
+	if Player.instance:
+		if down:
+			Player.instance.downgrade_hold_warmup_level()
+		else:
+			Player.instance.upgrade_hold_warmup_level()
+
+
+func action_hold_lvl(down:bool = false):
+	if Player.instance:
+		if down:
+			Player.instance.add_hold_level(-1)
+		else:
+			Player.instance.add_hold_level(1)
+"
+
+[node name="Dev Manager" type="VBoxContainer" node_paths=PackedStringArray("_enable_button", "_vertical_container", "_level_selection_menu_container", "_debug_callbacks_container")]
+process_mode = 3
+z_index = 15
+custom_minimum_size = Vector2(800, 0)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -132.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("1_4cel2")
+_enable_button = NodePath("HBoxContainer/CheckButton")
+_vertical_container = NodePath("VBoxContainer")
+_level_selection_menu_container = NodePath("Lvl Selection/Menu Spot")
+_debug_callback_box = ExtResource("2_qhmp4")
+_debug_callbacks_container = NodePath("VBoxContainer/DebugCallbackContainer")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+alignment = 2
+
+[node name="DebugCallbackContainer" type="VBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+mouse_filter = 2
+alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+
+[node name="CheckButton" type="CheckButton" parent="HBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"HeaderLarge"
+text = "Debug UI"
+
+[node name="Lvl Selection" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+
+[node name="Menu Spot" type="VBoxContainer" parent="Lvl Selection"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Lvl Selection"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="LvlSelect CheckButton" type="CheckButton" parent="Lvl Selection/HBoxContainer2"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="Label" type="Label" parent="Lvl Selection/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"HeaderLarge"
+text = "Levels"
+
+[node name="DevActionsMenu" type="PanelContainer" parent="." node_paths=PackedStringArray("_container_control")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lltge")
+script = SubResource("GDScript_r6ddj")
+_container_control = NodePath("HBoxContainer3/ActionsContent")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="DevActionsMenu"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="LvlSelect CheckButton" type="CheckButton" parent="DevActionsMenu/HBoxContainer3"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="Label" type="Label" parent="DevActionsMenu/HBoxContainer3"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"HeaderLarge"
+text = ">"
+
+[node name="ActionsContent" type="VBoxContainer" parent="DevActionsMenu/HBoxContainer3"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[connection signal="toggled" from="Lvl Selection/HBoxContainer2/LvlSelect CheckButton" to="Lvl Selection/Menu Spot" method="set_visible"]
+[connection signal="toggled" from="DevActionsMenu/HBoxContainer3/LvlSelect CheckButton" to="DevActionsMenu" method="toggle_show"]

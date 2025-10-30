@@ -1,0 +1,155 @@
+[gd_scene load_steps=11 format=3 uid="uid://bwj5rhitp4gpn"]
+
+[ext_resource type="Script" uid="uid://c04hf1fjmqgil" path="res://elements/enemy/projectiles/damage_area/damage_node.gd" id="1_t6f2b"]
+[ext_resource type="Script" uid="uid://b8u8dvwnf6prb" path="res://elements/enemy/projectiles/rachadura/proj_enemy_rachadura_part.gd" id="1_y1gap"]
+[ext_resource type="WwiseEvent" uid="uid://cmnn0751h11gf" path="res://Wwise/resources/Event/{D50E7C7E-D618-4253-9B07-9C564DFF00FC}.tres" id="2_rxl8i"]
+[ext_resource type="Material" uid="uid://cee2bblex8u2d" path="res://elements/neutral/props/rock/material/m_rock_2.tres" id="3_lnryl"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="3_ws033"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mu0gx"]
+height = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_avnc1"]
+albedo_color = Color(1, 0, 1, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0hy2f"]
+material = SubResource("StandardMaterial3D_avnc1")
+height = 4.0
+radial_segments = 4
+rings = 3
+
+[sub_resource type="GDScript" id="GDScript_lnryl"]
+resource_name = "RachaduraStones"
+script/source = "extends Node3D
+
+var stones:Array[MeshInstance3D]
+
+@export var height:float = 1.25;
+var seed:int;
+
+var curr_value:float;
+func _ready():
+	for child:Node in get_children():
+		if child is MeshInstance3D:
+			child.rotation = VectorUtils.rand_vector3_range(0, PI * 2);
+			child.visible = randf() >= 0.025;
+			stones.append(child);
+			
+	var max_range:int = 10000;
+	seed = randi_range(0, max_range);
+	
+
+func get_random_percentage(m:MeshInstance3D)->float:
+	var rot_deg = m.rotation_degrees;
+	
+	return pingpong(float(seed) + rot_deg.x + rot_deg.y + rot_deg.z, 360) / 360.0;
+	
+
+func set_progress(value:float):
+	ArrayUtils.percentage_array_float_call_one(stones, value, curr_value, func(elem:MeshInstance3D,  x:float):
+		elem.position.z = lerpf(height, lerpf(-0.1, 0.2, get_random_percentage(elem)), x);
+		)
+	curr_value = value;
+"
+
+[sub_resource type="SphereMesh" id="SphereMesh_rxl8i"]
+material = ExtResource("3_lnryl")
+height = 0.75
+radial_segments = 6
+rings = 5
+
+[node name="ProjEnemyRachaduraPart" type="Node3D" node_paths=PackedStringArray("mesh")]
+script = ExtResource("1_y1gap")
+mesh = NodePath("Area/MeshInstance3D")
+sound = ExtResource("2_rxl8i")
+
+[node name="Area" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 1.5)
+collision_layer = 0
+collision_mask = 130
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area"]
+shape = SubResource("CapsuleShape3D_mu0gx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+mesh = SubResource("CapsuleMesh_0hy2f")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="Area/MeshInstance3D"]
+script = ExtResource("3_ws033")
+high_contrast_group = &"danger"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="DamageNode" type="Node" parent="Area"]
+script = ExtResource("1_t6f2b")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Area"]
+aabb = AABB(-0.659131, -2.10111, -1, 1.31826, 4.20221, 2)
+
+[node name="Stones" type="Node3D" parent="Area"]
+script = SubResource("GDScript_lnryl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area/Stones"]
+transform = Transform3D(0.852585, -0.522588, 2.2843e-08, 0.160048, 0.261113, 0.951948, -0.497476, -0.811617, 0.30626, 0, -1.5, 1.25)
+mesh = SubResource("SphereMesh_rxl8i")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Area/Stones"]
+transform = Transform3D(0.666741, 0.74529, -3.25777e-08, -0.513269, 0.459173, 0.725062, 0.540381, -0.483428, 0.688684, 0.5, -1.25, 1.25)
+mesh = SubResource("SphereMesh_rxl8i")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Area/Stones"]
+transform = Transform3D(0.583343, -0.812226, 3.55035e-08, 0.180376, 0.129546, 0.975029, -0.791944, -0.568776, 0.222076, -0.25, -1, 1.25)
+mesh = SubResource("SphereMesh_rxl8i")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Area/Stones"]
+transform = Transform3D(0.843588, 0.536991, -2.34726e-08, -0.229716, 0.360874, 0.903881, 0.485376, -0.762504, 0.427784, 0.25, -0.75, 1.25)
+mesh = SubResource("SphereMesh_rxl8i")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Area/Stones"]
+transform = Transform3D(0.876206, -0.481937, 2.10661e-08, 0.0499829, 0.0908736, 0.994607, -0.479338, -0.871481, 0.103713, -0.25, -0.5, 1.25)
+mesh = SubResource("SphereMesh_rxl8i")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Area/Stones"]
+transform = Transform3D(0.182853, -0.98314, 4.29744e-08, -0.000463375, -8.6139e-05, 1, -0.98314, -0.182853, -0.000471314, 0.25, -0.25, 1.25)
+mesh = SubResource("SphereMesh_rxl8i")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Area/Stones"]
+transform = Transform3D(0.0142588, 0.999898, -4.3707e-08, -0.06719, 0.000958191, 0.99774, 0.997638, -0.0142266, 0.0671969, -0.25, 0, 1.25)
+mesh = SubResource("SphereMesh_rxl8i")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Area/Stones"]
+transform = Transform3D(-0.321274, -0.946986, 4.13941e-08, 0.227621, -0.0772225, 0.970683, -0.919223, 0.311855, 0.240363, 0.25, 0.5, 1.25)
+mesh = SubResource("SphereMesh_rxl8i")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Area/Stones"]
+transform = Transform3D(-0.0102798, 0.999947, -4.37091e-08, -0.110474, -0.00113567, 0.993878, 0.993826, 0.0102168, 0.11048, -0.25, 1, 1.25)
+mesh = SubResource("SphereMesh_rxl8i")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Area/Stones"]
+transform = Transform3D(0.624943, -0.78067, 3.41242e-08, 0.146229, 0.11706, 0.9823, -0.766853, -0.613882, 0.187313, 0.25, 1, 1.25)
+mesh = SubResource("SphereMesh_rxl8i")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Area/Stones"]
+transform = Transform3D(0.244191, -0.969727, 4.23881e-08, -0.568635, -0.14319, 0.810031, -0.78551, -0.197802, -0.586387, 0, 1.25, 1.25)
+mesh = SubResource("SphereMesh_rxl8i")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Area/Stones"]
+transform = Transform3D(0.665947, 0.745999, -3.26087e-08, -0.459396, 0.410099, 0.787893, 0.587767, -0.524695, 0.615813, -0.25, 1.75, 1.25)
+mesh = SubResource("SphereMesh_rxl8i")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Area/Stones"]
+transform = Transform3D(0.899497, -0.436927, 1.90987e-08, 0.36202, 0.745286, -0.559902, 0.244636, 0.50363, 0.828559, 0.25, 2, 1.25)
+mesh = SubResource("SphereMesh_rxl8i")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="Area/Stones"]
+transform = Transform3D(0.971001, -0.239076, 1.04503e-08, 0.161225, 0.654811, 0.738396, -0.176533, -0.716984, 0.674367, 0.25, 1.5, 1.25)
+mesh = SubResource("SphereMesh_rxl8i")
+
+[connection signal="area_entered" from="Area" to="Area/DamageNode" method="add_body"]
+[connection signal="area_exited" from="Area" to="Area/DamageNode" method="remove_body"]
+[connection signal="body_entered" from="Area" to="Area/DamageNode" method="add_body"]
+[connection signal="body_exited" from="Area" to="Area/DamageNode" method="remove_body"]
+[connection signal="screen_exited" from="Area/VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

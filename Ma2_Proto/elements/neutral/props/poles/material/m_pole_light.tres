@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://b448018bi2e2g"]
+
+[ext_resource type="Texture2D" uid="uid://c7bcby1f4sg32" path="res://elements/neutral/props/poles/texture/pole light_BaseColor.png" id="1_m5oer"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jie0d"]
+
+[resource]
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("1_m5oer")
+roughness = 0.65
+emission_energy_multiplier = 0.0
+clearcoat = 0.69
+anisotropy = 0.33
+ao_texture = SubResource("CompressedTexture2D_jie0d")
+backlight = Color(0.0313726, 0.0313726, 0.0313726, 1)

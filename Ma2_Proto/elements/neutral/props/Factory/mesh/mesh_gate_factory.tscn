@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://rib86ncyx8jd"]
+
+[ext_resource type="PackedScene" uid="uid://dylaij5bajyhv" path="res://elements/neutral/props/Factory/mesh/gate_factory.glb" id="1_talu0"]
+[ext_resource type="Material" uid="uid://3qhwx7ei4o5u" path="res://elements/neutral/props/Factory/material/m_wall_factory.tres" id="2_l7nsb"]
+
+[node name="gate_factory" instance=ExtResource("1_talu0")]
+
+[node name="gate" parent="." index="0"]
+material_override = ExtResource("2_l7nsb")

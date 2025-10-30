@@ -1,0 +1,16 @@
+[gd_resource type="CodeHighlighter" format=3 uid="uid://bw0o6had1tbmm"]
+
+[resource]
+number_color = Color(0, 0.686275, 0.654902, 1)
+symbol_color = Color(0.827451, 0.12549, 0.286275, 1)
+member_variable_color = Color(0.247059, 0.870588, 0.843137, 1)
+keyword_colors = {
+"CONTINUE": Color(1, 0.247059, 1, 1),
+"D": Color(1, 0, 1, 1),
+"RNG": Color(1, 0.247059, 1, 1),
+"S": Color(1, 0, 1, 1),
+"T": Color(1, 0, 1, 1)
+}
+color_regions = {
+"[ ]": Color(0.509804, 0.788235, 1, 1)
+}

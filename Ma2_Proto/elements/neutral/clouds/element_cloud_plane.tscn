@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://cn0cgh44rtthb"]
+
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="1_ubuux"]
+
+[sub_resource type="Gradient" id="Gradient_v2exx"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bhyg2"]
+noise_type = 2
+frequency = 0.0612
+fractal_lacunarity = 1.525
+fractal_gain = 0.52
+fractal_weighted_strength = 0.65
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_57dlw"]
+width = 64
+height = 64
+seamless = true
+seamless_blend_skirt = 0.107
+color_ramp = SubResource("Gradient_v2exx")
+noise = SubResource("FastNoiseLite_bhyg2")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d23u7"]
+width = 64
+height = 64
+invert = true
+seamless = true
+seamless_blend_skirt = 0.107
+as_normal_map = true
+bump_strength = 11.3
+color_ramp = SubResource("Gradient_v2exx")
+noise = SubResource("FastNoiseLite_bhyg2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a1dwe"]
+albedo_color = Color(0.513726, 0.752941, 0.858824, 1)
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_d23u7")
+ao_texture = SubResource("NoiseTexture2D_57dlw")
+heightmap_texture = SubResource("NoiseTexture2D_d23u7")
+uv1_scale = Vector3(0.05, 0.05, 0.05)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_p1euq"]
+size = Vector2(30, 60)
+center_offset = Vector3(15, 0, 0)
+
+[node name="CloudPlane" type="Node3D"]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 10, 0)
+material_override = SubResource("StandardMaterial3D_a1dwe")
+mesh = SubResource("PlaneMesh_p1euq")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="MeshInstance3D2"]
+script = ExtResource("1_ubuux")
+high_contrast_group = &"neutral"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"

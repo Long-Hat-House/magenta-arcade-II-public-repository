@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ScoreInfo" load_steps=2 format=3 uid="uid://qpq672a4a0sn"]
+
+[ext_resource type="Script" path="res://systems/score/score_info.gd" id="1_urnt2"]
+
+[resource]
+script = ExtResource("1_urnt2")
+score_value = 120
+score_title = &"Super Pizza"
+world_positioned = true
+breaks_combos = true
+combo_max_count = 2
+combo_value_extra_enemy = 50
+combo_value_last_enemy = 50
+combo_phrases = Array[StringName]([])

@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgpbxwer6xhh2"]
+
+[ext_resource type="Texture2D" uid="uid://dp8j87dp24qul" path="res://modules/text_flow/textures/text_flow_bubble_bg.png" id="1_j8lba"]
+[ext_resource type="Script" uid="uid://dic8m8485l4vx" path="res://modules/accessibility_manager/accessibility_text_preview.gd" id="2_24qic"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_24qic"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+texture = ExtResource("1_j8lba")
+texture_margin_left = 15.0
+texture_margin_top = 14.0
+texture_margin_right = 15.0
+texture_margin_bottom = 19.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" node_paths=PackedStringArray("_label")]
+custom_minimum_size = Vector2(450, 0)
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_24qic")
+script = ExtResource("2_24qic")
+_text = "dial_hub_lvl_1_win"
+_label = NodePath("VBoxContainer/RichTextLabel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+texture_filter = 2
+clip_contents = false
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"richtextlabel_bubble"
+bbcode_enabled = true
+text = "0123456789 0123456789 0123456789 0123456789"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+meta_underlined = false
+hint_underlined = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false

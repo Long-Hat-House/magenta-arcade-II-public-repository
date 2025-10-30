@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3y7ayh2jrgq1"]
+
+[ext_resource type="PackedScene" uid="uid://db262onc36mst" path="res://elements/enemy/laser/mesh/laserroboto.glb" id="1_8l73u"]
+[ext_resource type="Material" uid="uid://d21cy78gvkato" path="res://elements/enemy/laser/material/laserroboto.tres" id="2_eg6hw"]
+[ext_resource type="Material" uid="uid://b7qqtv5hqoosw" path="res://elements/enemy/roboto_jacare/material/M_roboto_jacare_esteira.tres" id="3_y3c4h"]
+
+[sub_resource type="Animation" id="Animation_msjdg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rig_LaserCannon/Skeleton3D/Laser_Cannon_Belt:material_override:uv1_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_knfss"]
+resource_name = "laserRobotoBelt"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rig_LaserCannon/Skeleton3D/Laser_Cannon_Belt:material_override:uv1_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s4vcd"]
+_data = {
+&"RESET": SubResource("Animation_msjdg"),
+&"laserRobotoBelt": SubResource("Animation_knfss")
+}
+
+[node name="laserroboto" instance=ExtResource("1_8l73u")]
+
+[node name="Skeleton3D" parent="Rig_LaserCannon" index="0"]
+bones/2/position = Vector3(-1.08654e-09, 0.138267, 0.843834)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/position = Vector3(0.0062477, 0.220969, -0.24819)
+bones/4/position = Vector3(0.070667, 0.337501, 0.836926)
+bones/5/position = Vector3(0.126316, 0.286904, 0.151061)
+bones/5/rotation = Quaternion(0, 0.169408, 0, 0.985546)
+bones/6/position = Vector3(-0.126316, 0.286904, 0.151061)
+bones/6/rotation = Quaternion(0, -0.169408, 0, 0.985546)
+bones/7/position = Vector3(2.35325e-16, 0.499348, 0.164824)
+
+[node name="Laser_Cannon" parent="Rig_LaserCannon/Skeleton3D" index="0"]
+material_override = ExtResource("2_eg6hw")
+blend_shapes/Cannon_Scale_UP = 1.0
+
+[node name="Laser_Cannon_Belt" parent="Rig_LaserCannon/Skeleton3D" index="1"]
+material_override = ExtResource("3_y3c4h")
+
+[node name="Laser_Cannon_Cap" parent="Rig_LaserCannon/Skeleton3D" index="2"]
+material_override = ExtResource("2_eg6hw")
+
+[node name="Laser_Cannon_Eye" parent="Rig_LaserCannon/Skeleton3D" index="3"]
+material_override = ExtResource("2_eg6hw")
+blend_shapes/Eye_change_A = 0.752749
+
+[node name="Laser_Cannon_EyeBrow_L" parent="Rig_LaserCannon/Skeleton3D" index="4"]
+material_override = ExtResource("2_eg6hw")
+
+[node name="Laser_Cannon_EyeBrow_R" parent="Rig_LaserCannon/Skeleton3D" index="5"]
+material_override = ExtResource("2_eg6hw")
+
+[node name="Laser_Cannon_Tank" parent="Rig_LaserCannon/Skeleton3D" index="6"]
+material_override = ExtResource("2_eg6hw")
+
+[node name="Laser_Cannon_Tank_001" parent="Rig_LaserCannon/Skeleton3D" index="7"]
+material_override = ExtResource("2_eg6hw")
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "LASER_ROBOTO_REST"
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+&"": SubResource("AnimationLibrary_s4vcd")
+}
+autoplay = "laserRobotoBelt"

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1ytaoacwf1m4"]
+
+[ext_resource type="Script" uid="uid://bchk0j60x02nq" path="res://elements/enemy/projectiles/costellation/proj_costellation.gd" id="1_y8iad"]
+
+[node name="ProjCostellation" type="Node3D"]
+script = ExtResource("1_y8iad")

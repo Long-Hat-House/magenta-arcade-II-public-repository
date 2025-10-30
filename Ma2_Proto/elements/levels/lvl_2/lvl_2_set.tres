@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="LevelSet" load_steps=11 format=3 uid="uid://c3rxa6fdllcr7"]
+
+[ext_resource type="PackedScene" uid="uid://cun6hi0metu48" path="res://elements/levels/lvl_2/lvl_2.tscn" id="1_w17nj"]
+[ext_resource type="Script" path="res://systems/level/level_set.gd" id="2_l24f2"]
+[ext_resource type="PackedScene" uid="uid://cudfmtle1dqiu" path="res://elements/levels/lvl_2/lvl_2_sub_airport.tscn" id="3_58b4h"]
+[ext_resource type="PackedScene" uid="uid://cn28msj0s013g" path="res://elements/levels/lvl_shop_sub.tscn" id="3_hhrca"]
+[ext_resource type="PackedScene" uid="uid://rnpqk2u244h1" path="res://elements/levels/lvl_2/lvl_2_sub_barragem.tscn" id="4_pasbm"]
+[ext_resource type="PackedScene" uid="uid://3sktcgpweu5e" path="res://elements/levels/lvl_2/lvl_2_sub_orla_a_1.tscn" id="5_uxvbg"]
+[ext_resource type="PackedScene" uid="uid://tf1v5yknkl5b" path="res://elements/levels/lvl_2/lvl_2_sub_orla_b_pampulha_church.tscn" id="6_flcrm"]
+[ext_resource type="PackedScene" uid="uid://bs5t7n3ydeqas" path="res://elements/levels/lvl_2/lvl_2_sub_orla_c_2.tscn" id="7_fe1fn"]
+[ext_resource type="PackedScene" uid="uid://cpunghr2hiwkb" path="res://elements/levels/lvl_2/lvl_2_sub_stadium.tscn" id="8_s3lw7"]
+[ext_resource type="PackedScene" uid="uid://dahut7l8lnw6c" path="res://elements/levels/lvl_2/lvl_2_sub_z_boss.tscn" id="9_ckyqb"]
+
+[resource]
+script = ExtResource("2_l24f2")
+open = false
+parent_level = ExtResource("1_w17nj")
+sub_levels = Array[Resource]([ExtResource("3_hhrca"), ExtResource("3_58b4h"), ExtResource("4_pasbm"), ExtResource("5_uxvbg"), ExtResource("6_flcrm"), ExtResource("7_fe1fn"), ExtResource("8_s3lw7"), ExtResource("9_ckyqb")])

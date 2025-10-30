@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="StarInfo" load_steps=2 format=3 uid="uid://cckodkpn5wfri"]
+
+[ext_resource type="Script" uid="uid://yt80jeaa705j" path="res://systems/ma2_meta/star_info.gd" id="1_4u2l3"]
+
+[resource]
+script = ExtResource("1_4u2l3")
+star_id = &"star_lvl_2_score_3"
+type = 2
+_target_value_int = 23000

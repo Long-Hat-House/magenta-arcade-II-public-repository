@@ -1,0 +1,1034 @@
+[gd_scene load_steps=39 format=3 uid="uid://dkc5ef1xh0hhp"]
+
+[ext_resource type="Texture2D" uid="uid://cm5belis6bq0x" path="res://elements/icons/icon_star.png" id="1_ewtfo"]
+[ext_resource type="Script" uid="uid://c0yrd0dngxg20" path="res://elements/levels/lvl_hub/hub_elements/hub_panel/element_hub_info_panel.gd" id="1_g86ph"]
+[ext_resource type="Script" uid="uid://bi4yfgewvcvwq" path="res://systems/switchable/switch_oning_offing_animation_player.gd" id="3_71udg"]
+[ext_resource type="Texture2D" uid="uid://dnqs8qritl02a" path="res://elements/icons/icon_score.png" id="4_1iip8"]
+[ext_resource type="Script" uid="uid://6ra6br3mnbvy" path="res://systems/ma2_meta/star_info_display.gd" id="4_wtegl"]
+[ext_resource type="PackedScene" uid="uid://detgpi5k8134c" path="res://elements/ui/menus/ui_leaderboards_button.tscn" id="5_jluww"]
+[ext_resource type="Script" uid="uid://bn4ao8qxkc535" path="res://systems/level/level_info_display.gd" id="6_4bom4"]
+[ext_resource type="Script" uid="uid://bm2efqyiljc1f" path="res://systems/ma2_meta/meta_info_display.gd" id="6_7scws"]
+[ext_resource type="Texture2D" uid="uid://bg17nj7c2mmt3" path="res://elements/icons/icon_coin.png" id="6_8syjk"]
+[ext_resource type="Texture2D" uid="uid://cd2easivyhojj" path="res://elements/icons/icons_magenta_eva.png" id="6_vfyb4"]
+[ext_resource type="Script" uid="uid://dchiwt0niv03n" path="res://modules/text_flow/zap/src/text_flow_zap_speaker_info_display.gd" id="8_37a6d"]
+[ext_resource type="Script" uid="uid://ctplyqn11mnfw" path="res://systems/ma2_meta/upgrade_info_display.gd" id="9_mmoqs"]
+[ext_resource type="Script" uid="uid://8muk3i7dri88" path="res://systems/ma2_meta/upgrade_progress_display.gd" id="9_xjeom"]
+[ext_resource type="Script" uid="uid://bh35xmokasn0b" path="res://systems/ma2_meta/upgrade_set_display.gd" id="11_wi07d"]
+[ext_resource type="Texture2D" uid="uid://busam0x24ady8" path="res://elements/icons/icon_locked.png" id="12_jxu10"]
+[ext_resource type="Texture2D" uid="uid://ytc51omb1gqo" path="res://modules/social_platform_system/play_games_icons/icon_achievements.png" id="12_qbwcn"]
+[ext_resource type="PackedScene" uid="uid://fxa1virspcl1" path="res://elements/levels/lvl_hub/hub_elements/hub_panel/hub_panel_ui_upgrade_star_element.tscn" id="12_qkkdo"]
+[ext_resource type="Script" uid="uid://b7277psoyn05g" path="res://elements/ui/menus/ui_achievements_button.gd" id="13_bunog"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wpmie"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8uw48"]
+bg_color = Color(1, 1, 1, 0.729412)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 0)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Animation" id="Animation_xd4hy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.71, 0.71)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_71wed"]
+resource_name = "off"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_eybla"]
+resource_name = "offing"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(2.46229, 0.466516, 1),
+"update": 0,
+"values": [Vector2(0.71, 0.71), Vector2(0.71, 0.1), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_t6wrr"]
+resource_name = "on"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.71, 0.71)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.166667, 0.2),
+"transitions": PackedFloat32Array(0.68302, 0.554785, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.929412), Color(1, 1, 1, 1), Color(1, 1, 1, 0.937255)]
+}
+
+[sub_resource type="Animation" id="Animation_puoqi"]
+resource_name = "oning"
+length = 0.25
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.2, 0.225, 0.25),
+"transitions": PackedFloat32Array(0.5, 1.86606, 0, 0, 2.46229),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.71, 0.1), Vector2(0.71, 0.71), Vector2(0.67, 0.67), Vector2(0.71, 0.71)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b1du1"]
+_data = {
+&"RESET": SubResource("Animation_xd4hy"),
+&"off": SubResource("Animation_71wed"),
+&"offing": SubResource("Animation_eybla"),
+&"on": SubResource("Animation_t6wrr"),
+&"oning": SubResource("Animation_puoqi")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_naj53"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0dqhb"]
+content_margin_left = 20.0
+content_margin_top = 15.0
+content_margin_right = 20.0
+content_margin_bottom = 15.0
+bg_color = Color(1, 1, 1, 0.396078)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(1, 1, 1, 0.815686)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0ohe2"]
+blend_mode = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x77by"]
+content_margin_bottom = 15.0
+draw_center = false
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="Animation" id="Animation_n83ti"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_nlc0o"]
+resource_name = "off"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_xhwtt"]
+resource_name = "offing"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_l1mxi"]
+resource_name = "on"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_b7l24"]
+resource_name = "oning"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vhelb"]
+_data = {
+&"RESET": SubResource("Animation_n83ti"),
+&"off": SubResource("Animation_nlc0o"),
+&"offing": SubResource("Animation_xhwtt"),
+&"on": SubResource("Animation_l1mxi"),
+&"oning": SubResource("Animation_b7l24")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vbtw7"]
+content_margin_left = 30.0
+content_margin_right = 30.0
+bg_color = Color(0.870588, 0.870588, 0.870588, 0.705882)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="GDScript" id="GDScript_36uxw"]
+script/source = "extends ProgressBarIndexed
+
+func _ready() -> void:
+	super._ready()
+	HUBLevel.instance.upgrading_stats_updated.connect(_on_hub_upgrading_stats_updated)
+
+func _on_hub_upgrading_stats_updated(start:int, end:int, current:int):
+	if start != end:
+		set_values(maxi(start, end), current, current == start)
+"
+
+[node name="HubLvlInfoPanel" type="PanelContainer" node_paths=PackedStringArray("_to_set_self_modulate", "_on_off_anim", "_upgrading_screen_animation", "_upgrade_info_display", "_upgrade_set_display", "_tabs", "_stars_container", "_lvl_incomplete_display", "_info_title", "_label_level_highscore", "_lvl_score_container", "_lvl_score_label", "_lvl_leaderboards_button", "_screen_icon")]
+material = SubResource("CanvasItemMaterial_wpmie")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -900.0
+offset_right = 500.0
+offset_bottom = -560.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.71, 0.71)
+pivot_offset = Vector2(500, 170)
+theme_override_styles/panel = SubResource("StyleBoxFlat_8uw48")
+script = ExtResource("1_g86ph")
+_to_set_self_modulate = [NodePath("."), NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Control/pivot/Upgrading_Downgrading Screen")]
+_on_off_anim = NodePath("InfoPanel AnimationPlayer")
+_upgrading_screen_animation = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Control/Switch_Oning_Offing_AnimationPlayer")
+_upgrade_info_display = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/3 Upgrade Info Screen")
+_upgrade_set_display = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/4 Upgrade Set Screen")
+_tabs = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer")
+_stars_container = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/0 Level Info Complete/BoxContainer/Stars Container")
+_lvl_incomplete_display = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/1 Level Info Incomplete")
+_info_title = NodePath("MarginContainer/VBoxContainer/TitleMargin/TitleContainer/Info Title Label")
+_label_level_highscore = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/0 Level Info Complete/BoxContainer/BoxContainer2/HighscoreText")
+_lvl_score_container = NodePath("MarginContainer/VBoxContainer/TitleMargin/TitleContainer/Score Container")
+_lvl_score_label = NodePath("MarginContainer/VBoxContainer/TitleMargin/TitleContainer/Score Container/Score Label")
+_lvl_leaderboards_button = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/0 Level Info Complete/BoxContainer/UiLeaderboardsButton")
+_screen_icon = NodePath("MarginContainer/BGContainer/ScreenIcon")
+
+[node name="InfoPanel AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_b1du1")
+}
+script = ExtResource("3_71udg")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="BGContainer" type="Control" parent="MarginContainer"]
+clip_contents = true
+layout_mode = 2
+
+[node name="ScreenIcon" type="TextureRect" parent="MarginContainer/BGContainer"]
+modulate = Color(1, 1, 1, 0.207843)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -210.0
+offset_top = -230.0
+offset_right = 70.0
+offset_bottom = 50.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("1_ewtfo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TitleMargin" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="TitleContainer" type="BoxContainer" parent="MarginContainer/VBoxContainer/TitleMargin"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Info Title Label" type="Label" parent="MarginContainer/VBoxContainer/TitleMargin/TitleContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_type_variation = &"label_hub_title"
+text = "Força Divina"
+horizontal_alignment = 1
+
+[node name="Score Container" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TitleMargin/TitleContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Score Label" type="Label" parent="MarginContainer/VBoxContainer/TitleMargin/TitleContainer/Score Container"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_type_variation = &"label_hub_text"
+text = "123523"
+vertical_alignment = 1
+
+[node name="ScoreIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/TitleMargin/TitleContainer/Score Container"]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_1iip8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+current_tab = 2
+tabs_visible = false
+
+[node name="0 Level Info Complete" type="BoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+metadata/_tab_index = 0
+
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/0 Level Info Complete"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="UiLeaderboardsButton" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/0 Level Info Complete/BoxContainer" instance=ExtResource("5_jluww")]
+layout_mode = 2
+theme_type_variation = &"button_line_round"
+
+[node name="BoxContainer2" type="BoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/0 Level Info Complete/BoxContainer"]
+custom_minimum_size = Vector2(220, 190)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+alignment = 2
+vertical = true
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/0 Level Info Complete/BoxContainer/BoxContainer2"]
+custom_minimum_size = Vector2(112, 112)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+texture = ExtResource("4_1iip8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HighscoreText" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/0 Level Info Complete/BoxContainer/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_type_variation = &"label_hub_star_normal"
+text = "100.000.000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/0 Level Info Complete/BoxContainer"]
+custom_minimum_size = Vector2(0, 170)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Stars Container" type="BoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/0 Level Info Complete/BoxContainer"]
+custom_minimum_size = Vector2(0, 190)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+alignment = 1
+
+[node name="StarInfo" type="BoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/0 Level Info Complete/BoxContainer/Stars Container" node_paths=PackedStringArray("label_text", "texture_rect_star_icon")]
+custom_minimum_size = Vector2(140, 190)
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+vertical = true
+script = ExtResource("4_wtegl")
+label_text = NodePath("StarText")
+label_text_type_variation_normal = "label_hub_star_normal"
+label_text_type_variation_unlocked = "label_hub_star_unlocked"
+texture_rect_star_icon = NodePath("StarIcon")
+metadata/_edit_group_ = true
+
+[node name="StarIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/0 Level Info Complete/BoxContainer/Stars Container/StarInfo"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("1_ewtfo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="StarText" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/0 Level Info Complete/BoxContainer/Stars Container/StarInfo"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"label_hub_star_normal"
+text = "10.000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StarInfo2" type="BoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/0 Level Info Complete/BoxContainer/Stars Container" node_paths=PackedStringArray("label_text", "texture_rect_star_icon")]
+custom_minimum_size = Vector2(155, 190)
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+vertical = true
+script = ExtResource("4_wtegl")
+label_text = NodePath("StarText")
+label_text_type_variation_normal = "label_hub_star_normal"
+label_text_type_variation_unlocked = "label_hub_star_unlocked"
+texture_rect_star_icon = NodePath("StarIcon")
+metadata/_edit_group_ = true
+
+[node name="StarIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/0 Level Info Complete/BoxContainer/Stars Container/StarInfo2"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("1_ewtfo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="StarText" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/0 Level Info Complete/BoxContainer/Stars Container/StarInfo2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"label_hub_star_normal"
+text = "20.000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StarInfo3" type="BoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/0 Level Info Complete/BoxContainer/Stars Container" node_paths=PackedStringArray("label_text", "texture_rect_star_icon")]
+custom_minimum_size = Vector2(170, 190)
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+vertical = true
+script = ExtResource("4_wtegl")
+label_text = NodePath("StarText")
+label_text_type_variation_normal = "label_hub_star_normal"
+label_text_type_variation_unlocked = "label_hub_star_unlocked"
+texture_rect_star_icon = NodePath("StarIcon")
+metadata/_edit_group_ = true
+
+[node name="StarIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/0 Level Info Complete/BoxContainer/Stars Container/StarInfo3"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("1_ewtfo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="StarText" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/0 Level Info Complete/BoxContainer/Stars Container/StarInfo3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"label_hub_star_normal"
+text = "30.000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="1 Level Info Incomplete" type="PanelContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer" node_paths=PackedStringArray("_level_goal_text", "_boss_display_duplicate")]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_naj53")
+script = ExtResource("6_4bom4")
+_level_goal_text = NodePath("IncompleteInfo/Label Level Goal Text")
+_boss_display_duplicate = NodePath("IncompleteInfo/Bosses Box/Boss Display")
+metadata/_tab_index = 1
+
+[node name="IncompleteInfo" type="BoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/1 Level Info Incomplete"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+vertical = true
+
+[node name="Bosses Box" type="BoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/1 Level Info Incomplete/IncompleteInfo"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Boss Display" type="BoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/1 Level Info Incomplete/IncompleteInfo/Bosses Box" node_paths=PackedStringArray("_trects_speaker_icons_2")]
+layout_mode = 2
+alignment = 1
+vertical = true
+script = ExtResource("8_37a6d")
+_trects_speaker_icons_2 = [NodePath("PanelContainer/TextureRect")]
+_set_speaker_name_color = false
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/1 Level Info Incomplete/IncompleteInfo/Bosses Box/Boss Display"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_0dqhb")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/1 Level Info Incomplete/IncompleteInfo/Bosses Box/Boss Display/PanelContainer"]
+modulate = Color(1, 1, 1, 0.670588)
+material = SubResource("CanvasItemMaterial_0ohe2")
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("6_vfyb4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label Level Goal Text" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/1 Level Info Incomplete/IncompleteInfo"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 48
+text = "Enfrente Eva Magenta, e derrote!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="2 Level Info None" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+metadata/_tab_index = 2
+
+[node name="Stats Container" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/2 Level Info None"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="UiLeaderboardsButton" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/2 Level Info None/Stats Container" instance=ExtResource("5_jluww")]
+layout_mode = 2
+theme_type_variation = &"button_line_round"
+leaderboard_to_show = 7
+
+[node name="Stats Coins" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/2 Level Info None/Stats Container" node_paths=PackedStringArray("_label_text")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("6_7scws")
+_info_type = 1
+_label_text = NodePath("Stats CoinText")
+metadata/_edit_group_ = true
+
+[node name="Coin Icon" type="TextureRect" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/2 Level Info None/Stats Container/Stats Coins"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("6_8syjk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Stats CoinText" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/2 Level Info None/Stats Container/Stats Coins"]
+layout_mode = 2
+theme_type_variation = &"label_hub_text"
+text = "234.519"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Stats Stars" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/2 Level Info None/Stats Container" node_paths=PackedStringArray("_label_text")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("6_7scws")
+_label_text = NodePath("Stats StarText")
+metadata/_edit_group_ = true
+
+[node name="StarIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/2 Level Info None/Stats Container/Stats Stars"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("1_ewtfo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Stats StarText" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/2 Level Info None/Stats Container/Stats Stars"]
+layout_mode = 2
+theme_type_variation = &"label_hub_text"
+text = "03 / 23"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementsButton" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/2 Level Info None/Stats Container"]
+layout_mode = 2
+theme_type_variation = &"button_line_round"
+icon = ExtResource("12_qbwcn")
+script = ExtResource("13_bunog")
+_enable_icon = true
+metadata/_custom_type_script = "uid://b7277psoyn05g"
+
+[node name="3 Upgrade Info Screen" type="BoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer" node_paths=PackedStringArray("_label_title", "_container_progress_displays")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+vertical = true
+script = ExtResource("9_mmoqs")
+_label_title = NodePath("UpgradeTitle")
+_container_progress_displays = NodePath("ProgressDisplays")
+metadata/_tab_index = 3
+
+[node name="UpgradeTitle" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/3 Upgrade Info Screen"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_type_variation = &"label_hub_title"
+text = "Dano"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ProgressDisplays" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/3 Upgrade Info Screen"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ProgressDisplay" type="PanelContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/3 Upgrade Info Screen/ProgressDisplays" node_paths=PackedStringArray("_label_progress_text", "_container_stars")]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_x77by")
+script = ExtResource("9_xjeom")
+_label_progress_text = NodePath("BoxContainer/Control/ProgressText")
+_container_stars = NodePath("BoxContainer/ProgressRequiredStars")
+
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/3 Upgrade Info Screen/ProgressDisplays/ProgressDisplay"]
+layout_mode = 2
+theme_override_constants/separation = 5
+vertical = true
+
+[node name="ProgressRequiredStars" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/3 Upgrade Info Screen/ProgressDisplays/ProgressDisplay/BoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="StarIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/3 Upgrade Info Screen/ProgressDisplays/ProgressDisplay/BoxContainer/ProgressRequiredStars"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("1_ewtfo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/3 Upgrade Info Screen/ProgressDisplays/ProgressDisplay/BoxContainer"]
+layout_mode = 2
+
+[node name="ProgressText" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/3 Upgrade Info Screen/ProgressDisplays/ProgressDisplay/BoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.0
+offset_top = 8.0
+offset_right = 25.0
+offset_bottom = 66.0
+grow_horizontal = 2
+pivot_offset = Vector2(0, 58)
+theme_type_variation = &"label_hub_text"
+text = "I"
+horizontal_alignment = 1
+vertical_alignment = 2
+justification_flags = 0
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/3 Upgrade Info Screen"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="4 Upgrade Set Screen" type="BoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer" node_paths=PackedStringArray("_label_description")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+alignment = 1
+vertical = true
+script = ExtResource("11_wi07d")
+_label_description = NodePath("UpgradeSetDescription")
+metadata/_tab_index = 4
+
+[node name="UpgradeSetDescription" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/4 Upgrade Set Screen"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_type_variation = &"label_hub_text"
+text = "Seu poder básico, ativado enquanto você mantém o dedo encostado, pode ser melhorado aqui."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="5 Upgrade Screen" type="BoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+vertical = true
+metadata/_tab_index = 5
+
+[node name="VBoxContainer2" type="BoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/5 Upgrade Screen"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="UpgradeDescription2" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/5 Upgrade Screen/VBoxContainer2" node_paths=PackedStringArray("_label_text")]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_type_variation = &"label_hub_title"
+text = "23"
+horizontal_alignment = 2
+script = ExtResource("6_7scws")
+_label_text = NodePath(".")
+
+[node name="UpgradeDescription" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/5 Upgrade Screen/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_type_variation = &"label_hub_title"
+text = "hub_info_stars_total"
+
+[node name="VBoxContainer3" type="BoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/5 Upgrade Screen"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="UpgradeDescription2" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/5 Upgrade Screen/VBoxContainer3" node_paths=PackedStringArray("_label_text")]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_type_variation = &"label_hub_title"
+text = "10"
+horizontal_alignment = 2
+script = ExtResource("6_7scws")
+_info_type = 2
+_label_text = NodePath(".")
+
+[node name="UpgradeDescription" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/5 Upgrade Screen/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_type_variation = &"label_hub_title"
+text = "hub_info_stars_used"
+
+[node name="VBoxContainer4" type="BoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/5 Upgrade Screen"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="UpgradeDescription2" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/5 Upgrade Screen/VBoxContainer4" node_paths=PackedStringArray("_label_text")]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_type_variation = &"label_hub_title"
+text = "13"
+horizontal_alignment = 2
+script = ExtResource("6_7scws")
+_info_type = 3
+_label_text = NodePath(".")
+
+[node name="UpgradeDescription" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/5 Upgrade Screen/VBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_type_variation = &"label_hub_title"
+text = "hub_info_stars_unused"
+
+[node name="6 Under Construction" type="BoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+alignment = 1
+metadata/_tab_index = 6
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/TabContainer/6 Under Construction"]
+layout_mode = 2
+texture = ExtResource("12_jxu10")
+expand_mode = 3
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Switch_Oning_Offing_AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Control"]
+libraries = {
+&"": SubResource("AnimationLibrary_vhelb")
+}
+script = ExtResource("3_71udg")
+
+[node name="pivot" type="Control" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Control"]
+anchors_preset = 0
+
+[node name="Upgrading_Downgrading Screen" type="PanelContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Control/pivot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -100.0
+offset_right = 105.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_vbtw7")
+
+[node name="ProgressRequiredStars" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Control/pivot/Upgrading_Downgrading Screen" node_paths=PackedStringArray("_elements_container")]
+layout_mode = 2
+theme_override_constants/separation = 3
+script = SubResource("GDScript_36uxw")
+_elements_container = NodePath(".")
+
+[node name="UpgradeStarElement" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Control/pivot/Upgrading_Downgrading Screen/ProgressRequiredStars" instance=ExtResource("12_qkkdo")]
+layout_mode = 2

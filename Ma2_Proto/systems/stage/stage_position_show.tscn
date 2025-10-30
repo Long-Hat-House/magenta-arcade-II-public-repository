@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3rldbm3if4o7"]
+
+[sub_resource type="Gradient" id="Gradient_cdyh8"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.981818)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jsq5v"]
+gradient = SubResource("Gradient_cdyh8")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3rp5d"]
+transparency = 1
+albedo_color = Color(0, 1, 0, 1)
+albedo_texture = SubResource("GradientTexture2D_jsq5v")
+albedo_texture_force_srgb = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hn4gp"]
+material = SubResource("StandardMaterial3D_3rp5d")
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2646f"]
+shading_mode = 0
+albedo_color = Color(0.546717, 0.168975, 0.146903, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_iiskk"]
+material = SubResource("StandardMaterial3D_2646f")
+size = Vector2(0.25, 0.25)
+
+[node name="StagePositionShow" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0693117, 0)
+mesh = SubResource("PlaneMesh_hn4gp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0943604, 0)
+mesh = SubResource("PlaneMesh_iiskk")

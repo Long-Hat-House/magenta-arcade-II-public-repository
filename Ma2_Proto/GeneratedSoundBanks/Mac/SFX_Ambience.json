@@ -1,0 +1,531 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3583497273",
+    "Type": "User",
+    "GUID": "{8F3E40E7-6F80-4209-80DF-28A2BDC4730E}",
+    "Language": "SFX",
+    "Hash": "{1CEB0766-469B-CA5C-F7E8-3FCE753A2220}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\SFX_Ambience",
+    "ShortName": "SFX_Ambience",
+    "Path": "SFX_Ambience.bnk",
+    "Media": [
+     {
+      "Id": "38262972",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "side_left.wav",
+      "Path": "Media/38262972.wem",
+      "CachePath": "CA/{CAD7113B-652E-BAC5-4673-0B954425EE5B}.wem",
+      "PrefetchSize": "1300"
+     },
+     {
+      "Id": "41468827",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\DESTRUCTABLE\\world_destructable_leaves_08.wav",
+      "CachePath": "00/{00B83284-AF12-5A95-794C-56FC1C4F5731}.wem"
+     },
+     {
+      "Id": "67829217",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\DESTRUCTABLE\\world_destructable_wood_09.wav",
+      "CachePath": "31/{3110F6A2-CE12-CA41-7B7B-60CA3F6172B2}.wem"
+     },
+     {
+      "Id": "177252190",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\DESTRUCTABLE\\world_destructable_leaves_10.wav",
+      "CachePath": "4B/{4BB67C09-EC26-2FDD-5C7C-534DDAA139C9}.wem"
+     },
+     {
+      "Id": "306624223",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\DESTRUCTABLE\\world_destructable_leaves_04.wav",
+      "CachePath": "9C/{9C471038-D70A-6C0A-B9EA-6430D93B23BE}.wem"
+     },
+     {
+      "Id": "318317322",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\DESTRUCTABLE\\world_destructable_leaves_05.wav",
+      "CachePath": "D4/{D4F20552-36E5-45B1-DBE8-754E1F1AD6BC}.wem"
+     },
+     {
+      "Id": "342250292",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\DESTRUCTABLE\\world_destructable_wood_05.wav",
+      "CachePath": "2A/{2AC0315D-C7B0-7DB9-FD56-D56AA9DE80D1}.wem"
+     },
+     {
+      "Id": "358167682",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\DESTRUCTABLE\\world_destructable_wood_04.wav",
+      "CachePath": "BA/{BA6D8E67-A001-29BE-6C16-9A74BC9C219D}.wem"
+     },
+     {
+      "Id": "363654483",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\DESTRUCTABLE\\world_destructable_wood_07.wav",
+      "CachePath": "3A/{3AF119C1-6E40-3929-DFC5-54064BF65C8E}.wem"
+     },
+     {
+      "Id": "396481149",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\DESTRUCTABLE\\world_destructable_metal_07.wav",
+      "CachePath": "1F/{1FDDEEBB-470B-52EC-CD45-1869E234E7CF}.wem"
+     },
+     {
+      "Id": "426923852",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\DESTRUCTABLE\\world_destructable_leaves_09.wav",
+      "CachePath": "0F/{0F6428FA-558E-F205-E4A0-B69CC1961F52}.wem"
+     },
+     {
+      "Id": "483303756",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\DESTRUCTABLE\\world_destructable_metal_04.wav",
+      "CachePath": "5E/{5ECC4901-D35B-0890-FFD3-2837476DC5E8}.wem"
+     },
+     {
+      "Id": "573195642",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\DESTRUCTABLE\\world_destructable_wood_02.wav",
+      "CachePath": "3A/{3A0DC212-D048-482D-1352-7EAB64F6FE30}.wem"
+     },
+     {
+      "Id": "586385634",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\FLAG\\world_flag_fall_01.wav",
+      "CachePath": "9F/{9FCA7E29-DE69-95D9-1E83-262FFB377FDA}.wem"
+     },
+     {
+      "Id": "591683459",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "side_right.wav",
+      "Path": "Media/591683459.wem",
+      "CachePath": "F2/{F2ADFC63-2123-A4AD-FEE6-7F4769CF4745}.wem",
+      "PrefetchSize": "1300"
+     },
+     {
+      "Id": "629513376",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\DESTRUCTABLE\\world_destructable_wood_01.wav",
+      "CachePath": "36/{361A1FC9-4D09-2C48-828D-13E15D54BD15}.wem"
+     },
+     {
+      "Id": "642526476",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\AMBIENCE\\world_ambience_hub_01.wav",
+      "CachePath": "EF/{EF3C16D4-8E1B-C291-F8D2-0ACD9D7FB1CB}.wem"
+     },
+     {
+      "Id": "683876415",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\DESTRUCTABLE\\world_destructable_leaves_03.wav",
+      "CachePath": "D8/{D80BAF13-391C-9566-F8AE-A34F152C4BFF}.wem"
+     },
+     {
+      "Id": "713259567",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\DESTRUCTABLE\\world_destructable_wood_08.wav",
+      "CachePath": "DA/{DAD6A33A-5B3F-CC46-8889-CEAD8CCAD5DF}.wem"
+     },
+     {
+      "Id": "736304229",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\DESTRUCTABLE\\world_destructable_metal_06.wav",
+      "CachePath": "A9/{A9F5C4CA-059A-AA28-54EC-D2EA43A025C6}.wem"
+     },
+     {
+      "Id": "745268164",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\DESTRUCTABLE\\world_destructable_leaves_01.wav",
+      "CachePath": "1B/{1BABC2C2-EC14-EC1E-9849-3F50ACC1B7CE}.wem"
+     },
+     {
+      "Id": "750103033",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\DESTRUCTABLE\\world_destructable_wood_10.wav",
+      "CachePath": "E0/{E07B1046-284C-825F-BC9E-E9E0E0DD77AD}.wem"
+     },
+     {
+      "Id": "805737547",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\DESTRUCTABLE\\world_destructable_wood_03.wav",
+      "CachePath": "05/{05BF1429-999F-2914-CBDE-983966D1F73E}.wem"
+     },
+     {
+      "Id": "833345511",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\DESTRUCTABLE\\world_destructable_leaves_07.wav",
+      "CachePath": "57/{5711646F-391C-196F-3F35-EE0C100DFDB9}.wem"
+     },
+     {
+      "Id": "877809281",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "UI\\LEVEL_CLEAR\\ui_level_clear_step_complete_01.wav",
+      "CachePath": "B0/{B0D180D0-0354-D147-1B00-06C13DA374D7}.wem"
+     },
+     {
+      "Id": "897574328",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\DESTRUCTABLE\\world_destructable_leaves_02.wav",
+      "CachePath": "BC/{BC8E1C23-12B7-C65B-E5EB-AC64BC43104A}.wem"
+     },
+     {
+      "Id": "943685488",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "UI\\BUTTON\\ui_button_slider_02.wav",
+      "CachePath": "66/{66F013EF-493D-2569-F2B9-6D40AE82AC0B}.wem"
+     },
+     {
+      "Id": "955210360",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "UI\\BUTTON\\ui_button_slider_01.wav",
+      "CachePath": "38/{3833D584-CFD7-0FC5-5726-341932D128A3}.wem"
+     },
+     {
+      "Id": "970652592",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\DESTRUCTABLE\\world_destructable_wood_06.wav",
+      "CachePath": "05/{05926FF7-BE98-4F94-8ADC-E761054E800D}.wem"
+     },
+     {
+      "Id": "994893637",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\DESTRUCTABLE\\world_destructable_metal_05.wav",
+      "CachePath": "4F/{4F6A9D92-BEB6-E8B3-02D2-FB4A0D509374}.wem"
+     },
+     {
+      "Id": "1011547700",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\DESTRUCTABLE\\world_destructable_leaves_06.wav",
+      "CachePath": "4A/{4A26EF83-269F-2BA2-C0A2-48E46E368594}.wem"
+     },
+     {
+      "Id": "1031695539",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\DESTRUCTABLE\\world_destructable_metal_03.wav",
+      "CachePath": "8E/{8E25C003-23FD-75B2-2E13-858A6FEBE0E9}.wem"
+     },
+     {
+      "Id": "1064484946",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\DESTRUCTABLE\\world_destructable_metal_01.wav",
+      "CachePath": "93/{933D411A-C791-E264-8F62-C3530FDB2F6C}.wem"
+     },
+     {
+      "Id": "1067286691",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\DESTRUCTABLE\\world_destructable_metal_02.wav",
+      "CachePath": "62/{621A48D5-CE82-BDF9-142E-144956CE2ECE}.wem"
+     }
+    ],
+    "Plugins": {
+     "Custom": [
+      {
+       "Id": "75097291",
+       "Name": "Sine",
+       "ObjectPath": "\\Actor-Mixer Hierarchy\\_DEBUG\\DEBUG_Sounds\\Beep_Short\\Sine",
+       "GUID": "{A76A5061-989D-4D75-9A34-DFFE6B3BC737}",
+       "LibName": "Wwise Sine",
+       "LibId": "6553602"
+      }
+     ]
+    },
+    "Events": [
+     {
+      "Id": "1268101726",
+      "Name": "Play_Amb_Hub",
+      "ObjectPath": "\\Events\\World\\Ambience\\Play_Amb_Hub",
+      "GUID": "{BE01DCD7-EA9E-4629-891E-1A796D72E1BD}",
+      "Color": "16",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "642526476"
+       }
+      ]
+     },
+     {
+      "Id": "2379343577",
+      "Name": "Play_Amb_Lv0_Flag_Destroy",
+      "ObjectPath": "\\Events\\World\\Ambience\\Play_Amb_Lv0_Flag_Destroy",
+      "GUID": "{A4535F1C-9C63-4CDD-9545-85A11B7D13E3}",
+      "Color": "16",
+      "DurationType": "OneShot",
+      "DurationMin": "5.1302915",
+      "DurationMax": "5.1302915",
+      "MediaRefs": [
+       {
+        "Id": "586385634"
+       }
+      ]
+     },
+     {
+      "Id": "4075747422",
+      "Name": "Play_DEBUG_Stereo",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_DEBUG_Stereo",
+      "GUID": "{7DED4CFC-E66D-4458-82DF-E3E3BA6C406A}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "38262972"
+       },
+       {
+        "Id": "591683459"
+       }
+      ]
+     },
+     {
+      "Id": "2312513128",
+      "Name": "Play_Level_Entry_CloudsShoosh",
+      "ObjectPath": "\\Events\\World\\Ambience\\Play_Level_Entry_CloudsShoosh",
+      "GUID": "{21864CA0-1B65-4F39-A098-5533DCCB4A31}",
+      "Color": "16",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "2977984093",
+      "Name": "Play_Thommaz_v2",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Thommaz_v2",
+      "GUID": "{2052B2F5-41BC-46AB-B02F-796B81ED3B99}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.5",
+      "DurationMax": "0.5",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "75097291"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "2984140529",
+      "Name": "Play_UI_Challenge_TextPop",
+      "ObjectPath": "\\Events\\DEV\\Lucas (PLACEHOLDER SOUNDS)\\Play_UI_Challenge_TextPop",
+      "GUID": "{A0D1353C-3941-4C7C-A3F4-6DCA726E642C}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.0012306885",
+      "DurationMax": "0.0017291667",
+      "MediaRefs": [
+       {
+        "Id": "943685488"
+       },
+       {
+        "Id": "955210360"
+       }
+      ]
+     },
+     {
+      "Id": "1046921192",
+      "Name": "Play_UI_Power_Tap_Ready",
+      "ObjectPath": "\\Events\\DEV\\Lucas (PLACEHOLDER SOUNDS)\\Play_UI_Power_Tap_Ready",
+      "GUID": "{3B54CA39-33E6-4368-BDB6-58B9219B8A2B}",
+      "DurationType": "OneShot",
+      "DurationMin": "9.10875",
+      "DurationMax": "9.10875",
+      "MediaRefs": [
+       {
+        "Id": "877809281"
+       }
+      ]
+     },
+     {
+      "Id": "1660391987",
+      "Name": "VFX_Destroy_Leaves",
+      "ObjectPath": "\\Events\\World\\Ambience\\VFX_Destroy_Leaves",
+      "GUID": "{BC445982-90CB-4D88-8642-30DC0C53E425}",
+      "Color": "16",
+      "DurationType": "OneShot",
+      "DurationMin": "1.097",
+      "DurationMax": "1.097",
+      "MediaRefs": [
+       {
+        "Id": "41468827"
+       },
+       {
+        "Id": "177252190"
+       },
+       {
+        "Id": "306624223"
+       },
+       {
+        "Id": "318317322"
+       },
+       {
+        "Id": "426923852"
+       },
+       {
+        "Id": "683876415"
+       },
+       {
+        "Id": "745268164"
+       },
+       {
+        "Id": "833345511"
+       },
+       {
+        "Id": "897574328"
+       },
+       {
+        "Id": "1011547700"
+       }
+      ]
+     },
+     {
+      "Id": "2037655476",
+      "Name": "VFX_Destroy_Metal",
+      "ObjectPath": "\\Events\\World\\Ambience\\VFX_Destroy_Metal",
+      "GUID": "{50217ED6-EFD5-4A95-8067-13D7C8248140}",
+      "Color": "16",
+      "DurationType": "OneShot",
+      "DurationMin": "0.9443351",
+      "DurationMax": "1.8360804",
+      "MediaRefs": [
+       {
+        "Id": "396481149"
+       },
+       {
+        "Id": "483303756"
+       },
+       {
+        "Id": "736304229"
+       },
+       {
+        "Id": "994893637"
+       },
+       {
+        "Id": "1031695539"
+       },
+       {
+        "Id": "1064484946"
+       },
+       {
+        "Id": "1067286691"
+       }
+      ]
+     },
+     {
+      "Id": "3133474680",
+      "Name": "VFX_Destroy_Wood",
+      "ObjectPath": "\\Events\\World\\Ambience\\VFX_Destroy_Wood",
+      "GUID": "{78A7D91E-B11D-4553-B20A-5B82769425F1}",
+      "Color": "16",
+      "DurationType": "OneShot",
+      "DurationMin": "0.6940567",
+      "DurationMax": "1.4946715",
+      "MediaRefs": [
+       {
+        "Id": "67829217"
+       },
+       {
+        "Id": "342250292"
+       },
+       {
+        "Id": "358167682"
+       },
+       {
+        "Id": "363654483"
+       },
+       {
+        "Id": "573195642"
+       },
+       {
+        "Id": "629513376"
+       },
+       {
+        "Id": "713259567"
+       },
+       {
+        "Id": "750103033"
+       },
+       {
+        "Id": "805737547"
+       },
+       {
+        "Id": "970652592"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{CF3A37B1-1C5A-11BE-2C55-BA1593261C30}"
+ }
+}

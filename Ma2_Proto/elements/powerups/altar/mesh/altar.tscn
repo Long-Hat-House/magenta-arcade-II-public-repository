@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://lchp1pvf0b3s"]
+
+[ext_resource type="PackedScene" uid="uid://yvpopd0gmh1l" path="res://elements/powerups/altar/mesh/altar.glb" id="1_y87jk"]
+[ext_resource type="Material" uid="uid://chv8gl8wc6il1" path="res://elements/powerups/altar/material/m_altar.tres" id="2_ivc6t"]
+[ext_resource type="Material" uid="uid://ckpq5m3x0vd7x" path="res://elements/powerups/altar/material/m_altar_ornament.tres" id="3_clem2"]
+[ext_resource type="Material" uid="uid://cpgwiwai2q6c1" path="res://elements/powerups/altar/material/m_altar_handle.tres" id="4_wwyt2"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="5_plile"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_12s0e"]
+radial_segments = 6
+rings = 6
+
+[node name="Oratorio" instance=ExtResource("1_y87jk")]
+
+[node name="altar_box" parent="." index="0"]
+material_override = ExtResource("2_ivc6t")
+
+[node name="altar_ornament" parent="." index="1"]
+material_override = ExtResource("3_clem2")
+
+[node name="altar_door_l" parent="." index="2"]
+material_override = ExtResource("2_ivc6t")
+
+[node name="altar_door_handle_l" type="MeshInstance3D" parent="altar_door_l" index="0"]
+transform = Transform3D(0.200652, 0, 0, 0, 0.200652, 0, 0, 0, 0.200652, 0.845, -0.15, 0.359)
+material_override = ExtResource("4_wwyt2")
+mesh = SubResource("SphereMesh_12s0e")
+
+[node name="altar_door_r" parent="." index="3"]
+material_override = ExtResource("2_ivc6t")
+
+[node name="altar_door_handle_2" type="MeshInstance3D" parent="altar_door_r" index="0"]
+transform = Transform3D(-0.200652, -1.75416e-08, 0, 1.75416e-08, -0.200652, 0, 0, 0, 0.200652, -0.837924, -0.15, 0.356953)
+material_override = ExtResource("4_wwyt2")
+mesh = SubResource("SphereMesh_12s0e")
+skeleton = NodePath("../../altar_door_l")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="." index="4"]
+script = ExtResource("5_plile")
+high_contrast_group = &"neutral"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"

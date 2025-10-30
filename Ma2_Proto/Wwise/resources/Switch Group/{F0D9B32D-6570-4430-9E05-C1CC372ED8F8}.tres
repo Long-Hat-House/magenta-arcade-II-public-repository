@@ -1,0 +1,7 @@
+[gd_resource type="WwiseSwitchGroup" format=3 uid="uid://b1phtk0sgalxx"]
+
+[resource]
+name = "UI_CoinsCount"
+id = 3937790049
+guid = "{F0D9B32D-6570-4430-9E05-C1CC372ED8F8}"
+dummy = true

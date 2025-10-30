@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://db41ce6u5nmp2"]
+
+[ext_resource type="Texture2D" uid="uid://bn222ogdk84j" path="res://modules/text_flow/zap/textures/text_flow_zap_ui_bg.png" id="1_yr6lo"]
+
+[resource]
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+texture = ExtResource("1_yr6lo")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1

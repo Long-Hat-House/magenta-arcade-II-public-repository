@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://b2yamq5igcd70"]
+
+[ext_resource type="PackedScene" uid="uid://dfi4oip83lo3f" path="res://elements/background/element_grass.tscn" id="1_c2xfn"]
+[ext_resource type="Material" uid="uid://dkhmfqox6deye" path="res://elements/background/material/m_factory_roof_tiled.tres" id="2_7ckwo"]
+[ext_resource type="Script" uid="uid://b07nba8but0ls" path="res://systems/utils/shake_and_explode.gd" id="2_nsklc"]
+[ext_resource type="Script" uid="uid://bls4vce0lfvfc" path="res://elements/vfx/spawn_area.gd" id="3_riwba"]
+[ext_resource type="PackedScene" uid="uid://ywymskkj85vs" path="res://elements/vfx/vfx_explosion/vfx_explosion.tscn" id="4_73p7a"]
+[ext_resource type="Script" uid="uid://b7n1kj0lt03wh" path="res://systems/utils/node3d_shaker.gd" id="5_nsklc"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="7_l4nuw"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_73p7a"]
+seed = 2
+frequency = 0.0407
+fractal_type = 3
+fractal_gain = 0.615
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nsklc"]
+width = 32
+height = 32
+noise = SubResource("FastNoiseLite_73p7a")
+
+[node name="FactoryRoof" node_paths=PackedStringArray("shaker", "exploder") instance=ExtResource("1_c2xfn")]
+script = ExtResource("2_nsklc")
+shaker = NodePath("Node3DShaker")
+exploder = NodePath("SpawnArea")
+duration = 1.15
+number_of_explosions = 30
+queue_free_on_finish_explode = true
+
+[node name="MeshInstance3D3" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("2_7ckwo")
+
+[node name="SpawnArea" type="VisibleOnScreenNotifier3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5)
+aabb = AABB(-0.42, -0.5, -0.42, 0.86, 1, 0.86)
+script = ExtResource("3_riwba")
+scenes = Array[PackedScene]([ExtResource("4_73p7a")])
+spawn_multiple_default = 30
+spawn_multiple_default_duration = 1.0
+spawn_multiple_default_trans = 1
+metadata/_custom_type_script = "uid://bls4vce0lfvfc"
+
+[node name="Node3DShaker" type="Node3D" parent="." index="2" node_paths=PackedStringArray("extra_shakers")]
+script = ExtResource("5_nsklc")
+noise_texture = SubResource("NoiseTexture2D_nsklc")
+shake_amplitude_ratio = 0.0
+shake_y = false
+dont_shake_itself = true
+extra_shakers = [NodePath("../MeshInstance3D3")]
+metadata/_custom_type_script = "uid://b7n1kj0lt03wh"
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="." index="3"]
+script = ExtResource("7_l4nuw")
+high_contrast_group = &"scenery"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"

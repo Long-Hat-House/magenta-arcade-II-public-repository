@@ -1,0 +1,14 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://ci4pfnivfalm7"]
+
+[ext_resource type="Texture2D" uid="uid://b6ts6od6cf8i7" path="res://elements/ui/ui_art/ui_button_magenta.png" id="1_3gj33"]
+
+[resource]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+texture = ExtResource("1_3gj33")
+texture_margin_left = 15.0
+texture_margin_top = 15.0
+texture_margin_right = 15.0
+texture_margin_bottom = 15.0

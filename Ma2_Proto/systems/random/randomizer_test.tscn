@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg0j3bxjcus6j"]
+
+[sub_resource type="GDScript" id="GDScript_pj6es"]
+resource_name = "randomizer_test"
+script/source = "extends Node2D
+
+@export var id:String;
+@export var first_seed:int = 128;
+@export var test_interval:int = 500;
+@export var test_amount:int = 100000;
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed(\"ui_accept\"):
+		var arr:Array[int] = [];
+		for index in range(test_interval):
+			arr.push_back(0);
+		var interval:float = 1.0 / test_interval;
+		
+		var amount:int = test_amount;
+		while(amount > 0):
+			var testFloat:float = Randomizer.get_randomizer(id, first_seed).randf();
+			arr[floor(testFloat * test_interval)] += 1;
+			amount -= 1;
+		for index in range(arr.size()):
+			print(\"Interval %.3f-%.3f = %s\" % [index * interval, (index+1) * interval, arr[index]]);
+"
+
+[node name="RandomizerTest (Press Space)" type="Node2D"]
+script = SubResource("GDScript_pj6es")

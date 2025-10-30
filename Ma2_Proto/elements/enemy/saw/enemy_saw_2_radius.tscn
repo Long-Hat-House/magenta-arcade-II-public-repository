@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://6i76nfd38ugd"]
+
+[ext_resource type="PackedScene" uid="uid://crf8xjatam6o0" path="res://elements/enemy/saw/enemy_saw_1_radius.tscn" id="1_wksjc"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tt4tm"]
+height = 0.5
+radius = 1.8
+
+[node name="EnemySaw_2Radius" instance=ExtResource("1_wksjc")]
+velocity = 4.0
+
+[node name="CollisionShape3D" parent="." index="1"]
+shape = SubResource("CylinderShape3D_tt4tm")
+
+[node name="saw" parent="." index="2"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.5, 0)

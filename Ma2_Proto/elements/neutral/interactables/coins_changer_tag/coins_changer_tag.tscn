@@ -1,0 +1,575 @@
+[gd_scene load_steps=25 format=3 uid="uid://do1glvxx8f5jb"]
+
+[ext_resource type="Script" uid="uid://vxl0ncta02ef" path="res://elements/neutral/interactables/coins_changer_tag/coins_changer_tag.gd" id="1_qctib"]
+[ext_resource type="PackedScene" uid="uid://deraq5k1tn387" path="res://elements/neutral/interactables/coins_changer_tag/mesh_coins_changer_tag.tscn" id="2_sidle"]
+[ext_resource type="Texture2D" uid="uid://bg17nj7c2mmt3" path="res://elements/icons/icon_coin.png" id="3_4m04n"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="3_ogqha"]
+[ext_resource type="PackedScene" uid="uid://bgs176ohj2jl7" path="res://elements/neutral/interactables/coins_changer_tag/mesh_coins_changer_rope.tscn" id="4_4lff5"]
+[ext_resource type="Script" uid="uid://bi4yfgewvcvwq" path="res://systems/switchable/switch_oning_offing_animation_player.gd" id="5_s4lya"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d6ual"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("3_4m04n")
+
+[sub_resource type="QuadMesh" id="QuadMesh_t8my8"]
+size = Vector2(0.4, 0.4)
+orientation = 1
+
+[sub_resource type="Animation" id="Animation_uxt8r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnabledTransform/InteractingBaseTransform/InteractingTagTransform/tag_graphics/Label3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnabledTransform/InteractingBaseTransform/InteractingTagTransform/tag_graphics:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_b0wu2"]
+resource_name = "change_success"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnabledTransform/InteractingBaseTransform/InteractingTagTransform/tag_graphics/Label3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0.831373, 0.792157, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnabledTransform/InteractingBaseTransform/InteractingTagTransform/tag_graphics:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(1.2, 1.2, 1.2), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vb46a"]
+resource_name = "check_fail"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnabledTransform/InteractingBaseTransform/InteractingTagTransform/tag_graphics/Label3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnabledTransform/InteractingBaseTransform/InteractingTagTransform/tag_graphics:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1, 0.166667, 0.233333),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector3(1.2, 1.2, 1.2), Vector3(1.3, 1.3, 1.3), Vector3(1, 1, 1), Vector3(1.1, 1.1, 1.1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0uxa5"]
+_data = {
+&"RESET": SubResource("Animation_uxt8r"),
+&"change_success": SubResource("Animation_b0wu2"),
+&"check_fail": SubResource("Animation_vb46a")
+}
+
+[sub_resource type="Animation" id="Animation_02flx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnabledTransform:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnabledTransform:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnabledTransform:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EnabledTransform:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_6ye2y"]
+resource_name = "off"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnabledTransform:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnabledTransform:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnabledTransform:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_v44an"]
+resource_name = "offing"
+length = 0.45
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnabledTransform:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.45),
+"transitions": PackedFloat32Array(1, -2, 0.5),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnabledTransform:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.45),
+"transitions": PackedFloat32Array(0.5, 0.5, 2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.349066, 0, 0), Vector3(3.14159, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnabledTransform:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.45),
+"transitions": PackedFloat32Array(0.233258, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 4, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EnabledTransform:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_d1xki"]
+resource_name = "on"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnabledTransform:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnabledTransform:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.0872665, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnabledTransform:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EnabledTransform:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_gxk81"]
+resource_name = "oning"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnabledTransform:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3),
+"transitions": PackedFloat32Array(0.5, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1, 1, 1), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnabledTransform:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.3),
+"transitions": PackedFloat32Array(2, -2, 1),
+"update": 0,
+"values": [Vector3(0.261799, 0.1309, 0.294961), Vector3(-0.261799, 0.00698132, -0.0436332), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnabledTransform:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EnabledTransform:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s8yru"]
+_data = {
+&"RESET": SubResource("Animation_02flx"),
+&"off": SubResource("Animation_6ye2y"),
+&"offing": SubResource("Animation_v44an"),
+&"on": SubResource("Animation_d1xki"),
+&"oning": SubResource("Animation_gxk81")
+}
+
+[sub_resource type="Animation" id="Animation_irdqf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnabledTransform/InteractingBaseTransform:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnabledTransform/InteractingBaseTransform/InteractingTagTransform:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0725348, 0.979048, 0.548888)]
+}
+
+[sub_resource type="Animation" id="Animation_m3goq"]
+resource_name = "off"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnabledTransform/InteractingBaseTransform:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnabledTransform/InteractingBaseTransform/InteractingTagTransform:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0725348, 0.979048, 0.548888)]
+}
+
+[sub_resource type="Animation" id="Animation_oljwr"]
+resource_name = "offing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnabledTransform/InteractingBaseTransform:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(0.282743, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnabledTransform/InteractingBaseTransform/InteractingTagTransform:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(0.0330993, 1.11154, 0.907161), Vector3(0.0725348, 0.979048, 0.548888)]
+}
+
+[sub_resource type="Animation" id="Animation_8i4on"]
+resource_name = "on"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnabledTransform/InteractingBaseTransform:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.282743, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnabledTransform/InteractingBaseTransform/InteractingTagTransform:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0330993, 1.11154, 0.907161), Vector3(-0.0334732, 1.11156, 0.772765), Vector3(0.0330993, 1.11154, 0.907161)]
+}
+
+[sub_resource type="Animation" id="Animation_fj5k0"]
+resource_name = "oning"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnabledTransform/InteractingBaseTransform:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.282743, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnabledTransform/InteractingBaseTransform/InteractingTagTransform:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.0725348, 0.979048, 0.548888), Vector3(0.0330993, 1.11154, 0.907161)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jpdcl"]
+_data = {
+&"RESET": SubResource("Animation_irdqf"),
+&"off": SubResource("Animation_m3goq"),
+&"offing": SubResource("Animation_oljwr"),
+&"on": SubResource("Animation_8i4on"),
+&"oning": SubResource("Animation_fj5k0")
+}
+
+[node name="CoinsChangerTag" type="Node3D" node_paths=PackedStringArray("_animations_tag", "_animations_enabled", "_animations_interacting", "_label_3d", "_invisible_on_start")]
+script = ExtResource("1_qctib")
+_animations_tag = NodePath("TagAnimations")
+_animations_enabled = NodePath("EnabledAnimation")
+_animations_interacting = NodePath("InteractingAnimation")
+_label_3d = NodePath("EnabledTransform/InteractingBaseTransform/InteractingTagTransform/tag_graphics/Label3D")
+_invisible_on_start = NodePath("EnabledTransform")
+
+[node name="EnabledTransform" type="Node3D" parent="."]
+
+[node name="InteractingBaseTransform" type="Node3D" parent="EnabledTransform"]
+
+[node name="InteractingTagTransform" type="Node3D" parent="EnabledTransform/InteractingBaseTransform"]
+transform = Transform3D(0.507255, -0.23972, 0.827785, 0.520367, 0.850862, -0.0724712, -0.686957, 0.467513, 0.556346, 0.0679666, 0.551106, -0.307283)
+
+[node name="tag_graphics" type="Node3D" parent="EnabledTransform/InteractingBaseTransform/InteractingTagTransform"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
+
+[node name="mesh" parent="EnabledTransform/InteractingBaseTransform/InteractingTagTransform/tag_graphics" instance=ExtResource("2_sidle")]
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="EnabledTransform/InteractingBaseTransform/InteractingTagTransform/tag_graphics/mesh"]
+script = ExtResource("3_ogqha")
+high_contrast_group = &"interactable"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="Label3D" type="Label3D" parent="EnabledTransform/InteractingBaseTransform/InteractingTagTransform/tag_graphics"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.625205, 0.0714194, -1.22128e-16)
+text = "1.000"
+font_size = 80
+outline_size = 0
+horizontal_alignment = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EnabledTransform/InteractingBaseTransform/InteractingTagTransform/tag_graphics"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.438205, 0.0723733, 1.86265e-09)
+material_override = SubResource("StandardMaterial3D_d6ual")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_t8my8")
+skeleton = NodePath("../../../..")
+
+[node name="rope_graphics" type="Node3D" parent="EnabledTransform/InteractingBaseTransform"]
+transform = Transform3D(0.976543, -0.101228, 0.19005, -0.113849, -0.99188, 0.0566786, 0.182771, -0.0769863, -0.980137, 0.0270541, 0.522322, -0.307283)
+
+[node name="rope_graphics" parent="EnabledTransform/InteractingBaseTransform/rope_graphics" instance=ExtResource("4_4lff5")]
+transform = Transform3D(-0.0258804, 0.95022, -0.310504, -0.797312, 0.167743, 0.57979, 0.603012, 0.262574, 0.75328, 0.00808383, -0.0152672, 0.0125405)
+
+[node name="rope_graphics2" parent="EnabledTransform/InteractingBaseTransform/rope_graphics" instance=ExtResource("4_4lff5")]
+transform = Transform3D(-0.293855, 0.904011, -0.310504, -0.81218, -0.0648623, 0.57979, 0.503996, 0.42256, 0.75328, 0.0123525, 0.242665, -0.184227)
+
+[node name="TagAnimations" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0uxa5")
+}
+
+[node name="EnabledAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_s8yru")
+}
+script = ExtResource("5_s4lya")
+
+[node name="InteractingAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jpdcl")
+}
+script = ExtResource("5_s4lya")

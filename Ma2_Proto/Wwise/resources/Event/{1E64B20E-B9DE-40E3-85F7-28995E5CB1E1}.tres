@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://5dwqqwa7dnhq"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Enemy_Round_Explosion"
+id = 3292778019
+guid = "{1E64B20E-B9DE-40E3-85F7-28995E5CB1E1}"
+dummy = true

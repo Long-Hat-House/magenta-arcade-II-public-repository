@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="CreditsSectionInfo" load_steps=5 format=3 uid="uid://batfq8a8d33c4"]
+
+[ext_resource type="Script" uid="uid://bkle5ca8utscg" path="res://elements/ui/menus/credits_menu/scripts/credits_entry_info.gd" id="1_qag7b"]
+[ext_resource type="Texture2D" uid="uid://lg2aioyb3c1f" path="res://elements/ui/logos/Long Hat - Logo White.png" id="2_0t48j"]
+[ext_resource type="Script" uid="uid://brm0i2bj1yuok" path="res://elements/ui/menus/credits_menu/scripts/credits_section_info.gd" id="2_eamdd"]
+
+[sub_resource type="Resource" id="Resource_gx4rk"]
+script = ExtResource("1_qag7b")
+entry_name = &""
+entry_role = &""
+entry_information = &""
+entry_texture = ExtResource("2_0t48j")
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[resource]
+script = ExtResource("2_eamdd")
+section_title = &"credits_dev_studio"
+section_info = &""
+section_color_highlight = Color(1, 1, 1, 1)
+section_color_bg = Color(0, 0.831373, 0.792157, 1)
+entries_list = Array[ExtResource("1_qag7b")]([SubResource("Resource_gx4rk")])
+metadata/_custom_type_script = "uid://brm0i2bj1yuok"

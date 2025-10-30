@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cihylhp2du28q"]
+
+[sub_resource type="Curve" id="Curve_gyr75"]
+_data = [Vector2(0, 0), 0.0, 32.8199, 0, 0, Vector2(0.0410256, 1), 0.0, 0.0, 0, 0, Vector2(0.230769, 0.692913), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.09137, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_alj5y"]
+curve = SubResource("Curve_gyr75")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oyblj"]
+emission_shape = 3
+emission_box_extents = Vector3(0.5, 0.25, 0.5)
+angle_min = 1.07288e-05
+angle_max = 360.0
+spread = 90.0
+gravity = Vector3(0, 4, 0)
+linear_accel_min = -3.0
+linear_accel_max = -2.23517e-06
+scale_min = 0.05
+scale_max = 0.35
+scale_curve = SubResource("CurveTexture_alj5y")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jrt1m"]
+shading_mode = 0
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_syk7y"]
+material = SubResource("StandardMaterial3D_jrt1m")
+radial_segments = 4
+rings = 1
+
+[node name="EnergyParticles" type="GPUParticles3D"]
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_oyblj")
+draw_pass_1 = SubResource("SphereMesh_syk7y")

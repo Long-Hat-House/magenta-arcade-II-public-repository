@@ -1,0 +1,124 @@
+[gd_scene load_steps=15 format=3 uid="uid://bg3iobmqmrnbr"]
+
+[ext_resource type="Script" path="res://elements/neutral/star_3d/star_3d.gd" id="1_dw2uu"]
+[ext_resource type="Texture2D" uid="uid://cm5belis6bq0x" path="res://elements/icons/icon_star.png" id="1_ixyb1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nw70b"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+blend_mode = 1
+shading_mode = 2
+specular_mode = 2
+disable_ambient_light = true
+albedo_texture = ExtResource("1_ixyb1")
+emission_enabled = true
+emission = Color(0, 0.831373, 0.792157, 1)
+emission_energy_multiplier = 7.04
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_u6kxy"]
+material = SubResource("StandardMaterial3D_nw70b")
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="Curve" id="Curve_day1h"]
+_data = [Vector2(0, 1), 0.0, 1.5936, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_iqyt2"]
+_data = [Vector2(0, 1), 0.0, 1.5936, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_gsv0g"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_dmcot"]
+_data = [Vector2(0, 0), 0.0, 5.11223, 0, 0, Vector2(1, 0.0011642), -2.69486, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_mjakj"]
+offsets = PackedFloat32Array(0, 0.887324)
+colors = PackedColorArray(0.658824, 1, 0.909804, 1, 0, 0.831373, 0.792157, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5o45a"]
+gradient = SubResource("Gradient_mjakj")
+width = 8
+height = 8
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_f34uk"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e8xdm"]
+gradient = SubResource("Gradient_f34uk")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.756, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aoxew"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_ixyb1")
+emission_enabled = true
+emission_texture = SubResource("GradientTexture2D_e8xdm")
+normal_scale = 0.69
+normal_texture = ExtResource("1_ixyb1")
+detail_enabled = true
+detail_albedo = SubResource("GradientTexture2D_5o45a")
+proximity_fade_enabled = true
+proximity_fade_distance = 0.02
+
+[sub_resource type="QuadMesh" id="QuadMesh_a7eiq"]
+size = Vector2(0.7, 0.7)
+
+[node name="Star3D" type="Node3D" node_paths=PackedStringArray("_particles", "_graphic")]
+script = ExtResource("1_dw2uu")
+_particles = NodePath("CPUParticles3D")
+_graphic = NodePath("GraphicContainer")
+metadata/_edit_group_ = true
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+amount = 2
+lifetime = 2.0
+randomness = 1.0
+mesh = SubResource("QuadMesh_u6kxy")
+emission_shape = 1
+emission_sphere_radius = 0.3
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 5, 0)
+initial_velocity_min = 0.3
+initial_velocity_max = 1.0
+angular_velocity_min = -20.0
+angular_velocity_max = 20.0
+radial_accel_min = -3.0
+radial_accel_max = -3.0
+radial_accel_curve = SubResource("Curve_day1h")
+tangential_accel_min = -2.0
+tangential_accel_max = 2.0
+tangential_accel_curve = SubResource("Curve_iqyt2")
+damping_min = 1.0
+damping_max = 2.0
+damping_curve = SubResource("Curve_gsv0g")
+angle_min = -45.0
+angle_max = 45.0
+scale_amount_min = 0.75
+scale_amount_max = 1.25
+scale_amount_curve = SubResource("Curve_dmcot")
+
+[node name="GraphicContainer" type="Node3D" parent="."]
+
+[node name="StarGraphic" type="MeshInstance3D" parent="GraphicContainer"]
+material_override = SubResource("StandardMaterial3D_aoxew")
+mesh = SubResource("QuadMesh_a7eiq")
+skeleton = NodePath("../../..")

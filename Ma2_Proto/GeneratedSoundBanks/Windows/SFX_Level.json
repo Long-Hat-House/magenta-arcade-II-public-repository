@@ -1,0 +1,34 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2780599685",
+    "Type": "User",
+    "GUID": "{591B0E8C-8744-490E-9ADB-CA5D96E27940}",
+    "Language": "SFX",
+    "Hash": "{6DFE6CE2-28F3-AA5F-9022-7094FD877501}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\SFX_Level",
+    "ShortName": "SFX_Level",
+    "Path": "SFX_Level.bnk",
+    "Events": [
+     {
+      "Id": "3924071479",
+      "Name": "Play_Lvl2_Church_Destroy",
+      "ObjectPath": "\\Events\\Level\\Pampulha\\Play_Lvl2_Church_Destroy",
+      "GUID": "{6631C42C-8B35-4DFD-85C9-EBEDB0AF8252}",
+      "Color": "4",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{3D40811B-FA75-C141-57FC-66918D5B893C}"
+ }
+}

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://djepeopm5m3c2"]
+
+[ext_resource type="Script" uid="uid://cy57iu7kxjebm" path="res://marketing_tools/fake_hand/fake_cursor.gd" id="1_g0yld"]
+[ext_resource type="PackedScene" uid="uid://dxc68gsmoe6lv" path="res://elements/player/player_fake_finger.tscn" id="2_1hnf3"]
+
+[node name="FakeCursor" type="Control" node_paths=PackedStringArray("cursor")]
+process_mode = 3
+z_index = 200
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_g0yld")
+cursor = NodePath("PlayerCursor_Imagem")
+
+[node name="PlayerCursor_Imagem" parent="." instance=ExtResource("2_1hnf3")]

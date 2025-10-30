@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb1ghixcy2bam"]
+
+[ext_resource type="PackedScene" uid="uid://8ohd3ir2lhm8" path="res://elements/neutral/props/vegetation/mesh/grass_border.glb" id="1_uaa50"]
+[ext_resource type="Material" uid="uid://bwa0erkq4c663" path="res://elements/background/material/m_grass_border_full.tres" id="2_uxsjw"]
+[ext_resource type="Material" uid="uid://1tgyap4h2nv0" path="res://elements/neutral/props/vegetation/material/m_plant_grass.tres" id="3_c8dj4"]
+
+[node name="grass_border" instance=ExtResource("1_uaa50")]
+
+[node name="grass border" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_uxsjw")
+surface_material_override/1 = ExtResource("2_uxsjw")
+
+[node name="plant_grass" parent="." index="1"]
+material_override = ExtResource("3_c8dj4")

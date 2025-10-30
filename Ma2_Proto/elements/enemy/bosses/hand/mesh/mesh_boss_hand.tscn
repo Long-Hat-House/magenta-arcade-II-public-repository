@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://2hh3g4c1pndq"]
+
+[ext_resource type="PackedScene" uid="uid://b6slxecih81tw" path="res://elements/enemy/bosses/hand/mesh/boss_hand.glb" id="1_76anj"]
+[ext_resource type="Material" uid="uid://ds2swrw31s487" path="res://elements/enemy/bosses/hand/material/m_boss_hand.tres" id="2_ataq2"]
+
+[node name="boss_hand" instance=ExtResource("1_76anj")]
+
+[node name="hand" parent="." index="0"]
+material_override = ExtResource("2_ataq2")
+
+[node name="falange" parent="hand" index="0"]
+material_override = ExtResource("2_ataq2")
+
+[node name="falanges_001" parent="hand/falange" index="0"]
+material_override = ExtResource("2_ataq2")
+
+[node name="falange_005" parent="hand/falange/falanges_001" index="0"]
+material_override = ExtResource("2_ataq2")
+
+[node name="falange_001" parent="hand" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.72516, 0.334661, 6.62177)
+material_override = ExtResource("2_ataq2")
+
+[node name="falange_006" parent="hand/falange_001" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0120078, -0.146012, 3.53414)
+material_override = ExtResource("2_ataq2")
+
+[node name="falange_007" parent="hand/falange_001/falange_006" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.48046)
+material_override = ExtResource("2_ataq2")
+
+[node name="falange_002" parent="hand" index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.129592, -0.991567, 0, 0.991567, 0.129592, -1.78199, 0.334661, 6.06847)
+material_override = ExtResource("2_ataq2")
+
+[node name="falange_009" parent="hand/falange_002" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.358335, -0.933593, 0, 0.933593, 0.358335, -0.0120081, 0, 3.55596)
+material_override = ExtResource("2_ataq2")
+
+[node name="falange_010" parent="hand/falange_002/falange_009" index="0"]
+transform = Transform3D(1, 0, 0, 0, -0.218262, -0.97589, 0, 0.97589, -0.218262, 0, 0, 3.48046)
+material_override = ExtResource("2_ataq2")
+
+[node name="falange_003" parent="hand" index="3"]
+transform = Transform3D(1, 0, 0, 0, 0.171293, -0.98522, 0, 0.98522, 0.171293, -4.16811, 0.334661, 5.34226)
+material_override = ExtResource("2_ataq2")
+
+[node name="falange_013" parent="hand/falange_003" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.183179, -0.983079, 0, 0.983079, 0.183179, -0.0120087, 0, 3.55596)
+material_override = ExtResource("2_ataq2")
+
+[node name="falange_014" parent="hand/falange_003/falange_013" index="0"]
+transform = Transform3D(1, 0, 0, 0, -0.144494, -0.989506, 0, 0.989506, -0.144494, 0, 0, 3.48046)
+material_override = ExtResource("2_ataq2")
+
+[node name="falange_004" parent="hand" index="4"]
+transform = Transform3D(0.131424, 0.9089, 0.395764, -0.930606, 0.250691, -0.266697, -0.341615, -0.33325, 0.878774, 5.37187, -2.09169, 2.01585)
+material_override = ExtResource("2_ataq2")
+
+[node name="falange_017" parent="hand/falange_004" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.564477, -0.825449, 0, 0.825449, 0.564477, 0.149467, 0.0402319, 3.29167)
+material_override = ExtResource("2_ataq2")
+
+[node name="anim" type="AnimationPlayer" parent="." index="1"]

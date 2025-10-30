@@ -1,0 +1,156 @@
+[gd_scene load_steps=9 format=3 uid="uid://cb3v7wgh283h8"]
+
+[ext_resource type="PackedScene" uid="uid://5i3jns1hguug" path="res://elements/player/projectiles/hold_blue/proj_hold_blue_V2_Mesh.glb" id="1_3435t"]
+[ext_resource type="Material" uid="uid://r1m6m874b01v" path="res://elements/m_simple_color_emission.tres" id="2_qppdb"]
+[ext_resource type="Material" uid="uid://dmbpdlfqu0pyf" path="res://elements/m_simple_color_emission_no_cull.tres" id="3_f6ua0"]
+[ext_resource type="Material" uid="uid://bkr7fa1lkklh3" path="res://elements/player/projectiles/materials/proj_White.tres" id="4_caw2l"]
+[ext_resource type="Script" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="6_f6ua0"]
+
+[sub_resource type="Animation" id="Animation_t8wxr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("projectil_blue_front:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("projectil_blue_interno:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.012, 1.012, 1.071)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("projectil_blue:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5, 1.5, 1.588)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("projectil_blue_front:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.197, 2.197, 1.694)]
+}
+
+[sub_resource type="Animation" id="Animation_y0x6r"]
+resource_name = "proj_hold_blue"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("projectil_blue_front:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 6.28319)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("projectil_blue_interno:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.012, 1.012, 1.301), Vector3(1.012, 1.012, 1.06), Vector3(1.012, 1.012, 1.071), Vector3(1.012, 1.012, 1.185), Vector3(1.012, 1.012, 1.166), Vector3(1.012, 1.012, 1.05), Vector3(1.012, 1.012, 1.071), Vector3(1.012, 1.012, 0.96), Vector3(1.012, 1.012, 1.071), Vector3(1.012, 1.012, 0.745087), Vector3(1.012, 1.012, 1.216)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("projectil_blue:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.5, 1.5, 1.588), Vector3(1.5, 1.5, 1.748), Vector3(1.5, 1.5, 1.588), Vector3(1.5, 1.5, 1.748), Vector3(1.5, 1.5, 1.588), Vector3(1.5, 1.5, 1.748)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("projectil_blue_front:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(2.197, 2.197, 1.694), Vector3(2.197, 2.197, 2.279), Vector3(2.197, 2.197, 1.513), Vector3(2.197, 2.197, 2.079)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_drslj"]
+_data = {
+&"RESET": SubResource("Animation_t8wxr"),
+&"proj_hold_blue": SubResource("Animation_y0x6r")
+}
+
+[node name="proj_hold_blue_V2_Mesh" instance=ExtResource("1_3435t")]
+
+[node name="projectil_blue" parent="." index="0"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.588, 0, 0, -0.236834)
+material_override = ExtResource("2_qppdb")
+cast_shadow = 0
+instance_shader_parameters/color = Color(0.427451, 0.866667, 1, 1)
+instance_shader_parameters/emissive = Color(0.427451, 0.866667, 1, 1)
+
+[node name="projectil_blue_front" parent="." index="1"]
+transform = Transform3D(2.197, 0, 0, 0, 2.197, 0, 0, 0, 1.694, 0, 0, -0.26)
+material_override = ExtResource("3_f6ua0")
+cast_shadow = 0
+instance_shader_parameters/color = Color(0.427451, 0.866667, 1, 1)
+instance_shader_parameters/emissive = Color(0.427451, 0.866667, 1, 1)
+
+[node name="proj_hold_water_effect" parent="." index="2"]
+transform = Transform3D(1.145, 0, 0, 0, 1.145, 0, 0, 0, 1.145, 0, 0, 0.255177)
+visible = false
+material_override = ExtResource("4_caw2l")
+blend_shapes/ScaleTorus = 0.427861
+
+[node name="projectil_blue_interno" parent="." index="3"]
+transform = Transform3D(1.012, 0, 0, 0, 1.012, 0, 0, 0, 1.071, 0, 0, -0.190401)
+material_override = ExtResource("2_qppdb")
+cast_shadow = 0
+instance_shader_parameters/color = Color(0, 0.515051, 0.802657, 1)
+instance_shader_parameters/emissive = Color(0, 0.515051, 0.802657, 1)
+instance_shader_parameters/energy = 1.0
+
+[node name="anim" type="AnimationPlayer" parent="." index="4"]
+libraries = {
+&"": SubResource("AnimationLibrary_drslj")
+}
+autoplay = "proj_hold_blue"
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="." index="5"]
+script = ExtResource("6_f6ua0")
+high_contrast_group = &"player"

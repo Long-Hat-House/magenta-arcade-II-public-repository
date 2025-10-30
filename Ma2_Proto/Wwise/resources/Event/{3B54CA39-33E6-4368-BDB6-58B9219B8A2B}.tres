@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://yvbfkwonkrn4"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_UI_Power_Tap_Ready"
+id = 1046921192
+guid = "{3B54CA39-33E6-4368-BDB6-58B9219B8A2B}"
+dummy = true

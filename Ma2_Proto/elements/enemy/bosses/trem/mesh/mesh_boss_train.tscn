@@ -1,0 +1,201 @@
+[gd_scene load_steps=20 format=3 uid="uid://dcok7fxxa6tb0"]
+
+[ext_resource type="PackedScene" uid="uid://dx1aqc3ndv7vh" path="res://elements/enemy/bosses/trem/bossTrain.glb" id="1_712hw"]
+[ext_resource type="Script" uid="uid://b57bi45usqwhn" path="res://elements/enemy/bosses/trem/boss_train_graphic.gd" id="2_n5jjw"]
+[ext_resource type="Material" uid="uid://c5y76kxy271n" path="res://elements/enemy/bosses/trem/material/m_bosstrain.tres" id="2_xm4mf"]
+[ext_resource type="Material" uid="uid://bf25m1gbr230x" path="res://elements/enemy/bosses/trem/material/m_emissive.tres" id="3_2cigr"]
+[ext_resource type="PackedScene" uid="uid://6t4vkxsaaswb" path="res://elements/enemy/bosses/trem/element_boss_train_face.tscn" id="3_hu82y"]
+[ext_resource type="PackedScene" uid="uid://wqcyghcbouff" path="res://elements/vfx/vfx_smoke/vfx_smoke_pillar.tscn" id="4_0vjrd"]
+[ext_resource type="PackedScene" uid="uid://cihylhp2du28q" path="res://elements/enemy/bosses/energy_particles.tscn" id="6_7b8eb"]
+[ext_resource type="WwiseEvent" uid="uid://gmevt27w7cx2" path="res://Wwise/resources/Event/{C5098A18-E413-4355-80F3-2128A5BC8719}.tres" id="8_j4e1q"]
+[ext_resource type="WwiseEvent" uid="uid://dfwbmd4awwj2q" path="res://Wwise/resources/Event/{9FC88923-42C9-44E9-A55F-17F422AF1DDA}.tres" id="9_sl7py"]
+[ext_resource type="WwiseEvent" uid="uid://cqqwvg3ib2uau" path="res://Wwise/resources/Event/{0AAAC2FA-04DD-4FA4-87B6-2563EDE0B8EE}.tres" id="10_ma612"]
+[ext_resource type="WwiseEvent" uid="uid://cmej3yibddsfr" path="res://Wwise/resources/Event/{0CE77C1C-FB11-4727-AAD7-4FA34B1AD4C2}.tres" id="11_5h4lg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0vjrd"]
+albedo_color = Color(0.0588235, 0.0588235, 0.0980392, 1)
+emission_enabled = true
+emission = Color(1, 0, 1, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_7b8eb"]
+material = SubResource("StandardMaterial3D_0vjrd")
+radius = 1.1
+height = 2.0
+radial_segments = 6
+rings = 6
+
+[sub_resource type="Curve" id="Curve_gyr75"]
+_data = [Vector2(0, 0), 0.0, 32.8199, 0, 0, Vector2(0.0410256, 1), 0.0, 0.0, 0, 0, Vector2(0.230769, 0.692913), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.09137, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_alj5y"]
+curve = SubResource("Curve_gyr75")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c5i34"]
+lifetime_randomness = 0.25
+emission_shape = 1
+emission_sphere_radius = 4.0
+angle_min = 1.07288e-05
+angle_max = 360.0
+spread = 90.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -3.0
+linear_accel_max = -2.23517e-06
+radial_accel_min = -10.0
+radial_accel_max = -2.0
+attractor_interaction_enabled = false
+scale_min = 0.05
+scale_max = 0.35
+scale_curve = SubResource("CurveTexture_alj5y")
+
+[sub_resource type="Animation" id="Animation_bew8a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("suporte_roda:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(5.73491, -0.609707, -0.309841)]
+}
+
+[sub_resource type="Animation" id="Animation_5vcqw"]
+resource_name = "anim_suporte"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("suporte_roda:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(2, 2, 2, 1),
+"update": 0,
+"values": [Vector3(5.73491, -0.609707, -0.309841), Vector3(5.73491, -0.982692, 0.249636), Vector3(5.73491, -1.15364, -0.496334), Vector3(5.73491, -0.609707, -0.309841)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wy33y"]
+_data = {
+&"RESET": SubResource("Animation_bew8a"),
+&"anim_suporte": SubResource("Animation_5vcqw")
+}
+
+[node name="BossTrain" instance=ExtResource("1_712hw")]
+script = ExtResource("2_n5jjw")
+
+[node name="suporte_roda" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.73491, -0.609707, -0.309841)
+surface_material_override/0 = ExtResource("2_xm4mf")
+
+[node name="trem" parent="." index="1"]
+material_override = ExtResource("2_xm4mf")
+
+[node name="VfxSmokePillarR" parent="trem" index="0" instance=ExtResource("4_0vjrd")]
+transform = Transform3D(1.41421, 1.41421, 0, -1.41421, 1.41421, 0, 0, 0, 2, 1.55655, 4.17942, -0.25)
+
+[node name="VfxSmokePillarR2" parent="trem" index="1" instance=ExtResource("4_0vjrd")]
+transform = Transform3D(1.41421, 1.41421, 0, -1.41421, 1.41421, 0, 0, 0, 2, 1.55655, 4.17942, -2.75)
+
+[node name="VfxSmokePillarR3" parent="trem" index="2" instance=ExtResource("4_0vjrd")]
+transform = Transform3D(1.41421, 1.41421, 0, -1.41421, 1.41421, 0, 0, 0, 2, 1.55655, 4.17942, -5.25)
+
+[node name="VfxSmokePillarR4" parent="trem" index="3" instance=ExtResource("4_0vjrd")]
+transform = Transform3D(1.41421, 1.41421, 0, -1.41421, 1.41421, 0, 0, 0, 2, 1.55655, 4.17942, -8)
+
+[node name="VfxSmokePillarL" parent="trem" index="4" instance=ExtResource("4_0vjrd")]
+transform = Transform3D(1.41421, -1.41421, 0, 1.41421, 1.41421, 0, 0, 0, 2, -1.69345, 4.17942, -0.25)
+
+[node name="VfxSmokePillarL2" parent="trem" index="5" instance=ExtResource("4_0vjrd")]
+transform = Transform3D(1.41421, -1.41421, 0, 1.41421, 1.41421, 0, 0, 0, 2, -1.69345, 4.17942, -2.75)
+
+[node name="VfxSmokePillarL3" parent="trem" index="6" instance=ExtResource("4_0vjrd")]
+transform = Transform3D(1.41421, -1.41421, 0, 1.41421, 1.41421, 0, 0, 0, 2, -1.69345, 4.17942, -5.25)
+
+[node name="VfxSmokePillarL4" parent="trem" index="7" instance=ExtResource("4_0vjrd")]
+transform = Transform3D(1.41421, -1.41421, 0, 1.41421, 1.41421, 0, 0, 0, 2, -1.69345, 4.17942, -8)
+
+[node name="cano" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.87059, -6.15308)
+material_override = ExtResource("2_xm4mf")
+
+[node name="canhao" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.16099, -3.4149)
+material_override = ExtResource("2_xm4mf")
+
+[node name="light01" parent="canhao" index="0"]
+material_override = ExtResource("3_2cigr")
+
+[node name="light02" parent="canhao" index="1"]
+material_override = ExtResource("3_2cigr")
+
+[node name="light03" parent="canhao" index="2"]
+material_override = ExtResource("3_2cigr")
+
+[node name="light04" parent="canhao" index="3"]
+material_override = ExtResource("3_2cigr")
+
+[node name="LightBall" type="MeshInstance3D" parent="canhao" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.25, 0, 0.25, 3.88492)
+mesh = SubResource("SphereMesh_7b8eb")
+
+[node name="EnergyParticles" parent="canhao" index="5" instance=ExtResource("6_7b8eb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.25, 0, 0.25, 4.13492)
+amount = 30
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_c5i34")
+
+[node name="faceTrain" parent="." index="4" node_paths=PackedStringArray("sfx_immune_enable", "sfx_immune_disable") instance=ExtResource("3_hu82y")]
+transform = Transform3D(1.4, 0, 0, 0, 1.21244, 0.7, 0, -0.7, 1.21244, 0, 2.16081, 1.37572)
+sad_to_angry_initial_value = 1.0
+max_health = 4.0
+sfx_immune_enable = NodePath("SFX_Immune_Enable")
+sfx_immune_disable = NodePath("SFX_Immune_Disable")
+
+[node name="SFX_Immune_Enable" type="AkEvent3D" parent="faceTrain" index="4"]
+event = ExtResource("8_j4e1q")
+
+[node name="SFX_Immune_Disable" type="AkEvent3D" parent="faceTrain" index="5"]
+event = ExtResource("9_sl7py")
+
+[node name="faceTrain2" parent="." index="5" node_paths=PackedStringArray("sfx_immune_enable", "sfx_immune_disable") instance=ExtResource("3_hu82y")]
+transform = Transform3D(0.8, 0, 0, 0, 0.69282, 0.4, 0, -0.4, 0.69282, 3.40217, 1.48859, 1.91707)
+max_health = 3.0
+sfx_immune_enable = NodePath("SFX_Immune_Enable")
+sfx_immune_disable = NodePath("SFX_Immune_Disable")
+
+[node name="SFX_Immune_Enable" type="AkEvent3D" parent="faceTrain2" index="4"]
+event = ExtResource("10_ma612")
+
+[node name="SFX_Immune_Disable" type="AkEvent3D" parent="faceTrain2" index="5"]
+event = ExtResource("11_5h4lg")
+
+[node name="faceTrain3" parent="." index="6" node_paths=PackedStringArray("sfx_immune_enable", "sfx_immune_disable") instance=ExtResource("3_hu82y")]
+transform = Transform3D(0.8, 0, 0, 0, 0.69282, 0.4, 0, -0.4, 0.69282, -3.402, 1.489, 1.917)
+sad_to_angry_initial_value = -1.0
+max_health = 3.0
+sfx_immune_enable = NodePath("SFX_Immune_Enable")
+sfx_immune_disable = NodePath("SFX_Immune_Disable")
+
+[node name="SFX_Immune_Enable" type="AkEvent3D" parent="faceTrain3" index="4"]
+event = ExtResource("10_ma612")
+
+[node name="SFX_Immune_Disable" type="AkEvent3D" parent="faceTrain3" index="5"]
+event = ExtResource("11_5h4lg")
+
+[node name="sino" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.52675, 5.98306, -1.443)
+material_override = ExtResource("2_xm4mf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_wy33y")
+}
+autoplay = "anim_suporte"

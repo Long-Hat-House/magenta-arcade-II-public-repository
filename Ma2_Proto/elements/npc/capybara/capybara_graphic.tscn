@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://de5mf4olk25pj"]
+
+[ext_resource type="PackedScene" uid="uid://k0kg78hfmalj" path="res://elements/npc/npc_graphic_base.tscn" id="1_v61of"]
+[ext_resource type="SpriteFrames" uid="uid://b5w66k77il7ol" path="res://elements/npc/capybara/npc_capybara.aseprite" id="2_q0nnc"]
+
+[node name="NPC_Graphic_Capybara" instance=ExtResource("1_v61of")]
+offset = Vector2(0, 64)
+sprite_frames = ExtResource("2_q0nnc")
+animation = &"default"
+anim_idle = &"sit"
+anim_hit = &"sit"
+anim_talk = &"default"
+anim_walk = &"default"
+anim_press_idle = &"sleep"
+anim_press_walk = &"sleep"
+
+[node name="Shadow" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0.0615803, 0)

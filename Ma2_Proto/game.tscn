@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://e5pwbacxo02h"]
+
+[ext_resource type="Script" uid="uid://oo4byhllpvpt" path="res://systems/game/game.gd" id="1_jh0pt"]
+[ext_resource type="PackedScene" uid="uid://4vm6t6foveb0" path="res://elements/ui/menus/game_over_menu/game_over_menu.tscn" id="2_gvqvw"]
+[ext_resource type="PackedScene" uid="uid://dkjlsn40v2eii" path="res://elements/ui/menus/level_clear_menu/level_clear_menu.tscn" id="4_hck1x"]
+[ext_resource type="Script" uid="uid://bq2kcnfgursag" path="res://systems/ui/safe_area_margin_container.gd" id="4_ryrav"]
+[ext_resource type="Script" uid="uid://qollb4wn8rqr" path="res://systems/score/score_manager.gd" id="7_8lyq1"]
+[ext_resource type="PackedScene" uid="uid://olufkwgaqicj" path="res://elements/challenge/challenge_controller.tscn" id="7_f5jug"]
+
+[node name="Game" type="Node3D"]
+script = ExtResource("1_jh0pt")
+_game_over_scene = ExtResource("2_gvqvw")
+_level_clear_scene = ExtResource("4_hck1x")
+
+[node name="SafeAreaRect" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 39
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 39
+script = ExtResource("4_ryrav")
+metadata/_custom_type_script = "uid://bq2kcnfgursag"
+
+[node name="Menus" type="Control" parent="SafeAreaRect"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="challenge_controller" parent="SafeAreaRect/Menus" instance=ExtResource("7_f5jug")]
+layout_mode = 1
+
+[node name="Managers" type="Node" parent="."]
+
+[node name="ScoreManager" type="Node" parent="Managers"]
+script = ExtResource("7_8lyq1")

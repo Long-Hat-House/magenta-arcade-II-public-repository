@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="LevelSet" load_steps=8 format=3 uid="uid://dy16ciqvfojs5"]
+
+[ext_resource type="PackedScene" uid="uid://cgw8jjsepqlb2" path="res://elements/levels/lvl_0/lvl_0.tscn" id="1_ghbqd"]
+[ext_resource type="Script" path="res://systems/level/level_set.gd" id="2_8axuq"]
+[ext_resource type="PackedScene" uid="uid://cn28msj0s013g" path="res://elements/levels/lvl_shop_sub.tscn" id="3_62yc2"]
+[ext_resource type="PackedScene" uid="uid://dchgkwx8fk1go" path="res://elements/levels/lvl_0/lvl_0_sub_intro.tscn" id="3_wtq7c"]
+[ext_resource type="PackedScene" uid="uid://in82sgm22cfr" path="res://elements/levels/lvl_0/lvl_0_sub_contorno.tscn" id="4_rftok"]
+[ext_resource type="PackedScene" uid="uid://bqhnuqfwn62ty" path="res://elements/levels/lvl_0/lvl_0_sub_challenge_traffic_easy.tscn" id="5_yxxo2"]
+[ext_resource type="Resource" uid="uid://ct5v8ynmxkodd" path="res://elements/levels/lvl_0/lvl_0_sub_av_brasil/lvl_0_sub_av_brasil.tres" id="6_1xnpt"]
+
+[resource]
+script = ExtResource("2_8axuq")
+open = false
+parent_level = ExtResource("1_ghbqd")
+sub_levels = Array[Resource]([ExtResource("3_62yc2"), ExtResource("3_wtq7c"), ExtResource("4_rftok"), ExtResource("5_yxxo2"), ExtResource("6_1xnpt")])

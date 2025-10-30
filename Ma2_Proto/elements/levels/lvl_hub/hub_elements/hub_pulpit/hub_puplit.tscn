@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://doxhqyuitf1a5"]
+
+[ext_resource type="PackedScene" uid="uid://bfc5nt7ds3a7m" path="res://elements/levels/lvl_hub/hub_elements/hub_pulpit/mesh_hub_pulpit.tscn" id="1_peo81"]
+
+[node name="Pulpito" type="Node3D"]
+transform = Transform3D(0.91197, -2.21556e-09, -0.410257, 2.85886e-16, 1, -5.40042e-09, 0.410257, 4.92502e-09, 0.91197, -0.591, 0, 0.398)
+metadata/_edit_group_ = true
+
+[node name="hub_pulpit" parent="." instance=ExtResource("1_peo81")]

@@ -1,0 +1,14 @@
+[remap]
+
+importer="lhh_googlesheet_translation"
+type="Translation"
+uid="uid://bxoyydpegxe3d"
+
+[deps]
+
+source_file="res://translations/translation.sheet"
+
+[params]
+
+spreadsheet_id="1JR36bWGjwASHKkCGeSoUZyO7q9bEEM8lROV7VgvMOVk"
+sheet_id="final"

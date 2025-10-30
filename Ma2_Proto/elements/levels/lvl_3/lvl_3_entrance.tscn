@@ -1,0 +1,346 @@
+[gd_scene load_steps=24 format=3 uid="uid://c7hvenvp1e0gw"]
+
+[ext_resource type="Script" uid="uid://b0ibamfw4dbyb" path="res://systems/level/level_piece_children.tres.gd" id="1_3scfx"]
+[ext_resource type="PackedScene" uid="uid://p1646blom23j" path="res://elements/stage_pieces/factory/stage_piece_fabrica_room_single_wall.tscn" id="2_hgahx"]
+[ext_resource type="PackedScene" uid="uid://c00kqth38jmst" path="res://systems/stage/stage_screen_measure.tscn" id="3_jm0dn"]
+[ext_resource type="Script" uid="uid://x3edt682w58i" path="res://systems/level/level_snippet_sequence.gd" id="4_47ude"]
+[ext_resource type="PackedScene" uid="uid://d2uqxti6p0agc" path="res://elements/neutral/props/Factory/mesh/element_energy_box_factory.tscn" id="5_1im6s"]
+[ext_resource type="PackedScene" uid="uid://dsppxkyccjpcs" path="res://elements/enemy/factory_door/enemy_factory_door.tscn" id="5_1lm6p"]
+[ext_resource type="Resource" uid="uid://b4sm3a668ml1i" path="res://elements/levels/level_structure/camera_movement_data_by_duration.tres" id="5_3uckt"]
+[ext_resource type="Script" uid="uid://dfui1ofuptgkq" path="res://systems/level/level_snippet_goto_specific_node.gd" id="5_87yvk"]
+[ext_resource type="PackedScene" uid="uid://bhs2oprh7fk36" path="res://elements/neutral/props/Factory/mesh/element_lamp_factory.tscn" id="5_queg5"]
+[ext_resource type="PackedScene" uid="uid://cqfl6r82tc8ni" path="res://elements/background/element_factory_gray_floor.tscn" id="7_7g4vu"]
+[ext_resource type="PackedScene" uid="uid://d1und4qgj6int" path="res://elements/neutral/props/Factory/mesh/element_factory_support_roof.tscn" id="7_d5hjl"]
+[ext_resource type="Script" uid="uid://bono021r3hijq" path="res://systems/level/level_snippet_until_specific_dead.gd" id="7_gat42"]
+[ext_resource type="Script" uid="uid://c85a7o7g4p6hu" path="res://systems/level/level_snippet_parallel.gd" id="7_mhqc4"]
+[ext_resource type="PackedScene" uid="uid://b5ywgn67tfmvg" path="res://elements/neutral/props/Factory/mesh/element_silo_factory.tscn" id="8_8iymx"]
+[ext_resource type="PackedScene" uid="uid://d0twtk6f36p1c" path="res://elements/neutral/props/Factory/mesh/element_barrel_factory.tscn" id="9_6eqx2"]
+[ext_resource type="PackedScene" uid="uid://bhnvri2r370cj" path="res://elements/background/element_factory_icon_ivo_floor.tscn" id="12_56sdj"]
+[ext_resource type="PackedScene" uid="uid://dmf1l5p7w47hi" path="res://elements/neutral/props/Factory/mesh/element_pipe_curve_factory.tscn" id="12_vdabv"]
+[ext_resource type="PackedScene" uid="uid://dpeu4kli3hep7" path="res://elements/neutral/props/Factory/mesh/element_pipe_tube_factory.tscn" id="13_4obn5"]
+[ext_resource type="PackedScene" uid="uid://dj8mnwvx36mu7" path="res://elements/powerups/button/powerup_weapon_button_hold_yellow.tscn" id="18_unqw5"]
+[ext_resource type="PackedScene" uid="uid://bqf8spkpeqp02" path="res://elements/powerups/button/powerup_weapon_button_hold_red.tscn" id="19_3uckt"]
+
+[sub_resource type="GDScript" id="GDScript_ypu3b"]
+script/source = "extends Level_Snippet_Node
+
+const STOPPED = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto_stopped.tscn\")
+const SHOOTER = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto_shooter.tscn\")
+
+@export var powerups:Array[PackedScene];
+
+func _cmd(lvl:Level)->Level.CMD:
+	var stop:Callable = func stop(pizza:AI_WalkAndDo):
+		pizza.distanceMax = 0;
+	
+	return Level.CMD_Sequence.new([
+		lvl.cmd_enemy_line([STOPPED, SHOOTER], [0, 1, 1, 0], 0.0, -3, 7, Vector2(2, 0), \"main\", stop),
+		lvl.cmd_enemy_line([STOPPED, SHOOTER], [1, 0, 0, 1], 0.0, -3, 9, Vector2(2, 0), \"main\", stop),
+		#lvl.cmd_enemy_segment_ab(powerups, Vector2(-2.5, 20), Vector2(2.5, 20), \"buttons\"),
+		lvl.objs.cmd_wait_group(\"main\"),
+	])
+"
+
+[sub_resource type="GDScript" id="GDScript_x6m2c"]
+script/source = "extends Level_Snippet_Node
+
+const ENEMY_PIZZA_SHOOTER_SUPER = preload(\"res://elements/enemy/pizza/enemy_pizza_shooter_super.tscn\")
+
+const ENEMY_SNAKE = preload(\"res://elements/enemy/snake/enemy_snake.tscn\")
+const PIZZA_NORMAL = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto_stopped.tscn\")
+const PIZZA_SHOOTER = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto_shooter.tscn\")
+func _cmd(level:Level)->Level.CMD:
+	var stopped:Callable = func stop(pizza:AI_WalkAndDo):
+		pizza.distanceMax = 0;
+	
+	return Level.CMD_Sequence.new([
+		level.cmd_enemy_segment_ab([PIZZA_NORMAL, PIZZA_SHOOTER, PIZZA_SHOOTER, PIZZA_NORMAL], Vector2(-2.5, 13), Vector2(2.5, 13), \"main\", stopped),
+		level.cmd_enemy_segment_ab([PIZZA_NORMAL, PIZZA_NORMAL, PIZZA_NORMAL, PIZZA_NORMAL], Vector2(-2.5, 15), Vector2(2.5, 15), \"main\", stopped),
+		Level.CMD_Callable.new(func():
+			var snake:AI_Snake = level.objs.create_object(ENEMY_SNAKE, \"main\", level.stage.get_grid(9,16), Vector3.LEFT + Vector3.BACK * 0.25);
+			snake.set_bodies([0,0,0,0,0,0])
+			),
+		Level.CMD_Wait_Seconds.new(1),	
+		Level.CMD_Callable.new(func():
+			var snake:AI_Snake = level.objs.create_object(ENEMY_SNAKE, \"main\", level.stage.get_grid(-9,13), Vector3.RIGHT + Vector3.FORWARD * 0.25);
+			snake.set_bodies([0,0,1,1,1,0])
+			),
+		level.objs.cmd_wait_group(\"main\"),
+	])
+"
+
+[sub_resource type="GDScript" id="GDScript_ppk4i"]
+script/source = "extends Level_Snippet_Node
+
+
+const SHOOTER = preload(\"res://elements/enemy/pizza/enemy_pizza_shooter_super.tscn\")
+const PIZZA = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto_stopped.tscn\")
+const BOMB = preload(\"res://elements/enemy/bomb/enemy_bomb_roboto.tscn\")
+const LASER = preload(\"res://elements/enemy/laser/enemy_laser_roboto.tscn\")
+
+const ENEMY_SNAKE = preload(\"res://elements/enemy/snake/enemy_snake.tscn\")
+func _cmd(level:Level)->Level.CMD:
+	var stopped:Callable = func stop(pizza:AI_WalkAndDo):
+		pizza.distanceMax = 0;
+		
+	var bomb_func:Callable = func bomb_func(bomb:AI_WalkAndDo, dist_add:float):
+		bomb.needs_to_be_in_screen = true;
+		bomb.distanceMax += dist_add;
+	
+	return Level.CMD_Sequence.new([
+		level.objs.cmd_create_object_grid(BOMB, Vector2(-1, 6),  level, Vector3.ZERO, \"\", false, bomb_func.bind(-6.5)),
+		level.objs.cmd_create_object_grid(BOMB, Vector2( 1, 4),  level, Vector3.ZERO, \"\", false, bomb_func.bind(-4.5)),
+		level.objs.cmd_create_object_grid(SHOOTER, Vector2(-2, 1.5), level, Vector3.ZERO, \"main\"),
+		level.objs.cmd_create_object_grid(PIZZA, Vector2(0, 6), level, Vector3.ZERO, \"main\"),
+		level.objs.cmd_create_object_grid(PIZZA, Vector2(0, 8), level, Vector3.ZERO, \"main\"),
+		#level.objs.cmd_create_object_grid(BOMB, Vector2( 0, 3),  level, Vector3.ZERO, \"\", false, bomb_func.bind(-12)),
+		#level.objs.cmd_create_object_grid(LASER,Vector2( 0, 7.5),  level, Vector3.ZERO, \"\", false, stopped),
+		
+		Level.CMD_Callable.new(func():
+			var snake:AI_Snake = level.objs.create_object(ENEMY_SNAKE, \"main\", level.stage.get_grid(9,12), Vector3.LEFT - Vector3.BACK * 0.25);
+			snake.set_bodies([0,0,0,0,1,0,1,0,1,0,1])
+			),
+		Level.CMD_Wait_Seconds.new(1),
+		Level.CMD_Callable.new(func():
+			var snake:AI_Snake = level.objs.create_object(ENEMY_SNAKE, \"main\", level.stage.get_grid(-9,17), Vector3.RIGHT - Vector3.FORWARD * 0.25);
+			snake.set_bodies([0,0,0,0,0,0,0,0,0,0,0,0,0])
+			),
+		level.objs.cmd_wait_group(\"main\"),
+	])
+"
+
+[node name="LVL_FABRICA2" type="Node3D" node_paths=PackedStringArray("level_snippet")]
+script = ExtResource("1_3scfx")
+level_snippet = NodePath("Level_Snippet_Sequence_UseMeasures")
+
+[node name="Stage Piece Fabrica Room" parent="." instance=ExtResource("2_hgahx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
+
+[node name="FactoryDoor" parent="Stage Piece Fabrica Room" instance=ExtResource("5_1lm6p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.25)
+
+[node name="StageScreenMeasure" parent="Stage Piece Fabrica Room/FactoryDoor" instance=ExtResource("3_jm0dn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -5)
+default_movement = ExtResource("5_3uckt")
+
+[node name="Scenery2" type="Node3D" parent="Stage Piece Fabrica Room"]
+
+[node name="energy_box_factory" parent="Stage Piece Fabrica Room/Scenery2" instance=ExtResource("5_1im6s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, 2.75)
+
+[node name="lamp_factory" parent="Stage Piece Fabrica Room/Scenery2" instance=ExtResource("5_queg5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2.5, 2.75)
+
+[node name="lamp_factory2" parent="Stage Piece Fabrica Room/Scenery2" instance=ExtResource("5_queg5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.5, 2.75)
+
+[node name="Decals" type="Node3D" parent="Stage Piece Fabrica Room/Scenery2"]
+
+[node name="FactorygrayFloor" parent="Stage Piece Fabrica Room/Scenery2/Decals" instance=ExtResource("7_7g4vu")]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 4, -7.5, 0.001, 19)
+
+[node name="FactorygrayFloor2" parent="Stage Piece Fabrica Room/Scenery2/Decals" instance=ExtResource("7_7g4vu")]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 4, -7.5, 0.001, 1)
+
+[node name="FactorygrayFloor3" parent="Stage Piece Fabrica Room/Scenery2/Decals" instance=ExtResource("7_7g4vu")]
+transform = Transform3D(-1.74846e-06, 0, -2, 0, 1, 0, 40, 0, -8.74228e-08, -3, 0.001, -5)
+
+[node name="FactorygrayFloor4" parent="Stage Piece Fabrica Room/Scenery2/Decals" instance=ExtResource("7_7g4vu")]
+transform = Transform3D(-1.74846e-06, 0, -2, 0, 1, 0, 40, 0, -8.74228e-08, 5, 0.001, -5)
+
+[node name="support_roof" parent="Stage Piece Fabrica Room/Scenery2" instance=ExtResource("7_d5hjl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.75, 21.25)
+
+[node name="support_roof2" parent="Stage Piece Fabrica Room/Scenery2" instance=ExtResource("7_d5hjl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.75, 5.5)
+
+[node name="silo_factory" parent="Stage Piece Fabrica Room/Scenery2" instance=ExtResource("8_8iymx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, 0, 14.25)
+
+[node name="silo_factory2" parent="Stage Piece Fabrica Room/Scenery2" instance=ExtResource("8_8iymx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.25, 0, 8)
+
+[node name="silo_factory3" parent="Stage Piece Fabrica Room/Scenery2" instance=ExtResource("8_8iymx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.14548, 0, 15.5404)
+
+[node name="barrel_factory" parent="Stage Piece Fabrica Room/Scenery2" instance=ExtResource("9_6eqx2")]
+transform = Transform3D(0.523822, 0, 0.851828, 0, 1, 0, -0.851828, 0, 0.523822, 4.25, 0, 9.75)
+
+[node name="barrel_factory2" parent="Stage Piece Fabrica Room/Scenery2" instance=ExtResource("9_6eqx2")]
+transform = Transform3D(-0.887075, 0, 0.461625, 0, 1, 0, -0.461625, 0, -0.887075, 3.75, 0, 10.75)
+
+[node name="barrel_factory3" parent="Stage Piece Fabrica Room/Scenery2" instance=ExtResource("9_6eqx2")]
+transform = Transform3D(-0.381861, 0, -0.92422, 0, 1, 0, 0.92422, 0, -0.381861, 3.25, 0, 9.75)
+
+[node name="FactoryIconIvoFloor" parent="Stage Piece Fabrica Room/Scenery2" instance=ExtResource("12_56sdj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022, 14)
+
+[node name="Stage Piece Fabrica Room2" parent="." instance=ExtResource("2_hgahx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -30)
+
+[node name="FactoryDoor" parent="Stage Piece Fabrica Room2" instance=ExtResource("5_1lm6p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.25)
+
+[node name="StageScreenMeasure2" parent="Stage Piece Fabrica Room2/FactoryDoor" instance=ExtResource("3_jm0dn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -5)
+default_movement = ExtResource("5_3uckt")
+
+[node name="Scenery2" type="Node3D" parent="Stage Piece Fabrica Room2"]
+
+[node name="pipe_curve_factory" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("12_vdabv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 4.75)
+
+[node name="pipe_curve_factory2" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("12_vdabv")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -4.5, 0, 4.75)
+
+[node name="pipe_tube_factory" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("13_4obn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 4.75)
+
+[node name="pipe_curve_factory3" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("12_vdabv")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.5, 0, 4.75)
+
+[node name="pipe_curve_factory4" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("12_vdabv")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.5, 0, 4.75)
+
+[node name="pipe_tube_factory2" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("13_4obn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 4.75)
+
+[node name="FactorygrayFloor" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("7_7g4vu")]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 4, -7.5, 0.001, 19)
+
+[node name="FactorygrayFloor2" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("7_7g4vu")]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 4, -7.5, 0.001, 1)
+
+[node name="FactorygrayFloor3" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("7_7g4vu")]
+transform = Transform3D(-1.74846e-06, 0, -2, 0, 1, 0, 40, 0, -8.74228e-08, -3, 0.001, -5)
+
+[node name="FactorygrayFloor4" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("7_7g4vu")]
+transform = Transform3D(-1.74846e-06, 0, -2, 0, 1, 0, 40, 0, -8.74228e-08, 5, 0.001, -5)
+
+[node name="support_roof" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("7_d5hjl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.75, 20.75)
+
+[node name="support_roof2" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("7_d5hjl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.75, 9.75)
+
+[node name="silo_factory" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("8_8iymx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 18.5)
+
+[node name="silo_factory3" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("8_8iymx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.25, 0, 14.5)
+
+[node name="silo_factory2" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("8_8iymx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, 0, 11.75)
+
+[node name="silo_factory4" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("8_8iymx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.25, 0, 7.25)
+
+[node name="FactoryIconIvoFloor3" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("12_56sdj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022, 14)
+
+[node name="Stage Piece Fabrica Room3" parent="." instance=ExtResource("2_hgahx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -60)
+
+[node name="FactoryDoor" parent="Stage Piece Fabrica Room3" instance=ExtResource("5_1lm6p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.25)
+
+[node name="StageScreenMeasure3" parent="Stage Piece Fabrica Room3/FactoryDoor" instance=ExtResource("3_jm0dn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -5)
+default_movement = ExtResource("5_3uckt")
+
+[node name="Scenery3" type="Node3D" parent="Stage Piece Fabrica Room3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
+
+[node name="FactorygrayFloor" parent="Stage Piece Fabrica Room3/Scenery3" instance=ExtResource("7_7g4vu")]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 4, -7.5, 0.001, -29)
+
+[node name="FactorygrayFloor2" parent="Stage Piece Fabrica Room3/Scenery3" instance=ExtResource("7_7g4vu")]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 4, -7.5, 0.001, -9)
+
+[node name="FactorygrayFloor3" parent="Stage Piece Fabrica Room3/Scenery3" instance=ExtResource("7_7g4vu")]
+transform = Transform3D(-1.74846e-06, 0, -2, 0, 1, 0, 40, 0, -8.74228e-08, -3, 0.001, -35)
+
+[node name="FactorygrayFloor4" parent="Stage Piece Fabrica Room3/Scenery3" instance=ExtResource("7_7g4vu")]
+transform = Transform3D(-1.74846e-06, 0, -2, 0, 1, 0, 40, 0, -8.74228e-08, 5, 0.001, -35)
+
+[node name="support_roof3" parent="Stage Piece Fabrica Room3/Scenery3" instance=ExtResource("7_d5hjl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.75, -9.75)
+
+[node name="support_roof4" parent="Stage Piece Fabrica Room3/Scenery3" instance=ExtResource("7_d5hjl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.75, -21)
+
+[node name="silo_factory" parent="Stage Piece Fabrica Room3/Scenery3" instance=ExtResource("8_8iymx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -15.75)
+
+[node name="silo_factory2" parent="Stage Piece Fabrica Room3/Scenery3" instance=ExtResource("8_8iymx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, -17.5)
+
+[node name="barrel_factory" parent="Stage Piece Fabrica Room3/Scenery3" instance=ExtResource("9_6eqx2")]
+transform = Transform3D(0.523822, 0, 0.851828, 0, 1, 0, -0.851828, 0, 0.523822, -4.25, 0, -26.75)
+
+[node name="barrel_factory2" parent="Stage Piece Fabrica Room3/Scenery3" instance=ExtResource("9_6eqx2")]
+transform = Transform3D(0.984595, 0, 0.174851, 0, 1, 0, -0.174851, 0, 0.984595, 4, 0, -26.75)
+
+[node name="barrel_factory3" parent="Stage Piece Fabrica Room3/Scenery3" instance=ExtResource("9_6eqx2")]
+transform = Transform3D(0.984595, 0, 0.174851, 0, 1, 0, -0.174851, 0, 0.984595, 3, 0, -26.75)
+
+[node name="FactoryIconIvoFloor2" parent="Stage Piece Fabrica Room3/Scenery3" instance=ExtResource("12_56sdj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022, -15.75)
+
+[node name="Level_Snippet_Sequence_UseMeasures" type="Node" parent="."]
+script = ExtResource("4_47ude")
+
+[node name="Measure0" type="Node" parent="Level_Snippet_Sequence_UseMeasures" node_paths=PackedStringArray("where")]
+script = ExtResource("5_87yvk")
+where = NodePath("../../Stage Piece Fabrica Room/FactoryDoor/StageScreenMeasure")
+speed_or_time = 22.0
+style = 1
+waits_tween = false
+
+[node name="Level_Snippet_Parallel" type="Node" parent="Level_Snippet_Sequence_UseMeasures"]
+script = ExtResource("7_mhqc4")
+
+[node name="Level_Snippet_Until_Element_Dead" type="Node" parent="Level_Snippet_Sequence_UseMeasures/Level_Snippet_Parallel" node_paths=PackedStringArray("element_to_wait", "while_snippet")]
+script = ExtResource("7_gat42")
+element_to_wait = NodePath("../../../Stage Piece Fabrica Room/FactoryDoor")
+while_snippet = NodePath("Pizzas + Powerups")
+
+[node name="Pizzas + Powerups" type="Node" parent="Level_Snippet_Sequence_UseMeasures/Level_Snippet_Parallel/Level_Snippet_Until_Element_Dead"]
+script = SubResource("GDScript_ypu3b")
+powerups = Array[PackedScene]([ExtResource("18_unqw5"), ExtResource("19_3uckt")])
+
+[node name="Measure1" type="Node" parent="Level_Snippet_Sequence_UseMeasures" node_paths=PackedStringArray("where")]
+script = ExtResource("5_87yvk")
+where = NodePath("../../Stage Piece Fabrica Room2/FactoryDoor/StageScreenMeasure2")
+speed_or_time = 22.0
+style = 1
+waits_tween = false
+
+[node name="Level_Snippet_Parallel2" type="Node" parent="Level_Snippet_Sequence_UseMeasures"]
+script = ExtResource("7_mhqc4")
+
+[node name="Level_Snippet_Until_Element_Dead2" type="Node" parent="Level_Snippet_Sequence_UseMeasures/Level_Snippet_Parallel2" node_paths=PackedStringArray("element_to_wait", "while_snippet")]
+script = ExtResource("7_gat42")
+element_to_wait = NodePath("../../../Stage Piece Fabrica Room2/FactoryDoor")
+while_snippet = NodePath("Cobras Intro")
+
+[node name="Cobras Intro" type="Node" parent="Level_Snippet_Sequence_UseMeasures/Level_Snippet_Parallel2/Level_Snippet_Until_Element_Dead2"]
+script = SubResource("GDScript_x6m2c")
+
+[node name="Measure2" type="Node" parent="Level_Snippet_Sequence_UseMeasures" node_paths=PackedStringArray("where")]
+script = ExtResource("5_87yvk")
+where = NodePath("../../Stage Piece Fabrica Room3/FactoryDoor/StageScreenMeasure3")
+speed_or_time = 22.0
+style = 1
+waits_tween = false
+
+[node name="Level_Snippet_Parallel3" type="Node" parent="Level_Snippet_Sequence_UseMeasures"]
+script = ExtResource("7_mhqc4")
+
+[node name="Level_Snippet_Until_Element_Dead3" type="Node" parent="Level_Snippet_Sequence_UseMeasures/Level_Snippet_Parallel3" node_paths=PackedStringArray("element_to_wait", "while_snippet")]
+script = ExtResource("7_gat42")
+element_to_wait = NodePath("../../../Stage Piece Fabrica Room3/FactoryDoor")
+while_snippet = NodePath("Bombas, cobras verticais, laser")
+
+[node name="Bombas, cobras verticais, laser" type="Node" parent="Level_Snippet_Sequence_UseMeasures/Level_Snippet_Parallel3/Level_Snippet_Until_Element_Dead3"]
+script = SubResource("GDScript_ppk4i")

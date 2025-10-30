@@ -1,0 +1,716 @@
+[gd_scene load_steps=18 format=3 uid="uid://nrr5og0bhl16"]
+
+[ext_resource type="Script" uid="uid://dsvfipg4mxr7k" path="res://systems/line3d/child_line_3d.gd" id="2_a2mvq"]
+[ext_resource type="Script" uid="uid://dj64er1f315tw" path="res://systems/level/level_wave.gd" id="3_pjoxs"]
+[ext_resource type="PackedScene" uid="uid://hlh5cmnd748w" path="res://elements/neutral/car/element_car.tscn" id="4_fmhp1"]
+[ext_resource type="Script" uid="uid://by0qq2brwyofj" path="res://systems/level/level_wave_group.gd" id="5_ckgit"]
+[ext_resource type="PackedScene" uid="uid://t7wocwarj2c3" path="res://elements/enemy/pizza/enemy_pizza_roboto.tscn" id="6_uwhhc"]
+[ext_resource type="PackedScene" uid="uid://bfp6hll5p8pd" path="res://elements/enemy/pizza/enemy_pizza_roboto_shooter.tscn" id="7_k7r6c"]
+[ext_resource type="PackedScene" uid="uid://c200go5gdekh0" path="res://elements/enemy/laser/enemy_laser_roboto.tscn" id="8_6l73j"]
+[ext_resource type="PackedScene" uid="uid://bbth6qhwn1uow" path="res://elements/neutral/compartiment/Compartiment.tscn" id="9_ylvr0"]
+[ext_resource type="PackedScene" uid="uid://djhown2ulvtjc" path="res://elements/powerups/button/powerup_weapon_button_tap_blue.tscn" id="10_8sttx"]
+[ext_resource type="PackedScene" uid="uid://dcxopovxim3xx" path="res://elements/powerups/button/holdable_button_fire_rate.tscn" id="10_42am8"]
+[ext_resource type="PackedScene" uid="uid://ce0o66smctqbt" path="res://elements/npc/npc_talking_alone.tscn" id="11_42am8"]
+[ext_resource type="PackedScene" uid="uid://cghcfyakwknlc" path="res://elements/enemy/copter/roboto_copter_line.tscn" id="12_sgfeh"]
+[ext_resource type="PackedScene" uid="uid://1w3067r22ffa" path="res://elements/powerups/button/holdable_button_warmup.tscn" id="13_ldq7k"]
+[ext_resource type="PackedScene" uid="uid://msg6qpp4p7jt" path="res://elements/enemy/bomb/enemy_bomb_roboto.tscn" id="13_wrwoq"]
+[ext_resource type="PackedScene" uid="uid://h1a1lxlq17c7" path="res://elements/enemy/brawny/enemy_brawny.tscn" id="14_8xvhp"]
+[ext_resource type="PackedScene" uid="uid://bcmggsmmlhf30" path="res://elements/powerups/button/powerup_weapon_button_tap_green.tscn" id="14_vh8lv"]
+
+[sub_resource type="GDScript" id="GDScript_rulm3"]
+script/source = "extends Level
+
+## stage pieces
+const STAGE_PIECE_AFONSO_PENA_LANES_3 = preload(\"res://elements/stage_pieces/stage_piece_afonso_pena_lanes3.tscn\")
+
+@export var _wait_group:String = \"WaitGroup\"
+@export var going_to_lollypop_waves:Array[LevelWave] = [];
+@export var final_altars:Array[PackedScene];
+
+func _ready():
+	await await_for_level_ready()
+
+	cmd_array([
+		CMD_Callable.new(func():
+			#Leave Grid as before (so links to statue grid and to starting with no scene grid)
+			stage.set_pivot_offset_x(6);
+			stage.set_pivot_offset_z(0);
+			stage.repivot();
+			cam.tween_position(stage.get_pos_x(), 2, LevelCameraController.MovementAxis.X, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+			cam.tween_position(stage.get_pos_z(), 1, LevelCameraController.MovementAxis.Z, Tween.TRANS_SINE, Tween.EASE_IN);
+			),
+		Level.CMD_Wait_Seconds.new(1),
+		Level_Cmd_Utils.cmd_level_waves(self, _wait_group, going_to_lollypop_waves, [STAGE_PIECE_AFONSO_PENA_LANES_3], 0.75, 12),
+		Level.CMD_Wait_Seconds.new(0.15),
+		Level_Cmd_Utils.cmd_multiple_altars_right_to_left(Level_Cmd_Utils.ALTAR, final_altars, self, _wait_group),
+		objs.cmd_wait_group(_wait_group),
+		Level.CMD_Wait_Seconds.new(0.15),
+	], false);
+"
+
+[node name="LVL LAST WAVES" type="Node3D" node_paths=PackedStringArray("going_to_lollypop_waves")]
+script = SubResource("GDScript_rulm3")
+going_to_lollypop_waves = [NodePath("Waves/Going To Lollipop/Wave1"), NodePath("Waves/Going To Lollipop/Wave2"), NodePath("Waves/Going To Lollipop/Wave3"), NodePath("Waves/Going To Lollipop/Wave4")]
+final_altars = Array[PackedScene]([ExtResource("10_42am8"), ExtResource("13_ldq7k"), ExtResource("10_8sttx")])
+
+[node name="Lines" type="Node" parent="."]
+
+[node name="Line_Straight" type="Node3D" parent="Lines"]
+script = ExtResource("2_a2mvq")
+
+[node name="Marker3D" type="Marker3D" parent="Lines/Line_Straight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="Lines/Line_Straight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+
+[node name="Line_Curvy" type="Node3D" parent="Lines"]
+script = ExtResource("2_a2mvq")
+
+[node name="Marker3D" type="Marker3D" parent="Lines/Line_Curvy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
+
+[node name="Marker3D3" type="Marker3D" parent="Lines/Line_Curvy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="Marker3D4" type="Marker3D" parent="Lines/Line_Curvy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2)
+
+[node name="Marker3D5" type="Marker3D" parent="Lines/Line_Curvy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2)
+
+[node name="Marker3D6" type="Marker3D" parent="Lines/Line_Curvy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="Lines/Line_Curvy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+
+[node name="Line_ForwardThenBack" type="Node3D" parent="Lines"]
+script = ExtResource("2_a2mvq")
+
+[node name="Marker3D" type="Marker3D" parent="Lines/Line_ForwardThenBack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
+
+[node name="Marker3D3" type="Marker3D" parent="Lines/Line_ForwardThenBack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="Marker3D4" type="Marker3D" parent="Lines/Line_ForwardThenBack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
+
+[node name="Marker3D5" type="Marker3D" parent="Lines/Line_ForwardThenBack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -2)
+
+[node name="Line_EntireScreen_Crazy" type="Node3D" parent="Lines"]
+script = ExtResource("2_a2mvq")
+
+[node name="Marker3D" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+
+[node name="Marker3D2" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="Marker3D3" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
+
+[node name="Marker3D4" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 5)
+
+[node name="Marker3D5" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 5)
+
+[node name="Marker3D6" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 8)
+
+[node name="Marker3D7" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 8)
+
+[node name="Marker3D8" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 11)
+
+[node name="Marker3D9" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 11)
+
+[node name="Marker3D10" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 14)
+
+[node name="Marker3D11" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 14)
+
+[node name="Marker3D12" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 17)
+
+[node name="Marker3D13" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 17)
+
+[node name="Marker3D14" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 20)
+
+[node name="Marker3D15" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 20)
+
+[node name="Waves" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
+
+[node name="Going To Lollipop" type="Node3D" parent="Waves"]
+
+[node name="Wave1" type="VisibleOnScreenNotifier3D" parent="Waves/Going To Lollipop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, -9)
+aabb = AABB(-3.93723, -1, -9.45918, 7.87445, 2, 18.9184)
+script = ExtResource("3_pjoxs")
+
+[node name="Element_Car" parent="Waves/Going To Lollipop/Wave1" instance=ExtResource("4_fmhp1")]
+transform = Transform3D(-0.277314, 0, -0.960779, 0, 1, 0, 0.960779, 0, -0.277314, -2, 0, 3.8885)
+
+[node name="Compartiment5" parent="Waves/Going To Lollipop/Wave1/Element_Car" instance=ExtResource("9_ylvr0")]
+transform = Transform3D(0.999048, 0, -0.0436197, 0, 1, 0, 0.0436197, 0, 0.999048, 0, 0, 0)
+
+[node name="WeaponButton_Tap_Blue" parent="Waves/Going To Lollipop/Wave1/Element_Car/Compartiment5" instance=ExtResource("10_8sttx")]
+transform = Transform3D(-0.320497, 0, 0.94725, 0, 1, 0, -0.94725, 0, -0.320497, 0.950047, 0, 0.471607)
+vfx_destroy = null
+
+[node name="Element_Car2" parent="Waves/Going To Lollipop/Wave1" instance=ExtResource("4_fmhp1")]
+transform = Transform3D(0.147809, 0, -0.989016, 0, 1, 0, 0.989016, 0, 0.147809, 2, 0, -2.57971)
+
+[node name="Element_Car3" parent="Waves/Going To Lollipop/Wave1" instance=ExtResource("4_fmhp1")]
+transform = Transform3D(-0.411116, 0, -0.911583, 0, 1, 0, 0.911583, 0, -0.411116, -2, 0, -3.00425)
+
+[node name="Pizza Flower" type="Node3D" parent="Waves/Going To Lollipop/Wave1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 9.42029)
+script = ExtResource("5_ckgit")
+group_name = "WaitGroup"
+
+[node name="Enemy_PizzaRoboto" parent="Waves/Going To Lollipop/Wave1/Pizza Flower" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto2" parent="Waves/Going To Lollipop/Wave1/Pizza Flower" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto3" parent="Waves/Going To Lollipop/Wave1/Pizza Flower" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto4" parent="Waves/Going To Lollipop/Wave1/Pizza Flower" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto5" parent="Waves/Going To Lollipop/Wave1/Pizza Flower" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy Laser Roboto" parent="Waves/Going To Lollipop/Wave1/Pizza Flower" instance=ExtResource("8_6l73j")]
+transform = Transform3D(0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, 0.819152, 4.5, 0, -4.9004)
+delayBeforeShooting = 1.0
+distanceMax = 15.0
+invertedPosition = true
+
+[node name="Pizza Flower2" type="Node3D" parent="Waves/Going To Lollipop/Wave1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 9.42029)
+script = ExtResource("5_ckgit")
+group_name = "WaitGroup"
+
+[node name="Enemy_PizzaRoboto" parent="Waves/Going To Lollipop/Wave1/Pizza Flower2" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto2" parent="Waves/Going To Lollipop/Wave1/Pizza Flower2" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto3" parent="Waves/Going To Lollipop/Wave1/Pizza Flower2" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto4" parent="Waves/Going To Lollipop/Wave1/Pizza Flower2" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto5" parent="Waves/Going To Lollipop/Wave1/Pizza Flower2" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="NpcTalkingAlone" parent="Waves/Going To Lollipop/Wave1" instance=ExtResource("11_42am8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1.42029)
+dialogue_id = "dial_lvl1_npc_flavor"
+overwrite_delay = true
+new_delay = 5.25
+
+[node name="Pizza Flower4" type="Node3D" parent="Waves/Going To Lollipop/Wave1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2.42029)
+script = ExtResource("5_ckgit")
+group_name = "WaitGroup"
+
+[node name="Enemy_PizzaRoboto" parent="Waves/Going To Lollipop/Wave1/Pizza Flower4" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto2" parent="Waves/Going To Lollipop/Wave1/Pizza Flower4" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto3" parent="Waves/Going To Lollipop/Wave1/Pizza Flower4" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto4" parent="Waves/Going To Lollipop/Wave1/Pizza Flower4" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="PizzaShooter" parent="Waves/Going To Lollipop/Wave1/Pizza Flower4" instance=ExtResource("7_k7r6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+distanceMax = 0.0
+damage_on_collision = 1.0
+
+[node name="Pizza Flower5" type="Node3D" parent="Waves/Going To Lollipop/Wave1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -4.57971)
+script = ExtResource("5_ckgit")
+group_name = "WaitGroup"
+
+[node name="Enemy_PizzaRoboto" parent="Waves/Going To Lollipop/Wave1/Pizza Flower5" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto2" parent="Waves/Going To Lollipop/Wave1/Pizza Flower5" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto3" parent="Waves/Going To Lollipop/Wave1/Pizza Flower5" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto4" parent="Waves/Going To Lollipop/Wave1/Pizza Flower5" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="PizzaShooter" parent="Waves/Going To Lollipop/Wave1/Pizza Flower5" instance=ExtResource("7_k7r6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+distanceMax = 0.0
+damage_on_collision = 1.0
+
+[node name="Pizza Flower6" type="Node3D" parent="Waves/Going To Lollipop/Wave1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -4.57971)
+script = ExtResource("5_ckgit")
+group_name = "WaitGroup"
+
+[node name="Enemy_PizzaRoboto" parent="Waves/Going To Lollipop/Wave1/Pizza Flower6" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto2" parent="Waves/Going To Lollipop/Wave1/Pizza Flower6" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto3" parent="Waves/Going To Lollipop/Wave1/Pizza Flower6" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto4" parent="Waves/Going To Lollipop/Wave1/Pizza Flower6" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="PizzaShooter" parent="Waves/Going To Lollipop/Wave1/Pizza Flower6" instance=ExtResource("7_k7r6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+distanceMax = 0.0
+damage_on_collision = 1.0
+
+[node name="Pizza Walking Line" type="Node3D" parent="Waves/Going To Lollipop/Wave1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+script = ExtResource("5_ckgit")
+group_name = "WaitGroup"
+
+[node name="Enemy_PizzaRoboto" parent="Waves/Going To Lollipop/Wave1/Pizza Walking Line" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+distanceMax = 0.0
+
+[node name="Enemy_PizzaRoboto2" parent="Waves/Going To Lollipop/Wave1/Pizza Walking Line" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+distanceMax = 0.0
+
+[node name="Enemy_PizzaRoboto3" parent="Waves/Going To Lollipop/Wave1/Pizza Walking Line" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+distanceMax = 0.0
+
+[node name="Enemy_PizzaRoboto4" parent="Waves/Going To Lollipop/Wave1/Pizza Walking Line" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+distanceMax = 0.0
+
+[node name="PizzaShooter" parent="Waves/Going To Lollipop/Wave1/Pizza Walking Line" instance=ExtResource("7_k7r6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -2)
+damage_on_collision = 1.0
+walkAndStop = false
+
+[node name="PizzaShooter2" parent="Waves/Going To Lollipop/Wave1/Pizza Walking Line" instance=ExtResource("7_k7r6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)
+damage_on_collision = 1.0
+walkAndStop = false
+
+[node name="Wave2" type="VisibleOnScreenNotifier3D" parent="Waves/Going To Lollipop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, -30)
+aabb = AABB(-4.84039, -1, -11.5, 9.68077, 2, 23)
+script = ExtResource("3_pjoxs")
+
+[node name="Element_Car" parent="Waves/Going To Lollipop/Wave2" instance=ExtResource("4_fmhp1")]
+transform = Transform3D(0.219846, 0, -0.975535, 0, 1, 0, 0.975535, 0, 0.219846, 0, 0, 5.77913)
+
+[node name="Compartiment1" parent="Waves/Going To Lollipop/Wave2/Element_Car" instance=ExtResource("9_ylvr0")]
+
+[node name="HoldableButton-FIRERATE" parent="Waves/Going To Lollipop/Wave2/Element_Car/Compartiment1" instance=ExtResource("10_42am8")]
+transform = Transform3D(0.14781, 0, 0.989016, 0, 1, 0, -0.989016, 0, 0.14781, 1.24632, 0, 0.325302)
+
+[node name="Element_Car2" parent="Waves/Going To Lollipop/Wave2" instance=ExtResource("4_fmhp1")]
+transform = Transform3D(0.147809, 0, -0.989016, 0, 1, 0, 0.989016, 0, 0.147809, 2, 0, -0.617699)
+
+[node name="Element_Car3" parent="Waves/Going To Lollipop/Wave2" instance=ExtResource("4_fmhp1")]
+transform = Transform3D(-0.636078, 0, -0.771625, 0, 1, 0, 0.771625, 0, -0.636078, -2, 0, -0.617699)
+
+[node name="Element_Car4" parent="Waves/Going To Lollipop/Wave2" instance=ExtResource("4_fmhp1")]
+transform = Transform3D(0.541708, 0, -0.840567, 0, 1, 0, 0.840567, 0, 0.541708, -4.275, 0, -9.0065)
+
+[node name="Element_Car5" parent="Waves/Going To Lollipop/Wave2" instance=ExtResource("4_fmhp1")]
+transform = Transform3D(0.15471, 0, -0.987959, 0, 1, 0, 0.987959, 0, 0.15471, 0, 0, -8.8695)
+
+[node name="Element_Car6" parent="Waves/Going To Lollipop/Wave2" instance=ExtResource("4_fmhp1")]
+transform = Transform3D(-0.546102, 0, -0.837718, 0, 1, 0, 0.837718, 0, -0.546102, 4.103, 0, -8.8355)
+
+[node name="Compartiment2" parent="Waves/Going To Lollipop/Wave2/Element_Car6" instance=ExtResource("9_ylvr0")]
+transform = Transform3D(0.422619, 0, 0.906308, 0, 1, 0, -0.906308, 0, 0.422619, 0, 0, 0)
+
+[node name="HoldableButton-FIRERATE" parent="Waves/Going To Lollipop/Wave2/Element_Car6/Compartiment2" instance=ExtResource("10_42am8")]
+transform = Transform3D(0.510213, 0, 0.860049, 0, 1, 0, -0.860049, 0, 0.510213, 0.115189, 0, 0.941994)
+
+[node name="Lasers" type="Node3D" parent="Waves/Going To Lollipop/Wave2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.3823)
+script = ExtResource("5_ckgit")
+group_name = "WaitGroup"
+
+[node name="Enemy Laser Roboto" parent="Waves/Going To Lollipop/Wave2/Lasers" instance=ExtResource("8_6l73j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.01966)
+delayBeforeShooting = 2.0
+distanceMax = 0.0
+
+[node name="Enemy Laser Roboto2" parent="Waves/Going To Lollipop/Wave2/Lasers" instance=ExtResource("8_6l73j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -16)
+delayBeforeShooting = 2.0
+distanceMax = 0.0
+
+[node name="Enemy Laser Roboto3" parent="Waves/Going To Lollipop/Wave2/Lasers" instance=ExtResource("8_6l73j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -16)
+delayBeforeShooting = 2.0
+distanceMax = 0.0
+
+[node name="Pizza Flower3" type="Node3D" parent="Waves/Going To Lollipop/Wave2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4.3823)
+script = ExtResource("5_ckgit")
+group_name = "WaitGroup"
+
+[node name="Enemy_PizzaRoboto" parent="Waves/Going To Lollipop/Wave2/Pizza Flower3" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto2" parent="Waves/Going To Lollipop/Wave2/Pizza Flower3" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto3" parent="Waves/Going To Lollipop/Wave2/Pizza Flower3" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto4" parent="Waves/Going To Lollipop/Wave2/Pizza Flower3" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="PizzaShooter" parent="Waves/Going To Lollipop/Wave2/Pizza Flower3" instance=ExtResource("7_k7r6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+distanceMax = 0.0
+damage_on_collision = 1.0
+
+[node name="EnemyRobotoCopterLine2" parent="Waves/Going To Lollipop/Wave2" node_paths=PackedStringArray("_line") instance=ExtResource("12_sgfeh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -20.983)
+time_between_copters = 0.0
+space_between_copters = 1.0
+numberOfCopters = 12
+_line = NodePath("ChildLine3D")
+
+[node name="ChildLine3D" type="Node3D" parent="Waves/Going To Lollipop/Wave2/EnemyRobotoCopterLine2"]
+script = ExtResource("2_a2mvq")
+
+[node name="Node3D" type="Node3D" parent="Waves/Going To Lollipop/Wave2/EnemyRobotoCopterLine2/ChildLine3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 7)
+
+[node name="Node3D2" type="Node3D" parent="Waves/Going To Lollipop/Wave2/EnemyRobotoCopterLine2/ChildLine3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 9)
+
+[node name="Node3D3" type="Node3D" parent="Waves/Going To Lollipop/Wave2/EnemyRobotoCopterLine2/ChildLine3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 5)
+
+[node name="Node3D4" type="Node3D" parent="Waves/Going To Lollipop/Wave2/EnemyRobotoCopterLine2/ChildLine3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 5)
+
+[node name="Node3D5" type="Node3D" parent="Waves/Going To Lollipop/Wave2/EnemyRobotoCopterLine2/ChildLine3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 9)
+
+[node name="Node3D6" type="Node3D" parent="Waves/Going To Lollipop/Wave2/EnemyRobotoCopterLine2/ChildLine3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 7)
+
+[node name="EnemyRobotoCopterLine" parent="Waves/Going To Lollipop/Wave2" node_paths=PackedStringArray("_line") instance=ExtResource("12_sgfeh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.997337)
+time_between_copters = 0.0
+space_between_copters = 2.0
+numberOfCopters = 12
+_line = NodePath("ChildLine3D")
+
+[node name="ChildLine3D" type="Node3D" parent="Waves/Going To Lollipop/Wave2/EnemyRobotoCopterLine"]
+script = ExtResource("2_a2mvq")
+
+[node name="Node3D" type="Node3D" parent="Waves/Going To Lollipop/Wave2/EnemyRobotoCopterLine/ChildLine3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 10)
+
+[node name="Node3D2" type="Node3D" parent="Waves/Going To Lollipop/Wave2/EnemyRobotoCopterLine/ChildLine3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 10)
+
+[node name="Node3D3" type="Node3D" parent="Waves/Going To Lollipop/Wave2/EnemyRobotoCopterLine/ChildLine3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 7)
+
+[node name="Node3D4" type="Node3D" parent="Waves/Going To Lollipop/Wave2/EnemyRobotoCopterLine/ChildLine3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 7)
+
+[node name="Node3D5" type="Node3D" parent="Waves/Going To Lollipop/Wave2/EnemyRobotoCopterLine/ChildLine3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 10)
+
+[node name="Node3D6" type="Node3D" parent="Waves/Going To Lollipop/Wave2/EnemyRobotoCopterLine/ChildLine3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 10)
+
+[node name="Pizza Flower4" type="Node3D" parent="Waves/Going To Lollipop/Wave2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4.3823)
+script = ExtResource("5_ckgit")
+group_name = "WaitGroup"
+
+[node name="Enemy_PizzaRoboto" parent="Waves/Going To Lollipop/Wave2/Pizza Flower4" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto2" parent="Waves/Going To Lollipop/Wave2/Pizza Flower4" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto3" parent="Waves/Going To Lollipop/Wave2/Pizza Flower4" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto4" parent="Waves/Going To Lollipop/Wave2/Pizza Flower4" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="PizzaShooter" parent="Waves/Going To Lollipop/Wave2/Pizza Flower4" instance=ExtResource("7_k7r6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+distanceMax = 0.0
+damage_on_collision = 1.0
+
+[node name="Wave3" type="VisibleOnScreenNotifier3D" parent="Waves/Going To Lollipop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, -52.5)
+aabb = AABB(-4.84039, -1, -11, 9.68077, 2, 22)
+script = ExtResource("3_pjoxs")
+
+[node name="Element_Car" parent="Waves/Going To Lollipop/Wave3" instance=ExtResource("4_fmhp1")]
+transform = Transform3D(0.219846, 0, -0.975535, 0, 1, 0, 0.975535, 0, 0.219846, 0, 0, 8.91684)
+
+[node name="Compartiment3" parent="Waves/Going To Lollipop/Wave3/Element_Car" instance=ExtResource("9_ylvr0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="HoldableButton-WARMUP" parent="Waves/Going To Lollipop/Wave3/Element_Car/Compartiment3" instance=ExtResource("13_ldq7k")]
+transform = Transform3D(-0.967267, 0, 0.253758, 0, 1, 0, -0.253758, 0, -0.967267, 0.308582, 0, -1.21465)
+
+[node name="Element_Car2" parent="Waves/Going To Lollipop/Wave3" instance=ExtResource("4_fmhp1")]
+transform = Transform3D(-0.994151, 0, -0.107999, 0, 1, 0, 0.107999, 0, -0.994151, 1.24305, 0, -0.617699)
+
+[node name="Element_Car3" parent="Waves/Going To Lollipop/Wave3" instance=ExtResource("4_fmhp1")]
+transform = Transform3D(-0.961262, 0, 0.275637, 0, 1, 0, -0.275637, 0, -0.961262, -1.32716, 0, -0.617699)
+
+[node name="Compartiment4" parent="Waves/Going To Lollipop/Wave3/Element_Car3" instance=ExtResource("9_ylvr0")]
+transform = Transform3D(0.0453631, 0, 0.99897, 0, 1, 0, -0.99897, 0, 0.0453631, 0.161091, 0, -0.100929)
+
+[node name="WeaponButton_Tap_Green" parent="Waves/Going To Lollipop/Wave3/Element_Car3/Compartiment4" instance=ExtResource("14_vh8lv")]
+transform = Transform3D(-0.444635, 0, 0.895712, 0, 1, 0, -0.895712, 0, -0.444635, 1.89098, 0, -2.21905)
+
+[node name="Element_Car4" parent="Waves/Going To Lollipop/Wave3" instance=ExtResource("4_fmhp1")]
+transform = Transform3D(0.541708, 0, -0.840567, 0, 1, 0, 0.840567, 0, 0.541708, -2.50983, 0, -8.06508)
+
+[node name="Compartiment4" parent="Waves/Going To Lollipop/Wave3/Element_Car4" instance=ExtResource("9_ylvr0")]
+
+[node name="HoldableButton-WARMUP" parent="Waves/Going To Lollipop/Wave3/Element_Car4/Compartiment4" instance=ExtResource("13_ldq7k")]
+transform = Transform3D(0.570799, 0, 0.821089, 0, 1, 0, -0.821089, 0, 0.570799, 0.112444, 0, -0.448792)
+
+[node name="Element_Car6" parent="Waves/Going To Lollipop/Wave3" instance=ExtResource("4_fmhp1")]
+transform = Transform3D(-0.546102, 0, -0.837718, 0, 1, 0, 0.837718, 0, -0.546102, 3.21028, 0, -8.00701)
+
+[node name="Bombs" type="Node3D" parent="Waves/Going To Lollipop/Wave3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.3823)
+script = ExtResource("5_ckgit")
+group_name = "WaitGroup"
+
+[node name="EnemyBomb" parent="Waves/Going To Lollipop/Wave3/Bombs" instance=ExtResource("13_wrwoq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -12)
+needs_to_be_in_screen = true
+distanceMax = 12.0
+
+[node name="Marker3D" type="Marker3D" parent="Waves/Going To Lollipop/Wave3/Bombs/EnemyBomb"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
+gizmo_extents = 1.0
+
+[node name="EnemyBomb2" parent="Waves/Going To Lollipop/Wave3/Bombs" instance=ExtResource("13_wrwoq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -17)
+needs_to_be_in_screen = true
+distanceMax = 15.0
+
+[node name="Marker3D" type="Marker3D" parent="Waves/Going To Lollipop/Wave3/Bombs/EnemyBomb2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
+gizmo_extents = 1.0
+
+[node name="Pizza Flower4" type="Node3D" parent="Waves/Going To Lollipop/Wave3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.26646)
+script = ExtResource("5_ckgit")
+group_name = "WaitGroup"
+
+[node name="Enemy_PizzaRoboto" parent="Waves/Going To Lollipop/Wave3/Pizza Flower4" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -3.25)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto2" parent="Waves/Going To Lollipop/Wave3/Pizza Flower4" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -3.25)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto3" parent="Waves/Going To Lollipop/Wave3/Pizza Flower4" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -4.75)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto4" parent="Waves/Going To Lollipop/Wave3/Pizza Flower4" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -4.75)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Pizza Flower5" type="Node3D" parent="Waves/Going To Lollipop/Wave3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.6177)
+script = ExtResource("5_ckgit")
+group_name = "WaitGroup"
+
+[node name="Enemy_PizzaRoboto" parent="Waves/Going To Lollipop/Wave3/Pizza Flower5" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto2" parent="Waves/Going To Lollipop/Wave3/Pizza Flower5" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto3" parent="Waves/Going To Lollipop/Wave3/Pizza Flower5" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Enemy_PizzaRoboto4" parent="Waves/Going To Lollipop/Wave3/Pizza Flower5" instance=ExtResource("6_uwhhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="PizzaShooter" parent="Waves/Going To Lollipop/Wave3/Pizza Flower5" instance=ExtResource("7_k7r6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+distanceMax = 0.0
+damage_on_collision = 1.0
+
+[node name="Pizza Line" type="Node3D" parent="Waves/Going To Lollipop/Wave3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -1.6177)
+script = ExtResource("5_ckgit")
+group_name = "WaitGroup"
+
+[node name="PizzaShooter" parent="Waves/Going To Lollipop/Wave3/Pizza Line" instance=ExtResource("7_k7r6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+distanceMax = 0.0
+damage_on_collision = 1.0
+
+[node name="PizzaShooter2" parent="Waves/Going To Lollipop/Wave3/Pizza Line" instance=ExtResource("7_k7r6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+distanceMax = 0.0
+damage_on_collision = 1.0
+
+[node name="Enemy_PizzaRoboto" parent="Waves/Going To Lollipop/Wave3/Pizza Line" instance=ExtResource("6_uwhhc")]
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Pizza Line2" type="Node3D" parent="Waves/Going To Lollipop/Wave3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -1.6177)
+script = ExtResource("5_ckgit")
+group_name = "WaitGroup"
+
+[node name="PizzaShooter" parent="Waves/Going To Lollipop/Wave3/Pizza Line2" instance=ExtResource("7_k7r6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+distanceMax = 0.0
+damage_on_collision = 1.0
+
+[node name="PizzaShooter2" parent="Waves/Going To Lollipop/Wave3/Pizza Line2" instance=ExtResource("7_k7r6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+distanceMax = 0.0
+damage_on_collision = 1.0
+
+[node name="Enemy_PizzaRoboto" parent="Waves/Going To Lollipop/Wave3/Pizza Line2" node_paths=PackedStringArray("simpleAnimation") instance=ExtResource("6_uwhhc")]
+simpleAnimation = NodePath("../../Pizza Line/Enemy_PizzaRoboto/Body/Render/Pizza_Roboto")
+distanceMax = 0.0
+walkAndStop = true
+
+[node name="Wave4" type="VisibleOnScreenNotifier3D" parent="Waves/Going To Lollipop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, -69.5)
+aabb = AABB(-4.84, -1, -3, 9.681, 2, 9)
+script = ExtResource("3_pjoxs")
+
+[node name="Lasers and Brawny" type="Node3D" parent="Waves/Going To Lollipop/Wave4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.73521)
+script = ExtResource("5_ckgit")
+group_name = "WaitGroup"
+
+[node name="enemy_brawny" parent="Waves/Going To Lollipop/Wave4/Lasers and Brawny" instance=ExtResource("14_8xvhp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.5)
+
+[node name="Enemy Laser Roboto" parent="Waves/Going To Lollipop/Wave4/Lasers and Brawny" instance=ExtResource("8_6l73j")]
+transform = Transform3D(0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, 0.819152, 4.7, 0, -3.681)
+delayBeforeShooting = 2.0
+distanceMax = 20.0
+invertedPosition = true
+
+[node name="Enemy Laser Roboto2" parent="Waves/Going To Lollipop/Wave4/Lasers and Brawny" instance=ExtResource("8_6l73j")]
+transform = Transform3D(0.819152, 0, 0.573576, 0, 1, 0, -0.573576, 0, 0.819152, -4.7, 0, -3.681)
+delayBeforeShooting = 2.0
+distanceMax = 20.0
+invertedPosition = true

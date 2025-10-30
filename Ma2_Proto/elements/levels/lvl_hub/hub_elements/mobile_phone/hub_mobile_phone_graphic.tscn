@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhc5t0ubi0acn"]
+
+[ext_resource type="Script" uid="uid://oc7afw4ief5i" path="res://elements/levels/lvl_hub/hub_elements/mobile_phone/graphic_mobile_phone.gd" id="1_cn6ml"]
+[ext_resource type="Material" uid="uid://xy7yuvdpxprl" path="res://elements/levels/lvl_hub/hub_elements/mobile_phone/m_mobile_phone.tres" id="2_ayijh"]
+[ext_resource type="PackedScene" uid="uid://d0mgsrcyne68w" path="res://elements/levels/lvl_hub/hub_elements/mobile_phone/mesh_smartphone.tscn" id="3_vt0cy"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="4_ub11u"]
+
+[node name="GraphicMobilePhone" type="Node3D"]
+transform = Transform3D(1, 0, -9.31322e-10, 0, 1, 0, 9.31322e-10, 0, 1, 0, 0, 0)
+script = ExtResource("1_cn6ml")
+screen_brightness = 1.0
+screen_material = ExtResource("2_ayijh")
+
+[node name="smartphone" parent="." instance=ExtResource("3_vt0cy")]
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="smartphone"]
+script = ExtResource("4_ub11u")
+high_contrast_group = &"interactable"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CameraShakeData" load_steps=2 format=3 uid="uid://56t4nu6h8m02"]
+
+[ext_resource type="Script" path="res://systems/screen/camera_shake_data.gd" id="1_6v63f"]
+
+[resource]
+script = ExtResource("1_6v63f")
+absolute_strength = Vector3(0, 0, 0)
+rotated_strength = Vector3(1, 1, 0)
+durationIn = 0.2
+easeIn = 2
+transIn = 1
+durationOut = 1.2
+easeOut = 1
+transOut = 1

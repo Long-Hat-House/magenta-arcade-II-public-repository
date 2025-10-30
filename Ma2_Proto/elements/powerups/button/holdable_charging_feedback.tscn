@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=3 uid="uid://brxg5f374xr1a"]
+
+[ext_resource type="PackedScene" uid="uid://ceoqf0gifvq2j" path="res://elements/enemy/projectiles/explosion_donut/little_explosion/mesh/little_explosion.glb" id="1_t0wx2"]
+[ext_resource type="Script" uid="uid://mu5qjqiolpqq" path="res://elements/powerups/button/holdable_charging_feedback.gd" id="2_flw6u"]
+[ext_resource type="WwiseEvent" uid="uid://bp8rumpl4ldlh" path="res://Wwise/resources/Event/{A2A99E0C-1C86-488A-B5B3-FEF4A7B14F4E}.tres" id="3_p5fjh"]
+[ext_resource type="WwiseEvent" uid="uid://c155i5bhm2w7t" path="res://Wwise/resources/Event/{83AA4E02-2A2D-4595-9676-6E3BB25690FD}.tres" id="4_hqou0"]
+[ext_resource type="Material" uid="uid://d3vmg37n1wyy4" path="res://elements/m_simple_color_emission_no_depth.tres" id="5_hqou0"]
+
+[sub_resource type="Animation" id="Animation_55045"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("torus:blend_shapes/torus_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("torus:blend_shapes/torus_scale_border")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_e4tn2"]
+resource_name = "button_pressed_feedback"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("torus:blend_shapes/torus_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1.31951, 0.554785),
+"update": 0,
+"values": [0.96117, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("torus:blend_shapes/torus_scale_border")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2.37841, 1.51572),
+"update": 0,
+"values": [1.0, 0.51456]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s6d6g"]
+_data = {
+&"RESET": SubResource("Animation_55045"),
+&"button_pressed_feedback": SubResource("Animation_e4tn2")
+}
+
+[node name="button_pressed_feedback" instance=ExtResource("1_t0wx2")]
+script = ExtResource("2_flw6u")
+_sfx_start = ExtResource("3_p5fjh")
+_sfx_stop = ExtResource("4_hqou0")
+
+[node name="esfera" parent="." index="0"]
+visible = false
+
+[node name="torus" parent="." index="1"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+material_override = ExtResource("5_hqou0")
+cast_shadow = 0
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emissive = Color(1, 1, 1, 1)
+instance_shader_parameters/energy = 15.0
+
+[node name="anim" type="AnimationPlayer" parent="." index="2"]
+process_mode = 1
+libraries = {
+&"": SubResource("AnimationLibrary_s6d6g")
+}
+autoplay = "button_pressed_feedback"

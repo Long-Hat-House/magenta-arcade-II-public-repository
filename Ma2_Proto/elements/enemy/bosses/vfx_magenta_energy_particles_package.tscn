@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://cno5acmsj5pop"]
+
+[ext_resource type="Material" uid="uid://c8vv8iekq2r1t" path="res://elements/enemy/statue_ivo/mesh/graphic_ivo_statue_particle_eye_big.tres" id="1_frggl"]
+[ext_resource type="Material" uid="uid://ctjqb1cy273n" path="res://elements/enemy/statue_ivo/mesh/graphic_ivo_statue_particle_eye_short.tres" id="2_5vlfn"]
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_aay70"]
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(1, 0, 1, 1)
+disable_receive_shadows = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_ffjkl"]
+material = SubResource("ORMMaterial3D_aay70")
+radial_segments = 8
+rings = 3
+
+[sub_resource type="Skin" id="Skin_tld0e"]
+
+[node name="VFX_MagentaEnergyParticles_Package" type="Node3D"]
+
+[node name="LongParticlesLeft" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.264, 0, 0)
+emitting = false
+amount = 20
+lifetime = 1.75
+one_shot = true
+explosiveness = 0.95
+fixed_fps = 60
+visibility_aabb = AABB(-2.52785, -3.31384, -1.00001, 8.44067, 7.50296, 8.106)
+process_material = ExtResource("1_frggl")
+draw_pass_1 = SubResource("SphereMesh_ffjkl")
+draw_skin = SubResource("Skin_tld0e")
+
+[node name="LongParticlesRight" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.233, 0, 0)
+emitting = false
+amount = 20
+lifetime = 1.75
+one_shot = true
+explosiveness = 0.95
+fixed_fps = 60
+process_material = ExtResource("1_frggl")
+draw_pass_1 = SubResource("SphereMesh_ffjkl")
+draw_skin = SubResource("Skin_tld0e")
+
+[node name="ShortParticlesLeft" type="GPUParticles3D" parent="."]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -0.264, 0, 0)
+emitting = false
+amount = 12
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.95
+fixed_fps = 60
+process_material = ExtResource("2_5vlfn")
+draw_pass_1 = SubResource("SphereMesh_ffjkl")
+draw_skin = SubResource("Skin_tld0e")
+
+[node name="ShortParticlesRight" type="GPUParticles3D" parent="."]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0.233, 0, 0)
+emitting = false
+amount = 12
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.95
+fixed_fps = 60
+process_material = ExtResource("2_5vlfn")
+draw_pass_1 = SubResource("SphereMesh_ffjkl")
+draw_skin = SubResource("Skin_tld0e")

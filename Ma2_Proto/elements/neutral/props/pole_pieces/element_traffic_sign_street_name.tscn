@@ -1,0 +1,40 @@
+[gd_scene load_steps=9 format=3 uid="uid://h5vbopxlqc6r"]
+
+[ext_resource type="PackedScene" uid="uid://5ex0nnuha5b1" path="res://elements/neutral/props/pole_pieces/meshes/mesh_traffic_sign.glb" id="1_wh7jc"]
+[ext_resource type="Script" path="res://systems/element_scene_structure/exposable_node_3d_texture.gd" id="2_2adnu"]
+[ext_resource type="Script" path="res://elements/neutral/props/generic_tumbler.gd" id="3_am3vh"]
+[ext_resource type="Resource" uid="uid://ch2sx8gskxgfw" path="res://elements/neutral/props/totem/element_iron_box_tumble_data.tres" id="4_5oq21"]
+[ext_resource type="Material" uid="uid://bcrmv3n5j6l2d" path="res://elements/neutral/props/pole_pieces/material/m_traffic_sign.tres" id="5_jw7gi"]
+[ext_resource type="Script" path="res://elements/player/force_receiver.gd" id="6_ykxrv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2tc0l"]
+resource_local_to_scene = true
+diffuse_mode = 3
+specular_mode = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_hcql8"]
+
+[node name="Traffic Sign" node_paths=PackedStringArray("_mesh_instance_3D") instance=ExtResource("1_wh7jc")]
+script = ExtResource("2_2adnu")
+_mesh_instance_3D = NodePath("square_sign")
+
+[node name="GenericTumbler" type="Node3D" parent="." index="0" node_paths=PackedStringArray("receiver", "to_tumble")]
+script = ExtResource("3_am3vh")
+receiver = NodePath("../ForceReceiver")
+to_tumble = NodePath("..")
+tumble_data = ExtResource("4_5oq21")
+tumble_radius = 0.0
+up_from_circle_relative = Vector3(0, 0, -1)
+
+[node name="square_sign" parent="." index="1"]
+transform = Transform3D(0.82, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0.20727)
+surface_material_override/0 = SubResource("StandardMaterial3D_2tc0l")
+surface_material_override/1 = ExtResource("5_jw7gi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="2"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_hcql8")
+
+[node name="ForceReceiver" type="Node3D" parent="." index="3"]
+script = ExtResource("6_ykxrv")

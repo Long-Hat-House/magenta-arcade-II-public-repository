@@ -1,0 +1,7 @@
+[gd_resource type="WwiseRTPC" load_steps=0 format=3 uid="uid://b3xm81ely58h1"]
+
+[resource]
+name = "enm_AttackWarning"
+id = 303428584
+guid = "{4A8D53A4-4845-4ADF-BEF0-F7FD2669ED8B}"
+dummy = true

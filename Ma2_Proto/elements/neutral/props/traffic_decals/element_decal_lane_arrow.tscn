@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfqb1t3qdu78v"]
+
+[ext_resource type="Material" uid="uid://bjrwule1evk1y" path="res://elements/neutral/props/traffic_decals/materials/m_decal_arrow.tres" id="1_j8uqf"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_jkhhy"]
+size = Vector2(0.5, 2)
+orientation = 1
+
+[node name="Decal Lane Arrow" type="MeshInstance3D"]
+material_override = ExtResource("1_j8uqf")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_jkhhy")
+skeleton = NodePath("../..")

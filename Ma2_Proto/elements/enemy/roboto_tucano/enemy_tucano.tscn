@@ -1,0 +1,70 @@
+[gd_scene load_steps=12 format=3 uid="uid://c60s66rh2v20w"]
+
+[ext_resource type="Script" uid="uid://d0gme4xal610e" path="res://elements/enemy/roboto_tucano/enemy_tucano.gd" id="1_axbku"]
+[ext_resource type="PackedScene" uid="uid://0na15y2wfqwc" path="res://elements/enemy/roboto_tucano/mesh/graphic_roboto_tucano.tscn" id="1_vcv3j"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="2_6umpb"]
+[ext_resource type="PackedScene" uid="uid://ywymskkj85vs" path="res://elements/vfx/vfx_explosion/vfx_explosion.tscn" id="2_ox4tw"]
+[ext_resource type="PackedScene" uid="uid://d4jauiwmtup0j" path="res://elements/enemy/smoke/enemy_smoke.tscn" id="3_8q6f3"]
+[ext_resource type="Script" uid="uid://dj2x7ekyg32b7" path="res://systems/score/score_giver.gd" id="3_cy15w"]
+[ext_resource type="Resource" uid="uid://pnhy5juretq1" path="res://elements/score/score_info_tucano.tres" id="6_6dne1"]
+[ext_resource type="PackedScene" uid="uid://dofs6j5418rhr" path="res://elements/attack_previews/out_of_screen_warning_origin.tscn" id="7_bp23v"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="8_i5ibt"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_47alp"]
+radius = 0.6
+height = 3.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y5t4s"]
+radius = 0.585439
+height = 3.4
+
+[node name="EnemyTucano" type="CharacterBody3D" groups=["enemy_position"]]
+collision_layer = 4
+collision_mask = 10
+script = ExtResource("1_axbku")
+speed = 11.0
+height = 0.5
+vfx = ExtResource("2_ox4tw")
+smoke = ExtResource("3_8q6f3")
+smoke_spawn_distance = 1.5
+smoke_spawn_distance_variance = 1.0
+
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("feedback") groups=["enemy_healths"]]
+script = ExtResource("2_6umpb")
+max_amount = 2.0
+feedback = [NodePath("../roboto_tucano_graphic")]
+
+[node name="ScoreGiver" type="Node" parent="." node_paths=PackedStringArray("health", "point_position")]
+script = ExtResource("3_cy15w")
+info = ExtResource("6_6dne1")
+health = NodePath("../Health")
+point_position = NodePath("..")
+
+[node name="roboto_tucano_graphic" parent="." instance=ExtResource("1_vcv3j")]
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="roboto_tucano_graphic"]
+script = ExtResource("8_i5ibt")
+high_contrast_group = &"enemy"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.155734, 0)
+shape = SubResource("CapsuleShape3D_47alp")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.303266, -0.264198)
+shape = SubResource("CapsuleShape3D_y5t4s")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenEnabler3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.511354, 0)
+aabb = AABB(-1.58789, -1.32399, -1.52061, 3.17578, 2.64798, 3.04121)
+enable_node_path = NodePath("")
+
+[node name="InstantiatePlace" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.50886)
+
+[node name="OutOfScreenWarningOrigin" parent="." instance=ExtResource("7_bp23v")]
+
+[connection signal="dead" from="Health" to="." method="_on_health_dead"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

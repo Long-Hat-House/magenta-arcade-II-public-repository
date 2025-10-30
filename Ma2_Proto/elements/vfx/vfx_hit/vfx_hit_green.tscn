@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://sc68vnyvfha1"]
+
+[ext_resource type="PackedScene" uid="uid://c5f7mdjgxid0m" path="res://elements/vfx/vfx_hit/vfx_hit.tscn" id="1_kxjrj"]
+
+[node name="VfxHit" instance=ExtResource("1_kxjrj")]
+
+[node name="Sprite3D" parent="." index="0"]
+modulate = Color(0.0392157, 0.796078, 0, 1)

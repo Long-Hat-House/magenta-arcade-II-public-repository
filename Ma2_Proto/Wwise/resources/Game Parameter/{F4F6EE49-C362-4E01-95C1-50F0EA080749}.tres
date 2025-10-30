@@ -1,0 +1,7 @@
+[gd_resource type="WwiseRTPC" format=3 uid="uid://c4mkvhvcehuhr"]
+
+[resource]
+name = "game_ScoreCombo"
+id = 3647429270
+guid = "{F4F6EE49-C362-4E01-95C1-50F0EA080749}"
+dummy = true

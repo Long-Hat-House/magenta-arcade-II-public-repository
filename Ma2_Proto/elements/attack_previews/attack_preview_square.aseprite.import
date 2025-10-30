@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://ifqv60g1ie"
+path="res://.godot/imported/attack_preview_square.aseprite-2472731f15d1bd5d09a83c97300955fc.res"
+
+[deps]
+
+source_file="res://elements/attack_previews/attack_preview_square.aseprite"
+dest_files=["res://.godot/imported/attack_preview_square.aseprite-2472731f15d1bd5d09a83c97300955fc.res"]
+
+[params]
+
+exclude_layers_pattern="#.*"
+only_visible_layers=false

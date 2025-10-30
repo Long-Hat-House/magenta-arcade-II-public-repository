@@ -1,0 +1,102 @@
+[gd_scene load_steps=19 format=3 uid="uid://h1a1lxlq17c7"]
+
+[ext_resource type="Script" uid="uid://blp6dxyvg6c2h" path="res://elements/enemy/brawny/ai_brawny.gd" id="1_rdbdy"]
+[ext_resource type="PackedScene" uid="uid://bxf45wnuatu6v" path="res://elements/enemy/projectiles/cannon/enemy_cannon_killable.tscn" id="2_0d748"]
+[ext_resource type="Script" uid="uid://b28cuux0islt2" path="res://systems/graphics/SkewedModel.gd" id="2_xkfpr"]
+[ext_resource type="PackedScene" uid="uid://ywymskkj85vs" path="res://elements/vfx/vfx_explosion/vfx_explosion.tscn" id="3_62xll"]
+[ext_resource type="PackedScene" uid="uid://cybamowbsmrv" path="res://elements/enemy/brawny/Mesh/brawny_graphic.tscn" id="3_xajgt"]
+[ext_resource type="Resource" uid="uid://x2juoif14es8" path="res://systems/screen/camera_shake_heavy_fall.tres" id="4_j0gfp"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="4_xi5fl"]
+[ext_resource type="Script" uid="uid://daxqix7g0q5bj" path="res://systems/pooling/poolable.gd" id="5_ijdeg"]
+[ext_resource type="Script" uid="uid://dj2x7ekyg32b7" path="res://systems/score/score_giver.gd" id="5_j0b2l"]
+[ext_resource type="WwiseEvent" uid="uid://cld34njq67tcc" path="res://Wwise/resources/Event/{41233ED6-D7A1-4169-A1FD-70C788436CD8}.tres" id="5_qry43"]
+[ext_resource type="PackedScene" uid="uid://elu46raggotb" path="res://elements/enemy/projectiles/proj_laser/laser_area.tscn" id="6_eyuit"]
+[ext_resource type="PackedScene" uid="uid://bc1bjl6ovy5s6" path="res://elements/enemy/projectiles/damage_area/damage_area.tscn" id="6_r75k7"]
+[ext_resource type="WwiseEvent" uid="uid://cl77r3ldqpiqc" path="res://Wwise/resources/Event/{139F6479-29C5-49E2-B8EA-0D26CD0003F0}.tres" id="6_tfrqe"]
+[ext_resource type="Resource" uid="uid://buu4r0q31qb44" path="res://systems/time/frame_freeze_big.tres" id="6_voxtf"]
+[ext_resource type="Resource" uid="uid://bh5mshmnnfxkh" path="res://systems/screen/camera_shake_long_death.tres" id="7_0x7wf"]
+[ext_resource type="Resource" uid="uid://bh047kbl5n3cu" path="res://elements/score/score_info_brawny.tres" id="13_88ktx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s3bpl"]
+size = Vector3(3, 3, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w27kk"]
+size = Vector3(3, 3, 3)
+
+[node name="enemy_brawny" type="Node3D" groups=["enemy_position"]]
+script = ExtResource("1_rdbdy")
+cannon = ExtResource("2_0d748")
+explosionVFX = ExtResource("3_62xll")
+fall_shake = ExtResource("4_j0gfp")
+sfx_fall_pre = ExtResource("5_qry43")
+sfx_fall_impact = ExtResource("6_tfrqe")
+
+[node name="Poolable" type="Node" parent="."]
+script = ExtResource("5_ijdeg")
+
+[node name="Body" type="CharacterBody3D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="Health" type="Node" parent="Body" node_paths=PackedStringArray("feedback") groups=["enemy_healths"]]
+unique_name_in_owner = true
+script = ExtResource("4_xi5fl")
+max_amount = 17.0
+feedback = [NodePath("../Render/brawny_graphic")]
+frame_freeze_on_death = ExtResource("6_voxtf")
+screen_shake_on_death = ExtResource("7_0x7wf")
+feedback_ignore_contains_divided_by_commas = "Arm"
+
+[node name="Render" type="Node3D" parent="Body"]
+script = ExtResource("2_xkfpr")
+angle = 0.0
+addUpVector = 0.0
+
+[node name="brawny_graphic" parent="Body/Render" instance=ExtResource("3_xajgt")]
+
+[node name="score position" type="Node3D" parent="Body/Render/brawny_graphic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.93488, 2.28044)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.3)
+shape = SubResource("BoxShape3D_s3bpl")
+
+[node name="LaserArea" parent="Body" instance=ExtResource("6_eyuit")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.75, 1)
+
+[node name="ScoreGiver" type="Node" parent="Body" node_paths=PackedStringArray("health", "point_position")]
+script = ExtResource("5_j0b2l")
+info = ExtResource("13_88ktx")
+health = NodePath("../Health")
+point_position = NodePath("../Render/brawny_graphic/score position")
+
+[node name="ExplosionArea" type="VisibleOnScreenNotifier3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.20441, 0)
+aabb = AABB(-1.78829, -1.50911, -1.41409, 3.35393, 2.47036, 2.82818)
+
+[node name="DamageArea" parent="Body" instance=ExtResource("6_r75k7")]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Body/DamageArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_w27kk")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(5.61241, 0, 0, 0, 1, 0, 0, 0, 1.83333, 0, 1, 0.5)
+aabb = AABB(-0.777127, -2.90467, -1.44317, 1.55425, 5.80934, 2.88634)
+
+[node name="Fall Time" type="Timer" parent="."]
+wait_time = 0.35
+
+[node name="Return" type="Timer" parent="."]
+
+[node name="Idle" type="Timer" parent="."]
+
+[node name="Warning Laser" type="Timer" parent="."]
+
+[node name="Laser" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="dead" from="Body/Health" to="." method="_on_health_dead"]
+[connection signal="hit" from="Body/Health" to="." method="_on_health_hit"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyc8nxjcgl5ck"]
+
+[ext_resource type="PackedScene" uid="uid://ho534c722hou" path="res://elements/neutral/props/Lab_mountain/mesh/floor_mid_boss_lvl04.glb" id="1_i8hyg"]
+[ext_resource type="Material" uid="uid://cfd8gaynbowye" path="res://elements/neutral/props/Lab_mountain/material/m_floor_mid_boss.tres" id="2_pdfaw"]
+
+[node name="floor_mid_boss_lvl04" instance=ExtResource("1_i8hyg")]
+
+[node name="lvl04_mid_boss" parent="." index="0"]
+material_override = ExtResource("2_pdfaw")

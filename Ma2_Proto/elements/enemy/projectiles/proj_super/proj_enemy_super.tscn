@@ -1,0 +1,92 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6gv2ejlr58a2"]
+
+[ext_resource type="PackedScene" uid="uid://dhmi2sv2mhuqe" path="res://elements/enemy/projectiles/proj_basic/proj_enemy_basic.tscn" id="1_o5jbl"]
+[ext_resource type="Material" uid="uid://cenn7gfju1jgu" path="res://elements/enemy/projectiles/materials/enemy_wpn_gold.tres" id="2_ul3fj"]
+
+[sub_resource type="GDScript" id="GDScript_6l6im"]
+script/source = "extends Node3D
+
+@export var proj:PackedScene;
+@export var interval:float;
+@export var bigger_interval:float;
+@export var amount_between_bigger_intervals:int;
+
+var count:float = 0;
+var shots:int = 0;
+
+func _enter_tree() -> void:
+	count = 0;
+	shots = 0;
+
+func _process(delta: float) -> void:
+	count -= delta;
+	if count <= 0:
+		shoot();
+		shots += 1;
+		count += interval;
+		if shots >= amount_between_bigger_intervals:
+			shots -= amount_between_bigger_intervals;
+			count += bigger_interval;
+		
+func shoot():
+	for child in get_children():
+		var node3D:Node3D = child as Node3D;
+		if node3D:
+			InstantiateUtils.InstantiateInTree(proj, node3D);
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7m7d3"]
+resource_local_to_scene = true
+shading_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.0
+rim = 0.5
+rim_tint = 1.0
+disable_receive_shadows = true
+grow_amount = -0.252
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ul3fj"]
+resource_local_to_scene = true
+render_priority = 10
+cull_mode = 2
+shading_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.0
+rim = 0.5
+rim_tint = 1.0
+disable_receive_shadows = true
+grow_amount = -0.252
+
+[node name="EnemyProjectile_Super" instance=ExtResource("1_o5jbl")]
+relativeVelocity = Vector3(0, 0, 11)
+time_to_expire = 3.0
+
+[node name="Spawner" type="Node3D" parent="." index="0"]
+script = SubResource("GDScript_6l6im")
+proj = ExtResource("1_o5jbl")
+interval = 0.15
+bigger_interval = 0.65
+amount_between_bigger_intervals = 3
+
+[node name="Marker3D" type="Marker3D" parent="Spawner" index="0"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0, 0, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="Spawner" index="1"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0, 0, 0)
+
+[node name="Pink" parent="Pivot/Scale/Graphic" index="1"]
+material_override = ExtResource("2_ul3fj")
+
+[node name="White" parent="Pivot/Scale/Graphic" index="2"]
+material_override = SubResource("StandardMaterial3D_7m7d3")
+
+[node name="Glow" parent="Pivot/Scale/Graphic" index="4"]
+material_override = SubResource("StandardMaterial3D_ul3fj")

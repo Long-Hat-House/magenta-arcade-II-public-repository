@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://si0hnb5cwxif"]
+
+[ext_resource type="Script" uid="uid://c2ervhy7ph3fd" path="res://systems/line3d/constant_creator_line_3d.gd" id="1_m0ira"]
+[ext_resource type="PackedScene" uid="uid://c54wobkisvnv6" path="res://elements/neutral/revolution/npc_revolution.tscn" id="2_14qr1"]
+
+[sub_resource type="Curve3D" id="Curve3D_14qr1"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -18.9138, -28.9579, 13.8083, 0, 0, 0, 0, 0, 0, -3.92567, -8.54236, -26.6673),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Lair_NPC_Revolution_Line" type="Path3D" node_paths=PackedStringArray("paths")]
+curve = SubResource("Curve3D_14qr1")
+script = ExtResource("1_m0ira")
+paths = [NodePath(".")]
+where_from = 1
+scenes = Array[PackedScene]([ExtResource("2_14qr1")])
+create_interval = 0.25
+create_interval_random_plus = 0.5
+create_random_position_circle_radius = 2.0
+move_velocity = 4.0
+move_velocity_random_add = 3.0
+warmed_time = 5.0
+stop_moving_dead_healths = true

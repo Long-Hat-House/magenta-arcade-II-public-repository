@@ -1,0 +1,25 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7ft4lc6ukiy0"]
+
+[ext_resource type="PackedScene" uid="uid://e5pwbacxo02h" path="res://game.tscn" id="1_cknlm"]
+[ext_resource type="PackedScene" uid="uid://duesy185j8y3k" path="res://elements/levels/level_structure/level_camera_controller.tscn" id="2_5a8lu"]
+[ext_resource type="PackedScene" uid="uid://dsnbnlfmvjm2c" path="res://elements/levels/level_structure/level_objects_controller.tscn" id="3_x4vrn"]
+[ext_resource type="PackedScene" uid="uid://biri2jotjxrmk" path="res://elements/levels/level_structure/level_stage_controller.tscn" id="4_0hos1"]
+[ext_resource type="PackedScene" uid="uid://cujffil1n0018" path="res://elements/player/player.tscn" id="5_5t8nd"]
+[ext_resource type="PackedScene" uid="uid://cy04dckpnrfv" path="res://elements/ui/hud/HUD.tscn" id="6_gdoca"]
+[ext_resource type="PackedScene" uid="uid://olufkwgaqicj" path="res://elements/challenge/challenge_controller.tscn" id="7_0p38j"]
+
+[node name="LevelGamePack" type="Node"]
+
+[node name="Game" parent="." instance=ExtResource("1_cknlm")]
+
+[node name="LevelCameraController" parent="." instance=ExtResource("2_5a8lu")]
+
+[node name="LevelObjectsController" parent="." instance=ExtResource("3_x4vrn")]
+
+[node name="LevelStageController" parent="." instance=ExtResource("4_0hos1")]
+
+[node name="Player" parent="." instance=ExtResource("5_5t8nd")]
+
+[node name="HUD" parent="." instance=ExtResource("6_gdoca")]
+
+[node name="Challenge Controller" parent="." instance=ExtResource("7_0p38j")]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://unynobrnbcfy"]
+
+[ext_resource type="PackedScene" uid="uid://biot2pkv6iuem" path="res://elements/enemy/snake/enemy_snake_body.tscn" id="1_48qoc"]
+[ext_resource type="Script" uid="uid://bix71367c88dn" path="res://systems/utils/remote_transform_3d.gd" id="2_sgcdb"]
+[ext_resource type="PackedScene" uid="uid://ddtx26w7mxdgg" path="res://elements/enemy/projectiles/cannon/enemy_cannon.tscn" id="2_srdyo"]
+
+[node name="EnemySnakeBody_Cannon" instance=ExtResource("1_48qoc")]
+
+[node name="TransformCleanser" type="Node" parent="." index="7"]
+
+[node name="RemoteTransform3D" type="Node3D" parent="TransformCleanser" index="0"]
+script = ExtResource("2_sgcdb")
+who = NodePath("../..")
+follow_rotation = false
+follow_scale = false
+global_get = true
+global_set = true
+metadata/_custom_type_script = "uid://bix71367c88dn"
+
+[node name="Cannon" parent="TransformCleanser/RemoteTransform3D" index="0" instance=ExtResource("2_srdyo")]
+delayBetweenProjectiles = 2.15
+lerpAngle = 180.0
+
+[connection signal="dead_parameterless" from="Alive Health" to="TransformCleanser" method="queue_free" flags=3]

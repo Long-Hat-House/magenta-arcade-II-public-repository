@@ -1,0 +1,120 @@
+[gd_scene load_steps=17 format=3 uid="uid://3scsmjmsc2oj"]
+
+[ext_resource type="Script" uid="uid://c3uaavh66gdmv" path="res://elements/enemy/projectiles/final_laser/final_laser.gd" id="1_jdqa4"]
+[ext_resource type="Script" uid="uid://batlla83rfo16" path="res://elements/enemy/projectiles/final_laser/final_laser_mesh.gd" id="1_u1xpr"]
+[ext_resource type="Material" uid="uid://b0b7tfim0wfjv" path="res://elements/enemy/projectiles/materials/wpn_glow_white_double_sided.tres" id="2_f85g5"]
+[ext_resource type="Material" uid="uid://2670f8ok1wyu" path="res://elements/enemy/projectiles/materials/enemy_wpn_magenta.tres" id="3_8fkm1"]
+[ext_resource type="Material" uid="uid://dbjkdl6xlei8m" path="res://elements/enemy/projectiles/materials/enemy_wpn_inner_dark.tres" id="4_mv5nc"]
+[ext_resource type="Script" uid="uid://c1a23qdrmn8d1" path="res://elements/enemy/projectiles/damage_area/damage_area.gd" id="6_dq7d7"]
+[ext_resource type="Material" uid="uid://dypeard0xo881" path="res://elements/enemy/projectiles/materials/wpn_glow_white_one_sided.tres" id="6_hpq05"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="8_5ae2d"]
+[ext_resource type="Script" uid="uid://d2rhxuigqg21b" path="res://systems/audio_wwise/AkEvent3DLoop.gd" id="9_sewup"]
+[ext_resource type="WwiseEvent" uid="uid://cgqg4ec2kotcu" path="res://Wwise/resources/Event/{0C0ED04B-C49E-4D46-9038-F3A5FC1B820D}.tres" id="10_avxdu"]
+[ext_resource type="WwiseEvent" uid="uid://c05mtcmwvkfss" path="res://Wwise/resources/Event/{379926B8-9E22-4F8D-A742-E4191D47E512}.tres" id="11_6heu4"]
+[ext_resource type="WwiseEvent" uid="uid://d1md3i4oy2noi" path="res://Wwise/resources/Event/{801C8EAF-758F-4A95-9FE4-D7FE970A41E8}.tres" id="12_avxdu"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_br3jx"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_5ae2d"]
+material = ExtResource("6_hpq05")
+radius = 1.0
+radial_segments = 12
+rings = 2
+
+[sub_resource type="Curve3D" id="Curve3D_rshw6"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -0.0280943, 0, -1.02843, 0.0280943, 0, 1.02843, -0.97503, 0, 1.93859, -0.0113926, 0, -1.36244, 0.0113926, 0, 1.36244, 0.378541, 0, 4.09513, -0.0663414, 0, -1.1278, 0.0663414, 0, 1.1278, -1.01723, 0, 6.03705, 0.105276, 0, -1.12293, -0.105276, 0, 1.12293, 0.982567, 0, 9.05367, 0, 0, -1, 0, 0, 0, 0, 0, 10.7732, 0, 0, 0, 0, 0, 0, -0.357906, 0, 12.0037, 0, 0, 0, 0, 0, 0, 0.0275307, 0, 13.8207),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ldi3b"]
+radius = 0.85
+
+[node name="FinalLaser" type="Node3D" node_paths=PackedStringArray("sfx_charge", "sfx_on", "damage", "followers_graphic")]
+script = ExtResource("1_jdqa4")
+sfx_charge = NodePath("CHARGE")
+sfx_on = NodePath("ON")
+length = 20.0
+length_frequency_multiplier = 3.0
+frequency = -2.0
+sub_frequency = 1.7
+damage = NodePath("Path3D/PathFollow3D")
+followers_graphic = [NodePath("Path3D/PathFollow_Graphic")]
+
+[node name="LaserMesh" type="MeshInstance3D" parent="." node_paths=PackedStringArray("path")]
+cast_shadow = 0
+mesh = SubResource("ImmediateMesh_br3jx")
+script = ExtResource("1_u1xpr")
+path = NodePath("../Path3D")
+layer_width = 0.55
+segments = 100
+material_border = ExtResource("2_f85g5")
+material_laser = ExtResource("3_8fkm1")
+material_inner = ExtResource("4_mv5nc")
+
+[node name="BallMesh" type="MeshInstance3D" parent="."]
+visible = false
+cast_shadow = 0
+mesh = SubResource("SphereMesh_5ae2d")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_rshw6")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-0.893361, 0, 0.449323, 0, 1, 0, -0.449323, 0, -0.893361, 0, 0, 0)
+
+[node name="DamageArea" type="Area3D" parent="Path3D/PathFollow3D"]
+collision_layer = 0
+collision_mask = 130
+script = ExtResource("6_dq7d7")
+amountDamage = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/PathFollow3D/DamageArea"]
+shape = SubResource("SphereShape3D_ldi3b")
+
+[node name="PathFollow_Graphic" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-0.893361, 0, 0.449323, 0, 1, 0, -0.449323, 0, -0.893361, 0, 0, 0)
+
+[node name="BallMeshFollow" type="MeshInstance3D" parent="Path3D/PathFollow_Graphic"]
+transform = Transform3D(-0.893374, 0, -0.44933, 0, 1, 0, 0.44933, 0, -0.893374, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("SphereMesh_5ae2d")
+skeleton = NodePath("../../../BallMesh")
+
+[node name="LightNode" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="LightNode"]
+transform = Transform3D(0.999963, 2.77546e-16, -0.00858692, -2.77556e-16, 1, 3.72231e-24, 0.00858692, 2.38335e-18, 0.999963, 0, 0.90327, 1)
+light_color = Color(1, 0, 1, 1)
+light_bake_mode = 0
+shadow_enabled = true
+distance_fade_begin = 50.0
+distance_fade_length = 50.0
+omni_range = 10.0
+omni_attenuation = 0.450625
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="."]
+script = ExtResource("8_5ae2d")
+high_contrast_group = &"danger"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="ON" type="Node3D" parent="."]
+script = ExtResource("9_sewup")
+metadata/_custom_type_script = "uid://d2rhxuigqg21b"
+
+[node name="Begin" type="AkEvent3D" parent="ON"]
+event = ExtResource("10_avxdu")
+
+[node name="End" type="AkEvent3D" parent="ON"]
+event = ExtResource("11_6heu4")
+
+[node name="CHARGE" type="Node3D" parent="." node_paths=PackedStringArray("custom_object")]
+script = ExtResource("9_sewup")
+custom_object = NodePath("../ON")
+metadata/_custom_type_script = "uid://d2rhxuigqg21b"
+
+[node name="Begin" type="AkEvent3D" parent="CHARGE"]
+event = ExtResource("12_avxdu")
+
+[node name="End" type="AkEvent3D" parent="CHARGE"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqfl6r82tc8ni"]
+
+[ext_resource type="PackedScene" uid="uid://dfi4oip83lo3f" path="res://elements/background/element_grass.tscn" id="1_remyr"]
+[ext_resource type="Material" uid="uid://cq8ojc2y2aswv" path="res://elements/background/material/m_factory_floor_color_tiled.tres" id="2_auujg"]
+
+[node name="FactorygrayFloor" instance=ExtResource("1_remyr")]
+
+[node name="MeshInstance3D3" parent="." index="0"]
+material_override = ExtResource("2_auujg")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://de7x4v76ejexq"]
+
+[ext_resource type="PackedScene" uid="uid://ngmv6dynft76" path="res://elements/stage_pieces/stage_piece_afonso_pena_lanes1.tscn" id="1_mmtey"]
+
+[node name="StagePiecesTests" type="Node3D"]
+
+[node name="StagePieceAfonsoPena6m" parent="." instance=ExtResource("1_mmtey")]
+
+[node name="StagePieceAfonsoPena6m2" parent="." instance=ExtResource("1_mmtey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)

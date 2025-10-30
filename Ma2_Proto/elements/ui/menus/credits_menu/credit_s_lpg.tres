@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="CreditsSectionInfo" load_steps=5 format=3 uid="uid://c1inrcikjht6m"]
+
+[ext_resource type="Script" uid="uid://bkle5ca8utscg" path="res://elements/ui/menus/credits_menu/scripts/credits_entry_info.gd" id="1_4kb2n"]
+[ext_resource type="Texture2D" uid="uid://bhafqdo5dlyxr" path="res://elements/ui/logos/Fund - Logos - Vertical.png" id="2_by6ig"]
+[ext_resource type="Script" uid="uid://brm0i2bj1yuok" path="res://elements/ui/menus/credits_menu/scripts/credits_section_info.gd" id="2_d5m3a"]
+
+[sub_resource type="Resource" id="Resource_4kb2n"]
+script = ExtResource("1_4kb2n")
+entry_name = &""
+entry_role = &""
+entry_information = &""
+entry_texture = ExtResource("2_by6ig")
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[resource]
+script = ExtResource("2_d5m3a")
+section_title = &"credits_support"
+section_info = &"credits_support_text"
+section_color_highlight = Color(1, 1, 1, 1)
+section_color_bg = Color(0, 0.831373, 0.792157, 1)
+entries_list = Array[ExtResource("1_4kb2n")]([SubResource("Resource_4kb2n")])
+metadata/_custom_type_script = "uid://brm0i2bj1yuok"

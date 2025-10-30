@@ -1,0 +1,75 @@
+[gd_resource type="VisualShader" load_steps=6 format=3 uid="uid://byaixiy4o4lqy"]
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_6wut8"]
+parameter_name = "Color"
+default_value_enabled = true
+default_value = Color(0.180392, 0.00392157, 0.231373, 1)
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_qdk4a"]
+parameter_name = "Transparency"
+qualifier = 2
+hint = 1
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_wr3br"]
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_fuemc"]
+default_input_values = [0, 0.0, 1, 0.0, 2, 0.0, 3, 0.0]
+op_type = 2
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_cusix"]
+default_input_values = [0, 1.0, 1, 0.0]
+operator = 1
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded;
+
+uniform vec4 Color : source_color = vec4(0.180392, 0.003922, 0.231373, 1.000000);
+instance uniform float Transparency : hint_range(0.0, 1.0);
+
+
+
+void fragment() {
+// ColorParameter:2
+	vec4 n_out2p0 = Color;
+
+
+// VectorDecompose:4
+	float n_out4p0 = vec3(n_out2p0.xyz).x;
+	float n_out4p1 = vec3(n_out2p0.xyz).y;
+	float n_out4p2 = vec3(n_out2p0.xyz).z;
+
+
+// FloatParameter:3
+	float n_out3p0 = Transparency;
+
+
+// FloatOp:6
+	float n_in6p0 = 1.00000;
+	float n_out6p0 = n_in6p0 - n_out3p0;
+
+
+// VectorCompose:5
+	vec4 n_out5p0 = vec4(n_out4p0, n_out4p1, n_out4p2, n_out6p0);
+
+
+// Output:0
+	ALBEDO = vec3(n_out5p0.xyz);
+	ALPHA = n_out6p0;
+
+
+}
+"
+flags/unshaded = true
+nodes/fragment/0/position = Vector2(820, 140)
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_6wut8")
+nodes/fragment/2/position = Vector2(100, 40)
+nodes/fragment/3/node = SubResource("VisualShaderNodeFloatParameter_qdk4a")
+nodes/fragment/3/position = Vector2(40, 380)
+nodes/fragment/4/node = SubResource("VisualShaderNodeVectorDecompose_wr3br")
+nodes/fragment/4/position = Vector2(380, 80)
+nodes/fragment/5/node = SubResource("VisualShaderNodeVectorCompose_fuemc")
+nodes/fragment/5/position = Vector2(600, -60)
+nodes/fragment/6/node = SubResource("VisualShaderNodeFloatOp_cusix")
+nodes/fragment/6/position = Vector2(380, 440)
+nodes/fragment/connections = PackedInt32Array(2, 0, 4, 0, 5, 0, 0, 0, 4, 0, 5, 0, 4, 1, 5, 1, 4, 2, 5, 2, 3, 0, 6, 1, 6, 0, 5, 3, 6, 0, 0, 1)

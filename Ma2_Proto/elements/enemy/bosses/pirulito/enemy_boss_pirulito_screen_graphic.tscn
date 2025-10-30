@@ -1,0 +1,206 @@
+[gd_scene load_steps=25 format=3 uid="uid://cq7kf1cthndvr"]
+
+[ext_resource type="Texture2D" uid="uid://cfx8kqcw4h428" path="res://modules/text_flow/zap/textures/text_flow_zap_speaker_icon_nando.png" id="1_ema37"]
+[ext_resource type="Script" path="res://elements/enemy/bosses/pirulito/enemy_boss_pirulito_screen_graphic.gd" id="1_tw5lh"]
+[ext_resource type="SpriteFrames" uid="uid://dpfueus11466b" path="res://elements/enemy/bosses/pirulito/graphic_screen_show.ase" id="3_mt05b"]
+[ext_resource type="Script" path="res://systems/health/health.gd" id="3_n8rj0"]
+[ext_resource type="Script" path="res://systems/pressable/pressable.gd" id="5_iy6cf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rglns"]
+albedo_color = Color(0.341176, 0.341176, 0.427451, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5ldd2"]
+material = SubResource("StandardMaterial3D_rglns")
+size = Vector3(3, 2, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdmqu"]
+albedo_texture = ExtResource("1_ema37")
+emission_enabled = true
+emission_energy_multiplier = 1.51
+emission_texture = ExtResource("1_ema37")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_v1rk4"]
+material = SubResource("StandardMaterial3D_mdmqu")
+size = Vector2(2.2, 1.8)
+orientation = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fbx2u"]
+size = Vector3(2.90737, 1.97297, 0.532593)
+
+[sub_resource type="Animation" id="Animation_3cq64"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Tumbler/Pivot/Box/Screen:mesh:material:emission_energy_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.51]
+}
+
+[sub_resource type="Animation" id="Animation_1wwqh"]
+resource_name = "idle"
+length = 0.133335
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Tumbler/Pivot/Box/Screen:mesh:material:emission_energy_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1.51, 2.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2m3ed"]
+_data = {
+"RESET": SubResource("Animation_3cq64"),
+"idle": SubResource("Animation_1wwqh")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pfwuh"]
+animation = &"hidden"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_neo1c"]
+animation = &"show"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_odpyx"]
+advance_mode = 2
+
+[sub_resource type="Curve" id="Curve_a52bs"]
+_data = [Vector2(0, 0), 0.0, 1.99267, 0, 0, Vector2(0.264706, 0.131868), -0.653846, -0.653846, 0, 0, Vector2(0.963235, 0.978022), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ulgkg"]
+xfade_time = 0.45
+xfade_curve = SubResource("Curve_a52bs")
+advance_mode = 2
+advance_condition = &"show"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gcq2y"]
+xfade_time = 0.5
+advance_mode = 2
+advance_condition = &"!show"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_puge7"]
+states/Start/position = Vector2(166, 100)
+states/hidden/node = SubResource("AnimationNodeAnimation_pfwuh")
+states/hidden/position = Vector2(315, 100)
+states/show/node = SubResource("AnimationNodeAnimation_neo1c")
+states/show/position = Vector2(518, 100)
+transitions = ["Start", "hidden", SubResource("AnimationNodeStateMachineTransition_odpyx"), "hidden", "show", SubResource("AnimationNodeStateMachineTransition_ulgkg"), "show", "hidden", SubResource("AnimationNodeStateMachineTransition_gcq2y")]
+
+[sub_resource type="Animation" id="Animation_1tju5"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_h6jd7"]
+resource_name = "hidden"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Tumbler/Pivot/Box")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, -1.25, 0)
+
+[sub_resource type="Animation" id="Animation_li7q3"]
+resource_name = "show"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Tumbler/Pivot/Box")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 1, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2v5ff"]
+_data = {
+"RESET": SubResource("Animation_1tju5"),
+"hidden": SubResource("Animation_h6jd7"),
+"show": SubResource("Animation_li7q3")
+}
+
+[node name="enemy_boss_pirulito_screen_graphic" type="Node3D"]
+script = ExtResource("1_tw5lh")
+
+[node name="Tumbler" type="Node3D" parent="."]
+
+[node name="Pivot" type="Node3D" parent="Tumbler"]
+transform = Transform3D(1.25, 0, 0, 0, 1.20741, 0.323524, 0, -0.323524, 1.20741, 0, 0, 0)
+
+[node name="Box" type="MeshInstance3D" parent="Tumbler/Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
+mesh = SubResource("BoxMesh_5ldd2")
+skeleton = NodePath("../../..")
+
+[node name="Screen" type="MeshInstance3D" parent="Tumbler/Pivot/Box"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0.303)
+visible = false
+mesh = SubResource("PlaneMesh_v1rk4")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Tumbler/Pivot/Box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.303)
+pixel_size = 0.011
+render_priority = -1
+sprite_frames = ExtResource("3_mt05b")
+animation = &"panel_no_signal"
+autoplay = "panel_no_signal"
+frame_progress = 0.181654
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="Tumbler/Pivot/Box"]
+collision_layer = 128
+collision_mask = 24
+
+[node name="Health" type="Node" parent="Tumbler/Pivot/Box/CharacterBody3D"]
+script = ExtResource("3_n8rj0")
+immortal = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tumbler/Pivot/Box/CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.999997, -1.07288e-06, 0, 1.07288e-06, 0.999997, -0.00348711, 0, 0)
+shape = SubResource("BoxShape3D_fbx2u")
+
+[node name="TumbleCorner" type="Node3D" parent="Tumbler/Pivot/Box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15, -1, 0.15)
+
+[node name="Pressable" type="Node3D" parent="Tumbler/Pivot/Box"]
+script = ExtResource("5_iy6cf")
+search_for_area_inside = true
+debug = true
+
+[node name="Area3D" type="Area3D" parent="Tumbler/Pivot/Box/Pressable"]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tumbler/Pivot/Box/Pressable/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 0.999996, -1.63913e-06, 0, 1.63913e-06, 0.999996, 0, 3.57628e-07, 0.0197142)
+shape = SubResource("BoxShape3D_fbx2u")
+
+[node name="Screen" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimationTree")
+libraries = {
+"": SubResource("AnimationLibrary_2m3ed")
+}
+autoplay = "idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath(".")
+tree_root = SubResource("AnimationNodeStateMachine_puge7")
+anim_player = NodePath("Box")
+parameters/conditions/!show = false
+parameters/conditions/show = false
+
+[node name="Box" type="AnimationPlayer" parent="AnimationTree"]
+libraries = {
+"": SubResource("AnimationLibrary_2v5ff")
+}
+
+[connection signal="hit" from="Tumbler/Pivot/Box/CharacterBody3D/Health" to="." method="_on_health_hit"]
+[connection signal="pressed_process" from="Tumbler/Pivot/Box/Pressable" to="." method="_on_pressable_pressed_process"]

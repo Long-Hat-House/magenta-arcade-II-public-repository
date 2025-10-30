@@ -1,0 +1,310 @@
+[gd_scene load_steps=24 format=3 uid="uid://cvvb3x56re4kn"]
+
+[ext_resource type="Script" uid="uid://c4eqh6e2y3ndu" path="res://systems/utils/destroyable.gd" id="1_47edj"]
+[ext_resource type="Script" uid="uid://biqjvlcudqx0t" path="res://elements/player/force_receiver.gd" id="1_m2gvo"]
+[ext_resource type="Script" uid="uid://drsxbf1dt6h8c" path="res://systems/screen/camera_shake_data.gd" id="2_asoo8"]
+[ext_resource type="PackedScene" uid="uid://bukkagy7l7q0q" path="res://elements/neutral/props/praca_bandeira/mesh_pole_flag.tscn" id="2_ixam0"]
+[ext_resource type="Material" uid="uid://csji88heofro4" path="res://elements/neutral/setpieces/ivo_flag_pole/material/m_ivo_flag.tres" id="2_jk8dv"]
+[ext_resource type="Script" uid="uid://0wf4obm88h88" path="res://elements/neutral/props/generic_tumbler.gd" id="2_kg68u"]
+[ext_resource type="WwiseEvent" uid="uid://3wlkmkt46dft" path="res://Wwise/resources/Event/{A4535F1C-9C63-4CDD-9545-85A11B7D13E3}.tres" id="3_a54f6"]
+[ext_resource type="Script" uid="uid://bgdocsgotim3u" path="res://elements/player/force_tumble_data.gd" id="3_qjw46"]
+[ext_resource type="PackedScene" uid="uid://c0nlinkrfh1ew" path="res://elements/neutral/props/praca_bandeira/mesh_steel_cable.tscn" id="4_vg7os"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="6_1rwll"]
+[ext_resource type="Script" uid="uid://dn83sg6631tiv" path="res://elements/neutral/props/generic_exploder.gd" id="8_17r6q"]
+[ext_resource type="Resource" uid="uid://buu4r0q31qb44" path="res://systems/time/frame_freeze_big.tres" id="8_ph8tl"]
+[ext_resource type="PackedScene" uid="uid://ywymskkj85vs" path="res://elements/vfx/vfx_explosion/vfx_explosion.tscn" id="9_mfrs2"]
+
+[sub_resource type="Resource" id="Resource_jhdc2"]
+script = ExtResource("2_asoo8")
+absolute_strength = Vector3(0, 0, 0)
+rotated_strength = Vector3(0.25, 0.25, 0)
+durationIn = 0.75
+easeIn = 1
+transIn = 1
+durationOut = 2.5
+easeOut = 2
+transOut = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tktto"]
+size = Vector3(4.97644, 4.67494, 2.88586)
+
+[sub_resource type="Resource" id="Resource_mwpe8"]
+script = ExtResource("3_qjw46")
+force_response_multiplier = 10.0
+return_force_multiplier = 100.0
+mass = 1.0
+scaled_mass = false
+min_velocity = 2.0
+min_force_to_min_velocity = 4.5
+velocity_dissipation = 2.0
+tumble_sensitivity = 1.0
+vibration_max_value_amplitude = 0.15
+vibration_frequency = 32.0
+vibration_increase = 4.0
+vibration_decrease = 32.0
+force_min_to_increase_vibration = 0.5
+add_tumble_hit_multiplier = 0.1
+add_tumble_hit_velocity_multiplier = 1.0
+add_vibration_influence_on_hit = 0.8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_psxx2"]
+radius = 0.7
+height = 20.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_70u4c"]
+size = Vector2(3, 3)
+subdivide_width = 2
+subdivide_depth = 2
+orientation = 2
+
+[sub_resource type="GDScript" id="GDScript_i4p7f"]
+script/source = "extends SoftBody3D
+
+func _ready() -> void:
+	set(\"pinned_points\", [15, 3])
+	set(\"attachments/0/point_index\", 15)
+	set(\"attachments/0/spatial_attachment_path\", NodePath(\"..\"))
+	set(\"attachments/0/offset\", Vector3(0.20788, 10.675, 0))
+	set(\"attachments/1/point_index\", 3)
+	set(\"attachments/1/spatial_attachment_path\", NodePath(\"..\"))
+	set(\"attachments/1/offset\", Vector3(0.20788, 7.675, 0))
+"
+
+[sub_resource type="Animation" id="Animation_urk0y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flag Base/Body:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Flag Base:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Flag Base/Body:sync_to_physics")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Flag Base/mesh_pole_flag/steel_cable:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Flag Base:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mcnr3"]
+resource_name = "destroy"
+length = 3.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flag Base/Body:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Flag Base:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.3, 1.8, 2.5, 3.4),
+"transitions": PackedFloat32Array(4.59479, 0.615572, 1.31951, 0.707107, 4.28709, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.862482, -2.29201, 2.17257), Vector3(-0.474851, -1.74484, 1.51844), Vector3(0.0227887, -1.62974, 1.93876), Vector3(0.424874, -1.43344, 1.9713), Vector3(-0.0170915, -1.60066, 1.57523)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Flag Base/mesh_pole_flag/steel_cable:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Flag Base:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.7, 1, 1.3, 1.4, 1.5, 1.6, 1.8, 2.5, 3.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 4.28709, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1.88108, 0), Vector3(0, 1.52346, 0), Vector3(0, 1.55949, 0), Vector3(0, 1.57385, 0), Vector3(0, 1.64275, -1.16843e-08), Vector3(0, 1.82956, -3.50529e-08), Vector3(0, 1.78932, -0.329331), Vector3(0, -2.08823, -0.389073)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d7ov7"]
+_data = {
+&"RESET": SubResource("Animation_urk0y"),
+&"destroy": SubResource("Animation_mcnr3")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7hmim"]
+size = Vector3(15, 1, 15)
+
+[node name="Ivo Flag Pole" type="Node3D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_47edj")
+on_end_queue_free = false
+player = NodePath("AnimationPlayer")
+screen_shake = SubResource("Resource_jhdc2")
+_sfx_destroy = ExtResource("3_a54f6")
+
+[node name="WindArea" type="Area3D" parent="."]
+transform = Transform3D(0.999997, 0, 0, 0, 0.999997, 0, 0, 0, 0.999997, 4, 9.83175, 1.49012e-06)
+collision_layer = 64
+collision_mask = 64
+gravity_point_center = Vector3(1, -1, 0)
+gravity_direction = Vector3(1, -1, 0)
+gravity = 29.634
+wind_force_magnitude = 10.0
+wind_source_path = NodePath("Wind Direction")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WindArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.98822, -0.53196, -0.012146)
+shape = SubResource("BoxShape3D_tktto")
+
+[node name="Wind Direction" type="Marker3D" parent="WindArea"]
+transform = Transform3D(0.238432, 0, -0.971162, 0, 1, 0, 0.971162, 0, 0.238432, -4.00001, -8.37878, -1.49012e-06)
+gizmo_extents = 1.0
+script = ExtResource("1_m2gvo")
+
+[node name="Flag Base" type="Node3D" parent="."]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
+
+[node name="mesh_pole_flag" parent="Flag Base" instance=ExtResource("2_ixam0")]
+transform = Transform3D(0.75, -1.49012e-08, 1.67638e-08, -2.98023e-08, 0.75, 0, -6.33299e-08, 3.72529e-08, 0.75, 0, 0, 0)
+
+[node name="steel_cable" parent="Flag Base/mesh_pole_flag" instance=ExtResource("4_vg7os")]
+transform = Transform3D(1, -7.10981e-09, -8.47245e-08, 9.93411e-09, 0.999444, 0.033382, 8.44399e-08, -0.033382, 0.999443, -8.8055e-07, -2.49648, 10.7218)
+
+[node name="Body" type="AnimatableBody3D" parent="Flag Base" node_paths=PackedStringArray("receiver", "to_tumble", "health")]
+collision_layer = 6
+collision_mask = 24
+sync_to_physics = false
+script = ExtResource("2_kg68u")
+receiver = NodePath("../../WindArea/Wind Direction")
+to_tumble = NodePath("..")
+tumble_data = SubResource("Resource_mwpe8")
+health = NodePath("Health")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Flag Base/Body"]
+transform = Transform3D(1, -2.98023e-08, 0, -5.96046e-08, 1, 0, 2.23517e-08, 0, 1, 1.19209e-07, 5.4, 0)
+shape = SubResource("CapsuleShape3D_psxx2")
+
+[node name="Health" type="Node" parent="Flag Base/Body" node_paths=PackedStringArray("feedback")]
+script = ExtResource("6_1rwll")
+feedback = [NodePath("../../mesh_pole_flag")]
+frame_freeze_on_death = ExtResource("8_ph8tl")
+debug = true
+
+[node name="SoftBody3D" type="SoftBody3D" parent="Flag Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70788, 9.175, 0)
+material_override = ExtResource("2_jk8dv")
+cast_shadow = 2
+ignore_occlusion_culling = true
+gi_mode = 0
+mesh = SubResource("PlaneMesh_70u4c")
+skeleton = NodePath("../Body")
+collision_layer = 64
+collision_mask = 64
+parent_collision_ignore = NodePath("../Body")
+simulation_precision = 9
+linear_stiffness = 0.03
+damping_coefficient = 0.1
+script = SubResource("GDScript_i4p7f")
+
+[node name="GenericExploder" type="Node3D" parent="Flag Base" node_paths=PackedStringArray("health_on_die_explode")]
+script = ExtResource("8_17r6q")
+explosion_VFX = ExtResource("9_mfrs2")
+include_self = true
+add_all_children_as_places = true
+health_on_die_explode = NodePath("../Body/Health")
+
+[node name="Node3D" type="Node3D" parent="Flag Base/GenericExploder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.932161, 1.00254, 0)
+
+[node name="Node3D2" type="Node3D" parent="Flag Base/GenericExploder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.68278, 0, 0.493812)
+
+[node name="Node3D3" type="Node3D" parent="Flag Base/GenericExploder"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 2.66415, 0, 0.600592)
+
+[node name="Node3D4" type="Node3D" parent="Flag Base/GenericExploder"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.373329, 1.9308, 2.3953)
+
+[node name="Node3D5" type="Node3D" parent="Flag Base/GenericExploder"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -0.862704, 3.44851, 0.590283)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_d7ov7")
+}
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, -8)
+
+[node name="Marker3D2" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.793)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.3, -9)
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_7hmim")
+
+[connection signal="dead" from="Flag Base/Body/Health" to="." method="destroy"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://baj27etarf4uq"]
+
+[ext_resource type="Script" uid="uid://bvtoe2xxows1r" path="res://systems/stage/constant_piece_creator.gd" id="1_6iwvu"]
+
+[node name="ConstantPieceCreator" type="Node3D" node_paths=PackedStringArray("marker_forward", "marker_back", "marker_right", "marker_left")]
+script = ExtResource("1_6iwvu")
+direction = 1
+marker_forward = NodePath("VisibleOnScreenNotifier3D/Instantiate_Place_Forward")
+marker_back = NodePath("VisibleOnScreenNotifier3D/Instantiate_Place_Back")
+marker_right = NodePath("VisibleOnScreenNotifier3D/Instantiate_Place_Right")
+marker_left = NodePath("VisibleOnScreenNotifier3D/Instantiate_Place_Left")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-1.16801, -1, -1.2276, 2.33603, 2, 2.45519)
+
+[node name="Instantiate_Place_Forward" type="Marker3D" parent="VisibleOnScreenNotifier3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Instantiate_Place_Back" type="Marker3D" parent="VisibleOnScreenNotifier3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="Instantiate_Place_Right" type="Marker3D" parent="VisibleOnScreenNotifier3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="Instantiate_Place_Left" type="Marker3D" parent="VisibleOnScreenNotifier3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

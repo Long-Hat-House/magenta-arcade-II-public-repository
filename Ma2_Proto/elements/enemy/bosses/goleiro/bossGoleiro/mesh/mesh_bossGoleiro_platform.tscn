@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccdy8erk2hwhi"]
+
+[ext_resource type="PackedScene" uid="uid://bvmh76lwkwvce" path="res://elements/enemy/bosses/goleiro/bossGoleiro/mesh/bossGoleiro_platform.glb" id="1_qhlo1"]
+[ext_resource type="Material" uid="uid://dml4tdm8qkb6g" path="res://elements/enemy/bosses/goleiro/bossGoleiro/material/m_bossGoleiro.tres" id="2_hp478"]
+
+[node name="boss03_platform" instance=ExtResource("1_qhlo1")]
+
+[node name="platform" parent="." index="0"]
+material_override = ExtResource("2_hp478")
+
+[node name="R" type="Marker3D" parent="platform" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.67394, 0.17394, -0.0366189)
+
+[node name="L" type="Marker3D" parent="platform" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.67394, 0.146476, -0.0366189)

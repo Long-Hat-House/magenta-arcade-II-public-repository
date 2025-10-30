@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://bklh7kkkcv8vw"]
+
+[ext_resource type="PackedScene" uid="uid://dk006fajla2pg" path="res://elements/player/projectiles/hold_blue/proj_hold_blue_Mesh.glb" id="1_und3t"]
+[ext_resource type="Material" uid="uid://bkr7fa1lkklh3" path="res://elements/player/projectiles/materials/proj_White.tres" id="2_b5o85"]
+[ext_resource type="Material" uid="uid://by2ylqngsrx1p" path="res://elements/player/projectiles/materials/proj_blue.tres" id="3_yufsf"]
+
+[sub_resource type="GDScript" id="GDScript_ppjai"]
+script/source = "extends AnimationPlayer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	play(\"proj_hold_blue\");
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[node name="proj_hold_blue_Mesh" instance=ExtResource("1_und3t")]
+
+[node name="Skeleton3D" parent="proj_hold_blue" index="0"]
+bones/1/position = Vector3(0, -0.177238, -0.0595841)
+bones/1/rotation = Quaternion(-0.5, -0.5, 0.5, 0.5)
+bones/2/position = Vector3(-2.02443e-18, 0.0183131, -0.251635)
+
+[node name="proj_hold_Water" parent="proj_hold_blue/Skeleton3D" index="0"]
+material_override = ExtResource("3_yufsf")
+cast_shadow = 0
+
+[node name="proj_hold_water_effect" parent="proj_hold_blue/Skeleton3D" index="1"]
+material_override = ExtResource("2_b5o85")
+cast_shadow = 0
+blend_shapes/ScaleTorus = 0.916054
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "proj_hold_blue"
+script = SubResource("GDScript_ppjai")

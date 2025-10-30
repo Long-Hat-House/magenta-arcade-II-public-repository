@@ -1,0 +1,91 @@
+[gd_scene load_steps=12 format=3 uid="uid://dd6xsgc1svbyg"]
+
+[ext_resource type="Script" uid="uid://cqlavmlpy3tp2" path="res://elements/player/projectiles/magic_missile/proj_player_magic_missile.gd" id="1_cfd3a"]
+[ext_resource type="PackedScene" uid="uid://b7fdi63i7pbst" path="res://elements/player/projectiles/rotating_ball/vfx_hit_extra.tscn" id="2_gfaje"]
+[ext_resource type="Material" uid="uid://b200fu03q7lck" path="res://elements/m_simple_color_emission_cull_front.tres" id="3_0xsuf"]
+[ext_resource type="Material" uid="uid://r1m6m874b01v" path="res://elements/m_simple_color_emission.tres" id="4_0xsuf"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_i3pyd"]
+radius = 0.35
+height = 0.8
+radial_segments = 8
+rings = 8
+
+[sub_resource type="SphereMesh" id="SphereMesh_cfd3a"]
+radius = 0.15
+height = 0.3
+radial_segments = 6
+rings = 6
+
+[sub_resource type="Curve" id="Curve_0xsuf"]
+_data = [Vector2(0, 0.573034), 0.0, 2.10112, 0, 0, Vector2(0.502674, 0.460674), 1.96105, 1.96105, 0, 0, Vector2(0.994652, 0), -1.11237, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_lb64g"]
+curve = SubResource("Curve_0xsuf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i3pyd"]
+lifetime_randomness = 0.1
+emission_shape = 1
+emission_sphere_radius = 0.3
+inherit_velocity_ratio = 0.2
+gravity = Vector3(0, 0.2, 0)
+attractor_interaction_enabled = false
+scale_curve = SubResource("CurveTexture_lb64g")
+
+[sub_resource type="SphereMesh" id="SphereMesh_1ysdj"]
+material = ExtResource("3_0xsuf")
+radius = 0.15
+height = 0.32
+radial_segments = 7
+rings = 5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cpu0p"]
+radius = 0.4
+
+[node name="ProjPlayerMagicMissile" type="Area3D"]
+collision_layer = 8
+collision_mask = 148
+script = ExtResource("1_cfd3a")
+duration = 0.7
+parabola_height = 2.5
+ease_part = 0.3
+separation_duration_multiplier = 0.32
+trans_first = 1
+damage = 1.0
+hit_vfx = ExtResource("2_gfaje")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="BigBall" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.685, 0, 0, 0, -2.99423e-08, 0.685, 0, -0.685, -2.99423e-08, 0, 0, 0)
+material_override = ExtResource("3_0xsuf")
+instance_shader_parameters/color = Color(0, 0.686275, 0.654902, 1)
+instance_shader_parameters/emissive = Color(0.658824, 1, 0.909804, 1)
+instance_shader_parameters/energy = 0.1
+mesh = SubResource("SphereMesh_i3pyd")
+skeleton = NodePath("../../..")
+
+[node name="Mira" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0600449, 0)
+material_override = ExtResource("4_0xsuf")
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emissive = Color(0, 1, 1, 1)
+instance_shader_parameters/energy = 10.0
+mesh = SubResource("SphereMesh_cfd3a")
+skeleton = NodePath("../..")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Node3D"]
+instance_shader_parameters/color = Color(0, 0.686275, 0.654902, 1)
+instance_shader_parameters/emissive = Color(0.658824, 1, 0.909804, 1)
+instance_shader_parameters/energy = 0.1
+lifetime = 0.2
+explosiveness = 0.02
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_i3pyd")
+draw_pass_1 = SubResource("SphereMesh_1ysdj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+shape = SubResource("SphereShape3D_cpu0p")

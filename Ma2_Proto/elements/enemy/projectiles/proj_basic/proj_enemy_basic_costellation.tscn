@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://d034nyvfqs27v"]
+
+[ext_resource type="PackedScene" uid="uid://dhmi2sv2mhuqe" path="res://elements/enemy/projectiles/proj_basic/proj_enemy_basic.tscn" id="1_jvhao"]
+[ext_resource type="Script" uid="uid://bkir1i1w57206" path="res://elements/enemy/projectiles/proj_basic/proj_enemy_basic_costellation.gd" id="2_8mq5h"]
+[ext_resource type="PackedScene" uid="uid://cttqjlxr0np2w" path="res://elements/vfx/vfx_hit/vfx_hit_magenta.tscn" id="3_5h16n"]
+[ext_resource type="Script" uid="uid://c04hf1fjmqgil" path="res://elements/enemy/projectiles/damage_area/damage_node.gd" id="3_pahrc"]
+[ext_resource type="Shader" uid="uid://clbaserrhs5so" path="res://elements/player/projectiles/instance_color_albedo.gdshader" id="4_gpav8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5h16n"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_gpav8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xe4io"]
+resource_local_to_scene = true
+shading_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.0
+rim = 0.5
+rim_tint = 1.0
+disable_receive_shadows = true
+grow_amount = -0.252
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gpav8"]
+resource_local_to_scene = true
+render_priority = 10
+cull_mode = 2
+shading_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.0
+rim = 0.5
+rim_tint = 1.0
+disable_receive_shadows = true
+grow_amount = -0.252
+
+[node name="EnemyProjectile_Costellation" instance=ExtResource("1_jvhao")]
+collision_mask = 2
+script = ExtResource("2_8mq5h")
+velocity = 0.0
+time_outside_screen = 4.0
+vfx = ExtResource("3_5h16n")
+
+[node name="DamageNode" type="Node" parent="." index="0" node_paths=PackedStringArray("origin")]
+script = ExtResource("3_pahrc")
+origin = NodePath("..")
+_debug = true
+
+[node name="VisibleNotifier" parent="." index="2"]
+aabb = AABB(-10, -0.5, -10, 20, 1, 20)
+
+[node name="Pink" parent="Pivot/Scale/Graphic" index="1"]
+material_override = SubResource("ShaderMaterial_5h16n")
+
+[node name="White" parent="Pivot/Scale/Graphic" index="2"]
+material_override = SubResource("StandardMaterial3D_xe4io")
+
+[node name="Dark Pink" parent="Pivot/Scale/Graphic" index="3"]
+material_override = SubResource("ShaderMaterial_5h16n")
+
+[node name="Glow" parent="Pivot/Scale/Graphic" index="4"]
+material_override = SubResource("StandardMaterial3D_gpav8")
+
+[connection signal="area_entered" from="." to="DamageNode" method="add_body"]
+[connection signal="body_entered" from="." to="DamageNode" method="add_body"]
+[connection signal="onDamaged" from="DamageNode" to="." method="_on_damage_node_on_damaged"]

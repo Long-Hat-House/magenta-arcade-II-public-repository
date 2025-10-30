@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://butec5773ak50"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_UI_Upgrade_Stars_Insuficient"
+id = 4173001919
+guid = "{C86A4BA1-DADD-4291-A90F-7C80224AEF41}"
+dummy = true

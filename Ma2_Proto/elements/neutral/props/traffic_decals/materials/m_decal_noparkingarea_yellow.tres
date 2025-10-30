@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://k73b4bjamaps"]
+
+[ext_resource type="Shader" uid="uid://c4wctjid17eas" path="res://elements/neutral/props/traffic_decals/materials/new_shader.tres" id="1_v5du7"]
+[ext_resource type="Texture2D" uid="uid://bocwmokys4tya" path="res://elements/neutral/props/traffic_decals/textures/traffic_decal_noparkingarea.png" id="2_2iyid"]
+[ext_resource type="Texture2D" uid="uid://bu1uubi52awk8" path="res://elements/neutral/props/traffic_decals/textures/traffic_decal_wear_noise.tres" id="3_gvwns"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_v5du7")
+shader_parameter/Albedo_Color = Color(0.596078, 0.533333, 0.305882, 1)
+shader_parameter/Albedo = ExtResource("2_2iyid")
+shader_parameter/Noise = ExtResource("3_gvwns")

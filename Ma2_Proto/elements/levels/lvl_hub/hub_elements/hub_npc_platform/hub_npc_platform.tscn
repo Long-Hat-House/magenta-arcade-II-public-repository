@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://bwsn4r8p1vt7y"]
+
+[ext_resource type="PackedScene" uid="uid://b5ushfqcn5gd1" path="res://elements/neutral/props/stairs/mesh/stair.tscn" id="3_0ad0m"]
+[ext_resource type="Script" uid="uid://0wf4obm88h88" path="res://elements/neutral/props/generic_tumbler.gd" id="3_j4u08"]
+[ext_resource type="Script" uid="uid://bgdocsgotim3u" path="res://elements/player/force_tumble_data.gd" id="4_wl5i7"]
+[ext_resource type="PackedScene" uid="uid://cu2b7ogkhlvrs" path="res://elements/levels/lvl_hub/hub_elements/hub_npc_platform/mesh_hub_npc_platform.tscn" id="4_y3v4r"]
+[ext_resource type="Script" uid="uid://biqjvlcudqx0t" path="res://elements/player/force_receiver.gd" id="5_pw2gy"]
+
+[sub_resource type="Resource" id="Resource_j4u08"]
+script = ExtResource("4_wl5i7")
+force_response_multiplier = 25.0
+return_force_multiplier = 60.0
+mass = 1.5
+scaled_mass = true
+min_velocity = 1.5
+min_force_to_min_velocity = 4.5
+velocity_dissipation = 3.0
+tumble_sensitivity = 0.75
+vibration_max_value_amplitude = 0.75
+vibration_frequency = 32.0
+vibration_increase = 4.0
+vibration_decrease = 32.0
+force_min_to_increase_vibration = 0.5
+add_tumble_hit_multiplier = 1.0
+add_tumble_hit_velocity_multiplier = 1.0
+add_vibration_influence_on_hit = 0.8
+
+[node name="HubNpcPlatform" type="Node3D"]
+
+[node name="Up" type="Marker3D" parent="."]
+transform = Transform3D(2, 0, 7.45058e-09, 0, -1.93717, 0.49738, 0, -0.49738, -1.93717, -1.132, -0.328, -1.266)
+
+[node name="hub_npc_platform" parent="." instance=ExtResource("4_y3v4r")]
+
+[node name="NPCPlatformTumbler" type="Node3D" parent="." node_paths=PackedStringArray("receiver", "to_tumble", "tumble_box_corner", "up_from_circle_getter")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 1.75, -1.75)
+script = ExtResource("3_j4u08")
+receiver = NodePath("ForceReceiver")
+to_tumble = NodePath("../StairPosition/TumblerStair")
+tumble_data = SubResource("Resource_j4u08")
+tumble_radius = 1.0
+tumble_box_corner = NodePath("")
+up_from_circle_getter = NodePath("../Up")
+metadata/_custom_type_script = "uid://0wf4obm88h88"
+
+[node name="ForceReceiver" type="Node3D" parent="NPCPlatformTumbler"]
+script = ExtResource("5_pw2gy")
+metadata/_custom_type_script = "uid://biqjvlcudqx0t"
+
+[node name="StairPosition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13253, 0, -1.27409)
+
+[node name="TumblerStair" type="Node3D" parent="StairPosition"]
+
+[node name="stair" parent="StairPosition/TumblerStair" instance=ExtResource("3_0ad0m")]
+transform = Transform3D(2, 0, 7.45058e-09, 0, 0.49738, 1.93717, 0, -1.93717, 0.49738, 0.00053072, -0.328, 0.00809407)

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfuuuh2ng3yca"]
+
+[ext_resource type="PackedScene" uid="uid://c7fknb55gt13q" path="res://elements/neutral/drag_stone/mesh/mesh_drag_wall.tscn" id="1_11bk1"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="2_1jfir"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hvptx"]
+size = Vector3(0.9, 0.9, 0.9)
+
+[node name="ElementDragWall" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+collision_mask = 129
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
+shape = SubResource("BoxShape3D_hvptx")
+
+[node name="dragWall" parent="StaticBody3D" instance=ExtResource("1_11bk1")]
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="StaticBody3D/dragWall"]
+script = ExtResource("2_1jfir")
+high_contrast_group = &"neutral"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"

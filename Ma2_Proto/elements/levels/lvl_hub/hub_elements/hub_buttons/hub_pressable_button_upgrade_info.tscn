@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://dudypmrl2weak"]
+
+[ext_resource type="Script" uid="uid://dl7owg5qhn1oa" path="res://elements/levels/lvl_hub/hub_elements/hub_buttons/hub_pressable_button_upgrade_info.gd" id="1_b4q5i"]
+[ext_resource type="WwiseEvent" uid="uid://ghrncq2n2d6q" path="res://Wwise/resources/Event/{E4427C81-6C18-4D19-AD97-3962C1FC91EA}.tres" id="2_6ju5k"]
+[ext_resource type="WwiseEvent" uid="uid://bfwyfnoemxam0" path="res://Wwise/resources/Event/{9CCBF66C-396A-4426-84FB-F11A31ECA62F}.tres" id="3_dcn4o"]
+[ext_resource type="PackedScene" uid="uid://dj8jnkib4klvr" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_upgrade_info/graphic_pressable_button_upgrade_info.tscn" id="3_xpsxd"]
+[ext_resource type="Texture2D" uid="uid://cm5belis6bq0x" path="res://elements/icons/icon_star.png" id="5_07h7w"]
+[ext_resource type="Script" uid="uid://0wf4obm88h88" path="res://elements/neutral/props/generic_tumbler.gd" id="6_1yaak"]
+[ext_resource type="Script" uid="uid://bgdocsgotim3u" path="res://elements/player/force_tumble_data.gd" id="7_yy154"]
+[ext_resource type="Script" uid="uid://biqjvlcudqx0t" path="res://elements/player/force_receiver.gd" id="8_b4ewm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3a8of"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_color = Color(0.775063, 0.775063, 0.775063, 1)
+albedo_texture = ExtResource("5_07h7w")
+
+[sub_resource type="QuadMesh" id="QuadMesh_c8v1s"]
+size = Vector2(0.4, 0.4)
+orientation = 1
+
+[sub_resource type="Resource" id="Resource_1yaak"]
+script = ExtResource("7_yy154")
+force_response_multiplier = 72.0
+return_force_multiplier = 70.0
+mass = 2.0
+scaled_mass = true
+min_velocity = 2.0
+min_force_to_min_velocity = 4.5
+velocity_dissipation = 3.0
+tumble_sensitivity = 0.1
+vibration_max_value_amplitude = 0.2
+vibration_frequency = 32.0
+vibration_increase = 4.0
+vibration_decrease = 32.0
+force_min_to_increase_vibration = 0.5
+max_tumble = 20.0
+max_tumble_velocity = 400.0
+add_tumble_hit_multiplier = 1.0
+add_tumble_hit_velocity_multiplier = 1.0
+add_vibration_influence_on_hit = 0.8
+
+[node name="HUBPressableButton Upgrade Info" type="Node3D" node_paths=PackedStringArray("label_allocated_stars", "graphic")]
+script = ExtResource("1_b4q5i")
+label_allocated_stars = NodePath("Graphic/Stars Info/LabelStars")
+toggle_mode = true
+graphic = NodePath("Graphic")
+_sfx_toggled_on = ExtResource("2_6ju5k")
+_sfx_toggled_off = ExtResource("3_dcn4o")
+
+[node name="Graphic" parent="." instance=ExtResource("3_xpsxd")]
+
+[node name="Stars Info" type="Node3D" parent="Graphic"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 0.999999, 0, -0.999999, -4.37114e-08, -0.758463, 0.296631, 0.29372)
+
+[node name="LabelStars" type="Label3D" parent="Graphic/Stars Info"]
+text = "1"
+font_size = 100
+outline_size = 0
+
+[node name="icon" type="MeshInstance3D" parent="Graphic/Stars Info/LabelStars"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.6, -5.96046e-08)
+material_override = SubResource("StandardMaterial3D_3a8of")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_c8v1s")
+skeleton = NodePath("../..")
+
+[node name="GenericTumbler" type="Node3D" parent="." node_paths=PackedStringArray("receiver", "to_tumble")]
+script = ExtResource("6_1yaak")
+receiver = NodePath("ForceReceiver")
+to_tumble = NodePath("../Graphic")
+tumble_data = SubResource("Resource_1yaak")
+tumble_radius = 1.1
+random_force = 0.25
+metadata/_custom_type_script = "uid://0wf4obm88h88"
+
+[node name="ForceReceiver" type="Node3D" parent="GenericTumbler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+script = ExtResource("8_b4ewm")
+metadata/_custom_type_script = "uid://biqjvlcudqx0t"

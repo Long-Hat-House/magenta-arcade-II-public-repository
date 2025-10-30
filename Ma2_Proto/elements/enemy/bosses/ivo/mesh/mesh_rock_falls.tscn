@@ -1,0 +1,542 @@
+[gd_scene load_steps=7 format=3 uid="uid://cyfvqk0c757jb"]
+
+[ext_resource type="PackedScene" uid="uid://6876gixvum6" path="res://elements/neutral/props/rock/mesh/mesh_rock_cavern_02.tscn" id="2_440gw"]
+[ext_resource type="PackedScene" uid="uid://bnxchwgajg4dl" path="res://elements/neutral/props/rock/mesh/mesh_rock_cavern_03.tscn" id="3_p5re6"]
+[ext_resource type="PackedScene" uid="uid://cl5uv7qchkiti" path="res://elements/background/element_clay_floor.tscn" id="4_8djhd"]
+
+[sub_resource type="Animation" id="Animation_440gw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rock_cavern02:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-4.77283, 40.7806, 26.1949)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rock_cavern14:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-3.79311, 90.9292, 1.44702)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rock_cavern13:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(5.61698, 64.1608, 6.81869)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("rock_cavern17:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-4.383, 70, 10.744)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("rock_cavern16:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-5.352, 70, -1.395)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("rock_cavern15:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.45638, 70, -5.83205)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("rock_cavern12:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(4.11032, 94.8541, 13.354)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("rock_cavern06:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-4.38325, 79.9178, 10.7444)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("rock_cavern03:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(5.58802, 71.8088, 19.5848)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("rock_cavern11:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.376177, 58.9892, 25.0087)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("rock_cavern04:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(6.01125, 40.7806, 26.1524)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("rock_cavern05:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-3.42376, 61.0625, 23)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("rock_cavern10:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.91912, 52.8517, 11.5037)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("rock_cavern09:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.29144, 49.1829, 16.3339)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("rock_cavern07:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(4.9628, -0.348499, -1.1201)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("rock_cavern08:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.573328, 118.362, 5.42295)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("rock_cavern18:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.573, 70, 18.928)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("rock_cavern19:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.573, 73.2299, 0.390158)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("rock_cavern20:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.598814, 76.4058, 12.2304)]
+}
+
+[sub_resource type="Animation" id="Animation_t0eoh"]
+resource_name = "rock_fall"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rock_cavern02:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.8, 0.9, 0.966667),
+"transitions": PackedFloat32Array(5, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-3.751, 100, 11.001), Vector3(-3.751, -0.348, 11.001), Vector3(-3.751, 1.099, 11.001), Vector3(-3.751, -0.348, 11.001)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rock_cavern14:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.933333, 1.68039),
+"transitions": PackedFloat32Array(3, 1),
+"update": 0,
+"values": [Vector3(-3.793, 100, 1.447), Vector3(-1.97066, -0.589203, 4.65881)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rock_cavern13:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.44373, 2.26667),
+"transitions": PackedFloat32Array(5, 1),
+"update": 0,
+"values": [Vector3(5.617, 100, 6.819), Vector3(7.6879, 0.168793, 10.1768)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("rock_cavern17:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.8, 1.78099),
+"transitions": PackedFloat32Array(4, 1),
+"update": 0,
+"values": [Vector3(-4.383, 100, 10.744), Vector3(-4.383, -0.019043, 5.03599)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("rock_cavern16:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.26667, 2.02929),
+"transitions": PackedFloat32Array(4, 1),
+"update": 0,
+"values": [Vector3(-5.352, 100, -1.395), Vector3(4.13491, 0.451294, 9.29065)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("rock_cavern15:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.93333, 2.73333),
+"transitions": PackedFloat32Array(5, 1),
+"update": 0,
+"values": [Vector3(2.456, 100, -5.832), Vector3(1.55576, 0.98687, -1.46997)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("rock_cavern12:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.53333, 2.46667, 2.56667, 2.66667),
+"transitions": PackedFloat32Array(4, 1, 1, 1),
+"update": 0,
+"values": [Vector3(7.96978, 100, 5.49659), Vector3(4.11032, -0.555511, 13.354), Vector3(4.11, 1.44, 13.354), Vector3(4.11032, -0.555511, 13.354)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("rock_cavern06:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.4, 2.5),
+"transitions": PackedFloat32Array(5, 1),
+"update": 0,
+"values": [Vector3(7.01262, 82.0073, 10.744), Vector3(5.27708, 3.09344, 10.744)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("rock_cavern03:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(2, 2.66667),
+"transitions": PackedFloat32Array(5, 1),
+"update": 0,
+"values": [Vector3(5.588, 100, 19.585), Vector3(1.1292, 3.07114, 2.1666)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("rock_cavern11:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(2.1, 2.9),
+"transitions": PackedFloat32Array(5, 1),
+"update": 0,
+"values": [Vector3(-1.03474, 100, 10.4314), Vector3(-1.035, -0.27, 17.1771)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("rock_cavern04:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(2.2, 3),
+"transitions": PackedFloat32Array(4.59479, 1),
+"update": 0,
+"values": [Vector3(1.38165, 40.7806, 1.56915), Vector3(3.48178, -0.839394, 6.25168)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("rock_cavern05:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(1.16667, 1.96667),
+"transitions": PackedFloat32Array(5, 1),
+"update": 0,
+"values": [Vector3(-4.202, 100, 2.49971), Vector3(0.576412, -0.283142, 0.120129)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("rock_cavern10:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(1.96667, 4.06667),
+"transitions": PackedFloat32Array(5, 1),
+"update": 0,
+"values": [Vector3(-4.202, 100, 4.844), Vector3(3.22369, 3.19495, 16.5521)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("rock_cavern09:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.866667, 1.76667),
+"transitions": PackedFloat32Array(5, 1),
+"update": 0,
+"values": [Vector3(7.086, 100, 16.334), Vector3(-3.27316, 2.46231, 7.83849)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("rock_cavern07:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("rock_cavern08:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(1.86667, 2.93333),
+"transitions": PackedFloat32Array(4.59479, 1),
+"update": 0,
+"values": [Vector3(0.573328, 118.362, 5.42295), Vector3(-0.242773, 5.64853, 7.72105)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("rock_cavern18:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(1.33333, 2.9),
+"transitions": PackedFloat32Array(5.27803, 1),
+"update": 0,
+"values": [Vector3(-0.601225, 55.8775, 5.28952), Vector3(-0.601225, 5.56927, 5.28952)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("rock_cavern19:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(2.36667, 3.2),
+"transitions": PackedFloat32Array(6.72717, 1),
+"update": 0,
+"values": [Vector3(3.74249, 49.9098, 6.91927), Vector3(3.74249, 4.07635, 6.91927)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("rock_cavern20:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0.0666667, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-4.63098, 76.4058, 2.19687), Vector3(-4.63098, -0.912926, 2.19687)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p5re6"]
+_data = {
+&"RESET": SubResource("Animation_440gw"),
+&"rock_fall": SubResource("Animation_t0eoh")
+}
+
+[node name="Rock_falls" type="Node3D"]
+
+[node name="rock_cavern02" parent="." instance=ExtResource("2_440gw")]
+transform = Transform3D(2.59808, 0, -1.5, 0, 3, 0, 1.5, 0, 2.59808, -4.77283, 40.7806, 26.1949)
+
+[node name="rock_cavern07" parent="." instance=ExtResource("2_440gw")]
+transform = Transform3D(1.77465, 0, 2.41881, 0, 3, 0, -2.41881, 0, 1.77465, 4.9628, -0.348499, -1.1201)
+
+[node name="rock_cavern08" parent="." instance=ExtResource("2_440gw")]
+transform = Transform3D(-0.434696, -0.290259, 2.95411, 1.06326, 2.77229, 0.428851, -2.77138, 1.10913, -0.298828, 0.573328, 118.362, 5.42295)
+
+[node name="rock_cavern18" parent="." instance=ExtResource("2_440gw")]
+transform = Transform3D(-0.434696, -0.290259, 2.95411, -0.436462, 2.95942, 0.226555, -2.93608, -0.396958, -0.471045, 0.573, 70, 18.928)
+
+[node name="rock_cavern19" parent="." instance=ExtResource("2_440gw")]
+transform = Transform3D(-0.552934, 0.687179, 2.86741, -0.271517, 2.89313, -0.7457, -2.93608, -0.396958, -0.471044, 0.573, 73.2299, 0.390158)
+
+[node name="rock_cavern20" parent="." instance=ExtResource("2_440gw")]
+transform = Transform3D(2.91235, 0.423386, 0.582214, -0.640139, 2.63305, 1.28734, -0.329318, -1.37396, 2.64646, -0.598814, 76.4058, 12.2304)
+
+[node name="rock_cavern06" parent="." instance=ExtResource("2_440gw")]
+transform = Transform3D(-2.86903, -0.647405, -0.591227, -0.71245, 2.90059, 0.281082, 0.510977, 0.409217, -2.9277, -4.38325, 79.9178, 10.7444)
+
+[node name="rock_cavern17" parent="." instance=ExtResource("2_440gw")]
+transform = Transform3D(1.34034, -1.71918, 2.06105, 0.895015, 2.4582, 1.46841, -2.53031, -0.0411623, 1.61117, -4.383, 70, 10.744)
+
+[node name="rock_cavern09" parent="." instance=ExtResource("2_440gw")]
+transform = Transform3D(0.763639, -0.119741, 2.89871, -0.390298, 2.96596, 0.225339, -2.87481, -0.434479, 0.739395, 3.29144, 49.1829, 16.3339)
+
+[node name="rock_cavern10" parent="." instance=ExtResource("2_440gw")]
+transform = Transform3D(2.20145, 0.0597991, -2.03717, 0.134023, 2.98797, 0.23254, 2.03363, -0.261651, 2.18995, -2.91912, 52.8517, 11.5037)
+
+[node name="rock_cavern14" parent="." instance=ExtResource("2_440gw")]
+transform = Transform3D(-2.52636, 0.0597986, 1.61676, -0.00563326, 2.99761, -0.119674, -1.61786, -0.103816, -2.52423, -3.79311, 90.9292, 1.44702)
+
+[node name="rock_cavern13" parent="." instance=ExtResource("2_440gw")]
+transform = Transform3D(2.20145, 0.0597991, -2.03717, 0.0266606, 2.99761, 0.116802, 2.03787, -0.103816, 2.19916, 5.61698, 64.1608, 6.81869)
+
+[node name="rock_cavern03" parent="." instance=ExtResource("3_p5re6")]
+transform = Transform3D(1.35942, 1.26804, -2.35458, -0.634024, 2.71884, 1.09816, 2.59808, 3.26335e-06, 1.5, 5.58802, 71.8088, 19.5848)
+
+[node name="rock_cavern15" parent="." instance=ExtResource("3_p5re6")]
+transform = Transform3D(2.44957, -1.69841, 0.339169, 1.71967, 2.45494, -0.126659, -0.20584, 0.297839, 2.97807, 2.45638, 70, -5.83205)
+
+[node name="rock_cavern16" parent="." instance=ExtResource("3_p5re6")]
+transform = Transform3D(-1.21511, 0.312461, -2.72504, 0.261287, 2.9801, 0.225197, 2.73043, -0.146126, -1.23427, -5.352, 70, -1.395)
+
+[node name="rock_cavern04" parent="." instance=ExtResource("3_p5re6")]
+transform = Transform3D(-2.57711, -0.913394, 1.23459, -0.859441, 2.85647, 0.319303, -1.27273, -0.0793918, -2.71548, 6.01125, 40.7806, 26.1524)
+
+[node name="rock_cavern05" parent="." instance=ExtResource("3_p5re6")]
+transform = Transform3D(-2.89778, 1.13022e-06, -0.776459, -0.0905627, 2.97952, 0.337988, 0.77116, 0.349911, -2.878, -3.42376, 61.0625, 23)
+
+[node name="rock_cavern11" parent="." instance=ExtResource("3_p5re6")]
+transform = Transform3D(2.95518, -0.22149, -0.466742, 0.209767, 2.99126, -0.0913415, 0.472126, 0.0573411, 2.96206, 0.376177, 58.9892, 25.0087)
+
+[node name="rock_cavern12" parent="." instance=ExtResource("3_p5re6")]
+transform = Transform3D(-0.815589, -0.484802, -2.84601, -0.198242, 2.95982, -0.447378, 2.88019, 0.066441, -0.836702, 4.11032, 94.8541, 13.354)
+
+[node name="Clay" parent="." instance=ExtResource("4_8djhd")]
+transform = Transform3D(19.14, 0, 0, 0, 1, 0, 0, 0, 40, -9.5, 0, -5)
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_p5re6")
+}

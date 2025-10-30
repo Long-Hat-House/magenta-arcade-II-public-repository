@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://gx6uy0lmc0nj"]
+
+[ext_resource type="Script" uid="uid://cqw12q80au2xj" path="res://elements/enemy/bosses/pirulito/ai_enemy_boss_pirulito_lamp.gd" id="1_wyrt3"]
+[ext_resource type="PackedScene" uid="uid://b8opslu1yxc8f" path="res://elements/enemy/bosses/pirulito/pirulito_piece/mesh_lamp.tscn" id="1_y10kr"]
+[ext_resource type="PackedScene" uid="uid://bc3i2ac8kfavt" path="res://elements/enemy/bosses/magenta_thunder_line.tscn" id="3_bm1x8"]
+[ext_resource type="PackedScene" uid="uid://elu46raggotb" path="res://elements/enemy/projectiles/proj_laser/laser_area.tscn" id="3_tclue"]
+[ext_resource type="Script" uid="uid://cnbn1i46oihe3" path="res://systems/graphics/scaled_mesh_line.gd" id="5_jltlj"]
+
+[sub_resource type="Curve" id="Curve_gwjqx"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+bake_resolution = 50
+_data = [Vector2(0, 0), 0.0, 5.42742, 0, 0, Vector2(0.25, 1), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Lamp" type="Node3D" node_paths=PackedStringArray("scaled_mesh_line")]
+script = ExtResource("1_wyrt3")
+height_curve = SubResource("Curve_gwjqx")
+scaled_mesh_line = NodePath("ScaledMeshLine")
+
+[node name="lamp_graphic" parent="." instance=ExtResource("1_y10kr")]
+
+[node name="MagentaThunderLine" parent="lamp_graphic" instance=ExtResource("3_bm1x8")]
+
+[node name="ThunderPoint" type="Marker3D" parent="lamp_graphic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62052, 1.63783, 2.65692)
+
+[node name="Laser Pivot_no" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.625, 2.1, 2.64184)
+
+[node name="Laser Rotation" type="Node3D" parent="Laser Pivot_no"]
+
+[node name="Laser" parent="Laser Pivot_no/Laser Rotation" instance=ExtResource("3_tclue")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.16001)
+
+[node name="ScaledMeshLine" type="Node" parent="." node_paths=PackedStringArray("line_to_scale", "target_origin")]
+script = ExtResource("5_jltlj")
+line_to_scale = NodePath("../lamp_graphic/MagentaThunderLine")
+target_origin = NodePath("../lamp_graphic/ThunderPoint")

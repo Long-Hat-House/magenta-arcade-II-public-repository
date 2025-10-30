@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfqnsiiafkyqr"]
+
+[ext_resource type="PackedScene" uid="uid://vj47ve7um04h" path="res://elements/neutral/props/Jersey barrier/mesh/jerseybarrier_border.glb" id="1_xiger"]
+[ext_resource type="Material" uid="uid://c4nlekah12jr8" path="res://elements/neutral/props/Jersey barrier/material/m_Jersey barrier.tres" id="2_xv8dq"]
+
+[node name="jerseybarrier_border" instance=ExtResource("1_xiger")]
+
+[node name="jersey barrier_border" parent="." index="0"]
+material_override = ExtResource("2_xv8dq")

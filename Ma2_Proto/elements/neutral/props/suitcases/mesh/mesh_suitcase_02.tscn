@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://u3ddhqbkti0d"]
+
+[ext_resource type="PackedScene" uid="uid://pmq7hltsi2vt" path="res://elements/neutral/props/suitcases/mesh/suitcase02.glb" id="1_mn4m3"]
+[ext_resource type="Material" uid="uid://cy36h7rf4inku" path="res://elements/neutral/props/suitcases/material/m_suitcases_base.tres" id="2_4udmk"]
+[ext_resource type="Material" uid="uid://g44wjmevs8tb" path="res://elements/neutral/props/suitcases/material/m_suitcases.tres" id="2_ui1b6"]
+
+[node name="suitcase02" instance=ExtResource("1_mn4m3")]
+
+[node name="suitcase02" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_4udmk")
+surface_material_override/1 = ExtResource("2_ui1b6")

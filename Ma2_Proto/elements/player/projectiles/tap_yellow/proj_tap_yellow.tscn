@@ -1,0 +1,60 @@
+[gd_scene load_steps=12 format=3 uid="uid://c6w3yq2qsfl3o"]
+
+[ext_resource type="Script" uid="uid://cccnp54xda20b" path="res://elements/enemy/constant_rotation.gd" id="1_7nyiv"]
+[ext_resource type="Script" uid="uid://uqjj3f7vul35" path="res://elements/player/projectiles/tap_yellow/proj_tap_yellow.gd" id="1_qgev5"]
+[ext_resource type="Script" uid="uid://c1a23qdrmn8d1" path="res://elements/enemy/projectiles/damage_area/damage_area.gd" id="2_ee7m7"]
+[ext_resource type="PackedScene" uid="uid://c3r806xt3i0nr" path="res://elements/vfx/vfx_hit/vfx_hit_yellow.tscn" id="2_tan8b"]
+[ext_resource type="PackedScene" uid="uid://bh8b3rr3j6br" path="res://elements/player/projectiles/tap_yellow/mesh/mesh_tap_yellow.tscn" id="4_1m7lt"]
+[ext_resource type="WwiseRTPC" uid="uid://bgbviatlewkim" path="res://Wwise/resources/Game Parameter/{DC2C1BFB-2C4A-4D5F-A71B-23D3E0A71919}.tres" id="5_hh62v"]
+[ext_resource type="Resource" uid="uid://dmhdkw8urmjwc" path="res://systems/ma2_meta/upgrades/upgrade_tap_damage.tres" id="6_ywn8v"]
+[ext_resource type="WwiseEvent" uid="uid://x5gjs672ikms" path="res://Wwise/resources/Event/{0BFAAB09-8043-4D21-8116-47E842AB8103}.tres" id="8_hh62v"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="8_n6n07"]
+[ext_resource type="WwiseEvent" uid="uid://bovnoa44e5q7l" path="res://Wwise/resources/Event/{1B436AED-228E-41C9-A71D-B1CFA98059AD}.tres" id="9_hh62v"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_p4fv0"]
+radius = 0.7
+
+[node name="ProjTapYellow" type="Node3D"]
+script = ExtResource("1_qgev5")
+acceleration_multiplier = 12.0
+speed_multiplier = 1.25
+speed_reduce = 3.0
+seconds_total = 14.0
+each_damage_take_seconds = 0.25
+vfx_hit = ExtResource("2_tan8b")
+_sfx_play = ExtResource("8_hh62v")
+_sfx_stop = ExtResource("9_hh62v")
+_sfx_parameter = ExtResource("5_hh62v")
+
+[node name="ConstantRotation" type="Node3D" parent="."]
+script = ExtResource("1_7nyiv")
+
+[node name="Scaler" type="Node3D" parent="ConstantRotation"]
+
+[node name="tap_yellow" parent="ConstantRotation/Scaler" instance=ExtResource("4_1m7lt")]
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="ConstantRotation/Scaler/tap_yellow"]
+script = ExtResource("8_n6n07")
+high_contrast_group = &"player"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="DamageArea" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("2_ee7m7")
+amountDamage = 0.6
+damage_beat_duration = 0.5
+bonus_resource = ExtResource("6_ywn8v")
+damage_per_progress = 4.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
+shape = SubResource("SphereShape3D_p4fv0")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-3.9898, -1, -4.01191, 7.9796, 2, 8.02382)
+
+[connection signal="damage_pulse" from="DamageArea" to="." method="pump"]
+[connection signal="onDamaged" from="DamageArea" to="." method="_on_damage_area_on_damaged"]
+[connection signal="onDamagedData" from="DamageArea" to="." method="_on_damage_area_on_damaged_data"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

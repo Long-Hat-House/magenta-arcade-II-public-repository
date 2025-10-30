@@ -1,0 +1,150 @@
+[gd_scene load_steps=9 format=3 uid="uid://b5ywgn67tfmvg"]
+
+[ext_resource type="PackedScene" uid="uid://c6hfquvtt6d0m" path="res://elements/neutral/props/Factory/mesh/silo_factory.glb" id="1_7wsjf"]
+[ext_resource type="Material" uid="uid://gvgs8t2skyc1" path="res://elements/neutral/props/Factory/material/m_pipe_silo_factory.tres" id="2_54pj8"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="2_i32ou"]
+[ext_resource type="Script" uid="uid://0wf4obm88h88" path="res://elements/neutral/props/generic_tumbler.gd" id="3_kvh7j"]
+[ext_resource type="Resource" uid="uid://ch2sx8gskxgfw" path="res://elements/neutral/props/totem/element_iron_box_tumble_data.tres" id="4_4ggi1"]
+[ext_resource type="PackedScene" uid="uid://bk3c6a8vre6yr" path="res://elements/neutral/props/generic_body_and_presseable.tscn" id="4_d6un3"]
+[ext_resource type="Script" uid="uid://biqjvlcudqx0t" path="res://elements/player/force_receiver.gd" id="5_i32ou"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4ggi1"]
+height = 7.25
+radius = 2.0
+
+[node name="silo_factory" instance=ExtResource("1_7wsjf")]
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="." index="0"]
+script = ExtResource("2_i32ou")
+high_contrast_group = &"scenery"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="silo" parent="." index="1"]
+material_override = ExtResource("2_54pj8")
+
+[node name="GenericTumbler" type="Node3D" parent="." index="2" node_paths=PackedStringArray("receiver", "to_tumble")]
+script = ExtResource("3_kvh7j")
+receiver = NodePath("ForceReceiver")
+to_tumble = NodePath("../silo")
+tumble_data = ExtResource("4_4ggi1")
+tumble_radius = 2.0
+metadata/_custom_type_script = "uid://0wf4obm88h88"
+
+[node name="ForceReceiver" type="Node3D" parent="GenericTumbler" index="0"]
+script = ExtResource("5_i32ou")
+metadata/_custom_type_script = "uid://biqjvlcudqx0t"
+
+[node name="GenericBodyAndPresseable" parent="." index="3" node_paths=PackedStringArray("on_kill_queue_free", "generic_tumbler", "visual_feedback_of_health") instance=ExtResource("4_d6un3")]
+on_kill_queue_free = [NodePath("..")]
+generic_tumbler = NodePath("../GenericTumbler")
+visual_feedback_of_health = [NodePath("../silo")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GenericBodyAndPresseable" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.375, 0)
+shape = SubResource("CylinderShape3D_4ggi1")
+
+[node name="ExplosionNode4" type="Node3D" parent="GenericBodyAndPresseable" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.75, 0)
+
+[node name="ExplosionNode5" type="Node3D" parent="GenericBodyAndPresseable" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 2)
+
+[node name="ExplosionNode2" type="Node3D" parent="GenericBodyAndPresseable" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.75, 0)
+
+[node name="ExplosionNode3" type="Node3D" parent="GenericBodyAndPresseable" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -2)
+
+[node name="ExplosionNode7" type="Node3D" parent="GenericBodyAndPresseable" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 0)
+
+[node name="ExplosionNode8" type="Node3D" parent="GenericBodyAndPresseable" index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2)
+
+[node name="ExplosionNode9" type="Node3D" parent="GenericBodyAndPresseable" index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 0)
+
+[node name="ExplosionNode10" type="Node3D" parent="GenericBodyAndPresseable" index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2)
+
+[node name="ExplosionNode12" type="Node3D" parent="GenericBodyAndPresseable" index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, 0)
+
+[node name="ExplosionNode13" type="Node3D" parent="GenericBodyAndPresseable" index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 2)
+
+[node name="ExplosionNode14" type="Node3D" parent="GenericBodyAndPresseable" index="14"]
+transform = Transform3D(0.0908064, 0, -0.995869, 0, 1, 0, 0.995869, 0, 0.0908064, -0.181613, 3, -1.99174)
+
+[node name="ExplosionNode15" type="Node3D" parent="GenericBodyAndPresseable" index="15"]
+transform = Transform3D(0.0908064, 0, -0.995869, 0, 1, 0, 0.995869, 0, 0.0908064, 1.99174, 3, -0.181613)
+
+[node name="ExplosionNode17" type="Node3D" parent="GenericBodyAndPresseable" index="16"]
+transform = Transform3D(0.0908064, 0, -0.995869, 0, 1, 0, 0.995869, 0, 0.0908064, 0.181613, 4, 1.99174)
+
+[node name="ExplosionNode18" type="Node3D" parent="GenericBodyAndPresseable" index="17"]
+transform = Transform3D(0.0908064, 0, -0.995869, 0, 1, 0, 0.995869, 0, 0.0908064, -1.99174, 4, 0.181613)
+
+[node name="ExplosionNode19" type="Node3D" parent="GenericBodyAndPresseable" index="18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, 0)
+
+[node name="ExplosionNode20" type="Node3D" parent="GenericBodyAndPresseable" index="19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -2)
+
+[node name="ExplosionNode22" type="Node3D" parent="GenericBodyAndPresseable" index="20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 5, 0)
+
+[node name="ExplosionNode23" type="Node3D" parent="GenericBodyAndPresseable" index="21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 2)
+
+[node name="ExplosionNode24" type="Node3D" parent="GenericBodyAndPresseable" index="22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, 0)
+
+[node name="ExplosionNode25" type="Node3D" parent="GenericBodyAndPresseable" index="23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -2)
+
+[node name="ExplosionNode27" type="Node3D" parent="GenericBodyAndPresseable" index="24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 6, 0)
+
+[node name="ExplosionNode28" type="Node3D" parent="GenericBodyAndPresseable" index="25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 2)
+
+[node name="ExplosionNode29" type="Node3D" parent="GenericBodyAndPresseable" index="26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 6, 0)
+
+[node name="ExplosionNode30" type="Node3D" parent="GenericBodyAndPresseable" index="27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -2)
+
+[node name="ExplosionNode31" type="Node3D" parent="GenericBodyAndPresseable" index="28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
+
+[node name="ExplosionNode32" type="Node3D" parent="GenericBodyAndPresseable" index="29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 7, 0)
+
+[node name="ExplosionNode33" type="Node3D" parent="GenericBodyAndPresseable" index="30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 2)
+
+[node name="ExplosionNode34" type="Node3D" parent="GenericBodyAndPresseable" index="31"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 7, 0)
+
+[node name="ExplosionNode35" type="Node3D" parent="GenericBodyAndPresseable" index="32"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -2)
+
+[node name="ExplosionNode36" type="Node3D" parent="GenericBodyAndPresseable" index="33"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="ExplosionNode37" type="Node3D" parent="GenericBodyAndPresseable" index="34"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 8, 0)
+
+[node name="ExplosionNode38" type="Node3D" parent="GenericBodyAndPresseable" index="35"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 2)
+
+[node name="ExplosionNode39" type="Node3D" parent="GenericBodyAndPresseable" index="36"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 8, 0)
+
+[node name="ExplosionNode40" type="Node3D" parent="GenericBodyAndPresseable" index="37"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -2)
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25, 0)
+aabb = AABB(-2.5, -4.25, -2.5, 5, 8.5, 5)

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://csxrs3e8hnrab"]
+
+[ext_resource type="PackedScene" uid="uid://diloglinepich" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_cassete/mesh/button_cassete.glb" id="1_y2m0p"]
+[ext_resource type="Material" uid="uid://cg15ut57vovp2" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_cassete/material/m_button_cassete.tres" id="2_63dc5"]
+
+[node name="button" instance=ExtResource("1_y2m0p")]
+
+[node name="button" parent="." index="0"]
+material_override = ExtResource("2_63dc5")

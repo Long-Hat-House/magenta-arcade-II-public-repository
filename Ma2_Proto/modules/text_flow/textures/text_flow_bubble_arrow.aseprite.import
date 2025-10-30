@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://b0a4uwclmmqm6"
+path="res://.godot/imported/text_flow_bubble_arrow.aseprite-995d275a30c00c293f4f82713093409a.res"
+
+[deps]
+
+source_file="res://modules/text_flow/textures/text_flow_bubble_arrow.aseprite"
+dest_files=["res://.godot/imported/text_flow_bubble_arrow.aseprite-995d275a30c00c293f4f82713093409a.res"]
+
+[params]
+
+exclude_layers_pattern="#.*"
+only_visible_layers=false

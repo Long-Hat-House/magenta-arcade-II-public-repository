@@ -1,0 +1,813 @@
+[gd_scene load_steps=14 format=3 uid="uid://dpqh00uf2yyc8"]
+
+[ext_resource type="Script" uid="uid://3kir73fh0gv4" path="res://systems/score/score_combo_show.gd" id="1_7hik1"]
+[ext_resource type="WwiseRTPC" uid="uid://c4mkvhvcehuhr" path="res://Wwise/resources/Game Parameter/{F4F6EE49-C362-4E01-95C1-50F0EA080749}.tres" id="2_0knia"]
+[ext_resource type="WwiseEvent" uid="uid://deqbbcrv8fx06" path="res://Wwise/resources/Event/{7557517C-FE00-4DB7-BBD5-BC79FCB8CED9}.tres" id="3_v76pc"]
+[ext_resource type="WwiseEvent" uid="uid://ctptvyhjmf835" path="res://Wwise/resources/Event/{5CFCA43C-1ED1-4336-B641-A206C41FCD88}.tres" id="4_oe6ns"]
+[ext_resource type="WwiseEvent" uid="uid://b661i12nvgj8k" path="res://Wwise/resources/Event/{B70851A6-ABF3-480D-8AEB-627DC97987F6}.tres" id="5_f4mej"]
+[ext_resource type="Texture2D" uid="uid://dtq1gn0qd0f08" path="res://elements/icons/icon_score_boost.png" id="6_oe6ns"]
+
+[sub_resource type="Curve" id="Curve_une5l"]
+_data = [Vector2(0, 0), 0.0, 2.52273, 0, 0, Vector2(0.0744048, 0.293979), 0.942759, 0.942759, 0, 0, Vector2(0.996855, 1), 0.628169, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rdm60"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 50
+border_width_right = 50
+border_color = Color(0.8, 0.8, 0.8, 0)
+border_blend = true
+expand_margin_left = 30.0
+expand_margin_right = 30.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tdqwk"]
+bg_color = Color(0, 0, 0, 0.372549)
+border_width_top = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 0.537255)
+
+[sub_resource type="Animation" id="Animation_mi70d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ToAnimateScale:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:custom_minimum_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 100)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Combo Title:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PostTextCenter/PostTextPivot/VBoxContainer/PostTextLabel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PostTextCenter/PostTextPivot:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/TimerPivot/TimerScale/ComboScaleTimer:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot/Combo Points:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot/Combo CountAndBucket:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot/FlashFront:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot/FlashFront2:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot/FlashFront:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-64, -64)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot/FlashFront2:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-64, -64)]
+}
+
+[sub_resource type="Animation" id="Animation_4eqmo"]
+resource_name = "in"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.189465, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ToAnimateScale:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.189465, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:custom_minimum_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 100)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PostTextCenter/PostTextPivot/VBoxContainer/PostTextLabel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot/Combo Points:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot/Combo CountAndBucket:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot/FlashFront:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.166667),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot/FlashFront2:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.166667),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot/FlashFront:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(-364, -64), Vector2(64, -64)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot/FlashFront2:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(236, -64), Vector2(-192, -64)]
+}
+
+[sub_resource type="Animation" id="Animation_ha6r2"]
+resource_name = "out"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.3, 1.36667),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ToAnimateScale:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.666667, 0.733334, 0.866667, 0.933334),
+"transitions": PackedFloat32Array(1, 0.5, 2, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 1.5), Vector2(1, 0.24), Vector2(2, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:custom_minimum_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.36667, 1.46667),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(0, 100), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Combo Title:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.666667),
+"transitions": PackedFloat32Array(2.21914, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PostTextCenter/PostTextPivot/VBoxContainer/PostTextLabel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.833334, 0.866667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PostTextCenter/PostTextPivot:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.9, 1, 1.36667),
+"transitions": PackedFloat32Array(0.378929, 2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 10), Vector2(0, -30)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/TimerPivot/TimerScale/ComboScaleTimer:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot/Combo CountAndBucket:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot/Combo Points:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.2),
+"transitions": PackedFloat32Array(2, 2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.3, 1.3), Vector2(1, 1)]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath(".")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.866667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"showing_combo_text"
+}]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot/FlashFront:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.233333, 0.733333, 1, 1.13333),
+"transitions": PackedFloat32Array(0.5, 0.5, 1, 0.5, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot/FlashFront2:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.233333, 0.733333, 1, 1.13333),
+"transitions": PackedFloat32Array(0.5, 0.5, 1, 0.5, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot/FlashFront:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.733333, 1),
+"transitions": PackedFloat32Array(0.5, 1, 0.5, 1),
+"update": 0,
+"values": [Vector2(0, -64), Vector2(-364, -64), Vector2(0, -64), Vector2(-364, -64)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot/FlashFront2:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.733333, 1),
+"transitions": PackedFloat32Array(0.5, 1, 0.5, 1),
+"update": 0,
+"values": [Vector2(-128, -64), Vector2(236, -64), Vector2(-128, -64), Vector2(236, -64)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kjehx"]
+_data = {
+&"RESET": SubResource("Animation_mi70d"),
+&"in": SubResource("Animation_4eqmo"),
+&"out": SubResource("Animation_ha6r2")
+}
+
+[node name="ScoreComboDisplay" type="Control" node_paths=PackedStringArray("_anim", "_label_count", "_label_points", "_label_title", "_label_bucket", "_combo_scale", "_post_text_label")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+mouse_filter = 2
+script = ExtResource("1_7hik1")
+_anim = NodePath("AnimationPlayer")
+_label_count = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot/Combo CountAndBucket/HBoxContainer/Combo Count")
+_label_points = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot/Combo Points")
+_label_title = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Combo Title")
+_label_bucket = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot/Combo CountAndBucket/HBoxContainer/Combo Bucket")
+_combo_scale = NodePath("ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/TimerPivot/TimerScale")
+_combo_timer_curve = SubResource("Curve_une5l")
+_post_text_label = NodePath("PostTextCenter/PostTextPivot/VBoxContainer/PostTextLabel")
+_sfx_combo_updated_rtpc = ExtResource("2_0knia")
+_sfx_combo_updated = ExtResource("3_v76pc")
+_sfx_combo_points = ExtResource("4_oe6ns")
+_sfx_combo_text = ExtResource("5_f4mej")
+
+[node name="ToAnimateScale" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginKeepsCentered" type="MarginContainer" parent="ToAnimateScale"]
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -37.5
+offset_right = 450.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginKeepsMinimumWidth" type="MarginContainer" parent="ToAnimateScale/MarginKeepsCentered"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="BG" type="Panel" parent="ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth"]
+modulate = Color(0, 0.542946, 0.514626, 1)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rdm60")
+
+[node name="TimerPivot" type="Control" parent="ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="TimerScale" type="Control" parent="ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/TimerPivot"]
+layout_mode = 2
+anchors_preset = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="ComboScaleTimer" type="Panel" parent="ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/TimerPivot/TimerScale"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -12.32
+offset_right = 175.0
+offset_bottom = 22.85
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tdqwk")
+
+[node name="HBoxContainer" type="BoxContainer" parent="ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Combo Title" type="Label" parent="ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 13
+theme_override_font_sizes/font_size = 38
+text = "Pizza Roboto"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="LabelPivot" type="Control" parent="ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Combo CountAndBucket" type="Control" parent="ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = -82.5
+offset_right = 101.0
+offset_bottom = 82.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 13
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot/Combo CountAndBucket"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -82.5
+offset_right = 110.0
+offset_bottom = 82.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Combo Count" type="Label" parent="ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot/Combo CountAndBucket/HBoxContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+size_flags_vertical = 13
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.203922)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 25
+theme_override_font_sizes/font_size = 120
+text = "9"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Combo BucketX" type="Label" parent="ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot/Combo CountAndBucket/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_vertical = 13
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.203922)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 25
+theme_override_font_sizes/font_size = 60
+text = "x"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Combo Bucket" type="Label" parent="ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot/Combo CountAndBucket/HBoxContainer"]
+modulate = Color(1, 0, 1, 1)
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+size_flags_vertical = 13
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.203922)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 25
+theme_override_font_sizes/font_size = 60
+text = "1923"
+vertical_alignment = 1
+
+[node name="Combo Points" type="Label" parent="ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = -42.5
+offset_right = 101.0
+offset_bottom = 42.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 13
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.203922)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 25
+theme_override_font_sizes/font_size = 120
+text = "81"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="FlashFront" type="TextureRect" parent="ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_oe6ns")
+
+[node name="FlashFront2" type="TextureRect" parent="ToAnimateScale/MarginKeepsCentered/MarginKeepsMinimumWidth/HBoxContainer/Control/LabelPivot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_oe6ns")
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_kjehx")
+}
+autoplay = "in"
+
+[node name="PostTextCenter" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PostTextPivot" type="Control" parent="PostTextCenter"]
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="BoxContainer" parent="PostTextCenter/PostTextPivot"]
+custom_minimum_size = Vector2(900, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -50.0
+offset_right = 450.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="PostTextLabel" type="Label" parent="PostTextCenter/PostTextPivot/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 50
+text = "Combo!"

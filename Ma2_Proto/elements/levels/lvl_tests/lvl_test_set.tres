@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="LevelSet" load_steps=16 format=3 uid="uid://b1roaujsrrr0c"]
+
+[ext_resource type="Script" uid="uid://vg7ppcjjqdpt" path="res://systems/level/level_set.gd" id="2_jod88"]
+[ext_resource type="PackedScene" uid="uid://bjltgpinxxocw" path="res://elements/levels/lvl_tests/lvl_test_zap.tscn" id="2_lt0r4"]
+[ext_resource type="PackedScene" uid="uid://dsaev2xemunt0" path="res://elements/levels/lvl_tests/lvl_test_proj.tscn" id="3_02oeq"]
+[ext_resource type="PackedScene" uid="uid://c0ajq6r3oymgw" path="res://elements/levels/lvl_tests/lvl_test_generic_object.tscn" id="3_gil22"]
+[ext_resource type="PackedScene" uid="uid://bqhvne8gu87ew" path="res://elements/levels/lvl_tests/lvl_test_npc.tscn" id="4_0icoo"]
+[ext_resource type="PackedScene" uid="uid://drj6gmwy6n8a5" path="res://elements/levels/lvl_tests/lvl_test_altar.tscn" id="5_8o1ow"]
+[ext_resource type="PackedScene" uid="uid://dhkjhq470lqlg" path="res://elements/levels/lvl_tests/lvl_test_laser.tscn" id="5_kc3ld"]
+[ext_resource type="PackedScene" uid="uid://lsrh0jgt1jyo" path="res://elements/levels/lvl_tests/lvl_test_dialogue.tscn" id="6_sp3mt"]
+[ext_resource type="PackedScene" uid="uid://bee3p2a004g7v" path="res://elements/levels/lvl_tests/lvl_test_challenge.tscn" id="7_45eae"]
+[ext_resource type="PackedScene" uid="uid://60agsv6jn850" path="res://elements/levels/lvl_tests/lvl_test_audio.tscn" id="9_jspty"]
+[ext_resource type="PackedScene" uid="uid://c3u5uy1ido8tp" path="res://elements/levels/lvl_tests/lvl_test_hold.tscn" id="11_l7a0c"]
+[ext_resource type="PackedScene" uid="uid://d13ehvuav1udq" path="res://elements/levels/lvl_tests/lvl_test_tap.tscn" id="12_jnjt3"]
+[ext_resource type="PackedScene" uid="uid://q5dyyjn6uwxn" path="res://elements/levels/lvl_tests/lvl_test_enemy.tscn" id="13_6vro3"]
+[ext_resource type="PackedScene" uid="uid://biar8k52pneoi" path="res://elements/levels/lvl_tests/lvl_test_enemy_invincible.tscn" id="14_4etqh"]
+[ext_resource type="PackedScene" path="res://elements/levels/lvl_tests/lvl_test_enemy_line.tscn" id="15_x8dly"]
+
+[resource]
+script = ExtResource("2_jod88")
+open = false
+sub_levels = Array[Resource]([ExtResource("9_jspty"), ExtResource("3_gil22"), ExtResource("2_lt0r4"), ExtResource("3_02oeq"), ExtResource("4_0icoo"), ExtResource("5_kc3ld"), ExtResource("6_sp3mt"), ExtResource("7_45eae"), ExtResource("5_8o1ow"), ExtResource("11_l7a0c"), ExtResource("12_jnjt3"), ExtResource("13_6vro3"), ExtResource("14_4etqh"), ExtResource("15_x8dly")])

@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://brurnwoubxlxj"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_UI_Challenge_TextPop"
+id = 2984140529
+guid = "{A0D1353C-3941-4C7C-A3F4-6DCA726E642C}"
+dummy = true

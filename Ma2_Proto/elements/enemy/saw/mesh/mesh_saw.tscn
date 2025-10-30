@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dn0s0xci4vhwr"]
+
+[ext_resource type="PackedScene" uid="uid://bgb45g8pxecr5" path="res://elements/enemy/saw/mesh/saw.glb" id="1_wocuy"]
+[ext_resource type="Script" uid="uid://cccnp54xda20b" path="res://elements/enemy/constant_rotation.gd" id="2_2dvwe"]
+[ext_resource type="Material" uid="uid://dp7uy8xfp0k8n" path="res://elements/enemy/saw/material/m_saw.tres" id="2_3aaqd"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="4_l7hvw"]
+
+[node name="saw" instance=ExtResource("1_wocuy")]
+
+[node name="saw" parent="." index="0"]
+material_override = ExtResource("2_3aaqd")
+script = ExtResource("2_2dvwe")
+angleVelocity = 6.0
+
+[node name="saw_body" parent="." index="1"]
+material_override = ExtResource("2_3aaqd")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="." index="2"]
+script = ExtResource("4_l7hvw")
+high_contrast_group = &"danger"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"

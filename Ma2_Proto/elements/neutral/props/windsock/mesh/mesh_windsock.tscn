@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bppf1gnl7knan"]
+
+[ext_resource type="PackedScene" uid="uid://yhma3la1bb72" path="res://elements/neutral/props/windsock/mesh/windsock.glb" id="1_7m0gp"]
+[ext_resource type="Material" uid="uid://borfjhbs5qre1" path="res://elements/neutral/props/windsock/material/m_windsock.tres" id="2_7xvh3"]
+
+[node name="windsock" instance=ExtResource("1_7m0gp")]
+
+[node name="windsock_flag" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.102409, 2.27109, 0)
+material_override = ExtResource("2_7xvh3")
+
+[node name="windsock_pole" parent="." index="1"]
+material_override = ExtResource("2_7xvh3")

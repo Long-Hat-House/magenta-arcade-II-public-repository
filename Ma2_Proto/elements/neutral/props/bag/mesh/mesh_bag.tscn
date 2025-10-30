@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6g8bjpv3tawg"]
+
+[ext_resource type="PackedScene" uid="uid://kg1axt7gq7ga" path="res://elements/neutral/props/bag/mesh/bag.glb" id="1_edm4w"]
+[ext_resource type="Material" uid="uid://b33hy3n1xgv3d" path="res://elements/neutral/props/bag/material/m_bag.tres" id="2_0u2n6"]
+
+[node name="bag" instance=ExtResource("1_edm4w")]
+
+[node name="bag" parent="." index="0"]
+material_override = ExtResource("2_0u2n6")

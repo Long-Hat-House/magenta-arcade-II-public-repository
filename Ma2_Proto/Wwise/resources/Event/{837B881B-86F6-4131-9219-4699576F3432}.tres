@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" load_steps=0 format=3 uid="uid://duwiwgg51qbuw"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Stop_Boss_Lv3_Steam"
+id = 1995325602
+guid = "{837B881B-86F6-4131-9219-4699576F3432}"
+dummy = true

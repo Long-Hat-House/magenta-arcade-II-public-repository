@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://c2rexixoic85p"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "VFX_Destroy_Leaves"
+id = 1660391987
+guid = "{BC445982-90CB-4D88-8642-30DC0C53E425}"
+dummy = true

@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://ccgw6hco8bc3x"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_MidBoss_Lv4_Hand_Tap_LiftFinger"
+id = 2126747653
+guid = "{5829919E-E6C1-485A-A4CC-5B2F4A9BB2BF}"
+dummy = true

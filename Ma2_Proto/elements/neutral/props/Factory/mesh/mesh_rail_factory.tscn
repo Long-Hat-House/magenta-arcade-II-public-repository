@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwom4h3plpt56"]
+
+[ext_resource type="PackedScene" uid="uid://bchr6qtnryer3" path="res://elements/neutral/props/Factory/mesh/rail_factory.glb" id="1_iix21"]
+[ext_resource type="Material" uid="uid://kiq345qpph5w" path="res://elements/neutral/props/Factory/material/m_rail_factory.tres" id="2_3r5u2"]
+
+[node name="rail_factory" instance=ExtResource("1_iix21")]
+
+[node name="rail" parent="." index="0"]
+material_override = ExtResource("2_3r5u2")

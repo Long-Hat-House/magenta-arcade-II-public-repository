@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://dnreid0k7kkjw"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Boss_Lv3_Train_Movement"
+id = 4101087618
+guid = "{37E149CD-E55E-49CE-8033-11A7E8D2B2EE}"
+dummy = true

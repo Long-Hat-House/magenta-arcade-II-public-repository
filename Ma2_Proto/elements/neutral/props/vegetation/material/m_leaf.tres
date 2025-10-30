@@ -1,0 +1,28 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://dly6jmk1k27rl"]
+
+[ext_resource type="Texture2D" uid="uid://clhtrrpt45b7g" path="res://elements/neutral/props/vegetation/texture/M_leave_BaseColor.png" id="1_7xih7"]
+[ext_resource type="Texture2D" uid="uid://cgvj00n8tpybh" path="res://elements/enemy/brawny/Texture/M_brawny_Box_Emission.png" id="2_ynlro"]
+[ext_resource type="Texture2D" uid="uid://cfwl15bcyjvc0" path="res://elements/neutral/props/vegetation/texture/M_leave_Normal.png" id="3_icbh0"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jie0d"]
+
+[resource]
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("1_7xih7")
+emission_energy_multiplier = 9.0
+emission_texture = ExtResource("2_ynlro")
+normal_scale = 2.85
+normal_texture = ExtResource("3_icbh0")
+clearcoat = 0.69
+anisotropy = 0.33
+ao_texture = SubResource("CompressedTexture2D_jie0d")
+heightmap_scale = -1.49
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+subsurf_scatter_strength = 0.97
+subsurf_scatter_skin_mode = true
+backlight_enabled = true
+backlight = Color(0.635294, 0.584314, 0.568627, 1)

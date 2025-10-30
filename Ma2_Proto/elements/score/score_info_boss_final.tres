@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ScoreInfo" load_steps=2 format=3 uid="uid://kmw5fayunll4"]
+
+[ext_resource type="Script" uid="uid://xfqoedvnoauc" path="res://systems/score/score_info.gd" id="1_s4luq"]
+
+[resource]
+script = ExtResource("1_s4luq")
+score_title = &"Boss"
+score_value = 1988
+world_positioned = true
+works_in_shop_mode = false
+adds_to_combo = true
+ignore_boost_multiplier = false

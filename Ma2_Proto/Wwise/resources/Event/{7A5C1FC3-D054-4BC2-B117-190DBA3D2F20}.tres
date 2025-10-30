@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://v1lxnbnmndik"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_NPC_Voice"
+id = 253233444
+guid = "{7A5C1FC3-D054-4BC2-B117-190DBA3D2F20}"
+dummy = true

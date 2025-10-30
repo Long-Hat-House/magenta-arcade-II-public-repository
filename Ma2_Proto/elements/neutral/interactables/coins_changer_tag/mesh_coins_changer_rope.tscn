@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgs176ohj2jl7"]
+
+[ext_resource type="PackedScene" uid="uid://bsifvhxpfpf1u" path="res://elements/neutral/interactables/coins_changer_tag/mesh_rope.glb" id="1_cc5nr"]
+[ext_resource type="Material" uid="uid://bwbvcrruajdfi" path="res://elements/neutral/interactables/coins_changer_tag/material/m_coins_changer_rope.tres" id="2_3j4qa"]
+
+[node name="rope_graphics" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="mesh_rope" parent="." instance=ExtResource("1_cc5nr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
+
+[node name="rope" parent="mesh_rope" index="0"]
+material_override = ExtResource("2_3j4qa")
+
+[editable path="mesh_rope"]

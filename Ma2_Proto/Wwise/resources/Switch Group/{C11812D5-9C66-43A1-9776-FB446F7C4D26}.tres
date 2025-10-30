@@ -1,0 +1,7 @@
+[gd_resource type="WwiseSwitchGroup" format=3 uid="uid://kjn11utivigr"]
+
+[resource]
+name = "NPC_Voice"
+id = 2571308781
+guid = "{C11812D5-9C66-43A1-9776-FB446F7C4D26}"
+dummy = true

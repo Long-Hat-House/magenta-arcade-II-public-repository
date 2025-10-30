@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqrb2x17wcl14"]
+
+[ext_resource type="Environment" uid="uid://p7leoyjej5y7" path="res://elements/environments/environment_day_bright.tres" id="1_4ebnl"]
+[ext_resource type="Script" uid="uid://cb42tsqx7now0" path="res://systems/environment/level_environment.gd" id="1_xbbd0"]
+
+[node name="LevelEnvironmentDayBright" type="Node" node_paths=PackedStringArray("_light", "_environment")]
+script = ExtResource("1_xbbd0")
+_light = NodePath("DirectionalLight3D")
+_environment = NodePath("WorldEnvironment")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.994522, 0.0954911, -0.0425153, 0, 0.406736, 0.913546, 0.104528, 0.908541, -0.404508, 0, 3, 0)
+light_color = Color(0.972549, 0.933333, 0.894118, 1)
+light_energy = 2.0
+light_indirect_energy = 0.0
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.06
+shadow_normal_bias = 0.0
+shadow_opacity = 0.7
+shadow_blur = 2.3
+directional_shadow_mode = 0
+directional_shadow_split_1 = 0.403
+directional_shadow_split_2 = 0.212
+directional_shadow_fade_start = 1.0
+directional_shadow_max_distance = 50.0
+sky_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_4ebnl")

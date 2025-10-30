@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://df8ervhm4hxx4"]
+
+[ext_resource type="Script" uid="uid://bthv1yj704v71" path="res://elements/enemy/bosses/pirulito/ai_enemy_boss_pirulito_hand.gd" id="1_eopjp"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="2_awpcm"]
+[ext_resource type="PackedScene" uid="uid://elu46raggotb" path="res://elements/enemy/projectiles/proj_laser/laser_area.tscn" id="2_d2sc6"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_o4uor"]
+radius = 1.0
+height = 2.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1082j"]
+radius = 0.998166
+
+[sub_resource type="Curve3D" id="Curve3D_8l3ol"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.20828, 0.330444, -3.35791, 0, 0, 0, 0, 0, 0, 3.10083, -1.27899, -0.897583),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[node name="EnemyBossPirulitoHand" type="Node3D"]
+script = ExtResource("1_eopjp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_o4uor")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="MeshInstance3D"]
+collision_layer = 4
+collision_mask = 8
+
+[node name="Health" type="Node" parent="MeshInstance3D/CharacterBody3D"]
+script = ExtResource("2_awpcm")
+maxAmount = 20
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/CharacterBody3D"]
+shape = SubResource("SphereShape3D_1082j")
+
+[node name="Laser" parent="MeshInstance3D" instance=ExtResource("2_d2sc6")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_8l3ol")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D"]
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 1
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = true
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+smooth_faces = true
+
+[connection signal="dead" from="MeshInstance3D/CharacterBody3D/Health" to="." method="_on_health_dead"]

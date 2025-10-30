@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0ajq6r3oymgw"]
+
+[ext_resource type="PackedScene" uid="uid://cqrb2x17wcl14" path="res://elements/levels/level_structure/level_environment_day_bright.tscn" id="1_o0kph"]
+[ext_resource type="PackedScene" uid="uid://c7ft4lc6ukiy0" path="res://elements/levels/level_structure/level_game_pack.tscn" id="2_1ufla"]
+
+[sub_resource type="GDScript" id="GDScript_an7n0"]
+resource_name = "lvl_test"
+script/source = "extends Level
+
+const STAGE_PIECE_AFONSO_PENA_LANES = preload(\"res://elements/stage_pieces/stage_piece_afonso_pena_lanes3.tscn\")
+const TEST_GENERIC_OBJECT = preload(\"res://elements/levels/lvl_tests/test_generic_object.tscn\")
+
+@onready var _pieces_street:Array[PackedScene] = [STAGE_PIECE_AFONSO_PENA_LANES]
+
+func _ready():
+	prepare_level()
+	cmd_array([
+		CMD_Callable.new(scene_1),
+	])
+
+func prepare_level():
+	stage.set_stage_size(Vector3(12,0,27))
+	cam.set_offset(Vector3(0,26,28))
+	stage.set_grid_spacing(1, 1)
+	stage.fill_with(_pieces_street, stage._stage_size.z)
+	stage.repivot()
+	cam.set_instant_position(stage.get_grid(0,0))
+
+func scene_1(invert:bool = false):
+	stage.fill_with(_pieces_street, stage._stage_size.z*2)
+	stage.set_pivot_offset(Vector3(-6 if invert else 6,0,0))
+	stage.repivot()
+	cam.tween_position(stage.get_pos_x(),1,LevelCameraController.MovementAxis.X,Tween.TransitionType.TRANS_SINE)
+	cam.tween_position(stage.get_pos_z(),2,LevelCameraController.MovementAxis.Z,Tween.TransitionType.TRANS_SINE)
+
+	var obj = objs.create_object(TEST_GENERIC_OBJECT)
+	obj.position = stage.get_grid(0, 0)
+
+	cmd(CMD_Sequence.new([
+		CMD_Wait_Callable.new(func(): return Input.is_key_pressed(KEY_SPACE)),
+		CMD_Wait_Callable.new(func(): return !Input.is_key_pressed(KEY_SPACE)),
+		CMD_Callable.new(scene_1.bind(!invert)),
+	]))
+"
+
+[node name="LVL1_TEST" type="Node3D"]
+script = SubResource("GDScript_an7n0")
+
+[node name="LevelEnvironmentDayBright" parent="." instance=ExtResource("1_o0kph")]
+
+[node name="LevelGamePack" parent="." instance=ExtResource("2_1ufla")]

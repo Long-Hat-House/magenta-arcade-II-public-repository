@@ -1,0 +1,271 @@
+[gd_scene load_steps=11 format=3 uid="uid://lsrh0jgt1jyo"]
+
+[ext_resource type="Theme" uid="uid://bfqq5qjsvg8no" path="res://elements/ui/themes/menu/menu_theme.tres" id="4_3ui1h"]
+[ext_resource type="PackedScene" uid="uid://cqrb2x17wcl14" path="res://elements/levels/level_structure/level_environment_day_bright.tscn" id="4_5dn73"]
+[ext_resource type="PackedScene" uid="uid://c7ft4lc6ukiy0" path="res://elements/levels/level_structure/level_game_pack.tscn" id="4_61ytr"]
+[ext_resource type="Theme" uid="uid://b04obcqohv34o" path="res://modules/dev_manager/theme_dev_ui.tres" id="5_0vajd"]
+[ext_resource type="Texture2D" uid="uid://ylca6djn4ec4" path="res://elements/icons/icon_play.png" id="5_4y6xo"]
+[ext_resource type="CodeHighlighter" uid="uid://bw0o6had1tbmm" path="res://modules/text_flow/scenes/text_flow_highlighter.tres" id="5_jrmij"]
+
+[sub_resource type="GDScript" id="GDScript_i8a77"]
+resource_name = "lvl_test"
+script/source = "extends Level
+
+const STAGE_PIECE_AFONSO_PENA_LANES = preload(\"res://elements/stage_pieces/stage_piece_afonso_pena_lanes2.tscn\")
+
+#enemies
+const ELEMENT_NPC = preload(\"res://elements/npc/npc.tscn\")
+
+const TEXT_FLOW_PLAYER_BUBBLES = preload(\"res://modules/text_flow/scenes/text_flow_player_bubbles.tscn\")
+
+@onready var _pieces_street:Array[PackedScene] = [STAGE_PIECE_AFONSO_PENA_LANES]
+
+func _ready():
+	prepare_level()
+	cmd_array([
+		CMD_Callable.new(scene_1),
+	])
+
+func prepare_level():
+	stage.set_stage_size(Vector3(12,0,27))
+	cam.set_offset(Vector3(0,26,28))
+
+func _create_character( positon:Vector3, speaker_id:String, speaker_offset:Vector3 = Vector3.UP):
+	var obj:NPC = objs.create_object(ELEMENT_NPC) as NPC
+	obj.position = positon
+	obj.may_talk_when_idle = false
+	obj.may_walk_when_idle = false
+	var spk = obj.get_speaker()
+	TextFlowPlayer.SET_GLOBAL_SPEAKER(spk, speaker_id)
+
+	var text = Label3D.new()
+	text.text = speaker_id
+	text.rotation_degrees = Vector3(-90,0,0)
+	text.position = Vector3.UP*0.1 + Vector3.FORWARD*-1.5
+	text.font_size *= 3
+	text.outline_size = 50
+	text.outline_modulate = Color.BLACK
+	obj.add_child(text)
+	return obj
+
+func scene_1(invert:bool = false):
+
+	stage.fill_with(_pieces_street, stage._stage_size.z)
+	stage.set_pivot_offset(Vector3(-6 if invert else 6,0,0))
+	stage.repivot()
+
+	stage.set_grid_spacing(2, 2)
+
+	var obj:NPC = _create_character(stage.get_grid(0, 5), \"main\") as NPC
+
+	_create_character(stage.get_grid(0, 3), \"char2\")
+	_create_character(stage.get_grid(2, 5), \"char3\")
+	_create_character(stage.get_grid(-2, 5), \"char4\")
+	_create_character(stage.get_grid(0, 7), \"char5\")
+
+	objs.add_to_group_node(obj, \"e\")
+
+	cmd(CMD_Sequence.new([
+		cam.cmd_position(stage.get_pos_x(), 1, LevelCameraController.MovementAxis.X),
+		cam.cmd_position_wait(stage.get_pos_z(), 1.5, LevelCameraController.MovementAxis.Z),
+		objs.cmd_wait_group(\"e\"),
+		CMD_Callable.new(scene_1.bind(!invert)),
+	]))
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4etil"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ra2u0"]
+
+[sub_resource type="GDScript" id="GDScript_yqjx4"]
+script/source = "extends Button
+
+const TEXT_FLOW_PLAYER_BUBBLES = preload(\"res://modules/text_flow/scenes/text_flow_player_bubbles.tscn\")
+@export var text_edit:TextEdit
+@export var pre_edit:TextEdit
+@export var pos_edit:TextEdit
+@export var tags_edit:TextEdit
+@export var parent:Node
+@export var check_button:Button
+
+var _flow_player:TextFlowPlayerBubbles
+
+func _ready():
+	pressed.connect(_on_pressed)
+
+func _on_pressed():
+	if !_flow_player:
+		_flow_player = TEXT_FLOW_PLAYER_BUBBLES.instantiate() as TextFlowPlayerBubbles
+		parent.add_child(_flow_player)
+
+	var text = text_edit.text.trim_prefix(\"\\\"\").trim_suffix(\"\\\"\")
+	var tags = tags_edit.text.trim_prefix(\"\\\"\").trim_suffix(\"\\\"\")
+	var pre = pre_edit.text.trim_prefix(\"\\\"\").trim_suffix(\"\\\"\")
+	var pos = pos_edit.text.trim_prefix(\"\\\"\").trim_suffix(\"\\\"\")
+
+	text = pre + text + pos
+
+	_flow_player.start_flow(text, check_button.button_pressed, false, true, tags)
+"
+
+[node name="LVL_Dialogue_TEST" type="Node3D"]
+script = SubResource("GDScript_i8a77")
+_game_pack_scene = ExtResource("4_61ytr")
+
+[node name="LevelEnvironmentDayBright" parent="." instance=ExtResource("4_5dn73")]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("5_0vajd")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 5
+alignment = 2
+
+[node name="Tags Container" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4etil")
+
+[node name="TextEdit" type="CodeEdit" parent="Control/MarginContainer/VBoxContainer/Tags Container"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_constants/line_spacing = 28
+theme_override_font_sizes/font_size = 28
+placeholder_text = "Tags"
+scroll_smooth = true
+minimap_draw = true
+syntax_highlighter = ExtResource("5_jrmij")
+highlight_all_occurrences = true
+highlight_current_line = true
+draw_control_chars = true
+draw_tabs = true
+draw_spaces = true
+gutters_draw_line_numbers = true
+
+[node name="Pre Container" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4etil")
+
+[node name="TextEdit" type="CodeEdit" parent="Control/MarginContainer/VBoxContainer/Pre Container"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_constants/line_spacing = 28
+theme_override_font_sizes/font_size = 28
+placeholder_text = "Pre"
+scroll_smooth = true
+minimap_draw = true
+syntax_highlighter = ExtResource("5_jrmij")
+highlight_all_occurrences = true
+highlight_current_line = true
+draw_control_chars = true
+draw_tabs = true
+draw_spaces = true
+gutters_draw_line_numbers = true
+
+[node name="Dialogue Container" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4etil")
+
+[node name="TextEdit" type="CodeEdit" parent="Control/MarginContainer/VBoxContainer/Dialogue Container"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+theme_override_constants/line_spacing = 28
+theme_override_font_sizes/font_size = 28
+placeholder_text = "Dialogue"
+scroll_smooth = true
+minimap_draw = true
+syntax_highlighter = ExtResource("5_jrmij")
+highlight_all_occurrences = true
+highlight_current_line = true
+draw_control_chars = true
+draw_tabs = true
+draw_spaces = true
+gutters_draw_line_numbers = true
+
+[node name="Pos Container" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4etil")
+
+[node name="TextEdit" type="CodeEdit" parent="Control/MarginContainer/VBoxContainer/Pos Container"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_constants/line_spacing = 28
+theme_override_font_sizes/font_size = 28
+placeholder_text = "Pos"
+scroll_smooth = true
+minimap_draw = true
+syntax_highlighter = ExtResource("5_jrmij")
+highlight_all_occurrences = true
+highlight_current_line = true
+draw_control_chars = true
+draw_tabs = true
+draw_spaces = true
+gutters_draw_line_numbers = true
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -265.0
+offset_top = -89.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("4_3ui1h")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ra2u0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+theme = ExtResource("5_0vajd")
+
+[node name="CheckButton" type="CheckButton" parent="Control/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 60
+text = "(Loop)"
+
+[node name="Button" type="Button" parent="Control/PanelContainer/HBoxContainer" node_paths=PackedStringArray("text_edit", "pre_edit", "pos_edit", "tags_edit", "parent", "check_button")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("5_4y6xo")
+script = SubResource("GDScript_yqjx4")
+text_edit = NodePath("../../../MarginContainer/VBoxContainer/Dialogue Container/TextEdit")
+pre_edit = NodePath("../../../MarginContainer/VBoxContainer/Pre Container/TextEdit")
+pos_edit = NodePath("../../../MarginContainer/VBoxContainer/Pos Container/TextEdit")
+tags_edit = NodePath("../../../MarginContainer/VBoxContainer/Tags Container/TextEdit")
+parent = NodePath("../../../..")
+check_button = NodePath("../CheckButton")

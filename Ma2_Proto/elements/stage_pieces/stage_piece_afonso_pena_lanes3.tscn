@@ -1,0 +1,381 @@
+[gd_scene load_steps=30 format=3 uid="uid://ceudsq1yfislt"]
+
+[ext_resource type="Script" uid="uid://bt3rgk2gx218p" path="res://systems/stage/level_stage_piece.gd" id="1_abtro"]
+[ext_resource type="PackedScene" uid="uid://cd6ymp4wmjksa" path="res://elements/background/element_asphalt.tscn" id="2_ae2w2"]
+[ext_resource type="PackedScene" uid="uid://daethslhep56i" path="res://elements/background/element_sidewalk.tscn" id="3_d88wv"]
+[ext_resource type="PackedScene" uid="uid://cvrxspt6by06j" path="res://elements/neutral/props/vegetation/element_palm.tscn" id="4_34wi1"]
+[ext_resource type="PackedScene" uid="uid://c4sknhwemfrtu" path="res://elements/background/element_curb_sidewalk_path.tscn" id="4_vgace"]
+[ext_resource type="PackedScene" uid="uid://cxqe15ub6mrk1" path="res://elements/neutral/props/vegetation/element_tree.tscn" id="4_ypixn"]
+[ext_resource type="PackedScene" uid="uid://cicsjiijioyit" path="res://elements/neutral/props/traffic_decals/element_decal_park_line.tscn" id="5_xpsye"]
+[ext_resource type="PackedScene" uid="uid://bli56i7oi7ylq" path="res://elements/neutral/props/traffic_decals/element_decal_lane_line.tscn" id="6_y6k71"]
+[ext_resource type="Script" uid="uid://c3a6dlovwpka" path="res://systems/variators/variator_over_position.gd" id="7_sgbba"]
+[ext_resource type="PackedScene" uid="uid://cfqb1t3qdu78v" path="res://elements/neutral/props/traffic_decals/element_decal_lane_arrow.tscn" id="8_yux27"]
+[ext_resource type="PackedScene" uid="uid://icr3nye254ru" path="res://elements/neutral/props/traffic_decals/element_decal_white_line.tscn" id="9_hrnj8"]
+[ext_resource type="PackedScene" uid="uid://dai2gw3u8skq" path="res://elements/background/element_tree_hole.tscn" id="10_mawto"]
+[ext_resource type="PackedScene" uid="uid://cmhgj367yxoi1" path="res://elements/neutral/props/poles/element_pole_dark_over.tscn" id="13_qv5w5"]
+[ext_resource type="PackedScene" uid="uid://b1x13fa0nh2cw" path="res://elements/neutral/props/pole_pieces/element_traffic_sign_3x2.tscn" id="14_i2yg4"]
+[ext_resource type="Texture2D" uid="uid://b7vvcp6ga0bg5" path="res://elements/neutral/props/pole_pieces/signs/trafficsign_hospital_1x2.png" id="15_or3ic"]
+[ext_resource type="Texture2D" uid="uid://dl8sg7bsjcomu" path="res://elements/neutral/props/pole_pieces/signs/trafficsign_sabara_1x2.png" id="16_2ey2m"]
+[ext_resource type="PackedScene" uid="uid://bl0etejkcs63v" path="res://elements/neutral/props/poles/element_pole_dark.tscn" id="17_6ff8l"]
+[ext_resource type="PackedScene" uid="uid://bmkpxdlg3a6rf" path="res://elements/neutral/props/pole_pieces/element_traffic_sign_1x3.tscn" id="18_dnb6i"]
+[ext_resource type="Texture2D" uid="uid://bbe2jfmhxv4j" path="res://elements/neutral/props/pole_pieces/signs/trafficsign_center_1x3.png" id="19_tb6y5"]
+[ext_resource type="PackedScene" uid="uid://dvwae25ypufbj" path="res://elements/neutral/props/poles/element_pole_dark_over_inverted.tscn" id="20_3ao63"]
+[ext_resource type="Texture2D" uid="uid://bkgmtoqmlpuqm" path="res://elements/neutral/props/pole_pieces/signs/trafficsign_pampulha_1x2.png" id="21_iwttc"]
+
+[sub_resource type="Curve3D" id="Curve3D_w03a1"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, -6),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_kw0mi"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, -6),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_bhpc5"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_rigx3"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_tnl1g"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, -6),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_qh7gq"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, -6),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_s32jw"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_2tr3x"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Lanes 3" type="Node3D" node_paths=PackedStringArray("pivot_forward", "pivot_backward")]
+script = ExtResource("1_abtro")
+pivot_forward = NodePath("Config/forward")
+pivot_backward = NodePath("Config/back")
+
+[node name="Config" type="Node3D" parent="."]
+
+[node name="forward" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+gizmo_extents = 1.0
+
+[node name="back" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+gizmo_extents = 1.0
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0151367)
+aabb = AABB(-15.346, -0.781212, -11.4072, 30.692, 8.37712, 22.8143)
+
+[node name="StreetBase" type="Node3D" parent="."]
+
+[node name="Asphalt" parent="StreetBase" instance=ExtResource("2_ae2w2")]
+transform = Transform3D(28, 0, 0, 0, 1, 0, 0, 0, 6.1, -14, 0, -3.05)
+
+[node name="Sidewalk - MIDDLE" parent="StreetBase" instance=ExtResource("3_d88wv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 6, -0.5, 0.01, -3)
+
+[node name="Right" type="Node3D" parent="StreetBase"]
+
+[node name="Sidewalk" type="Node3D" parent="StreetBase/Right"]
+
+[node name="Sidewalk2" parent="StreetBase/Right/Sidewalk" instance=ExtResource("3_d88wv")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 6, 11.5, 0, -3)
+
+[node name="Curb Sidewalk Path" parent="StreetBase/Right/Sidewalk" instance=ExtResource("4_vgace")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 3)
+curve = SubResource("Curve3D_w03a1")
+
+[node name="Curb Sidewalk Path3" parent="StreetBase/Right/Sidewalk" instance=ExtResource("4_vgace")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.5, 0, -3)
+curve = SubResource("Curve3D_kw0mi")
+
+[node name="StreetMarks" type="Node3D" parent="StreetBase/Right"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+
+[node name="ParkLine" type="Node3D" parent="StreetBase/Right/StreetMarks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+
+[node name="Decal Park Line" parent="StreetBase/Right/StreetMarks/ParkLine" instance=ExtResource("5_xpsye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 2)
+skeleton = NodePath("../..")
+
+[node name="Decal Park Line2" parent="StreetBase/Right/StreetMarks/ParkLine" instance=ExtResource("5_xpsye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 1)
+skeleton = NodePath("../..")
+
+[node name="Decal Park Line3" parent="StreetBase/Right/StreetMarks/ParkLine" instance=ExtResource("5_xpsye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+skeleton = NodePath("../..")
+
+[node name="Decal Park Line4" parent="StreetBase/Right/StreetMarks/ParkLine" instance=ExtResource("5_xpsye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -1)
+skeleton = NodePath("../..")
+
+[node name="Decal Park Line5" parent="StreetBase/Right/StreetMarks/ParkLine" instance=ExtResource("5_xpsye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -2)
+skeleton = NodePath("../..")
+
+[node name="Decal Park Line6" parent="StreetBase/Right/StreetMarks/ParkLine" instance=ExtResource("5_xpsye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -3)
+skeleton = NodePath("../..")
+
+[node name="Lanes" type="Node3D" parent="StreetBase/Right/StreetMarks"]
+
+[node name="Decal Lane Line" parent="StreetBase/Right/StreetMarks/Lanes" instance=ExtResource("6_y6k71")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -1)
+
+[node name="Decal Lane Line2" parent="StreetBase/Right/StreetMarks/Lanes" instance=ExtResource("6_y6k71")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
+
+[node name="Decal Lane Line3" parent="StreetBase/Right/StreetMarks/Lanes" instance=ExtResource("6_y6k71")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -1)
+
+[node name="Decal Lane Line4" parent="StreetBase/Right/StreetMarks/Lanes" instance=ExtResource("6_y6k71")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 2)
+
+[node name="Decal Lane Line5" parent="StreetBase/Right/StreetMarks/Lanes" instance=ExtResource("6_y6k71")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -1)
+
+[node name="Decal Lane Line6" parent="StreetBase/Right/StreetMarks/Lanes" instance=ExtResource("6_y6k71")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 2)
+
+[node name="Arrow variator" type="Node3D" parent="StreetBase/Right/StreetMarks/Lanes"]
+script = ExtResource("7_sgbba")
+expected_position = 19.0
+
+[node name="Decal Lane Arrow" parent="StreetBase/Right/StreetMarks/Lanes/Arrow variator" instance=ExtResource("8_yux27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Arrow2" parent="StreetBase/Right/StreetMarks/Lanes/Arrow variator" instance=ExtResource("8_yux27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Arrow3" parent="StreetBase/Right/StreetMarks/Lanes/Arrow variator" instance=ExtResource("8_yux27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Arrow4" parent="StreetBase/Right/StreetMarks/Lanes/Arrow variator" instance=ExtResource("8_yux27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+skeleton = NodePath("../../..")
+
+[node name="Side Lines" type="Node3D" parent="StreetBase/Right/StreetMarks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001, 0)
+
+[node name="Decal White Line" parent="StreetBase/Right/StreetMarks/Side Lines" instance=ExtResource("9_hrnj8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+curve = SubResource("Curve3D_bhpc5")
+
+[node name="Decal White Line2" parent="StreetBase/Right/StreetMarks/Side Lines" instance=ExtResource("9_hrnj8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 0)
+curve = SubResource("Curve3D_rigx3")
+
+[node name="Left" type="Node3D" parent="StreetBase"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Sidewalk" type="Node3D" parent="StreetBase/Left"]
+
+[node name="Sidewalk2" parent="StreetBase/Left/Sidewalk" instance=ExtResource("3_d88wv")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 6, 11.5, 0, -3)
+
+[node name="Curb Sidewalk Path" parent="StreetBase/Left/Sidewalk" instance=ExtResource("4_vgace")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 3)
+curve = SubResource("Curve3D_tnl1g")
+
+[node name="Curb Sidewalk Path3" parent="StreetBase/Left/Sidewalk" instance=ExtResource("4_vgace")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.5, 0, -3)
+curve = SubResource("Curve3D_qh7gq")
+
+[node name="StreetMarks" type="Node3D" parent="StreetBase/Left"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+
+[node name="ParkLine" type="Node3D" parent="StreetBase/Left/StreetMarks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+
+[node name="Decal Park Line" parent="StreetBase/Left/StreetMarks/ParkLine" instance=ExtResource("5_xpsye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 2)
+skeleton = NodePath("../..")
+
+[node name="Decal Park Line2" parent="StreetBase/Left/StreetMarks/ParkLine" instance=ExtResource("5_xpsye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 1)
+skeleton = NodePath("../..")
+
+[node name="Decal Park Line3" parent="StreetBase/Left/StreetMarks/ParkLine" instance=ExtResource("5_xpsye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+skeleton = NodePath("../..")
+
+[node name="Decal Park Line4" parent="StreetBase/Left/StreetMarks/ParkLine" instance=ExtResource("5_xpsye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -1)
+skeleton = NodePath("../..")
+
+[node name="Decal Park Line5" parent="StreetBase/Left/StreetMarks/ParkLine" instance=ExtResource("5_xpsye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -2)
+skeleton = NodePath("../..")
+
+[node name="Decal Park Line6" parent="StreetBase/Left/StreetMarks/ParkLine" instance=ExtResource("5_xpsye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -3)
+skeleton = NodePath("../..")
+
+[node name="Lanes" type="Node3D" parent="StreetBase/Left/StreetMarks"]
+
+[node name="Decal Lane Line" parent="StreetBase/Left/StreetMarks/Lanes" instance=ExtResource("6_y6k71")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -1)
+
+[node name="Decal Lane Line2" parent="StreetBase/Left/StreetMarks/Lanes" instance=ExtResource("6_y6k71")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
+
+[node name="Decal Lane Line3" parent="StreetBase/Left/StreetMarks/Lanes" instance=ExtResource("6_y6k71")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -1)
+
+[node name="Decal Lane Line4" parent="StreetBase/Left/StreetMarks/Lanes" instance=ExtResource("6_y6k71")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 2)
+
+[node name="Decal Lane Line5" parent="StreetBase/Left/StreetMarks/Lanes" instance=ExtResource("6_y6k71")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -1)
+
+[node name="Decal Lane Line6" parent="StreetBase/Left/StreetMarks/Lanes" instance=ExtResource("6_y6k71")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 2)
+
+[node name="Arrow variator" type="Node3D" parent="StreetBase/Left/StreetMarks/Lanes"]
+script = ExtResource("7_sgbba")
+expected_position = 19.0
+
+[node name="Decal Lane Arrow" parent="StreetBase/Left/StreetMarks/Lanes/Arrow variator" instance=ExtResource("8_yux27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Arrow2" parent="StreetBase/Left/StreetMarks/Lanes/Arrow variator" instance=ExtResource("8_yux27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Arrow3" parent="StreetBase/Left/StreetMarks/Lanes/Arrow variator" instance=ExtResource("8_yux27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Arrow4" parent="StreetBase/Left/StreetMarks/Lanes/Arrow variator" instance=ExtResource("8_yux27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+skeleton = NodePath("../../..")
+
+[node name="Side Lines" type="Node3D" parent="StreetBase/Left/StreetMarks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001, 0)
+
+[node name="Decal White Line" parent="StreetBase/Left/StreetMarks/Side Lines" instance=ExtResource("9_hrnj8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+curve = SubResource("Curve3D_s32jw")
+
+[node name="Decal White Line2" parent="StreetBase/Left/StreetMarks/Side Lines" instance=ExtResource("9_hrnj8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 0)
+curve = SubResource("Curve3D_2tr3x")
+
+[node name="Objs" type="Node3D" parent="."]
+
+[node name="Variator Tree" type="Node3D" parent="Objs"]
+script = ExtResource("7_sgbba")
+expected_position = 25.0
+
+[node name="Tree Hole" parent="Objs/Variator Tree" instance=ExtResource("10_mawto")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -13.5, 0, -1)
+
+[node name="Tree" parent="Objs/Variator Tree" instance=ExtResource("4_ypixn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, 0)
+
+[node name="Variator Tree2" type="Node3D" parent="Objs"]
+script = ExtResource("7_sgbba")
+expected_position = 15.0
+
+[node name="Tree Hole" parent="Objs/Variator Tree2" instance=ExtResource("10_mawto")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2, -0.5, 0.01, -2.5)
+
+[node name="Tree" parent="Objs/Variator Tree2" instance=ExtResource("4_ypixn")]
+transform = Transform3D(0.575, 0, 0, 0, 0.915, 0, 0, 0, 0.575, 0, 0.01, -1.5)
+
+[node name="Palm" parent="Objs" instance=ExtResource("4_34wi1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
+
+[node name="Sign Variator - Hospital" type="Node3D" parent="Objs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+script = ExtResource("7_sgbba")
+expected_position = -345.0
+repeat = false
+
+[node name="Pole Dark Over" parent="Objs/Sign Variator - Hospital" instance=ExtResource("13_qv5w5")]
+"GenericTumbler First/Parent/Mesh Pole Dark/Slot - Pole Center*scene" = null
+"GenericTumbler First/Parent/Mesh Pole Dark/GenericTumbler Second/Mesh Pole Dark Over/Slot - Over 1*scene" = ExtResource("14_i2yg4")
+"GenericTumbler First/Parent/Mesh Pole Dark/GenericTumbler Second/Mesh Pole Dark Over/Slot - Over 1/Traffic Sign*texture" = ExtResource("15_or3ic")
+
+[node name="Sign Variator - Sabara" type="Node3D" parent="Objs"]
+script = ExtResource("7_sgbba")
+expected_position = -440.0
+repeat = false
+
+[node name="Pole Dark Over" parent="Objs/Sign Variator - Sabara" instance=ExtResource("13_qv5w5")]
+"GenericTumbler First/Parent/Mesh Pole Dark/Slot - Pole Center*scene" = null
+"GenericTumbler First/Parent/Mesh Pole Dark/GenericTumbler Second/Mesh Pole Dark Over/Slot - Over 1*scene" = ExtResource("14_i2yg4")
+"GenericTumbler First/Parent/Mesh Pole Dark/GenericTumbler Second/Mesh Pole Dark Over/Slot - Over 1/Traffic Sign*texture" = ExtResource("16_2ey2m")
+
+[node name="Sign Variator - Center" type="Node3D" parent="Objs"]
+script = ExtResource("7_sgbba")
+expected_position = -363.0
+repeat = false
+
+[node name="Pole Dark" parent="Objs/Sign Variator - Center" instance=ExtResource("17_6ff8l")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 11.4244, 0, 2)
+"Tumbler/Mesh Pole Dark/Slot - Pole Center*scene" = ExtResource("18_dnb6i")
+"Tumbler/Mesh Pole Dark/Slot - Pole Center/Traffic Sign*texture" = ExtResource("19_tb6y5")
+
+[node name="Sign Variator - AC" type="Node3D" parent="Objs"]
+script = ExtResource("7_sgbba")
+expected_position = -460.0
+repeat = false
+
+[node name="Pole Dark Over Inverted" parent="Objs/Sign Variator - AC" instance=ExtResource("20_3ao63")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -2)
+"GenericTumbler Ground/Parent/Mesh Pole Dark/Slot - Pole Center*scene" = null
+"GenericTumbler Ground/Parent/Mesh Pole Dark/GenericTumbler Second/Mesh Pole Dark Over/Slot - Over 1*scene" = ExtResource("14_i2yg4")
+"GenericTumbler Ground/Parent/Mesh Pole Dark/GenericTumbler Second/Mesh Pole Dark Over/Slot - Over 1/Traffic Sign*texture" = ExtResource("21_iwttc")
+
+[connection signal="screen_entered" from="Config/VisibleOnScreenNotifier3D" to="." method="_on_screen_entered"]
+[connection signal="screen_exited" from="Config/VisibleOnScreenNotifier3D" to="." method="_on_screen_exited"]

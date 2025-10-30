@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://bovnoa44e5q7l"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Stop_Power_Tap_Yellow"
+id = 1181006764
+guid = "{1B436AED-228E-41C9-A71D-B1CFA98059AD}"
+dummy = true

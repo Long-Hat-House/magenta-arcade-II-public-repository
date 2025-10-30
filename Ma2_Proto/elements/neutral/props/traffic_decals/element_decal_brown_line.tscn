@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyu70takcwork"]
+
+[ext_resource type="Material" uid="uid://o8egfrwk3o33" path="res://elements/neutral/props/traffic_decals/materials/m_decal_street_brown.tres" id="1_40k8e"]
+
+[sub_resource type="Curve3D" id="Curve3D_40uxx"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Decal Brown Line" type="Path3D"]
+curve = SubResource("Curve3D_40uxx")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+material_override = ExtResource("1_40k8e")
+cast_shadow = 0
+calculate_tangents = false
+polygon = PackedVector2Array(-0.075, 0.015, 0.075, 0.015, 0, -0.1)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 3.0
+path_rotation = 2
+path_local = true
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false

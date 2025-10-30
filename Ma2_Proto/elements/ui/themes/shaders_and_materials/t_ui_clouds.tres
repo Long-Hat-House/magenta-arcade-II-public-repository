@@ -1,0 +1,15 @@
+[gd_resource type="NoiseTexture2D" load_steps=3 format=3 uid="uid://cdsllproihfm0"]
+
+[sub_resource type="Gradient" id="Gradient_meprc"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dhmw3"]
+frequency = 0.012
+
+[resource]
+width = 128
+height = 128
+generate_mipmaps = false
+seamless = true
+seamless_blend_skirt = 0.25
+color_ramp = SubResource("Gradient_meprc")
+noise = SubResource("FastNoiseLite_dhmw3")

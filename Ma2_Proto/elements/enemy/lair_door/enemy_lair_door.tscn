@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://chupj3gavxy34"]
+
+[ext_resource type="PackedScene" uid="uid://ce8613g8w11pi" path="res://elements/neutral/props/Lab_mountain/mesh/mesh_door.tscn" id="1_q3sq8"]
+[ext_resource type="Script" uid="uid://tn7pe1tyvplb" path="res://elements/enemy/lair_door/enemy_lair_door.gd" id="2_2iktb"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="2_tfshs"]
+[ext_resource type="Script" uid="uid://bls4vce0lfvfc" path="res://elements/vfx/spawn_area.gd" id="3_kavil"]
+[ext_resource type="PackedScene" uid="uid://ywymskkj85vs" path="res://elements/vfx/vfx_explosion/vfx_explosion.tscn" id="5_2tnn1"]
+[ext_resource type="Script" uid="uid://b7n1kj0lt03wh" path="res://systems/utils/node3d_shaker.gd" id="5_7w8qs"]
+[ext_resource type="Texture2D" uid="uid://dr2x1oqniupe3" path="res://elements/general_use/texture/t_basic_shake_noise.tres" id="6_mdxsb"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="8_mdxsb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q3sq8"]
+size = Vector3(16, 8, 1)
+
+[node name="Enemy_Lair_Door" type="Node3D"]
+script = ExtResource("2_2iktb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Health" type="Node" parent="StaticBody3D" node_paths=PackedStringArray("feedback")]
+script = ExtResource("2_tfshs")
+max_amount = 8.0
+feedback = [NodePath("../../Node3DShaker/door")]
+metadata/_custom_type_script = "uid://b3g5atumyrird"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shape = SubResource("BoxShape3D_q3sq8")
+
+[node name="SpawnArea" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.75, 0.5)
+aabb = AABB(-7, -3.5, -0.75, 14, 7, 1.5)
+script = ExtResource("3_kavil")
+scenes = Array[PackedScene]([ExtResource("5_2tnn1")])
+spawn_multiple_default = 30
+spawn_multiple_default_duration = 4.0
+metadata/_custom_type_script = "uid://bls4vce0lfvfc"
+
+[node name="Node3DShaker" type="Node3D" parent="."]
+script = ExtResource("5_7w8qs")
+noise_texture = ExtResource("6_mdxsb")
+shake_amplitude_ratio = 0.0
+metadata/_custom_type_script = "uid://b7n1kj0lt03wh"
+
+[node name="door" parent="Node3DShaker" instance=ExtResource("1_q3sq8")]
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="Node3DShaker/door"]
+script = ExtResource("8_mdxsb")
+high_contrast_group = &"enemy"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[connection signal="dead_parameterless" from="StaticBody3D/Health" to="." method="_on_health_dead_parameterless"]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtleu6yxuimdg"]
+
+[ext_resource type="PackedScene" uid="uid://cbl1osc646uvr" path="res://elements/enemy/snake/mesh/snakeBody.glb" id="1_i385k"]
+[ext_resource type="Material" uid="uid://b60keo4o7lbls" path="res://elements/enemy/snake/material/m_snake.tres" id="2_a8ns2"]
+[ext_resource type="Script" uid="uid://c2wlarjs5llo6" path="res://elements/enemy/snake/graphic_snake_body.gd" id="2_yuimf"]
+[ext_resource type="Material" uid="uid://cnfyjr3fnefwy" path="res://elements/enemy/snake/material/m_snake_broken.tres" id="4_oly6o"]
+
+[node name="snakeBody" node_paths=PackedStringArray("meshes") instance=ExtResource("1_i385k")]
+script = ExtResource("2_yuimf")
+fine_material = ExtResource("2_a8ns2")
+broken_material = ExtResource("4_oly6o")
+meshes = [NodePath("snakeBody")]
+
+[node name="snakeBody" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_a8ns2")

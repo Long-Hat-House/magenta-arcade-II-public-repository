@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://c71nwgj5ec8oe"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Int_Pressable_Button_Cassette_Close"
+id = 4059652730
+guid = "{992D2393-B778-4EEF-9D45-156876003EFF}"
+dummy = true

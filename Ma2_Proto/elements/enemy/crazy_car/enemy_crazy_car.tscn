@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4opg5kbeme06"]
+
+[ext_resource type="PackedScene" uid="uid://ds6heafau8h2d" path="res://elements/neutral/car/car_graphic.tscn" id="1_6rsdn"]
+[ext_resource type="Script" uid="uid://ditkw6l3so43h" path="res://elements/enemy/crazy_car/enemy_crazy_car.gd" id="1_ae4tt"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="3_1f48l"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="3_7b661"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ovmvo"]
+size = Vector3(1.7501, 1.65137, 2.88513)
+
+[node name="EnemyCrazyCar" type="Area3D"]
+collision_layer = 16
+collision_mask = 130
+script = ExtResource("1_ae4tt")
+speed = 8.0
+speed_absolute = 1.0
+damage = 100
+
+[node name="Model" parent="." instance=ExtResource("1_6rsdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0636616, 0)
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="Model"]
+script = ExtResource("3_7b661")
+high_contrast_group = &"enemy"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.846692, 0.160339)
+shape = SubResource("BoxShape3D_ovmvo")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+aabb = AABB(-1.33383, -1, -1.91001, 2.66765, 2, 3.82002)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.846692, 0.15)
+shape = SubResource("BoxShape3D_ovmvo")
+
+[node name="Health" type="Node" parent="StaticBody3D"]
+script = ExtResource("3_1f48l")
+immortal = true
+invulnerable = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
+[connection signal="hit" from="StaticBody3D/Health" to="." method="_on_health_hit"]

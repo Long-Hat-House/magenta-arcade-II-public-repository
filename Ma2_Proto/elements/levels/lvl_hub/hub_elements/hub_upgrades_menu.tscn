@@ -1,0 +1,480 @@
+[gd_scene load_steps=37 format=3 uid="uid://hrtrfcdoye84"]
+
+[ext_resource type="PackedScene" uid="uid://b630igcqwhnvu" path="res://elements/neutral/interactables/holdable_buttons/holdable_button_star_recover/holdable_button_star_recover.tscn" id="1_h0fnv"]
+[ext_resource type="PackedScene" uid="uid://c2ffbg50wksja" path="res://elements/neutral/interactables/holdable_buttons/holdable_button_star/holdable_button_star.tscn" id="1_jj7ba"]
+[ext_resource type="PackedScene" uid="uid://dwkefm5r6xxb6" path="res://elements/levels/lvl_hub/hub_elements/hub_buttons/hub_pressable_button_upgrade_set.tscn" id="4_rvmi5"]
+[ext_resource type="PackedScene" uid="uid://b5ushfqcn5gd1" path="res://elements/neutral/props/stairs/mesh/stair.tscn" id="5_c17ax"]
+[ext_resource type="Resource" uid="uid://b8m0rjfq0elkf" path="res://systems/ma2_meta/upgrades/upgradeset_hold.tres" id="5_gwrcu"]
+[ext_resource type="PackedScene" uid="uid://brbg6mxa4scjw" path="res://elements/levels/lvl_hub/hub_elements/hub_cable/hub_cable.tscn" id="6_sisdq"]
+[ext_resource type="Resource" uid="uid://bf1iqpa20hj3s" path="res://systems/ma2_meta/upgrades/upgradeset_tap.tres" id="7_rqp0e"]
+[ext_resource type="Resource" uid="uid://c8ohngf45805w" path="res://systems/ma2_meta/upgrades/upgradeset_health.tres" id="8_3dnuj"]
+[ext_resource type="PackedScene" uid="uid://dudypmrl2weak" path="res://elements/levels/lvl_hub/hub_elements/hub_buttons/hub_pressable_button_upgrade_info.tscn" id="9_gbhbb"]
+[ext_resource type="Script" uid="uid://b0vxt1hyrq68c" path="res://systems/condition/condition_dependency.gd" id="9_tk8f2"]
+[ext_resource type="PackedScene" uid="uid://bvhxeq8y0rqon" path="res://elements/powerups/button/mesh/button_base.tscn" id="11_85pb7"]
+[ext_resource type="PackedScene" uid="uid://deo3lc7ofkj7l" path="res://elements/levels/lvl_hub/hub_elements/hub_panel_star/hub_panel_star.tscn" id="11_k2164"]
+[ext_resource type="Texture2D" uid="uid://bbgxpkfmxk4k0" path="res://elements/powerups/button/texture/m_button_base_BaseColor.png" id="12_mxnst"]
+[ext_resource type="Script" uid="uid://dx03lv7aaubaw" path="res://systems/condition/specific/condition_meta_integer.gd" id="13_t1vtm"]
+
+[sub_resource type="Curve3D" id="Curve3D_sqqwg"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(-0.050808, 0, -0.892775, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.1, 0, 0, 1, 0, 0, 0, 0, -0.1, 0, 0, 0, 1.2, 0, 0.2, 0, 0, 0, 0.9, 0, 0, 1.2, 0, 1),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_bejt2"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(-0.050808, 0, -0.892775, 0, 0, 0, 0, 0, 0, -0.175964, 0, -0.356111, 0.175964, 0, 0.356111, 1.29617, 0.0448838, -0.000288099, 0.286827, 0, 0.300511, -0.286827, 0, -0.300511, 1.53952, -3.80278e-05, -0.387381, -0.325023, 0, -1.205, 0.325023, 0, 1.205, 1.13893, -0.00101459, 0.365086),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_7ru86"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0.170874, -7.45058e-09, -1.25048, -0.170874, 7.45058e-09, 1.25048, 1.21379, 0.096826, -0.690283, -0.179832, 0, 0.21694, 0.179832, 0, -0.21694, 1.75043, 0.0503172, -0.302074, 0.365373, -3.72529e-09, -0.236922, -0.365373, 3.72529e-09, 0.236922, 1.36793, 0.0351805, -0.690283, -0.175964, 0, -0.356111, 0.175964, 0, 0.356111, 1.14813, 0.0448241, 0.0290453, 0.219795, 3.72529e-09, 0.702202, -0.219795, -3.72529e-09, -0.702202, 1.75614, -9.78187e-05, -0.533287, -0.375965, -3.72529e-09, -0.733811, 0.375965, 3.72529e-09, 0.733811, 1.19627, -0.00107437, 0.44632, 0.110927, 3.72529e-09, 0.314293, -0.110927, -3.72529e-09, -0.314293, 1.73661, -0.00107437, 0.485137, -0.154809, 3.72529e-09, 0.218756, 0.154809, -3.72529e-09, -0.218756, 2.21872, -0.00107437, 0.075392, -0.533393, -3.72529e-09, 0.223601, 0.533393, 3.72529e-09, -0.223601, 2.35609, -0.00107438, -0.891478, 0, 0, 0, 0, 0, 0, 2.6002, -0.00107437, -0.201317),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 10
+
+[sub_resource type="Gradient" id="Gradient_vq2tc"]
+offsets = PackedFloat32Array(0.992288)
+colors = PackedColorArray(0.545098, 0.623529, 0.729412, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6m0km"]
+gradient = SubResource("Gradient_vq2tc")
+width = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j0m4e"]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.45098, 0.45098, 0.560784, 1)
+roughness = 0.65
+emission_energy_multiplier = 2.21
+rim_tint = 1.0
+clearcoat = 0.69
+anisotropy = 0.33
+backlight = Color(0.0313726, 0.0313726, 0.0313726, 1)
+detail_enabled = true
+detail_mask = ExtResource("12_mxnst")
+detail_albedo = SubResource("GradientTexture1D_6m0km")
+
+[sub_resource type="Curve3D" id="Curve3D_kemuh"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(-0.050808, 0, -0.892775, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.1, 0, 0, 1, 0, 0, 0, 0, 0.1, 0, 0, 0, 1.2, 0, -0.2, 0, 0, 0, 0.9, 0, 0, 1.2, 0, -1),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_ydna1"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(-0.050808, 0, -0.892775, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.1, 0, 0, 1, 0, 0, 0, 0, -0.1, 0, 0, 0, 1.2, 0, 0.2, 0, 0, 0, 0.9, 0, 0, 1.2, 0, 1),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_7nb7l"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(-0.050808, 0, -0.892775, 0, 0, 0, 0, 0, 0, 0.2, 0, 0, 0, 0, 0, 1.4, 0, 0, 0, 0, -0.2, 0, 0, 0, 1.8, 0, 0.4, 0, 0, 0, 0, 0, 0, 1.8, 0, 2),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_2qtl7"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(-0.050808, 0, -0.892775, 0, 0, 0, 0, 0, 0, -0.175964, 0, -0.356111, 0.175964, 0, 0.356111, 1.29617, 0.0448838, -0.000288099, 0.286827, 0, 0.300511, -0.286827, 0, -0.300511, 1.53952, -3.80278e-05, -0.387381, -0.325023, 0, -1.205, 0.325023, 0, 1.205, 1.13893, -0.00101459, 0.365086),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_aldr2"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(-0.050808, 0, -0.892775, 0, 0, 0, 0, 0, 0, -0.2, 0, 0, 0.2, 0, 0, 1.4, 0, 0, 0, 0, 0.2, 0, 0, -0.2, 1.8, 0, -0.4, 0, 0, 0, 0, 0, 0, 1.8, 0, -2),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_doahj"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(-0.312012, 0.0116996, 0.711336, 0.312012, -0.0116996, -0.711336, 0.567047, -0.414476, 1.72171, -0.163477, 0.0421547, 0.421607, 0.163477, -0.0421547, -0.421607, 0.655548, 0.0030542, 1.21415, 0.680043, 0, 0.403986, -0.680043, 0, -0.403986, -0.105503, -3.80278e-05, 0.163726, -0.466729, 0, -0.343682, 0.466729, 0, 0.343682, 0.25842, -3.80278e-05, -0.617189, -0.427273, 0, -0.508579, 0.427273, 0, 0.508579, 0.0462702, 0.0373155, 0.570848, -0.410719, 0, -0.0875303, 0.410719, 0, 0.0875303, 1.42291, -3.80278e-05, -0.603846, 0, 0, 0, 0, 0, 0, 1.8, 0, -2),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="Curve3D" id="Curve3D_g4jph"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(-0.050808, 0, -0.892775, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.1, 0, 0, 1, 0, 0, 0, 0, 0.1, 0, 0, 0, 1.2, 0, -0.2, 0, 0, 0, 0.9, 0, 0, 1.2, 0, -1),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_y2kaq"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(-0.050808, 0, -0.892775, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.1, 0, 0, 1, 0, 0, 0, 0, -0.1, 0, 0, 0, 1.2, 0, 0.2, 0, 0, 0, 0.9, 0, 0, 1.2, 0, 1),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_15f6t"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(-0.050808, 0, -0.892775, 0, 0, 0, 0, 0, 0, 0.2, 0, 0, 0, 0, 0, 1.4, 0, 0, 0, 0, -0.2, 0, 0, 0, 1.8, 0, 0.4, 0, 0, 0, 0, 0, 0, 1.8, 0, 2),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_6giwe"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(-0.050808, 0, -0.892775, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.78399, 7.03931e-05, 0.00343609),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_43xd8"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(-0.312012, 0.0116996, 0.711336, 0.312012, -0.0116996, -0.711336, 0.567047, -0.414476, 1.72171, -0.163477, 0.0421547, 0.421607, 0.163477, -0.0421547, -0.421607, 0.655548, 0.0030542, 1.21415, 0.680043, 0, 0.403986, -0.680043, 0, -0.403986, -0.105503, -3.80278e-05, 0.163726, -0.466729, 0, -0.343682, 0.466729, 0, 0.343682, 0.25842, -3.80278e-05, -0.617189, -0.427273, 0, -0.508579, 0.427273, 0, 0.508579, 0.0462702, 0.0373155, 0.570848, -0.410719, 0, -0.0875303, 0.410719, 0, 0.0875303, 1.42291, -3.80278e-05, -0.603846, 0, 0, 0, 0, 0, 0, 1.8, 0, -2),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="Curve3D" id="Curve3D_r65o3"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(-0.050808, 0, -0.892775, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.1, 0, 0, 1, 0, 0, 0, 0, 0.1, 0, 0, 0, 1.2, 0, -0.2, 0, 0, 0, 0.9, 0, 0, 1.2, 0, -1),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_baxhw"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(-0.050808, 0, -0.892775, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.1, 0, 0, 1, 0, 0, 0, 0, -0.1, 0, 0, 0, 1.2, 0, 0.2, 0, 0, 0, 0.9, 0, 0, 1.2, 0, 1),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_6qbno"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(-0.050808, 0, -0.892775, 0, 0, 0, 0, 0, 0, 0.2, 0, 0, 0, 0, 0, 1.4, 0, 0, 0, 0, -0.2, 0, 0, 0, 1.8, 0, 0.4, 0, 0, 0, 0, 0, 0, 1.8, 0, 2),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_gnx1h"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(-0.050808, 0, -0.892775, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.78399, 7.03931e-05, 0.00343609),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_7dhka"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(-0.050808, 0, -0.892775, 0, 0, 0, 0, 0, 0, -0.2, 0, 0, 0.2, 0, 0, 1.4, 0, 0, 0, 0, 0.2, 0, 0, -0.2, 1.8, 0, -0.4, 0, 0, 0, 0, 0, 0, 1.8, 0, -2),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[node name="HubUpgradesMenu" type="Node3D"]
+
+[node name="Panel 0" type="Node3D" parent="."]
+visible = false
+
+[node name="HoldableButtonStar" parent="Panel 0" node_paths=PackedStringArray("_hub_cable") instance=ExtResource("1_jj7ba")]
+transform = Transform3D(0.940668, 0, -0.339328, 0, 1, 0, 0.339328, 0, 0.940668, 0.383124, 0, 0.606866)
+_hub_cable = NodePath("HUBCable3")
+
+[node name="HUBCable3" parent="Panel 0/HoldableButtonStar" instance=ExtResource("6_sisdq")]
+transform = Transform3D(0.992161, 0, 0.124968, 0, 1, 0, -0.124968, 0, 0.992161, -1.33787, 0, -1.37724)
+curve = SubResource("Curve3D_sqqwg")
+
+[node name="HUBButtonUpgradeSet2" parent="Panel 0" instance=ExtResource("4_rvmi5")]
+transform = Transform3D(0.137185, 0, 0.990545, 0, 1.25, 0, -0.990545, 0, 0.137185, -2.19578, 0.00466809, -1.64614)
+
+[node name="HUBButtonUpgradeSet3" parent="Panel 0" instance=ExtResource("4_rvmi5")]
+transform = Transform3D(0.0191801, 0, 0.999815, 0, 1.25, 0, -0.999815, 0, 0.0191801, -3.99562, 0.00466761, -1.84755)
+
+[node name="HUBLevelPressableButton2 Disabled" parent="Panel 0" instance=ExtResource("9_gbhbb")]
+transform = Transform3D(-0.603803, 0.0423247, -0.79601, 0.0231545, 0.999099, 0.0355596, 0.796798, 0.00303982, -0.604239, 3.06812, 1.7053e-13, -1.94143)
+index_in_upgrade_set = 10
+
+[node name="HUBCable1" parent="Panel 0/HUBLevelPressableButton2 Disabled" instance=ExtResource("6_sisdq")]
+transform = Transform3D(1, 0, 2.98023e-08, -1.86265e-09, 1, -7.45058e-09, 2.98023e-08, 0, 1, 0.318955, -0.0351805, 0.0200242)
+curve = SubResource("Curve3D_bejt2")
+
+[node name="stair" parent="Panel 0" instance=ExtResource("5_c17ax")]
+transform = Transform3D(-1.01487, 0, -1.72338, 0, 2, 0, 1.72338, 0, -1.01487, -2.5425, 0.136878, 2.09478)
+
+[node name="HUBCable1" parent="Panel 0" instance=ExtResource("6_sisdq")]
+transform = Transform3D(0.955644, -8.21864e-24, -0.294524, -1.86265e-09, 1, -7.45058e-09, 0.294524, 5.45719e-23, 0.955644, 1.5222, 0.0715448, 1.50723)
+curve = SubResource("Curve3D_7ru86")
+
+[node name="CablesDetail" parent="Panel 0" instance=ExtResource("11_k2164")]
+transform = Transform3D(0.0835472, 0, -0.0549533, 0, 1, 0, 0.0549533, 0, 0.0835472, 3.8602, 0.171352, 0.602221)
+
+[node name="button_base" parent="Panel 0/CablesDetail" instance=ExtResource("11_85pb7")]
+transform = Transform3D(2, 0, 0, 0, 0.2, 0, 0, 0, 2, -0.0696983, 0.383648, 0)
+metadata/_edit_group_ = true
+
+[node name="button_base" parent="Panel 0/CablesDetail/button_base" index="0"]
+material_override = SubResource("StandardMaterial3D_j0m4e")
+
+[node name="Panel 1" type="Node3D" parent="."]
+visible = false
+
+[node name="HoldableButtonStarRecover" parent="Panel 1" node_paths=PackedStringArray("_hub_cable") instance=ExtResource("1_h0fnv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12353, 0.418373, -1.351)
+_hub_cable = NodePath("HUBCable4")
+
+[node name="HUBCable4" parent="Panel 1/HoldableButtonStarRecover" instance=ExtResource("6_sisdq")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -1.37525, 0, 1.24678)
+curve = SubResource("Curve3D_kemuh")
+
+[node name="HoldableButtonStar" parent="Panel 1" node_paths=PackedStringArray("_hub_cable") instance=ExtResource("1_jj7ba")]
+transform = Transform3D(0.992161, 0, -0.124968, 0, 1, 0, 0.124968, 0, 0.992161, 2.90838, 0.418373, 1.65065)
+_hub_cable = NodePath("HUBCable3")
+
+[node name="HUBCable3" parent="Panel 1/HoldableButtonStar" instance=ExtResource("6_sisdq")]
+transform = Transform3D(0.992161, 0, 0.124968, 0, 1, 0, -0.124968, 0, 0.992161, -1.33787, 0, -1.37724)
+curve = SubResource("Curve3D_ydna1")
+
+[node name="HUBButtonUpgradeSet1" parent="Panel 1" instance=ExtResource("4_rvmi5")]
+transform = Transform3D(1, 0, 0, 0, 1.25, 0, 0, 0, 1, -2.93619, 0.00466809, -2)
+upgrade_set = ExtResource("5_gwrcu")
+
+[node name="HUBButtonUpgradeSet2" parent="Panel 1" instance=ExtResource("4_rvmi5")]
+transform = Transform3D(1, 0, 0, 0, 1.25, 0, 0, 0, 1, -2.93619, 0.00466809, 0)
+upgrade_set = ExtResource("7_rqp0e")
+
+[node name="HUBButtonUpgradeSet3" parent="Panel 1" instance=ExtResource("4_rvmi5")]
+transform = Transform3D(0.723341, 0, -0.690491, 0, 1.25, 0, 0.690491, 0, 0.723341, -3.4572, 0.00466809, 2.51715)
+
+[node name="HUBLevelPressableButton1" parent="Panel 1" instance=ExtResource("9_gbhbb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15777, 0.418373, -2.26138)
+index_in_upgrade_set = 2
+
+[node name="HUBCable3" parent="Panel 1/HUBLevelPressableButton1" instance=ExtResource("6_sisdq")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0.1, 0, 0.3)
+curve = SubResource("Curve3D_7nb7l")
+
+[node name="HUBLevelPressableButton2 Disabled" parent="Panel 1" instance=ExtResource("9_gbhbb")]
+transform = Transform3D(0.838005, -2.1007e-09, -0.545663, 0.0231545, 0.999099, 0.0355596, 0.545172, -0.0424337, 0.83725, -0.322418, 0.418373, 0.215184)
+index_in_upgrade_set = 10
+
+[node name="HUBCable1" parent="Panel 1/HUBLevelPressableButton2 Disabled" instance=ExtResource("6_sisdq")]
+transform = Transform3D(1, 0, 2.98023e-08, -1.86265e-09, 1, -7.45058e-09, 2.98023e-08, 0, 1, 0.318955, -0.0351805, 0.0200242)
+curve = SubResource("Curve3D_2qtl7")
+
+[node name="HUBLevelPressableButton3" parent="Panel 1" instance=ExtResource("9_gbhbb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15777, 0.418373, 2.24484)
+visible = false
+
+[node name="HUBCable1" parent="Panel 1/HUBLevelPressableButton3" instance=ExtResource("6_sisdq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, -0.3)
+curve = SubResource("Curve3D_aldr2")
+
+[node name="Button3Deactivated_Cable" parent="Panel 1" instance=ExtResource("6_sisdq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05777, 0.418373, 1.94484)
+curve = SubResource("Curve3D_doahj")
+
+[node name="hub_panel_star" parent="Panel 1" instance=ExtResource("11_k2164")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42536, 0.154668, 0)
+
+[node name="CablesDetail" parent="Panel 1" instance=ExtResource("11_k2164")]
+transform = Transform3D(0.1, 0, 0, 0, 1, 0, 0, 0, 0.1, 1.76095, 0.298506, 0)
+
+[node name="button_base" parent="Panel 1/CablesDetail" instance=ExtResource("11_85pb7")]
+transform = Transform3D(2, 0, 0, 0, 0.2, 0, 0, 0, 2, -0.0696983, 0.383648, 0)
+metadata/_edit_group_ = true
+
+[node name="button_base" parent="Panel 1/CablesDetail/button_base" index="0"]
+material_override = SubResource("StandardMaterial3D_j0m4e")
+
+[node name="Panel 2" type="Node3D" parent="."]
+
+[node name="HoldableButtonStarRecover" parent="Panel 2" node_paths=PackedStringArray("_hub_cable") instance=ExtResource("1_h0fnv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12353, 0.418373, -1.351)
+_hub_cable = NodePath("HUBCable4")
+cost_required_per_star = 150
+
+[node name="HUBCable4" parent="Panel 2/HoldableButtonStarRecover" instance=ExtResource("6_sisdq")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -1.37525, 0, 1.24678)
+curve = SubResource("Curve3D_g4jph")
+
+[node name="HoldableButtonStar" parent="Panel 2" node_paths=PackedStringArray("_hub_cable") instance=ExtResource("1_jj7ba")]
+transform = Transform3D(0.992161, 0, -0.124968, 0, 1, 0, 0.124968, 0, 0.992161, 2.90838, 0.418373, 1.65065)
+_hub_cable = NodePath("HUBCable3")
+
+[node name="HUBCable3" parent="Panel 2/HoldableButtonStar" instance=ExtResource("6_sisdq")]
+transform = Transform3D(0.992161, 0, 0.124968, 0, 1, 0, -0.124968, 0, 0.992161, -1.33787, 0, -1.37724)
+curve = SubResource("Curve3D_y2kaq")
+
+[node name="HUBButtonUpgradeSet1" parent="Panel 2" instance=ExtResource("4_rvmi5")]
+transform = Transform3D(1, 0, 0, 0, 1.25, 0, 0, 0, 1, -2.93619, 0.00466809, -2)
+upgrade_set = ExtResource("5_gwrcu")
+
+[node name="HUBButtonUpgradeSet2" parent="Panel 2" instance=ExtResource("4_rvmi5")]
+transform = Transform3D(1, 0, 0, 0, 1.25, 0, 0, 0, 1, -2.93619, 0.00466809, 0)
+upgrade_set = ExtResource("7_rqp0e")
+
+[node name="HUBButtonUpgradeSet3" parent="Panel 2" instance=ExtResource("4_rvmi5")]
+transform = Transform3D(1, 0, 0, 0, 1.25, 0, 0, 0, 1, -2.93619, 0.00466809, 2)
+upgrade_set = ExtResource("8_3dnuj")
+
+[node name="HUBLevelPressableButton1" parent="Panel 2" instance=ExtResource("9_gbhbb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15777, 0.418373, -2.26138)
+index_in_upgrade_set = 2
+
+[node name="HUBCable3" parent="Panel 2/HUBLevelPressableButton1" instance=ExtResource("6_sisdq")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0.1, 0, 0.3)
+curve = SubResource("Curve3D_15f6t")
+
+[node name="HUBLevelPressableButton2" parent="Panel 2" instance=ExtResource("9_gbhbb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15777, 0.418373, 2.38419e-07)
+index_in_upgrade_set = 1
+
+[node name="HUBCable2" parent="Panel 2/HUBLevelPressableButton2" instance=ExtResource("6_sisdq")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
+curve = SubResource("Curve3D_6giwe")
+
+[node name="Button3Deactivated_Cable" parent="Panel 2" instance=ExtResource("6_sisdq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05777, 0.418373, 1.94484)
+curve = SubResource("Curve3D_43xd8")
+
+[node name="hub_panel_star" parent="Panel 2" instance=ExtResource("11_k2164")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42536, 0.154668, 0)
+
+[node name="CablesDetail" parent="Panel 2" instance=ExtResource("11_k2164")]
+transform = Transform3D(0.1, 0, 0, 0, 1, 0, 0, 0, 0.1, 1.76095, 0.298506, 0)
+
+[node name="button_base" parent="Panel 2/CablesDetail" instance=ExtResource("11_85pb7")]
+transform = Transform3D(2, 0, 0, 0, 0.2, 0, 0, 0, 2, -0.0696983, 0.383648, 0)
+metadata/_edit_group_ = true
+
+[node name="button_base" parent="Panel 2/CablesDetail/button_base" index="0"]
+material_override = SubResource("StandardMaterial3D_j0m4e")
+
+[node name="Panel Full" type="Node3D" parent="."]
+visible = false
+
+[node name="HoldableButtonStarRecover" parent="Panel Full" node_paths=PackedStringArray("_hub_cable") instance=ExtResource("1_h0fnv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12353, 0.418373, -1.351)
+_hub_cable = NodePath("HUBCable4")
+
+[node name="HUBCable4" parent="Panel Full/HoldableButtonStarRecover" instance=ExtResource("6_sisdq")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -1.37525, 0, 1.24678)
+curve = SubResource("Curve3D_r65o3")
+
+[node name="HoldableButtonStar" parent="Panel Full" node_paths=PackedStringArray("_hub_cable") instance=ExtResource("1_jj7ba")]
+transform = Transform3D(0.992161, 0, -0.124968, 0, 1, 0, 0.124968, 0, 0.992161, 2.90838, 0.418373, 1.65065)
+_hub_cable = NodePath("HUBCable3")
+
+[node name="HUBCable3" parent="Panel Full/HoldableButtonStar" instance=ExtResource("6_sisdq")]
+transform = Transform3D(0.992161, 0, 0.124968, 0, 1, 0, -0.124968, 0, 0.992161, -1.33787, 0, -1.37724)
+curve = SubResource("Curve3D_baxhw")
+
+[node name="HUBButtonUpgradeSet1" parent="Panel Full" instance=ExtResource("4_rvmi5")]
+transform = Transform3D(1, 0, 0, 0, 1.25, 0, 0, 0, 1, -2.93619, 0.00466809, -2)
+upgrade_set = ExtResource("5_gwrcu")
+
+[node name="HUBButtonUpgradeSet2" parent="Panel Full" instance=ExtResource("4_rvmi5")]
+transform = Transform3D(1, 0, 0, 0, 1.25, 0, 0, 0, 1, -2.93619, 0.00466809, 0)
+upgrade_set = ExtResource("7_rqp0e")
+
+[node name="HUBButtonUpgradeSet3" parent="Panel Full" instance=ExtResource("4_rvmi5")]
+transform = Transform3D(1, 0, 0, 0, 1.25, 0, 0, 0, 1, -2.93619, 0.00466809, 2)
+upgrade_set = ExtResource("8_3dnuj")
+
+[node name="HUBLevelPressableButton1" parent="Panel Full" instance=ExtResource("9_gbhbb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15777, 0.418373, -2.26138)
+index_in_upgrade_set = 2
+
+[node name="HUBCable3" parent="Panel Full/HUBLevelPressableButton1" instance=ExtResource("6_sisdq")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0.1, 0, 0.3)
+curve = SubResource("Curve3D_6qbno")
+
+[node name="HUBLevelPressableButton2" parent="Panel Full" instance=ExtResource("9_gbhbb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15777, 0.418373, 2.38419e-07)
+index_in_upgrade_set = 1
+
+[node name="HUBCable2" parent="Panel Full/HUBLevelPressableButton2" instance=ExtResource("6_sisdq")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
+curve = SubResource("Curve3D_gnx1h")
+
+[node name="HUBLevelPressableButton3" parent="Panel Full" instance=ExtResource("9_gbhbb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15777, 0.418373, 2.24484)
+
+[node name="HUBCable1" parent="Panel Full/HUBLevelPressableButton3" instance=ExtResource("6_sisdq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, -0.3)
+curve = SubResource("Curve3D_7dhka")
+
+[node name="hub_panel_star" parent="Panel Full" instance=ExtResource("11_k2164")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42536, 0.154668, 0)
+
+[node name="CablesDetail" parent="Panel Full" instance=ExtResource("11_k2164")]
+transform = Transform3D(0.1, 0, 0, 0, 1, 0, 0, 0, 0.1, 1.76095, 0.298506, 0)
+
+[node name="button_base" parent="Panel Full/CablesDetail" instance=ExtResource("11_85pb7")]
+transform = Transform3D(2, 0, 0, 0, 0.2, 0, 0, 0, 2, -0.0696983, 0.383648, 0)
+metadata/_edit_group_ = true
+
+[node name="button_base" parent="Panel Full/CablesDetail/button_base" index="0"]
+material_override = SubResource("StandardMaterial3D_j0m4e")
+
+[node name="Condition Stage 0" type="Node" parent="."]
+script = ExtResource("13_t1vtm")
+check_mode = 3
+
+[node name="Condition Stage 1" type="Node" parent="."]
+script = ExtResource("13_t1vtm")
+check_mode = 3
+check_min = 1
+
+[node name="Condition Stage 2" type="Node" parent="."]
+script = ExtResource("13_t1vtm")
+check_mode = 3
+check_min = 2
+
+[node name="Condition Stage > 2" type="Node" parent="."]
+script = ExtResource("13_t1vtm")
+check_mode = 2
+check_max = 2
+
+[node name="Depend 0" type="Node" parent="." node_paths=PackedStringArray("_condition", "_node3d_to_set_visibility_and_process")]
+script = ExtResource("9_tk8f2")
+_condition = NodePath("../Condition Stage 0")
+_node3d_to_set_visibility_and_process = [NodePath("../Panel 0")]
+
+[node name="Depend 1" type="Node" parent="." node_paths=PackedStringArray("_condition", "_node3d_to_set_visibility_and_process")]
+script = ExtResource("9_tk8f2")
+_condition = NodePath("../Condition Stage 1")
+_node3d_to_set_visibility_and_process = [NodePath("../Panel 1")]
+
+[node name="Depend 2" type="Node" parent="." node_paths=PackedStringArray("_condition", "_node3d_to_set_visibility_and_process")]
+script = ExtResource("9_tk8f2")
+_condition = NodePath("../Condition Stage 2")
+_node3d_to_set_visibility_and_process = [NodePath("../Panel 2")]
+
+[node name="Depend 3" type="Node" parent="." node_paths=PackedStringArray("_condition", "_node3d_to_set_visibility_and_process")]
+script = ExtResource("9_tk8f2")
+_condition = NodePath("../Condition Stage > 2")
+_node3d_to_set_visibility_and_process = [NodePath("../Panel Full")]
+
+[editable path="Panel 0/CablesDetail/button_base"]
+[editable path="Panel 1/CablesDetail/button_base"]
+[editable path="Panel 2/CablesDetail/button_base"]
+[editable path="Panel Full/CablesDetail/button_base"]

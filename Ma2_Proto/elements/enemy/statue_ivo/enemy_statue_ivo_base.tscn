@@ -1,0 +1,129 @@
+[gd_scene load_steps=17 format=3 uid="uid://bdmq3sw1jurtu"]
+
+[ext_resource type="Script" uid="uid://c7i5p34ljlht" path="res://systems/pressable/pressable_tumbler.gd" id="5_nungv"]
+[ext_resource type="WwiseEvent" uid="uid://c1xwqtyryicku" path="res://Wwise/resources/Event/{7A5DAB79-A2E1-4077-81DF-E619856BCAB6}.tres" id="5_yvgbw"]
+[ext_resource type="Script" uid="uid://hbsjipy3xak5" path="res://systems/pressable/pressable.gd" id="6_hr4ye"]
+[ext_resource type="WwiseEvent" uid="uid://dek7vlexoyjed" path="res://Wwise/resources/Event/{E5B91DF0-D76F-46F5-A1F4-102C1F578900}.tres" id="6_tylbt"]
+[ext_resource type="WwiseEvent" uid="uid://bcda3a0wn4qjv" path="res://Wwise/resources/Event/{16105FEA-20F0-499A-A12F-CC234D4B9714}.tres" id="7_3frpx"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="7_gls0k"]
+[ext_resource type="Resource" uid="uid://buu4r0q31qb44" path="res://systems/time/frame_freeze_big.tres" id="8_m3ffd"]
+[ext_resource type="Script" uid="uid://b7n1kj0lt03wh" path="res://systems/utils/node3d_shaker.gd" id="9_2v1x1"]
+[ext_resource type="Texture2D" uid="uid://dr2x1oqniupe3" path="res://elements/general_use/texture/t_basic_shake_noise.tres" id="10_rq362"]
+[ext_resource type="PackedScene" uid="uid://drwnr3myd5tst" path="res://elements/enemy/statue_ivo/mesh/graphic_ivo_estatua.tscn" id="11_1exmq"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="12_3frpx"]
+[ext_resource type="PackedScene" uid="uid://1hsjfwbjawv6" path="res://elements/vfx/vfx_player/movement_particle_vfx.tscn" id="12_bqthl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a2apl"]
+size = Vector3(1.79773, 8.14026, 3.46686)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ehq5v"]
+size = Vector3(2, 2.86035, 1.84973)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q8ont"]
+size = Vector3(1.5, 2.388, 1.299)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ij4qw"]
+size = Vector3(1.6, 1.532, 2.182)
+
+[node name="EnemyStatue" type="Node3D"]
+
+[node name="PressableTumbler" type="Node" parent="." node_paths=PackedStringArray("pressable", "tumbler", "tumble_corner")]
+script = ExtResource("5_nungv")
+pressable = NodePath("../Dancer/Pressable")
+multiplier = 0.5
+tumbler = NodePath("../Dancer/Graphics - AnimationPivot_X/Graphics - AnimationPivot_Y/Graphics - AnimationTumbler")
+tumble_corner = NodePath("../Dancer/Graphics - AnimationPivot_X/Graphics - AnimationPivot_Y/Graphics - AnimationTumbler/Graphics - Rotation Death Dance/Graphics - AnimationShake/graphic_ivo_estatua/tumble corner")
+
+[node name="Dancer" type="Node3D" parent="."]
+
+[node name="Pressable" type="Node3D" parent="Dancer"]
+script = ExtResource("6_hr4ye")
+search_for_area_inside = true
+
+[node name="PressableArea" type="Area3D" parent="Dancer/Pressable"]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dancer/Pressable/PressableArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00494385, 4.07013, -0.733429)
+shape = SubResource("BoxShape3D_a2apl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Dancer" groups=["enemy_position"]]
+collision_layer = 4
+collision_mask = 11
+
+[node name="Health" type="Node" parent="Dancer/StaticBody3D" node_paths=PackedStringArray("feedback")]
+script = ExtResource("7_gls0k")
+feedback = [NodePath("../../Graphics - AnimationPivot_X/Graphics - AnimationPivot_Y/Graphics - AnimationTumbler/Graphics - Rotation Death Dance/Graphics - AnimationShake/graphic_ivo_estatua")]
+frame_freeze_on_death = ExtResource("8_m3ffd")
+feedback_deepness = 8
+feedback_ignore_contains_divided_by_commas = "olho"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dancer/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43018, 0.0751343)
+shape = SubResource("BoxShape3D_ehq5v")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Dancer/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.02966, -0.200043)
+shape = SubResource("BoxShape3D_q8ont")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Dancer/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.642788, -0.766044, 0, 0.766044, 0.642788, 0, 5.406, -0.896)
+shape = SubResource("BoxShape3D_ij4qw")
+
+[node name="DeathSFX" type="AkEvent3D" parent="Dancer/StaticBody3D"]
+event = ExtResource("5_yvgbw")
+
+[node name="Shoot Origin" type="Node3D" parent="Dancer/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.75, 0)
+
+[node name="ShootSFX" type="AkEvent3D" parent="Dancer/StaticBody3D/Shoot Origin"]
+event = ExtResource("6_tylbt")
+
+[node name="Shoot_MultipleSFX" type="AkEvent3D" parent="Dancer/StaticBody3D/Shoot Origin"]
+event = ExtResource("7_3frpx")
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="Dancer/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+aabb = AABB(-2.21226, -3.48398, -2.43298, 4.42452, 6.96795, 4.86595)
+
+[node name="Graphics - AnimationPivot_X" type="Node3D" parent="Dancer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="Score Target" type="Node3D" parent="Dancer/Graphics - AnimationPivot_X"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 3.25)
+
+[node name="Graphics - AnimationPivot_Y" type="Node3D" parent="Dancer/Graphics - AnimationPivot_X"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 1)
+
+[node name="Graphics - AnimationTumbler" type="Node3D" parent="Dancer/Graphics - AnimationPivot_X/Graphics - AnimationPivot_Y"]
+
+[node name="Graphics - Rotation Death Dance" type="Node3D" parent="Dancer/Graphics - AnimationPivot_X/Graphics - AnimationPivot_Y/Graphics - AnimationTumbler"]
+
+[node name="Graphics - AnimationShake" type="Node3D" parent="Dancer/Graphics - AnimationPivot_X/Graphics - AnimationPivot_Y/Graphics - AnimationTumbler/Graphics - Rotation Death Dance"]
+script = ExtResource("9_2v1x1")
+noise_texture = ExtResource("10_rq362")
+shake_amplitude_ratio = 0.0
+shake_amplitude = 0.2
+shake_y = false
+
+[node name="graphic_ivo_estatua" parent="Dancer/Graphics - AnimationPivot_X/Graphics - AnimationPivot_Y/Graphics - AnimationTumbler/Graphics - Rotation Death Dance/Graphics - AnimationShake" instance=ExtResource("11_1exmq")]
+
+[node name="tumble corner" type="Marker3D" parent="Dancer/Graphics - AnimationPivot_X/Graphics - AnimationPivot_Y/Graphics - AnimationTumbler/Graphics - Rotation Death Dance/Graphics - AnimationShake/graphic_ivo_estatua"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01244, 0, -1.0331)
+
+[node name="MovementParticleVFX" parent="Dancer/Graphics - AnimationPivot_X/Graphics - AnimationPivot_Y/Graphics - AnimationTumbler/Graphics - Rotation Death Dance/Graphics - AnimationShake/graphic_ivo_estatua" instance=ExtResource("12_bqthl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+
+[node name="MovementParticleVFX2" parent="Dancer/Graphics - AnimationPivot_X/Graphics - AnimationPivot_Y/Graphics - AnimationTumbler/Graphics - Rotation Death Dance/Graphics - AnimationShake/graphic_ivo_estatua" instance=ExtResource("12_bqthl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="Dancer/Graphics - AnimationPivot_X/Graphics - AnimationPivot_Y/Graphics - AnimationTumbler/Graphics - Rotation Death Dance/Graphics - AnimationShake/graphic_ivo_estatua"]
+script = ExtResource("12_3frpx")
+high_contrast_group = &"neutral"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[connection signal="pressed_process" from="Dancer/Pressable" to="." method="_on_pressable_pressed_process"]
+[connection signal="dead" from="Dancer/StaticBody3D/Health" to="." method="_on_health_dead"]
+[connection signal="dead_parameterless" from="Dancer/StaticBody3D/Health" to="Dancer/StaticBody3D/DeathSFX" method="post_event"]
+[connection signal="hit" from="Dancer/StaticBody3D/Health" to="." method="_on_health_hit"]

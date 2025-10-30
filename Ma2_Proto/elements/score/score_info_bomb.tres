@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ScoreInfo" load_steps=2 format=3 uid="uid://j2bn4xx5dswf"]
+
+[ext_resource type="Script" uid="uid://xfqoedvnoauc" path="res://systems/score/score_info.gd" id="1_djxsx"]
+
+[resource]
+script = ExtResource("1_djxsx")
+score_value = 100
+score_title = &"Bomba-boto"
+world_positioned = true
+breaks_combos = true
+combo_max_count = 3
+combo_value_extra_enemy = 20
+combo_value_last_enemy = 50
+combo_extra_time = 0.5
+ignore_boost_multiplier = false

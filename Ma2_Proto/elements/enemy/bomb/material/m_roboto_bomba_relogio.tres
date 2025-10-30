@@ -1,0 +1,24 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://6n1kbqnglgc3"]
+
+[ext_resource type="Texture2D" uid="uid://b3f7gg4bdtea8" path="res://elements/enemy/bomb/textura/m_roboto_bomba_relogio_BaseColor.png" id="1_k6k4s"]
+[ext_resource type="Texture2D" uid="uid://b58v1kg671u7m" path="res://elements/enemy/bomb/textura/m_roboto_bomba_relogio_Emission.png" id="2_p5flf"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jie0d"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("1_k6k4s")
+metallic = 0.15
+metallic_specular = 0.15
+roughness = 0.4
+emission_enabled = true
+emission_energy_multiplier = 16.0
+emission_texture = ExtResource("2_p5flf")
+rim_enabled = true
+rim_tint = 1.0
+clearcoat = 0.2
+clearcoat_roughness = 0.59
+anisotropy = 0.33
+ao_texture = SubResource("CompressedTexture2D_jie0d")
+backlight = Color(0.0313726, 0.0313726, 0.0313726, 1)

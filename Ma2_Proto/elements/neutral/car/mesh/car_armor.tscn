@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://dj5hn4eqp6d0s"]
+
+[ext_resource type="PackedScene" uid="uid://dmme43t8bpdda" path="res://elements/neutral/car/mesh/car_armor.glb" id="1_tvqty"]
+[ext_resource type="Material" uid="uid://b6fh6mog2dl4x" path="res://elements/neutral/car/material/m_car01_lataria.tres" id="2_v81bd"]
+[ext_resource type="Material" uid="uid://nmrtqueae2nu" path="res://elements/neutral/car/material/m_car01_pecas.tres" id="3_7l4ty"]
+[ext_resource type="Material" uid="uid://bgl3oqe0ncks2" path="res://elements/neutral/car/material/m_car01_farol.tres" id="4_sn6i4"]
+
+[node name="carro_02" instance=ExtResource("1_tvqty")]
+
+[node name="lataria" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_v81bd")
+surface_material_override/1 = ExtResource("3_7l4ty")
+
+[node name="farol" parent="." index="1"]
+material_override = ExtResource("4_sn6i4")

@@ -1,0 +1,420 @@
+[gd_scene load_steps=37 format=3 uid="uid://cv15dgl7hojlu"]
+
+[ext_resource type="Script" uid="uid://bt3rgk2gx218p" path="res://systems/stage/level_stage_piece.gd" id="1_iqgqm"]
+[ext_resource type="PackedScene" uid="uid://ceudsq1yfislt" path="res://elements/stage_pieces/stage_piece_afonso_pena_lanes3.tscn" id="2_1lpfc"]
+[ext_resource type="PackedScene" uid="uid://cd6ymp4wmjksa" path="res://elements/background/element_asphalt.tscn" id="4_chpxp"]
+[ext_resource type="PackedScene" uid="uid://c4sknhwemfrtu" path="res://elements/background/element_curb_sidewalk_path.tscn" id="5_4xth6"]
+[ext_resource type="PackedScene" uid="uid://daethslhep56i" path="res://elements/background/element_sidewalk.tscn" id="6_vdrqb"]
+[ext_resource type="PackedScene" uid="uid://icr3nye254ru" path="res://elements/neutral/props/traffic_decals/element_decal_white_line.tscn" id="6_xq8au"]
+[ext_resource type="PackedScene" uid="uid://5qf4qak3ro1f" path="res://elements/neutral/props/traffic_decals/element_decal_crosswalk_line.tscn" id="7_3qq72"]
+[ext_resource type="PackedScene" uid="uid://nfcpngs2i6pg" path="res://elements/neutral/props/traffic_decals/element_decal_crosswalk_red_bg.tscn" id="8_b76yk"]
+[ext_resource type="Material" uid="uid://bgw08081tgpwk" path="res://elements/neutral/props/traffic_decals/materials/m_decal_street_red.tres" id="9_m2nmn"]
+[ext_resource type="Material" uid="uid://chpftje1qediw" path="res://elements/background/material/m_wood.tres" id="10_ck478"]
+
+[sub_resource type="Curve3D" id="Curve3D_ks33c"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 9, 0, 0, -9, -0.5, 0, 0, 0, 0, 3, 0, 0, -3, -3, 0, -21, 0, 0, 1, 0, 0, -1, -3, 0, -24.5, -1, 0, 0, 1, 0, 0, -2, 0, -25.5, -1, 0, 0, 1, 0, 0, 2, 0, -25.5, 0, 0, -1, 0, 0, 1, 3, 0, -24.5, 0, 0, -3, 0, 0, 3, 3, 0, -21, 0, 0, -9, 0, 0, 9, 0.5, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_67cym"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(1.5, 0, -0.5, 0, 0, 0, 4.5, 0, 4.5, 2, 0, 0, -2, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, -1.5, -4.5, 0, 4.5),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_ucn7i"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(1.5, 0, -0.5, 0, 0, 0, 4.5, 0, 4.5, 2, 0, 0, -2, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, -1.5, -4.5, 0, 4.5),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_rmgco"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(1.5, 0, -0.5, 0, 0, 0, 4.5, 0, 4.5, 2, 0, 0, -2, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, -1.5, -4.5, 0, 4.5),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_2hnd0"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(1.5, 0, -0.5, 0, 0, 0, 4.5, 0, 4.5, 2, 0, 0, -2, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, -1.5, -4.5, 0, 4.5),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_xwwsb"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(1.5, 0, -0.5, 0, 0, 0, 4.2671, 0, 7.2409, 1.5, 0, 0, -1.5, 0, 0, 0, 0, 7.5, 0, 0, 0, 0, 0, -1.5, -4.14392, 0, 7.26721),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_4gf85"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(1.5, 0, -0.5, 0, 0, 0, 4.2671, 0, 7.2409, 1.5, 0, 0, -1.5, 0, 0, 0, 0, 7.5, 0, 0, 0, 0, 0, -1.5, -4.14392, 0, 7.26721),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_it5ap"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(1.5, 0, -0.5, 0, 0, 0, 4.2671, 0, 7.2409, 1.5, 0, 0, -1.5, 0, 0, 0, 0, 7.5, 0, 0, 0, 0, 0, -1.5, -4.14392, 0, 7.26721),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_28lxh"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(1.5, 0, -0.5, 0, 0, 0, 4.2671, 0, 7.2409, 1.5, 0, 0, -1.5, 0, 0, 0, 0, 7.5, 0, 0, 0, 0, 0, -1.5, -4.14392, 0, 7.26721),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_h76u7"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(1.5, 0, -0.5, 0, 0, 0, 3.95658, 0, 4.52261, 1.5, 0, 0, -1.5, 0, 0, 0.0129405, 0, 4.78079, 0, 0, 0, 0, 0, -1.5, -3.93848, 0, 4.5488),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_hr2t5"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(1.5, 0, -0.5, 0, 0, 0, 3.7373, 0, 4.52688, 2, 0, 0, -2, 0, 0, 0.0191389, 0, 4.66686, 0, 0, 0, 0, 0, -1.5, -3.72651, 0, 4.53416),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_e288i"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, -3.5, 0, 0, 3.5, 3.5, 0, 19.5, 0, 0, -8, 0, 0, 8, 1, 0, 40),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_j3y3h"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0.0288405, 0, -0.929121, -0.0288405, 0, 0.929121, 3.65824, 0, 13.0884, 0, 0, 0, 0, 0, 0.5, 3.57517, 0, 15.5445),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_k0lk5"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, -0.5, 0, 0, 0.5, 6.5, 0, 13, 0, 0, -0.5, 0, 0, 0.5, 6.37561, 0, 15.4114),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_mn8ry"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0.0288405, 0, -0.929121, -0.0288405, 0, 0.929121, 3.65824, 0, 13.0884, 0, 0, 0, 0, 0, 0.5, 3.57517, 0, 15.5445),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_i422h"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, -3.5, 0, 0, 3.5, 3.59456, 8.34465e-06, 19.4991, 0, 0, -8, 0, 0, 8, 1, 0, 40),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_dtdon"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, -0.5, 0, 0, 0.5, 6.5, 0, 13, 0, 0, -0.5, 0, 0, 0.5, 6.37561, 0, 15.4114),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_nw87x"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, -2.5, 0, 0, 2.5, 3, 0, 24, 0, 0, -8, 0, 0, 8, 0.5, 0, 40),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_wb8em"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, -2.5, 0, 0, 2.5, 3, 0, 24, 0, 0, -8, 0, 0, 8, 0.5, 0, 40),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_uhdqu"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0.0288405, 0, -0.929121, -0.0288405, 0, 0.929121, 3.65824, 0, 13.0884, 0, 0, 0, 0, 0, 0.5, 3.57517, 0, 15.5445),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_h3h73"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, -3.5, 0, 0, 3.5, 3.59456, 8.34465e-06, 19.4991, 0, 0, -8, 0, 0, 8, 1, 0, 40),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_xpg42"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, -0.5, 0, 0, 0.5, 6.5, 0, 13, 0, 0, -0.5, 0, 0, 0.5, 6.37561, 0, 15.4114),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_vewuc"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, -2.5, 0, 0, 2.5, 3, 0, 24, 0, 0, -8, 0, 0, 8, 0.5, 0, 40),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_5nks6"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, -2.5, 0, 0, 2.5, 3, 0, 24, 0, 0, -8, 0, 0, 8, 0.5, 0, 40),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5hb0e"]
+top_radius = 4.8
+height = 0.01
+radial_segments = 30
+rings = 1
+cap_bottom = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_tng4d"]
+size = Vector2(5, 5)
+center_offset = Vector3(0, 0.015, 0)
+orientation = 1
+
+[node name="StagePieceAfonsoPena6m_2" type="Node3D" node_paths=PackedStringArray("pivot_forward", "pivot_backward")]
+script = ExtResource("1_iqgqm")
+pivot_forward = NodePath("Config/forward")
+pivot_backward = NodePath("Config/back")
+
+[node name="Config" type="Node3D" parent="."]
+
+[node name="forward" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.5)
+gizmo_extents = 1.0
+
+[node name="back" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 46)
+gizmo_extents = 1.0
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Config"]
+aabb = AABB(-11, 0, -12, 24.99, 4.915, 24)
+
+[node name="Lanes 3" parent="Config" instance=ExtResource("2_1lpfc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 43)
+
+[node name="Objs" type="Node3D" parent="."]
+
+[node name="Asphalt" parent="." instance=ExtResource("4_chpxp")]
+transform = Transform3D(32, 0, 0, 0, 1, 0, 0, 0, 56, -16, 0, -16)
+
+[node name="Sidewalk" type="Node3D" parent="."]
+
+[node name="Curb Sidewalk Path" parent="Sidewalk" instance=ExtResource("5_4xth6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 39.5)
+curve = SubResource("Curve3D_ks33c")
+
+[node name="Sidewalk" parent="Sidewalk" instance=ExtResource("6_vdrqb")]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 7, -2.5, 0, 14.5)
+
+[node name="Sidewalk2" parent="Sidewalk" instance=ExtResource("6_vdrqb")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 5, -2, 0, 21)
+
+[node name="Sidewalk3" parent="Sidewalk" instance=ExtResource("6_vdrqb")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 7, -1, 0, 26)
+
+[node name="Decals" type="Node3D" parent="."]
+
+[node name="Decal White Line - Center" parent="Decals" instance=ExtResource("6_xq8au")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+curve = SubResource("Curve3D_67cym")
+
+[node name="Decal White Line - Center2" parent="Decals" instance=ExtResource("6_xq8au")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+curve = SubResource("Curve3D_ucn7i")
+
+[node name="Decal White Line - Center3" parent="Decals" instance=ExtResource("6_xq8au")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, 0, 0)
+curve = SubResource("Curve3D_rmgco")
+
+[node name="Decal White Line - Center4" parent="Decals" instance=ExtResource("6_xq8au")]
+curve = SubResource("Curve3D_2hnd0")
+
+[node name="Decal White Line6" parent="Decals" instance=ExtResource("6_xq8au")]
+curve = SubResource("Curve3D_xwwsb")
+
+[node name="Decal White Line9" parent="Decals" instance=ExtResource("6_xq8au")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+curve = SubResource("Curve3D_4gf85")
+
+[node name="Decal White Line10" parent="Decals" instance=ExtResource("6_xq8au")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, 0, 0)
+curve = SubResource("Curve3D_it5ap")
+
+[node name="Decal White Line11" parent="Decals" instance=ExtResource("6_xq8au")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+curve = SubResource("Curve3D_28lxh")
+
+[node name="Decal White Line7" parent="Decals" instance=ExtResource("6_xq8au")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.52494)
+curve = SubResource("Curve3D_h76u7")
+
+[node name="Decal White Line8" parent="Decals" instance=ExtResource("6_xq8au")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+curve = SubResource("Curve3D_hr2t5")
+
+[node name="Decal White Line - SIDE3" parent="Decals" instance=ExtResource("6_xq8au")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+curve = SubResource("Curve3D_e288i")
+
+[node name="Decal White Line - SIDE4" parent="Decals" instance=ExtResource("6_xq8au")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+curve = SubResource("Curve3D_j3y3h")
+
+[node name="Decal White Line - Lane2" parent="Decals" instance=ExtResource("6_xq8au")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+curve = SubResource("Curve3D_k0lk5")
+
+[node name="RIGHT" type="Node3D" parent="Decals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+
+[node name="Decal White Line - SIDE FRONT" parent="Decals/RIGHT" instance=ExtResource("6_xq8au")]
+curve = SubResource("Curve3D_mn8ry")
+
+[node name="Decal White Line - SIDE" parent="Decals/RIGHT" instance=ExtResource("6_xq8au")]
+curve = SubResource("Curve3D_i422h")
+
+[node name="Decal White Line - Lane front" parent="Decals/RIGHT" instance=ExtResource("6_xq8au")]
+curve = SubResource("Curve3D_dtdon")
+
+[node name="Decal White Line - Lane" parent="Decals/RIGHT" instance=ExtResource("6_xq8au")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0)
+curve = SubResource("Curve3D_nw87x")
+
+[node name="Decal White Line - Lane2" parent="Decals/RIGHT" instance=ExtResource("6_xq8au")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 0)
+curve = SubResource("Curve3D_wb8em")
+
+[node name="Crosswalk" type="Node3D" parent="Decals/RIGHT"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+
+[node name="Decal Crosswalk Line" parent="Decals/RIGHT/Crosswalk" instance=ExtResource("7_3qq72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 17.5)
+
+[node name="Decal Crosswalk Line2" parent="Decals/RIGHT/Crosswalk" instance=ExtResource("7_3qq72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 17.5)
+
+[node name="Decal Crosswalk Line3" parent="Decals/RIGHT/Crosswalk" instance=ExtResource("7_3qq72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 17.5)
+
+[node name="Decal Crosswalk Line4" parent="Decals/RIGHT/Crosswalk" instance=ExtResource("7_3qq72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 17.5)
+
+[node name="Decal Crosswalk Line5" parent="Decals/RIGHT/Crosswalk" instance=ExtResource("7_3qq72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 17.5)
+
+[node name="Decal Crosswalk Line6" parent="Decals/RIGHT/Crosswalk" instance=ExtResource("7_3qq72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 17.5)
+
+[node name="Decal Crosswalk Line7" parent="Decals/RIGHT/Crosswalk" instance=ExtResource("7_3qq72")]
+transform = Transform3D(-4.37114e-08, 0, -1.9, 0, 1, 0, 1, 0, -8.30516e-08, 6.5, 0, 21)
+
+[node name="Decal Crosswalk Line8" parent="Decals/RIGHT/Crosswalk" instance=ExtResource("7_3qq72")]
+transform = Transform3D(-4.37114e-08, 0, -1.9, 0, 1, 0, 1, 0, -8.30516e-08, 6, 0, 24)
+
+[node name="Decal Crosswalk Red BG" parent="Decals/RIGHT/Crosswalk" instance=ExtResource("8_b76yk")]
+transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 4, 6.5, 0, 17.5)
+
+[node name="LEFT" type="Node3D" parent="Decals"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+
+[node name="Decal White Line - SIDE FRONT" parent="Decals/LEFT" instance=ExtResource("6_xq8au")]
+curve = SubResource("Curve3D_uhdqu")
+
+[node name="Decal White Line - SIDE" parent="Decals/LEFT" instance=ExtResource("6_xq8au")]
+curve = SubResource("Curve3D_h3h73")
+
+[node name="Decal White Line - Lane front" parent="Decals/LEFT" instance=ExtResource("6_xq8au")]
+curve = SubResource("Curve3D_xpg42")
+
+[node name="Decal White Line - Lane" parent="Decals/LEFT" instance=ExtResource("6_xq8au")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0)
+curve = SubResource("Curve3D_vewuc")
+
+[node name="Decal White Line - Lane2" parent="Decals/LEFT" instance=ExtResource("6_xq8au")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 0)
+curve = SubResource("Curve3D_5nks6")
+
+[node name="Crosswalk" type="Node3D" parent="Decals/LEFT"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+
+[node name="Decal Crosswalk Line" parent="Decals/LEFT/Crosswalk" instance=ExtResource("7_3qq72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 17.5)
+
+[node name="Decal Crosswalk Line2" parent="Decals/LEFT/Crosswalk" instance=ExtResource("7_3qq72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 17.5)
+
+[node name="Decal Crosswalk Line3" parent="Decals/LEFT/Crosswalk" instance=ExtResource("7_3qq72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 17.5)
+
+[node name="Decal Crosswalk Line4" parent="Decals/LEFT/Crosswalk" instance=ExtResource("7_3qq72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 17.5)
+
+[node name="Decal Crosswalk Line5" parent="Decals/LEFT/Crosswalk" instance=ExtResource("7_3qq72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 17.5)
+
+[node name="Decal Crosswalk Line6" parent="Decals/LEFT/Crosswalk" instance=ExtResource("7_3qq72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 17.5)
+
+[node name="Decal Crosswalk Line7" parent="Decals/LEFT/Crosswalk" instance=ExtResource("7_3qq72")]
+transform = Transform3D(-4.37114e-08, 0, -1.9, 0, 1, 0, 1, 0, -8.30516e-08, 6.5, 0, 15.5)
+
+[node name="Decal Crosswalk Red BG" parent="Decals/LEFT/Crosswalk" instance=ExtResource("8_b76yk")]
+transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 4, 6.5, 0, 17.5)
+
+[node name="Red Circle" type="MeshInstance3D" parent="Decals"]
+material_override = ExtResource("9_m2nmn")
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_5hb0e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Decals"]
+material_override = ExtResource("10_ck478")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_tng4d")
+
+[connection signal="screen_entered" from="Config/VisibleOnScreenNotifier3D" to="." method="_on_screen_entered"]
+[connection signal="screen_exited" from="Config/VisibleOnScreenNotifier3D" to="." method="_on_screen_exited"]

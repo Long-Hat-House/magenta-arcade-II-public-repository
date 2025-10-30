@@ -1,0 +1,244 @@
+[gd_scene load_steps=15 format=3 uid="uid://cvi4hakv20bx2"]
+
+[ext_resource type="Script" uid="uid://dml0g0uiy3de1" path="res://modules/text_flow/zap/src/text_flow_zap.gd" id="1_tjwsg"]
+[ext_resource type="Texture2D" uid="uid://b2reje2eokv8r" path="res://modules/text_flow/zap/textures/text_flow_zap_ui_msg_bg.png" id="2_aq4t1"]
+[ext_resource type="Texture2D" uid="uid://bl4rnjntpyc8m" path="res://modules/text_flow/zap/textures/text_flow_zap_speaker_icon_unknown.png" id="2_kjeqe"]
+[ext_resource type="Texture2D" uid="uid://djul6bk0lxggh" path="res://modules/text_flow/zap/textures/text_flow_zap_ui_msg_bg_speaker.png" id="3_0xk8r"]
+[ext_resource type="StyleBox" uid="uid://bsb4jpe4s5a1u" path="res://modules/text_flow/zap/resources/text_flow_player_zap_box_hidden_button_clicked.tres" id="4_um6vi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1mj3l"]
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v3sry"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d0sla"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ahte5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_11b6e"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_55m3q"]
+resource_local_to_scene = true
+content_margin_left = 52.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 16.0
+texture = ExtResource("3_0xk8r")
+texture_margin_left = 48.0
+texture_margin_top = 32.0
+texture_margin_right = 29.0
+texture_margin_bottom = 32.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="Animation" id="Animation_kxdku"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("text_flow_zap_message/PanelContainer/VBoxContainer/RichTextLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_sdj1j"]
+resource_name = "single_shot"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("text_flow_zap_message/PanelContainer:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0, 0.491396, 1, -0.1, 0.513928, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("text_flow_zap_message/PanelContainer:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.8, -0.25, 0, 0, 0.58549, 1, -0.1, 0.0264444, 0.1, -0.114358),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("text_flow_zap_message/PanelContainer:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.4, -0.25, 0, 0.1, 0, 1, -0.1, -0.00171626, 0.25, 0),
+"times": PackedFloat32Array(0.00048437, 0.4)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("text_flow_zap_message/PanelContainer/VBoxContainer/RichTextLabel:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1.68179, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fd3ww"]
+_data = {
+&"RESET": SubResource("Animation_kxdku"),
+&"basic": SubResource("Animation_sdj1j")
+}
+
+[node name="TextFlowZap" type="BoxContainer" node_paths=PackedStringArray("_line_text_label", "_speaker_name_label", "_image_rect", "_speaker_icon_texture_rect", "_animation_player", "_hide_with_speaker_info", "_text_bg_panel")]
+offset_right = 776.0
+offset_bottom = 169.0
+size_flags_horizontal = 0
+alignment = 1
+vertical = true
+script = ExtResource("1_tjwsg")
+_line_text_label = NodePath("text_flow_zap_message/PanelContainer/VBoxContainer/RichTextLabel")
+_speaker_name_label = NodePath("text_flow_zap_message/PanelContainer/VBoxContainer/Label")
+_image_rect = NodePath("text_flow_zap_message/PanelContainer/VBoxContainer/ImageRect")
+_speaker_icon_texture_rect = NodePath("text_flow_zap_message/Left Space/Panel/TextureRect")
+_animation_player = NodePath("AnimationPlayer")
+_hide_with_speaker_info = NodePath("Extra Space Between Characters")
+_bg_no_speaker_texture = ExtResource("2_aq4t1")
+_text_bg_panel = NodePath("text_flow_zap_message/PanelContainer")
+
+[node name="Extra Space Between Characters" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="text_flow_zap_message" type="HBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Left Space" type="Control" parent="text_flow_zap_message"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="text_flow_zap_message/Left Space"]
+clip_children = 1
+clip_contents = true
+layout_mode = 0
+offset_right = 90.0
+offset_bottom = 90.0
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_styles/panel = SubResource("StyleBoxFlat_1mj3l")
+
+[node name="TextureRect" type="TextureRect" parent="text_flow_zap_message/Left Space/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+texture = ExtResource("2_kjeqe")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="text_flow_zap_message/Left Space/Panel/TextureRect"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v3sry")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_d0sla")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ahte5")
+theme_override_styles/pressed = ExtResource("4_um6vi")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_11b6e")
+
+[node name="PanelContainer" type="PanelContainer" parent="text_flow_zap_message"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_55m3q")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="text_flow_zap_message/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="text_flow_zap_message/PanelContainer/VBoxContainer"]
+self_modulate = Color(0.545098, 0.623529, 0.729412, 1)
+layout_mode = 2
+theme_type_variation = &"label_zap_bubble_handle"
+text = "Eva Magenta"
+justification_flags = 131
+
+[node name="Button" type="Button" parent="text_flow_zap_message/PanelContainer/VBoxContainer/Label"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v3sry")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_d0sla")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ahte5")
+theme_override_styles/pressed = ExtResource("4_um6vi")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_11b6e")
+flat = true
+
+[node name="ImageRect" type="TextureRect" parent="text_flow_zap_message/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="text_flow_zap_message/PanelContainer/VBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(580, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+theme_type_variation = &"richtextlabel_zap_bubble_text"
+bbcode_enabled = true
+text = "Meu nome é Eva Magenta e eu sou a..... Avó matriarca da família Magenta.
+~Eva Magenta"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+visible_characters_behavior = 1
+
+[node name="Space After" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fd3ww")
+}
+
+[connection signal="pressed" from="text_flow_zap_message/Left Space/Panel/TextureRect/Button" to="." method="click_speaker"]
+[connection signal="pressed" from="text_flow_zap_message/PanelContainer/VBoxContainer/Label/Button" to="." method="click_speaker"]

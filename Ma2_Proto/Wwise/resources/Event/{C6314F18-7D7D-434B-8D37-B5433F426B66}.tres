@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://b03iue6rejeah"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_MidBoss_Lv4_Hand_Punch_Prepare"
+id = 3264678641
+guid = "{C6314F18-7D7D-434B-8D37-B5433F426B66}"
+dummy = true

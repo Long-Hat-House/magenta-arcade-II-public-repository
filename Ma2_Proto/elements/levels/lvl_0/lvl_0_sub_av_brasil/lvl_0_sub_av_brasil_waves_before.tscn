@@ -1,0 +1,335 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7pps5f3esmok"]
+
+[ext_resource type="PackedScene" uid="uid://dcxopovxim3xx" path="res://elements/powerups/button/holdable_button_fire_rate.tscn" id="1_gp02a"]
+[ext_resource type="Script" uid="uid://dsvfipg4mxr7k" path="res://systems/line3d/child_line_3d.gd" id="1_ytgpr"]
+[ext_resource type="PackedScene" uid="uid://djhown2ulvtjc" path="res://elements/powerups/button/powerup_weapon_button_tap_blue.tscn" id="2_fcqmk"]
+[ext_resource type="PackedScene" uid="uid://bcmggsmmlhf30" path="res://elements/powerups/button/powerup_weapon_button_tap_green.tscn" id="3_fcqmk"]
+
+[sub_resource type="GDScript" id="GDScript_mvg20"]
+resource_name = "lvl_sub"
+script/source = "extends Level
+
+## game elements
+const WEAPON_BUTTON_HOLD_BLUE = preload(\"res://elements/powerups/button/powerup_weapon_button_hold_blue.tscn\")
+const WEAPON_BUTTON_HOLD_YELLOW = preload(\"res://elements/powerups/button/powerup_weapon_button_hold_yellow.tscn\")
+const WEAPON_BUTTON_TAP_BLUE = preload(\"res://elements/powerups/button/powerup_weapon_button_tap_blue.tscn\")
+const POWERUP_ALTAR = preload(\"res://elements/powerups/altar/powerup_altar.tscn\")
+
+const ENEMY_PIZZA_ROBOTO = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto.tscn\")
+const ENEMY_PIZZA_ROBOTO_SHOOTER = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto_shooter.tscn\")
+const ENEMY_PIZZA_ROBOTO_RUSTY = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto_rusty.tscn\")
+const ENEMY_PIZZA_ROBOTO_RUSTY_CANNON = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto_rusty_cannon.tscn\")
+const ENEMY_CHASER = preload(\"res://elements/enemy/chaser/enemy_chaser.tscn\")
+const ENEMY_BRAWNY = preload(\"res://elements/enemy/brawny/enemy_brawny.tscn\")
+const ENEMY_LASER_ROBOTO = preload(\"res://elements/enemy/laser/enemy_laser_roboto.tscn\")
+const ENEMY_ROBOTO_COPTER = preload(\"res://elements/enemy/copter/enemy_roboto_copter.tscn\")
+const ENEMY_BOMB_ROBOTO = preload(\"res://elements/enemy/bomb/enemy_bomb_roboto.tscn\")
+
+## pre-made formations
+@onready var line_entireScreen_Crazy:ChildLine3D = $Lines/Line_EntireScreen_Crazy
+
+@export var _wait_group:String = \"WaitGroup\"
+@export var first_altars:Array[PackedScene];
+@export var second_altars:Array[PackedScene];
+var _laser_group = \"WaitLaser\"
+
+func _ready():
+	await await_for_level_ready()
+
+	var copterSequence = func(coptersPerTurn:int, turns:int, timeBetweenTurns:float, line:ChildLine3D, group:String, every_copter:Callable = Callable()) -> Array[CMD]:
+		var arr:Array[CMD] = [];
+		while(turns > 0):
+			arr.push_back(CMD_Callable.new(func():
+				line.invert_x();
+				make_copters(ENEMY_ROBOTO_COPTER, coptersPerTurn, line, group, true, 1.5, every_copter);
+				))
+			arr.push_back(CMD_Wait_Seconds.new(timeBetweenTurns));
+			turns-=1;
+		return arr;
+		
+	var bomb_group1 := ScoreManager.instance.get_score_group(\"bomb_group1\", ScoreManager.SCORE_INFO_GROUP_BOMBS);
+	var bomb_group2 := ScoreManager.instance.get_score_group(\"bomb_group2\", ScoreManager.SCORE_INFO_GROUP_BOMBS);
+	var bomb_group3 := ScoreManager.instance.get_score_group(\"bomb_group3\", ScoreManager.SCORE_INFO_GROUP_BOMBS);
+
+	var everyPizza = func(pizza):
+		var wd := pizza as AI_WalkAndDo;
+		if wd:
+			wd.accelerationBegin = 8;
+			wd.accelerationDuration = 4;
+			wd.accelerationTrans = Tween.TRANS_QUAD;
+			wd.accelerationEase = Tween.EASE_OUT;
+			wd.walkAndStop = true;
+			wd.distanceMax = 17;
+
+	var everyCopter = func(copter:AI_Roboto_Copter):
+		copter.velocityLine *= 1.5;
+
+	cmd_array([
+		##Quarter 1 - First bombs
+		CMD_Callable.new(func():
+			stage.set_pivot_offset(Vector3(-6,0,45))
+			cam.tween_position_vector(stage.get_grid(0,0), 1.5);
+			),
+		CMD_Wait_Seconds.new(1.8),
+		CMD_Callable.new(func():
+			#Spawn bomb
+			var bomb := objs.create_object(ENEMY_BOMB_ROBOTO, _wait_group, stage.get_grid(0, -1))
+			bomb_group1.add_obj_with_giver_inside(bomb);
+			),
+		objs.cmd_wait_group(_wait_group),
+		CMD_Callable.new(func():
+			#Spawn bomb
+			var bomb := objs.create_object(ENEMY_BOMB_ROBOTO, _wait_group, stage.get_grid(2, -2))
+			bomb_group1.add_obj_with_giver_inside(bomb);
+			),
+		CMD_Wait_Seconds.new(3),
+		CMD_Callable.new(func():
+			#Spawn bomb
+			var bomb := objs.create_object(ENEMY_BOMB_ROBOTO, _wait_group, stage.get_grid(-2, -2))
+			bomb_group1.add_obj_with_giver_inside(bomb);
+			),
+		CMD_Wait_Seconds.new(1.5),
+		CMD_Callable.new(func():
+			#Spawn bomb
+			var bomb := objs.create_object(ENEMY_BOMB_ROBOTO, _wait_group, stage.get_grid(3, -2))
+			bomb_group1.add_obj_with_giver_inside(bomb);
+			
+			bomb_group1.set_group_ready();
+			),
+		objs.cmd_wait_group(_wait_group),
+		CMD_Wait_Seconds.new(0.5),
+		CMD_Callable.new(func():
+			stage.invert_pivot_offset();
+			cam.tween_position(stage.get_pos_x(), 1.5, LevelCameraController.MovementAxis.X);
+			),
+		CMD_Wait_Seconds.new(0.8),
+		CMD_Callable.new(func():
+			#Spawn bomb
+			make_enemy_line_in_cmd([ENEMY_PIZZA_ROBOTO, ENEMY_PIZZA_ROBOTO_SHOOTER], [0,0,0,1], 0, -3, -1, Vector2.UP * 2.2, _wait_group, everyPizza);
+			make_enemy_line_in_cmd([ENEMY_PIZZA_ROBOTO, ENEMY_PIZZA_ROBOTO_SHOOTER], [0,0,0,1], 0, 3, -1, Vector2.UP * 2.2, _wait_group, everyPizza);
+			),
+		CMD_Wait_Seconds.new(1.5),
+		CMD_Callable.new(func():
+			#Spawn bomb
+			var bomb := objs.create_object(ENEMY_BOMB_ROBOTO, _wait_group, stage.get_grid(0, -2))
+			bomb_group2.add_obj_with_giver_inside(bomb);
+			),
+		CMD_Wait_Seconds.new(4.5),
+		CMD_Callable.new(func():
+			var bomb := objs.create_object(ENEMY_BOMB_ROBOTO, _wait_group, stage.get_grid(2, -2))
+			bomb_group2.add_obj_with_giver_inside(bomb);
+			),
+		objs.cmd_wait_group_or_time(_wait_group, 3.0),
+		CMD_Callable.new(func():
+			make_enemy_line_in_cmd([ENEMY_PIZZA_ROBOTO, ENEMY_PIZZA_ROBOTO_SHOOTER], [0,0,0,1], 0, -4, -1, Vector2.UP * 2.2, _wait_group, everyPizza);
+			make_enemy_line_in_cmd([ENEMY_PIZZA_ROBOTO, ENEMY_PIZZA_ROBOTO_SHOOTER], [0,0,0,1], 0, 4, -1, Vector2.UP * 2.2, _wait_group, everyPizza);
+			),
+		CMD_Wait_Seconds.new(2),
+		CMD_Callable.new(func():
+			var bomb := objs.create_object(ENEMY_BOMB_ROBOTO, _wait_group, stage.get_grid(-2, -2))
+			bomb_group2.add_obj_with_giver_inside(bomb);
+			
+			bomb_group2.set_group_ready();
+
+			),
+
+		##Quarter 2 - Distraction from bombs
+		objs.cmd_wait_group(_wait_group, 1),
+		CMD_Wait_Seconds.new(1),
+
+		CMD_Callable.new(func():
+			stage.invert_pivot_offset();
+			cam.tween_position(stage.get_grid(0,0).x, 1.5, LevelCameraController.MovementAxis.X);
+			cam.tween_position(stage.get_grid(0,0).z, 1.5, LevelCameraController.MovementAxis.Z);
+
+			),
+
+		CMD_Wait_Seconds.new(1.40),
+		
+		Level_Cmd_Utils.cmd_multiple_altars_right_to_left(POWERUP_ALTAR, first_altars, self, _wait_group),
+		objs.cmd_wait_group(_wait_group),
+
+		CMD_Wait_Seconds.new(0.2),
+		CMD_Callable.new(func():
+			make_enemy_line_in_cmd([ENEMY_PIZZA_ROBOTO, ENEMY_PIZZA_ROBOTO_SHOOTER], [0,0,0,1], 0, -1, -1, Vector2.UP * 2.2, _wait_group, everyPizza);
+			make_enemy_line_in_cmd([ENEMY_PIZZA_ROBOTO, ENEMY_PIZZA_ROBOTO_SHOOTER], [0,0,0,1], 0, 1, -1, Vector2.UP * 2.2, _wait_group, everyPizza);
+			),
+		CMD_Wait_Seconds.new(0.8),
+		CMD_Callable.new(func():
+			line_entireScreen_Crazy.position = stage.get_grid(0,0);
+			cmd(CMD_Parallel.new([
+				CMD_Sequence.new(copterSequence.call(4, 6, 4 * 0.5, line_entireScreen_Crazy, _wait_group, everyCopter)),
+				CMD_Sequence.new([
+					CMD_Wait_Seconds.new(4),
+					CMD_Sequence.new(
+						sequence_make_enemy_line([ENEMY_PIZZA_ROBOTO, ENEMY_PIZZA_ROBOTO_SHOOTER], [0,0,0,1], 0, -2, -1, Vector2.UP * 2.2, _wait_group, everyPizza) +\\
+						sequence_make_enemy_line([ENEMY_PIZZA_ROBOTO, ENEMY_PIZZA_ROBOTO_SHOOTER], [0,0,0,1], 0, 2, -1, Vector2.UP * 2.2, _wait_group, everyPizza)
+						),
+					CMD_Wait_Seconds.new(7),
+					CMD_Sequence.new(
+						sequence_make_enemy_line([ENEMY_PIZZA_ROBOTO, ENEMY_PIZZA_ROBOTO_SHOOTER], [0,0,0,1,1], 0, -3, -1, Vector2.UP * 2.2, _wait_group, everyPizza) +\\
+						sequence_make_enemy_line([ENEMY_PIZZA_ROBOTO, ENEMY_PIZZA_ROBOTO_SHOOTER], [0,0,0,1,1], 0, 3, -1, Vector2.UP * 2.2, _wait_group, everyPizza)
+						),
+					
+				]),
+			], 2))
+			),
+		objs.cmd_wait_group(_wait_group, 1),
+		CMD_Wait_Seconds.new(1.1),
+		#
+		##Quarter 3 - Bombs with lasers
+		CMD_Callable.new(func():
+			stage.invert_pivot_offset();
+			cam.tween_position(stage.get_grid(0,0).x, 1.25, LevelCameraController.MovementAxis.X);
+			cam.tween_position(stage.get_grid(0,0).z, 1.25, LevelCameraController.MovementAxis.Z);
+			),
+		Level.CMD_Wait_Seconds.new(0.95),
+		Level.CMD_Parallel_Complete.new([
+			#Lasers
+			Level.CMD_Sequence.new([
+				CMD_Callable.new(func():
+					var rightOne = objs.create_object(ENEMY_LASER_ROBOTO, _laser_group, stage.get_grid(8, 5));
+					rightOne.distanceMax -= 1;
+					rightOne.transform = rightOne.transform.rotated_local(Vector3.UP, -PI * 0.2);
+					rightOne.inverted_direction = true;
+					),
+				objs.cmd_wait_group(_laser_group),
+				CMD_Wait_Seconds.new(0.8),
+				CMD_Callable.new(func():
+					var leftOne = objs.create_object(ENEMY_LASER_ROBOTO, _laser_group, stage.get_grid(3.5, -1));
+					leftOne.distanceMax *= 1.25;
+					),
+				objs.cmd_wait_group_or_time(_laser_group, 3.0),
+				CMD_Callable.new(func():
+					var rightOne = objs.create_object(ENEMY_LASER_ROBOTO, _laser_group, stage.get_grid(-3.5, -1));
+					rightOne.inverted_direction = true;	
+					rightOne.distanceMax *= 1.25;
+					),
+				objs.cmd_wait_group_or_time(_laser_group, 3.0),
+				cmd_enemy_line([ENEMY_PIZZA_ROBOTO, ENEMY_PIZZA_ROBOTO_SHOOTER], [0,0,0,0,1], 0, -1.5, -1, Vector2.UP * 2.2, _laser_group, everyPizza),
+				cmd_enemy_line([ENEMY_PIZZA_ROBOTO, ENEMY_PIZZA_ROBOTO_SHOOTER], [0,0,0,0,1], 0, 1.5, -1, Vector2.UP * 2.2, _laser_group, everyPizza),
+				objs.cmd_wait_group(_laser_group),
+			]),
+			#Bombs
+			Level.CMD_Sequence.new([
+				CMD_Wait_Seconds.new(2),
+				CMD_Callable.new(func():
+					var bomb := objs.create_object(ENEMY_BOMB_ROBOTO, _wait_group, stage.get_grid(-2, -2))
+					bomb_group3.add_obj_with_giver_inside(bomb);
+					),
+				CMD_Wait_Seconds.new(4),
+				CMD_Callable.new(func():
+					var bomb := objs.create_object(ENEMY_BOMB_ROBOTO, _wait_group, stage.get_grid(2, -2))
+					bomb_group3.add_obj_with_giver_inside(bomb);
+					
+					bomb_group3.set_group_ready();
+					),
+				objs.cmd_wait_group(_wait_group),
+			]),
+		]),
+		Level.CMD_Wait_Seconds.new(0.25),
+		Level_Cmd_Utils.cmd_multiple_altars_left_to_right(POWERUP_ALTAR, second_altars, self, _wait_group),
+		objs.cmd_wait_group(_wait_group),
+		Level.CMD_Wait_Seconds.new(0.25),
+
+	]);
+"
+
+[node name="LVL AV BRASIL WAVES BEFORE" type="Node3D"]
+script = SubResource("GDScript_mvg20")
+first_altars = Array[PackedScene]([ExtResource("1_gp02a"), ExtResource("2_fcqmk")])
+second_altars = Array[PackedScene]([ExtResource("2_fcqmk"), ExtResource("3_fcqmk")])
+
+[node name="Lines" type="Node" parent="."]
+
+[node name="Line_Straight" type="Node3D" parent="Lines"]
+script = ExtResource("1_ytgpr")
+
+[node name="Marker3D" type="Marker3D" parent="Lines/Line_Straight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="Lines/Line_Straight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+
+[node name="Line_Curvy" type="Node3D" parent="Lines"]
+script = ExtResource("1_ytgpr")
+
+[node name="Marker3D" type="Marker3D" parent="Lines/Line_Curvy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
+
+[node name="Marker3D3" type="Marker3D" parent="Lines/Line_Curvy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="Marker3D4" type="Marker3D" parent="Lines/Line_Curvy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2)
+
+[node name="Marker3D5" type="Marker3D" parent="Lines/Line_Curvy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2)
+
+[node name="Marker3D6" type="Marker3D" parent="Lines/Line_Curvy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="Lines/Line_Curvy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+
+[node name="Line_ForwardThenBack" type="Node3D" parent="Lines"]
+script = ExtResource("1_ytgpr")
+
+[node name="Marker3D" type="Marker3D" parent="Lines/Line_ForwardThenBack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
+
+[node name="Marker3D3" type="Marker3D" parent="Lines/Line_ForwardThenBack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="Marker3D4" type="Marker3D" parent="Lines/Line_ForwardThenBack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
+
+[node name="Marker3D5" type="Marker3D" parent="Lines/Line_ForwardThenBack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -2)
+
+[node name="Line_EntireScreen_Crazy" type="Node3D" parent="Lines"]
+script = ExtResource("1_ytgpr")
+
+[node name="Marker3D" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+
+[node name="Marker3D2" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="Marker3D3" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
+
+[node name="Marker3D4" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 5)
+
+[node name="Marker3D5" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 5)
+
+[node name="Marker3D6" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 8)
+
+[node name="Marker3D7" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 8)
+
+[node name="Marker3D8" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 11)
+
+[node name="Marker3D9" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 11)
+
+[node name="Marker3D10" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 14)
+
+[node name="Marker3D11" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 14)
+
+[node name="Marker3D12" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 17)
+
+[node name="Marker3D13" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 17)
+
+[node name="Marker3D14" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 20)
+
+[node name="Marker3D15" type="Marker3D" parent="Lines/Line_EntireScreen_Crazy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 20)

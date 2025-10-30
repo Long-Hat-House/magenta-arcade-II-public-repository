@@ -1,0 +1,4891 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "iOS",
+  "BasePlatform": "iOS",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2297208207",
+    "Type": "User",
+    "GUID": "{59B0973B-5D36-4240-92CD-2FA023C02386}",
+    "Language": "SFX",
+    "Hash": "{2CD8E09C-51AF-E6DE-14BB-E67E1179E868}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\SFX_Enemy",
+    "ShortName": "SFX_Enemy",
+    "Path": "SFX_Enemy.bnk",
+    "Media": [
+     {
+      "Id": "15453842",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_explosion_basic_05.wav",
+      "CachePath": "86/{86ADE8AE-E338-9F92-D9F5-23E526EBADAF}.wem"
+     },
+     {
+      "Id": "16100467",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_DEATH\\enm_boss_death_light_ray_09.wav",
+      "CachePath": "6C/{6C9659F1-B2E5-D06B-7E80-6CE6DEA1FCDC}.wem"
+     },
+     {
+      "Id": "16983127",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_DOG\\enm_boss_lv4_dog_eat_chew_01.wav",
+      "CachePath": "EC/{ECBB94AD-8A8B-67E7-ED67-5D257C98453C}.wem"
+     },
+     {
+      "Id": "22436129",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_metal_bits_03.wav",
+      "CachePath": "02/{02EE5BE9-41B2-46F0-D925-F6091083D8DF}.wem"
+     },
+     {
+      "Id": "23666327",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\CHASER\\enm_chaser_warning_07.wav",
+      "CachePath": "02/{025C141E-74EA-099F-859D-A7C63ECD7CBB}.wem"
+     },
+     {
+      "Id": "26247976",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_HAND\\enm_boss_lv4_hand_tap_impact_02.wav",
+      "CachePath": "F2/{F280D8AD-D6C0-4853-750E-B39FD56E72C9}.wem"
+     },
+     {
+      "Id": "27560830",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_child_immune_enable_02.wav",
+      "CachePath": "DC/{DCC73052-3200-A88B-2E4C-C06FBCE659E3}.wem"
+     },
+     {
+      "Id": "29898062",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_immune_13.wav",
+      "CachePath": "FA/{FAD73CD7-0814-0E85-13CE-88E0CDB22CC3}.wem"
+     },
+     {
+      "Id": "39712206",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV2\\enm_boss_lv2_goal_player_02.wav",
+      "CachePath": "59/{59A751F3-AB41-D759-5FFF-DFB07C87EED7}.wem"
+     },
+     {
+      "Id": "41355662",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_train_movement_single_09.wav",
+      "CachePath": "4A/{4AA01867-08C1-DA71-0545-9046EC7D0A00}.wem"
+     },
+     {
+      "Id": "48367902",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_up_11.wav",
+      "CachePath": "A9/{A94C800D-1624-39D1-B069-2B30B6E8EB0A}.wem"
+     },
+     {
+      "Id": "52089936",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_LASER\\enm_attack_laser_start_01.wav",
+      "CachePath": "05/{05103C02-298A-C847-98F3-2F88854421D3}.wem"
+     },
+     {
+      "Id": "52799711",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_phone_speaker_01.wav",
+      "CachePath": "FF/{FF19513F-E534-5577-F27A-062AA9F5A769}.wem"
+     },
+     {
+      "Id": "57002063",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\CHASER\\enm_chaser_warning_loop_01.wav",
+      "CachePath": "EA/{EA301439-80C9-1E0F-CFF9-3430E8EDDCB1}.wem"
+     },
+     {
+      "Id": "60559864",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_FINAL\\enm_boss_lv4_final_spirit_heal_02.wav",
+      "CachePath": "02/{02250FE2-94B9-A493-F001-9FB41878AD8F}.wem"
+     },
+     {
+      "Id": "60716892",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\CHASER\\enm_chaser_warning_03.wav",
+      "CachePath": "FE/{FE76E72E-4CDD-4F0A-1931-FD77FFEBC24D}.wem"
+     },
+     {
+      "Id": "62406604",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV2\\enm_boss_lv2_ball_bounce_01.wav",
+      "CachePath": "AE/{AE0850F0-528F-9884-1158-BAD6A66710EF}.wem"
+     },
+     {
+      "Id": "69328776",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_DOG\\enm_boss_lv4_dog_eat_start_02.wav",
+      "CachePath": "83/{83AE2745-677A-227F-730D-58903A802575}.wem"
+     },
+     {
+      "Id": "70175384",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_WARNING\\enm_attack_warning_interrupt_01.wav",
+      "CachePath": "68/{68A0C3C1-5F19-81D6-9533-69583F7B0F4F}.wem"
+     },
+     {
+      "Id": "70972793",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_HAND\\enm_boss_lv4_hand_tap_lift_01.wav",
+      "CachePath": "10/{107A87F3-AC08-38DA-ACD6-48D1C5E04F14}.wem"
+     },
+     {
+      "Id": "73870852",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_SQUARE_EXPLOSION\\enm_attack_square_explosion_glitch_04.wav",
+      "CachePath": "AF/{AF1DEC66-0459-9DF8-50F9-7C5C4D696BB7}.wem"
+     },
+     {
+      "Id": "80021334",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_up_01.wav",
+      "CachePath": "02/{02D0B697-B99E-462C-F118-F6A0D5E222BF}.wem"
+     },
+     {
+      "Id": "89614470",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\CHASER\\enm_chaser_warning_08.wav",
+      "CachePath": "C2/{C20C9AE8-5074-31F5-52C3-BC39526E8E1D}.wem"
+     },
+     {
+      "Id": "92026899",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_FINAL\\enm_boss_lv4_final_spirit_create_02.wav",
+      "CachePath": "0F/{0F8DB757-AFB4-3B28-C051-1C9C5E71A2D1}.wem"
+     },
+     {
+      "Id": "96119322",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_generic_v2_01.wav",
+      "CachePath": "AE/{AE9BD8FC-25D8-08A1-4CDE-43CFBD558925}.wem"
+     },
+     {
+      "Id": "98636557",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_train_movement_single_04.wav",
+      "CachePath": "E7/{E7345F9C-89EE-CF55-742A-69B9110AC4BF}.wem"
+     },
+     {
+      "Id": "127166587",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_DEATH\\enm_boss_death_light_ray_01.wav",
+      "CachePath": "6B/{6B7CECC6-6D5A-E1D0-D523-45B3EEE2F2A7}.wem"
+     },
+     {
+      "Id": "138478106",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV2\\enm_boss_lv2_goal_player_03.wav",
+      "CachePath": "5F/{5F8EEB33-899D-5BF0-0E27-B6835F7A9B1F}.wem"
+     },
+     {
+      "Id": "145340289",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_DOG\\enm_boss_lv4_dog_attack_02.wav",
+      "CachePath": "54/{5473755B-86D1-4781-75EE-8E051F607CF3}.wem"
+     },
+     {
+      "Id": "148575303",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV0\\enm_boss_lv0_shoot_release_03.wav",
+      "CachePath": "1D/{1DAC71F1-EC74-AF0E-678C-5F39B2477BBA}.wem"
+     },
+     {
+      "Id": "149895650",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV1\\enm_boss_lv1_shield_block_04.wav",
+      "CachePath": "29/{29EAF3FA-CA7D-FB81-2739-F88D7CB6D960}.wem"
+     },
+     {
+      "Id": "153911218",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_immune_01.wav",
+      "CachePath": "96/{96E30E3A-8889-19F8-E678-E3A7D4B0A1D4}.wem"
+     },
+     {
+      "Id": "159323240",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_LASER\\enm_attack_laser_loop_01.wav",
+      "CachePath": "F7/{F74D5F8D-21E9-ABD2-EA55-19F17E2ED8C3}.wem"
+     },
+     {
+      "Id": "168183728",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\CHASER\\enm_chaser_warning_01.wav",
+      "CachePath": "88/{88DF964B-3CDE-04A8-4CB4-7FE391130669}.wem"
+     },
+     {
+      "Id": "169133488",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_immune_08.wav",
+      "CachePath": "DA/{DA8E40EF-AD44-5BE0-3B9B-F2DBCD435AB6}.wem"
+     },
+     {
+      "Id": "173673328",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_explosion_basic_09.wav",
+      "CachePath": "76/{765447B0-2494-D907-7C39-03788664AC3F}.wem"
+     },
+     {
+      "Id": "176257587",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV0\\enm_boss_lv0_anim_secondphase_01.wav",
+      "CachePath": "71/{71146185-B23B-EA2A-3636-0C36FA4EC93D}.wem"
+     },
+     {
+      "Id": "176739327",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_generic_v2_05.wav",
+      "CachePath": "4F/{4FDFA246-B33D-CB14-D022-4833840E1419}.wem"
+     },
+     {
+      "Id": "177437714",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\CARPA\\enm_carpa_missile_launch_01.wav",
+      "CachePath": "37/{3739CC8C-13CC-C3B2-4D4F-1625A30FC779}.wem"
+     },
+     {
+      "Id": "180098937",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\CARPA\\enm_carpa_voice_path_04.wav",
+      "CachePath": "A6/{A607449D-C8DA-24D8-5FE3-14BB48432D69}.wem"
+     },
+     {
+      "Id": "181760444",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\CARPA\\enm_carpa_warning_01.wav",
+      "CachePath": "ED/{ED00FD26-FBE5-BA7D-7272-38F51D039B17}.wem"
+     },
+     {
+      "Id": "185574887",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\CARPA\\enm_carpa_voice_impact_05.wav",
+      "CachePath": "A8/{A87941E3-EAC4-FAE0-3114-7FFC0662EF8B}.wem"
+     },
+     {
+      "Id": "186959923",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_DOG\\enm_boss_lv4_dog_eat_start_03.wav",
+      "CachePath": "11/{11A4D1AF-3E93-B1EA-9DB6-9DCEA41F5D94}.wem"
+     },
+     {
+      "Id": "187661334",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_jump_mech_06.wav",
+      "CachePath": "B9/{B9D00CAE-2064-DC66-7CE3-B3DF7B5C37B6}.wem"
+     },
+     {
+      "Id": "188939634",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_FINAL\\enm_boss_lv4_final_spirit_create_03.wav",
+      "CachePath": "C9/{C94F6CA8-F6A1-F162-DA92-0DBB4E3A23E6}.wem"
+     },
+     {
+      "Id": "189848931",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_short_13.wav",
+      "CachePath": "55/{551669CC-C867-2D59-027E-350E20FD64B0}.wem"
+     },
+     {
+      "Id": "193615673",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_up_07.wav",
+      "CachePath": "B1/{B1E74AB1-9B1B-DE96-AC51-0F490CB19F5F}.wem"
+     },
+     {
+      "Id": "198358312",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_steam_start_02.wav",
+      "CachePath": "2C/{2C41E15A-8712-0A25-CEA5-52CF110B82BB}.wem"
+     },
+     {
+      "Id": "200267163",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_FINAL\\enm_boss_lv4_final_spirit_heal_04.wav",
+      "CachePath": "BA/{BA997961-54B2-E05A-A5A5-5308C2CFA1B0}.wem"
+     },
+     {
+      "Id": "203282128",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_immune_11.wav",
+      "CachePath": "3E/{3E1E2D6A-624A-026C-4ECD-BB453CB7B379}.wem"
+     },
+     {
+      "Id": "209404606",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_LASER\\enm_attack_laser_start_03.wav",
+      "CachePath": "25/{2555088C-D013-64DE-1028-335ECF22185C}.wem"
+     },
+     {
+      "Id": "211253492",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_DEATH\\enm_boss_death_light_ray_06.wav",
+      "CachePath": "18/{1872F4A7-E8BD-5F6F-BAF9-9E2DB7B2DC8F}.wem"
+     },
+     {
+      "Id": "214716763",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_short_08.wav",
+      "CachePath": "7C/{7CD1337A-1639-3AF6-2935-AE0C39C614A7}.wem"
+     },
+     {
+      "Id": "219206103",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_HAND\\enm_boss_lv4_hand_death_leave_01.wav",
+      "CachePath": "7F/{7FE69660-1B91-CA9C-CAAB-06C95B501F8A}.wem"
+     },
+     {
+      "Id": "224850128",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_HAND\\enm_boss_lv4_hand_tap_projectile_03.wav",
+      "CachePath": "51/{51427532-27D4-8490-697B-95D289274D44}.wem"
+     },
+     {
+      "Id": "224949133",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV2\\enm_boss_lv2_anim_death_01.wav",
+      "CachePath": "E1/{E19B6712-2A08-3228-315B-193AA84A19D1}.wem"
+     },
+     {
+      "Id": "229773007",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_train_movement_single_12.wav",
+      "CachePath": "CD/{CD6B2248-7279-5417-8AF0-5972898F318B}.wem"
+     },
+     {
+      "Id": "230389480",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_LASER\\enm_attack_laser_loop_tone_03.wav",
+      "CachePath": "46/{46875076-37FF-BC60-0AA3-95D51DE5C586}.wem"
+     },
+     {
+      "Id": "232014120",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_jump_mech_03.wav",
+      "CachePath": "90/{90298AC8-8687-B233-4820-7ED1EE0D5EB8}.wem"
+     },
+     {
+      "Id": "232602723",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_train_movement_single_11.wav",
+      "CachePath": "1F/{1F6153CF-57FC-EE3C-8EEE-21621DD00342}.wem"
+     },
+     {
+      "Id": "234048547",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_short_15.wav",
+      "CachePath": "52/{5272F265-7072-CBE9-1324-6250703A0ECA}.wem"
+     },
+     {
+      "Id": "241499546",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_ROUND_EXPLOSION\\enm_attack_round_explosion_a_04.wav",
+      "CachePath": "B6/{B624CD86-958D-D56A-BD7E-4012DBA3BB64}.wem"
+     },
+     {
+      "Id": "242649007",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV2\\enm_boss_lv2_goal_whistle_01.wav",
+      "CachePath": "AC/{AC74F3BE-C82A-BCF3-E8E2-EE39C12F3D5E}.wem"
+     },
+     {
+      "Id": "243488515",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\CARPA\\enm_carpa_voice_impact_07.wav",
+      "CachePath": "7D/{7D2C5074-5539-7D4C-661D-A58488F77DB2}.wem"
+     },
+     {
+      "Id": "244279958",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_DEATH\\enm_boss_death_light_ray_11.wav",
+      "CachePath": "DC/{DC1872EB-F5C8-021F-E7C8-1476BB8E328B}.wem"
+     },
+     {
+      "Id": "246301435",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV1\\enm_boss_lv1_shield_block_01.wav",
+      "CachePath": "FD/{FD192380-803A-C8DA-4EAA-EFE718F34A4A}.wem"
+     },
+     {
+      "Id": "247090060",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV1\\enm_boss_lv1_shoot_speaker_02.wav",
+      "CachePath": "EF/{EF4DF472-6B53-15D2-D65E-9CFC2D407C9B}.wem"
+     },
+     {
+      "Id": "247720679",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV0\\enm_boss_lv0_anim_death_01.wav",
+      "CachePath": "1F/{1F1B990E-D6DD-6803-BAF8-14998332A304}.wem"
+     },
+     {
+      "Id": "249546516",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_LASER\\enm_attack_laser_loop_tone_04.wav",
+      "CachePath": "1C/{1C09B88C-B3EE-93EC-9C90-5B5C57848823}.wem"
+     },
+     {
+      "Id": "250056544",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_metal_bits_01.wav",
+      "CachePath": "12/{12119808-2F0B-CC96-BB05-8B94D8A3B36D}.wem"
+     },
+     {
+      "Id": "262298693",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_jump_mech_02.wav",
+      "CachePath": "5D/{5D2192C1-C1F4-6B29-E5ED-207861D7CC9C}.wem"
+     },
+     {
+      "Id": "268997804",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_immune_03.wav",
+      "CachePath": "E7/{E75E7EA1-982E-E18F-B059-D4980895A251}.wem"
+     },
+     {
+      "Id": "269639258",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_ROUND_EXPLOSION\\enm_attack_round_explosion_a_02.wav",
+      "CachePath": "2C/{2C11AA61-BCED-A662-2D97-8263DDFE024F}.wem"
+     },
+     {
+      "Id": "274012309",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_explosion_basic_06.wav",
+      "CachePath": "E2/{E23D2AC8-D80E-AAF0-0DE9-A334D6A54A85}.wem"
+     },
+     {
+      "Id": "282907149",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_train_movement_single_02.wav",
+      "CachePath": "E3/{E3234465-1A36-41AA-83E7-50530EF15F2A}.wem"
+     },
+     {
+      "Id": "283042748",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_SQUARE_EXPLOSION\\enm_attack_square_explosion_glitch_01.wav",
+      "CachePath": "18/{18D415DC-C63C-1E2B-07EA-074FC78C4E38}.wem"
+     },
+     {
+      "Id": "288907257",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_up_04.wav",
+      "CachePath": "DD/{DDE18F79-CAE4-F18A-F3E5-70778187717B}.wem"
+     },
+     {
+      "Id": "293109985",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_steam_start_04.wav",
+      "CachePath": "69/{69FA52B3-C756-4A69-BA26-840ACC1CB3E0}.wem"
+     },
+     {
+      "Id": "298390029",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\CHASER\\enm_chaser_warning_02.wav",
+      "CachePath": "C6/{C6D3790F-C45B-A7A6-D22F-3845401AC67A}.wem"
+     },
+     {
+      "Id": "299027740",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_metal_bits_07.wav",
+      "CachePath": "E6/{E611E201-8ED7-5F28-657C-9E76FC144484}.wem"
+     },
+     {
+      "Id": "301261324",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_FINAL\\enm_boss_lv4_final_spirit_heal_03.wav",
+      "CachePath": "5E/{5ED7CF96-E82D-37C8-D133-1E39F979DCF1}.wem"
+     },
+     {
+      "Id": "306178359",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_steam_start_01.wav",
+      "CachePath": "37/{37BC125D-EE42-5A75-EB6D-51F8EC96B4E0}.wem"
+     },
+     {
+      "Id": "308284777",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_up_06.wav",
+      "CachePath": "C0/{C09D79AB-EA16-314D-6A89-547C56EFDA5F}.wem"
+     },
+     {
+      "Id": "309349662",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BRAWNY\\enm_brawny_impact_01.wav",
+      "CachePath": "17/{174CA86A-5790-208F-B995-B11B1F7CE408}.wem"
+     },
+     {
+      "Id": "309411765",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_steam_start_03.wav",
+      "CachePath": "1A/{1AC6D202-1E14-9C6B-D884-8CC02DD41AFB}.wem"
+     },
+     {
+      "Id": "317465235",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_DEATH\\enm_boss_death_light_ray_07.wav",
+      "CachePath": "9A/{9A89EA0F-1ED8-BC17-AADA-24EBD22089DE}.wem"
+     },
+     {
+      "Id": "319494602",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_up_03.wav",
+      "CachePath": "31/{31FBB51E-3AAD-F82B-798A-E2BB3FCE7CA5}.wem"
+     },
+     {
+      "Id": "323460468",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_HAND\\enm_boss_lv4_hand_anim_punch_appear_pre_01.wav",
+      "CachePath": "2C/{2CAE28AF-6CB8-BA72-E381-EE9E17B6C704}.wem"
+     },
+     {
+      "Id": "325306840",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_immune_09.wav",
+      "CachePath": "3E/{3EEFFB86-4DCB-BE8C-1154-D1D24F7044A3}.wem"
+     },
+     {
+      "Id": "327984768",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_jump_mech_01.wav",
+      "CachePath": "2F/{2FA3DDCC-BCBB-0073-3D97-D5347268B010}.wem"
+     },
+     {
+      "Id": "328527280",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_FINAL\\enm_boss_lv4_final_laser_loop_01.wav",
+      "CachePath": "E9/{E9FA741F-5CE1-1E78-4B8F-4A3E8507B45E}.wem"
+     },
+     {
+      "Id": "329787769",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV2\\enm_boss_lv2_crowd_cheer_02.wav",
+      "CachePath": "B2/{B2DC44AC-6232-CA8F-6105-DCF2E0B63DF5}.wem"
+     },
+     {
+      "Id": "331254348",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\CHASER\\enm_chaser_warning_09.wav",
+      "CachePath": "F2/{F2AEE1E2-5EDB-FF0E-0E0C-337F32C95E87}.wem"
+     },
+     {
+      "Id": "331535075",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_train_movement_freight_01.wav",
+      "CachePath": "EC/{EC121BA9-F3F8-C328-A2B1-4FFC8023BAF7}.wem"
+     },
+     {
+      "Id": "336459323",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_DEATH\\enm_boss_death_light_ray_08.wav",
+      "CachePath": "E5/{E5F0400B-732A-1209-4430-4E1479633DE2}.wem"
+     },
+     {
+      "Id": "341415582",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV2\\enm_boss_lv2_goal_whistle_02.wav",
+      "CachePath": "01/{01542880-651F-724D-012B-8939C585B8F6}.wem"
+     },
+     {
+      "Id": "346956923",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV1\\enm_boss_lv1_shield_disable_02.wav",
+      "CachePath": "E3/{E32D074C-9BE6-784A-F343-8AC6AC0E1066}.wem"
+     },
+     {
+      "Id": "351036601",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_metal_bits_10.wav",
+      "CachePath": "67/{674F0003-B79C-C1F0-BB66-8897D82E48EE}.wem"
+     },
+     {
+      "Id": "354801287",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_SQUARE_EXPLOSION\\enm_attack_square_explosion_step_a_01.wav",
+      "CachePath": "F6/{F66D78DF-1C61-0A30-FCD8-FF465F4E37D4}.wem"
+     },
+     {
+      "Id": "357710247",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_immune_05.wav",
+      "CachePath": "7D/{7D8940E0-F048-9634-9072-F4224FC4307D}.wem"
+     },
+     {
+      "Id": "362759982",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_child_immune_disable_03.wav",
+      "CachePath": "6E/{6E0EAE94-DCC9-E808-25A0-E2C5D986502E}.wem"
+     },
+     {
+      "Id": "363947593",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_train_movement_single_13.wav",
+      "CachePath": "73/{73155DE2-71C6-CE8D-79E7-21DB572D0DD6}.wem"
+     },
+     {
+      "Id": "368599866",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_up_02.wav",
+      "CachePath": "3A/{3A85EBED-C4DE-B8BD-53E8-F3E5F6F98F70}.wem"
+     },
+     {
+      "Id": "382552148",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_WARNING\\enm_attack_warning_interrupt_02.wav",
+      "CachePath": "4A/{4A1046D6-1135-6D24-19FA-EE8BA2A0B7E9}.wem"
+     },
+     {
+      "Id": "382626575",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_DEATH\\enm_boss_death_light_ray_05.wav",
+      "CachePath": "52/{52F1CB77-CD12-B705-B234-A0953B4ADDB2}.wem"
+     },
+     {
+      "Id": "384849960",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\CHASER\\enm_chaser_warning_06.wav",
+      "CachePath": "88/{882E4540-B07F-004F-22C5-9BCD47B6AE4E}.wem"
+     },
+     {
+      "Id": "388168230",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_short_02.wav",
+      "CachePath": "78/{78809BD8-B9AE-C34D-0AC2-3345CDEA84DA}.wem"
+     },
+     {
+      "Id": "389647532",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_jump_mech_04.wav",
+      "CachePath": "4D/{4DC91B7C-9FB4-37E1-F26B-F94ECD1F6F94}.wem"
+     },
+     {
+      "Id": "394590779",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_LASER\\enm_attack_laser_loop_01.wav",
+      "CachePath": "0F/{0F941F1D-5E36-7400-E023-30FA870245D9}.wem"
+     },
+     {
+      "Id": "410935932",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_SQUARE_EXPLOSION\\enm_attack_square_explosion_step_a_02.wav",
+      "CachePath": "2C/{2CEA4987-35EC-4EC5-CFD4-946F6D5E7F4C}.wem"
+     },
+     {
+      "Id": "414381182",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\CARPA\\enm_carpa_voice_impact_06.wav",
+      "CachePath": "99/{99FE821A-C91E-1C63-86EF-6B121561EE77}.wem"
+     },
+     {
+      "Id": "414444869",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_ROUND_EXPLOSION\\enm_attack_round_explosion_a_06.wav",
+      "CachePath": "5D/{5D8D4761-32D7-D3DA-E800-C3022EA77AC5}.wem"
+     },
+     {
+      "Id": "416956696",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_death_01.wav",
+      "CachePath": "DD/{DDED1FD7-2BB3-C520-B6C3-12CADE937789}.wem"
+     },
+     {
+      "Id": "437600514",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_jump_impact_01.wav",
+      "CachePath": "10/{1077E1A0-2C01-B65B-060B-A12FE1B699C7}.wem"
+     },
+     {
+      "Id": "438888000",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_metal_bits_05.wav",
+      "CachePath": "3B/{3BED22D6-D6B9-8D3E-7E64-E8BE73812ACE}.wem"
+     },
+     {
+      "Id": "442725335",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_DEATH\\enm_boss_death_light_ray_10.wav",
+      "CachePath": "74/{74700282-23A7-95B6-6001-C933D1AA2A70}.wem"
+     },
+     {
+      "Id": "444767605",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_short_11.wav",
+      "CachePath": "F5/{F532CAD0-A7A9-BB9D-A661-DE587D25030D}.wem"
+     },
+     {
+      "Id": "447072487",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_SQUARE_EXPLOSION\\enm_attack_square_explosion_step_c_03.wav",
+      "CachePath": "BE/{BE2E6291-52B5-312E-FC84-FF3896E58C9F}.wem"
+     },
+     {
+      "Id": "464721498",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_FINAL\\enm_boss_lv4_final_coffin_open_02.wav",
+      "CachePath": "DA/{DAE4C12F-292D-C00E-2180-948CB3D7D687}.wem"
+     },
+     {
+      "Id": "473377439",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_FINAL\\enm_boss_lv4_final_spirit_attack_05.wav",
+      "CachePath": "12/{128B12D0-DF6D-7EA8-D68B-A20C45EF9B2A}.wem"
+     },
+     {
+      "Id": "479752863",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_metal_bits_13.wav",
+      "CachePath": "9D/{9D3ECC94-5EA4-A2FB-7C4E-D9CB52417736}.wem"
+     },
+     {
+      "Id": "481577329",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_generic_v2_10.wav",
+      "CachePath": "60/{60056CA6-17EF-B295-9FFD-00CE5ED8C04A}.wem"
+     },
+     {
+      "Id": "482920356",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\CARPA\\enm_carpa_voice_path_05.wav",
+      "CachePath": "3F/{3F7A9361-9216-19ED-EC34-94956CED82E6}.wem"
+     },
+     {
+      "Id": "483709428",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_short_03.wav",
+      "CachePath": "6C/{6CEAD772-7E8F-F111-B015-AFEE07FE7CCD}.wem"
+     },
+     {
+      "Id": "484625380",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_ROUND_EXPLOSION\\enm_attack_round_explosion_a_03.wav",
+      "CachePath": "70/{7017CB59-755D-40BD-1966-C24D8F9BF64D}.wem"
+     },
+     {
+      "Id": "494092095",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_FINAL\\enm_boss_lv4_final_coffin_close_02.wav",
+      "CachePath": "9D/{9DCDA28B-F4E6-F035-6688-C635024469FB}.wem"
+     },
+     {
+      "Id": "498423423",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_explosion_basic_03.wav",
+      "CachePath": "57/{5748CAA8-22DC-9721-06ED-795F70AB6745}.wem"
+     },
+     {
+      "Id": "500013179",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_FINAL\\enm_boss_lv4_final_spirit_create_01.wav",
+      "CachePath": "DE/{DE5B2547-9DE8-23B1-0394-EE6598415EB9}.wem"
+     },
+     {
+      "Id": "506686897",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_HAND\\enm_boss_lv4_hand_death_01.wav",
+      "CachePath": "AC/{AC59C4E2-D4E6-EB8C-7D2A-58069BC084CC}.wem"
+     },
+     {
+      "Id": "506992226",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV2\\enm_boss_lv2_ball_bounce_07.wav",
+      "CachePath": "A1/{A1E41606-3314-05A9-00BD-33ED79801827}.wem"
+     },
+     {
+      "Id": "507969449",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_generic_v2_02.wav",
+      "CachePath": "89/{891CFED9-69FD-7BEF-D914-62CEAA11E543}.wem"
+     },
+     {
+      "Id": "510225389",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV1\\enm_boss_lv1_shield_enable_02.wav",
+      "CachePath": "B5/{B5375D7F-3E42-F1EE-AC64-CA83454FE6F9}.wem"
+     },
+     {
+      "Id": "520770671",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV2\\enm_boss_lv2_ball_bounce_03.wav",
+      "CachePath": "8F/{8F3C1149-9D47-CA5C-F7F9-78FF027835A9}.wem"
+     },
+     {
+      "Id": "521080545",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\CARPA\\enm_carpa_missile_impact_01.wav",
+      "CachePath": "5C/{5C5D9941-5C86-7D82-428D-EE153B4848B9}.wem"
+     },
+     {
+      "Id": "522800825",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_explosion_basic_07.wav",
+      "CachePath": "25/{25BD8C77-7B0F-54BE-28D2-95621E25094B}.wem"
+     },
+     {
+      "Id": "524864672",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_train_movement_single_07.wav",
+      "CachePath": "BC/{BC9E8810-0E79-2C76-148E-7DA99EBEA570}.wem"
+     },
+     {
+      "Id": "527120130",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_train_movement_single_10.wav",
+      "CachePath": "01/{01B14FAA-27D1-0C74-A2A8-490AD0562FB8}.wem"
+     },
+     {
+      "Id": "529784344",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_FINAL\\enm_boss_lv4_final_laser_start_01.wav",
+      "CachePath": "CD/{CD7EB2B6-D495-3E6D-D702-95A1150002CE}.wem"
+     },
+     {
+      "Id": "531734611",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_short_06.wav",
+      "CachePath": "60/{603471D5-84B8-27CC-0BFA-BF70A1C40F24}.wem"
+     },
+     {
+      "Id": "534130661",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_FINAL\\enm_boss_lv4_final_spirit_attack_03.wav",
+      "CachePath": "A9/{A9E6AE66-412D-ADC2-D259-AF07B771C272}.wem"
+     },
+     {
+      "Id": "537360014",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_SQUARE_EXPLOSION\\enm_attack_square_explosion_glitch_02.wav",
+      "CachePath": "92/{9258DEF4-FEF0-F1B7-FD8D-D164E83CE214}.wem"
+     },
+     {
+      "Id": "537873841",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_DEATH\\enm_boss_death_light_ray_03.wav",
+      "CachePath": "25/{25B67143-9E2C-3222-6F95-7EAD0BEE6FF5}.wem"
+     },
+     {
+      "Id": "552025169",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_explosion_basic_04.wav",
+      "CachePath": "0F/{0F094C36-5A3E-EC00-F1E3-8323D48AFAAA}.wem"
+     },
+     {
+      "Id": "553535236",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_SQUARE_EXPLOSION\\enm_attack_square_explosion_glitch_05.wav",
+      "CachePath": "37/{3768D416-E021-E6DA-E300-62BC8707DBEE}.wem"
+     },
+     {
+      "Id": "568414064",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\CARPA\\enm_carpa_voice_impact_04.wav",
+      "CachePath": "6E/{6EC2A856-F03B-1358-FD43-5093DFB48289}.wem"
+     },
+     {
+      "Id": "569455517",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_short_14.wav",
+      "CachePath": "14/{14BD8E55-A596-A0C2-9CF7-C9C5EC5FE60F}.wem"
+     },
+     {
+      "Id": "572811116",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_HAND\\enm_boss_lv4_hand_punch_attack_02.wav",
+      "CachePath": "E7/{E7FCD36C-E607-BC24-BA57-F397D165F6EF}.wem"
+     },
+     {
+      "Id": "573529998",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_metal_bits_08.wav",
+      "CachePath": "8B/{8BFEDCFF-BD35-5075-34DE-2E6D1B5E7BED}.wem"
+     },
+     {
+      "Id": "576021672",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_LASER\\enm_attack_laser_loop_tone_02.wav",
+      "CachePath": "4A/{4A2764A7-629F-6CCB-81AE-209185CE402C}.wem"
+     },
+     {
+      "Id": "577658797",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_HAND\\enm_boss_lv4_hand_tap_projectile_04.wav",
+      "CachePath": "4E/{4E88BD07-8424-37CF-D70C-3CED512842FB}.wem"
+     },
+     {
+      "Id": "578668339",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_train_movement_single_08.wav",
+      "CachePath": "F6/{F6DC6C4C-5C31-5ED1-EAEA-066387E29130}.wem"
+     },
+     {
+      "Id": "579171959",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_DEATH\\enm_boss_death_light_ray_02.wav",
+      "CachePath": "BD/{BDE1CDE2-2E21-BB3F-40E9-0755CEB0547A}.wem"
+     },
+     {
+      "Id": "580070641",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_generic_v2_09.wav",
+      "CachePath": "52/{52E21D03-5785-FE80-3FDE-99E4F6516456}.wem"
+     },
+     {
+      "Id": "586064248",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_main_immune_disable_01.wav",
+      "CachePath": "68/{6877214A-E28B-9D6C-F9CC-238A1C6FC0BC}.wem"
+     },
+     {
+      "Id": "587155105",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_LASER\\enm_attack_laser_start_02.wav",
+      "CachePath": "10/{10B1E547-6831-4F6F-0AC7-A5D4BFC5D531}.wem"
+     },
+     {
+      "Id": "590408055",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_FINAL\\enm_boss_lv4_final_coffin_open_03.wav",
+      "CachePath": "97/{977A3576-45F9-DC4D-8275-2F3B8523DBB6}.wem"
+     },
+     {
+      "Id": "593550971",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_HAND\\enm_boss_lv4_hand_punch_prepare_02.wav",
+      "CachePath": "8B/{8B0EBDC2-0080-4656-4CF0-7692366FA237}.wem"
+     },
+     {
+      "Id": "594467622",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_DEATH\\enm_boss_death_light_ray_13.wav",
+      "CachePath": "CD/{CDD3679F-3D57-E11C-1488-930C4CDAADAE}.wem"
+     },
+     {
+      "Id": "597168241",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_jump_impact_05.wav",
+      "CachePath": "37/{3711244A-7485-5E07-230C-F859BF342377}.wem"
+     },
+     {
+      "Id": "606855137",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV1\\enm_boss_lv1_shield_enable_01.wav",
+      "CachePath": "FC/{FCAF1642-A5CF-CD3F-B7DD-7676BE4B31E6}.wem"
+     },
+     {
+      "Id": "608380708",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\CARPA\\enm_carpa_voice_impact_01.wav",
+      "CachePath": "3E/{3E2EE1BD-E95D-6958-5CBE-2C99101863EC}.wem"
+     },
+     {
+      "Id": "630087467",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_up_08.wav",
+      "CachePath": "4C/{4C83EF9B-AFF6-014E-A5C6-FCE6AAB1E70A}.wem"
+     },
+     {
+      "Id": "633207728",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV0\\enm_boss_lv0_shoot_release_01.wav",
+      "CachePath": "4C/{4CD4EEEA-51E5-1363-79A4-6C9337E91202}.wem"
+     },
+     {
+      "Id": "637830421",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_DOG\\enm_boss_lv4_dog_eat_chew_02.wav",
+      "CachePath": "CA/{CA66401A-0426-8699-6EAC-D692479E97B2}.wem"
+     },
+     {
+      "Id": "646209928",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV1\\enm_boss_lv1_shield_block_03.wav",
+      "CachePath": "14/{1451586E-0836-6801-4E56-1FE67D79B5B9}.wem"
+     },
+     {
+      "Id": "652319037",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_immune_14.wav",
+      "CachePath": "B1/{B17F2E59-9C45-2C03-60BF-E9D16DF322FB}.wem"
+     },
+     {
+      "Id": "652759360",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\CHASER\\enm_chaser_warning_05.wav",
+      "CachePath": "D1/{D107960A-1868-34BC-AB30-2DF08B54F24E}.wem"
+     },
+     {
+      "Id": "656177835",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_HAND\\enm_boss_lv4_hand_tap_lift_02.wav",
+      "CachePath": "DD/{DD128FD2-4A1E-AB00-F4AB-159412E542C2}.wem"
+     },
+     {
+      "Id": "661317945",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_HAND\\enm_boss_lv4_hand_tap_lift_03.wav",
+      "CachePath": "74/{74781483-F5D4-0C4E-C977-D51B2DF833AD}.wem"
+     },
+     {
+      "Id": "664424453",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_metal_bits_12.wav",
+      "CachePath": "1E/{1EA2DE77-A039-91EC-B709-3D92FAD1D9C3}.wem"
+     },
+     {
+      "Id": "667379807",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\CARPA\\enm_carpa_voice_impact_03.wav",
+      "CachePath": "A4/{A4EDA622-89BB-37A0-238B-11E6F5D334F6}.wem"
+     },
+     {
+      "Id": "680713499",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_LASER\\enm_attack_laser_loop_tone_01.wav",
+      "CachePath": "C6/{C604CF1B-C1C0-5269-C62E-C2D362D997A3}.wem"
+     },
+     {
+      "Id": "682235123",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_short_07.wav",
+      "CachePath": "2E/{2E72F960-8B84-E8B6-AAE3-88C010DAA47A}.wem"
+     },
+     {
+      "Id": "682286847",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_short_10.wav",
+      "CachePath": "37/{3754B80D-D369-46DD-A1A9-E919655AC319}.wem"
+     },
+     {
+      "Id": "683468325",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_HAND\\enm_boss_lv4_hand_anim_appear_01.wav",
+      "CachePath": "7F/{7FB572E1-3EEE-C662-C647-970604B336D3}.wem"
+     },
+     {
+      "Id": "683834478",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_FINAL\\enm_boss_lv4_final_spirit_create_04.wav",
+      "CachePath": "3C/{3CBE1202-DFAB-D8D7-4D5E-0AAC692B006D}.wem"
+     },
+     {
+      "Id": "685365706",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_DEATH\\enm_boss_death_fade_to_white_01.wav",
+      "CachePath": "44/{4489C090-D2CA-21A0-7CCA-D331F977DCC8}.wem"
+     },
+     {
+      "Id": "688969196",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_FINAL\\enm_boss_lv4_final_spirit_attack_01.wav",
+      "CachePath": "26/{267BD3B3-F8B3-583F-A68A-C126B7FBB9D8}.wem"
+     },
+     {
+      "Id": "689697624",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\LANES\\world_lanes_hub_cogs_01.wav",
+      "CachePath": "C0/{C0AA28D3-3858-DD2B-5BCB-298F0B5D95AF}.wem"
+     },
+     {
+      "Id": "691234891",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BRAWNY\\enm_brawny_impact_pre_01.wav",
+      "CachePath": "46/{46F909E2-032B-D4F2-ADC6-9321045841D7}.wem"
+     },
+     {
+      "Id": "692895964",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_SQUARE_EXPLOSION\\enm_attack_square_explosion_step_c_02.wav",
+      "CachePath": "93/{9358C620-969A-2A7F-938C-C5EC8BB003E0}.wem"
+     },
+     {
+      "Id": "699814029",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_jump_impact_04.wav",
+      "CachePath": "48/{48701961-66D6-D864-EF4F-1B4AF2F191C4}.wem"
+     },
+     {
+      "Id": "700282159",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_HAND\\enm_boss_lv4_hand_anim_punch_appear_01.wav",
+      "CachePath": "B8/{B817360B-B308-587B-9790-4665D338A365}.wem"
+     },
+     {
+      "Id": "701480995",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_DOG\\enm_boss_lv4_dog_attack_warning_02.wav",
+      "CachePath": "30/{30C9DF0D-6FD2-8926-F4FC-05FB0339D357}.wem"
+     },
+     {
+      "Id": "706467939",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_short_01.wav",
+      "CachePath": "AA/{AACC854C-E309-3C44-1419-2801BD94BB4F}.wem"
+     },
+     {
+      "Id": "706827860",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV2\\enm_boss_lv2_anim_firstphase_01.wav",
+      "CachePath": "1D/{1D991F4E-CA86-3568-5543-C6549F9EE987}.wem"
+     },
+     {
+      "Id": "712526529",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_HAND\\enm_boss_lv4_hand_tap_projectile_02.wav",
+      "CachePath": "23/{23FA322D-8A19-25B3-4061-2D03B762F918}.wem"
+     },
+     {
+      "Id": "717547991",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_LASER\\enm_attack_laser_start_04.wav",
+      "CachePath": "72/{72CDB755-3521-FB13-0A32-87B9B67FBC97}.wem"
+     },
+     {
+      "Id": "721808357",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_HAND\\enm_boss_lv4_hand_punch_attack_01.wav",
+      "CachePath": "90/{908915BD-4235-C875-C333-961BC59C73A8}.wem"
+     },
+     {
+      "Id": "722306295",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_SQUARE_EXPLOSION\\enm_attack_square_explosion_glitch_03.wav",
+      "CachePath": "86/{86CDC1EB-6343-4B67-D923-81D22D84AD43}.wem"
+     },
+     {
+      "Id": "727921312",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_SQUARE_EXPLOSION\\enm_attack_square_explosion_step_c_01.wav",
+      "CachePath": "DE/{DEEA4C06-FB67-09F2-8CFF-3E62D919CB83}.wem"
+     },
+     {
+      "Id": "731905304",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_generic_v2_11.wav",
+      "CachePath": "FD/{FD0803C1-4A4C-54CA-F761-E151E74547B8}.wem"
+     },
+     {
+      "Id": "738128483",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_generic_v2_12.wav",
+      "CachePath": "52/{52AC1E91-F090-18D9-609C-6F2ADC88D37B}.wem"
+     },
+     {
+      "Id": "738871773",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_immune_02.wav",
+      "CachePath": "44/{44A2FFEE-66CB-B836-1C13-3E7AE8ABF82D}.wem"
+     },
+     {
+      "Id": "745012191",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\CHASER\\enm_chaser_warning_10.wav",
+      "CachePath": "77/{778FC72C-2F09-9F62-BE43-8CF419E68FE5}.wem"
+     },
+     {
+      "Id": "745469353",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV1\\enm_boss_lv1_shoot_speaker_03.wav",
+      "CachePath": "68/{681B69AD-C0EA-D649-BEA0-5B9CCF9A1CB9}.wem"
+     },
+     {
+      "Id": "754610147",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_ROUND_EXPLOSION\\enm_attack_round_explosion_a_05.wav",
+      "CachePath": "73/{73D9EA82-4664-3DEF-EC8B-D38C84710D49}.wem"
+     },
+     {
+      "Id": "754708347",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_short_09.wav",
+      "CachePath": "CE/{CE50A313-C0BD-1810-406A-4751D1A07506}.wem"
+     },
+     {
+      "Id": "758532617",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_short_04.wav",
+      "CachePath": "40/{40163207-BE3D-61E5-A75E-91AFDE07F532}.wem"
+     },
+     {
+      "Id": "771754309",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\CARPA\\enm_carpa_voice_path_03.wav",
+      "CachePath": "15/{159F3281-1A3B-B136-F32A-B317BF74135E}.wem"
+     },
+     {
+      "Id": "774422747",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV2\\enm_boss_lv2_crowd_cheer_01.wav",
+      "CachePath": "BE/{BE9DDF10-0C27-554D-E237-75001D364004}.wem"
+     },
+     {
+      "Id": "780976736",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_up_10.wav",
+      "CachePath": "8C/{8C2CE290-98AC-2EEC-FF4A-3A672DF018F7}.wem"
+     },
+     {
+      "Id": "783203302",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_WARNING\\enm_attack_warning_start_02.wav",
+      "CachePath": "E0/{E07D092A-A924-8FD4-ED86-768802760E65}.wem"
+     },
+     {
+      "Id": "789090110",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV0\\enm_boss_lv0_shoot_release_multiple_03.wav",
+      "CachePath": "8F/{8FABBF4D-E93D-E223-F617-0D56249051A2}.wem"
+     },
+     {
+      "Id": "789196657",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_explosion_basic_08.wav",
+      "CachePath": "59/{59B5BCFD-4EF2-8160-6AC4-862935BAD63F}.wem"
+     },
+     {
+      "Id": "791929598",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_main_immune_enable_01.wav",
+      "CachePath": "2E/{2E2F91D1-8FA1-29A1-136E-2FE5D0362B28}.wem"
+     },
+     {
+      "Id": "793034229",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_DOG\\enm_boss_lv4_dog_attack_01.wav",
+      "CachePath": "BE/{BEC7FD68-40E2-E266-3235-D05F329B4875}.wem"
+     },
+     {
+      "Id": "796917489",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV1\\enm_boss_lv1_shield_enable_03.wav",
+      "CachePath": "84/{8463A8EA-BD2D-43C1-98DD-D1A05DACE444}.wem"
+     },
+     {
+      "Id": "800197287",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_WARNING\\enm_attack_warning_loop_01.wav",
+      "CachePath": "5C/{5C9B1207-E452-4293-D3AE-FBFBEDD8ADE8}.wem"
+     },
+     {
+      "Id": "801612386",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV2\\enm_boss_lv2_ball_bounce_10.wav",
+      "CachePath": "55/{551E4115-7838-ED26-466D-59795F454768}.wem"
+     },
+     {
+      "Id": "805060101",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_DEATH\\enm_boss_death_light_ray_12.wav",
+      "CachePath": "35/{350B185A-8049-9561-BE2A-57AC2E60F129}.wem"
+     },
+     {
+      "Id": "805692865",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_SQUARE_EXPLOSION\\enm_attack_square_explosion_step_b_01.wav",
+      "CachePath": "AF/{AF82D4CC-8E42-88A7-7007-24FCA550B7DB}.wem"
+     },
+     {
+      "Id": "808633949",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_generic_v2_08.wav",
+      "CachePath": "9C/{9CCA93EC-B222-C8CA-217F-8B730622301C}.wem"
+     },
+     {
+      "Id": "812050595",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_metal_bits_11.wav",
+      "CachePath": "CC/{CC57AFB9-332B-9ECD-DACF-32E1D166CCBC}.wem"
+     },
+     {
+      "Id": "814647877",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV2\\enm_boss_lv2_crowd_cheer_03.wav",
+      "CachePath": "09/{097DD14B-8D5C-B721-7CA0-A1150562C304}.wem"
+     },
+     {
+      "Id": "828539393",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_immune_04.wav",
+      "CachePath": "47/{4700A798-75BA-0286-1226-DA91CE924979}.wem"
+     },
+     {
+      "Id": "829579378",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_FINAL\\enm_boss_lv4_final_spirit_attack_02.wav",
+      "CachePath": "02/{02D4EE72-7D61-A112-0045-B39468A30855}.wem"
+     },
+     {
+      "Id": "830599113",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV2\\enm_boss_lv2_ball_bounce_08.wav",
+      "CachePath": "12/{12940A79-4FC4-6EF0-E87D-2083A4B66762}.wem"
+     },
+     {
+      "Id": "830828633",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_WARNING\\enm_attack_warning_start_01.wav",
+      "CachePath": "A1/{A1D6D8C6-F840-9F67-E425-BEB81E2ADAA8}.wem"
+     },
+     {
+      "Id": "831108049",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_main_immune_enable_02.wav",
+      "CachePath": "0B/{0B450025-3FA7-7BE5-06B3-5575B0C5BED7}.wem"
+     },
+     {
+      "Id": "831585862",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_train_movement_single_05.wav",
+      "CachePath": "CE/{CE043188-7C51-1D13-D91C-12EF98E81F0B}.wem"
+     },
+     {
+      "Id": "837433827",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV2\\enm_boss_lv2_ball_bounce_06.wav",
+      "CachePath": "76/{7655626D-AA39-7C34-189C-971ED8AF0EFD}.wem"
+     },
+     {
+      "Id": "846719543",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_HAND\\enm_boss_lv4_hand_tap_projectile_05.wav",
+      "CachePath": "4D/{4D6625A3-CBED-388D-89B5-74B891C43E78}.wem"
+     },
+     {
+      "Id": "848831193",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_jump_impact_02.wav",
+      "CachePath": "B6/{B64D9C52-7154-4DC5-0CF1-7C1823764A51}.wem"
+     },
+     {
+      "Id": "850338584",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_immune_06.wav",
+      "CachePath": "5A/{5A541D26-5C3C-8B37-E8CC-DF9BAD2BB5F0}.wem"
+     },
+     {
+      "Id": "855312388",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_DOG\\enm_boss_lv4_dog_attack_warning_01.wav",
+      "CachePath": "17/{172274F1-2EB4-8916-4518-C016FFA295CA}.wem"
+     },
+     {
+      "Id": "856553250",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_short_16.wav",
+      "CachePath": "AB/{ABC7CD0B-D23C-F508-A234-2BCD1AC3A4A5}.wem"
+     },
+     {
+      "Id": "859839411",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_child_immune_disable_01.wav",
+      "CachePath": "80/{80EC41D4-A601-2EB4-56A2-B7A416B2D71B}.wem"
+     },
+     {
+      "Id": "860193305",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_HAND\\enm_boss_lv4_hand_tap_projectile_01.wav",
+      "CachePath": "3A/{3AE62D25-1385-F3A4-FF6A-FE48187E2BC3}.wem"
+     },
+     {
+      "Id": "861518492",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\LANES\\world_lanes_hub_cogs_02.wav",
+      "CachePath": "4D/{4D9D3AB7-3699-852F-060F-2190BA3AFFCA}.wem"
+     },
+     {
+      "Id": "862561372",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_jump_mech_05.wav",
+      "CachePath": "F7/{F7441620-A6E7-EDEC-5B96-11A33DF33BB6}.wem"
+     },
+     {
+      "Id": "866442015",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV0\\enm_boss_lv0_shoot_release_multiple_01.wav",
+      "CachePath": "CE/{CE20999B-0DE3-444B-0F15-4E5ED168F5A0}.wem"
+     },
+     {
+      "Id": "870409494",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV1\\enm_boss_lv1_shoot_speaker_04.wav",
+      "CachePath": "42/{424B6A0B-40F1-EE7D-94A0-CD560761275C}.wem"
+     },
+     {
+      "Id": "871741398",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_generic_v2_06.wav",
+      "CachePath": "DA/{DAE82A66-15D1-F38F-E2E8-E12AF68EBD89}.wem"
+     },
+     {
+      "Id": "878564695",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_immune_12.wav",
+      "CachePath": "1E/{1E03009A-2CC2-876D-AE42-4E82635A94E7}.wem"
+     },
+     {
+      "Id": "878760216",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_ROUND_EXPLOSION\\enm_attack_round_explosion_a_01.wav",
+      "CachePath": "85/{8586E501-43A5-CA77-E29D-C5F311DEBCD4}.wem"
+     },
+     {
+      "Id": "880922227",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_DOG\\enm_boss_lv4_dog_death_01.wav",
+      "CachePath": "E3/{E3193EE9-55C2-0520-1808-C5FC5F35BB28}.wem"
+     },
+     {
+      "Id": "882337857",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_short_05.wav",
+      "CachePath": "62/{624EB050-09E5-59A8-E87A-AE941BA33881}.wem"
+     },
+     {
+      "Id": "885970789",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_HAND\\enm_boss_lv4_hand_tap_impact_03.wav",
+      "CachePath": "B9/{B9214111-A658-8422-73A7-326111CE1669}.wem"
+     },
+     {
+      "Id": "891452234",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV2\\enm_boss_lv2_ball_bounce_02.wav",
+      "CachePath": "B0/{B0279102-4FD1-8A4B-B9BD-0C55A39A25DA}.wem"
+     },
+     {
+      "Id": "896068900",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV0\\enm_boss_lv0_shoot_release_multiple_02.wav",
+      "CachePath": "7F/{7F85A7DB-433A-A112-EDB7-FA500077376B}.wem"
+     },
+     {
+      "Id": "896444676",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_up_05.wav",
+      "CachePath": "66/{66BDFF18-BEFF-4801-01D0-1B52EEF2B18A}.wem"
+     },
+     {
+      "Id": "899433962",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\CHASER\\enm_chaser_warning_04.wav",
+      "CachePath": "26/{26DDB0C1-29EC-85FF-B8AA-52D1D1AB80B5}.wem"
+     },
+     {
+      "Id": "905098208",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_train_movement_single_01.wav",
+      "CachePath": "3C/{3CE96F79-6DA5-6F4B-EBF2-434FAED86F48}.wem"
+     },
+     {
+      "Id": "914269626",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\CARPA\\enm_carpa_voice_path_01.wav",
+      "CachePath": "29/{29367114-BA72-D47B-13AA-C5C974648B82}.wem"
+     },
+     {
+      "Id": "916103152",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_short_17.wav",
+      "CachePath": "CF/{CF2FF827-E517-3B6B-9734-B63C44B960EC}.wem"
+     },
+     {
+      "Id": "918288449",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_metal_bits_04.wav",
+      "CachePath": "14/{14578EF2-924B-F02B-595B-F6FAED07CE1D}.wem"
+     },
+     {
+      "Id": "923528463",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_FINAL\\enm_boss_lv4_final_coffin_open_01.wav",
+      "CachePath": "65/{65C8F151-66EA-50DD-87AF-9C087F837CD6}.wem"
+     },
+     {
+      "Id": "927119621",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV2\\enm_boss_lv2_goal_whistle_03.wav",
+      "CachePath": "63/{63CE5AE7-BEA8-BAC6-83DB-45AD72875696}.wem"
+     },
+     {
+      "Id": "946713443",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV0\\enm_boss_lv0_shoot_release_02.wav",
+      "CachePath": "D5/{D5B72E96-C948-8FDB-C402-B71A33098D6B}.wem"
+     },
+     {
+      "Id": "951293771",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV0\\enm_boss_lv0_shoot_release_multiple_04.wav",
+      "CachePath": "6B/{6B81F59F-1A4F-3293-B862-6E74A96B9115}.wem"
+     },
+     {
+      "Id": "957008380",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_metal_bits_06.wav",
+      "CachePath": "FE/{FE4D35BE-CE4C-9FBC-E3FB-8D2C94745E6D}.wem"
+     },
+     {
+      "Id": "957389714",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_FINAL\\enm_boss_lv4_final_spirit_heal_01.wav",
+      "CachePath": "66/{66B2D07A-F8E3-693B-9B06-45F691D8D272}.wem"
+     },
+     {
+      "Id": "962584044",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_main_immune_disable_02.wav",
+      "CachePath": "7C/{7C7285EF-1DA1-67A8-92E3-65FF3B2203BF}.wem"
+     },
+     {
+      "Id": "964889122",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_FINAL\\enm_boss_lv4_final_spirit_attack_04.wav",
+      "CachePath": "C9/{C9083B17-C3BD-F97B-3ABC-CD227CA66D29}.wem"
+     },
+     {
+      "Id": "966915590",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_jump_impact_03.wav",
+      "CachePath": "59/{5974F49B-EBE6-1620-F029-FEBAA24BA88C}.wem"
+     },
+     {
+      "Id": "972412042",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV2\\enm_boss_lv2_ball_bounce_09.wav",
+      "CachePath": "52/{52F4847A-E3D3-CF62-8AEB-16518E14946D}.wem"
+     },
+     {
+      "Id": "974041015",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_short_12.wav",
+      "CachePath": "77/{77D0918D-7802-60F0-2607-2D857C95E636}.wem"
+     },
+     {
+      "Id": "974910142",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\LANES\\world_lanes_loop_01.wav",
+      "CachePath": "15/{15E172FF-07E6-62E3-EC75-FE681A6A6B61}.wem"
+     },
+     {
+      "Id": "980259225",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV1\\enm_boss_lv1_shield_disable_01.wav",
+      "CachePath": "2D/{2D2940BD-80BC-5C84-CFF2-2C74743216F4}.wem"
+     },
+     {
+      "Id": "988635782",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV2\\enm_boss_lv2_ball_bounce_05.wav",
+      "CachePath": "35/{35F64337-B08B-943C-E415-B4198A676D8E}.wem"
+     },
+     {
+      "Id": "992717742",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_generic_v2_03.wav",
+      "CachePath": "13/{13ADD204-03A0-8DB5-80B2-F90516F12640}.wem"
+     },
+     {
+      "Id": "993562187",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_main_immune_disable_03.wav",
+      "CachePath": "84/{842D15DE-7F69-8344-DFE3-9D437F6A1FC7}.wem"
+     },
+     {
+      "Id": "996862949",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_train_movement_single_03.wav",
+      "CachePath": "1C/{1C7E32E1-373D-5794-B7C2-290CEC3736DB}.wem"
+     },
+     {
+      "Id": "997476720",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_generic_v2_04.wav",
+      "CachePath": "E3/{E3A75349-E93F-F7DB-6BE4-111CA65BA708}.wem"
+     },
+     {
+      "Id": "1002473808",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_DEATH\\enm_boss_death_light_ray_04.wav",
+      "CachePath": "47/{479771E6-A2AE-C2DB-C6CA-EB2586DB0037}.wem"
+     },
+     {
+      "Id": "1004496309",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_generic_v2_07.wav",
+      "CachePath": "30/{30FE0D15-07EF-FA2F-42AA-C1977EA0225D}.wem"
+     },
+     {
+      "Id": "1005198659",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV0\\enm_boss_lv0_anim_firstphase_01.wav",
+      "CachePath": "9C/{9CE07871-FAE1-F83B-576C-BD4A0C6EE48C}.wem"
+     },
+     {
+      "Id": "1007819066",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\CARPA\\enm_carpa_voice_path_02.wav",
+      "CachePath": "CB/{CB831CC0-A231-48DC-3006-0A61253CF8F9}.wem"
+     },
+     {
+      "Id": "1011262200",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_HAND\\enm_boss_lv4_hand_tap_impact_01.wav",
+      "CachePath": "EB/{EB4E6EA4-79AE-3D47-2457-120AD55792B2}.wem"
+     },
+     {
+      "Id": "1013993605",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_up_09.wav",
+      "CachePath": "D5/{D5B8DAEB-ED79-B188-7085-2BD6EB0355C2}.wem"
+     },
+     {
+      "Id": "1015634363",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV1\\enm_boss_lv1_shield_block_02.wav",
+      "CachePath": "94/{9477A5C6-4576-632C-6C9E-06049AB2F737}.wem"
+     },
+     {
+      "Id": "1017278201",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_train_movement_single_06.wav",
+      "CachePath": "A8/{A8A09AB9-B96F-64C4-AE8D-6D254EB24631}.wem"
+     },
+     {
+      "Id": "1018879475",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV2\\enm_boss_lv2_ball_bounce_04.wav",
+      "CachePath": "05/{05556B6B-3527-6F14-8030-9D3C030EB5E4}.wem"
+     },
+     {
+      "Id": "1018962752",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_FINAL\\enm_boss_lv4_final_coffin_drag_01.wav",
+      "CachePath": "D4/{D4A8C7B4-4552-8085-DE3F-EE4B1CD98093}.wem"
+     },
+     {
+      "Id": "1019305851",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV0\\enm_boss_lv0_shoot_release_04.wav",
+      "CachePath": "C6/{C66F4607-FDED-3932-2AB4-1806D37D4075}.wem"
+     },
+     {
+      "Id": "1026328465",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_explosion_basic_10.wav",
+      "CachePath": "BD/{BD29FEB1-32A4-0F7B-AE4B-3BF879B31E29}.wem"
+     },
+     {
+      "Id": "1026830687",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_explosion_basic_02.wav",
+      "CachePath": "91/{91E8DD71-DC15-9A17-AA8F-21F697E3E966}.wem"
+     },
+     {
+      "Id": "1028528915",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV1\\enm_boss_lv1_shoot_speaker_01.wav",
+      "CachePath": "B5/{B5E2CBF2-6707-5D0A-10E4-0A8DA351E888}.wem"
+     },
+     {
+      "Id": "1031751048",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV1\\enm_boss_lv1_shield_disable_03.wav",
+      "CachePath": "B5/{B5813051-99CC-9472-3ADF-5E0B692F1EDA}.wem"
+     },
+     {
+      "Id": "1032293178",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_HAND\\enm_boss_lv4_hand_punch_prepare_01.wav",
+      "CachePath": "39/{39410010-D06F-9705-143C-A2BF7F0057AD}.wem"
+     },
+     {
+      "Id": "1033309299",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_child_immune_disable_02.wav",
+      "CachePath": "B4/{B48B58CA-9B23-F62C-85C1-B6E100D5F970}.wem"
+     },
+     {
+      "Id": "1037964464",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\ATTACK_WARNING\\enm_attack_warning_start_03.wav",
+      "CachePath": "0F/{0F5597A0-EEAA-1F1A-AAD9-39449EE5509B}.wem"
+     },
+     {
+      "Id": "1038235612",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_immune_07.wav",
+      "CachePath": "10/{101639BD-E7CD-6889-05B1-05C279284766}.wem"
+     },
+     {
+      "Id": "1042662865",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_jump_impact_06.wav",
+      "CachePath": "35/{3511C4F0-1E23-64C1-6B53-75C31BCB5FB7}.wem"
+     },
+     {
+      "Id": "1045325593",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_FINAL\\enm_boss_lv4_final_coffin_close_01.wav",
+      "CachePath": "7E/{7EF38547-83F8-E6D7-13D8-C7786AFF08A8}.wem"
+     },
+     {
+      "Id": "1046935147",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_immune_10.wav",
+      "CachePath": "8B/{8B5E6E97-4FD6-8829-78C9-85459530CEAD}.wem"
+     },
+     {
+      "Id": "1052657572",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_FINAL\\enm_boss_lv4_final_laser_charge_01.wav",
+      "CachePath": "ED/{ED8659D1-0FD3-C7D5-61AF-2DBE127934AD}.wem"
+     },
+     {
+      "Id": "1054484312",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV2\\enm_boss_lv2_goal_player_01.wav",
+      "CachePath": "63/{632DBF93-9E6D-52C3-A70E-6D9F63A4D34C}.wem"
+     },
+     {
+      "Id": "1057349539",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\CARPA\\enm_carpa_voice_impact_02.wav",
+      "CachePath": "F7/{F7F0B854-4FCC-ABB6-443B-74FF504D37F0}.wem"
+     },
+     {
+      "Id": "1058066865",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_DOG\\enm_boss_lv4_dog_eat_start_01.wav",
+      "CachePath": "2F/{2FBD8FE3-3424-EEC8-62FB-E8340925FF36}.wem"
+     },
+     {
+      "Id": "1058847660",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV0\\enm_boss_lv0_anim_secondphase_01.wav",
+      "CachePath": "A7/{A79BCB0B-151A-3D0D-1484-E1142BCF115D}.wem"
+     },
+     {
+      "Id": "1062657050",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_metal_bits_09.wav",
+      "CachePath": "F6/{F67F34ED-9A23-A6FE-6D16-A16BE8CC24EC}.wem"
+     },
+     {
+      "Id": "1063385400",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_metal_bits_02.wav",
+      "CachePath": "53/{53BD7565-C993-9ADF-C814-022177966E53}.wem"
+     },
+     {
+      "Id": "1067689354",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV1\\enm_boss_lv1_anim_firstphase_01.wav",
+      "CachePath": "4E/{4E8B2D7A-510A-7CC3-1348-1A8F26E1E52F}.wem"
+     },
+     {
+      "Id": "1067812731",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\DAMAGE\\enm_damage_explosion_basic_01.wav",
+      "CachePath": "32/{329D2E4C-9251-FBD3-FE35-FAC91B9557F9}.wem"
+     },
+     {
+      "Id": "1068873634",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOMB\\enm_bomb_voice_up_12.wav",
+      "CachePath": "04/{04521F9B-319E-1B20-8C58-185324BB3ED7}.wem"
+     },
+     {
+      "Id": "1072821850",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV4_DOG\\enm_boss_lv4_dog_eat_suck_01.wav",
+      "CachePath": "C1/{C157E2A1-DEC5-A0D6-B293-6040F48642E2}.wem"
+     },
+     {
+      "Id": "1073383560",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENM\\BOSS_LV3\\enm_boss_lv3_child_immune_enable_01.wav",
+      "CachePath": "C0/{C0DAA05D-98C8-BA83-4B83-F6D63C1615A7}.wem"
+     }
+    ],
+    "Plugins": {
+     "Custom": [
+      {
+       "Id": "75097291",
+       "Name": "Sine",
+       "ObjectPath": "\\Actor-Mixer Hierarchy\\_DEBUG\\DEBUG_Sounds\\Beep_Short\\Sine",
+       "GUID": "{A76A5061-989D-4D75-9A34-DFFE6B3BC737}",
+       "LibName": "Wwise Sine",
+       "LibId": "6553602"
+      },
+      {
+       "Id": "284624949",
+       "Name": "Tone Generator",
+       "ObjectPath": "\\Actor-Mixer Hierarchy\\Enemy\\Enemies\\BOSS\\Lv3\\Steam\\Steam_Loop\\Tone Generator",
+       "GUID": "{A2567691-857F-4DE4-BBD0-A256DC2BBAEF}",
+       "Color": "10",
+       "LibName": "Wwise Tone Generator",
+       "LibId": "6684674"
+      },
+      {
+       "Id": "951206736",
+       "Name": "Sine",
+       "ObjectPath": "\\Actor-Mixer Hierarchy\\Enemy\\Enemies\\BOSS\\Lv4_Final\\Beep_Short\\Sine",
+       "GUID": "{D79F567A-DAE3-45A3-8D0E-541A4C367700}",
+       "Color": "10",
+       "LibName": "Wwise Sine",
+       "LibId": "6553602"
+      }
+     ]
+    },
+    "Events": [
+     {
+      "Id": "3695176782",
+      "Name": "Play_Boss_Death",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Play_Boss_Death",
+      "GUID": "{1723E16D-339F-4E6A-894E-D44BF0171A5E}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "18.64825",
+      "DurationMax": "18.64825",
+      "MediaRefs": [
+       {
+        "Id": "685365706"
+       }
+      ],
+      "ActionSetState": [
+       {
+        "GroupId": "89505537",
+        "Id": "3026592080",
+        "Name": "Boss_Defeat",
+        "ObjectPath": "\\States\\Default Work Unit\\Gameplay\\Boss_Defeat",
+        "GUID": "{772B5431-47E5-4F36-9961-A30FAEDBBA93}"
+       }
+      ]
+     },
+     {
+      "Id": "2637838234",
+      "Name": "Play_Boss_Death_PillarOfLight",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Play_Boss_Death_PillarOfLight",
+      "GUID": "{51A6A93D-8426-4209-B681-E36E36FB6998}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "1.6542916",
+      "DurationMax": "1.8102916",
+      "MediaRefs": [
+       {
+        "Id": "16100467"
+       },
+       {
+        "Id": "127166587"
+       },
+       {
+        "Id": "211253492"
+       },
+       {
+        "Id": "244279958"
+       },
+       {
+        "Id": "317465235"
+       },
+       {
+        "Id": "336459323"
+       },
+       {
+        "Id": "382626575"
+       },
+       {
+        "Id": "442725335"
+       },
+       {
+        "Id": "537873841"
+       },
+       {
+        "Id": "579171959"
+       },
+       {
+        "Id": "594467622"
+       },
+       {
+        "Id": "805060101"
+       },
+       {
+        "Id": "1002473808"
+       }
+      ]
+     },
+     {
+      "Id": "3460728917",
+      "Name": "Play_Boss_Lv0_Anim_Death",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv0\\Play_Boss_Lv0_Anim_Death",
+      "GUID": "{7A5DAB79-A2E1-4077-81DF-E619856BCAB6}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "4",
+      "DurationMax": "4",
+      "MediaRefs": [
+       {
+        "Id": "247720679"
+       }
+      ]
+     },
+     {
+      "Id": "2975268622",
+      "Name": "Play_Boss_Lv0_Anim_FirstPhase",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv0\\Play_Boss_Lv0_Anim_FirstPhase",
+      "GUID": "{9DCD131A-36DF-4497-8B51-9A8BE7BA1FD8}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "2.8981042",
+      "DurationMax": "2.8981042",
+      "MediaRefs": [
+       {
+        "Id": "1005198659"
+       }
+      ]
+     },
+     {
+      "Id": "1985632730",
+      "Name": "Play_Boss_Lv0_Anim_SecondPhase",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv0\\Play_Boss_Lv0_Anim_SecondPhase",
+      "GUID": "{ED183E71-3D71-4794-BDB1-8A42101E6C50}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "20.333979",
+      "DurationMax": "20.333979",
+      "MediaRefs": [
+       {
+        "Id": "176257587"
+       }
+      ],
+      "ActionSetState": [
+       {
+        "GroupId": "2988808205",
+        "Id": "1281810935",
+        "Name": "Start",
+        "ObjectPath": "\\States\\Default Work Unit\\Boss_MusicHold\\Start",
+        "GUID": "{DD903C2F-F28D-4502-8E82-365D86D3213B}"
+       },
+       {
+        "GroupId": "2988808205",
+        "Id": "2405648188",
+        "Name": "Release",
+        "ObjectPath": "\\States\\Default Work Unit\\Boss_MusicHold\\Release",
+        "GUID": "{BC3A0A49-3F3F-4E39-9816-20FA18C963E8}"
+       }
+      ]
+     },
+     {
+      "Id": "911650709",
+      "Name": "Play_Boss_Lv0_Shoot_Charge",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv0\\Play_Boss_Lv0_Shoot_Charge",
+      "GUID": "{AFF64546-93FA-473A-B983-444CCBAFA7BE}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "706119212",
+      "Name": "Play_Boss_Lv0_Shoot_Release",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv0\\Play_Boss_Lv0_Shoot_Release",
+      "GUID": "{E5B91DF0-D76F-46F5-A1F4-102C1F578900}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "1.8509535",
+      "DurationMax": "2.2376084",
+      "MediaRefs": [
+       {
+        "Id": "148575303"
+       },
+       {
+        "Id": "633207728"
+       },
+       {
+        "Id": "946713443"
+       },
+       {
+        "Id": "1019305851"
+       }
+      ]
+     },
+     {
+      "Id": "3027531151",
+      "Name": "Play_Boss_Lv0_Shoot_Release_Multiple",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv0\\Play_Boss_Lv0_Shoot_Release_Multiple",
+      "GUID": "{16105FEA-20F0-499A-A12F-CC234D4B9714}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "1.8013971",
+      "DurationMax": "2.178698",
+      "MediaRefs": [
+       {
+        "Id": "789090110"
+       },
+       {
+        "Id": "866442015"
+       },
+       {
+        "Id": "896068900"
+       },
+       {
+        "Id": "951293771"
+       }
+      ]
+     },
+     {
+      "Id": "1879689318",
+      "Name": "Play_Boss_Lv1_Anim_Death",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv1\\Play_Boss_Lv1_Anim_Death",
+      "GUID": "{20B75A65-37F0-4AE9-88BF-229EE8118A27}",
+      "Color": "10",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "3573384103",
+      "Name": "Play_Boss_Lv1_Anim_FirstPhase",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv1\\Play_Boss_Lv1_Anim_FirstPhase",
+      "GUID": "{33AD2026-0B98-4B95-AD48-5EC219C79078}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "7.451792",
+      "DurationMax": "7.451792",
+      "MediaRefs": [
+       {
+        "Id": "1067689354"
+       }
+      ]
+     },
+     {
+      "Id": "4082085297",
+      "Name": "Play_Boss_Lv1_Anim_SecondPhase",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv1\\Play_Boss_Lv1_Anim_SecondPhase",
+      "GUID": "{BC327089-902B-416B-B5FE-63D1EEBDC438}",
+      "Color": "10",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "77229317",
+      "Name": "Play_Boss_Lv1_Shoot_Sequence",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv1\\Play_Boss_Lv1_Shoot_Sequence",
+      "GUID": "{173CA6AA-CDFE-4AE4-957D-300BFF429142}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "0.3728698",
+      "DurationMax": "2.313013",
+      "MediaRefs": [
+       {
+        "Id": "52089936"
+       },
+       {
+        "Id": "209404606"
+       },
+       {
+        "Id": "587155105"
+       },
+       {
+        "Id": "717547991"
+       }
+      ]
+     },
+     {
+      "Id": "3062858453",
+      "Name": "Play_Boss_Lv1_Shoot_Speaker",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv1\\Play_Boss_Lv1_Shoot_Speaker",
+      "GUID": "{C3153BC9-D109-4538-A0A5-10E098BDEBC9}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "0.46266666",
+      "DurationMax": "1.3887925",
+      "MediaRefs": [
+       {
+        "Id": "52089936"
+       },
+       {
+        "Id": "209404606"
+       },
+       {
+        "Id": "247090060"
+       },
+       {
+        "Id": "587155105"
+       },
+       {
+        "Id": "717547991"
+       },
+       {
+        "Id": "745469353"
+       },
+       {
+        "Id": "870409494"
+       },
+       {
+        "Id": "1028528915"
+       }
+      ]
+     },
+     {
+      "Id": "1749435355",
+      "Name": "Play_Boss_Lv2_Anim_Death",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv2\\Play_Boss_Lv2_Anim_Death",
+      "GUID": "{1F79E59F-3649-40CB-837A-10FF460FE8BB}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "7.334128",
+      "DurationMax": "7.334128",
+      "MediaRefs": [
+       {
+        "Id": "224949133"
+       }
+      ]
+     },
+     {
+      "Id": "3909290888",
+      "Name": "Play_Boss_Lv2_Anim_FirstPhase_Reveal",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv2\\Play_Boss_Lv2_Anim_FirstPhase_Reveal",
+      "GUID": "{E661EEAB-19C3-43F2-90E7-491829D46643}",
+      "Color": "10",
+      "DurationType": "OneShot",
+      "DurationMin": "4.7954583",
+      "DurationMax": "4.7954583",
+      "MediaRefs": [
+       {
+        "Id": "706827860"
+       }
+      ]
+     },
+     {
+      "Id": "2749677879",
+      "Name": "Play_Boss_Lv2_Ball_Bounce",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv2\\Play_Boss_Lv2_Ball_Bounce",
+      "GUID": "{584EE982-66F1-42ED-9945-F1B0E165AB17}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "0.13297844",
+      "DurationMax": "0.14088574",
+      "MediaRefs": [
+       {
+        "Id": "62406604"
+       },
+       {
+        "Id": "506992226"
+       },
+       {
+        "Id": "520770671"
+       },
+       {
+        "Id": "801612386"
+       },
+       {
+        "Id": "830599113"
+       },
+       {
+        "Id": "837433827"
+       },
+       {
+        "Id": "891452234"
+       },
+       {
+        "Id": "972412042"
+       },
+       {
+        "Id": "988635782"
+       },
+       {
+        "Id": "1018879475"
+       }
+      ]
+     },
+     {
+      "Id": "334622760",
+      "Name": "Play_Boss_Lv2_Ball_Fall",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv2\\Play_Boss_Lv2_Ball_Fall",
+      "GUID": "{28AE8C9B-E0E1-4F00-BBF2-B64D64ACD379}",
+      "Color": "10",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "1925283406",
+      "Name": "Play_Boss_Lv2_Goal_Against",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv2\\Play_Boss_Lv2_Goal_Against",
+      "GUID": "{C972BFCE-701A-4801-98C0-EA892B11331B}",
+      "Color": "10",
+      "DurationType": "OneShot",
+      "DurationMin": "4.481072",
+      "DurationMax": "5.645797",
+      "MediaRefs": [
+       {
+        "Id": "242649007"
+       },
+       {
+        "Id": "329787769"
+       },
+       {
+        "Id": "341415582"
+       },
+       {
+        "Id": "774422747"
+       },
+       {
+        "Id": "814647877"
+       },
+       {
+        "Id": "927119621"
+       }
+      ]
+     },
+     {
+      "Id": "2838410458",
+      "Name": "Play_Boss_Lv2_Goal_Player",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv2\\Play_Boss_Lv2_Goal_Player",
+      "GUID": "{B8D8D3D6-9AE9-4C53-A468-447BA93CDCF2}",
+      "Color": "10",
+      "DurationType": "OneShot",
+      "DurationMin": "4.481072",
+      "DurationMax": "5.645797",
+      "MediaRefs": [
+       {
+        "Id": "39712206"
+       },
+       {
+        "Id": "138478106"
+       },
+       {
+        "Id": "329787769"
+       },
+       {
+        "Id": "774422747"
+       },
+       {
+        "Id": "814647877"
+       },
+       {
+        "Id": "1054484312"
+       }
+      ]
+     },
+     {
+      "Id": "933849180",
+      "Name": "Play_Boss_Lv3_Anim_Death",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv3\\Play_Boss_Lv3_Anim_Death",
+      "GUID": "{502DA1D5-A967-4A92-8669-F7C2772806FA}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "9.553542",
+      "DurationMax": "9.553542",
+      "MediaRefs": [
+       {
+        "Id": "416956696"
+       }
+      ]
+     },
+     {
+      "Id": "486399768",
+      "Name": "Play_Boss_Lv3_Anim_FirstPhase_Phone",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv3\\Play_Boss_Lv3_Anim_FirstPhase_Phone",
+      "GUID": "{763BDCA2-3591-41D5-8CE8-A62617F7157F}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "10.9227705",
+      "DurationMax": "10.9227705",
+      "MediaRefs": [
+       {
+        "Id": "52799711"
+       }
+      ]
+     },
+     {
+      "Id": "671071623",
+      "Name": "Play_Boss_Lv3_Child_Immune_Disable",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv3\\Play_Boss_Lv3_Child_Immune_Disable",
+      "GUID": "{0CE77C1C-FB11-4727-AAD7-4FA34B1AD4C2}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "2.2470417",
+      "DurationMax": "2.2470417",
+      "MediaRefs": [
+       {
+        "Id": "362759982"
+       },
+       {
+        "Id": "859839411"
+       },
+       {
+        "Id": "1033309299"
+       }
+      ]
+     },
+     {
+      "Id": "2337351044",
+      "Name": "Play_Boss_Lv3_Child_Immune_Enable",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv3\\Play_Boss_Lv3_Child_Immune_Enable",
+      "GUID": "{0AAAC2FA-04DD-4FA4-87B6-2563EDE0B8EE}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "2.1990209",
+      "DurationMax": "2.8588333",
+      "MediaRefs": [
+       {
+        "Id": "27560830"
+       },
+       {
+        "Id": "1073383560"
+       }
+      ]
+     },
+     {
+      "Id": "147039988",
+      "Name": "Play_Boss_Lv3_Main_Immune_Disable",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv3\\Play_Boss_Lv3_Main_Immune_Disable",
+      "GUID": "{9FC88923-42C9-44E9-A55F-17F422AF1DDA}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "3",
+      "DurationMax": "3.5655832",
+      "MediaRefs": [
+       {
+        "Id": "586064248"
+       },
+       {
+        "Id": "962584044"
+       },
+       {
+        "Id": "993562187"
+       }
+      ]
+     },
+     {
+      "Id": "1349950757",
+      "Name": "Play_Boss_Lv3_Main_Immune_Enable",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv3\\Play_Boss_Lv3_Main_Immune_Enable",
+      "GUID": "{C5098A18-E413-4355-80F3-2128A5BC8719}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "2.8588333",
+      "DurationMax": "2.8588333",
+      "MediaRefs": [
+       {
+        "Id": "791929598"
+       },
+       {
+        "Id": "831108049"
+       }
+      ]
+     },
+     {
+      "Id": "3589814336",
+      "Name": "Play_Boss_Lv3_Steam",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv3\\Play_Boss_Lv3_Steam",
+      "GUID": "{02871C5B-7A38-4C24-A1E2-CB3444F546BD}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "198358312"
+       },
+       {
+        "Id": "293109985"
+       },
+       {
+        "Id": "306178359"
+       },
+       {
+        "Id": "309411765"
+       }
+      ],
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "284624949"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "2618773963",
+      "Name": "Play_Boss_Lv3_Train_Deaccelerate",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv3\\Play_Boss_Lv3_Train_Deaccelerate",
+      "GUID": "{165A3C64-9D1A-4ABF-9129-F0ED8AA5367B}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "7.72375",
+      "DurationMax": "7.72375",
+      "MediaRefs": [
+       {
+        "Id": "331535075"
+       }
+      ]
+     },
+     {
+      "Id": "4101087618",
+      "Name": "Play_Boss_Lv3_Train_Movement",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv3\\Play_Boss_Lv3_Train_Movement",
+      "GUID": "{37E149CD-E55E-49CE-8033-11A7E8D2B2EE}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "0.313485",
+      "DurationMax": "0.47266668",
+      "MediaRefs": [
+       {
+        "Id": "41355662"
+       },
+       {
+        "Id": "98636557"
+       },
+       {
+        "Id": "229773007"
+       },
+       {
+        "Id": "232602723"
+       },
+       {
+        "Id": "282907149"
+       },
+       {
+        "Id": "363947593"
+       },
+       {
+        "Id": "524864672"
+       },
+       {
+        "Id": "527120130"
+       },
+       {
+        "Id": "578668339"
+       },
+       {
+        "Id": "831585862"
+       },
+       {
+        "Id": "905098208"
+       },
+       {
+        "Id": "996862949"
+       },
+       {
+        "Id": "1017278201"
+       }
+      ]
+     },
+     {
+      "Id": "3277379733",
+      "Name": "Play_Boss_Shield_Block",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Shield\\Play_Boss_Shield_Block",
+      "GUID": "{120D4C28-CBBF-418C-8671-FB2C36580914}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "0.17230125",
+      "DurationMax": "0.20490186",
+      "MediaRefs": [
+       {
+        "Id": "149895650"
+       },
+       {
+        "Id": "246301435"
+       },
+       {
+        "Id": "646209928"
+       },
+       {
+        "Id": "1015634363"
+       }
+      ]
+     },
+     {
+      "Id": "2628648422",
+      "Name": "Play_Boss_Shield_Disable",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Shield\\Play_Boss_Shield_Disable",
+      "GUID": "{B9F53A7D-79A9-4F94-B218-75738A377960}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "2.494021",
+      "DurationMax": "2.5031667",
+      "MediaRefs": [
+       {
+        "Id": "346956923"
+       },
+       {
+        "Id": "980259225"
+       },
+       {
+        "Id": "1031751048"
+       }
+      ]
+     },
+     {
+      "Id": "16796003",
+      "Name": "Play_Boss_Shield_Enable",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Shield\\Play_Boss_Shield_Enable",
+      "GUID": "{37EB9218-D2DC-4816-8B57-BA5B29A796EF}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "1.9286698",
+      "DurationMax": "2.293588",
+      "MediaRefs": [
+       {
+        "Id": "510225389"
+       },
+       {
+        "Id": "606855137"
+       },
+       {
+        "Id": "796917489"
+       }
+      ]
+     },
+     {
+      "Id": "1430328284",
+      "Name": "Play_Enemy_Bomb_Jump",
+      "ObjectPath": "\\Events\\Enemy\\Bomb\\Play_Enemy_Bomb_Jump",
+      "GUID": "{10C0DA32-46E5-4618-BBF5-BEAFC62F2B54}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "0.65360373",
+      "DurationMax": "0.67165697",
+      "MediaRefs": [
+       {
+        "Id": "48367902"
+       },
+       {
+        "Id": "80021334"
+       },
+       {
+        "Id": "187661334"
+       },
+       {
+        "Id": "189848931"
+       },
+       {
+        "Id": "193615673"
+       },
+       {
+        "Id": "214716763"
+       },
+       {
+        "Id": "232014120"
+       },
+       {
+        "Id": "234048547"
+       },
+       {
+        "Id": "262298693"
+       },
+       {
+        "Id": "288907257"
+       },
+       {
+        "Id": "308284777"
+       },
+       {
+        "Id": "319494602"
+       },
+       {
+        "Id": "327984768"
+       },
+       {
+        "Id": "368599866"
+       },
+       {
+        "Id": "388168230"
+       },
+       {
+        "Id": "389647532"
+       },
+       {
+        "Id": "437600514"
+       },
+       {
+        "Id": "444767605"
+       },
+       {
+        "Id": "483709428"
+       },
+       {
+        "Id": "531734611"
+       },
+       {
+        "Id": "569455517"
+       },
+       {
+        "Id": "597168241"
+       },
+       {
+        "Id": "630087467"
+       },
+       {
+        "Id": "682235123"
+       },
+       {
+        "Id": "682286847"
+       },
+       {
+        "Id": "699814029"
+       },
+       {
+        "Id": "706467939"
+       },
+       {
+        "Id": "754708347"
+       },
+       {
+        "Id": "758532617"
+       },
+       {
+        "Id": "780976736"
+       },
+       {
+        "Id": "848831193"
+       },
+       {
+        "Id": "856553250"
+       },
+       {
+        "Id": "862561372"
+       },
+       {
+        "Id": "882337857"
+       },
+       {
+        "Id": "896444676"
+       },
+       {
+        "Id": "916103152"
+       },
+       {
+        "Id": "966915590"
+       },
+       {
+        "Id": "974041015"
+       },
+       {
+        "Id": "1013993605"
+       },
+       {
+        "Id": "1042662865"
+       },
+       {
+        "Id": "1068873634"
+       }
+      ]
+     },
+     {
+      "Id": "1631403871",
+      "Name": "Play_Enemy_Brawny_Fall_Impact",
+      "ObjectPath": "\\Events\\Enemy\\Brawny\\Play_Enemy_Brawny_Fall_Impact",
+      "GUID": "{139F6479-29C5-49E2-B8EA-0D26CD0003F0}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "5.082604",
+      "DurationMax": "5.082604",
+      "MediaRefs": [
+       {
+        "Id": "309349662"
+       }
+      ]
+     },
+     {
+      "Id": "3560042016",
+      "Name": "Play_Enemy_Brawny_Fall_Pre",
+      "ObjectPath": "\\Events\\Enemy\\Brawny\\Play_Enemy_Brawny_Fall_Pre",
+      "GUID": "{41233ED6-D7A1-4169-A1FD-70C788436CD8}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "0.8673958",
+      "DurationMax": "0.8673958",
+      "MediaRefs": [
+       {
+        "Id": "691234891"
+       }
+      ]
+     },
+     {
+      "Id": "3624987022",
+      "Name": "Play_Enemy_Carpa_Missile_Impact",
+      "ObjectPath": "\\Events\\Enemy\\Carpa\\Play_Enemy_Carpa_Missile_Impact",
+      "GUID": "{D090665C-0149-4F6B-9264-D00E3F97B5A1}",
+      "Color": "10",
+      "DurationType": "OneShot",
+      "DurationMin": "3.9535",
+      "DurationMax": "3.9535",
+      "MediaRefs": [
+       {
+        "Id": "185574887"
+       },
+       {
+        "Id": "243488515"
+       },
+       {
+        "Id": "414381182"
+       },
+       {
+        "Id": "521080545"
+       },
+       {
+        "Id": "568414064"
+       },
+       {
+        "Id": "608380708"
+       },
+       {
+        "Id": "667379807"
+       },
+       {
+        "Id": "1057349539"
+       }
+      ]
+     },
+     {
+      "Id": "3842291993",
+      "Name": "Play_Enemy_Carpa_Missile_Launch",
+      "ObjectPath": "\\Events\\Enemy\\Carpa\\Play_Enemy_Carpa_Missile_Launch",
+      "GUID": "{867A91E8-DAFD-455F-B6ED-D403149BD67C}",
+      "Color": "10",
+      "DurationType": "OneShot",
+      "DurationMin": "3.9322708",
+      "DurationMax": "3.9322708",
+      "MediaRefs": [
+       {
+        "Id": "177437714"
+       },
+       {
+        "Id": "180098937"
+       },
+       {
+        "Id": "482920356"
+       },
+       {
+        "Id": "771754309"
+       },
+       {
+        "Id": "914269626"
+       },
+       {
+        "Id": "1007819066"
+       }
+      ]
+     },
+     {
+      "Id": "3406533881",
+      "Name": "Play_Enemy_Carpa_Warning",
+      "ObjectPath": "\\Events\\Enemy\\Carpa\\Play_Enemy_Carpa_Warning",
+      "GUID": "{F8F6F9C1-6935-468E-8F6A-F4FBF1D203B3}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "3.4613333",
+      "DurationMax": "3.4613333",
+      "MediaRefs": [
+       {
+        "Id": "181760444"
+       }
+      ]
+     },
+     {
+      "Id": "4031440584",
+      "Name": "Play_Enemy_Chaser_Warning",
+      "ObjectPath": "\\Events\\Enemy\\Chaser\\Play_Enemy_Chaser_Warning",
+      "GUID": "{1FB9A65B-F4FC-48D4-8DBA-B2414F345520}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "23666327"
+       },
+       {
+        "Id": "57002063"
+       },
+       {
+        "Id": "60716892"
+       },
+       {
+        "Id": "89614470"
+       },
+       {
+        "Id": "168183728"
+       },
+       {
+        "Id": "298390029"
+       },
+       {
+        "Id": "331254348"
+       },
+       {
+        "Id": "384849960"
+       },
+       {
+        "Id": "652759360"
+       },
+       {
+        "Id": "745012191"
+       },
+       {
+        "Id": "899433962"
+       }
+      ]
+     },
+     {
+      "Id": "3137197893",
+      "Name": "Play_Enemy_Destroy",
+      "ObjectPath": "\\Events\\Enemy\\Play_Enemy_Destroy",
+      "GUID": "{2CB23925-A20E-4870-84FE-95CF8E8509D3}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "1.0677606",
+      "DurationMax": "1.3595244",
+      "MediaRefs": [
+       {
+        "Id": "15453842"
+       },
+       {
+        "Id": "22436129"
+       },
+       {
+        "Id": "173673328"
+       },
+       {
+        "Id": "250056544"
+       },
+       {
+        "Id": "274012309"
+       },
+       {
+        "Id": "299027740"
+       },
+       {
+        "Id": "351036601"
+       },
+       {
+        "Id": "438888000"
+       },
+       {
+        "Id": "479752863"
+       },
+       {
+        "Id": "498423423"
+       },
+       {
+        "Id": "522800825"
+       },
+       {
+        "Id": "552025169"
+       },
+       {
+        "Id": "573529998"
+       },
+       {
+        "Id": "664424453"
+       },
+       {
+        "Id": "789196657"
+       },
+       {
+        "Id": "812050595"
+       },
+       {
+        "Id": "918288449"
+       },
+       {
+        "Id": "957008380"
+       },
+       {
+        "Id": "1026328465"
+       },
+       {
+        "Id": "1026830687"
+       },
+       {
+        "Id": "1062657050"
+       },
+       {
+        "Id": "1063385400"
+       },
+       {
+        "Id": "1067812731"
+       }
+      ]
+     },
+     {
+      "Id": "2655709623",
+      "Name": "Play_Enemy_Destroy_Part",
+      "ObjectPath": "\\Events\\Enemy\\Play_Enemy_Destroy_Part",
+      "GUID": "{D556D9EB-848A-47BD-ADA2-A7B9E00B8910}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "0.42619577",
+      "DurationMax": "0.62623185",
+      "MediaRefs": [
+       {
+        "Id": "15453842"
+       },
+       {
+        "Id": "22436129"
+       },
+       {
+        "Id": "173673328"
+       },
+       {
+        "Id": "250056544"
+       },
+       {
+        "Id": "274012309"
+       },
+       {
+        "Id": "299027740"
+       },
+       {
+        "Id": "351036601"
+       },
+       {
+        "Id": "438888000"
+       },
+       {
+        "Id": "479752863"
+       },
+       {
+        "Id": "498423423"
+       },
+       {
+        "Id": "522800825"
+       },
+       {
+        "Id": "552025169"
+       },
+       {
+        "Id": "573529998"
+       },
+       {
+        "Id": "664424453"
+       },
+       {
+        "Id": "789196657"
+       },
+       {
+        "Id": "812050595"
+       },
+       {
+        "Id": "918288449"
+       },
+       {
+        "Id": "957008380"
+       },
+       {
+        "Id": "1026328465"
+       },
+       {
+        "Id": "1026830687"
+       },
+       {
+        "Id": "1062657050"
+       },
+       {
+        "Id": "1063385400"
+       },
+       {
+        "Id": "1067812731"
+       }
+      ]
+     },
+     {
+      "Id": "1685812457",
+      "Name": "Play_Enemy_FakeStatue_Death",
+      "ObjectPath": "\\Events\\Enemy\\FakeStatue\\Play_Enemy_FakeStatue_Death",
+      "GUID": "{90C0B261-BD47-4A3B-964C-52C5B30D54B2}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "2.202655",
+      "DurationMax": "2.202655",
+      "MediaRefs": [
+       {
+        "Id": "1058847660"
+       }
+      ]
+     },
+     {
+      "Id": "2920664516",
+      "Name": "Play_Enemy_FakeStatue_Shoot_Release",
+      "ObjectPath": "\\Events\\Enemy\\FakeStatue\\Play_Enemy_FakeStatue_Shoot_Release",
+      "GUID": "{521EF4E6-476F-452E-B5F7-427F04D2EB34}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "1.8509535",
+      "DurationMax": "2.2376084",
+      "MediaRefs": [
+       {
+        "Id": "148575303"
+       },
+       {
+        "Id": "633207728"
+       },
+       {
+        "Id": "946713443"
+       },
+       {
+        "Id": "1019305851"
+       }
+      ]
+     },
+     {
+      "Id": "2546887463",
+      "Name": "Play_Enemy_FakeStatue_Shoot_Release_Multiple",
+      "ObjectPath": "\\Events\\Enemy\\FakeStatue\\Play_Enemy_FakeStatue_Shoot_Release_Multiple",
+      "GUID": "{357BDE9E-DEE3-4F9B-8926-04EDBC094912}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "1.8013971",
+      "DurationMax": "2.178698",
+      "MediaRefs": [
+       {
+        "Id": "789090110"
+       },
+       {
+        "Id": "866442015"
+       },
+       {
+        "Id": "896068900"
+       },
+       {
+        "Id": "951293771"
+       }
+      ]
+     },
+     {
+      "Id": "2297649241",
+      "Name": "Play_Enemy_Hurt_Basic",
+      "ObjectPath": "\\Events\\Enemy\\Play_Enemy_Hurt_Basic",
+      "GUID": "{58AB6BBE-7F58-44E6-8D19-C4AFB2E4AEF1}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "0.085375",
+      "DurationMax": "0.085375",
+      "MediaRefs": [
+       {
+        "Id": "96119322"
+       },
+       {
+        "Id": "176739327"
+       },
+       {
+        "Id": "481577329"
+       },
+       {
+        "Id": "507969449"
+       },
+       {
+        "Id": "580070641"
+       },
+       {
+        "Id": "731905304"
+       },
+       {
+        "Id": "738128483"
+       },
+       {
+        "Id": "808633949"
+       },
+       {
+        "Id": "871741398"
+       },
+       {
+        "Id": "992717742"
+       },
+       {
+        "Id": "997476720"
+       },
+       {
+        "Id": "1004496309"
+       }
+      ]
+     },
+     {
+      "Id": "4175167205",
+      "Name": "Play_Enemy_Immune_Basic",
+      "ObjectPath": "\\Events\\Enemy\\Play_Enemy_Immune_Basic",
+      "GUID": "{26F98670-94B7-4413-A0E2-CB7D153AB815}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "0.14721736",
+      "DurationMax": "0.17507194",
+      "MediaRefs": [
+       {
+        "Id": "29898062"
+       },
+       {
+        "Id": "153911218"
+       },
+       {
+        "Id": "169133488"
+       },
+       {
+        "Id": "203282128"
+       },
+       {
+        "Id": "268997804"
+       },
+       {
+        "Id": "325306840"
+       },
+       {
+        "Id": "357710247"
+       },
+       {
+        "Id": "652319037"
+       },
+       {
+        "Id": "738871773"
+       },
+       {
+        "Id": "828539393"
+       },
+       {
+        "Id": "850338584"
+       },
+       {
+        "Id": "878564695"
+       },
+       {
+        "Id": "1038235612"
+       },
+       {
+        "Id": "1046935147"
+       }
+      ]
+     },
+     {
+      "Id": "1838241229",
+      "Name": "Play_Enemy_Laser_Attack",
+      "ObjectPath": "\\Events\\Enemy\\Laser\\Play_Enemy_Laser_Attack",
+      "GUID": "{07AD4BDC-6E70-4603-A657-4041856581DD}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "52089936"
+       },
+       {
+        "Id": "209404606"
+       },
+       {
+        "Id": "230389480"
+       },
+       {
+        "Id": "249546516"
+       },
+       {
+        "Id": "394590779"
+       },
+       {
+        "Id": "576021672"
+       },
+       {
+        "Id": "587155105"
+       },
+       {
+        "Id": "680713499"
+       },
+       {
+        "Id": "717547991"
+       }
+      ]
+     },
+     {
+      "Id": "374330747",
+      "Name": "Play_Enemy_Laser_Attack_Pre",
+      "ObjectPath": "\\Events\\Enemy\\Laser\\Play_Enemy_Laser_Attack_Pre",
+      "GUID": "{338B8755-C02A-4F66-9824-47B47F6BA020}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "2.2346938",
+      "DurationMax": "2.686371",
+      "MediaRefs": [
+       {
+        "Id": "52089936"
+       },
+       {
+        "Id": "209404606"
+       },
+       {
+        "Id": "587155105"
+       },
+       {
+        "Id": "717547991"
+       }
+      ]
+     },
+     {
+      "Id": "3292778019",
+      "Name": "Play_Enemy_Round_Explosion",
+      "ObjectPath": "\\Events\\Enemy\\Explosion\\Play_Enemy_Round_Explosion",
+      "GUID": "{1E64B20E-B9DE-40E3-85F7-28995E5CB1E1}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "1.7053334",
+      "DurationMax": "2.0197291",
+      "MediaRefs": [
+       {
+        "Id": "241499546"
+       },
+       {
+        "Id": "269639258"
+       },
+       {
+        "Id": "414444869"
+       },
+       {
+        "Id": "484625380"
+       },
+       {
+        "Id": "754610147"
+       },
+       {
+        "Id": "878760216"
+       }
+      ]
+     },
+     {
+      "Id": "3554376830",
+      "Name": "Play_Enemy_Screen_Attack_Charging",
+      "ObjectPath": "\\Events\\Enemy\\Play_Enemy_Screen_Attack_Charging",
+      "GUID": "{F2168B08-AA88-4F8B-A1B4-C3F7ADBBD054}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "783203302"
+       },
+       {
+        "Id": "800197287"
+       },
+       {
+        "Id": "830828633"
+       },
+       {
+        "Id": "1037964464"
+       }
+      ]
+     },
+     {
+      "Id": "1778311832",
+      "Name": "Play_Enemy_Screen_Attack_Interrupt",
+      "ObjectPath": "\\Events\\Enemy\\Play_Enemy_Screen_Attack_Interrupt",
+      "GUID": "{5FDA28B4-B45E-4A4C-8596-5FEB2978EF66}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "1.0040375",
+      "DurationMax": "1.3020755",
+      "MediaRefs": [
+       {
+        "Id": "70175384"
+       },
+       {
+        "Id": "382552148"
+       }
+      ]
+     },
+     {
+      "Id": "3636341568",
+      "Name": "Play_Enemy_Square_Explosion",
+      "ObjectPath": "\\Events\\Enemy\\Explosion\\Play_Enemy_Square_Explosion",
+      "GUID": "{80301109-5236-4DA5-8EAA-5C5093730604}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "1.5626042",
+      "DurationMax": "5.175667",
+      "MediaRefs": [
+       {
+        "Id": "73870852"
+       },
+       {
+        "Id": "283042748"
+       },
+       {
+        "Id": "354801287"
+       },
+       {
+        "Id": "410935932"
+       },
+       {
+        "Id": "447072487"
+       },
+       {
+        "Id": "537360014"
+       },
+       {
+        "Id": "553535236"
+       },
+       {
+        "Id": "692895964"
+       },
+       {
+        "Id": "722306295"
+       },
+       {
+        "Id": "727921312"
+       },
+       {
+        "Id": "805692865"
+       }
+      ]
+     },
+     {
+      "Id": "3067083821",
+      "Name": "Play_Enemy_Square_Explosion_Start",
+      "ObjectPath": "\\Events\\Enemy\\Explosion\\Play_Enemy_Square_Explosion_Start",
+      "GUID": "{CFDCC204-CE83-4191-98E8-90FBF4B52C1F}",
+      "Color": "10",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "2961288361",
+      "Name": "Play_FinalBoss_Lv4_Final_Appear",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Final\\_TODO\\Play_FinalBoss_Lv4_Final_Appear",
+      "GUID": "{EE8068AC-7ED7-4FD8-AB0F-D983D6839577}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "0.5",
+      "DurationMax": "0.5",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "951206736"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "348075477",
+      "Name": "Play_FinalBoss_Lv4_Final_CloseCoffin",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Final\\_DONE\\Coffin\\Play_FinalBoss_Lv4_Final_CloseCoffin",
+      "GUID": "{0F0CAC01-22F0-4BD5-9B22-74E94181165A}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "0.48237187",
+      "DurationMax": "0.49650642",
+      "MediaRefs": [
+       {
+        "Id": "494092095"
+       },
+       {
+        "Id": "1045325593"
+       }
+      ]
+     },
+     {
+      "Id": "2151835758",
+      "Name": "Play_FinalBoss_Lv4_Final_Cry",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Final\\Play_FinalBoss_Lv4_Final_Cry",
+      "GUID": "{CAE4C3D5-FDF7-4ABF-A624-58416DF09AB3}",
+      "Color": "10",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "457997532",
+      "Name": "Play_FinalBoss_Lv4_Final_Death",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Final\\Play_FinalBoss_Lv4_Final_Death",
+      "GUID": "{C454E1BE-2F00-470C-BA34-E64F98336246}",
+      "Color": "10",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "575187776",
+      "Name": "Play_FinalBoss_Lv4_Final_Drag",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Final\\_TODO\\Play_FinalBoss_Lv4_Final_Drag",
+      "GUID": "{6B500747-8A05-494B-8568-84395D115802}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "1018962752"
+       }
+      ]
+     },
+     {
+      "Id": "3034000287",
+      "Name": "Play_FinalBoss_Lv4_Final_Laser",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Final\\_DONE\\Laser\\Play_FinalBoss_Lv4_Final_Laser",
+      "GUID": "{0C0ED04B-C49E-4D46-9038-F3A5FC1B820D}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "159323240"
+       },
+       {
+        "Id": "328527280"
+       },
+       {
+        "Id": "529784344"
+       }
+      ]
+     },
+     {
+      "Id": "2062636802",
+      "Name": "Play_FinalBoss_Lv4_Final_Laser_Charge",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Final\\_DONE\\Laser\\Play_FinalBoss_Lv4_Final_Laser_Charge",
+      "GUID": "{801C8EAF-758F-4A95-9FE4-D7FE970A41E8}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "1052657572"
+       }
+      ]
+     },
+     {
+      "Id": "4139810843",
+      "Name": "Play_FinalBoss_Lv4_Final_Machine_Walk",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Final\\_DONE\\Spirit\\Play_FinalBoss_Lv4_Final_Machine_Walk",
+      "GUID": "{7918D26C-A75D-455C-BB6D-664D3E3D86A5}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "689697624"
+       },
+       {
+        "Id": "861518492"
+       },
+       {
+        "Id": "974910142"
+       }
+      ]
+     },
+     {
+      "Id": "761368881",
+      "Name": "Play_FinalBoss_Lv4_Final_OpenCoffin",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Final\\_DONE\\Coffin\\Play_FinalBoss_Lv4_Final_OpenCoffin",
+      "GUID": "{A53C98D5-FFA6-452D-BFC2-1B1015CFB5E4}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "0.48938814",
+      "DurationMax": "0.5010875",
+      "MediaRefs": [
+       {
+        "Id": "464721498"
+       },
+       {
+        "Id": "590408055"
+       },
+       {
+        "Id": "923528463"
+       }
+      ]
+     },
+     {
+      "Id": "1860111446",
+      "Name": "Play_FinalBoss_Lv4_Final_Pillar_Fall",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Final\\Play_FinalBoss_Lv4_Final_Pillar_Fall",
+      "GUID": "{20CDA3B3-7376-4AB3-B2B8-2105A5060AC3}",
+      "Color": "10",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "3515597876",
+      "Name": "Play_FinalBoss_Lv4_Final_Pillar_Hit",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Final\\Play_FinalBoss_Lv4_Final_Pillar_Hit",
+      "GUID": "{3F1386C8-5C33-4AA6-B086-F471B418CB7F}",
+      "Color": "10",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "2039595772",
+      "Name": "Play_FinalBoss_Lv4_Final_Spirit_Attack",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Final\\_DONE\\Spirit\\Play_FinalBoss_Lv4_Final_Spirit_Attack",
+      "GUID": "{49D94963-6DB0-43A0-8472-CF8881BBDCA6}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "1.075",
+      "DurationMax": "1.075",
+      "MediaRefs": [
+       {
+        "Id": "473377439"
+       },
+       {
+        "Id": "534130661"
+       },
+       {
+        "Id": "688969196"
+       },
+       {
+        "Id": "829579378"
+       },
+       {
+        "Id": "964889122"
+       }
+      ]
+     },
+     {
+      "Id": "3080357604",
+      "Name": "Play_FinalBoss_Lv4_Final_Spirit_Create",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Final\\_DONE\\Spirit\\Play_FinalBoss_Lv4_Final_Spirit_Create",
+      "GUID": "{B89EEAAA-42A4-411B-9D30-933C18071426}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "1.8801386",
+      "DurationMax": "3.33557",
+      "MediaRefs": [
+       {
+        "Id": "92026899"
+       },
+       {
+        "Id": "188939634"
+       },
+       {
+        "Id": "500013179"
+       },
+       {
+        "Id": "683834478"
+       }
+      ]
+     },
+     {
+      "Id": "338210742",
+      "Name": "Play_FinalBoss_Lv4_Final_Spirit_Heal",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Final\\_DONE\\Laser\\Spirit\\Play_FinalBoss_Lv4_Final_Spirit_Heal",
+      "GUID": "{67F53953-44ED-45A4-94E6-38090453E536}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "0.41341454",
+      "DurationMax": "0.4167479",
+      "MediaRefs": [
+       {
+        "Id": "60559864"
+       },
+       {
+        "Id": "200267163"
+       },
+       {
+        "Id": "301261324"
+       },
+       {
+        "Id": "957389714"
+       }
+      ]
+     },
+     {
+      "Id": "334431868",
+      "Name": "Play_FinalBoss_Lv4_Final_Spirit_Warning",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Final\\_DONE\\Laser\\Spirit\\Play_FinalBoss_Lv4_Final_Spirit_Warning",
+      "GUID": "{70FF6435-C98F-440A-B27F-84A3BC07EA2D}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "1.3042716",
+      "DurationMax": "1.4894161",
+      "MediaRefs": [
+       {
+        "Id": "60559864"
+       },
+       {
+        "Id": "200267163"
+       },
+       {
+        "Id": "301261324"
+       },
+       {
+        "Id": "957389714"
+       }
+      ]
+     },
+     {
+      "Id": "1547670912",
+      "Name": "Play_MidBoss_Lv4_Hand_Appear",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Hand\\_DONE\\Play_MidBoss_Lv4_Hand_Appear",
+      "GUID": "{B93C7553-775E-4068-9B34-2AF8B28EEFCB}",
+      "Color": "10",
+      "DurationType": "OneShot",
+      "DurationMin": "10.431875",
+      "DurationMax": "10.431875",
+      "MediaRefs": [
+       {
+        "Id": "683468325"
+       }
+      ]
+     },
+     {
+      "Id": "1215187609",
+      "Name": "Play_MidBoss_Lv4_Hand_Appear_Punch",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Hand\\_DONE\\Play_MidBoss_Lv4_Hand_Appear_Punch",
+      "GUID": "{BFD28107-7DF0-44BB-BE12-59B238F0A8B5}",
+      "Color": "10",
+      "DurationType": "OneShot",
+      "DurationMin": "4.2",
+      "DurationMax": "4.2",
+      "MediaRefs": [
+       {
+        "Id": "700282159"
+       }
+      ]
+     },
+     {
+      "Id": "1735088279",
+      "Name": "Play_MidBoss_Lv4_Hand_Appear_Punch_Pre",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Hand\\_DONE\\Play_MidBoss_Lv4_Hand_Appear_Punch_Pre",
+      "GUID": "{F14A9EF4-8CFA-407F-84F1-F42F3A98DAE2}",
+      "Color": "10",
+      "DurationType": "OneShot",
+      "DurationMin": "4.375",
+      "DurationMax": "4.375",
+      "MediaRefs": [
+       {
+        "Id": "323460468"
+       }
+      ]
+     },
+     {
+      "Id": "2731174523",
+      "Name": "Play_MidBoss_Lv4_Hand_Death",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Hand\\Play_MidBoss_Lv4_Hand_Death",
+      "GUID": "{D1474608-9A4F-42DA-A71B-6C195EC18884}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "9.267604",
+      "DurationMax": "9.267604",
+      "MediaRefs": [
+       {
+        "Id": "506686897"
+       }
+      ]
+     },
+     {
+      "Id": "1347661547",
+      "Name": "Play_MidBoss_Lv4_Hand_Death_Leave",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Hand\\Play_MidBoss_Lv4_Hand_Death_Leave",
+      "GUID": "{33B73FE5-8ED4-49E4-92A7-4DA5D3B91DCF}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "3.8445208",
+      "DurationMax": "3.8445208",
+      "MediaRefs": [
+       {
+        "Id": "219206103"
+       }
+      ]
+     },
+     {
+      "Id": "3405995788",
+      "Name": "Play_MidBoss_Lv4_Hand_Hold",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Hand\\Play_MidBoss_Lv4_Hand_Hold",
+      "GUID": "{E0F2D1C2-E5B2-4E0E-A2AC-BA3E6C0D5501}",
+      "Color": "10",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "1398942372",
+      "Name": "Play_MidBoss_Lv4_Hand_Punch_Attack",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Hand\\_DONE\\Play_MidBoss_Lv4_Hand_Punch_Attack",
+      "GUID": "{F3BD70C0-B181-4270-B9B6-03DAC221E6AE}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "2.883771",
+      "DurationMax": "3.242771",
+      "MediaRefs": [
+       {
+        "Id": "572811116"
+       },
+       {
+        "Id": "721808357"
+       }
+      ]
+     },
+     {
+      "Id": "3264678641",
+      "Name": "Play_MidBoss_Lv4_Hand_Punch_Prepare",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Hand\\_DONE\\Play_MidBoss_Lv4_Hand_Punch_Prepare",
+      "GUID": "{C6314F18-7D7D-434B-8D37-B5433F426B66}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "3.7074168",
+      "DurationMax": "3.7074168",
+      "MediaRefs": [
+       {
+        "Id": "593550971"
+       },
+       {
+        "Id": "1032293178"
+       }
+      ]
+     },
+     {
+      "Id": "3369140556",
+      "Name": "Play_MidBoss_Lv4_Hand_Shoot",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Hand\\Play_MidBoss_Lv4_Hand_Shoot",
+      "GUID": "{BA3BF870-E557-40ED-97C8-BD525A7E333E}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "0.3728698",
+      "DurationMax": "0.8396947",
+      "MediaRefs": [
+       {
+        "Id": "52089936"
+       },
+       {
+        "Id": "209404606"
+       },
+       {
+        "Id": "587155105"
+       },
+       {
+        "Id": "717547991"
+       }
+      ]
+     },
+     {
+      "Id": "3355175508",
+      "Name": "Play_MidBoss_Lv4_Hand_Tap_BangFinger",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Hand\\_DONE\\Play_MidBoss_Lv4_Hand_Tap_BangFinger",
+      "GUID": "{4EAE920C-0458-42C9-ADA1-3D019DCFECFD}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "1.821896",
+      "DurationMax": "2.1666117",
+      "MediaRefs": [
+       {
+        "Id": "26247976"
+       },
+       {
+        "Id": "885970789"
+       },
+       {
+        "Id": "1011262200"
+       }
+      ]
+     },
+     {
+      "Id": "2126747653",
+      "Name": "Play_MidBoss_Lv4_Hand_Tap_LiftFinger",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Hand\\_DONE\\Play_MidBoss_Lv4_Hand_Tap_LiftFinger",
+      "GUID": "{5829919E-E6C1-485A-A4CC-5B2F4A9BB2BF}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "0.46996456",
+      "DurationMax": "0.5588852",
+      "MediaRefs": [
+       {
+        "Id": "70972793"
+       },
+       {
+        "Id": "656177835"
+       },
+       {
+        "Id": "661317945"
+       }
+      ]
+     },
+     {
+      "Id": "1508277944",
+      "Name": "Play_MidBoss_Lv4_Hand_Tap_Projectile_Part_Appear",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Hand\\_DONE\\Play_MidBoss_Lv4_Hand_Tap_Projectile_Part_Appear",
+      "GUID": "{D50E7C7E-D618-4253-9B07-9C564DFF00FC}",
+      "Color": "10",
+      "MaxAttenuation": "55",
+      "DurationType": "OneShot",
+      "DurationMin": "2.0645964",
+      "DurationMax": "2.639064",
+      "MediaRefs": [
+       {
+        "Id": "224850128"
+       },
+       {
+        "Id": "577658797"
+       },
+       {
+        "Id": "712526529"
+       },
+       {
+        "Id": "846719543"
+       },
+       {
+        "Id": "860193305"
+       }
+      ]
+     },
+     {
+      "Id": "1067264943",
+      "Name": "Play_MiniBoss_Lv4_Attack_Warning",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Dog\\Play_MiniBoss_Lv4_Attack_Warning",
+      "GUID": "{13357172-3EFB-450C-915D-336F6F084E38}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "1.7867917",
+      "DurationMax": "1.7867917",
+      "MediaRefs": [
+       {
+        "Id": "701480995"
+       },
+       {
+        "Id": "855312388"
+       }
+      ]
+     },
+     {
+      "Id": "4090668092",
+      "Name": "Play_MiniBoss_Lv4_Dog_Appear",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Dog\\_BLOCKED\\Play_MiniBoss_Lv4_Dog_Appear",
+      "GUID": "{B788D23C-0537-43C2-8DA5-398090868BC2}",
+      "Color": "10",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "3604075775",
+      "Name": "Play_MiniBoss_Lv4_Dog_Attack",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Dog\\Play_MiniBoss_Lv4_Dog_Attack",
+      "GUID": "{31C9C2B6-A21A-48DA-9F32-D0FAC2A4FA33}",
+      "Color": "10",
+      "DurationType": "OneShot",
+      "DurationMin": "4.614521",
+      "DurationMax": "4.6368127",
+      "MediaRefs": [
+       {
+        "Id": "145340289"
+       },
+       {
+        "Id": "793034229"
+       }
+      ]
+     },
+     {
+      "Id": "3950481135",
+      "Name": "Play_MiniBoss_Lv4_Dog_Death",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Dog\\Play_MiniBoss_Lv4_Dog_Death",
+      "GUID": "{B3491413-4A2D-4724-BEBF-22E4F6CD5445}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "14.505959",
+      "DurationMax": "14.505959",
+      "MediaRefs": [
+       {
+        "Id": "880922227"
+       }
+      ]
+     },
+     {
+      "Id": "2037670519",
+      "Name": "Play_MiniBoss_Lv4_Dog_Eat",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Dog\\Play_MiniBoss_Lv4_Dog_Eat",
+      "GUID": "{6C562770-2923-4133-BEA2-81B9411BF10F}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "1.5093958",
+      "DurationMax": "1.5093958",
+      "MediaRefs": [
+       {
+        "Id": "16983127"
+       },
+       {
+        "Id": "637830421"
+       }
+      ]
+     },
+     {
+      "Id": "1473835385",
+      "Name": "Play_MiniBoss_Lv4_Dog_Suck",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Dog\\Play_MiniBoss_Lv4_Dog_Suck",
+      "GUID": "{4AFFCF2C-0B6B-4628-90A2-8B89A116646E}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "69328776"
+       },
+       {
+        "Id": "186959923"
+       },
+       {
+        "Id": "1058066865"
+       },
+       {
+        "Id": "1072821850"
+       }
+      ]
+     },
+     {
+      "Id": "3731676122",
+      "Name": "Play_Projectile_BigFollower",
+      "ObjectPath": "\\Events\\Enemy\\Play_Projectile_BigFollower",
+      "GUID": "{6171F81C-922A-4AE9-BAE6-4C9D905F9055}",
+      "Color": "10",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "1995325602",
+      "Name": "Stop_Boss_Lv3_Steam",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv3\\Stop_Boss_Lv3_Steam",
+      "GUID": "{837B881B-86F6-4131-9219-4699576F3432}",
+      "Color": "10",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "1448584828",
+      "Name": "Stop_Boss_Lv3_Train_Movement",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv3\\Stop_Boss_Lv3_Train_Movement",
+      "GUID": "{FDBB327C-9AAF-4161-A187-AA8DC9153E7A}",
+      "Color": "10",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "1056027922",
+      "Name": "Stop_Enemy_Chaser_Warning",
+      "ObjectPath": "\\Events\\Enemy\\Chaser\\Stop_Enemy_Chaser_Warning",
+      "GUID": "{B410EEB4-D9C6-4A96-8444-631DD9EC6EE1}",
+      "Color": "10",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "2232797143",
+      "Name": "Stop_Enemy_Laser_Attack",
+      "ObjectPath": "\\Events\\Enemy\\Laser\\Stop_Enemy_Laser_Attack",
+      "GUID": "{1400E9F0-4BA2-45E3-9213-C794A72029D7}",
+      "Color": "10",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "4288995512",
+      "Name": "Stop_Enemy_Screen_Attack_Charging",
+      "ObjectPath": "\\Events\\Enemy\\Stop_Enemy_Screen_Attack_Charging",
+      "GUID": "{20A9D637-1F23-4CB1-8E5F-884D01D1677F}",
+      "Color": "10",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "2749392763",
+      "Name": "Stop_FinalBoss_Lv4_Final_Appear",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Final\\Stop_FinalBoss_Lv4_Final_Appear",
+      "GUID": "{DEE79DFC-E565-4DCD-8E0E-4FEAAE3D3FED}",
+      "Color": "10",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "2826205056",
+      "Name": "Stop_FinalBoss_Lv4_Final_Cry",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Final\\Stop_FinalBoss_Lv4_Final_Cry",
+      "GUID": "{673153AD-4359-4F12-972B-6EB74606C8E7}",
+      "Color": "10",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "133225406",
+      "Name": "Stop_FinalBoss_Lv4_Final_Drag",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Final\\_BLOCKED\\Stop_FinalBoss_Lv4_Final_Drag",
+      "GUID": "{BA45FF1D-0707-4EBF-84FE-152B20A1FE11}",
+      "Color": "10",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "1213427897",
+      "Name": "Stop_FinalBoss_Lv4_Final_Laser",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Final\\_DONE\\Laser\\Stop_FinalBoss_Lv4_Final_Laser",
+      "GUID": "{379926B8-9E22-4F8D-A742-E4191D47E512}",
+      "Color": "10",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "1481624070",
+      "Name": "Stop_MidBoss_Lv4_Hand_Hold",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Hand\\Stop_MidBoss_Lv4_Hand_Hold",
+      "GUID": "{418EC042-4281-4BEF-8996-E8C99E7D9133}",
+      "Color": "10",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "1313647561",
+      "Name": "Stop_MiniBoss_Lv4_Attack_Warning",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Dog\\Stop_MiniBoss_Lv4_Attack_Warning",
+      "GUID": "{8110A6DE-CCD5-4951-8802-E04413DAA0DD}",
+      "Color": "10",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "814220267",
+      "Name": "Stop_MiniBoss_Lv4_Dog_Suck",
+      "ObjectPath": "\\Events\\Enemy\\Boss\\Lv4_Dog\\Stop_MiniBoss_Lv4_Dog_Suck",
+      "GUID": "{ACABCD40-4941-48D7-9C0F-A2313ED00834}",
+      "Color": "10",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "1061566721",
+      "Name": "VFX_Enemy_Attention",
+      "ObjectPath": "\\Events\\Enemy\\VFX_Enemy_Attention",
+      "GUID": "{4BBC522F-7D72-4E84-868A-94238D3EDBFC}",
+      "Color": "10",
+      "DurationType": "OneShot",
+      "DurationMin": "0.5",
+      "DurationMax": "0.5",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "75097291"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "2400499982",
+      "Name": "VFX_Enemy_Shoot",
+      "ObjectPath": "\\Events\\Enemy\\VFX_Enemy_Shoot",
+      "GUID": "{FFCCE9BB-67F7-4BA7-8936-8D8E4089D222}",
+      "Color": "10",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "0.3728698",
+      "DurationMax": "0.8196947",
+      "MediaRefs": [
+       {
+        "Id": "52089936"
+       },
+       {
+        "Id": "209404606"
+       },
+       {
+        "Id": "587155105"
+       },
+       {
+        "Id": "717547991"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "303428584",
+      "Name": "enm_AttackWarning",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\enm_AttackWarning",
+      "GUID": "{4A8D53A4-4845-4ADF-BEF0-F7FD2669ED8B}",
+      "Color": "14"
+     },
+     {
+      "Id": "3144762221",
+      "Name": "game_ScoreBoost",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\game_ScoreBoost",
+      "GUID": "{36FAB828-3B60-4C11-AF10-09B696347B34}",
+      "Color": "14"
+     },
+     {
+      "Id": "4271324752",
+      "Name": "enm_Lv3_Boss_Train",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\enm_Lv3_Boss_Train",
+      "GUID": "{68101DFE-4968-4831-9A01-2CA2F9E105C3}",
+      "Color": "14"
+     }
+    ],
+    "StateGroups": [
+     {
+      "Id": "89505537",
+      "Name": "Gameplay",
+      "ObjectPath": "\\States\\Default Work Unit\\Gameplay",
+      "GUID": "{0FD24778-2B38-4284-AB9B-B176F6E1F2AC}",
+      "States": [
+       {
+        "Id": "251412225",
+        "Name": "Shop",
+        "ObjectPath": "\\States\\Default Work Unit\\Gameplay\\Shop",
+        "GUID": "{4916C877-443A-4F05-BAF8-9C79521C0167}"
+       },
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\Gameplay\\None",
+        "GUID": "{11602F6F-7591-443C-9061-D3F3314EBFD8}"
+       },
+       {
+        "Id": "782826392",
+        "Name": "Default",
+        "ObjectPath": "\\States\\Default Work Unit\\Gameplay\\Default",
+        "GUID": "{6E00D407-0F37-485C-88D0-9A1776404330}"
+       },
+       {
+        "Id": "1189762416",
+        "Name": "Challenge",
+        "ObjectPath": "\\States\\Default Work Unit\\Gameplay\\Challenge",
+        "GUID": "{D3763462-0863-4769-A24E-430DBA512945}"
+       },
+       {
+        "Id": "3026592080",
+        "Name": "Boss_Defeat",
+        "ObjectPath": "\\States\\Default Work Unit\\Gameplay\\Boss_Defeat",
+        "GUID": "{772B5431-47E5-4F36-9961-A30FAEDBBA93}"
+       },
+       {
+        "Id": "3688152761",
+        "Name": "Boss_Fight",
+        "ObjectPath": "\\States\\Default Work Unit\\Gameplay\\Boss_Fight",
+        "GUID": "{1FE98355-9982-415F-A3AC-4747EFD3F6DB}"
+       },
+       {
+        "Id": "3803289968",
+        "Name": "LevelClear",
+        "ObjectPath": "\\States\\Default Work Unit\\Gameplay\\LevelClear",
+        "GUID": "{B07200D4-BFD9-4296-ACE6-AD722F3AA493}"
+       },
+       {
+        "Id": "4158285989",
+        "Name": "GameOver",
+        "ObjectPath": "\\States\\Default Work Unit\\Gameplay\\GameOver",
+        "GUID": "{6C7F5941-4D1F-4ADB-A28C-83557418D2DC}"
+       }
+      ]
+     },
+     {
+      "Id": "2988808205",
+      "Name": "Boss_MusicHold",
+      "ObjectPath": "\\States\\Default Work Unit\\Boss_MusicHold",
+      "GUID": "{13585119-3B8B-45DD-9D7F-02D0033F3E44}",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\Boss_MusicHold\\None",
+        "GUID": "{D450D00D-64AC-431E-926B-BE0F10372816}"
+       },
+       {
+        "Id": "1281810935",
+        "Name": "Start",
+        "ObjectPath": "\\States\\Default Work Unit\\Boss_MusicHold\\Start",
+        "GUID": "{DD903C2F-F28D-4502-8E82-365D86D3213B}"
+       },
+       {
+        "Id": "2405648188",
+        "Name": "Release",
+        "ObjectPath": "\\States\\Default Work Unit\\Boss_MusicHold\\Release",
+        "GUID": "{BC3A0A49-3F3F-4E39-9816-20FA18C963E8}"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{38744C99-81E4-9952-38AC-3C53F131601A}"
+ }
+}

@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" load_steps=0 format=3 uid="uid://cjpspmuptkbmh"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Boss_Lv2_Anim_FirstPhase_Reveal"
+id = 3909290888
+guid = "{E661EEAB-19C3-43F2-90E7-491829D46643}"
+dummy = true

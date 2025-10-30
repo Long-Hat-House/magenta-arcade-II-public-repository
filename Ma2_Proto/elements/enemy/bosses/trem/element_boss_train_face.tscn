@@ -1,0 +1,175 @@
+[gd_scene load_steps=23 format=3 uid="uid://6t4vkxsaaswb"]
+
+[ext_resource type="Script" uid="uid://cab4g0e87r6n1" path="res://elements/enemy/bosses/trem/element_boss_train_face.gd" id="1_7ym7p"]
+[ext_resource type="PackedScene" uid="uid://bkmcu74u25se1" path="res://elements/enemy/bosses/trem/mesh/mesh_face_train.tscn" id="2_a2fbw"]
+[ext_resource type="Material" uid="uid://dl8mo5f1v6fh3" path="res://elements/enemy/bosses/trem/m_element_boss_train_face_overlay.tres" id="2_qf7y0"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="3_a2fbw"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="3_s1mv6"]
+[ext_resource type="Script" uid="uid://bls4vce0lfvfc" path="res://elements/vfx/spawn_area.gd" id="4_vqymv"]
+[ext_resource type="PackedScene" uid="uid://ywymskkj85vs" path="res://elements/vfx/vfx_explosion/vfx_explosion.tscn" id="5_s1mv6"]
+[ext_resource type="Script" uid="uid://dj2x7ekyg32b7" path="res://systems/score/score_giver.gd" id="6_r5kib"]
+[ext_resource type="Resource" uid="uid://dlkoiixl5t15v" path="res://elements/score/score_info_boss_train_mask.tres" id="7_r5kib"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7ym7p"]
+animation = &"close"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_a2fbw"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6il10"]
+animation = &"sad"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vqymv"]
+animation = &"happy"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s1mv6"]
+animation = &"anger"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_qf7y0"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_6il10")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_vqymv")
+blend_point_1/pos = 0.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_s1mv6")
+blend_point_2/pos = 1.0
+value_label = "sad_to_angry"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7feof"]
+animation = &"stun"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_r5kib"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_klgke"]
+graph_offset = Vector2(-78.7227, 45.3653)
+nodes/Closed/node = SubResource("AnimationNodeAnimation_7ym7p")
+nodes/Closed/position = Vector2(480, 480)
+nodes/Opened/node = SubResource("AnimationNodeBlend2_a2fbw")
+nodes/Opened/position = Vector2(680, 200)
+nodes/SadToAngry/node = SubResource("AnimationNodeBlendSpace1D_qf7y0")
+nodes/SadToAngry/position = Vector2(-80, 120)
+nodes/Stun/node = SubResource("AnimationNodeAnimation_7feof")
+nodes/Stun/position = Vector2(40, 460)
+nodes/Stunned/node = SubResource("AnimationNodeBlend2_r5kib")
+nodes/Stunned/position = Vector2(340, 180)
+nodes/output/position = Vector2(940, 280)
+node_connections = [&"Opened", 0, &"Closed", &"Opened", 1, &"Stunned", &"Stunned", 0, &"SadToAngry", &"Stunned", 1, &"Stun", &"output", 0, &"Opened"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_527mc"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_jgiw4"]
+states/BlendTree/node = SubResource("AnimationNodeBlendTree_klgke")
+states/BlendTree/position = Vector2(471, 94)
+transitions = ["Start", "BlendTree", SubResource("AnimationNodeStateMachineTransition_527mc")]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ym7p"]
+size = Vector3(2.5, 4, 0.5)
+
+[sub_resource type="GDScript" id="GDScript_vqymv"]
+script/source = "extends Node
+
+
+func _on_spawn_area_instantiated(instance: Node3D) -> void:
+	var vfx:SimpleVFX = instance as SimpleVFX;
+	if vfx:
+		vfx.done.connect(func():
+			print(\"[BOSS] SAVED VFX\");
+			ObjectPool.repool(vfx);
+			, CONNECT_ONE_SHOT);
+"
+
+[node name="ElementBossTrainFace" type="Node3D" node_paths=PackedStringArray("overlay_meshes")]
+script = ExtResource("1_7ym7p")
+overlay_meshes = [NodePath("faceTrain/rosto"), NodePath("faceTrain/palpebra_sup_L"), NodePath("faceTrain/palpebra_inf_L"), NodePath("faceTrain/palpebra_sup_R"), NodePath("faceTrain/palpebra_inf_R"), NodePath("faceTrain/boca")]
+overlay = ExtResource("2_qf7y0")
+
+[node name="FaceHighContrastObject" type="Node" parent="." node_paths=PackedStringArray("excluded_nodes")]
+script = ExtResource("3_s1mv6")
+high_contrast_group = &"neutral"
+excluded_nodes = [NodePath("../faceTrain/sobrancelha_R"), NodePath("../faceTrain/sobrancelha_L"), NodePath("../faceTrain/nariz")]
+
+[node name="faceTrain" parent="." instance=ExtResource("2_a2fbw")]
+
+[node name="sobrancelha_L" parent="faceTrain" index="0"]
+transform = Transform3D(0.819151, -0.573576, 0, 0.573576, 0.819151, 0, 0, 0, 1, 0.49, 0.36, 0.4)
+
+[node name="rosto" parent="faceTrain" index="1"]
+material_overlay = ExtResource("2_qf7y0")
+
+[node name="palpebra_sup_L" parent="faceTrain" index="2"]
+transform = Transform3D(0.951057, -0.309017, 0, 0.309017, 0.951057, 0, 0, 0, 1, 0.48, 0.3, 0.28)
+
+[node name="palpebra_inf_L" parent="faceTrain" index="3"]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="olho_L" parent="faceTrain" index="4"]
+transform = Transform3D(0.675, 0, 0, 0, 0.675, 0, 0, 0, 0.675, 0.41, 0, 0.24)
+
+[node name="boca_int_L" parent="faceTrain" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.381593, -0.549312, 0.205814)
+
+[node name="boca" parent="faceTrain" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.98, 0.35)
+
+[node name="palpebra_sup_R" parent="faceTrain" index="8"]
+transform = Transform3D(0.951057, 0.309017, 0, -0.309017, 0.951057, 0, 0, 0, 1, -0.48, 0.355, 0.28)
+
+[node name="palpebra_inf_R" parent="faceTrain" index="9"]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="olho_R" parent="faceTrain" index="10"]
+transform = Transform3D(0.675, 0, 0, 0, 0.675, 0, 0, 0, 0.675, -0.41, 0, 0.24)
+
+[node name="sobrancelha_R" parent="faceTrain" index="11"]
+transform = Transform3D(0.819151, 0.573576, 0, -0.573576, 0.819151, 0, 0, 0, 1, -0.49, 0.36, 0.4)
+
+[node name="boca_int_R" parent="faceTrain" index="12"]
+transform = Transform3D(1.00703, 0, 0, 0, 1.00703, 0, 0, 0, 1.00703, -0.381593, -0.549312, 0.205814)
+
+[node name="ScoreTarget" type="Marker3D" parent="faceTrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.75)
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../faceTrain")
+tree_root = SubResource("AnimationNodeStateMachine_jgiw4")
+anim_player = NodePath("../faceTrain/Anim")
+parameters/BlendTree/Opened/blend_amount = 1.0
+parameters/BlendTree/SadToAngry/blend_position = 1.0
+parameters/BlendTree/Stunned/blend_amount = 0.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["enemy_position"]]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Health" type="Node" parent="StaticBody3D" node_paths=PackedStringArray("feedback") groups=["enemy_healths"]]
+script = ExtResource("3_a2fbw")
+max_life_on_enter_tree = false
+feedback = [NodePath("../../faceTrain")]
+feedback_ignore_contains_divided_by_commas = "olho"
+metadata/_custom_type_script = "uid://b3g5atumyrird"
+
+[node name="ScoreGiver" type="Node" parent="StaticBody3D/Health" node_paths=PackedStringArray("health", "point_position")]
+script = ExtResource("6_r5kib")
+info = ExtResource("7_r5kib")
+health = NodePath("..")
+point_position = NodePath("../../../faceTrain/ScoreTarget")
+metadata/_custom_type_script = "uid://dj2x7ekyg32b7"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)
+shape = SubResource("BoxShape3D_7ym7p")
+
+[node name="SpawnArea" type="VisibleOnScreenNotifier3D" parent="." node_paths=PackedStringArray("parent")]
+aabb = AABB(-1, -1, 0.25, 2, 2, 0.5)
+script = ExtResource("4_vqymv")
+scenes = Array[PackedScene]([ExtResource("5_s1mv6")])
+spawn_multiple_default = 10
+spawn_multiple_default_duration = 1.2
+spawn_multiple_default_ease = 1
+parent = NodePath("..")
+object_pooling = false
+metadata/_custom_type_script = "uid://bls4vce0lfvfc"
+
+[node name="VFX Savior" type="Node" parent="SpawnArea"]
+script = SubResource("GDScript_vqymv")
+
+[editable path="faceTrain"]

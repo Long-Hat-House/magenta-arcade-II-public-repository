@@ -1,0 +1,115 @@
+[gd_scene load_steps=24 format=3 uid="uid://cujffil1n0018"]
+
+[ext_resource type="Script" uid="uid://d3ap1fj8l8kd0" path="res://elements/player/player.gd" id="1_6ibbk"]
+[ext_resource type="PackedScene" uid="uid://c0e05rbg1yhbg" path="res://elements/player/player_token.tscn" id="2_ebknh"]
+[ext_resource type="PackedScene" uid="uid://c3agqc0dwanvy" path="res://elements/player/weapons/weapon_blue_hold.tscn" id="4_2wd8t"]
+[ext_resource type="Script" uid="uid://051kwsfhn144" path="res://elements/player/force_generator_omnipresent.gd" id="7_5oatu"]
+[ext_resource type="Script" uid="uid://cyx6fw83gnacj" path="res://elements/player/player_extra_shot_manager.gd" id="7_yd248"]
+[ext_resource type="PackedScene" uid="uid://q262rmgn7vv7" path="res://elements/player/projectiles/rotating_ball/proj_player_extra_ball.tscn" id="8_2sqnu"]
+[ext_resource type="Script" uid="uid://ciribgwofc88b" path="res://systems/vibration/vibration_manager.gd" id="8_i8aon"]
+[ext_resource type="Script" uid="uid://dnbgtiv7jypqa" path="res://elements/player/player_magic_missile_manager.gd" id="9_nd2p5"]
+[ext_resource type="Script" uid="uid://b835gqe141tur" path="res://elements/player/emergency_heal.gd" id="10_k87mw"]
+[ext_resource type="PackedScene" uid="uid://dd6xsgc1svbyg" path="res://elements/player/projectiles/magic_missile/proj_player_magic_missile.tscn" id="10_onqbq"]
+[ext_resource type="Script" uid="uid://bv6jac1yuolau" path="res://elements/player/player_revenge_manager.gd" id="10_v2c1w"]
+[ext_resource type="Script" uid="uid://b2mdpysbv248h" path="res://elements/player/emergency_heal_graphic.gd" id="11_h7clm"]
+[ext_resource type="PackedScene" uid="uid://db8g4rring7g2" path="res://elements/player/projectiles/revenge/player_projectile_revenge.tscn" id="11_v2c1w"]
+[ext_resource type="PackedScene" uid="uid://7oxmnkddsgqs" path="res://elements/player/projectiles/emergency_healing/emergency_healing.tscn" id="12_3vlnu"]
+[ext_resource type="Script" uid="uid://dokjlknmsciin" path="res://elements/player/player_debug_solve.gd" id="12_t6jt4"]
+[ext_resource type="Script" uid="uid://dml0mt55tteet" path="res://elements/player/player_sfx_potencial_up.gd" id="16_sip74"]
+[ext_resource type="WwiseEvent" uid="uid://cfd5pa2ekx88e" path="res://Wwise/resources/Event/{AD0AA02D-3361-4A9F-B44A-D71A589F4386}.tres" id="17_1qcbu"]
+[ext_resource type="WwiseRTPC" uid="uid://c4g3x4vib2x3w" path="res://Wwise/resources/Game Parameter/{197FD55B-878B-4BDC-A7B5-61D0FF014F88}.tres" id="18_1nf8e"]
+
+[sub_resource type="Curve" id="Curve_3vlnu"]
+_limits = [0.8, 6.0, 0.0, 6.0]
+_data = [Vector2(0, 0.8), 0.0, 0.761933, 0, 0, Vector2(6, 6), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_sip74"]
+_limits = [0.25, 1.0, 0.0, 15.0]
+_data = [Vector2(0, 1), 0.0, -0.112651, 0, 0, Vector2(15, 0.25), -0.0289696, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_mekr1"]
+_limits = [0.4, 4.0, 0.0, 1.0]
+_data = [Vector2(0, 0.4), 0.0, 5.87865, 0, 0, Vector2(0.99117, 4), 0.119111, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_1qcbu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_euqsc"]
+radius = 0.25
+
+[node name="Player" type="Node3D" node_paths=PackedStringArray("emergency_heal", "equippedHold")]
+script = ExtResource("1_6ibbk")
+emergency_heal = NodePath("EmergencyHeal")
+equippedHold = NodePath("Weapon_Blue Hold")
+playerTokenScene = ExtResource("2_ebknh")
+hold_warm_up_duration_per_level = SubResource("Curve_3vlnu")
+hold_warm_up_multiplier_per_upgrade = SubResource("Curve_sip74")
+hold_warm_down_speed_per_no_touch_time = SubResource("Curve_mekr1")
+hold_damage_up_curve_per_upgrade = SubResource("Curve_1qcbu")
+
+[node name="FingerCast3D" type="ShapeCast3D" parent="."]
+unique_name_in_owner = true
+enabled = false
+shape = SubResource("SphereShape3D_euqsc")
+target_position = Vector3(0, -1, 1)
+margin = 0.04
+max_results = 4
+collision_mask = 33
+collide_with_areas = true
+debug_shape_custom_color = Color(0, 1, 1, 1)
+
+[node name="ForceGenerator_OmniPresent" type="Node3D" parent="."]
+script = ExtResource("7_5oatu")
+force_percentage = 0.14
+direction = Vector3(0.5, 0, -1)
+
+[node name="Weapon_Blue Hold" parent="." instance=ExtResource("4_2wd8t")]
+
+[node name="VibrationManager" type="Node" parent="."]
+script = ExtResource("8_i8aon")
+enabled = false
+
+[node name="ExtraShotManager" type="Node" parent="."]
+script = ExtResource("7_yd248")
+level_up_time_absolute = 1.1
+level_up_time_per_level = 0.05
+level_down_time_absolute = 0.45
+level_down_time_per_level = 0.025
+projectile = ExtResource("8_2sqnu")
+time_between_shots_base = 0.25
+angle_velocity_base = 200.0
+angle_velocity_multiplier_per_ball = 0.825
+
+[node name="MagicMissileManager" type="Node" parent="."]
+script = ExtResource("9_nd2p5")
+magic_missile_scene = ExtResource("10_onqbq")
+
+[node name="EmergencyHeal" type="Node" parent="."]
+script = ExtResource("10_k87mw")
+
+[node name="EmergencyHeal_Graphic" type="Node" parent="EmergencyHeal"]
+script = ExtResource("11_h7clm")
+object_scene = ExtResource("12_3vlnu")
+
+[node name="Revenge" type="Node" parent="."]
+script = ExtResource("10_v2c1w")
+revenge_scene = ExtResource("11_v2c1w")
+
+[node name="Debug Solve" type="Node" parent="."]
+script = ExtResource("12_t6jt4")
+
+[node name="SFX_Hold_Potential" type="Node" parent="."]
+script = ExtResource("16_sip74")
+sfx = ExtResource("17_1qcbu")
+parameter = ExtResource("18_1nf8e")
+
+[connection signal="hold_potencial_change" from="." to="SFX_Hold_Potential" method="_on_player_hold_potencial_change"]
+[connection signal="healing_change_total" from="EmergencyHeal" to="EmergencyHeal/EmergencyHeal_Graphic" method="_on_val_updated"]
+[connection signal="healing_completed" from="EmergencyHeal" to="EmergencyHeal/EmergencyHeal_Graphic" method="_on_emergency_heal_healing_completed"]
+[connection signal="healing_decayed" from="EmergencyHeal" to="EmergencyHeal/EmergencyHeal_Graphic" method="_on_emergency_heal_healing_decayed"]
+[connection signal="healing_start" from="EmergencyHeal" to="EmergencyHeal/EmergencyHeal_Graphic" method="_on_emergency_heal_healing_start"]
+[connection signal="healing_step" from="EmergencyHeal" to="EmergencyHeal/EmergencyHeal_Graphic" method="_on_emergency_heal_healing_step"]

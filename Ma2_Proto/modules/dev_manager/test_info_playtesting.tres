@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="TestInfo" load_steps=6 format=3 uid="uid://cvrjokmpu85ho"]
+
+[ext_resource type="Script" uid="uid://r36vu12ey5m8" path="res://systems/level/level_info.gd" id="1_iff11"]
+[ext_resource type="Resource" uid="uid://e1ssc2huivlu" path="res://elements/levels/lvl_info_arcade.tres" id="2_ef7aw"]
+[ext_resource type="Resource" uid="uid://ckdox715wnsxj" path="res://elements/levels/lvl_info_3.tres" id="3_jcj81"]
+[ext_resource type="Resource" uid="uid://cqocyay2fuac" path="res://elements/levels/lvl_info_4.tres" id="5_t4dcb"]
+[ext_resource type="Script" uid="uid://eqwf3lbqdpcl" path="res://modules/dev_manager/src/test_info.gd" id="6_hr7dg"]
+
+[resource]
+script = ExtResource("6_hr7dg")
+test_name = "Playtesting Version"
+hard_lock_levels = Array[ExtResource("1_iff11")]([ExtResource("2_ef7aw"), ExtResource("3_jcj81"), ExtResource("5_t4dcb")])
+hard_lock_title = "🚧"
+hard_lock_message = "test_playtesting_lock_text"
+metadata/_custom_type_script = "uid://eqwf3lbqdpcl"

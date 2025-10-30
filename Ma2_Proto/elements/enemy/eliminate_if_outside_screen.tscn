@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bprokuvnxxv37"]
+
+[ext_resource type="Script" uid="uid://cb6n34u8hgymn" path="res://elements/enemy/eliminate_outside_screen.gd" id="1_mnssq"]
+
+[node name="Eliminate if Outside Screen" type="Node"]
+process_mode = 1
+script = ExtResource("1_mnssq")

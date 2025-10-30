@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bonkfyjwa0edb"]
+
+[ext_resource type="PackedScene" uid="uid://c8k5xpoiy1spv" path="res://elements/powerups/button/mesh/button04.glb" id="1_pjk7k"]
+[ext_resource type="Material" uid="uid://bgsg47v8rlwl2" path="res://elements/powerups/button/material/m_button04.tres" id="2_agumv"]
+
+[node name="button04" instance=ExtResource("1_pjk7k")]
+
+[node name="button04" parent="." index="0"]
+material_override = ExtResource("2_agumv")

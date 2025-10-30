@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://bji4ujbq7oww0"]
+
+[ext_resource type="PackedScene" uid="uid://c3xim6dnh3pww" path="res://elements/enemy/brawny/Mesh/brawny.glb" id="1_ppqs0"]
+[ext_resource type="Material" uid="uid://3iwygfccr1s6" path="res://elements/enemy/brawny/Material/M_brawnybody.tres" id="2_68dw5"]
+[ext_resource type="Material" uid="uid://c1hfaxkv10v7f" path="res://elements/enemy/brawny/Material/M_brawnyarm.tres" id="3_h70i1"]
+
+[node name="brawny" instance=ExtResource("1_ppqs0")]
+
+[node name="Skeleton3D" parent="Rig_Brawny" index="0"]
+bones/0/rotation = Quaternion(-0.0754745, 2.12571e-24, 1.67587e-17, 0.997148)
+bones/1/rotation = Quaternion(-0.0925994, -1.14393e-17, 1.06385e-18, 0.995703)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(-0.0925994, -1.14393e-17, 1.06385e-18, 0.995703)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(-0.0793241, 1.18834e-07, -9.45617e-09, 0.996849)
+bones/3/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.148264, 7.01075e-14, -9.08755e-15, 0.988948)
+bones/5/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(0.148264, 3.45797e-10, -1.36845e-09, 0.988948)
+bones/8/rotation = Quaternion(0.0754744, -3.42188e-24, -1.67587e-17, 0.997148)
+bones/9/rotation = Quaternion(0.0754746, -4.35512e-24, -1.67587e-17, 0.997148)
+bones/10/rotation = Quaternion(0.0754745, -3.73296e-24, -1.67587e-17, 0.997148)
+bones/10/scale = Vector3(0.399997, 0.399997, 0.399997)
+bones/11/rotation = Quaternion(0.0754745, -3.21449e-24, -1.67587e-17, 0.997148)
+bones/11/scale = Vector3(0.314468, 0.314468, 0.314468)
+
+[node name="Brawny_Eye_L" parent="Rig_Brawny/Skeleton3D" index="0"]
+transform = Transform3D(1, -6.99163e-08, -2.27936e-07, 6.99162e-08, 1, -1.78814e-07, 2.27937e-07, 1.78814e-07, 1, 0.327406, 0.367658, 0.319721)
+
+[node name="Brawny_Eye_L" parent="Rig_Brawny/Skeleton3D/Brawny_Eye_L" index="0"]
+material_override = ExtResource("2_68dw5")
+
+[node name="Brawny_Eye_R" parent="Rig_Brawny/Skeleton3D" index="1"]
+transform = Transform3D(0.999999, 7.27254e-08, 2.28215e-07, -7.27254e-08, 0.999999, -1.78814e-07, -2.28215e-07, 1.78814e-07, 0.999999, -0.327405, 0.367721, 0.326277)
+
+[node name="Brawny_Eye_R" parent="Rig_Brawny/Skeleton3D/Brawny_Eye_R" index="0"]
+material_override = ExtResource("2_68dw5")
+
+[node name="Brawny_Box" parent="Rig_Brawny/Skeleton3D" index="2"]
+transform = Transform3D(0.399997, 3.68354e-24, -9.30578e-25, -3.10193e-25, 0.399997, -2.6077e-08, 9.30578e-25, 2.6077e-08, 0.399997, -3.51724e-21, -0.00707629, -0.0693053)
+
+[node name="Brawny_Box" parent="Rig_Brawny/Skeleton3D/Brawny_Box" index="0"]
+material_override = ExtResource("2_68dw5")
+
+[node name="Brawny_Cap" parent="Rig_Brawny/Skeleton3D" index="3"]
+transform = Transform3D(0.314468, 2.54617e-24, -8.78879e-25, -1.49926e-24, 0.314468, 3.72529e-09, 8.27181e-25, -3.72529e-09, 0.314468, -3.16978e-18, 0.67772, -0.207597)
+
+[node name="Brawny_Cap" parent="Rig_Brawny/Skeleton3D/Brawny_Cap" index="0"]
+material_override = ExtResource("2_68dw5")
+
+[node name="Brawny_Eye_Door_L" parent="Rig_Brawny/Skeleton3D" index="4"]
+material_override = ExtResource("2_68dw5")
+
+[node name="Brawny_Eye_Door_L_001" parent="Rig_Brawny/Skeleton3D" index="5"]
+material_override = ExtResource("2_68dw5")
+
+[node name="Skeleton3D" parent="Rig_ArmL" index="0"]
+bones/1/rotation = Quaternion(0.640856, 0.298835, -0.298837, 0.640857)
+
+[node name="Arm_L" parent="Rig_ArmL/Skeleton3D" index="0"]
+material_override = ExtResource("3_h70i1")
+
+[node name="Skeleton3D" parent="Rig_ArmR" index="0"]
+bones/1/rotation = Quaternion(0.640857, -0.298837, 0.298836, 0.640856)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(0.640857, -0.298837, 0.298836, 0.640856)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(0.640857, -0.298837, 0.298835, 0.640856)
+bones/3/scale = Vector3(1, 1, 1)
+
+[node name="Arm_R" parent="Rig_ArmR/Skeleton3D" index="0"]
+material_override = ExtResource("3_h70i1")

@@ -1,0 +1,1 @@
+class_name Boss_Cachorro_SM extends SimpleStateMachine

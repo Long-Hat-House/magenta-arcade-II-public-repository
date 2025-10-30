@@ -1,0 +1,254 @@
+[gd_scene load_steps=16 format=3 uid="uid://bpm05p1d7s8r1"]
+
+[ext_resource type="Script" uid="uid://ro05h772kcli" path="res://elements/levels/lvl_hub/hub_elements/hub_welcome/hub_welcome.gd" id="1_01h0i"]
+[ext_resource type="PackedScene" uid="uid://yjglagfjn8er" path="res://elements/npc/npc.tscn" id="1_icxge"]
+[ext_resource type="PackedScene" uid="uid://di2sa0kua34ou" path="res://elements/neutral/props/square_chair/mesh/square_chair_02.tscn" id="2_f10x4"]
+[ext_resource type="SpriteFrames" uid="uid://ch7jlno74qjee" path="res://elements/levels/lvl_hub/hub_elements/hub_npc/hub_npc_fanatic.ase" id="2_p8h4k"]
+[ext_resource type="PackedScene" uid="uid://btm47xa5e3tp" path="res://elements/neutral/props/vegetation/element_plant_pot.tscn" id="3_prhi4"]
+[ext_resource type="Script" uid="uid://bjnpmcrptfb85" path="res://systems/utils/random_rotation_local.gd" id="3_t575d"]
+[ext_resource type="PackedScene" uid="uid://bkeloy33222af" path="res://elements/neutral/props/carpet/mesh/mesh_carpet.tscn" id="4_e106k"]
+[ext_resource type="PackedScene" uid="uid://bt1f106vw45fd" path="res://elements/neutral/props/vegetation/mesh/mesh_plant_01.tscn" id="4_o2cn8"]
+[ext_resource type="PackedScene" uid="uid://cwbv7ltrp3kev" path="res://elements/neutral/props/carpet/mesh/mesh_barricade.tscn" id="5_lu6mx"]
+[ext_resource type="PackedScene" uid="uid://lwd0pyf2e0tf" path="res://elements/neutral/props/vegetation/mesh/mesh_plant_02.tscn" id="6_imuat"]
+[ext_resource type="Texture2D" uid="uid://bflvfpsy3dtmq" path="res://elements/neutral/props/vegetation/texture/white_flower.png" id="9_18prd"]
+[ext_resource type="PackedScene" uid="uid://budaj640highl" path="res://elements/levels/lvl_hub/hub_elements/hub_letter/hub_letter.tscn" id="11_ycn3d"]
+
+[sub_resource type="GDScript" id="GDScript_p8h4k"]
+resource_name = "Fanatic NPC Check"
+script/source = "extends Node
+
+@export var _npc:Node3D
+const LVL_INFO_1 = preload(\"res://elements/levels/lvl_info_1.tres\")
+const LVL_INFO_2 = preload(\"res://elements/levels/lvl_info_2.tres\")
+const LVL_INFO_3 = preload(\"res://elements/levels/lvl_info_3.tres\")
+
+func _ready() -> void:
+	if !_should_appear():
+		_npc.queue_free()
+
+func _should_appear() -> bool:
+	return LVL_INFO_1.is_complete() && !LVL_INFO_3.is_complete()
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p3cag"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("9_18prd")
+
+[sub_resource type="QuadMesh" id="QuadMesh_krgup"]
+
+[node name="HubWelcome" type="Node3D" node_paths=PackedStringArray("letter", "npcs")]
+script = ExtResource("1_01h0i")
+letter = NodePath("HubLetter")
+npcs = [NodePath("NPCs/Npc2"), NodePath("NPCs/Npc3"), NodePath("NPCs/Npc8"), NodePath("NPCs/Npc9"), NodePath("NPCs/Npc6"), NodePath("NPCs/Npc7"), NodePath("NPCs/Npc5")]
+
+[node name="NPCs" type="Node3D" parent="."]
+
+[node name="Npc2" parent="NPCs" instance=ExtResource("1_icxge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.09164, 0.00399429, -0.971701)
+may_talk_when_idle = false
+may_walk_when_idle = false
+back_to_idle_after_pressed = true
+
+[node name="Npc3" parent="NPCs" instance=ExtResource("1_icxge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70028, 0.00399429, -0.986875)
+may_talk_when_idle = false
+may_walk_when_idle = false
+back_to_idle_after_pressed = true
+
+[node name="Npc8" parent="NPCs" instance=ExtResource("1_icxge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.82786, 0.00399429, -0.824384)
+may_talk_when_idle = false
+may_walk_when_idle = false
+back_to_idle_after_pressed = true
+
+[node name="Npc9" parent="NPCs" instance=ExtResource("1_icxge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.31051, 0.00399429, 1.39464)
+may_talk_when_idle = false
+may_walk_when_idle = false
+back_to_idle_after_pressed = true
+
+[node name="Npc6" parent="NPCs" instance=ExtResource("1_icxge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7622, 0.00399429, 1.48257)
+may_talk_when_idle = false
+may_walk_when_idle = false
+back_to_idle_after_pressed = true
+
+[node name="Npc7" parent="NPCs" instance=ExtResource("1_icxge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.18575, 0.00399429, 1.50048)
+may_talk_when_idle = false
+may_walk_when_idle = false
+back_to_idle_after_pressed = true
+
+[node name="Npc5" parent="NPCs" instance=ExtResource("1_icxge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.20634, 0.00399429, -0.961582)
+may_talk_when_idle = false
+may_walk_when_idle = false
+back_to_idle_after_pressed = true
+
+[node name="Fanatic NPC" parent="NPCs" instance=ExtResource("1_icxge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.03306, 0.00399429, 1.60212)
+may_talk_when_idle = false
+talks_when_pressed = false
+may_walk_when_idle = false
+back_to_idle_after_pressed = true
+global_speaker_id = &"fanatic"
+graphic_mode = 3
+custom_spriteframes = ExtResource("2_p8h4k")
+custom_kind = 2
+force_custom_voice = true
+custom_voice = 4
+
+[node name="FanaticNPCCheck" type="Node" parent="NPCs" node_paths=PackedStringArray("_npc")]
+script = SubResource("GDScript_p8h4k")
+_npc = NodePath("../Fanatic NPC")
+
+[node name="chairs" type="Node3D" parent="."]
+
+[node name="square_chair02" parent="chairs" instance=ExtResource("2_f10x4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.54814, 0, -0.139023)
+
+[node name="square_chair05" parent="chairs" instance=ExtResource("2_f10x4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.54814, 0, -2.55602)
+
+[node name="square_chair03" parent="chairs" instance=ExtResource("2_f10x4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45051, 0, -0.139023)
+
+[node name="square_chair04" parent="chairs" instance=ExtResource("2_f10x4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45051, 0, -2.61058)
+
+[node name="plants" type="Node3D" parent="."]
+
+[node name="plant_pot" parent="plants" instance=ExtResource("3_prhi4")]
+transform = Transform3D(0.379908, 0, -0.925024, 0, 1, 0, 0.925024, 0, 0.379908, 4.5921, 0, 1.84879)
+script = ExtResource("3_t575d")
+
+[node name="plant" parent="plants/plant_pot" instance=ExtResource("4_o2cn8")]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0.0188599, 0.451904, 0.00163412)
+
+[node name="plant_pot2" parent="plants" instance=ExtResource("3_prhi4")]
+transform = Transform3D(0.379908, 0, -0.925024, 0, 1, 0, 0.925024, 0, 0.379908, 4.64684, 0, -0.377713)
+script = ExtResource("3_t575d")
+
+[node name="plant" parent="plants/plant_pot2" instance=ExtResource("4_o2cn8")]
+transform = Transform3D(1.2, 0, 0, 0, 1.4, 0, 0, 0, 1.2, 0.0188599, 0.451904, 0.00163412)
+
+[node name="plant_pot3" parent="plants" instance=ExtResource("3_prhi4")]
+transform = Transform3D(0.379908, 0, -0.925024, 0, 1, 0, 0.925024, 0, 0.379908, 4.60426, 0, -2.80208)
+script = ExtResource("3_t575d")
+
+[node name="plant" parent="plants/plant_pot3" instance=ExtResource("4_o2cn8")]
+transform = Transform3D(1.3, 0, 0, 0, 2, 0, 0, 0, 1.3, 0.0188599, 0.451904, 0.00163412)
+
+[node name="plant_pot4" parent="plants" instance=ExtResource("3_prhi4")]
+transform = Transform3D(0.379908, 0, -0.925024, 0, 1, 0, 0.925024, 0, 0.379908, -4.63388, 0, -2.90092)
+script = ExtResource("3_t575d")
+
+[node name="plant" parent="plants/plant_pot4" instance=ExtResource("4_o2cn8")]
+transform = Transform3D(1.2, 0, 0, 0, 1.6, 0, 0, 0, 1.2, 0.0188599, 0.451904, 0.00163412)
+
+[node name="plant_pot5" parent="plants" instance=ExtResource("3_prhi4")]
+transform = Transform3D(0.379908, 0, -0.925024, 0, 1, 0, 0.925024, 0, 0.379908, -4.61563, 0, -0.443033)
+script = ExtResource("3_t575d")
+
+[node name="plant" parent="plants/plant_pot5" instance=ExtResource("4_o2cn8")]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0.0188599, 0.451904, 0.00163412)
+
+[node name="plant_pot6" parent="plants" instance=ExtResource("3_prhi4")]
+transform = Transform3D(0.379908, 0, -0.925024, 0, 1, 0, 0.925024, 0, 0.379908, -4.643, 0, 1.80178)
+script = ExtResource("3_t575d")
+
+[node name="plant" parent="plants/plant_pot6" instance=ExtResource("4_o2cn8")]
+transform = Transform3D(1.3, 0, 0, 0, 1.9, 0, 0, 0, 1.3, 0.0188599, 0.451904, 0.00163412)
+
+[node name="plant_pot7" parent="plants" instance=ExtResource("3_prhi4")]
+transform = Transform3D(0.379908, 0, -0.925024, 0, 1, 0, 0.925024, 0, 0.379908, -4.45509, 0, 0.58819)
+script = ExtResource("3_t575d")
+
+[node name="plant01" parent="plants/plant_pot7" instance=ExtResource("6_imuat")]
+transform = Transform3D(0.45, 0, -1.49012e-08, 0, 0.45, 0, 1.49012e-08, 0, 0.45, 0, 0.267334, 0)
+
+[node name="plant_pot8" parent="plants" instance=ExtResource("3_prhi4")]
+transform = Transform3D(0.379908, 0, -0.925024, 0, 1, 0, 0.925024, 0, 0.379908, -4.45509, 0, -1.76099)
+script = ExtResource("3_t575d")
+
+[node name="plant01" parent="plants/plant_pot8" instance=ExtResource("6_imuat")]
+transform = Transform3D(0.535, 0, -1.77158e-08, 0, 0.535, 0, 1.77158e-08, 0, 0.535, 0, 0.267334, 0)
+
+[node name="plant_pot9" parent="plants" instance=ExtResource("3_prhi4")]
+transform = Transform3D(0.379908, 0, -0.925024, 0, 1, 0, 0.925024, 0, 0.379908, 4.62847, 0, 0.58819)
+script = ExtResource("3_t575d")
+
+[node name="plant01" parent="plants/plant_pot9" instance=ExtResource("6_imuat")]
+transform = Transform3D(0.535, 0, -1.77158e-08, 0, 0.535, 0, 1.77158e-08, 0, 0.535, 0, 0.267334, 0)
+
+[node name="plant_pot10" parent="plants" instance=ExtResource("3_prhi4")]
+transform = Transform3D(0.379908, 0, -0.925024, 0, 1, 0, 0.925024, 0, 0.379908, 4.62847, 0, -1.76099)
+script = ExtResource("3_t575d")
+
+[node name="plant01" parent="plants/plant_pot10" instance=ExtResource("6_imuat")]
+transform = Transform3D(0.45, 0, -1.49012e-08, 0, 0.45, 0, 1.49012e-08, 0, 0.45, 0, 0.267334, 0)
+
+[node name="carpet" parent="." instance=ExtResource("4_e106k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.33569)
+
+[node name="barricade1" parent="." instance=ExtResource("5_lu6mx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.53078, 0, -3.34338)
+
+[node name="barricade3" parent="." instance=ExtResource("5_lu6mx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.80835, 0, -3.34338)
+
+[node name="barricade2" parent="." instance=ExtResource("5_lu6mx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.237534, 0, -3.34338)
+
+[node name="barricade4" parent="." instance=ExtResource("5_lu6mx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5765, 0, -3.34338)
+
+[node name="flowers" type="Node3D" parent="."]
+visible = false
+
+[node name="flower3" type="MeshInstance3D" parent="flowers"]
+transform = Transform3D(0.139658, 0.188999, 8.26141e-09, 0, -1.02722e-08, 0.235, 0.188999, -0.139658, -6.10465e-09, 0.376725, 0.0325317, -0.234345)
+material_override = SubResource("StandardMaterial3D_p3cag")
+mesh = SubResource("QuadMesh_krgup")
+
+[node name="flower8" type="MeshInstance3D" parent="flowers"]
+transform = Transform3D(0.191505, 0.230924, 1.0094e-08, 0, -1.31134e-08, 0.3, 0.230924, -0.191505, -8.37097e-09, -2.50113, 0.0325317, 1.87344)
+material_override = SubResource("StandardMaterial3D_p3cag")
+mesh = SubResource("QuadMesh_krgup")
+
+[node name="flower9" type="MeshInstance3D" parent="flowers"]
+transform = Transform3D(-0.0829853, 0.246401, 1.07705e-08, 0, -1.1365e-08, 0.26, 0.246401, 0.0829853, 3.6274e-09, 3.47597, 0.0326538, 1.14052)
+material_override = SubResource("StandardMaterial3D_p3cag")
+mesh = SubResource("QuadMesh_krgup")
+
+[node name="flower10" type="MeshInstance3D" parent="flowers"]
+transform = Transform3D(-0.0829853, 0.246401, 1.07705e-08, 0, -1.1365e-08, 0.26, 0.246401, 0.0829853, 3.6274e-09, 1.29739, 0.0327759, 1.5451)
+material_override = SubResource("StandardMaterial3D_p3cag")
+mesh = SubResource("QuadMesh_krgup")
+
+[node name="flower4" type="MeshInstance3D" parent="flowers"]
+transform = Transform3D(0.204455, -0.152391, -6.66122e-09, 0, -1.11464e-08, 0.255, -0.152391, -0.204455, -8.93703e-09, 2.5452, 0.02771, 2.17549)
+material_override = SubResource("StandardMaterial3D_p3cag")
+mesh = SubResource("QuadMesh_krgup")
+
+[node name="flower5" type="MeshInstance3D" parent="flowers"]
+transform = Transform3D(0.139763, -0.182664, -7.9845e-09, 0, -1.00536e-08, 0.23, -0.182664, -0.139763, -6.10925e-09, -0.470511, 0.0332031, -2.93849)
+material_override = SubResource("StandardMaterial3D_p3cag")
+mesh = SubResource("QuadMesh_krgup")
+
+[node name="flower6" type="MeshInstance3D" parent="flowers"]
+transform = Transform3D(0.0532947, 0.259586, 1.13468e-08, 0, -1.15835e-08, 0.265, 0.259586, -0.0532947, -2.32959e-09, 1.34499, 0.0332031, -1.50394)
+material_override = SubResource("StandardMaterial3D_p3cag")
+mesh = SubResource("QuadMesh_krgup")
+
+[node name="flower7" type="MeshInstance3D" parent="flowers"]
+transform = Transform3D(-0.188876, 0.199877, 8.73691e-09, 0, -1.20206e-08, 0.275, 0.199877, 0.188876, 8.25603e-09, -1.54781, 0.0332031, -0.943925)
+material_override = SubResource("StandardMaterial3D_p3cag")
+mesh = SubResource("QuadMesh_krgup")
+
+[node name="HubLetter" parent="." instance=ExtResource("11_ycn3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00428379, 3)

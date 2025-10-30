@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpfhgor50plgn"]
+
+[ext_resource type="PackedScene" uid="uid://csmcungdkces0" path="res://elements/enemy/statue_ivo/enemy_statue_ivo_fake_base.tscn" id="1_n5m2p"]
+
+[node name="EnemyStatue_OFF" instance=ExtResource("1_n5m2p")]
+style = 0
+metadata/_edit_pinned_properties_ = [&"style"]
+
+[node name="Health" parent="Dancer/StaticBody3D" index="0"]
+max_amount = 3.0

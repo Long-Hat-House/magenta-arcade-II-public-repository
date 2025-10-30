@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://rgewvf6vlllw"]
+
+[ext_resource type="PackedScene" uid="uid://bb77434brl2ea" path="res://elements/enemy/statue_ivo/mesh/ivo_estatua.glb" id="1_10lae"]
+[ext_resource type="Material" uid="uid://colv0fym6jmrl" path="res://elements/enemy/statue_ivo/material/m_statue_ivo_destroyed.tres" id="2_ys62t"]
+[ext_resource type="Material" uid="uid://867qx703x45w" path="res://elements/enemy/statue_ivo/material/m_statue_ivo_eye.tres" id="3_bnt4h"]
+
+[node name="ivo_estatua" instance=ExtResource("1_10lae")]
+
+[node name="estatua_ivo_base" parent="." index="0"]
+material_override = ExtResource("2_ys62t")
+
+[node name="estatua_ivo_corpo" parent="estatua_ivo_base" index="0"]
+material_override = ExtResource("2_ys62t")
+
+[node name="estatua_ivo_cabeca" parent="estatua_ivo_base/estatua_ivo_corpo" index="0"]
+material_override = ExtResource("2_ys62t")
+
+[node name="estatua_ivo_olho" parent="estatua_ivo_base/estatua_ivo_corpo/estatua_ivo_cabeca" index="0"]
+material_override = ExtResource("3_bnt4h")

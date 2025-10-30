@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1ktc3m0bpoe"]
+
+[ext_resource type="Script" uid="uid://jr4fy31v6pj3" path="res://systems/pooling/object_pool.gd" id="1_0bl3o"]
+
+[node name="ObjectPoolingManager" type="Node3D"]
+script = ExtResource("1_0bl3o")

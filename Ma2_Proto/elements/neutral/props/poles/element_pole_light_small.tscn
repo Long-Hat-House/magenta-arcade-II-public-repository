@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://cyq2gafngh08"]
+
+[ext_resource type="PackedScene" uid="uid://cpyyjsvm5xtdp" path="res://elements/neutral/props/poles/mesh_pole_light_small.tscn" id="1_y22fl"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="2_oilpg"]
+[ext_resource type="PackedScene" uid="uid://bk3c6a8vre6yr" path="res://elements/neutral/props/generic_body_and_presseable.tscn" id="2_s36gt"]
+[ext_resource type="Script" uid="uid://0wf4obm88h88" path="res://elements/neutral/props/generic_tumbler.gd" id="3_ljtcw"]
+[ext_resource type="Resource" uid="uid://7jb1h4bglavu" path="res://elements/neutral/props/pole_pieces/element_iron_pole_tumble_data.tres" id="4_fsar8"]
+[ext_resource type="Script" uid="uid://biqjvlcudqx0t" path="res://elements/player/force_receiver.gd" id="4_pn3tu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8nkuk"]
+radius = 0.15
+height = 6.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pcax8"]
+radius = 0.25
+height = 1.5
+
+[node name="pole_light_small" type="Node3D"]
+
+[node name="pole_light_small" parent="." instance=ExtResource("1_y22fl")]
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="pole_light_small"]
+script = ExtResource("2_oilpg")
+high_contrast_group = &"scenery"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="GenericBodyAndPresseable" parent="." node_paths=PackedStringArray("on_kill_queue_free", "generic_tumbler", "visual_feedback_of_health") instance=ExtResource("2_s36gt")]
+on_kill_queue_free = [NodePath("..")]
+generic_tumbler = NodePath("../GenericTumbler")
+visual_feedback_of_health = [NodePath("../pole_light_small")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, 0)
+shape = SubResource("CapsuleShape3D_8nkuk")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 6, 0.75)
+shape = SubResource("CapsuleShape3D_pcax8")
+
+[node name="ExplosionNode" type="Node3D" parent="GenericBodyAndPresseable"]
+
+[node name="ExplosionNode2" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="ExplosionNode3" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="ExplosionNode4" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
+
+[node name="ExplosionNode5" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.75, 0)
+
+[node name="ExplosionNode6" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0.75)
+
+[node name="GenericTumbler" type="Node3D" parent="." node_paths=PackedStringArray("receiver", "to_tumble")]
+script = ExtResource("3_ljtcw")
+receiver = NodePath("../ForceReceiver")
+to_tumble = NodePath("../pole_light_small")
+tumble_data = ExtResource("4_fsar8")
+tumble_radius = 0.15
+
+[node name="ForceReceiver" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+script = ExtResource("4_pn3tu")
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+aabb = AABB(-1, -3.5, -1, 2, 7, 2)

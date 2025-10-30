@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bg5sj7todqorp"]
+
+[ext_resource type="Script" uid="uid://c2163e0uh7ujd" path="res://elements/player/player_trail_vfx.gd" id="1_noqg1"]
+[ext_resource type="Material" uid="uid://5ra46jjkoflf" path="res://elements/neutral/clouds/m_clouds.tres" id="2_noqg1"]
+[ext_resource type="Script" uid="uid://bjnpmcrptfb85" path="res://systems/utils/random_rotation_local.gd" id="3_ky1it"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_kyldp"]
+radial_segments = 8
+rings = 3
+
+[node name="PlayerFoamParticle" type="Node3D" node_paths=PackedStringArray("mesh")]
+script = ExtResource("1_noqg1")
+mesh = NodePath("MeshInstance3D2")
+scale_in = 0.05
+interval = 0.025
+scale_out = 0.45
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
+material_override = ExtResource("2_noqg1")
+mesh = SubResource("SphereMesh_kyldp")
+script = ExtResource("3_ky1it")

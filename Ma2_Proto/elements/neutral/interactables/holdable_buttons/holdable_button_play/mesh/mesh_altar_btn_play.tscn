@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4pynoycp3a7l"]
+
+[ext_resource type="PackedScene" uid="uid://dhh35bynm7ulu" path="res://elements/neutral/interactables/holdable_buttons/holdable_button_play/mesh/altar_btn_play.glb" id="1_3ofhf"]
+[ext_resource type="Material" uid="uid://debtx6tgxypnq" path="res://elements/neutral/interactables/holdable_buttons/holdable_button_play/material/m_altar_btn_play.tres" id="2_8nve4"]
+[ext_resource type="Material" uid="uid://27tad3poms25" path="res://elements/neutral/interactables/holdable_buttons/holdable_button_play/material/m_altar_btn_play_emissive.tres" id="3_1eq7g"]
+
+[node name="altar_btn_play" instance=ExtResource("1_3ofhf")]
+
+[node name="btn_play" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_8nve4")
+surface_material_override/1 = ExtResource("3_1eq7g")

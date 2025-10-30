@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" load_steps=0 format=3 uid="uid://dbkknvpyd341y"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Boss_Lv2_Goal_Against"
+id = 1925283406
+guid = "{C972BFCE-701A-4801-98C0-EA892B11331B}"
+dummy = true

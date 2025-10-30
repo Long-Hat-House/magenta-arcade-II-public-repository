@@ -1,0 +1,20 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://b1j3cq2y2j1px"]
+
+[ext_resource type="Texture2D" uid="uid://58bxldxo050c" path="res://elements/background/texture/generic_street_texture/t_abyss_BaseColor.png" id="1_qivj5"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jie0d"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("1_qivj5")
+emission_energy_multiplier = 16.0
+rim_tint = 1.0
+clearcoat = 0.2
+clearcoat_roughness = 0.59
+anisotropy = 0.33
+ao_texture = SubResource("CompressedTexture2D_jie0d")
+backlight = Color(0.0313726, 0.0313726, 0.0313726, 1)
+uv1_triplanar = true
+uv1_world_triplanar = true
+disable_receive_shadows = true

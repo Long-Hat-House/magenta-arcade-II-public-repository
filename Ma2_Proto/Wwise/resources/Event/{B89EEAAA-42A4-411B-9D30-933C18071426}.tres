@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://dqis5igqyo6lf"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_FinalBoss_Lv4_Final_Spirit_Create"
+id = 3080357604
+guid = "{B89EEAAA-42A4-411B-9D30-933C18071426}"
+dummy = true

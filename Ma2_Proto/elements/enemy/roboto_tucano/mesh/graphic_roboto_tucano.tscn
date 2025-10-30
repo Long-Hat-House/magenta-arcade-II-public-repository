@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://0na15y2wfqwc"]
+
+[ext_resource type="PackedScene" uid="uid://cny45il3f6qhu" path="res://elements/enemy/roboto_tucano/mesh/mesh_roboto_tucano.tscn" id="1_5poyr"]
+[ext_resource type="Script" uid="uid://bbt1cvr8w70yh" path="res://elements/enemy/roboto_tucano/mesh/graphic_roboto_tucano.gd" id="2_bp862"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="3_eccwh"]
+
+[node name="roboto_tucano_graphic" instance=ExtResource("1_5poyr")]
+script = ExtResource("2_bp862")
+
+[node name="Skeleton3D" parent="rig_tucano" index="0"]
+bones/0/position = Vector3(0, -0.0563196, 0)
+bones/0/rotation = Quaternion(0.0306004, 0, 0, 0.999532)
+bones/1/rotation = Quaternion(-7.74866e-10, -1.31374e-10, 0.000795698, 1)
+bones/2/rotation = Quaternion(-7.74866e-10, 2.11036e-10, -0.000795664, 1)
+
+[node name="Rotater" type="Node3D" parent="rig_tucano/Skeleton3D/robo" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.51926e-09, 0.84016, -0.211392)
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="rig_tucano/Skeleton3D/robo" index="1"]
+script = ExtResource("3_eccwh")
+high_contrast_group = &"danger"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"

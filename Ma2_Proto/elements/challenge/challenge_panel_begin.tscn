@@ -1,0 +1,415 @@
+[gd_scene load_steps=9 format=3 uid="uid://bsro58pt56ii4"]
+
+[ext_resource type="Script" uid="uid://fo4o0k41otpb" path="res://systems/challenge/challenge_panel_begin.gd" id="1_6aucs"]
+[ext_resource type="Material" uid="uid://dkcegkcvgcvkh" path="res://elements/ui/hud/BossBG_Clouds.tres" id="3_0kk0a"]
+[ext_resource type="StyleBox" uid="uid://d17ddtxyn57rp" path="res://elements/ui/themes/menu/style_box/bg_flat_panel.tres" id="3_poua4"]
+[ext_resource type="StyleBox" uid="uid://bpes1tutm3iph" path="res://elements/challenge/challenge_panel_style_box.tres" id="5_cw82u"]
+[ext_resource type="Script" uid="uid://c3yme4hxpatpv" path="res://systems/utils/control_shaker.gd" id="5_rq1d1"]
+
+[sub_resource type="Animation" id="Animation_h7jka"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/AllPivot/TitlePivot/TitleSlide:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/AllPivot/TitlePivot:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/AllPivot/PanelPivot:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MarginContainer/AllPivot/TextPivot:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MarginContainer/AllPivot/PanelPivot/Panel/Panel2:custom_minimum_size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(120, 150)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MarginContainer/AllPivot/TitlePivot/TitleSlide/TitleShake:shake_amplitude_ratio")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MarginContainer/AllPivot/PanelPivot/Panel/Panel2/ColorRect:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jfcmx"]
+resource_name = "one_shot"
+length = 3.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.0235294, 0.435294, 0.235294)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/AllPivot/TitlePivot/TitleSlide:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.75, 2.6, 2.9),
+"transitions": PackedFloat32Array(2, 0.5, 1, 2, 1),
+"update": 0,
+"values": [Vector2(600, 0), Vector2(600, 0), Vector2(0, 0), Vector2(0, 0), Vector2(-600, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/AllPivot/TitlePivot:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.65, 2.6, 2.9),
+"transitions": PackedFloat32Array(1, 2, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MarginContainer/AllPivot/PanelPivot:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.35, 2.9),
+"transitions": PackedFloat32Array(2, 2, 1, 1),
+"update": 0,
+"values": [Vector2(1, 0.1), Vector2(1, 0.1), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MarginContainer/AllPivot/TextPivot:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.65, 1.2, 2.8, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MarginContainer/AllPivot/PanelPivot/Panel/Panel2:custom_minimum_size")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.45),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Vector2(120, 15), Vector2(120, 15), Vector2(120, 150)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MarginContainer/AllPivot/TitlePivot/TitleSlide/TitleShake:shake_amplitude_ratio")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.8, 2.8, 3),
+"transitions": PackedFloat32Array(1, 2, 0.5, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 0.0, 0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MarginContainer/AllPivot/PanelPivot/Panel/Panel2/ColorRect:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.65, 0.8, 1.15),
+"transitions": PackedFloat32Array(2, 0.5, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pednn"]
+_data = {
+&"RESET": SubResource("Animation_h7jka"),
+&"one_shot": SubResource("Animation_jfcmx")
+}
+
+[node name="Challenge Panel Begin" type="Control" node_paths=PackedStringArray("_title", "_text", "animation")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_6aucs")
+_title = NodePath("MarginContainer/AllPivot/TitlePivot/TitleSlide/TitleShake/Title")
+_text = NodePath("MarginContainer/AllPivot/TextPivot/Text")
+animation = NodePath("AnimationPlayer")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("3_poua4")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 120
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 120
+
+[node name="AllPivot" type="Control" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="PanelPivot" type="Control" parent="MarginContainer/AllPivot"]
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="MarginContainer/AllPivot/PanelPivot"]
+material = ExtResource("3_0kk0a")
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -250.0
+offset_right = 450.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(450, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("5_cw82u")
+metadata/_edit_group_ = true
+
+[node name="Panel2" type="Panel" parent="MarginContainer/AllPivot/PanelPivot/Panel"]
+use_parent_material = true
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("5_cw82u")
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/AllPivot/PanelPivot/Panel/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel3" type="Panel" parent="MarginContainer/AllPivot/PanelPivot/Panel"]
+use_parent_material = true
+custom_minimum_size = Vector2(120, 15)
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("5_cw82u")
+
+[node name="TitlePivot" type="Control" parent="MarginContainer/AllPivot"]
+anchors_preset = 0
+offset_top = -169.0
+offset_bottom = -169.0
+mouse_filter = 2
+
+[node name="TitleSlide" type="Control" parent="MarginContainer/AllPivot/TitlePivot"]
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="TitleShake" type="Control" parent="MarginContainer/AllPivot/TitlePivot/TitleSlide"]
+anchors_preset = 0
+offset_left = -8.49749
+offset_top = -4.86251
+offset_right = -8.49749
+offset_bottom = -4.86251
+mouse_filter = 2
+script = ExtResource("5_rq1d1")
+
+[node name="Title" type="Label" parent="MarginContainer/AllPivot/TitlePivot/TitleSlide/TitleShake"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -285.0
+offset_top = -91.0
+offset_right = 285.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+theme_type_variation = &"label_challenge_title"
+theme_override_font_sizes/font_size = 80
+text = "DESAFIO"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="TextPivot" type="Control" parent="MarginContainer/AllPivot"]
+anchors_preset = 0
+offset_top = 19.0
+offset_bottom = 19.0
+mouse_filter = 2
+
+[node name="Text" type="Label" parent="MarginContainer/AllPivot/TextPivot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -285.0
+offset_top = -150.0
+offset_right = 285.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+theme_type_variation = &"label_challenge_subtitle"
+text = "Hora do rush! Não tire o dedo!
+O trânsito está mais maluco ainda!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_pednn")
+}

@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" load_steps=0 format=3 uid="uid://vo04ph34myku"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Boss_Lv0_Anim_FirstPhase"
+id = 2975268622
+guid = "{9DCD131A-36DF-4497-8B51-9A8BE7BA1FD8}"
+dummy = true

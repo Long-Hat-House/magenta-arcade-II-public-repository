@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4md3siixvr8q"]
+
+[ext_resource type="Script" path="res://systems/projectile/projectile_proxy.gd" id="1_32khl"]
+
+[node name="ProjectileProxy" type="Node" groups=["enemy_projectile"]]
+script = ExtResource("1_32khl")

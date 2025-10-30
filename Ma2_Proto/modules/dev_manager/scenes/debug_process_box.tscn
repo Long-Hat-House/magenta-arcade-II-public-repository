@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=3 uid="uid://n3tjqxfua88o"]
+
+[ext_resource type="Theme" uid="uid://b04obcqohv34o" path="res://modules/dev_manager/theme_dev_ui.tres" id="1_dal4j"]
+[ext_resource type="Script" path="res://modules/dev_manager/src/debug_callback_box.gd" id="1_u1fjj"]
+[ext_resource type="Theme" uid="uid://bfqq5qjsvg8no" path="res://elements/ui/themes/menu/menu_theme.tres" id="3_ukcyt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yixak"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uco2i"]
+
+[node name="DebugProcessBox" type="PanelContainer" node_paths=PackedStringArray("enable_button", "content_container", "label_id", "label_text")]
+mouse_filter = 2
+theme = ExtResource("1_dal4j")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_yixak")
+script = ExtResource("1_u1fjj")
+enable_button = NodePath("MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/CheckButton")
+content_container = NodePath("MarginContainer/VBoxContainer/MarginContainer/Content container")
+label_id = NodePath("MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/Label")
+label_text = NodePath("MarginContainer/VBoxContainer/MarginContainer/Content container/RichTextLabel")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 30
+
+[node name="Content container" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/Content container"]
+auto_translate_mode = 2
+layout_mode = 2
+localize_numeral_system = false
+mouse_filter = 2
+bbcode_enabled = true
+text = "Aloha this is text asdasdasdasdasdasdasdsadsad
+   aoi"
+fit_content = true
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_uco2i")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+auto_translate_mode = 2
+layout_mode = 2
+size_flags_horizontal = 0
+localize_numeral_system = false
+mouse_default_cursor_shape = 2
+theme = ExtResource("3_ukcyt")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Name of the Class"

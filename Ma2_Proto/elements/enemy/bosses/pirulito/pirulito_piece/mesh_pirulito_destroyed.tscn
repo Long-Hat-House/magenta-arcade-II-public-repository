@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://co2tidadm6ags"]
+
+[ext_resource type="PackedScene" uid="uid://byx2oyaqld2qn" path="res://elements/enemy/bosses/pirulito/pirulito_piece/pirulito_destroyed.glb" id="1_d6a6p"]
+[ext_resource type="Material" uid="uid://dnblqgcyj734p" path="res://elements/enemy/bosses/pirulito/material/m_pirulito.tres" id="2_i46i8"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="3_r0fnd"]
+
+[node name="pirulito_destroyed" instance=ExtResource("1_d6a6p")]
+
+[node name="pirulito_destroyed" parent="." index="0"]
+material_override = ExtResource("2_i46i8")
+lod_bias = 20.0
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="." index="1"]
+script = ExtResource("3_r0fnd")
+high_contrast_group = &"scenery"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"

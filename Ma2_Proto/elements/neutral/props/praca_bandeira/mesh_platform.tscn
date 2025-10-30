@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5k41aaenknm2"]
+
+[ext_resource type="PackedScene" uid="uid://b2p2fj056hwwo" path="res://elements/neutral/props/praca_bandeira/platform.glb" id="1_voscn"]
+[ext_resource type="Material" uid="uid://d116yoiwe6vvm" path="res://elements/neutral/props/praca_bandeira/material/M_platform.tres" id="2_f5s3y"]
+
+[node name="platform" instance=ExtResource("1_voscn")]
+
+[node name="platform" parent="." index="0"]
+material_override = ExtResource("2_f5s3y")

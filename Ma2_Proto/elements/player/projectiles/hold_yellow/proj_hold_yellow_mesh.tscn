@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://4ugcolug31nj"]
+
+[ext_resource type="PackedScene" uid="uid://cqndnstyljv8r" path="res://elements/player/projectiles/hold_yellow/proj_hold_yellow_Mesh.glb" id="1_yykcy"]
+[ext_resource type="Material" uid="uid://dwtc4ecgt02b7" path="res://elements/player/projectiles/materials/proj_yellow.tres" id="2_nj36t"]
+
+[node name="proj_hold_yellow_Mesh" instance=ExtResource("1_yykcy")]
+
+[node name="Project_Yellow" parent="rig_raio/Skeleton3D" index="0"]
+material_override = ExtResource("2_nj36t")
+cast_shadow = 0
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "raio_anim"

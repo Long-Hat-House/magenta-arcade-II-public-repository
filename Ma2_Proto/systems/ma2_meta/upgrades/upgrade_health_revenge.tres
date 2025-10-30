@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="UpgradeInfo" load_steps=3 format=3 uid="uid://bu002t6ajd6gk"]
+
+[ext_resource type="Script" uid="uid://dospanm60t0v5" path="res://systems/ma2_meta/upgrade_info.gd" id="1_mxajt"]
+[ext_resource type="Texture2D" uid="uid://cffmyt3lljfn8" path="res://elements/icons/icons_upgrades/icon_upgrade_health_revenge.png" id="2_xopip"]
+
+[resource]
+script = ExtResource("1_mxajt")
+upgrade_id = &"upgrade_health_revenge"
+upgrade_description = &"upgrade_health_revenge_dialogue"
+upgrade_icon = ExtResource("2_xopip")
+stars_per_progress = Array[int]([5])
+upgrade_developer_instruction = "
+	Describe in inspector which vals are used and for what!
+	Example1: In every hold projectile [damage = proj_damage + float_val * progress]
+	Example2: In every hold projectile [damage = proj_damage + float_val_array[progress]]
+	"
+float_val = 0.0
+float_val_array = Array[float]([])

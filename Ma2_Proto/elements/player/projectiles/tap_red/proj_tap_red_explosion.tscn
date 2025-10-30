@@ -1,0 +1,47 @@
+[gd_scene load_steps=10 format=3 uid="uid://bd137a6h0fpth"]
+
+[ext_resource type="Script" uid="uid://dnsxrj6qcwgy2" path="res://elements/player/projectiles/tap_red/proj_tap_red_explosion.gd" id="1_556l1"]
+[ext_resource type="Script" uid="uid://c1a23qdrmn8d1" path="res://elements/enemy/projectiles/damage_area/damage_area.gd" id="1_fdvi5"]
+[ext_resource type="PackedScene" uid="uid://c3lm4xns487th" path="res://elements/vfx/vfx_hit/vfx_hit_red.tscn" id="2_p0nwf"]
+[ext_resource type="PackedScene" uid="uid://npaj76iumwv8" path="res://elements/player/projectiles/tap_red/mesh/mesh_tap_red_explosion.tscn" id="3_6rw74"]
+[ext_resource type="Resource" uid="uid://dmhdkw8urmjwc" path="res://systems/ma2_meta/upgrades/upgrade_tap_damage.tres" id="4_4g276"]
+[ext_resource type="Script" uid="uid://bjnpmcrptfb85" path="res://systems/utils/random_rotation_local.gd" id="4_mu6mm"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="7_35tc8"]
+[ext_resource type="WwiseEvent" uid="uid://l288mv63o44q" path="res://Wwise/resources/Event/{B7D1B8F9-DC27-4CB0-B22D-6666A150243C}.tres" id="7_mrfyx"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_h1inn"]
+height = 3.0
+radius = 6.0
+
+[node name="ProjTapRedExplosion" type="Node3D"]
+script = ExtResource("1_556l1")
+vfx_hit = ExtResource("2_p0nwf")
+
+[node name="DamageArea" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_fdvi5")
+amountDamage = 7.0
+bonus_resource = ExtResource("4_4g276")
+damage_per_progress = 25.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
+shape = SubResource("CylinderShape3D_h1inn")
+
+[node name="Node3D" type="Node3D" parent="."]
+script = ExtResource("4_mu6mm")
+
+[node name="tap_red_torus" parent="Node3D" instance=ExtResource("3_6rw74")]
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="Node3D/tap_red_torus"]
+script = ExtResource("7_35tc8")
+high_contrast_group = &"player"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="Red Explosion" type="AkEvent3D" parent="."]
+event = ExtResource("7_mrfyx")
+trigger_on = 1
+
+[connection signal="onDamagedData" from="DamageArea" to="." method="_on_damage_area_on_damaged_data"]
+[connection signal="collision_off" from="Node3D/tap_red_torus" to="." method="cancel_damage"]
+[connection signal="explosion_finished" from="Node3D/tap_red_torus" to="." method="queue_free"]

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeInfo" load_steps=3 format=3 uid="uid://1dfai2p6pbnv"]
+
+[ext_resource type="Script" uid="uid://dospanm60t0v5" path="res://systems/ma2_meta/upgrade_info.gd" id="1_2gbvf"]
+[ext_resource type="Texture2D" uid="uid://4hmt5bmgcgpc" path="res://elements/icons/icons_upgrades/icon_upgrade_hold_start.png" id="2_nmf80"]
+
+[resource]
+script = ExtResource("1_2gbvf")
+upgrade_id = &"upgrade_hold_start"
+upgrade_description = &"upgrade_hold_start_dialogue"
+upgrade_icon = ExtResource("2_nmf80")
+stars_per_progress = Array[int]([1, 2, 2])
+upgrade_developer_instruction = "max level of HOLD power in Player will be = 3 + Progress"
+float_val = 0.0
+float_val_array = Array[float]([])

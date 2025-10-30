@@ -1,0 +1,368 @@
+[gd_scene load_steps=21 format=3 uid="uid://b1wj4k6tlw0hm"]
+
+[ext_resource type="PackedScene" uid="uid://bdmq3sw1jurtu" path="res://elements/enemy/statue_ivo/enemy_statue_ivo_base.tscn" id="1_0cn6l"]
+[ext_resource type="Script" uid="uid://r4w2x1tdvvvk" path="res://elements/enemy/bosses/estatua/ai_enemy_statue_ivo.gd" id="2_jegi8"]
+[ext_resource type="Script" uid="uid://dj2x7ekyg32b7" path="res://systems/score/score_giver.gd" id="3_gf5bh"]
+[ext_resource type="PackedScene" uid="uid://swc2oo3gesm4" path="res://elements/enemy/projectiles/proj_big_follower/proj_enemy_big_follower.tscn" id="3_udo06"]
+[ext_resource type="PackedScene" uid="uid://ywymskkj85vs" path="res://elements/vfx/vfx_explosion/vfx_explosion.tscn" id="4_3opuu"]
+[ext_resource type="PackedScene" uid="uid://b3ffi3rxts67g" path="res://elements/enemy/bosses/estatua/eva_sidekick/enemy_statue_ivo_eva_sidekick.tscn" id="4_5dqgk"]
+[ext_resource type="WwiseEvent" uid="uid://c1xwqtyryicku" path="res://Wwise/resources/Event/{7A5DAB79-A2E1-4077-81DF-E619856BCAB6}.tres" id="5_iysss"]
+[ext_resource type="Script" uid="uid://dsvfipg4mxr7k" path="res://systems/line3d/child_line_3d.gd" id="5_owg0j"]
+[ext_resource type="WwiseEvent" uid="uid://vo04ph34myku" path="res://Wwise/resources/Event/{9DCD131A-36DF-4497-8B51-9A8BE7BA1FD8}.tres" id="6_8ntur"]
+[ext_resource type="WwiseEvent" uid="uid://c6xxjx5lw5vph" path="res://Wwise/resources/Event/{ED183E71-3D71-4794-BDB1-8A42101E6C50}.tres" id="7_eql0u"]
+[ext_resource type="WwiseEvent" uid="uid://dnad1gtiv1hs1" path="res://Wwise/resources/Event/{AFF64546-93FA-473A-B983-444CCBAFA7BE}.tres" id="8_oociw"]
+[ext_resource type="Resource" uid="uid://ccs18sl4ejlmi" path="res://elements/score/score_info_boss_statue.tres" id="9_eql0u"]
+
+[sub_resource type="Animation" id="Animation_3ntl6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dancer/Graphics - AnimationPivot_X/Graphics - AnimationPivot_Y:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.74846e-07, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Dancer/Graphics - AnimationPivot_X:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Dancer/Graphics - AnimationPivot_X/Graphics - AnimationPivot_Y/Graphics - AnimationTumbler/Graphics - Rotation Death Dance/Graphics - AnimationShake:shake_amplitude_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_pxu42"]
+resource_name = "back"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dancer/Graphics - AnimationPivot_X/Graphics - AnimationPivot_Y:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ukjnk"]
+resource_name = "fall"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dancer/Graphics - AnimationPivot_X:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(5.65684, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.29671, 4.71133e-07, -6.21866e-07)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Dancer/Graphics - AnimationPivot_X/Graphics - AnimationPivot_Y/Graphics - AnimationTumbler/Graphics - Rotation Death Dance/Graphics - AnimationShake:shake_amplitude_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.385203, 1.02286, 1.54952),
+"transitions": PackedFloat32Array(0.5, 1, 0.5, 1),
+"update": 0,
+"values": [4.0, 0.0, 4.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_tkpjn"]
+resource_name = "fall_immediate"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dancer/Graphics - AnimationPivot_X:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.29671, 4.71133e-07, -6.21866e-07)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Dancer/Graphics - AnimationPivot_X/Graphics - AnimationPivot_Y/Graphics - AnimationTumbler/Graphics - Rotation Death Dance/Graphics - AnimationShake:shake_amplitude_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_wg7tq"]
+resource_name = "front"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dancer/Graphics - AnimationPivot_X/Graphics - AnimationPivot_Y:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.74846e-07, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6r8am"]
+resource_name = "rise"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dancer/Graphics - AnimationPivot_X:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 4.2, 4.4),
+"transitions": PackedFloat32Array(2.07053, 5.65684, 5.65684),
+"update": 0,
+"values": [Vector3(-1.29671, 4.71133e-07, -6.21866e-07), Vector3(0.0872665, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Dancer/Graphics - AnimationPivot_X/Graphics - AnimationPivot_Y/Graphics - AnimationTumbler/Graphics - Rotation Death Dance/Graphics - AnimationShake:shake_amplitude_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 2),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [0.0, 2.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:wave_shake")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.9, 7),
+"transitions": PackedFloat32Array(1.56917, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:wave_shake_force")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.6, 7.5, 8),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:eyes_force")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.8, 7.5),
+"transitions": PackedFloat32Array(2.46228, 1),
+"update": 0,
+"values": [0.0, 10.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:eva_height01")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(6.7, 7.73333, 8),
+"transitions": PackedFloat32Array(1.41421, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:eva_rotating_vel")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(6.46667, 7.4, 8),
+"transitions": PackedFloat32Array(0.707107, 1.86607, 1),
+"update": 0,
+"values": [0.0, 0.03, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_mbnap"]
+resource_name = "rotate"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dancer/Graphics - AnimationPivot_X/Graphics - AnimationPivot_Y:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.402286, 1.1),
+"transitions": PackedFloat32Array(4.14105, 1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0), Vector3(0, 1.74846e-07, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Dancer/Graphics - AnimationPivot_X/Graphics - AnimationPivot_Y/Graphics - AnimationTumbler/Graphics - Rotation Death Dance/Graphics - AnimationShake:shake_amplitude_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.047769, 0.402286, 0.709033, 0.997933, 1.0915, 2),
+"transitions": PackedFloat32Array(0, 0.5, -2, -2, 0, 0.267943, 1),
+"update": 0,
+"values": [0.0, 3.0, 0.0, 0.5, 0.0, 2.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1ycrs"]
+_data = {
+&"RESET": SubResource("Animation_3ntl6"),
+&"back": SubResource("Animation_pxu42"),
+&"fall": SubResource("Animation_ukjnk"),
+&"fall_immediate": SubResource("Animation_tkpjn"),
+&"front": SubResource("Animation_wg7tq"),
+&"rise": SubResource("Animation_6r8am"),
+&"rotate": SubResource("Animation_mbnap")
+}
+
+[node name="Boss_EnemyStatue" node_paths=PackedStringArray("eva", "eva_end_position", "eva_pre_end_positions", "_animation_player", "_bounding_box", "copter_line1", "copter_line2", "_health", "graphic", "pressable", "death_dancer") instance=ExtResource("1_0cn6l")]
+script = ExtResource("2_jegi8")
+eva = NodePath("Enemy_StatueIvo_EvaSidekick")
+eva_end_position = NodePath("Eva End Position")
+eva_pre_end_positions = [NodePath("Dancer/PossibleEvaLocationEnd1"), NodePath("Dancer/PossibleEvaLocationEnd2")]
+shotScene = ExtResource("3_udo06")
+vfxScene = ExtResource("4_3opuu")
+_animation_player = NodePath("AnimationPlayer")
+_bounding_box = NodePath("VisibleOnScreenNotifier3D")
+num_pizzas = 9
+copter_line1 = NodePath("Copters/ChildLine3D Back")
+copter_line2 = NodePath("Copters/ChildLine3D Curvy")
+tier1_2_hp_percentage = 0.95
+tier1_4_hp_percentage = 0.42
+_health = NodePath("Dancer/StaticBody3D/Health")
+graphic = NodePath("Dancer/Graphics - AnimationPivot_X/Graphics - AnimationPivot_Y/Graphics - AnimationTumbler/Graphics - Rotation Death Dance/Graphics - AnimationShake/graphic_ivo_estatua")
+pressable = NodePath("Dancer/Pressable")
+death_dancer = NodePath("Dancer/Graphics - AnimationPivot_X/Graphics - AnimationPivot_Y/Graphics - AnimationTumbler/Graphics - Rotation Death Dance")
+
+[node name="Health" parent="Dancer/StaticBody3D" index="0"]
+max_amount = 95.0
+min_amount = 75.0
+
+[node name="DeathSFX" parent="Dancer/StaticBody3D" index="4"]
+event = ExtResource("5_iysss")
+metadata/_edit_pinned_properties_ = [&"event"]
+
+[node name="FirstPhaseSFX" type="AkEvent3D" parent="Dancer/Graphics - AnimationPivot_X/Graphics - AnimationPivot_Y/Graphics - AnimationTumbler/Graphics - Rotation Death Dance/Graphics - AnimationShake/graphic_ivo_estatua" index="4"]
+event = ExtResource("6_8ntur")
+
+[node name="SecondPhaseSFX" type="AkEvent3D" parent="Dancer/Graphics - AnimationPivot_X/Graphics - AnimationPivot_Y/Graphics - AnimationTumbler/Graphics - Rotation Death Dance/Graphics - AnimationShake/graphic_ivo_estatua" index="5"]
+event = ExtResource("7_eql0u")
+
+[node name="PossibleEvaLocationEnd1" type="Marker3D" parent="Dancer" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.997531, 3.96195, -2.95963)
+
+[node name="PossibleEvaLocationEnd2" type="Marker3D" parent="Dancer" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 4, -1)
+
+[node name="ScoreGiver" type="Node" parent="." index="2" node_paths=PackedStringArray("health", "point_position")]
+script = ExtResource("3_gf5bh")
+info = ExtResource("9_eql0u")
+health = NodePath("../Dancer/StaticBody3D/Health")
+point_position = NodePath("../Dancer/Graphics - AnimationPivot_X/Score Target")
+
+[node name="Enemy_StatueIvo_EvaSidekick" parent="." index="3" instance=ExtResource("4_5dqgk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.994, 0, 0)
+
+[node name="ChargeSFX" type="AkEvent3D" parent="Enemy_StatueIvo_EvaSidekick" index="3"]
+event = ExtResource("8_oociw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+libraries = {
+&"": SubResource("AnimationLibrary_1ycrs")
+}
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.10529, -0.0754509)
+aabb = AABB(-0.69792, -3.10052, -0.320722, 1.39584, 6.20105, 0.641444)
+
+[node name="Copters" type="Node3D" parent="." index="6"]
+
+[node name="ChildLine3D Back" type="Node3D" parent="Copters" index="0"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("5_owg0j")
+
+[node name="Node3D" type="Node3D" parent="Copters/ChildLine3D Back" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -4)
+
+[node name="Node3D3" type="Node3D" parent="Copters/ChildLine3D Back" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6)
+
+[node name="Node3D4" type="Node3D" parent="Copters/ChildLine3D Back" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+
+[node name="Node3D6" type="Node3D" parent="Copters/ChildLine3D Back" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -4)
+
+[node name="ChildLine3D Curvy" type="Node3D" parent="Copters" index="1"]
+script = ExtResource("5_owg0j")
+
+[node name="Node3D" type="Node3D" parent="Copters/ChildLine3D Curvy" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -4)
+
+[node name="Node3D2" type="Node3D" parent="Copters/ChildLine3D Curvy" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
+
+[node name="Node3D3" type="Node3D" parent="Copters/ChildLine3D Curvy" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6)
+
+[node name="Node3D4" type="Node3D" parent="Copters/ChildLine3D Curvy" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+
+[node name="Node3D5" type="Node3D" parent="Copters/ChildLine3D Curvy" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
+
+[node name="Node3D6" type="Node3D" parent="Copters/ChildLine3D Curvy" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -4)
+
+[node name="Eva End Position" type="Marker3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 3)

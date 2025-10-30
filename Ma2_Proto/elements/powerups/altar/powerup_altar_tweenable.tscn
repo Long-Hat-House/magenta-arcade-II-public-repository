@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bty1g36mrus4"]
+
+[ext_resource type="PackedScene" uid="uid://bcpgsfbgm245l" path="res://elements/powerups/altar/powerup_altar.tscn" id="1_104l5"]
+[ext_resource type="Script" uid="uid://djwllj85fybr4" path="res://elements/powerups/altar/powerup_altar_tweenable.gd" id="2_rvoph"]
+
+[node name="powerup_altar_tweenable" instance=ExtResource("1_104l5")]
+script = ExtResource("2_rvoph")
+npc_velocity_to_animation_multiplier = 10
+queue_free_on_out_of_screen = false
+
+[editable path="Body/NPC_Graphic_Regular"]

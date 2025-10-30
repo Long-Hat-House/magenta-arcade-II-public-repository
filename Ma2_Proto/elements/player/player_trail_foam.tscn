@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvbvb2j5608tn"]
+
+[ext_resource type="PackedScene" uid="uid://dcglxxfdieqag" path="res://elements/player/player_trail_ground.tscn" id="1_uanm8"]
+[ext_resource type="Material" uid="uid://bn0kbf3xq0qta" path="res://elements/player/m_player_foam_particle.tres" id="2_jca8r"]
+
+[node name="PlayerFoamParticle" instance=ExtResource("1_uanm8")]
+scale_in = 0.05
+interval = 0.025
+scale_out = 0.45
+
+[node name="MeshInstance3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.25, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_jca8r")

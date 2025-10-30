@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ScoreInfo" load_steps=2 format=3 uid="uid://bwfu17gobf18k"]
+
+[ext_resource type="Script" uid="uid://xfqoedvnoauc" path="res://systems/score/score_info.gd" id="1_f74yy"]
+
+[resource]
+script = ExtResource("1_f74yy")
+score_value = 200
+score_title = &"Desejo"
+world_positioned = true
+breaks_combos = true
+combo_max_count = 3
+combo_value_extra_enemy = 50
+combo_value_last_enemy = 100
+combo_extra_time = 0.0
+ignore_boost_multiplier = false

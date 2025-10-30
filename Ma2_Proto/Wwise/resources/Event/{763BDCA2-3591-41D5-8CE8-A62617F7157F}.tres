@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://dbmgrdti8t2ff"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Boss_Lv3_Anim_FirstPhase_Phone"
+id = 486399768
+guid = "{763BDCA2-3591-41D5-8CE8-A62617F7157F}"
+dummy = true

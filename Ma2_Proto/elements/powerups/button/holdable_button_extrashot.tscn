@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://ci8clax7whhvw"]
+
+[ext_resource type="PackedScene" uid="uid://ccn6065djpwhr" path="res://elements/powerups/button/powerup_holdable_button.tscn" id="1_u56f2"]
+[ext_resource type="Texture2D" uid="uid://c3fh37ur1kabh" path="res://elements/icons/icons_powerups/icon_powerup_extrashot.png" id="2_u56f2"]
+[ext_resource type="Resource" uid="uid://dtik0dphlnymt" path="res://elements/powerups/button/extrashot_powerup_graphic_info.tres" id="3_foen1"]
+[ext_resource type="Script" uid="uid://cwaq3i3ph60hk" path="res://systems/tasks/specific/player_effect_task.gd" id="3_ojn0w"]
+
+[node name="HoldableButton-EXTRASHOT" node_paths=PackedStringArray("condition_false_task") instance=ExtResource("1_u56f2")]
+condition_false_task = NodePath("Task")
+
+[node name="button_graphic" parent="Area3D" index="1"]
+default_icon = ExtResource("2_u56f2")
+powerup_style = ExtResource("3_foen1")
+
+[node name="Task" type="Node" parent="." index="4"]
+script = ExtResource("3_ojn0w")
+_effect_type = 4

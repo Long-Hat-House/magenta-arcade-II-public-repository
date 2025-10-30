@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://c46pdd6xoj4vc"]
+
+[ext_resource type="PackedScene" uid="uid://l7s4uqia3u68" path="res://elements/neutral/interactables/holdable_buttons/holdable_button_star/mesh/btn_star.glb" id="1_hwd8p"]
+[ext_resource type="Material" uid="uid://dwy74mbk4kldj" path="res://elements/neutral/interactables/holdable_buttons/holdable_button_star/material/m_btn_star.tres" id="2_iaiav"]
+[ext_resource type="Material" uid="uid://dd2amys1ebjp7" path="res://elements/neutral/interactables/holdable_buttons/holdable_button_star/material/m_btn_star_emissive.tres" id="3_1w2d1"]
+
+[node name="btn_star" type="Node3D"]
+
+[node name="altar_btn_star" parent="." instance=ExtResource("1_hwd8p")]
+
+[node name="hold_button_star" parent="altar_btn_star" index="0"]
+surface_material_override/0 = ExtResource("2_iaiav")
+surface_material_override/1 = ExtResource("3_1w2d1")
+
+[editable path="altar_btn_star"]

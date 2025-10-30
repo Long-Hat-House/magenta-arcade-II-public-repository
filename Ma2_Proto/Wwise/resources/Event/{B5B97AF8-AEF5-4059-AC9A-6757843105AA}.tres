@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://cr6uey7yafdtc"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_UI_Button_Pressed"
+id = 3983651624
+guid = "{B5B97AF8-AEF5-4059-AC9A-6757843105AA}"
+dummy = true

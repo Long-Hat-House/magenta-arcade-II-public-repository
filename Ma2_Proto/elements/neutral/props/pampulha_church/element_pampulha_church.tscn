@@ -1,0 +1,321 @@
+[gd_scene load_steps=27 format=3 uid="uid://cyydcxwe3mm54"]
+
+[ext_resource type="PackedScene" uid="uid://d83pr7wk7kb5" path="res://elements/neutral/props/pampulha_church/mesh_pampulha_church.tscn" id="1_8mi4a"]
+[ext_resource type="Script" uid="uid://dggu7it4drrkw" path="res://elements/neutral/props/pampulha_church/element_pampulha_church.gd" id="1_bb7ur"]
+[ext_resource type="Script" uid="uid://b7n1kj0lt03wh" path="res://systems/utils/node3d_shaker.gd" id="2_0qst1"]
+[ext_resource type="PackedScene" uid="uid://dq5mtekpyfxgq" path="res://elements/neutral/props/pampulha_church/mesh_pampulha_church_floor.tscn" id="2_3g8s7"]
+[ext_resource type="PackedScene" uid="uid://bghucoieqpoh7" path="res://elements/neutral/props/pampulha_church/mesh_pampulha_church_grass.tscn" id="3_ssljg"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="4_j5tus"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="4_wo4pq"]
+[ext_resource type="Script" uid="uid://bls4vce0lfvfc" path="res://elements/vfx/spawn_area.gd" id="7_im5al"]
+[ext_resource type="PackedScene" uid="uid://c8jxmfgrn3cpc" path="res://elements/background/element_curb3_sidewalk_path.tscn" id="7_swx47"]
+[ext_resource type="PackedScene" uid="uid://ywymskkj85vs" path="res://elements/vfx/vfx_explosion/vfx_explosion.tscn" id="8_4lsot"]
+[ext_resource type="Script" uid="uid://hbsjipy3xak5" path="res://systems/pressable/pressable.gd" id="10_jxakv"]
+[ext_resource type="WwiseEvent" uid="uid://mg5q8q4u72ph" path="res://Wwise/resources/Event/{6631C42C-8B35-4DFD-85C9-EBEDB0AF8252}.tres" id="12_1wp4h"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_y1u6g"]
+noise_type = 0
+frequency = 0.0254
+offset = Vector3(0, 196.08, 0)
+fractal_octaves = 2
+fractal_gain = 0.75
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_o2sy6"]
+width = 128
+height = 128
+seamless = true
+noise = SubResource("FastNoiseLite_y1u6g")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p0uqj"]
+size = Vector3(4, 8, 8.40381)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u7qoo"]
+size = Vector3(6.45654, 8, 21)
+
+[sub_resource type="Curve3D" id="Curve3D_yx5o5"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 0, -0.139596, 0, 4.97666, 0.139596, 0, -4.97666, -0.659215, 0, -9.36935, 0, 0, 0, 0, 0, 0, 0.0822792, 0, -18.1329, 0, 0, 0, 0, 0, 0, 3.54479, 0, -32.5539, 0, 0, 0, 0, 0, 0, 2.78399, 0, -33.8333, 7.39831, 0, -0.777451, -7.39831, 0, 0.777451, -3.46069, 0, -34.2847, 5.23763, 0, -0.402225, -5.23763, 0, 0.402225, -22.8144, 0, -32.9865, 0, 0, 0, 0, 0, 0, -41.1691, 0, -34.9801, 1.98695, 0, -9.0112, -1.98695, 0, 9.0112, -49.326, 0, -26.8084, 0, 0, 0, 0, 0, 0, -49.6634, 0, -4.44561, -0.513447, 0, -2.0601, 0.513447, 0, 2.0601, -49.0393, 0, 7.6865, -1.24152, 0, 4.40218, 1.24152, 0, -4.40218, -35.5872, 0, 11.2816, -2.43813, 0, 0.604381, 2.43813, 0, -0.604381, -29.887, 0, 0.387132, 0, 0, 0, 0, 0, 0, -24.4105, 0, -0.540293, 0, 0, 0, 0, 0, 0, -24.7853, 0, 4.78533, 2.06614, 0, -2.51266, -2.06614, 0, 2.51266, -28.7018, 0, 5.62888, -2.77935, 0, -0.429726, 2.77935, 0, 0.429726, -27.6775, 0, 14.2452, -7.3391, 0, 0.91176, 7.3391, 0, -0.91176, -16.0402, 0, 12.5102, 0, 0, 0, 0, 0, 0, -5.74787, 0, 12.5232, -3.30081, 0, -0.0532379, 3.30081, 0, 0.0532379, 1.70556, 0, 14.1736, 0, 0, 0, 0, 0, 0, 2.61063, 0, 8.95618, 0, 0, 0, 0, 0, 0, -0.000581741, 0, -0.103183),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 22
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_377mt"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 2, 0, 0, 0, -0.867233, 0, -11.7055, -0.626114, 0, 1.17397, 0.626114, 0, -1.17397, 0.330498, 0, -26.9325, -4.70092, 0, -2.73977, 4.70092, 0, 2.73977, 9.60481, 0, -28.7326, -0.843433, 0, -3.94182, 0.843433, 0, 3.94182, 14.6783, 0, -16.0572, 0, 0, 0, 0, 0, 0, 22.2801, 0, 4.09672, 8.88787, 0, -0.754707, -8.88787, 0, 0.754707, 17.2183, 0, 8.8595, 0.575222, 0, 4.18403, -0.575222, 0, -4.18403, 0.483707, 0, 4.44338, 0, 0, 0, 0, 0, 0, 0.0595818, 0, 0.0808739),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_eisir"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 2, 0, 0, 0, -0.169609, 0, -27.2084, -4.76884, 0, -0.793865, 4.76884, 0, 0.793865, 2.87681, 0, -29.2958, 0.296453, 0, -5.32631, -0.296453, 0, 5.32631, 12.3918, 0, -18.4428, 0, 0, 0, 0, 0, 0, 10.5148, 0, -12.2189, 0, 0, 0, 0, 0, 0, 12.513, 0, 1.04096, 7.98699, 0, -1.8735, -7.98699, 0, 1.8735, 6.81411, 0, 19.4329, -0.0621033, 0, 4.84363, 0.0621033, 0, -4.84363, -0.102379, 0, 14.8892, 0, 0, 0, 0, 0, 0, -0.0719719, 0, 0.120807),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_t072n"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 2, 0, 0, 0, -0.275127, 0, -32.9364, 0.48535, 0, 1.77773, -0.48535, 0, -1.77773, -9.07451, 0, -64.9823, 0, 0, 0, 0, 0, 0, -12.4592, 0, -66.7985, 0, 0, 0, 0, 0, 0, -21.2651, 0, -68.5859, 0, 0, 0, 0, 0, 0, -26.222, 0, -67.9609, 0, 0, 0, 0, 0, 0, -42.3726, 0, -63.6247, 0, 0, 0, 0, 0, 0, -64.6735, 0, -55.3675, 0, 0, 0, 0, 0, 0, -87.0039, 0, -27.5709, 0, 0, 0, 0, 0, 0, -93.3715, 0, -7.29507, 0, 0, 0, 0, 0, 0, -87.4639, 0, 10.2706, 0, 0, 0, 0, 0, 0, -75.906, 0, 26.7099, 0, 0, 0, 0, 0, 0, -61.3076, 0, 37.2483, 0, 0, 0, 0, 0, 0, -41.2309, 0, 43.0111, 0, 0, 0, 0, 0, 0, -21.9635, 0, 42.6284, 0, 0, 0, 0, 0, 0, -4.42268, 0, 30.866, 0, 0, 0, 0, 0, 0, -0.0657864, 0, 10.6493, 0, 0, 0, 0, 0, 0, -0.00117302, 0, -0.0220027),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 18
+up_vector_enabled = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qccrs"]
+diffuse_mode = 3
+albedo_color = Color(0.635294, 0.690196, 0.796078, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_w7l7j"]
+lightmap_size_hint = Vector2i(64, 9)
+material = SubResource("StandardMaterial3D_qccrs")
+radius = 2.0
+height = 3.0
+radial_segments = 12
+rings = 8
+
+[sub_resource type="Curve" id="Curve_1op0x"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+bake_resolution = 20
+_data = [Vector2(0, -276.985), 0.0, 1525.61, 0, 0, Vector2(0.509317, -3.23962), 0.0, 484.32, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_h5vqa"]
+bake_resolution = 150
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0931677, 1), 0.0, 0.0, 0, 0, Vector2(0.906832, 0.945163), 0.0, 0.0, 0, 0, Vector2(1, 0), -28.6744, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kytva"]
+size = Vector3(16.9444, 4.75, 7.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sh5ue"]
+size = Vector3(11.8716, 1.14221, 2.79691)
+
+[node name="ElementPampulhaChurch" type="Node3D" node_paths=PackedStringArray("smokes")]
+script = ExtResource("1_bb7ur")
+amount_damage_to_destroy = 10.0
+smokes = [NodePath("Smoke"), NodePath("Smoke2"), NodePath("Smoke3")]
+
+[node name="Node3DShaker" type="Node3D" parent="."]
+script = ExtResource("2_0qst1")
+noise_texture = SubResource("NoiseTexture2D_o2sy6")
+shake_amplitude = 0.0
+shake_frequency = 1.25
+shake_y = false
+
+[node name="pampulha_church" parent="Node3DShaker" instance=ExtResource("1_8mi4a")]
+
+[node name="AccessibilityHighContrastObject2" type="Node" parent="Node3DShaker/pampulha_church"]
+script = ExtResource("4_wo4pq")
+high_contrast_group = &"neutral"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="pampulha_church_grass" parent="Node3DShaker" instance=ExtResource("3_ssljg")]
+
+[node name="pampulha_church_floor" parent="." instance=ExtResource("2_3g8s7")]
+
+[node name="Area3D Leftmost" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.991445, 0.130526, 0, -0.130526, 0.991445, -3, 4, 1.75)
+collision_layer = 132
+collision_mask = 0
+
+[node name="Health Leftmost" type="Node" parent="Area3D Leftmost"]
+script = ExtResource("4_j5tus")
+max_amount = 100.0
+immortal = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D Leftmost"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.226, 0.065, -1.673)
+shape = SubResource("BoxShape3D_p0uqj")
+
+[node name="Area3D Second" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.991445, 0.130526, 0, -0.130526, 0.991445, 1, 4, 1.75)
+collision_layer = 132
+collision_mask = 0
+
+[node name="Health Second" type="Node" parent="Area3D Second"]
+script = ExtResource("4_j5tus")
+max_amount = 100.0
+immortal = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D Second"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.76837e-07, -1.6731)
+shape = SubResource("BoxShape3D_p0uqj")
+
+[node name="SpawnArea" type="VisibleOnScreenNotifier3D" parent="Area3D Second"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.28487, 1.71645)
+aabb = AABB(-2.07027, -1.55574, -0.279139, 4.14053, 3.11148, 0.558279)
+script = ExtResource("7_im5al")
+scenes = Array[PackedScene]([ExtResource("8_4lsot")])
+spawn_multiple_default = 12
+spawn_multiple_default_duration = 0.8
+spawn_multiple_default_ease = 1
+spawn_multiple_default_trans = 4
+
+[node name="Area3D Third big" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.991445, 0.130526, 0, -0.130526, 0.991445, 12, 4, 1.75)
+collision_layer = 132
+collision_mask = 0
+
+[node name="Health Third Big" type="Node" parent="Area3D Third big"]
+script = ExtResource("4_j5tus")
+max_amount = 100.0
+immortal = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D Third big"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.76837e-07, -1.875)
+shape = SubResource("BoxShape3D_p0uqj")
+
+[node name="SpawnArea3" type="VisibleOnScreenNotifier3D" parent="Area3D Third big"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.155342, -2.57344, 1.65107)
+aabb = AABB(-1.39211, -1.54491, -0.279139, 2.78422, 3.08981, 0.558279)
+script = ExtResource("7_im5al")
+scenes = Array[PackedScene]([ExtResource("8_4lsot")])
+spawn_multiple_default = 12
+spawn_multiple_default_duration = 0.8
+spawn_multiple_default_ease = 1
+spawn_multiple_default_trans = 4
+
+[node name="Area3D Right" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.991445, 0.130526, 0, -0.130526, 0.991445, 6.41043, 4, 1.75)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Health Right" type="Node" parent="Area3D Right"]
+script = ExtResource("4_j5tus")
+max_amount = 100.0
+immortal = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D Right"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0510254, 0, -8.5)
+shape = SubResource("BoxShape3D_u7qoo")
+
+[node name="SpawnArea2" type="VisibleOnScreenNotifier3D" parent="Area3D Right"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16694, -1.01215, 1.85662)
+aabb = AABB(-2.451, -2.8868, -0.279139, 4.902, 5.7736, 0.558279)
+script = ExtResource("7_im5al")
+scenes = Array[PackedScene]([ExtResource("8_4lsot")])
+spawn_multiple_default = 12
+spawn_multiple_default_duration = 0.8
+spawn_multiple_default_ease = 1
+spawn_multiple_default_trans = 4
+
+[node name="Curb" type="Node3D" parent="."]
+
+[node name="Curb Sidewalk Path" parent="Curb" instance=ExtResource("7_swx47")]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -1.30411, 0, 8.19242)
+curve = SubResource("Curve3D_yx5o5")
+
+[node name="Curb Sidewalk Path2" parent="Curb" instance=ExtResource("7_swx47")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 19.1911, 0, 0)
+curve = SubResource("Curve3D_377mt")
+
+[node name="Curb Sidewalk Path3" parent="Curb" instance=ExtResource("7_swx47")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -16.2593, 0, 0)
+curve = SubResource("Curve3D_eisir")
+
+[node name="Curb Sidewalk Path4" parent="Curb" instance=ExtResource("7_swx47")]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 0, 0, 14.7126)
+curve = SubResource("Curve3D_t072n")
+
+[node name="Smoke" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.40386, -0.304701, -0.74149)
+amount = 120
+lifetime = 1.6
+speed_scale = 2.0
+lifetime_randomness = 0.11
+visibility_aabb = AABB(-4, -4, -4, 8, 8, 8)
+mesh = SubResource("SphereMesh_w7l7j")
+emission_shape = 3
+emission_box_extents = Vector3(9, 0.1, 5)
+particle_flag_rotate_y = true
+direction = Vector3(1, 1, 1)
+flatness = 1.0
+gravity = Vector3(0, 0.4, 0)
+angular_velocity_min = -1.0
+angular_velocity_max = 1.0
+angular_velocity_curve = SubResource("Curve_1op0x")
+scale_amount_max = 1.1
+scale_amount_curve = SubResource("Curve_h5vqa")
+
+[node name="Smoke2" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.40386, -0.304701, -11.7415)
+amount = 100
+lifetime = 1.6
+speed_scale = 2.0
+lifetime_randomness = 0.11
+visibility_aabb = AABB(-4, -4, -4, 8, 8, 8)
+mesh = SubResource("SphereMesh_w7l7j")
+emission_shape = 3
+emission_box_extents = Vector3(4, 0.1, 5)
+particle_flag_rotate_y = true
+direction = Vector3(1, 1, 1)
+flatness = 1.0
+gravity = Vector3(0, 0.4, 0)
+angular_velocity_min = -1.0
+angular_velocity_max = 1.0
+angular_velocity_curve = SubResource("Curve_1op0x")
+scale_amount_max = 1.1
+scale_amount_curve = SubResource("Curve_h5vqa")
+
+[node name="Smoke3" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40386, -0.304701, -18.7415)
+amount = 40
+lifetime = 1.6
+speed_scale = 2.0
+lifetime_randomness = 0.11
+visibility_aabb = AABB(-4, -4, -4, 8, 8, 8)
+mesh = SubResource("SphereMesh_w7l7j")
+emission_shape = 3
+emission_box_extents = Vector3(5, 0.1, 1)
+particle_flag_rotate_y = true
+direction = Vector3(1, 1, 1)
+flatness = 1.0
+gravity = Vector3(0, 0.4, 0)
+angular_velocity_min = -1.0
+angular_velocity_max = 1.0
+angular_velocity_curve = SubResource("Curve_1op0x")
+scale_amount_max = 1.1
+scale_amount_curve = SubResource("Curve_h5vqa")
+
+[node name="Pressable" type="Node3D" parent="."]
+script = ExtResource("10_jxakv")
+search_for_area_inside = true
+metadata/_custom_type_script = "uid://hbsjipy3xak5"
+
+[node name="Pressable Area" type="Area3D" parent="Pressable"]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pressable/Pressable Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.44489, 1.08081, -0.305603)
+shape = SubResource("BoxShape3D_kytva")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Pressable/Pressable Area"]
+transform = Transform3D(0.151261, 0, -0.988494, 0, 1, 0, 0.988494, 0, 0.151261, 6.78434, 1.04419, -8.19294)
+shape = SubResource("BoxShape3D_kytva")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Pressable/Pressable Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.571228, 2.47978, -18.7828)
+shape = SubResource("BoxShape3D_sh5ue")
+
+[node name="SFX_Destroy" type="AkEvent3D" parent="."]
+event = ExtResource("12_1wp4h")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, -2.25)
+
+[connection signal="destroyed" from="." to="SFX_Destroy" method="post_event"]
+[connection signal="hit" from="Area3D Leftmost/Health Leftmost" to="." method="_on_health_leftmost_hit"]
+[connection signal="hit" from="Area3D Second/Health Second" to="." method="_on_health_second_hit"]
+[connection signal="hit_parameterless" from="Area3D Second/Health Second" to="Area3D Second/SpawnArea" method="do_spawn_default"]
+[connection signal="hit" from="Area3D Third big/Health Third Big" to="." method="_on_health_third_big_hit"]
+[connection signal="hit_parameterless" from="Area3D Third big/Health Third Big" to="Area3D Third big/SpawnArea3" method="do_spawn_default"]
+[connection signal="hit" from="Area3D Right/Health Right" to="." method="_on_health_right_hit"]
+[connection signal="hit_parameterless" from="Area3D Right/Health Right" to="Area3D Right/SpawnArea2" method="do_spawn_default"]
+[connection signal="pressed" from="Pressable" to="." method="_on_pressable_pressed"]
+[connection signal="released" from="Pressable" to="." method="_on_pressable_released"]

@@ -1,0 +1,70 @@
+[gd_scene load_steps=12 format=3 uid="uid://co7l4xkukqfa7"]
+
+[ext_resource type="Script" uid="uid://dq10y5jeco3ay" path="res://systems/element_scene_structure/exposer_node_3d.gd" id="1_cqh1g"]
+[ext_resource type="PackedScene" uid="uid://cyenvktvio8p" path="res://elements/neutral/props/poles/mesh/mesh_small_pole.tscn" id="1_ojhi5"]
+[ext_resource type="PackedScene" uid="uid://dodvoqnqhjdel" path="res://elements/neutral/props/pole_pieces/element_pole_board.tscn" id="2_rarkf"]
+[ext_resource type="Texture2D" uid="uid://dxfng4t71vvon" path="res://elements/neutral/props/pole_pieces/signs/trafficsign_bus_1x2.png" id="3_8m8ix"]
+[ext_resource type="Script" uid="uid://0wf4obm88h88" path="res://elements/neutral/props/generic_tumbler.gd" id="4_qa24x"]
+[ext_resource type="Script" uid="uid://bebxjxq1gjo10" path="res://systems/element_scene_structure/exposable_node_3d_child_scene.gd" id="5_2bmpm"]
+[ext_resource type="Resource" uid="uid://7jb1h4bglavu" path="res://elements/neutral/props/pole_pieces/element_iron_pole_tumble_data.tres" id="5_esbbf"]
+[ext_resource type="Script" uid="uid://biqjvlcudqx0t" path="res://elements/player/force_receiver.gd" id="6_arcxe"]
+[ext_resource type="PackedScene" uid="uid://bk3c6a8vre6yr" path="res://elements/neutral/props/generic_body_and_presseable.tscn" id="9_btwvv"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="9_j2fon"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fnibm"]
+radius = 0.1
+height = 3.27706
+
+[node name="Pole Small" type="Node3D"]
+script = ExtResource("1_cqh1g")
+GenericTumbler/Slot*scene = ExtResource("2_rarkf")
+"GenericTumbler/Slot/Pole Board*texture" = ExtResource("3_8m8ix")
+
+[node name="GenericBodyAndPresseable" parent="." node_paths=PackedStringArray("on_kill_queue_free", "visual_feedback_of_health") instance=ExtResource("9_btwvv")]
+on_kill_queue_free = [NodePath("..")]
+visual_feedback_of_health = [NodePath("../GenericTumbler")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76837e-07, 1.54066, 0)
+shape = SubResource("CapsuleShape3D_fnibm")
+
+[node name="Explosion" type="Node3D" parent="GenericBodyAndPresseable"]
+
+[node name="Explosion2" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Explosion3" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Explosion4" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.59001, 0)
+aabb = AABB(-0.626966, -2.62818, -0.259726, 1.35647, 3.09841, 0.519451)
+enable_node_path = NodePath("../..")
+
+[node name="GenericTumbler" type="Node3D" parent="." node_paths=PackedStringArray("receiver", "to_tumble", "tumble_box_corner")]
+script = ExtResource("4_qa24x")
+receiver = NodePath("ForceReceiver")
+to_tumble = NodePath(".")
+tumble_data = ExtResource("5_esbbf")
+tumble_box_corner = NodePath("Box corner")
+
+[node name="ForceReceiver" type="Node3D" parent="GenericTumbler"]
+script = ExtResource("6_arcxe")
+
+[node name="small_pole" parent="GenericTumbler" instance=ExtResource("1_ojhi5")]
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="GenericTumbler/small_pole"]
+script = ExtResource("9_j2fon")
+high_contrast_group = &"scenery"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="Slot" type="Node3D" parent="GenericTumbler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0558813, 2.39924, 0)
+script = ExtResource("5_2bmpm")
+scene = ExtResource("2_rarkf")
+
+[node name="Box corner" type="Node3D" parent="GenericTumbler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.198744, 0, 0.18928)

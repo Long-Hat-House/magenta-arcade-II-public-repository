@@ -1,0 +1,137 @@
+[gd_scene load_steps=15 format=3 uid="uid://ctbkjd21yqlm4"]
+
+[ext_resource type="Script" uid="uid://bjnpmcrptfb85" path="res://systems/utils/random_rotation_local.gd" id="1_xksi7"]
+[ext_resource type="PackedScene" uid="uid://dvvewkod8whps" path="res://elements/neutral/props/vegetation/mesh/vfx_leaf_explosion.tscn" id="2_m5602"]
+[ext_resource type="PackedScene" uid="uid://cgftoju7i36ae" path="res://elements/general_use/feedback/squish_feedback.tscn" id="2_uplpq"]
+[ext_resource type="Script" uid="uid://0wf4obm88h88" path="res://elements/neutral/props/generic_tumbler.gd" id="2_wlwjt"]
+[ext_resource type="Script" uid="uid://bgdocsgotim3u" path="res://elements/player/force_tumble_data.gd" id="3_rjdl3"]
+[ext_resource type="Script" uid="uid://biqjvlcudqx0t" path="res://elements/player/force_receiver.gd" id="4_3w07k"]
+[ext_resource type="PackedScene" uid="uid://badnghs8o2sgx" path="res://elements/neutral/props/vegetation/mesh/mesh_bush.tscn" id="5_fr7wd"]
+[ext_resource type="PackedScene" uid="uid://bk3c6a8vre6yr" path="res://elements/neutral/props/generic_body_and_presseable.tscn" id="6_f5tgi"]
+[ext_resource type="Script" uid="uid://b7n1kj0lt03wh" path="res://systems/utils/node3d_shaker.gd" id="6_h82gj"]
+
+[sub_resource type="GDScript" id="GDScript_tvdb5"]
+resource_name = "ElementBushBehavior"
+script/source = "extends Node
+
+@export var vfx_on_hit:PackedScene;
+
+@onready var bush:Node3D = $\"..\"
+
+@onready var squish_feedback: Feedback_Squish = $SquishFeedback
+@onready var shaker: Node3DShaker = $\"../GenericTumbler/Node3DShaker\"
+@onready var generic_tumbler: GenericTumbler = $\"../GenericTumbler\"
+
+func _on_generic_body_and_presseable_pressed() -> void:
+	print(\"bush squish %s\" % Engine.get_frames_drawn());
+	squish_feedback.squish();
+	generic_tumbler.disabled = true;
+
+
+func _on_generic_body_and_presseable_unpressed() -> void:
+	await squish_feedback.unsquish();
+	generic_tumbler.disabled = false;
+	shaker.set_shake_amplitude_ratio(0.5);
+	var t := create_tween();
+	shaker.shake_tweener_out(t, 1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+
+
+
+func _on_generic_body_and_presseable_try_hit() -> void:
+	if vfx_on_hit:
+		InstantiateUtils.InstantiateInSamePlace3D(vfx_on_hit, bush);
+	var t := create_tween();
+	shaker.shake_tweener_in(t, 0.05, 1.0);
+	shaker.shake_tweener_out(t, 2, 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)
+"
+
+[sub_resource type="Resource" id="Resource_m3tge"]
+script = ExtResource("3_rjdl3")
+force_response_multiplier = 48.0
+return_force_multiplier = 64.0
+mass = 4.0
+scaled_mass = true
+min_velocity = 2.0
+min_force_to_min_velocity = 4.5
+velocity_dissipation = 2.0
+tumble_sensitivity = 0.3
+vibration_max_value_amplitude = 0.5
+vibration_frequency = 32.0
+vibration_increase = 4.0
+vibration_decrease = 32.0
+force_min_to_increase_vibration = 0.5
+add_tumble_hit_multiplier = 0.1
+add_tumble_hit_velocity_multiplier = 1.0
+add_vibration_influence_on_hit = 0.8
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_oaiu8"]
+noise_type = 3
+seed = 5
+frequency = 0.0345
+offset = Vector3(235.85, 0, 0)
+fractal_type = 0
+domain_warp_enabled = true
+domain_warp_type = 2
+domain_warp_amplitude = 10.0
+domain_warp_fractal_type = 0
+domain_warp_fractal_octaves = 2
+domain_warp_fractal_gain = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vaxoe"]
+width = 70
+height = 70
+noise = SubResource("FastNoiseLite_oaiu8")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_16duu"]
+
+[node name="Bush" type="Node3D"]
+script = ExtResource("1_xksi7")
+
+[node name="BushBehavior" type="Node" parent="."]
+script = SubResource("GDScript_tvdb5")
+vfx_on_hit = ExtResource("2_m5602")
+
+[node name="SquishFeedback" parent="BushBehavior" node_paths=PackedStringArray("scaler") instance=ExtResource("2_uplpq")]
+squished_begin = Vector3(2.5, 1, 2.5)
+squished_end = Vector3(2.2, 0.8, 2.2)
+unsquished_begin = Vector3(2.15, 2.8, 2.15)
+scaler = NodePath("../../GenericTumbler/Node3DShaker/mesh_bush")
+
+[node name="GenericTumbler" type="Node3D" parent="." node_paths=PackedStringArray("receiver", "to_tumble")]
+script = ExtResource("2_wlwjt")
+receiver = NodePath("ForceReceiver")
+to_tumble = NodePath(".")
+tumble_data = SubResource("Resource_m3tge")
+tumble_radius = 0.0
+
+[node name="ForceReceiver" type="Node3D" parent="GenericTumbler"]
+script = ExtResource("4_3w07k")
+
+[node name="Node3DShaker" type="Node3D" parent="GenericTumbler"]
+script = ExtResource("6_h82gj")
+stop_shake_on_ready = true
+noise_texture = SubResource("NoiseTexture2D_vaxoe")
+shake_amplitude_ratio = 0.0
+shake_amplitude = 0.2
+shake_frequency = 0.6
+shake_y = false
+
+[node name="mesh_bush" parent="GenericTumbler/Node3DShaker" instance=ExtResource("5_fr7wd")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.135462, 0)
+
+[node name="GenericBodyAndPresseable" parent="GenericTumbler" node_paths=PackedStringArray("generic_tumbler") instance=ExtResource("6_f5tgi")]
+explosion_vfx = null
+intangible = true
+press_is_kill = false
+generic_tumbler = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GenericTumbler/GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.143683, 0)
+shape = SubResource("SphereShape3D_16duu")
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+
+[connection signal="pressed" from="GenericTumbler/GenericBodyAndPresseable" to="BushBehavior" method="_on_generic_body_and_presseable_pressed"]
+[connection signal="try_hit" from="GenericTumbler/GenericBodyAndPresseable" to="BushBehavior" method="_on_generic_body_and_presseable_try_hit"]
+[connection signal="unpressed" from="GenericTumbler/GenericBodyAndPresseable" to="BushBehavior" method="_on_generic_body_and_presseable_unpressed"]

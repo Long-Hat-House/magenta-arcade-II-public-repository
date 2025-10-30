@@ -1,0 +1,106 @@
+[gd_scene load_steps=9 format=3 uid="uid://ceua2nidfsot6"]
+
+[ext_resource type="PackedScene" uid="uid://cmepigx2jkmlq" path="res://elements/ui/menus/game_over_menu/game_over_line_star_unlocked.tscn" id="1_n677d"]
+[ext_resource type="Texture2D" uid="uid://41wb730oj2ed" path="res://elements/icons/icon_star_empty.png" id="2_ioi23"]
+
+[sub_resource type="Animation" id="Animation_2efu3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_856hy"]
+resource_name = "off"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tp7k3"]
+resource_name = "offing"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4cxdq"]
+resource_name = "on"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cg343"]
+resource_name = "oning"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gd082"]
+resource_local_to_scene = true
+_data = {
+"RESET": SubResource("Animation_2efu3"),
+"off": SubResource("Animation_856hy"),
+"offing": SubResource("Animation_tp7k3"),
+"on": SubResource("Animation_4cxdq"),
+"oning": SubResource("Animation_cg343")
+}
+
+[node name="GameOverLineStar" instance=ExtResource("1_n677d")]
+
+[node name="StarContainer" parent="." index="0"]
+modulate = Color(1, 1, 1, 0.572549)
+
+[node name="StarIcon" parent="StarContainer" index="0"]
+texture = ExtResource("2_ioi23")
+
+[node name="Switch_Oning_Offing_AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_gd082")
+}

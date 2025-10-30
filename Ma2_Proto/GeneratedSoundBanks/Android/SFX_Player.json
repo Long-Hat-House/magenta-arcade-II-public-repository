@@ -1,0 +1,229 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Android",
+  "BasePlatform": "Android",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "217780010",
+    "Type": "User",
+    "GUID": "{16DE8028-E1D1-4D69-97BA-E482D060FD88}",
+    "Language": "SFX",
+    "Hash": "{C620ADB5-85B8-4545-52BD-F17A939F4CD8}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\SFX_Player",
+    "ShortName": "SFX_Player",
+    "Path": "SFX_Player.bnk",
+    "Media": [
+     {
+      "Id": "25673464",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "PLR\\HURT\\plr_hurt_impact_01.wav",
+      "CachePath": "08/{08910A54-26C3-E8D2-DE6A-5DBF8D3A600C}.wem"
+     },
+     {
+      "Id": "31796854",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "PLR\\MOVEMENT\\plr_movement_drag_dirt_01.wav",
+      "CachePath": "5B/{5BAC4FB1-3698-4973-E3BD-564E987BFAD9}.wem"
+     },
+     {
+      "Id": "52581006",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "PLR\\HURT\\plr_hurt_impact_03.wav",
+      "CachePath": "56/{564BF096-B275-D61B-E5D9-D17119653ACC}.wem"
+     },
+     {
+      "Id": "174811141",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "PLR\\MOVEMENT\\plr_movement_wind_gust_01.wav",
+      "CachePath": "DE/{DE030B9C-FFCC-F0D1-D921-7E277CE3C311}.wem"
+     },
+     {
+      "Id": "814608433",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "PLR\\HURT\\plr_hurt_impact_02.wav",
+      "CachePath": "C7/{C7342E47-EDEB-968C-F8CE-726F927F5DA2}.wem"
+     },
+     {
+      "Id": "979438359",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "PLR\\MOVEMENT\\plr_movement_drag_dirt_02.wav",
+      "CachePath": "87/{87615AEB-AAA8-AAF1-E1B5-FB0F3FB677FD}.wem"
+     }
+    ],
+    "Plugins": {
+     "Custom": [
+      {
+       "Id": "104449724",
+       "Name": "Tone Generator",
+       "ObjectPath": "\\Actor-Mixer Hierarchy\\World\\WORLD_Ambience\\Player_Tap_Effect\\Tap_Effect_Sound\\Tone Generator",
+       "GUID": "{BD7157AB-6AB6-4F6C-9E95-604816246240}",
+       "Color": "16",
+       "LibName": "Wwise Tone Generator",
+       "LibId": "6684674"
+      },
+      {
+       "Id": "286025635",
+       "Name": "Metal_Hangar (Custom)",
+       "ObjectPath": "\\Actor-Mixer Hierarchy\\World\\WORLD_Ambience\\Player_Tap_Effect\\Tap_Effect_Sound\\[Effect Slot [1]: (RoomVerb)]\\Metal_Hangar (Custom)",
+       "GUID": "{9B9467C4-CF41-405C-94F5-800442A61C4E}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      },
+      {
+       "Id": "805626462",
+       "Name": "Guitar Distortion (Custom)",
+       "ObjectPath": "\\Actor-Mixer Hierarchy\\World\\WORLD_Ambience\\Player_Tap_Effect\\Tap_Effect_Sound\\[Effect Slot [0]: (Guitar Distortion)]\\Guitar Distortion (Custom)",
+       "GUID": "{7CBF6903-B1FB-4CC2-AD7F-AED677499778}",
+       "LibName": "Wwise Guitar Distortion",
+       "LibId": "8257539"
+      }
+     ]
+    },
+    "Events": [
+     {
+      "Id": "3754632425",
+      "Name": "Play_Player_Finger_Hold",
+      "ObjectPath": "\\Events\\Player\\Play_Player_Finger_Hold",
+      "GUID": "{1FB600F4-F852-4CA4-A5C5-061D4956A4E6}",
+      "Color": "2",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "31796854"
+       },
+       {
+        "Id": "174811141"
+       },
+       {
+        "Id": "979438359"
+       }
+      ]
+     },
+     {
+      "Id": "22310327",
+      "Name": "Play_Player_Finger_Tap_Attempt",
+      "ObjectPath": "\\Events\\Player\\Play_Player_Finger_Tap_Attempt",
+      "GUID": "{8F72D0AC-B1B4-447A-8F45-1F187275605E}",
+      "Color": "2",
+      "DurationType": "OneShot",
+      "DurationMin": "0.8",
+      "DurationMax": "0.8",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "104449724"
+        },
+        {
+         "Id": "286025635"
+        },
+        {
+         "Id": "805626462"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "887999531",
+      "Name": "Play_Player_Hurt",
+      "ObjectPath": "\\Events\\Player\\Play_Player_Hurt",
+      "GUID": "{73EFAB3C-4F8E-4EA0-A553-D6C7A1AA0E18}",
+      "Color": "2",
+      "DurationType": "OneShot",
+      "DurationMin": "5.033479",
+      "DurationMax": "5.033479",
+      "MediaRefs": [
+       {
+        "Id": "25673464"
+       },
+       {
+        "Id": "52581006"
+       },
+       {
+        "Id": "814608433"
+       }
+      ],
+      "ActionSetState": [
+       {
+        "GroupId": "337406793",
+        "Id": "930712164",
+        "Name": "Off",
+        "ObjectPath": "\\States\\Default Work Unit\\PlayerDamage\\Off",
+        "GUID": "{F525DA8A-66A4-454E-B66D-1DC91AA88E75}"
+       },
+       {
+        "GroupId": "337406793",
+        "Id": "1651971902",
+        "Name": "On",
+        "ObjectPath": "\\States\\Default Work Unit\\PlayerDamage\\On",
+        "GUID": "{A5630536-C95A-400B-8185-1D940FC1217A}"
+       }
+      ]
+     },
+     {
+      "Id": "1490777887",
+      "Name": "Stop_Player_Finger_Hold",
+      "ObjectPath": "\\Events\\Player\\Stop_Player_Finger_Hold",
+      "GUID": "{343DE484-FAC2-4105-8954-E7F2F6ECB94D}",
+      "Color": "2",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "1517601475",
+      "Name": "plr_DragSpeed",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\plr_DragSpeed",
+      "GUID": "{7AECDE87-2478-43B6-9966-3644B5384BBA}",
+      "Color": "14"
+     }
+    ],
+    "StateGroups": [
+     {
+      "Id": "337406793",
+      "Name": "PlayerDamage",
+      "ObjectPath": "\\States\\Default Work Unit\\PlayerDamage",
+      "GUID": "{D6178150-4138-4927-B71C-2BB05E93999D}",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\PlayerDamage\\None",
+        "GUID": "{510B16A8-FAF3-4CEC-BEAA-573B2E1A1B1F}"
+       },
+       {
+        "Id": "930712164",
+        "Name": "Off",
+        "ObjectPath": "\\States\\Default Work Unit\\PlayerDamage\\Off",
+        "GUID": "{F525DA8A-66A4-454E-B66D-1DC91AA88E75}"
+       },
+       {
+        "Id": "1651971902",
+        "Name": "On",
+        "ObjectPath": "\\States\\Default Work Unit\\PlayerDamage\\On",
+        "GUID": "{A5630536-C95A-400B-8185-1D940FC1217A}"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{3438622C-0BAD-45B4-BD63-E5C3E7E8B682}"
+ }
+}

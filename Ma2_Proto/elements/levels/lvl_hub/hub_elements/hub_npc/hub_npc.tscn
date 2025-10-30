@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://dvgw823liynpm"]
+
+[ext_resource type="Script" uid="uid://budvmddjiyncg" path="res://elements/levels/lvl_hub/hub_elements/hub_npc/hub_npc.gd" id="1_cxkln"]
+[ext_resource type="PackedScene" uid="uid://cux5kcyvhvhq4" path="res://modules/text_flow/scenes/text_flow_player_bubbles.tscn" id="2_bf2nq"]
+[ext_resource type="SpriteFrames" uid="uid://ch7jlno74qjee" path="res://elements/levels/lvl_hub/hub_elements/hub_npc/hub_npc_fanatic.ase" id="3_3mt30"]
+[ext_resource type="SpriteFrames" uid="uid://mlagawoynb0s" path="res://elements/levels/lvl_hub/hub_elements/hub_npc/hub_npc.ase" id="3_b38y6"]
+[ext_resource type="Script" uid="uid://bj8qwbado7bkt" path="res://systems/utils/look_at_camera.gd" id="4_veh62"]
+[ext_resource type="PackedScene" uid="uid://dskpdh8c11ga7" path="res://elements/npc/npc_high_contrast_sprite.tscn" id="5_fu1oa"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_h6xis"]
+height = 0.1
+radial_segments = 12
+rings = 1
+cap_bottom = false
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5edsx"]
+height = 1.5
+
+[node name="Npc" type="Node3D" node_paths=PackedStringArray("_flow_offset", "_main_flow_player", "_extra_flow_player", "_graphic", "_sprites_animation")]
+script = ExtResource("1_cxkln")
+_flow_offset = NodePath("LookAtCamera/Marker3D")
+_main_flow_player = NodePath("MainFlowPlayer")
+_extra_flow_player = NodePath("ExtraFLowPlayer")
+_graphic = NodePath("NPC_Graphic")
+_sprites_animation = NodePath("NPC_Graphic")
+_normal_frames = ExtResource("3_b38y6")
+_fanatic_frames = ExtResource("3_3mt30")
+
+[node name="MainFlowPlayer" parent="." instance=ExtResource("2_bf2nq")]
+
+[node name="ExtraFLowPlayer" parent="." instance=ExtResource("2_bf2nq")]
+
+[node name="NPC_Graphic" type="AnimatedSprite3D" parent="."]
+cast_shadow = 0
+extra_cull_margin = 2.0
+offset = Vector2(0, 128)
+pixel_size = 0.0078
+billboard = 1
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = ExtResource("3_b38y6")
+animation = &"walk"
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": false
+}
+
+[node name="Shadow" type="MeshInstance3D" parent="NPC_Graphic"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0.2, 0)
+cast_shadow = 3
+mesh = SubResource("CylinderMesh_h6xis")
+
+[node name="NPC_HighContrastSprite" parent="NPC_Graphic" instance=ExtResource("5_fu1oa")]
+
+[node name="PressArea" type="Area3D" parent="."]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("4_veh62")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PressArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("CapsuleShape3D_5edsx")
+
+[node name="LookAtCamera" type="Node3D" parent="."]
+script = ExtResource("4_veh62")
+
+[node name="Marker3D" type="Marker3D" parent="LookAtCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
+
+[connection signal="body_entered" from="PressArea" to="." method="add_touched"]
+[connection signal="body_exited" from="PressArea" to="." method="remove_touched"]

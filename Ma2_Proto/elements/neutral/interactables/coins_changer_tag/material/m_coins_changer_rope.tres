@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bwbvcrruajdfi"]
+
+[ext_resource type="Texture2D" uid="uid://dt4gpsyefs5iq" path="res://elements/neutral/interactables/coins_changer_tag/texture/m_tag_BaseColor.png" id="1_owfx3"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("1_owfx3")
+roughness = 0.65
+emission_energy_multiplier = 2.21
+rim_tint = 1.0
+clearcoat = 0.69
+anisotropy = 0.33
+backlight = Color(0.0313726, 0.0313726, 0.0313726, 1)

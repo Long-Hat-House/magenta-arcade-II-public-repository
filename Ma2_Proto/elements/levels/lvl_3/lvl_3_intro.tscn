@@ -1,0 +1,573 @@
+[gd_scene load_steps=54 format=3 uid="uid://ecaync17dt0w"]
+
+[ext_resource type="Script" uid="uid://bt3rgk2gx218p" path="res://systems/stage/level_stage_piece.gd" id="1_fhr0n"]
+[ext_resource type="PackedScene" uid="uid://3ay3pp3wmsrx" path="res://elements/neutral/props/Factory/mesh/mesh_wall_factory_top.tscn" id="2_3du7b"]
+[ext_resource type="PackedScene" uid="uid://cghivwea3224v" path="res://elements/neutral/props/Factory/mesh/mesh_wall_factory_detail.tscn" id="2_fguvy"]
+[ext_resource type="PackedScene" uid="uid://dfi4oip83lo3f" path="res://elements/background/element_grass.tscn" id="2_qw2cx"]
+[ext_resource type="PackedScene" uid="uid://dq80q0mj0xxfn" path="res://elements/background/element_factory_wall.tscn" id="2_ridel"]
+[ext_resource type="PackedScene" uid="uid://c00kqth38jmst" path="res://systems/stage/stage_screen_measure.tscn" id="3_pcwlv"]
+[ext_resource type="PackedScene" uid="uid://cnp3rf2clqmym" path="res://elements/background/element_grass_full.tscn" id="4_86jbq"]
+[ext_resource type="PackedScene" uid="uid://l2ytgjefawwd" path="res://elements/background/element_factory_floor.tscn" id="4_mik3c"]
+[ext_resource type="Script" uid="uid://bpd5xfw6gcj6a" path="res://systems/level/level_snippet_sequence_use_measures.gd" id="4_o8ymi"]
+[ext_resource type="PackedScene" uid="uid://b2yamq5igcd70" path="res://elements/background/element_factory_roof.tscn" id="5_p1xc2"]
+[ext_resource type="PackedScene" uid="uid://cd6ymp4wmjksa" path="res://elements/background/element_asphalt.tscn" id="6_7ea58"]
+[ext_resource type="Script" uid="uid://dx7nihtbjbbm4" path="res://elements/levels/lvl_3/lvl_3_roof_destroyer.tres.gd" id="6_qjuxn"]
+[ext_resource type="PackedScene" uid="uid://cxqe15ub6mrk1" path="res://elements/neutral/props/vegetation/element_tree.tscn" id="7_0jequ"]
+[ext_resource type="PackedScene" uid="uid://cvrxspt6by06j" path="res://elements/neutral/props/vegetation/element_palm.tscn" id="9_4uec3"]
+[ext_resource type="PackedScene" uid="uid://ctbkjd21yqlm4" path="res://elements/neutral/props/vegetation/element_bush.tscn" id="10_3gc74"]
+[ext_resource type="Material" uid="uid://bgw08081tgpwk" path="res://elements/neutral/props/traffic_decals/materials/m_decal_street_red.tres" id="10_a6p5d"]
+[ext_resource type="PackedScene" uid="uid://cyqa4jwyio6sd" path="res://elements/background/element_grass_tile.tscn" id="11_y5c2q"]
+[ext_resource type="PackedScene" uid="uid://c8jxmfgrn3cpc" path="res://elements/background/element_curb3_sidewalk_path.tscn" id="13_rx84m"]
+[ext_resource type="PackedScene" uid="uid://dg51ehomjdm26" path="res://elements/background/element_curb2_sidewalk_path.tscn" id="14_4u2tq"]
+[ext_resource type="PackedScene" uid="uid://hlh5cmnd748w" path="res://elements/neutral/car/element_car.tscn" id="15_vnyo2"]
+[ext_resource type="PackedScene" uid="uid://icr3nye254ru" path="res://elements/neutral/props/traffic_decals/element_decal_white_line.tscn" id="18_f7dnq"]
+[ext_resource type="Resource" uid="uid://b4sm3a668ml1i" path="res://elements/levels/level_structure/camera_movement_data_by_duration.tres" id="21_t1qn3"]
+[ext_resource type="Script" uid="uid://b56c3dq1oftud" path="res://systems/level/level_camera_movement_data.gd" id="22_b4e8m"]
+[ext_resource type="PackedScene" uid="uid://bcmggsmmlhf30" path="res://elements/powerups/button/powerup_weapon_button_tap_green.tscn" id="22_qjuxn"]
+[ext_resource type="PackedScene" uid="uid://cyh3qxcb2s7gv" path="res://elements/powerups/button/powerup_weapon_button_tap_yellow.tscn" id="23_62w8q"]
+[ext_resource type="PackedScene" uid="uid://dcxopovxim3xx" path="res://elements/powerups/button/holdable_button_fire_rate.tscn" id="24_bllek"]
+[ext_resource type="PackedScene" uid="uid://1w3067r22ffa" path="res://elements/powerups/button/holdable_button_warmup.tscn" id="25_t1qn3"]
+
+[sub_resource type="GDScript" id="GDScript_mvg20"]
+resource_name = "lvl_sub"
+script/source = "extends Level
+
+const LVL_INFO_3 = preload(\"res://elements/levels/lvl_info_3.tres\")
+
+## enemies
+const ENEMY_PIZZA_ROBOTO = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto.tscn\")
+@export var level_snippet_sequence_repeat_piece: Level_Snippet_Node;
+
+var group:String = \"main\";
+
+@export var piece:LevelStagePiece;
+
+func _ready():
+	await await_for_level_ready()
+	self.stage.attach_piece(piece);
+
+	AudioManager.post_music_event(AK.EVENTS.MUSIC_LEVEL4_GAMEPLAY_START)
+	cmd(level_snippet_sequence_repeat_piece.cmd(self));
+	cmd(CMD_Show_Level_Info.new(LVL_INFO_3))
+"
+
+[sub_resource type="QuadMesh" id="QuadMesh_emx33"]
+size = Vector2(9, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_mo53a"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, -6),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_lwbyx"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, -6, 0, 0, 0, 0, 0, 0, 0.0602989, 0, -19.9805),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_3cfdn"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, -6, 0, 0, 0, 0, 0, 0, 0.0602989, 0, -19.9805),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_su2j2"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, -6, 0, 0, 0, 0, 0, 0, 0.0602989, 0, -19.9805),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_gip3h"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 0.902613, 0, 0, 1, 0, 0, 0, 0, 0, -1.97537),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_ypg7b"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 0.902613, 0, 0, 1, 0, 0, 0, 0, 0, -1.97537),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_t6la3"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 0.902613, 0, 0, 1, 0, 0, 0, 0, 0, -1.97537),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_s74pr"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 0.902613, 0, 0, 1, 0, 0, 0, 0, 0, -1.97537),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_2djih"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 0.902613, 0, 0, 1, 0, 0, 0, 0, 0, -1.97537),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_32lax"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 0.902613, 0, 0, 1, 0, 0, 0, 0, 0, -1.97537),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_o71kw"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 0.902613, 0, 0, 1, 0, 0, 0, 0, 0, -1.97537),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_vwqon"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 0.902613, 0, 0, 1, 0, 0, 0, 0, 0, -1.97537),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_oogb4"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 0.902613, 0, 0, 1, 0, 0, 0, 0, 0, -1.97537),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_a3opl"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 0.902613, 0, 0, 1, 0, 0, 0, 0, 0, -1.97537),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_h1skc"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, -9.53674e-07, 0, 16.8858, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_i5t3o"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, -9.53674e-07, 0, 16.8858, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_4nece"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, -0.68263, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_eyn8n"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, -0.68263, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_ab0h2"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, -0.68263, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_3b8rn"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, -0.68263, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_b4e8m"]
+script = ExtResource("22_b4e8m")
+camera_duration = 4.6
+camera_speed = 25.0
+camera_duration_style = 1
+ease_x = 2
+trans_x = 2
+duration_multiplier_x = 1.0
+ease_z = 2
+trans_z = 4
+duration_multiplier_z = 0.9
+metadata/_custom_type_script = "uid://b56c3dq1oftud"
+
+[sub_resource type="Resource" id="Resource_twli1"]
+script = ExtResource("22_b4e8m")
+camera_duration = 0.5
+camera_speed = 25.0
+camera_duration_style = 1
+ease_x = 2
+trans_x = 4
+duration_multiplier_x = 1.0
+ease_z = 2
+trans_z = 4
+duration_multiplier_z = 1.0
+metadata/_custom_type_script = "uid://b56c3dq1oftud"
+
+[sub_resource type="GDScript" id="GDScript_ga7d0"]
+script/source = "extends Level_Snippet_Node
+const ENEMY_JACARE = preload(\"res://elements/enemy/roboto_jacare/enemy_jacare.tscn\")
+
+var group:String = \"snippet_group\";
+
+@export var wait_time:float = 0.05
+@export var powerups:Array[PackedScene];
+
+func cmd(lvl:Level)->Level.CMD:
+	return Level.CMD_Sequence.new([
+		Level.CMD_Wait_Seconds.new(wait_time),
+		Level_Cmd_Utils.cmd_multiple_altars_left_to_right(Level_Cmd_Utils.ALTAR, powerups, lvl, \"altars\"),
+		lvl.objs.cmd_wait_group(\"altars\"),
+	])
+"
+
+[sub_resource type="GDScript" id="GDScript_3ml67"]
+script/source = "extends Level_Snippet_Node
+
+const ENEMY_JACARE = preload(\"res://elements/enemy/roboto_jacare/enemy_jacare.tscn\")
+const ENEMY_LASER_ROBOTO = preload(\"res://elements/enemy/laser/enemy_laser_roboto.tscn\")
+const ENEMY_PIZZA_ROBOTO = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto.tscn\")
+const ENEMY_PIZZA_ROBOTO_SHOOTER = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto_shooter.tscn\")
+const POWERUP_ALTAR = preload(\"res://elements/powerups/altar/powerup_altar.tscn\")
+
+var group:String = \"snippet_group\";
+
+func cmd(lvl:Level)->Level.CMD:
+	var walk_forever:Callable = func(pizza:AI_WalkAndDo):
+		pizza.walkAndStop = false;
+
+	var diagonal_pizza := func(pizza:AI_WalkAndDo, vel_x:float):
+		pizza.walkAndStop = true;
+		pizza.distanceMax = 11 - sqrt(2.0) * 4;
+		pizza.walkVelocity = Vector3(vel_x, 0, 1).normalized() * pizza.walkVelocity.length();
+
+
+	return Level.CMD_Sequence.new([
+		lvl.cmd_enemy_line([ENEMY_PIZZA_ROBOTO, ENEMY_PIZZA_ROBOTO_SHOOTER], [0,1,0], 0, 5, 10,  Vector2( 1.25,-1.25), \"main\", diagonal_pizza.bind(-1)),
+		lvl.cmd_enemy_line([ENEMY_PIZZA_ROBOTO, ENEMY_PIZZA_ROBOTO_SHOOTER], [0,1,0], 0, -5, 10, Vector2(-1.25,-1.25), \"main\", diagonal_pizza.bind(1)),
+		Level.CMD_Wait_Seconds.new(1),
+		Level.CMD_Callable.new(func():
+			lvl.objs.create_object(ENEMY_LASER_ROBOTO, \"main\", lvl.stage.get_grid(0, -2))
+			),
+		lvl.objs.cmd_wait_group(\"main\"),
+	])
+"
+
+[node name="LVL_FABRICA" type="Node3D" node_paths=PackedStringArray("level_snippet_sequence_repeat_piece", "piece")]
+script = SubResource("GDScript_mvg20")
+level_snippet_sequence_repeat_piece = NodePath("Level_Snippet_Sequence_UseMeasures")
+piece = NodePath("Stage Piece Fabrica Intro")
+
+[node name="Stage Piece Fabrica Intro" type="Node3D" parent="." node_paths=PackedStringArray("pivot_forward", "pivot_backward")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -78)
+script = ExtResource("1_fhr0n")
+pivot_forward = NodePath("Config/forward")
+pivot_backward = NodePath("Config/back")
+
+[node name="Config" type="Node3D" parent="Stage Piece Fabrica Intro"]
+
+[node name="Wind Direction" type="Node3D" parent="Stage Piece Fabrica Intro/Config"]
+transform = Transform3D(-2.04648e-07, 0, -1, 0, 1, 0, 1, 0, -2.04648e-07, -9, 6, -4.5)
+
+[node name="forward" type="Marker3D" parent="Stage Piece Fabrica Intro/Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+gizmo_extents = 1.0
+
+[node name="back" type="Marker3D" parent="Stage Piece Fabrica Intro/Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 78)
+gizmo_extents = 1.0
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Stage Piece Fabrica Intro/Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1241, 0, 25.8452)
+aabb = AABB(-10.029, 0, -30.5321, 20.057, 13.796, 54.9036)
+
+[node name="Scenery" type="Node3D" parent="Stage Piece Fabrica Intro"]
+
+[node name="Walls" type="Node3D" parent="Stage Piece Fabrica Intro/Scenery"]
+
+[node name="wall_factory_detail" parent="Stage Piece Fabrica Intro/Scenery/Walls" instance=ExtResource("2_fguvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 2.64008)
+
+[node name="wall_factory_detail2" parent="Stage Piece Fabrica Intro/Scenery/Walls" instance=ExtResource("2_fguvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 2.64008)
+
+[node name="wall_factory_top" parent="Stage Piece Fabrica Intro/Scenery/Walls" instance=ExtResource("2_3du7b")]
+transform = Transform3D(3.33, 0, 0, 0, 0.7, 0, 0, 0, 1, -10, 5, 1.75)
+
+[node name="FactoryWall" parent="Stage Piece Fabrica Intro/Scenery/Walls" instance=ExtResource("2_ridel")]
+transform = Transform3D(6.048, 0, 0, 0, 5, 0, 0, 0, 1.008, -10, 0, 1.75)
+
+[node name="FactoryWall2" parent="Stage Piece Fabrica Intro/Scenery/Walls" instance=ExtResource("2_ridel")]
+transform = Transform3D(6, 0, 0, 0, 5, 0, 0, 0, 1, 4, 0, 1.75)
+
+[node name="FactoryRoof" parent="Stage Piece Fabrica Intro/Scenery/Walls" instance=ExtResource("5_p1xc2")]
+transform = Transform3D(20, 0, 0, 0, 0.991781, -1.22829, 0, 0.127947, 9.5211, -10, 8.33602, -6.74703)
+duration = 0.1
+number_of_explosions = 100
+metadata/_edit_group_ = true
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Stage Piece Fabrica Intro/Scenery/Walls/FactoryRoof"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 3.72529e-09, 1, 0.5, -0.86364, -0.697346)
+script = ExtResource("6_qjuxn")
+
+[node name="FactoryFloor" parent="Stage Piece Fabrica Intro/Scenery" instance=ExtResource("4_mik3c")]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 9.5, -10, 0, -6.75)
+
+[node name="MeshInstance3D3" parent="Stage Piece Fabrica Intro/Scenery/FactoryFloor" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, -0.0264117)
+
+[node name="Asphalt" parent="Stage Piece Fabrica Intro/Scenery" instance=ExtResource("6_7ea58")]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 15, -10, 0, 1)
+
+[node name="Asphalt2" parent="Stage Piece Fabrica Intro/Scenery" instance=ExtResource("6_7ea58")]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 10, -10, 0, 19)
+
+[node name="Grass" type="Node3D" parent="Stage Piece Fabrica Intro/Scenery"]
+
+[node name="Grass5" parent="Stage Piece Fabrica Intro/Scenery/Grass" instance=ExtResource("2_qw2cx")]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 50, -10, 0, -0.25)
+visible = false
+
+[node name="Grass" parent="Stage Piece Fabrica Intro/Scenery/Grass" instance=ExtResource("4_86jbq")]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 50, -10, 0, 29)
+
+[node name="Grass2" parent="Stage Piece Fabrica Intro/Scenery/Grass" instance=ExtResource("4_86jbq")]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 3, -10, 0, 16)
+
+[node name="Plants" type="Node3D" parent="Stage Piece Fabrica Intro/Scenery"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5608, 0, 43.0371)
+
+[node name="Palm" parent="Stage Piece Fabrica Intro/Scenery/Plants" instance=ExtResource("9_4uec3")]
+transform = Transform3D(-0.987109, 0.14498, -0.0677892, 0.154334, 0.974426, -0.163326, 0.0423763, -0.171683, -0.984241, -2.38678, 0, -24.6431)
+
+[node name="Palm2" parent="Stage Piece Fabrica Intro/Scenery/Plants" instance=ExtResource("9_4uec3")]
+transform = Transform3D(0.126093, -0.18338, -0.974922, 0.154334, 0.974426, -0.163326, 0.979939, -0.129869, 0.15117, 10.5439, 0, -25.1272)
+
+[node name="Tree2" parent="Stage Piece Fabrica Intro/Scenery/Plants" instance=ExtResource("7_0jequ")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 10.5608, 0, -7.03706)
+
+[node name="Tree7" parent="Stage Piece Fabrica Intro/Scenery/Plants" instance=ExtResource("7_0jequ")]
+transform = Transform3D(-0.964897, 0, -0.262627, 0, 1, 0, 0.262627, 0, -0.964897, 9.93287, 0, 15.155)
+
+[node name="Tree10" parent="Stage Piece Fabrica Intro/Scenery/Plants" instance=ExtResource("7_0jequ")]
+transform = Transform3D(-0.964897, 0, -0.262627, 0, 1, 0, 0.262627, 0, -0.964897, 12.341, 0, 4.21382)
+
+[node name="Tree11" parent="Stage Piece Fabrica Intro/Scenery/Plants" instance=ExtResource("7_0jequ")]
+transform = Transform3D(-0.206785, 0, 0.978386, 0, 1, 0, -0.978386, 0, -0.206785, -3.15461, 0, 7.87831)
+
+[node name="Tree9" parent="Stage Piece Fabrica Intro/Scenery/Plants" instance=ExtResource("7_0jequ")]
+transform = Transform3D(0.309913, 0, -0.950765, 0, 1, 0, 0.950765, 0, 0.309913, 4.91351, 0, 15.6131)
+
+[node name="Tree8" parent="Stage Piece Fabrica Intro/Scenery/Plants" instance=ExtResource("7_0jequ")]
+transform = Transform3D(-0.117416, 0, -0.993083, 0, 1, 0, 0.993083, 0, -0.117416, -0.428823, 0, 15.4921)
+
+[node name="Tree6" parent="Stage Piece Fabrica Intro/Scenery/Plants" instance=ExtResource("7_0jequ")]
+transform = Transform3D(0.212945, 0, -0.977064, 0, 1, 0, 0.977064, 0, 0.212945, 5.44726, 0, -3.44376)
+
+[node name="Tree3" parent="Stage Piece Fabrica Intro/Scenery/Plants" instance=ExtResource("7_0jequ")]
+transform = Transform3D(-1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, -1, 7.5608, 0, -11.0371)
+
+[node name="Tree4" parent="Stage Piece Fabrica Intro/Scenery/Plants" instance=ExtResource("7_0jequ")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 2.5608, 0, -11.0371)
+
+[node name="Tree5" parent="Stage Piece Fabrica Intro/Scenery/Plants" instance=ExtResource("7_0jequ")]
+transform = Transform3D(-1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, -1, -2.4392, 0, -11.0371)
+
+[node name="Bush" parent="Stage Piece Fabrica Intro/Scenery/Plants" instance=ExtResource("10_3gc74")]
+
+[node name="Bush2" parent="Stage Piece Fabrica Intro/Scenery/Plants" instance=ExtResource("10_3gc74")]
+transform = Transform3D(1.265, 0, 0, 0, 1.265, 0, 0, 0, 1.265, 4.42252, 0, -7.60121)
+
+[node name="Bush3" parent="Stage Piece Fabrica Intro/Scenery/Plants" instance=ExtResource("10_3gc74")]
+transform = Transform3D(1.095, 0, 0, 0, 1.095, 0, 0, 0, 1.095, 9.02808, 0, -0.309078)
+
+[node name="Bush4" parent="Stage Piece Fabrica Intro/Scenery/Plants" instance=ExtResource("10_3gc74")]
+transform = Transform3D(0.417409, 0, -0.56815, 0, 0.705, 0, 0.56815, 0, 0.417409, 8.16905, 0, 0.13525)
+
+[node name="Tree" parent="Stage Piece Fabrica Intro/Scenery/Plants" instance=ExtResource("7_0jequ")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4392, 0, -6.03706)
+
+[node name="grass_tile" parent="Stage Piece Fabrica Intro/Scenery/Plants" instance=ExtResource("11_y5c2q")]
+transform = Transform3D(2.11, 0, 0, 0, 2.11, 0, 0, 0, 2.11, 5.78274, 0.025, 7.19016)
+
+[node name="grass_tile2" parent="Stage Piece Fabrica Intro/Scenery/Plants" instance=ExtResource("11_y5c2q")]
+transform = Transform3D(2.11, 0, 0, 0, 2.11, 0, 0, 0, 2.11, 1.70999, 0.025, -1.77556)
+
+[node name="floor_red" type="MeshInstance3D" parent="Stage Piece Fabrica Intro/Scenery"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.025, 2.267)
+material_override = ExtResource("10_a6p5d")
+mesh = SubResource("QuadMesh_emx33")
+
+[node name="Cars" type="Node3D" parent="Stage Piece Fabrica Intro/Scenery"]
+
+[node name="Element_Car" parent="Stage Piece Fabrica Intro/Scenery/Cars" instance=ExtResource("15_vnyo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.60429, 0, 21.4102)
+
+[node name="Element_Car2" parent="Stage Piece Fabrica Intro/Scenery/Cars" instance=ExtResource("15_vnyo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19315, 0, 21.4102)
+
+[node name="Element_Car3" parent="Stage Piece Fabrica Intro/Scenery/Cars" instance=ExtResource("15_vnyo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.20657, 0, 21.4102)
+
+[node name="Element_Car4" parent="Stage Piece Fabrica Intro/Scenery/Cars" instance=ExtResource("15_vnyo2")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.23919, 0, 26.5848)
+
+[node name="Element_Car5" parent="Stage Piece Fabrica Intro/Scenery/Cars" instance=ExtResource("15_vnyo2")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.14482, 0, 26.6858)
+
+[node name="Decals" type="Node3D" parent="Stage Piece Fabrica Intro/Scenery"]
+
+[node name="Curb Sidewalk Path" parent="Stage Piece Fabrica Intro/Scenery/Decals" instance=ExtResource("13_rx84m")]
+curve = SubResource("Curve3D_mo53a")
+
+[node name="Curb Sidewalk Path2" parent="Stage Piece Fabrica Intro/Scenery/Decals" instance=ExtResource("14_4u2tq")]
+transform = Transform3D(-0.00174539, 0, 0.999998, 0, 1, 0, -0.999998, 0, -0.00174539, 10.0257, 0, 15.0508)
+curve = SubResource("Curve3D_lwbyx")
+
+[node name="Curb Sidewalk Path4" parent="Stage Piece Fabrica Intro/Scenery/Decals" instance=ExtResource("14_4u2tq")]
+transform = Transform3D(-0.00174539, 0, 0.999998, 0, 1, 0, -0.999998, 0, -0.00174539, 10.0257, 0, 28.0629)
+curve = SubResource("Curve3D_3cfdn")
+
+[node name="Curb Sidewalk Path3" parent="Stage Piece Fabrica Intro/Scenery/Decals" instance=ExtResource("14_4u2tq")]
+transform = Transform3D(0.0017453, 0, -0.999999, 0, 1, 0, 0.999999, 0, 0.0017453, -9.99024, 0, 19.93)
+curve = SubResource("Curve3D_su2j2")
+
+[node name="Decal White Line" parent="Stage Piece Fabrica Intro/Scenery/Decals" instance=ExtResource("18_f7dnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.81747, 0, 22.1503)
+curve = SubResource("Curve3D_gip3h")
+
+[node name="Decal White Line2" parent="Stage Piece Fabrica Intro/Scenery/Decals" instance=ExtResource("18_f7dnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38808, 0, 22.1503)
+curve = SubResource("Curve3D_ypg7b")
+
+[node name="Decal White Line3" parent="Stage Piece Fabrica Intro/Scenery/Decals" instance=ExtResource("18_f7dnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0162606, 0, 22.1503)
+curve = SubResource("Curve3D_t6la3")
+
+[node name="Decal White Line4" parent="Stage Piece Fabrica Intro/Scenery/Decals" instance=ExtResource("18_f7dnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02166, 0, 22.1503)
+curve = SubResource("Curve3D_s74pr")
+
+[node name="Decal White Line5" parent="Stage Piece Fabrica Intro/Scenery/Decals" instance=ExtResource("18_f7dnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.41213, 0, 22.1503)
+curve = SubResource("Curve3D_2djih")
+
+[node name="Decal White Line6" parent="Stage Piece Fabrica Intro/Scenery/Decals" instance=ExtResource("18_f7dnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.81747, 0, 26.9178)
+curve = SubResource("Curve3D_32lax")
+
+[node name="Decal White Line7" parent="Stage Piece Fabrica Intro/Scenery/Decals" instance=ExtResource("18_f7dnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38808, 0, 26.9178)
+curve = SubResource("Curve3D_o71kw")
+
+[node name="Decal White Line8" parent="Stage Piece Fabrica Intro/Scenery/Decals" instance=ExtResource("18_f7dnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0162606, 0, 26.9178)
+curve = SubResource("Curve3D_vwqon")
+
+[node name="Decal White Line9" parent="Stage Piece Fabrica Intro/Scenery/Decals" instance=ExtResource("18_f7dnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02166, 0, 26.9178)
+curve = SubResource("Curve3D_oogb4")
+
+[node name="Decal White Line10" parent="Stage Piece Fabrica Intro/Scenery/Decals" instance=ExtResource("18_f7dnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.41213, 0, 26.9178)
+curve = SubResource("Curve3D_a3opl")
+
+[node name="Decal White Line11" parent="Stage Piece Fabrica Intro/Scenery/Decals" instance=ExtResource("18_f7dnq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.94313, 0, 4.34198)
+curve = SubResource("Curve3D_h1skc")
+
+[node name="Decal White Line12" parent="Stage Piece Fabrica Intro/Scenery/Decals" instance=ExtResource("18_f7dnq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.94313, 0, 9.6095)
+curve = SubResource("Curve3D_i5t3o")
+
+[node name="Decal White Line13" parent="Stage Piece Fabrica Intro/Scenery/Decals" instance=ExtResource("18_f7dnq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.39841, 0, 12.4258)
+curve = SubResource("Curve3D_4nece")
+
+[node name="Decal White Line14" parent="Stage Piece Fabrica Intro/Scenery/Decals" instance=ExtResource("18_f7dnq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.21253, 0, 12.4258)
+curve = SubResource("Curve3D_eyn8n")
+
+[node name="Decal White Line15" parent="Stage Piece Fabrica Intro/Scenery/Decals" instance=ExtResource("18_f7dnq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.21253, 0, 7.39482)
+curve = SubResource("Curve3D_ab0h2")
+
+[node name="Decal White Line16" parent="Stage Piece Fabrica Intro/Scenery/Decals" instance=ExtResource("18_f7dnq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.92026, 0, 7.39482)
+curve = SubResource("Curve3D_3b8rn")
+
+[node name="StageScreenMeasure" parent="Stage Piece Fabrica Intro" instance=ExtResource("3_pcwlv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 32)
+default_movement = SubResource("Resource_b4e8m")
+
+[node name="StageScreenMeasure2" parent="Stage Piece Fabrica Intro" instance=ExtResource("3_pcwlv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -4.5)
+default_movement = ExtResource("21_t1qn3")
+
+[node name="StageScreenMeasure3" parent="Stage Piece Fabrica Intro" instance=ExtResource("3_pcwlv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -4.5)
+default_movement = SubResource("Resource_twli1")
+
+[node name="Level_Snippet_Sequence_UseMeasures" type="Node" parent="."]
+script = ExtResource("4_o8ymi")
+use_measures_data = true
+time_to_camera_to_go_type = 1
+time_to_camera_to_go = 25.0
+time_to_camera_to_go_extra = Array[float]([2.0, 0.0])
+
+[node name="First couple altars" type="Node" parent="Level_Snippet_Sequence_UseMeasures"]
+script = SubResource("GDScript_ga7d0")
+wait_time = 3.3
+powerups = Array[PackedScene]([ExtResource("22_qjuxn"), ExtResource("23_62w8q")])
+
+[node name="Pizzas and laser to begin" type="Node" parent="Level_Snippet_Sequence_UseMeasures"]
+script = SubResource("GDScript_3ml67")
+
+[node name="More altars" type="Node" parent="Level_Snippet_Sequence_UseMeasures"]
+script = SubResource("GDScript_ga7d0")
+powerups = Array[PackedScene]([ExtResource("24_bllek"), ExtResource("25_t1qn3")])
+
+[connection signal="screen_entered" from="Stage Piece Fabrica Intro/Config/VisibleOnScreenNotifier3D" to="Stage Piece Fabrica Intro" method="_on_screen_entered"]
+[connection signal="screen_exited" from="Stage Piece Fabrica Intro/Config/VisibleOnScreenNotifier3D" to="Stage Piece Fabrica Intro" method="_on_screen_exited"]
+
+[editable path="Stage Piece Fabrica Intro/Scenery/FactoryFloor"]

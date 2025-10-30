@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://dk1g2wyea26ex"]
+
+[ext_resource type="PackedScene" uid="uid://r5hbiso3v7c" path="res://elements/neutral/props/gear/mesh_gear.tscn" id="1_mx0il"]
+[ext_resource type="Script" uid="uid://bsnk3akg0rvp5" path="res://elements/levels/lvl_hub/hub_elements/hub_lane_movement_listener.gd" id="2_6duax"]
+[ext_resource type="Script" uid="uid://0wf4obm88h88" path="res://elements/neutral/props/generic_tumbler.gd" id="2_nge37"]
+[ext_resource type="Script" uid="uid://bgdocsgotim3u" path="res://elements/player/force_tumble_data.gd" id="3_nge37"]
+[ext_resource type="Script" uid="uid://biqjvlcudqx0t" path="res://elements/player/force_receiver.gd" id="5_g6fbq"]
+
+[sub_resource type="Resource" id="Resource_rhish"]
+script = ExtResource("3_nge37")
+force_response_multiplier = 57.6
+return_force_multiplier = 84.0
+mass = 2.0
+scaled_mass = true
+min_velocity = 2.0
+min_force_to_min_velocity = 4.5
+velocity_dissipation = 1.26
+tumble_sensitivity = 0.75
+vibration_max_value_amplitude = 0.5
+vibration_frequency = 32.0
+vibration_increase = 4.0
+vibration_decrease = 32.0
+force_min_to_increase_vibration = 0.5
+add_tumble_hit_multiplier = 1.0
+add_tumble_hit_velocity_multiplier = 1.0
+add_vibration_influence_on_hit = 0.8
+
+[node name="element_hub_lane_gear_connected" type="Node3D" node_paths=PackedStringArray("to_move")]
+script = ExtResource("2_6duax")
+rotate_z = true
+conversion = 2.0
+to_move = NodePath("GenericTumbler/gear")
+
+[node name="GenericTumbler" type="Node3D" parent="." node_paths=PackedStringArray("receiver", "to_tumble")]
+script = ExtResource("2_nge37")
+receiver = NodePath("../ForceReceiver")
+to_tumble = NodePath(".")
+tumble_data = SubResource("Resource_rhish")
+tumble_radius = 0.2
+metadata/_custom_type_script = "uid://0wf4obm88h88"
+
+[node name="gear" parent="GenericTumbler" instance=ExtResource("1_mx0il")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="gear2" parent="GenericTumbler/gear" instance=ExtResource("1_mx0il")]
+transform = Transform3D(0.5, 0, 0, 0, 8, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="ForceReceiver" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+script = ExtResource("5_g6fbq")
+metadata/_custom_type_script = "uid://biqjvlcudqx0t"

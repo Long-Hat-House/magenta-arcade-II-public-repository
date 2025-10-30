@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://ch58via10e1db"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Int_Altar_Close_End"
+id = 326371423
+guid = "{9298ABE9-9909-4E40-8739-5948AA9FF746}"
+dummy = true

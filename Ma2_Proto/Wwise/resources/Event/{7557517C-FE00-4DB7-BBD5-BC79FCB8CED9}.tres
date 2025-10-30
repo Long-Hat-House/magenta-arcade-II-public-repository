@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://deqbbcrv8fx06"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_UI_Score_Combo_Increase"
+id = 1330313623
+guid = "{7557517C-FE00-4DB7-BBD5-BC79FCB8CED9}"
+dummy = true

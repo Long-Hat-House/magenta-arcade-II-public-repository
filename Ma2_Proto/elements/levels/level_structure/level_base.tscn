@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cexqkrjsxgfl7"]
+
+[ext_resource type="Script" uid="uid://c0f6ox6llck1x" path="res://systems/level/level.gd" id="1_hnn0q"]
+[ext_resource type="PackedScene" uid="uid://c7ft4lc6ukiy0" path="res://elements/levels/level_structure/level_game_pack.tscn" id="2_07bq4"]
+
+[node name="LevelBase" type="Node3D"]
+script = ExtResource("1_hnn0q")
+_game_pack_scene = ExtResource("2_07bq4")

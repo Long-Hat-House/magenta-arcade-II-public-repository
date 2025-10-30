@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqiu5ttqsaaf0"]
+
+[ext_resource type="PackedScene" uid="uid://chxijt10i3xyi" path="res://elements/enemy/pizza/Mesh/pizza_roboto_shooter.tscn" id="1_ypj17"]
+[ext_resource type="Material" uid="uid://o7vmhxyjw7p5" path="res://elements/enemy/pizza/Material/M_Pizza_Rust.tres" id="2_g8475"]
+
+[node name="Pizza_Roboto_Shooter_Rusty" instance=ExtResource("1_ypj17")]
+
+[node name="Skeleton3D" parent="Rig_Pizza" index="0"]
+bones/4/position = Vector3(0, 0.162603, -0.497376)
+bones/5/position = Vector3(0.360058, 0.196704, 0.239893)
+bones/7/position = Vector3(0.391414, 0.196704, -0.257012)
+bones/11/position = Vector3(-0.427851, 0.196704, -0.278874)
+
+[node name="base_Pe" parent="Rig_Pizza/Skeleton3D" index="0"]
+material_override = ExtResource("2_g8475")
+
+[node name="Boca" parent="Rig_Pizza/Skeleton3D" index="1"]
+material_override = ExtResource("2_g8475")
+
+[node name="Corpo" parent="Rig_Pizza/Skeleton3D" index="2"]
+material_override = ExtResource("2_g8475")
+
+[node name="Oculos" parent="Rig_Pizza/Skeleton3D" index="3"]
+material_override = ExtResource("2_g8475")
+
+[node name="Pe" parent="Rig_Pizza/Skeleton3D" index="4"]
+material_override = ExtResource("2_g8475")
+
+[node name="Tampa" parent="Rig_Pizza/Skeleton3D" index="5"]
+material_override = ExtResource("2_g8475")

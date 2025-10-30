@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci3cbh7b060wt"]
+
+[ext_resource type="Script" uid="uid://b4gx7livuqhjt" path="res://elements/ui/menus/credits_menu/scripts/credits_entry_display.gd" id="1_cn8bi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1u4e"]
+bg_color = Color(1, 1, 1, 0.156863)
+border_width_left = 50
+border_width_right = 50
+border_color = Color(0.8, 0.8, 0.8, 0)
+border_blend = true
+
+[node name="Credits Endgame Entry" type="BoxContainer" node_paths=PackedStringArray("entry_name", "entry_role", "entry_information", "entry_texture")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+vertical = true
+script = ExtResource("1_cn8bi")
+entry_name = NodePath("PanelContainer/Name")
+entry_role = NodePath("Role")
+entry_information = NodePath("Information")
+entry_texture = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 4
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+expand_mode = 5
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_m1u4e")
+
+[node name="Name" type="Label" parent="PanelContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Lucas Rodrigo"
+horizontal_alignment = 1
+autowrap_mode = 3
+uppercase = true
+
+[node name="Role" type="Label" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Programador"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Information" type="Label" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.337255)
+theme_override_constants/line_spacing = -5
+text = "@rasomattos"
+horizontal_alignment = 1
+autowrap_mode = 3

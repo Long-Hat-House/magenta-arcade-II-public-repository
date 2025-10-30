@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://crf8xjatam6o0"]
+
+[ext_resource type="Script" uid="uid://bstjn7mh5vv47" path="res://systems/general_ai/go_forward_or_path.gd" id="1_b53wh"]
+[ext_resource type="Script" uid="uid://c04hf1fjmqgil" path="res://elements/enemy/projectiles/damage_area/damage_node.gd" id="1_d317b"]
+[ext_resource type="PackedScene" uid="uid://dn0s0xci4vhwr" path="res://elements/enemy/saw/mesh/mesh_saw.tscn" id="3_xmx50"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="4_7pltq"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fm2mo"]
+height = 0.5
+radius = 0.9
+
+[node name="EnemySaw_1Radius" type="Area3D" node_paths=PackedStringArray("walker")]
+collision_layer = 16
+collision_mask = 10
+script = ExtResource("1_b53wh")
+walker = NodePath(".")
+velocity = 6.0
+
+[node name="DamageNode" type="Node" parent="."]
+script = ExtResource("1_d317b")
+amountDamage = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_fm2mo")
+
+[node name="saw" parent="." instance=ExtResource("3_xmx50")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenNotifier3D" parent="saw"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+aabb = AABB(-1, -0.386195, -1, 2, 0.772391, 2)
+
+[node name="AccessibilityHighContrastObject2" type="Node" parent="saw"]
+script = ExtResource("4_7pltq")
+high_contrast_group = &"enemy"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[connection signal="area_entered" from="." to="DamageNode" method="add_body"]
+[connection signal="area_exited" from="." to="DamageNode" method="remove_body"]
+[connection signal="body_entered" from="." to="DamageNode" method="add_body"]
+[connection signal="body_exited" from="." to="DamageNode" method="remove_body"]
+[connection signal="screen_exited" from="saw/VisibleOnScreenEnabler3D" to="." method="queue_free"]

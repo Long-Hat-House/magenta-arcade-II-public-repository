@@ -1,0 +1,395 @@
+[gd_scene load_steps=26 format=3 uid="uid://cldmf33qdr6vk"]
+
+[ext_resource type="Script" uid="uid://cpa222rjnw0yk" path="res://elements/attack_previews/screen_attack_preview/screen_attack_preview.gd" id="1_c1v17"]
+[ext_resource type="WwiseEvent" uid="uid://2dmrtt4gopgj" path="res://Wwise/resources/Event/{F2168B08-AA88-4F8B-A1B4-C3F7ADBBD054}.tres" id="2_dk61l"]
+[ext_resource type="PackedScene" uid="uid://dtetsngjl358c" path="res://elements/attack_previews/screen_attack_preview/screen_attack_preview_corner.tscn" id="2_erld2"]
+[ext_resource type="Script" uid="uid://b7n1kj0lt03wh" path="res://systems/utils/node3d_shaker.gd" id="2_fxtw4"]
+[ext_resource type="Script" uid="uid://bj8qwbado7bkt" path="res://systems/utils/look_at_camera.gd" id="2_ukydg"]
+[ext_resource type="WwiseEvent" uid="uid://cfr4k8e2ynelw" path="res://Wwise/resources/Event/{20A9D637-1F23-4CB1-8E5F-884D01D1677F}.tres" id="3_t3nri"]
+[ext_resource type="FontVariation" uid="uid://cq5jkjaykkaeu" path="res://elements/ui/fonts/BalooBhaina2_ExtraBold.tres" id="3_ucl45"]
+[ext_resource type="WwiseEvent" uid="uid://dsdybkwiaiwa2" path="res://Wwise/resources/Event/{5FDA28B4-B45E-4A4C-8596-5FEB2978EF66}.tres" id="4_bf0f7"]
+[ext_resource type="WwiseRTPC" uid="uid://b3xm81ely58h1" path="res://Wwise/resources/Game Parameter/{4A8D53A4-4845-4ADF-BEF0-F7FD2669ED8B}.tres" id="4_wp3mg"]
+
+[sub_resource type="Animation" id="Animation_1ovik"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:outline_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8dpyp"]
+resource_name = "do"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.333333, 0.366667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0.470588, 0.764706, 0.984314, 1), Color(0.470588, 0.764706, 0.984314, 1), Color(0.972549, 0.933333, 0.894118, 1), Color(0.121569, 0.121569, 0.121569, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:outline_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0.972549, 0.933333, 0.894118, 1), Color(0, 0, 0, 0.6), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ae2yn"]
+_data = {
+&"RESET": SubResource("Animation_1ovik"),
+&"do": SubResource("Animation_8dpyp")
+}
+
+[sub_resource type="Gradient" id="Gradient_lxhpb"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_orwkm"]
+frequency = 0.0183
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_n1jjg"]
+width = 64
+height = 64
+color_ramp = SubResource("Gradient_lxhpb")
+noise = SubResource("FastNoiseLite_orwkm")
+
+[sub_resource type="GDScript" id="GDScript_78so2"]
+script/source = "extends Node3D
+
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+func _ready():
+	idle();
+	
+func idle():
+	animation_player.play(\"idle\");
+	
+	
+func cancel():
+	animation_player.play(\"cancel\");
+"
+
+[sub_resource type="Animation" id="Animation_j2t77"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TheAim/LookAtCamera/Previews/Shaker1/ScreenAttackPreviewCorner:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TheAim/LookAtCamera/Previews/Shaker2/ScreenAttackPreviewCorner2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TheAim/LookAtCamera/Previews/Shaker3/ScreenAttackPreviewCorner3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1, -1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TheAim/LookAtCamera/Previews/Shaker4/ScreenAttackPreviewCorner4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, -1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TheAim:shake_frequency")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+
+[sub_resource type="Animation" id="Animation_q1g5o"]
+resource_name = "closed"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TheAim/LookAtCamera/Previews/Shaker1/ScreenAttackPreviewCorner:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.322254, 0.331291, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TheAim/LookAtCamera/Previews/Shaker2/ScreenAttackPreviewCorner2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.33129, 0.322254, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TheAim/LookAtCamera/Previews/Shaker3/ScreenAttackPreviewCorner3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.331291, -0.322254, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TheAim/LookAtCamera/Previews/Shaker4/ScreenAttackPreviewCorner4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.313218, -0.322254, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TheAim:shake_frequency")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.45]
+}
+
+[sub_resource type="Animation" id="Animation_jtofs"]
+resource_name = "opened"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TheAim/LookAtCamera/Previews/Shaker1/ScreenAttackPreviewCorner:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-3, 3, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TheAim/LookAtCamera/Previews/Shaker2/ScreenAttackPreviewCorner2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3, 3, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TheAim/LookAtCamera/Previews/Shaker3/ScreenAttackPreviewCorner3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-3, -3, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TheAim/LookAtCamera/Previews/Shaker4/ScreenAttackPreviewCorner4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3, -3, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TheAim:shake_frequency")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vyyyi"]
+_data = {
+&"RESET": SubResource("Animation_j2t77"),
+&"closed": SubResource("Animation_q1g5o"),
+&"opened": SubResource("Animation_jtofs")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h0lj2"]
+animation = &"closed"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rqig0"]
+animation = &"opened"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_synqs"]
+animation = &"opened"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c0ydy"]
+animation = &"closed"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_n4qyq"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_h0lj2")
+blend_point_0/pos = 1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_rqig0")
+blend_point_1/pos = 0.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_synqs")
+blend_point_2/pos = 1.0
+blend_point_3/node = SubResource("AnimationNodeAnimation_c0ydy")
+blend_point_3/pos = 1.0
+max_space = 1.34
+value_label = "closed"
+
+[node name="ScreenAttackPreview" type="Node3D"]
+script = ExtResource("1_c1v17")
+_sfx_charging_start = ExtResource("2_dk61l")
+_sfx_charging_stop = ExtResource("3_t3nri")
+_sfx_charging_rtpc = ExtResource("4_wp3mg")
+_sfx_interrupt = ExtResource("4_bf0f7")
+
+[node name="After" type="Node3D" parent="."]
+script = ExtResource("2_ukydg")
+
+[node name="Label3D" type="Label3D" parent="After"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+text = "cancel_attack"
+font = ExtResource("3_ucl45")
+font_size = 120
+outline_size = 40
+
+[node name="LabelAnimation" type="AnimationPlayer" parent="After/Label3D"]
+libraries = {
+&"": SubResource("AnimationLibrary_ae2yn")
+}
+
+[node name="TheAim" type="Node3D" parent="." node_paths=PackedStringArray("extra_shakers")]
+script = ExtResource("2_fxtw4")
+noise_texture = SubResource("NoiseTexture2D_n1jjg")
+shake_amplitude_ratio = 4.0
+shake_amplitude = 0.05
+shake_frequency = 0.5
+dont_shake_itself = true
+extra_shakers = [NodePath("LookAtCamera/Previews/Shaker1"), NodePath("LookAtCamera/Previews/Shaker2"), NodePath("LookAtCamera/Previews/Shaker3"), NodePath("LookAtCamera/Previews/Shaker4")]
+
+[node name="LookAtCamera" type="Node3D" parent="TheAim"]
+script = ExtResource("2_ukydg")
+
+[node name="Previews" type="Node3D" parent="TheAim/LookAtCamera"]
+
+[node name="Shaker1" type="Node3D" parent="TheAim/LookAtCamera/Previews"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0278431, -0.032549, -0.0231373)
+
+[node name="ScreenAttackPreviewCorner" parent="TheAim/LookAtCamera/Previews/Shaker1" instance=ExtResource("2_erld2")]
+transform = Transform3D(0.999848, -0.0174524, 0, 0.0174524, 0.999848, 0, 0, 0, 1, -1, 1, 0)
+script = SubResource("GDScript_78so2")
+
+[node name="Shaker2" type="Node3D" parent="TheAim/LookAtCamera/Previews"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0364706, -0.0262745, -0.0262745)
+
+[node name="ScreenAttackPreviewCorner2" parent="TheAim/LookAtCamera/Previews/Shaker2" instance=ExtResource("2_erld2")]
+transform = Transform3D(0.0174524, 0.999848, 0, -0.999848, 0.0174524, 0, 0, 0, 1, 1, 1, 0)
+script = SubResource("GDScript_78so2")
+
+[node name="Shaker3" type="Node3D" parent="TheAim/LookAtCamera/Previews"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0537255, -0.0027451, -0.00588235)
+
+[node name="ScreenAttackPreviewCorner3" parent="TheAim/LookAtCamera/Previews/Shaker3" instance=ExtResource("2_erld2")]
+transform = Transform3D(-0.0174524, -0.999848, 0, 0.999848, -0.0174524, 0, 0, 0, 1, -1, -1, 0)
+script = SubResource("GDScript_78so2")
+
+[node name="Shaker4" type="Node3D" parent="TheAim/LookAtCamera/Previews"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0443137, -0.0129412, 0.0380392)
+
+[node name="ScreenAttackPreviewCorner4" parent="TheAim/LookAtCamera/Previews/Shaker4" instance=ExtResource("2_erld2")]
+transform = Transform3D(-0.999848, -0.0174524, 0, 0.0174524, -0.999848, 0, 0, 0, 1, 1, -1, 0)
+script = SubResource("GDScript_78so2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vyyyi")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendSpace1D_n4qyq")
+anim_player = NodePath("../AnimationPlayer")
+parameters/blend_position = 0.0596228

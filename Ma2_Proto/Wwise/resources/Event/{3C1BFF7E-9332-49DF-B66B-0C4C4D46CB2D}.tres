@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://8xxw4j7fa7oi"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Revolution_Entry"
+id = 1051341570
+guid = "{3C1BFF7E-9332-49DF-B66B-0C4C4D46CB2D}"
+dummy = true

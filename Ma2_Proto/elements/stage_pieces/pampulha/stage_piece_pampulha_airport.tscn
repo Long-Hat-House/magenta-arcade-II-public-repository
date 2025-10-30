@@ -1,0 +1,1252 @@
+[gd_scene load_steps=84 format=3 uid="uid://obybl27j0vyy"]
+
+[ext_resource type="Script" uid="uid://bt3rgk2gx218p" path="res://systems/stage/level_stage_piece.gd" id="1_1gej4"]
+[ext_resource type="PackedScene" uid="uid://i7twd8wugajr" path="res://elements/background/element_curb_asphalt_stained_path.tscn" id="2_fxvmi"]
+[ext_resource type="PackedScene" uid="uid://icr3nye254ru" path="res://elements/neutral/props/traffic_decals/element_decal_white_line.tscn" id="2_mjgs5"]
+[ext_resource type="PackedScene" uid="uid://b7kk4rbuycx0t" path="res://elements/neutral/props/lamp_floor/mesh/mesh_lamp_floor.tscn" id="2_tgidl"]
+[ext_resource type="PackedScene" uid="uid://c00kqth38jmst" path="res://systems/stage/stage_screen_measure.tscn" id="4_xu28k"]
+[ext_resource type="PackedScene" uid="uid://byq8x53twtmjo" path="res://elements/background/element_curb_asphalt_grass_sidewalk_path.tscn" id="5_8r0lj"]
+[ext_resource type="PackedScene" uid="uid://dn075fo0pbgxl" path="res://elements/neutral/boeing/element_plane_boeing.tscn" id="5_eh4e5"]
+[ext_resource type="PackedScene" uid="uid://cd6ymp4wmjksa" path="res://elements/background/element_asphalt.tscn" id="5_pxqb7"]
+[ext_resource type="PackedScene" uid="uid://cnp3rf2clqmym" path="res://elements/background/element_grass_full.tscn" id="5_rmtio"]
+[ext_resource type="PackedScene" uid="uid://sbnc0uylbyp5" path="res://elements/npc/capybara/npc_capybara.tscn" id="6_qs1rq"]
+[ext_resource type="PackedScene" uid="uid://cyqa4jwyio6sd" path="res://elements/background/element_grass_tile.tscn" id="7_47ys4"]
+[ext_resource type="PackedScene" uid="uid://bppf1gnl7knan" path="res://elements/neutral/props/windsock/mesh/mesh_windsock.tscn" id="8_6g6gl"]
+[ext_resource type="Resource" uid="uid://b4sm3a668ml1i" path="res://elements/levels/level_structure/camera_movement_data_by_duration.tres" id="11_1ujm5"]
+[ext_resource type="Script" uid="uid://b56c3dq1oftud" path="res://systems/level/level_camera_movement_data.gd" id="12_ifg8o"]
+
+[sub_resource type="Curve3D" id="Curve3D_t8pmo"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 0, -0.267345, 1.10827e-05, 1.99916, 0.267345, -1.10827e-05, -1.99916, 0, 0, -161.261, 0, 0, 0, 0, 0, 0, 3.44724, 1.10827e-05, -162.587, 0, 0, 0, 0, 0, 0, 14.6308, 1.10827e-05, -162.555),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_oakx5"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(2.9783, 4.5374e-05, -0.00866699, -2.9783, -4.5374e-05, 0.00866699, 3.93266, 0, -8.80966, -0.0700288, -4.5374e-05, 1.96609, 0.0700288, 4.5374e-05, -1.96609, 0.0557621, -4.5374e-05, -10.4454, 0, 0, 0, 0, 0, 0, 0.131993, -4.5374e-05, -312.018),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_i65gp"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 3.03049, 0, 0, 2, 0, 0, 0, 0, 0, -332.442),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_g33mw"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 4.22368, 0, 0, 2, 0, 0, 0, 0, 0, -5.52468),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_cfkwj"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 0, -0.0758438, 0, 0.8126, 0.0758438, 0, -0.8126, 0.226051, 0.000189453, -14.0605, 0, 0, 0, 0, 0, 0, 166.862, 0.00214258, -14.3964),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_1c5je"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(2.31119, 3.61316e-05, -0.121674, -2.31119, -3.61316e-05, 0.121674, 23.4545, 0, 0.0838523, 0, 0, 0, 0, 0, 0, 0.531845, -3.43658e-05, -0.110049, -0.00538635, 0, 2.07156, 0.00538635, 0, -2.07156, -2.70241, -3.61316e-05, -1.22413, 0, 0, 0, 0, 0, 0, -2.72185, -3.61316e-05, -4.33053),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_me1mf"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, -9.92441),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_qjvio"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, -0.0747032, 0, -1.76035),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_4du0f"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, -0.0747032, 0, -1.76035),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_trvs5"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, -0.0747032, 0, -1.76035),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_4e0te"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, -0.0747032, 0, -1.76035),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_5c2qc"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, -0.0747032, 0, -1.76035),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_yjifl"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, -0.0747032, 0, -1.76035),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_leoe4"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, -0.0747032, 0, -1.76035),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_7tfmb"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, -0.0747032, 0, -1.76035),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_lq0kx"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, -0.0747032, 0, -1.76035),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_057ei"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, -0.0747032, 0, -1.76035),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_h8lnt"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, -0.0747032, 0, -1.76035),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_rt42m"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, -0.0747032, 0, -1.76035),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_fhv6o"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_2fen1"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_37e8l"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_xk747"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_0tksk"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_kfs0t"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_d15rp"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_2kkxv"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_1s1ti"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_8ehmw"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_jxh2x"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_nw7c2"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_5m1tg"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_gy1uo"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_dmtet"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, -11.8889, 0, 0, 1, 0, 0, 0, -0.0317991, 0, -290.245, 0.145402, 0, 0.0958557, -0.145402, 0, -0.0958557, -0.49897, 1.07437e-05, -291.164, 0.222595, 0, -0.00909424, -0.222595, 0, 0.00909424, -1.35752, 1.07437e-05, -291.113),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_vuj1r"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, -11.8797, 0.0459809, -1.07437e-05, -0.167786, -0.0459809, 1.07437e-05, 0.167786, -0.0639539, 1.07437e-05, -148.905, 0.0507345, 0, -0.0969849, -0.0507345, 0, 0.0969849, 0.135587, 1.07437e-05, -149.412, 0.0385122, 0, -0.0786591, -0.0385122, 0, 0.0786591, 0.363772, 1.07437e-05, -149.936, -0.0786586, 0, 0.0838318, 0.0786586, 0, -0.0838318, 0.617356, 1.07437e-05, -150.198, 0, 0, 0, 0, 0, 0, 1.41598, 1.07437e-05, -150.052),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="Curve3D" id="Curve3D_mnpco"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3.18099, 0, 0, 1, 0, 0, 0, 0, 0, -5.46575),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_tntw5"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3.25426, 0, 0, 1, 0, 0, 0, 0, 0, -5.62327),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_0uv8k"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3.25426, 0, 0, 1, 0, 0, 0, 0, 0, -5.62327),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_hj5ie"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3.20587, 0, 0, 1, 0, 0, 0, 0, 0, -5.44474),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_t2h5p"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0.026623, -1.07437e-05, 0.528397, -0.026623, 1.07437e-05, -0.528397, 0, 0, 2.70723, -0.0264933, 0, 0.127167, 0.0264933, 0, -0.127167, 0.0598212, 1.07437e-05, 0.364838, -0.190752, 0, 0.0211945, 0.190752, 0, -0.0211945, 1.42521, 1.07437e-05, 0.25676),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_cqfw2"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0.00483894, 0, 138.578, 0.052743, -1.07437e-05, 0.325672, -0.052743, 1.07437e-05, -0.325672, -0.0846424, 0, -3.87098, -0.231884, 0, -0.147049, 0.231884, 0, 0.147049, -0.391892, 1.07437e-05, -4.81878, -0.214917, 0, -0.135738, 0.214917, 0, 0.135738, -1.46311, 1.07437e-05, -5.05233),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_jnbni"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_3t3fv"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_wyuvr"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_aprka"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_25h17"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_6haxw"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_u2fb0"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_j7pps"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_nykeq"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_e8sld"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_noxtf"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_6loju"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_q05xw"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_polik"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_jfrtp"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_rgk5p"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_y7gom"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_o17ef"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_esg2n"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_obg8p"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_vpok5"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_lavpu"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_lyfnl"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_ud2es"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_gjub8"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_4sb8n"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -1, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_ifg8o"]
+script = ExtResource("12_ifg8o")
+camera_duration = 3.0
+camera_speed = 25.0
+camera_duration_style = 1
+ease_x = 2
+trans_x = 1
+duration_multiplier_x = 0.7
+ease_z = 2
+trans_z = 4
+duration_multiplier_z = 1.0
+metadata/_custom_type_script = "uid://b56c3dq1oftud"
+
+[sub_resource type="Resource" id="Resource_ykbbh"]
+script = ExtResource("12_ifg8o")
+camera_duration = 1.9
+camera_speed = 25.0
+camera_duration_style = 0
+ease_x = 2
+trans_x = 1
+duration_multiplier_x = 1.0
+ease_z = 2
+trans_z = 1
+duration_multiplier_z = 0.9
+metadata/_custom_type_script = "uid://b56c3dq1oftud"
+
+[node name="PieceAirport" type="Node3D" node_paths=PackedStringArray("pivot_forward", "pivot_backward")]
+script = ExtResource("1_1gej4")
+pivot_forward = NodePath("Config/forward")
+pivot_backward = NodePath("Config/back")
+
+[node name="Config" type="Node3D" parent="."]
+
+[node name="Wind Direction" type="Node3D" parent="Config"]
+transform = Transform3D(-2.04648e-07, 0, -1, 0, 1, 0, 1, 0, -2.04648e-07, -1.15835e-06, 6, 26.5)
+
+[node name="forward" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -230)
+gizmo_extents = 1.0
+
+[node name="back" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 154)
+gizmo_extents = 1.0
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.52937, 0, -44.8989)
+aabb = AABB(-18.8993, 0, -199.056, 37.7985, 13.796, 398.112)
+metadata/_edit_lock_ = true
+
+[node name="Scenery" type="Node3D" parent="."]
+
+[node name="Text" type="Node3D" parent="Scenery"]
+
+[node name="number01" type="Label3D" parent="Scenery/Text"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 6.999, 0.1, 82.439)
+shaded = true
+modulate = Color(0.541176, 0.490196, 0.454902, 1)
+outline_modulate = Color(0, 0, 0, 0)
+text = "31"
+font_size = 447
+outline_size = 0
+
+[node name="number02" type="Label3D" parent="Scenery/Text"]
+transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 6.999, 0.1, -180.928)
+shaded = true
+modulate = Color(0.541176, 0.490196, 0.454902, 1)
+outline_modulate = Color(0, 0, 0, 0)
+text = "13"
+font_size = 447
+outline_size = 0
+
+[node name="lamps" type="Node3D" parent="Scenery"]
+
+[node name="lamp_floor" parent="Scenery/lamps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85524, 0.0520709, 95)
+
+[node name="lamp_floor3" parent="Scenery/lamps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6306, 0.0520709, 95)
+
+[node name="lamp_floor2" parent="Scenery/lamps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9359, 0.0520709, 95)
+
+[node name="lamp_floor5" parent="Scenery/lamps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2254, 0.052, 95)
+
+[node name="lamp_floor6" parent="Scenery/lamps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.98544, 0.052, 95)
+
+[node name="lamp_floor7" parent="Scenery/lamps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.57644, 0.052, 95)
+
+[node name="lamp_floor4" parent="Scenery/lamps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85524, 0.0520709, -193.681)
+
+[node name="lamp_floor8" parent="Scenery/lamps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6306, 0.0520709, -193.681)
+
+[node name="lamp_floor9" parent="Scenery/lamps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9359, 0.0520709, -193.681)
+
+[node name="lamp_floor10" parent="Scenery/lamps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2254, 0.052, -193.681)
+
+[node name="lamp_floor11" parent="Scenery/lamps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.98544, 0.052, -193.681)
+
+[node name="lamp_floor12" parent="Scenery/lamps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.57644, 0.052, -193.681)
+
+[node name="lampsmaps" type="Node3D" parent="Scenery/lamps"]
+
+[node name="lamp_floor1" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3, 0.052, 95)
+
+[node name="lamp_floor2" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, 95)
+
+[node name="lamp_floor3" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, 85)
+
+[node name="lamp_floor4" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3, 0.0520709, 85)
+
+[node name="lamp_floor5" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, 75)
+
+[node name="lamp_floor6" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3, 0.0520709, 75)
+
+[node name="lamp_floor7" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3, 0.052, 65)
+
+[node name="lamp_floor8" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, 65)
+
+[node name="lamp_floor9" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, 55)
+
+[node name="lamp_floor10" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3, 0.0520709, 55)
+
+[node name="lamp_floor11" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, 45)
+
+[node name="lamp_floor12" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3, 0.0520709, 45)
+
+[node name="lamp_floor13" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3, 0.052, 35)
+
+[node name="lamp_floor14" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, 35)
+
+[node name="lamp_floor15" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, 25)
+
+[node name="lamp_floor16" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3, 0.0520709, 25)
+
+[node name="lamp_floor17" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, 15)
+
+[node name="lamp_floor18" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3, 0.0520709, 15)
+
+[node name="lamp_floor19" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3, 0.052, 5)
+
+[node name="lamp_floor20" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, 5)
+
+[node name="lamp_floor21" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, -5)
+
+[node name="lamp_floor22" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3, 0.0520709, -5)
+
+[node name="lamp_floor23" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, -15)
+
+[node name="lamp_floor24" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3, 0.0520709, -15)
+
+[node name="lamp_floor25" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3, 0.052, -25)
+
+[node name="lamp_floor26" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, -25)
+
+[node name="lamp_floor27" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, -35)
+
+[node name="lamp_floor28" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3, 0.0520709, -35)
+
+[node name="lamp_floor30" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3, 0.052, -42)
+
+[node name="lamp_floor29" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.259, 0.052, -42)
+
+[node name="lamp_floor61" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6, 0.052, -51.4427)
+
+[node name="lamp_floor62" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.259, 0.052, -51.4427)
+
+[node name="lamp_floor31" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6, 0.052, -55)
+
+[node name="lamp_floor32" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, -55)
+
+[node name="lamp_floor33" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, -65)
+
+[node name="lamp_floor34" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6, 0.0520709, -65)
+
+[node name="lamp_floor35" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, -75)
+
+[node name="lamp_floor36" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6, 0.0520709, -75)
+
+[node name="lamp_floor37" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6, 0.052, -85)
+
+[node name="lamp_floor38" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, -85)
+
+[node name="lamp_floor39" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, -95)
+
+[node name="lamp_floor40" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6, 0.0520709, -95)
+
+[node name="lamp_floor41" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, -105)
+
+[node name="lamp_floor42" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6, 0.0520709, -105)
+
+[node name="lamp_floor43" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6, 0.052, -115)
+
+[node name="lamp_floor44" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, -115)
+
+[node name="lamp_floor45" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, -125)
+
+[node name="lamp_floor46" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6, 0.0520709, -125)
+
+[node name="lamp_floor47" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, -135)
+
+[node name="lamp_floor48" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6, 0.0520709, -135)
+
+[node name="lamp_floor49" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6, 0.052, -145)
+
+[node name="lamp_floor50" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, -145)
+
+[node name="lamp_floor51" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, -155)
+
+[node name="lamp_floor52" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6, 0.0520709, -155)
+
+[node name="lamp_floor53" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, -165)
+
+[node name="lamp_floor54" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6, 0.0520709, -165)
+
+[node name="lamp_floor55" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6, 0.052, -175)
+
+[node name="lamp_floor56" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, -175)
+
+[node name="lamp_floor57" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, -183.438)
+
+[node name="lamp_floor58" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6, 0.0520709, -183.438)
+
+[node name="lamp_floor59" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25878, 0.0520709, -193.673)
+
+[node name="lamp_floor60" parent="Scenery/lamps/lampsmaps" instance=ExtResource("2_tgidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6, 0.0520709, -193.654)
+
+[node name="Curbs" type="Node3D" parent="Scenery"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.01064)
+
+[node name="Curb Sidewalk Path" parent="Scenery/Curbs" instance=ExtResource("5_8r0lj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4795, 0.0440563, 121.083)
+curve = SubResource("Curve3D_t8pmo")
+
+[node name="Curb Sidewalk Path2" parent="Scenery/Curbs" instance=ExtResource("5_8r0lj")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 2.21292, 0.0377651, -191.164)
+curve = SubResource("Curve3D_oakx5")
+
+[node name="Curb Sidewalk Path3" parent="Scenery/Curbs" instance=ExtResource("2_fxvmi")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 5.062, 0, 117.776)
+curve = SubResource("Curve3D_i65gp")
+
+[node name="Curb Sidewalk Path4" parent="Scenery/Curbs" instance=ExtResource("5_8r0lj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.21376, 0.0501622, 120.64)
+curve = SubResource("Curve3D_g33mw")
+
+[node name="Curb Sidewalk Path5" parent="Scenery/Curbs" instance=ExtResource("5_8r0lj")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26.035, 0.044, -47.8)
+curve = SubResource("Curve3D_cfkwj")
+
+[node name="Curb Sidewalk Path6" parent="Scenery/Curbs" instance=ExtResource("5_8r0lj")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.1197, 0.038, -191.15)
+curve = SubResource("Curve3D_1c5je")
+
+[node name="Curb Sidewalk Path7" parent="Scenery/Curbs" instance=ExtResource("5_8r0lj")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.9494, 0.038, -214.459)
+curve = SubResource("Curve3D_me1mf")
+
+[node name="decal white arrows" type="Node3D" parent="Scenery"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.01064)
+
+[node name="Decal White Line" parent="Scenery/decal white arrows" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(1.93937, 0, -0.76295, 0, 1, 0, 2.28885, 0, 0.646457, 6.01283, 0.0605789, 101.038)
+curve = SubResource("Curve3D_qjvio")
+
+[node name="Decal White Line2" parent="Scenery/decal white arrows" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(2.05303, 0, 0.72916, 0, 1, 0, -2.18748, 0, 0.684344, 8.44176, 0.0605789, 100.87)
+curve = SubResource("Curve3D_4du0f")
+
+[node name="Decal White Line3" parent="Scenery/decal white arrows" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(1.93937, 0, -0.76295, 0, 1, 0, 2.28885, 0, 0.646457, 6.01283, 0.0605789, 107.582)
+curve = SubResource("Curve3D_trvs5")
+
+[node name="Decal White Line4" parent="Scenery/decal white arrows" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(2.05303, 0, 0.72916, 0, 1, 0, -2.18748, 0, 0.684344, 8.44176, 0.0605789, 107.414)
+curve = SubResource("Curve3D_4e0te")
+
+[node name="Decal White Line5" parent="Scenery/decal white arrows" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(1.93937, 0, -0.76295, 0, 1, 0, 2.28885, 0, 0.646457, 6.01283, 0.0605789, 113.368)
+curve = SubResource("Curve3D_5c2qc")
+
+[node name="Decal White Line6" parent="Scenery/decal white arrows" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(2.05303, 0, 0.72916, 0, 1, 0, -2.18748, 0, 0.684344, 8.44176, 0.0605789, 113.2)
+curve = SubResource("Curve3D_yjifl")
+
+[node name="Decal White Line7" parent="Scenery/decal white arrows" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(-1.93937, 0, 0.76295, 0, 1, 0, -2.28885, 0, -0.646457, 8.12726, 0.0605789, -195.405)
+curve = SubResource("Curve3D_leoe4")
+
+[node name="Decal White Line8" parent="Scenery/decal white arrows" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(-2.05303, 0, -0.72916, 0, 1, 0, 2.18748, 0, -0.684344, 5.69833, 0.0605789, -195.237)
+curve = SubResource("Curve3D_7tfmb")
+
+[node name="Decal White Line9" parent="Scenery/decal white arrows" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(-1.93937, 0, 0.76295, 0, 1, 0, -2.28885, 0, -0.646457, 8.12726, 0.0605789, -201.949)
+curve = SubResource("Curve3D_lq0kx")
+
+[node name="Decal White Line10" parent="Scenery/decal white arrows" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(-2.05303, 0, -0.72916, 0, 1, 0, 2.18748, 0, -0.684344, 5.69833, 0.0605789, -201.781)
+curve = SubResource("Curve3D_057ei")
+
+[node name="Decal White Line11" parent="Scenery/decal white arrows" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(-1.93937, 0, 0.76295, 0, 1, 0, -2.28885, 0, -0.646457, 8.12726, 0.0605789, -207.735)
+curve = SubResource("Curve3D_h8lnt")
+
+[node name="Decal White Line12" parent="Scenery/decal white arrows" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(-2.05303, 0, -0.72916, 0, 1, 0, 2.18748, 0, -0.684344, 5.69833, 0.0605789, -207.567)
+curve = SubResource("Curve3D_rt42m")
+
+[node name="decal white stripes" type="Node3D" parent="Scenery"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.42, 0, -2.01064)
+
+[node name="Decal White Line4" parent="Scenery/decal white stripes" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3.945, 0, 0, 0, 1, 0, 0, 0, 1, 11.8652, 0.0673019, 92.4431)
+curve = SubResource("Curve3D_fhv6o")
+
+[node name="Decal White Line5" parent="Scenery/decal white stripes" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3.945, 0, 0, 0, 1, 0, 0, 0, 1, 13.0095, 0.0673019, 92.4431)
+curve = SubResource("Curve3D_2fen1")
+
+[node name="Decal White Line6" parent="Scenery/decal white stripes" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3.945, 0, 0, 0, 1, 0, 0, 0, 1, 14.2257, 0.0673019, 92.4431)
+curve = SubResource("Curve3D_37e8l")
+
+[node name="Decal White Line7" parent="Scenery/decal white stripes" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3.945, 0, 0, 0, 1, 0, 0, 0, 1, 15.3917, 0.0673019, 92.4431)
+curve = SubResource("Curve3D_xk747")
+
+[node name="Decal White Line8" parent="Scenery/decal white stripes" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3.945, 0, 0, 0, 1, 0, 0, 0, 1, 16.5704, 0.0673019, 92.4431)
+curve = SubResource("Curve3D_0tksk")
+
+[node name="Decal White Line9" parent="Scenery/decal white stripes" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3.945, 0, 0, 0, 1, 0, 0, 0, 1, 17.6809, 0.0673019, 92.4431)
+curve = SubResource("Curve3D_kfs0t")
+
+[node name="Decal White Line10" parent="Scenery/decal white stripes" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3.945, 0, 0, 0, 1, 0, 0, 0, 1, 18.9367, 0.0673019, 92.4431)
+curve = SubResource("Curve3D_d15rp")
+
+[node name="Decal White Line11" parent="Scenery/decal white stripes" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3.945, 0, 0, 0, 1, 0, 0, 0, 1, 11.5709, 0.0673019, -186.059)
+curve = SubResource("Curve3D_2kkxv")
+
+[node name="Decal White Line12" parent="Scenery/decal white stripes" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3.945, 0, 0, 0, 1, 0, 0, 0, 1, 12.7152, 0.0673019, -186.059)
+curve = SubResource("Curve3D_1s1ti")
+
+[node name="Decal White Line13" parent="Scenery/decal white stripes" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3.945, 0, 0, 0, 1, 0, 0, 0, 1, 13.9314, 0.0673019, -186.059)
+curve = SubResource("Curve3D_8ehmw")
+
+[node name="Decal White Line14" parent="Scenery/decal white stripes" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3.945, 0, 0, 0, 1, 0, 0, 0, 1, 15.0974, 0.0673019, -186.059)
+curve = SubResource("Curve3D_jxh2x")
+
+[node name="Decal White Line15" parent="Scenery/decal white stripes" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3.945, 0, 0, 0, 1, 0, 0, 0, 1, 16.2761, 0.0673019, -186.059)
+curve = SubResource("Curve3D_nw7c2")
+
+[node name="Decal White Line16" parent="Scenery/decal white stripes" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3.945, 0, 0, 0, 1, 0, 0, 0, 1, 17.3866, 0.0673019, -186.059)
+curve = SubResource("Curve3D_5m1tg")
+
+[node name="Decal White Line17" parent="Scenery/decal white stripes" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3.945, 0, 0, 0, 1, 0, 0, 0, 1, 18.6424, 0.0673019, -186.059)
+curve = SubResource("Curve3D_gy1uo")
+
+[node name="decals white lines" type="Node3D" parent="Scenery"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.42, 0, -2.01064)
+
+[node name="Line" type="Node3D" parent="Scenery/decals white lines"]
+
+[node name="Decal White Line" parent="Scenery/decals white lines/Line" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 10.8387, 0.036, 107.885)
+curve = SubResource("Curve3D_dmtet")
+
+[node name="Decal White Line2" parent="Scenery/decals white lines/Line" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 19.772, 0.036, 107.885)
+curve = SubResource("Curve3D_vuj1r")
+
+[node name="Decal White Line3" parent="Scenery/decals white lines/Line" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(-1.09278e-07, 0, -1, 0, 1, 0, 2.5, 0, -4.37114e-08, 14.1558, 0.062481, 95.8075)
+curve = SubResource("Curve3D_mnpco")
+
+[node name="Decal White Line4" parent="Scenery/decals white lines/Line" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(-8.74228e-08, 0, -1, 0, 1, 0, 2, 0, -4.37114e-08, 14.1558, 0.062481, 96.5441)
+curve = SubResource("Curve3D_tntw5")
+
+[node name="Decal White Line7" parent="Scenery/decals white lines/Line" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(-8.74228e-08, 0, -1, 0, 1, 0, 2, 0, -4.37114e-08, 14.1558, 0.062481, -191.246)
+curve = SubResource("Curve3D_0uv8k")
+
+[node name="Decal White Line8" parent="Scenery/decals white lines/Line" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(-8.74228e-08, 0, -1, 0, 1, 0, 2, 0, -4.37114e-08, 14.1558, 0.062481, -190.692)
+curve = SubResource("Curve3D_hj5ie")
+
+[node name="Decal White Line5" parent="Scenery/decals white lines/Line" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(-2, 0, 8.74228e-08, 0, 1, 0, -1.74846e-07, 0, -1, 10.7898, 0.036, -188.126)
+curve = SubResource("Curve3D_t2h5p")
+
+[node name="Decal White Line6" parent="Scenery/decals white lines/Line" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(-2, 0, -8.74228e-08, 0, 1, 0, 1.74846e-07, 0, -1, 19.7724, 0.036, -52.254)
+curve = SubResource("Curve3D_cqfw2")
+
+[node name="Line Segment" type="Node3D" parent="Scenery/decals white lines"]
+
+[node name="Decal White Line" parent="Scenery/decals white lines/Line Segment" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.065, 80)
+curve = SubResource("Curve3D_jnbni")
+
+[node name="Decal White Line2" parent="Scenery/decals white lines/Line Segment" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.065, 70)
+curve = SubResource("Curve3D_3t3fv")
+
+[node name="Decal White Line3" parent="Scenery/decals white lines/Line Segment" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.065, 60)
+curve = SubResource("Curve3D_wyuvr")
+
+[node name="Decal White Line4" parent="Scenery/decals white lines/Line Segment" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.065, 50)
+curve = SubResource("Curve3D_aprka")
+
+[node name="Decal White Line5" parent="Scenery/decals white lines/Line Segment" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.065, 40)
+curve = SubResource("Curve3D_25h17")
+
+[node name="Decal White Line6" parent="Scenery/decals white lines/Line Segment" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.065, 30)
+curve = SubResource("Curve3D_6haxw")
+
+[node name="Decal White Line7" parent="Scenery/decals white lines/Line Segment" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.065, 20)
+curve = SubResource("Curve3D_u2fb0")
+
+[node name="Decal White Line8" parent="Scenery/decals white lines/Line Segment" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.065, 10)
+curve = SubResource("Curve3D_j7pps")
+
+[node name="Decal White Line9" parent="Scenery/decals white lines/Line Segment" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.065, 0)
+curve = SubResource("Curve3D_nykeq")
+
+[node name="Decal White Line10" parent="Scenery/decals white lines/Line Segment" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.065, -10)
+curve = SubResource("Curve3D_e8sld")
+
+[node name="Decal White Line11" parent="Scenery/decals white lines/Line Segment" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.065, -20)
+curve = SubResource("Curve3D_noxtf")
+
+[node name="Decal White Line12" parent="Scenery/decals white lines/Line Segment" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.065, -30)
+curve = SubResource("Curve3D_6loju")
+
+[node name="Decal White Line13" parent="Scenery/decals white lines/Line Segment" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.065, -40)
+curve = SubResource("Curve3D_q05xw")
+
+[node name="Decal White Line14" parent="Scenery/decals white lines/Line Segment" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.065, -50)
+curve = SubResource("Curve3D_polik")
+
+[node name="Decal White Line15" parent="Scenery/decals white lines/Line Segment" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.065, -60)
+curve = SubResource("Curve3D_jfrtp")
+
+[node name="Decal White Line16" parent="Scenery/decals white lines/Line Segment" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.065, -70)
+curve = SubResource("Curve3D_rgk5p")
+
+[node name="Decal White Line17" parent="Scenery/decals white lines/Line Segment" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.065, -80)
+curve = SubResource("Curve3D_y7gom")
+
+[node name="Decal White Line18" parent="Scenery/decals white lines/Line Segment" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.065, -90)
+curve = SubResource("Curve3D_o17ef")
+
+[node name="Decal White Line19" parent="Scenery/decals white lines/Line Segment" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.065, -100)
+curve = SubResource("Curve3D_esg2n")
+
+[node name="Decal White Line20" parent="Scenery/decals white lines/Line Segment" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.065, -110)
+curve = SubResource("Curve3D_obg8p")
+
+[node name="Decal White Line21" parent="Scenery/decals white lines/Line Segment" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.065, -120)
+curve = SubResource("Curve3D_vpok5")
+
+[node name="Decal White Line22" parent="Scenery/decals white lines/Line Segment" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.065, -130)
+curve = SubResource("Curve3D_lavpu")
+
+[node name="Decal White Line23" parent="Scenery/decals white lines/Line Segment" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.065, -140)
+curve = SubResource("Curve3D_lyfnl")
+
+[node name="Decal White Line24" parent="Scenery/decals white lines/Line Segment" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.065, -150)
+curve = SubResource("Curve3D_ud2es")
+
+[node name="Decal White Line25" parent="Scenery/decals white lines/Line Segment" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.065, -160)
+curve = SubResource("Curve3D_gjub8")
+
+[node name="Decal White Line26" parent="Scenery/decals white lines/Line Segment" instance=ExtResource("2_mjgs5")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.065, -170)
+curve = SubResource("Curve3D_4sb8n")
+
+[node name="Grass" parent="Scenery" instance=ExtResource("5_rmtio")]
+transform = Transform3D(41.0981, 0, 0, 0, 1, 0, 0, 0, 385.935, -14.132, -0.05, -230.031)
+metadata/_edit_lock_ = true
+
+[node name="grass_tile" parent="Scenery" instance=ExtResource("7_47ys4")]
+transform = Transform3D(1.55117, 0, 0, 0, 1.366, 0, 0, 0, 1.762, -6.08723, 0.0503893, 31.4445)
+
+[node name="grass_tile4" parent="Scenery" instance=ExtResource("7_47ys4")]
+transform = Transform3D(-1.81295, 0, 2.04762e-07, 0, 1.563, 0, -1.58493e-07, 0, -2.34221, 16.2333, 0.0292749, 42.335)
+
+[node name="grass_tile2" parent="Scenery" instance=ExtResource("7_47ys4")]
+transform = Transform3D(2.26893, 0, 0, 0, 1.795, 0, 0, 0, 2.48045, -2.04198, 0.0503893, 25.0981)
+
+[node name="grass_tile3" parent="Scenery" instance=ExtResource("7_47ys4")]
+transform = Transform3D(1.639, 0, 0, 0, 1.051, 0, 0, 0, 1.792, -1.0484, 0.0503893, 45.4373)
+
+[node name="Asphalt2" parent="Scenery" instance=ExtResource("5_pxqb7")]
+transform = Transform3D(10, 0, 0, 0, 1.001, 0, 0, 0, 381.515, 1.93, -0.01, -216.62)
+
+[node name="MeshInstance3D2" parent="Scenery/Asphalt2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.88, 0, 0, 0)
+
+[node name="Asphalt3" parent="Scenery" instance=ExtResource("5_pxqb7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.018, -0.01, -45.38)
+
+[node name="MeshInstance3D2" parent="Scenery/Asphalt3" index="0"]
+transform = Transform3D(6.965, 0, 0, 0, 1, 0, 0, 0, 9.54, -4.75222, 0, -8.1472)
+
+[node name="Asphalt4" parent="Scenery" instance=ExtResource("5_pxqb7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.893, -0.01, -186.161)
+
+[node name="MeshInstance3D2" parent="Scenery/Asphalt4" index="0"]
+transform = Transform3D(6.965, 0, 0, 0, 1, 0, 0, 0, 9.54, -4.756, 0, -8.162)
+
+[node name="windsock" parent="Scenery" instance=ExtResource("8_6g6gl")]
+transform = Transform3D(2.745, 0, 0, 0, 2.745, 0, 0, 0, 2.745, 7.90947, 0, 131.734)
+
+[node name="StageScreenMeasure 0 First" parent="." instance=ExtResource("4_xu28k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.69049, 0.2, 126.784)
+default_movement = ExtResource("11_1ujm5")
+
+[node name="StageScreenMeasure 1 Second" parent="." instance=ExtResource("4_xu28k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.69049, 0.2, 117.784)
+default_movement = ExtResource("11_1ujm5")
+
+[node name="StageScreenMeasure  2 First Wave" parent="." instance=ExtResource("4_xu28k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.2, 74.0774)
+default_movement = ExtResource("11_1ujm5")
+
+[node name="StageScreenMeasure 3 Plane Scene" parent="." instance=ExtResource("4_xu28k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.2, 23)
+default_movement = ExtResource("11_1ujm5")
+
+[node name="StageScreenMeasure 4 Plane Escape" parent="." instance=ExtResource("4_xu28k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.2, 23)
+default_movement = ExtResource("11_1ujm5")
+
+[node name="StageScreenMeasure 5 Plane Escape 2" parent="." instance=ExtResource("4_xu28k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.2, -16)
+default_movement = ExtResource("11_1ujm5")
+
+[node name="StageScreenMeasure 6 Challenge Begin" parent="." instance=ExtResource("4_xu28k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.2, -55)
+default_movement = SubResource("Resource_ifg8o")
+
+[node name="StageScreenMeasure 7 Challenge End" parent="." instance=ExtResource("4_xu28k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.2, -190.5)
+default_movement = ExtResource("11_1ujm5")
+
+[node name="StageScreenMeasure 8 Prize" parent="." instance=ExtResource("4_xu28k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.2, -219)
+default_movement = SubResource("Resource_ykbbh")
+
+[node name="ElementBoeing" parent="." instance=ExtResource("5_eh4e5")]
+transform = Transform3D(0.982287, 0, -0.187381, 0, 1, 0, 0.187381, 0, 0.982287, 9.14239, 0, 28.0416)
+
+[node name="Capybaras" type="Node3D" parent="."]
+
+[node name="NpcCapybara" parent="Capybaras" instance=ExtResource("6_qs1rq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 131)
+
+[node name="NpcCapybara2" parent="Capybaras" instance=ExtResource("6_qs1rq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 136)
+
+[node name="NpcCapybara3" parent="Capybaras" instance=ExtResource("6_qs1rq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 128)
+
+[node name="NpcCapybara4" parent="Capybaras" instance=ExtResource("6_qs1rq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 122)
+
+[node name="NpcCapybara5" parent="Capybaras" instance=ExtResource("6_qs1rq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 115)
+
+[node name="NpcCapybara6" parent="Capybaras" instance=ExtResource("6_qs1rq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 108)
+
+[node name="NpcCapybara7" parent="Capybaras" instance=ExtResource("6_qs1rq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 101)
+
+[node name="NpcCapybara8" parent="Capybaras" instance=ExtResource("6_qs1rq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 98)
+
+[node name="NpcCapybara9" parent="Capybaras" instance=ExtResource("6_qs1rq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 91)
+
+[connection signal="screen_entered" from="Config/VisibleOnScreenNotifier3D" to="." method="_on_screen_entered"]
+[connection signal="screen_exited" from="Config/VisibleOnScreenNotifier3D" to="." method="_on_screen_exited"]
+
+[editable path="Scenery/Asphalt2"]
+[editable path="Scenery/Asphalt3"]
+[editable path="Scenery/Asphalt4"]

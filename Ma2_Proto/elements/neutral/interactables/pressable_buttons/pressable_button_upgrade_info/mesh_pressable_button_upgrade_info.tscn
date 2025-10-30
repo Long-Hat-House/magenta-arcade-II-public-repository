@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dioc4rwehiaas"]
+
+[ext_resource type="PackedScene" uid="uid://2lkyvk2x1uvc" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_upgrade_info/pressable_button_upgrade_info.glb" id="1_4yead"]
+[ext_resource type="Material" uid="uid://baugoklv4yuf2" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_upgrade_info/material/m_pressable_button_upgrade_info.tres" id="2_nplao"]
+
+[node name="button_mesh" type="Node3D"]
+
+[node name="pressable_button_upgrade_info" parent="." instance=ExtResource("1_4yead")]
+
+[node name="button" parent="pressable_button_upgrade_info" index="0"]
+material_override = ExtResource("2_nplao")
+
+[editable path="pressable_button_upgrade_info"]

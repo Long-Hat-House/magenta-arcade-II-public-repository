@@ -1,0 +1,492 @@
+[gd_scene load_steps=24 format=3 uid="uid://dj8jnkib4klvr"]
+
+[ext_resource type="Script" path="res://systems/pressable/pressable_button_graphic.gd" id="1_5fh1m"]
+[ext_resource type="Script" path="res://systems/switchable/switch_oning_offing_animation_player.gd" id="2_htc4h"]
+[ext_resource type="Script" path="res://elements/enemy/constant_rotation.gd" id="4_00roa"]
+[ext_resource type="PackedScene" uid="uid://cocgwpsfs1ai2" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_upgrade_info/mesh_pressable_button_upgrade_info_base.tscn" id="5_a0kc0"]
+[ext_resource type="Texture2D" uid="uid://c048wbyfm8dnc" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_level_selection/texture/t_button_BaseColor.png" id="6_fbp0e"]
+[ext_resource type="Texture2D" uid="uid://b3s6bubwjtovt" path="res://elements/icons/icon_hold_yellow.png" id="7_6ns7h"]
+[ext_resource type="PackedScene" uid="uid://dioc4rwehiaas" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_upgrade_info/mesh_pressable_button_upgrade_info.tscn" id="7_rblbd"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5nvwn"]
+height = 0.651012
+radius = 1.0109
+
+[sub_resource type="Animation" id="Animation_4di45"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("button_base/button_mesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("button_base/button_mesh/pressable_button_upgrade_info/button:material_override:emission_energy_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("button_base:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("button_base:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("button_base:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("button_base/button_mesh/pressable_button_upgrade_info/button/icon_mesh:material_override:emission_energy_multiplier")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("button_base/button_mesh/CircleAura:material_override:emission_energy_multiplier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("button_base/button_mesh/CircleAura:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_sea0h"]
+resource_name = "off"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("button_base/button_mesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("button_base/button_mesh/pressable_button_upgrade_info/button:material_override:emission_energy_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("button_base:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("button_base:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("button_base:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("button_base/button_mesh/pressable_button_upgrade_info/button/icon_mesh:material_override:emission_energy_multiplier")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("button_base/button_mesh/CircleAura:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ieduv"]
+resource_name = "offing"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("button_base/button_mesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5, 1),
+"update": 0,
+"values": [Vector3(1, 0.2, 1), Vector3(1, 2, 1), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("button_base/button_mesh/pressable_button_upgrade_info/button:material_override:emission_energy_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [2.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("button_base/button_mesh/pressable_button_upgrade_info/button/icon_mesh:material_override:emission_energy_multiplier")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("button_base/button_mesh/CircleAura:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_tyje3"]
+resource_name = "on"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("button_base/button_mesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 0.1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("button_base/button_mesh/pressable_button_upgrade_info/button:material_override:emission_energy_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [4.0, 6.0, 4.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("button_base/button_mesh/pressable_button_upgrade_info/button/icon_mesh:material_override:emission_energy_multiplier")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [16.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("button_base/button_mesh/CircleAura:material_override:emission_energy_multiplier")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.566667),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [0.5, 0.5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("button_base/button_mesh/CircleAura:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_hkpis"]
+resource_name = "oning"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("button_base/button_mesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.5),
+"update": 0,
+"values": [Vector3(1, 0.1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("button_base/button_mesh/pressable_button_upgrade_info/button:material_override:emission_energy_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(0.307786, 1),
+"update": 0,
+"values": [50.0, 4.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("button_base/button_mesh/CircleAura:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("button_base/button_mesh/CircleAura:material_override:emission_energy_multiplier")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [0.5, 2.0, 0.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jrvwv"]
+_data = {
+"RESET": SubResource("Animation_4di45"),
+"off": SubResource("Animation_sea0h"),
+"offing": SubResource("Animation_ieduv"),
+"on": SubResource("Animation_tyje3"),
+"oning": SubResource("Animation_hkpis")
+}
+
+[sub_resource type="Gradient" id="Gradient_tgok7"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.537841, 0.616838, 0.723474, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vnnpl"]
+gradient = SubResource("Gradient_tgok7")
+width = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_adv0d"]
+resource_local_to_scene = true
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0, 0.360784, 0.658824, 1)
+emission_enabled = true
+emission = Color(0.28, 0.28, 0.28, 1)
+emission_energy_multiplier = 0.0
+detail_enabled = true
+detail_mask = ExtResource("6_fbp0e")
+detail_albedo = SubResource("GradientTexture1D_vnnpl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_60djd"]
+resource_local_to_scene = true
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("7_6ns7h")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_qx82g"]
+size = Vector2(0.8, 0.8)
+orientation = 1
+
+[sub_resource type="Gradient" id="Gradient_ovn4b"]
+offsets = PackedFloat32Array(0.109442, 1)
+colors = PackedColorArray(1, 0.490196, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lrby7"]
+gradient = SubResource("Gradient_ovn4b")
+width = 7
+height = 7
+fill_from = Vector2(0.470086, 1)
+fill_to = Vector2(0.435897, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hcwyr"]
+blend_mode = 1
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission_energy_multiplier = 2.0
+emission_texture = SubResource("GradientTexture2D_lrby7")
+uv1_scale = Vector3(10, 1.2, 1)
+uv1_offset = Vector3(0, 0.1, 0)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_dasok"]
+top_radius = 1.3
+bottom_radius = 0.65
+height = 0.2
+radial_segments = 32
+rings = 0
+cap_top = false
+cap_bottom = false
+
+[node name="GraphicButtonUpgradeInfo" type="Node3D" node_paths=PackedStringArray("_icon_mesh", "_button_mesh", "_area_3d", "_on_off_animation_player")]
+script = ExtResource("1_5fh1m")
+_icon_mesh = NodePath("button_base/button_mesh/pressable_button_upgrade_info/button/icon_mesh")
+_button_mesh = NodePath("button_base/button_mesh/pressable_button_upgrade_info/button")
+_area_3d = NodePath("Area3D")
+_on_off_animation_player = NodePath("Switch_Oning_Offing_AnimationPlayer")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(0.84, 0, 0, 0, 0.84, 0, 0, 0, 0.84, 0.0415686, 0.205323, 0)
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0252655, -0.0697861, 0)
+shape = SubResource("CylinderShape3D_5nvwn")
+
+[node name="Switch_Oning_Offing_AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jrvwv")
+}
+script = ExtResource("2_htc4h")
+
+[node name="button_base" parent="." instance=ExtResource("5_a0kc0")]
+
+[node name="button_mesh" parent="button_base" instance=ExtResource("7_rblbd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.331123, 0.292782, 0)
+
+[node name="button" parent="button_base/button_mesh/pressable_button_upgrade_info" index="0"]
+material_override = SubResource("StandardMaterial3D_adv0d")
+
+[node name="icon_mesh" type="MeshInstance3D" parent="button_base/button_mesh/pressable_button_upgrade_info/button" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.99998, -0.00631805, 0, 0.00631805, 0.99998, 0, 0.381684, 0)
+material_override = SubResource("StandardMaterial3D_60djd")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_qx82g")
+skeleton = NodePath("../../../../..")
+
+[node name="CircleAura" type="MeshInstance3D" parent="button_base/button_mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15099, 0)
+material_override = SubResource("StandardMaterial3D_hcwyr")
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_dasok")
+script = ExtResource("4_00roa")
+angleVelocity = 2.0
+
+[editable path="button_base/button_mesh"]
+[editable path="button_base/button_mesh/pressable_button_upgrade_info"]

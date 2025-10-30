@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://bc0pvokl1d6tr"]
+
+[ext_resource type="PackedScene" uid="uid://dhmi2sv2mhuqe" path="res://elements/enemy/projectiles/proj_basic/proj_enemy_basic.tscn" id="1_rnn85"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="2_0r4hx"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_d0xxy"]
+radius = 0.15603
+
+[sub_resource type="GDScript" id="GDScript_dtk74"]
+resource_name = "Grow"
+script/source = "extends Node3D
+
+var scale_destination:Vector3;
+
+func _ready() -> void:
+	scale_destination = scale;
+	
+func _enter_tree() -> void:
+	if !self.is_node_ready(): await ready;
+	
+	scale = Vector3.ONE;
+	var t:= create_tween();
+	t.tween_property(self, \"scale\", scale_destination, 0.25).set_ease(Tween.EASE_IN);
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mparj"]
+resource_local_to_scene = true
+shading_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.0
+rim = 0.5
+rim_tint = 1.0
+disable_receive_shadows = true
+grow_amount = -0.252
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q1tvr"]
+resource_local_to_scene = true
+render_priority = 10
+cull_mode = 2
+shading_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.0
+rim = 0.5
+rim_tint = 1.0
+disable_receive_shadows = true
+grow_amount = -0.252
+
+[node name="EnemyProjectile_Fast" instance=ExtResource("1_rnn85")]
+relativeVelocity = Vector3(0, 0, 24)
+accompany_screen = true
+velocity_to_target_height = 8.0
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="." index="0"]
+script = ExtResource("2_0r4hx")
+high_contrast_group = &"danger"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="ProjCollider" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
+shape = SubResource("SphereShape3D_d0xxy")
+
+[node name="Scale" parent="Pivot" index="0"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 3, 0, 0, 0)
+script = SubResource("GDScript_dtk74")
+
+[node name="White" parent="Pivot/Scale/Graphic" index="1"]
+material_override = SubResource("StandardMaterial3D_mparj")
+
+[node name="Glow" parent="Pivot/Scale/Graphic" index="3"]
+material_override = SubResource("StandardMaterial3D_q1tvr")

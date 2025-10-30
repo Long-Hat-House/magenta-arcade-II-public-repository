@@ -1,0 +1,127 @@
+[gd_scene load_steps=11 format=3 uid="uid://swc2oo3gesm4"]
+
+[ext_resource type="Script" uid="uid://8gswqw0efofv" path="res://elements/enemy/projectiles/proj_big_follower/proj_enemy_big_follower.gd" id="1_cch61"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="2_5m5px"]
+[ext_resource type="PackedScene" uid="uid://bc1bjl6ovy5s6" path="res://elements/enemy/projectiles/damage_area/damage_area.tscn" id="2_cnuu3"]
+[ext_resource type="Script" uid="uid://cccnp54xda20b" path="res://elements/enemy/constant_rotation.gd" id="3_vs863"]
+[ext_resource type="Material" uid="uid://r1m6m874b01v" path="res://elements/m_simple_color_emission.tres" id="4_23sai"]
+[ext_resource type="Script" uid="uid://82xvvsl4ns3d" path="res://systems/audio_wwise/AKEvent3DOnce.gd" id="6_6k14w"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8knkx"]
+radius = 0.75
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_avner"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_og4i8"]
+inner_radius = 0.8
+rings = 15
+ring_segments = 3
+
+[sub_resource type="SphereMesh" id="SphereMesh_0386b"]
+radius = 0.25
+height = 0.5
+radial_segments = 6
+rings = 3
+
+[node name="EnemyProjBigFollower" type="Node3D" groups=["enemy_projectile"]]
+script = ExtResource("1_cch61")
+firstBurstDistance = 4.0
+firstBurstDuration = 1.0
+delay = 1.0
+distanceBurst = 20.0
+durationBurst = 3.0
+idealHeight = 1.0
+trans = 4
+
+[node name="DamageArea" parent="." instance=ExtResource("2_cnuu3")]
+collision_layer = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
+shape = SubResource("SphereShape3D_8knkx")
+
+[node name="VanishArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 165
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VanishArea"]
+shape = SubResource("SphereShape3D_avner")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-0.786288, -0.184634, -0.814938, 1.57258, 0.369269, 1.62988)
+
+[node name="Graphic" type="Node3D" parent="."]
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="Graphic"]
+script = ExtResource("2_5m5px")
+high_contrast_group = &"danger"
+
+[node name="White" type="MeshInstance3D" parent="Graphic"]
+transform = Transform3D(0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 0, 0, 1, 0, 0, 0)
+sorting_offset = 10.0
+material_override = ExtResource("4_23sai")
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emissive = Color(1, 1, 1, 1)
+instance_shader_parameters/energy = 10.0
+mesh = SubResource("TorusMesh_og4i8")
+skeleton = NodePath("../..")
+script = ExtResource("3_vs863")
+angleVelocity = -3.0
+
+[node name="Pink" type="MeshInstance3D" parent="Graphic"]
+transform = Transform3D(0.8, 0, 0, 0, 0.772741, 0.207055, 0, -0.207055, 0.772741, 0, 0, 0)
+sorting_offset = 10.0
+material_override = ExtResource("4_23sai")
+instance_shader_parameters/color = Color(1, 0, 1, 1)
+instance_shader_parameters/emissive = Color(1, 0, 1, 1)
+instance_shader_parameters/energy = 0.8
+mesh = SubResource("TorusMesh_og4i8")
+skeleton = NodePath("../..")
+script = ExtResource("3_vs863")
+angleVelocity = 6.0
+
+[node name="Pink2" type="MeshInstance3D" parent="Graphic"]
+transform = Transform3D(0.519615, -0.3, 0, 0.3, 0.519615, 0, 0, 0, 0.6, 0, 0, 0)
+sorting_offset = 10.0
+material_override = ExtResource("4_23sai")
+instance_shader_parameters/color = Color(1, 0, 1, 1)
+instance_shader_parameters/emissive = Color(1, 0, 1, 1)
+instance_shader_parameters/energy = 0.8
+mesh = SubResource("TorusMesh_og4i8")
+skeleton = NodePath("../..")
+script = ExtResource("3_vs863")
+angleVelocity = -10.0
+
+[node name="White2" type="MeshInstance3D" parent="Graphic"]
+transform = Transform3D(0.4, 0, 0, 0, 0.282843, -0.282843, 0, 0.282843, 0.282843, 0, 0, 0)
+sorting_offset = 10.0
+material_override = ExtResource("4_23sai")
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emissive = Color(1, 1, 1, 1)
+instance_shader_parameters/energy = 10.0
+mesh = SubResource("TorusMesh_og4i8")
+skeleton = NodePath("../..")
+script = ExtResource("3_vs863")
+angleVelocity = 15.0
+
+[node name="Center" type="MeshInstance3D" parent="Graphic"]
+sorting_offset = 10.0
+material_override = ExtResource("4_23sai")
+instance_shader_parameters/color = Color(0, 0, 0, 1)
+instance_shader_parameters/emissive = Color(0.180392, 0.00392157, 0.231373, 1)
+instance_shader_parameters/energy = 0.8
+mesh = SubResource("SphereMesh_0386b")
+skeleton = NodePath("../..")
+script = ExtResource("3_vs863")
+angleVelocity = 105.0
+
+[node name="AKEvent3DOncePerFrame" type="Node3D" parent="." node_paths=PackedStringArray("akEvent")]
+script = ExtResource("6_6k14w")
+akEvent = NodePath("SFX_OnEnter")
+trigger_when = 1
+metadata/_custom_type_script = "uid://82xvvsl4ns3d"
+
+[node name="SFX_OnEnter" type="AkEvent3D" parent="AKEvent3DOncePerFrame"]
+
+[connection signal="area_entered" from="VanishArea" to="." method="_on_vanish_area_area_entered"]
+[connection signal="body_entered" from="VanishArea" to="." method="_on_vanish_area_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

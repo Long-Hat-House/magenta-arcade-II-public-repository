@@ -1,0 +1,192 @@
+[gd_scene load_steps=5 format=3 uid="uid://68whaio4r5xs"]
+
+[ext_resource type="Script" uid="uid://duy4j2s6381gh" path="res://systems/score/unpositioned_score_show.gd" id="1_utxk4"]
+
+[sub_resource type="Animation" id="Animation_w58aa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:custom_minimum_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AlwaysCentered/AnimatedPivotAndScale:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AlwaysCentered/AnimatedPivotAndScale/PerPointSizeable/ShowContainer/LabelScore:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AlwaysCentered/AnimatedPivotAndScale/PerPointSizeable/ShowContainer:theme_override_constants/separation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-30]
+}
+
+[sub_resource type="Animation" id="Animation_6tohk"]
+resource_name = "show"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:custom_minimum_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.33333, 1.5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 100), Vector2(0, 100), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AlwaysCentered/AnimatedPivotAndScale:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.966667, 1.13333, 1.33333),
+"transitions": PackedFloat32Array(2, 1, 0.5, 2, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1.2), Vector2(1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AlwaysCentered/AnimatedPivotAndScale/PerPointSizeable/ShowContainer/LabelScore:modulate")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 0.366666, 0.466666, 0.566666),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1), Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AlwaysCentered/AnimatedPivotAndScale/PerPointSizeable/ShowContainer:theme_override_constants/separation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.466667),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [-100, -100, -30]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wijqt"]
+_data = {
+&"RESET": SubResource("Animation_w58aa"),
+&"show": SubResource("Animation_6tohk")
+}
+
+[node name="UnpositionedScoreShow" type="MarginContainer" node_paths=PackedStringArray("_anim", "_label_title", "_label_score")]
+custom_minimum_size = Vector2(0, 100)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -50.0
+offset_right = 45.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+script = ExtResource("1_utxk4")
+_anim = NodePath("AnimationPlayer")
+_label_title = NodePath("AlwaysCentered/AnimatedPivotAndScale/PerPointSizeable/ShowContainer/LabelTitle")
+_label_score = NodePath("AlwaysCentered/AnimatedPivotAndScale/PerPointSizeable/ShowContainer/LabelScore")
+
+[node name="AlwaysCentered" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="AnimatedPivotAndScale" type="Control" parent="AlwaysCentered"]
+layout_mode = 2
+anchors_preset = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="PerPointSizeable" type="Control" parent="AlwaysCentered/AnimatedPivotAndScale"]
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="ShowContainer" type="BoxContainer" parent="AlwaysCentered/AnimatedPivotAndScale/PerPointSizeable"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -34.5
+offset_right = 67.0
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = -30
+alignment = 1
+vertical = true
+
+[node name="LabelTitle" type="Label" parent="AlwaysCentered/AnimatedPivotAndScale/PerPointSizeable/ShowContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 50
+text = "Pegou todos eles!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelScore" type="Label" parent="AlwaysCentered/AnimatedPivotAndScale/PerPointSizeable/ShowContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 70
+text = "+10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wijqt")
+}

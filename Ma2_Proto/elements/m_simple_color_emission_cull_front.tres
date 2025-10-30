@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b200fu03q7lck"]
+
+[ext_resource type="Shader" uid="uid://cnmxvu6688xi6" path="res://elements/player/projectiles/instance_color_albedo_cull_front.gdshader" id="1_114aa"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_114aa")

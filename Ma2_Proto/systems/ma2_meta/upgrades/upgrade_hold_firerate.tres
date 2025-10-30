@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="UpgradeInfo" load_steps=3 format=3 uid="uid://xgbkdgdaselq"]
+
+[ext_resource type="Script" uid="uid://dospanm60t0v5" path="res://systems/ma2_meta/upgrade_info.gd" id="1_onvrj"]
+[ext_resource type="Texture2D" uid="uid://4giwxmj58fjc" path="res://elements/icons/icons_upgrades/icon_upgrade_hold_firerate.png" id="2_onvrj"]
+
+[resource]
+script = ExtResource("1_onvrj")
+upgrade_id = &"upgrade_hold_firerate"
+upgrade_description = &"upgrade_hold_firerate_dialogue"
+upgrade_icon = ExtResource("2_onvrj")
+stars_per_progress = Array[int]([1, 1, 1, 1])
+upgrade_developer_instruction = "in player ready:
+	currentState.hold_fire_rate_level = UPGRADE_HOLD_FIRERATE.get_progress()
+then in player_weapon_hold \"hold\":
+	var interval:float = currentLevel.holdInterval / (1 + state.hold_fire_rate_level * 0.5)"
+float_val = 0.0
+float_val_array = Array[float]([])

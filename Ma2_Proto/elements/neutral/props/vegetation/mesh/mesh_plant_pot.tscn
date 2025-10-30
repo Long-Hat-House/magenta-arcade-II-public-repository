@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://mjs6c3ht04es"]
+
+[ext_resource type="PackedScene" uid="uid://b7j1c07qjwbua" path="res://elements/neutral/props/vegetation/mesh/plant_pot.glb" id="1_o2e4m"]
+[ext_resource type="Material" uid="uid://ce2vhxg7v53i5" path="res://elements/neutral/props/vegetation/material/m_plant_pot.tres" id="2_ihayc"]
+
+[node name="plant_pot" instance=ExtResource("1_o2e4m")]
+
+[node name="plant pot" parent="." index="0"]
+material_override = ExtResource("2_ihayc")

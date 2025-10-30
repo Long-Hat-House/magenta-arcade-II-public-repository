@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuaqc1jjq6lh0"]
+
+[ext_resource type="PackedScene" uid="uid://coji44njwrn45" path="res://elements/neutral/car/mesh/car_armor_destroyed.tscn" id="1_a58if"]
+[ext_resource type="Script" path="res://elements/neutral/car/mesh/car_armor_graphic.gd" id="2_3e760"]
+
+[node name="car_armor_destroyed" instance=ExtResource("1_a58if")]
+script = ExtResource("2_3e760")

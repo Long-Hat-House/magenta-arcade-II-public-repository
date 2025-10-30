@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://d12o4pty1nol3"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_FinalBoss_Lv4_Final_CloseCoffin"
+id = 348075477
+guid = "{0F0CAC01-22F0-4BD5-9B22-74E94181165A}"
+dummy = true

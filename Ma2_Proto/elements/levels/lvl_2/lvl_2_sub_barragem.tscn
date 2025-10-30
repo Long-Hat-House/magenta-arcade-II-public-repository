@@ -1,0 +1,250 @@
+[gd_scene load_steps=11 format=3 uid="uid://rnpqk2u244h1"]
+
+[ext_resource type="PackedScene" uid="uid://1w3067r22ffa" path="res://elements/powerups/button/holdable_button_warmup.tscn" id="1_ck0vl"]
+[ext_resource type="PackedScene" uid="uid://blladxktyoof6" path="res://elements/stage_pieces/pampulha/stage_piece_pampulha_barragem.tscn" id="1_gpno1"]
+[ext_resource type="PackedScene" uid="uid://cyh3qxcb2s7gv" path="res://elements/powerups/button/powerup_weapon_button_tap_yellow.tscn" id="2_rool8"]
+[ext_resource type="PackedScene" uid="uid://bcmggsmmlhf30" path="res://elements/powerups/button/powerup_weapon_button_tap_green.tscn" id="3_a666h"]
+[ext_resource type="Resource" uid="uid://b4sm3a668ml1i" path="res://elements/levels/level_structure/camera_movement_data_by_duration.tres" id="3_n3q0y"]
+[ext_resource type="PackedScene" uid="uid://djhown2ulvtjc" path="res://elements/powerups/button/powerup_weapon_button_tap_blue.tscn" id="4_fqu71"]
+[ext_resource type="PackedScene" uid="uid://c00kqth38jmst" path="res://systems/stage/stage_screen_measure.tscn" id="4_udpyb"]
+[ext_resource type="PackedScene" uid="uid://sbnc0uylbyp5" path="res://elements/npc/capybara/npc_capybara.tscn" id="5_kny64"]
+[ext_resource type="Script" uid="uid://dsvfipg4mxr7k" path="res://systems/line3d/child_line_3d.gd" id="6_xhvx1"]
+
+[sub_resource type="GDScript" id="GDScript_mvg20"]
+resource_name = "lvl_sub"
+script/source = "extends Level
+
+## enemies
+const ENEMY_PIZZA_ROBOTO = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto.tscn\")
+const ENEMY_PIZZA_SHOOTER = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto_shooter.tscn\")
+const ENEMY_LASER_ROBOTO = preload(\"res://elements/enemy/laser/enemy_laser_roboto.tscn\")
+const ENEMY_TUCANO = preload(\"res://elements/enemy/roboto_tucano/enemy_tucano.tscn\")
+const ENEMY_TUCANO_POISON = preload(\"res://elements/enemy/roboto_tucano/enemy_tucano_poison.tscn\")
+const POWERUP_ALTAR = preload(\"res://elements/powerups/altar/powerup_altar.tscn\")
+
+var group:String = \"main\";
+@export var pizza_line:ChildLine3D;
+
+@export var fourth_altars:Array[PackedScene]
+@export var fifth_altars:Array[PackedScene]
+
+@export var piece:LevelStagePiece;
+
+signal in_camera;
+signal special_enemy_destroyed;
+
+func _to_vec2(vec3:Vector3)->Vector2:
+	return Vector2(vec3.x, vec3.z);
+
+func _ready():
+	await await_for_level_ready()
+
+	current_measure_index = 0;
+	stage.attach_piece(piece);
+	stage.repivot();
+
+	var altar_velocity:Vector3 = (Vector3.RIGHT + Vector3.FORWARD).normalized() * 2.5;
+
+	var cmd_make_tucano = func(offset:Vector3):
+		return CMD_Callable.new(func():
+			var tuc := objs.create_object(
+				ENEMY_TUCANO, group,
+				pizza_line.get_position_in_line_percentage(1) + offset,
+				-pizza_line.get_direction_in_line_percentage(1)
+				) as AI_Tucano;
+			tuc.speed *= 3;
+			tuc.out_of_screen_count = 5;
+			)
+
+	cmd_array([
+		CMD_Parallel_Complete.new([
+			CMD_Sequence.new([
+				CMD_Wait_Seconds.new(2),
+				cmd_make_line(56,
+				{
+					17: ENEMY_LASER_ROBOTO,
+					29: ENEMY_LASER_ROBOTO,
+					39: ENEMY_LASER_ROBOTO
+				}),
+			]),
+			CMD_Sequence.new([
+				CMD_Wait_Signal.new(in_camera),
+				CMD_Wait_Seconds.new(4.0),
+				cmd_make_tucano.call(Vector3.BACK * 2.5),
+				CMD_Wait_Seconds.new(3.25),
+				cmd_make_tucano.call(Vector3.BACK * 2.5),
+				CMD_Wait_Seconds.new(0.25),
+				cmd_make_tucano.call(Vector3.BACK * 5.5),
+				CMD_Wait_Seconds.new(2),
+			]),
+			CMD_Sequence.new([
+				CMD_Wait_Signal.new(in_camera),
+				Level_Cmd_Utils.cmd_multiple_altars_in_camera(
+						POWERUP_ALTAR,
+						fourth_altars,
+						self, \"altars\",
+						Vector2(-2, 21) - _to_vec2(altar_velocity).normalized() * 7,
+						Vector3(0.5, 0, -3.5),
+						altar_velocity,
+						),
+				CMD_Wait_Signal.new(special_enemy_destroyed),
+				Level_Cmd_Utils.cmd_multiple_altars_in_camera(
+						POWERUP_ALTAR,
+						fifth_altars,
+						self, \"altars\",
+						Vector2(-2, 21) - _to_vec2(altar_velocity).normalized() * 7,
+						Vector3(0.5, 0, -3.5),
+						altar_velocity
+						),
+			]),
+			CMD_Sequence.new([
+				cmd_goto_next_measure(4, Tween.TRANS_QUAD),
+				CMD_Wait_Seconds.new(4),
+				CMD_Callable.new(in_camera.emit),
+				cmd_goto_next_measure(1, Tween.TRANS_QUAD),
+				CMD_Wait_Seconds.new(1),
+				cmd_goto_next_measure(14, Tween.TRANS_LINEAR),
+				CMD_Wait_Seconds.new(14),
+				cmd_goto_next_measure(1, Tween.TRANS_SINE),
+				CMD_Wait_Seconds.new(1),
+			]),
+		]),
+		CMD_Wait_Seconds.new(1),
+		CMD_Callable.new(func():
+			objs.create_object(ENEMY_TUCANO, group, stage.get_grid(0, -1), Vector3.BACK);
+			),
+		CMD_Wait_Seconds.new(1.5),
+		CMD_Callable.new(func():
+			objs.create_object(ENEMY_TUCANO_POISON, group, stage.get_grid(-3, -1), Vector3.BACK);
+			),
+		CMD_Wait_Seconds.new(0.5),
+		CMD_Callable.new(func():
+			objs.create_object(ENEMY_TUCANO_POISON, group, stage.get_grid(3, -1), Vector3.BACK);
+			),
+		objs.cmd_wait_group(\"altars\"),
+		objs.cmd_wait_group(group),
+		CMD_Wait_Seconds.new(0.25),
+		cmd_clear_measures(),
+		#objs.cmd_wait_group(group)
+	])
+
+func cmd_goto_next_measure(duration:float, trans:Tween.TransitionType = Tween.TRANS_LINEAR):
+	return CMD_Callable.new(func():
+		stage.set_pivot_offset_to_exactly_node(get_current_measure());
+		cam.tween_position_vector(stage.get_grid(0,0), duration, trans);
+		walk_measure();
+		)
+
+func cmd_make_line(number_of_pizzas:int, dict:Dictionary):
+	var line_length:float = pizza_line.get_line_length();
+	var pizza_func = func(pizza:AI_WalkAndDo, direction:Vector3):
+		pizza.walkVelocity = pizza.walkVelocity.length() * direction;
+	var special = func(other:AI_WalkAndDo):
+		other.walkVelocity = Vector3.BACK * 1;
+		other.distanceMax = 0.15;
+		other.position += Vector3.BACK * 3;
+		other.inverted_direction = true;
+		other.tree_exited.connect(special_enemy_destroyed.emit, CONNECT_ONE_SHOT);
+		if other is Enemy_LaserRoboto:
+			other.angleMax = 0;
+	var get_type = func(index:int):
+		if dict.has(index):
+			return dict[index];
+		else:
+			return ENEMY_PIZZA_ROBOTO;
+	var make_guy = func(type:PackedScene, pos:Vector3, dir:Vector3):
+		var pizza = objs.create_object(type, \"\", pos);
+		if type == ENEMY_PIZZA_ROBOTO or type == ENEMY_PIZZA_ROBOTO:
+			pizza_func.call(pizza, dir);
+		else:
+			special.call(pizza);
+	number_of_pizzas /= 2;
+	return CMD_Callable.new(func():
+			for i in range(number_of_pizzas):
+				var percentage:float = float(i) / number_of_pizzas;
+				var pos:float = line_length * percentage;
+				var vpos:Vector3 = pizza_line.get_position_in_line(pos);
+				var vdir:Vector3 = pizza_line.get_direction_in_line_position(pos);
+				make_guy.call(get_type.call(i * 2), vpos, vdir);
+
+				percentage = (float(i) + 0.5) / number_of_pizzas;
+				pos = line_length * percentage;
+				vpos = pizza_line.get_position_in_line(pos) + Vector3(-0.75, 0, -0.75);
+				make_guy.call(get_type.call(i * 2 + 1), vpos, vdir);
+			);
+"
+
+[node name="LVL_BARRAGE" type="Node3D" node_paths=PackedStringArray("pizza_line", "piece")]
+script = SubResource("GDScript_mvg20")
+pizza_line = NodePath("Barragem/Pizza Line")
+fourth_altars = Array[PackedScene]([ExtResource("1_ck0vl"), ExtResource("2_rool8")])
+fifth_altars = Array[PackedScene]([ExtResource("3_a666h"), ExtResource("4_fqu71")])
+piece = NodePath("Barragem")
+
+[node name="Barragem" parent="." instance=ExtResource("1_gpno1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.78014, 0, 0)
+
+[node name="StageScreenMeasure2" parent="Barragem" instance=ExtResource("4_udpyb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7801, 0.2, 24)
+default_movement = ExtResource("3_n3q0y")
+
+[node name="StageScreenMeasure3" parent="Barragem" instance=ExtResource("4_udpyb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.595, 0.2, 19.5865)
+default_movement = ExtResource("3_n3q0y")
+
+[node name="StageScreenMeasure4" parent="Barragem" instance=ExtResource("4_udpyb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.8138, 0.2, -46.9014)
+default_movement = ExtResource("3_n3q0y")
+
+[node name="StageScreenMeasure8" parent="Barragem" instance=ExtResource("4_udpyb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.2801, 0.2, -49.5718)
+default_movement = ExtResource("3_n3q0y")
+
+[node name="Capybaras" type="Node3D" parent="Barragem"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.78014, 0, 0)
+
+[node name="NpcCapybara" parent="Barragem/Capybaras" instance=ExtResource("5_kny64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0492, 0, 30.2347)
+
+[node name="NpcCapybara2" parent="Barragem/Capybaras" instance=ExtResource("5_kny64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.6828, 0, -37.5411)
+
+[node name="NpcCapybara5" parent="Barragem/Capybaras" instance=ExtResource("5_kny64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.1945, 0, 24.3525)
+
+[node name="NpcCapybara8" parent="Barragem/Capybaras" instance=ExtResource("5_kny64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.6945, 0, 13.8525)
+
+[node name="NpcCapybara11" parent="Barragem/Capybaras" instance=ExtResource("5_kny64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.7594, 0, 13.5945)
+
+[node name="NpcCapybara14" parent="Barragem/Capybaras" instance=ExtResource("5_kny64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5767, 0, 2.40291)
+
+[node name="NpcCapybara16" parent="Barragem/Capybaras" instance=ExtResource("5_kny64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.1945, 0, -31.1475)
+
+[node name="NpcCapybara18" parent="Barragem/Capybaras" instance=ExtResource("5_kny64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.947, 0, -35.0299)
+
+[node name="NpcCapybara22" parent="Barragem/Capybaras" instance=ExtResource("5_kny64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.293, 0, -11.2244)
+
+[node name="NpcCapybara23" parent="Barragem/Capybaras" instance=ExtResource("5_kny64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.293, 0, -18.2244)
+
+[node name="NpcCapybara26" parent="Barragem/Capybaras" instance=ExtResource("5_kny64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.2068, 0, -31.428)
+
+[node name="NpcCapybara27" parent="Barragem/Capybaras" instance=ExtResource("5_kny64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.933, 0, -42.1075)
+
+[node name="Pizza Line" type="Node3D" parent="Barragem"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.2801, 0, -49.5)
+script = ExtResource("6_xhvx1")
+
+[node name="Node3D" type="Node3D" parent="Barragem/Pizza Line"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8759, 0, -20.3943)
+
+[node name="Node3D2" type="Node3D" parent="Barragem/Pizza Line"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.7399, 0, 98.3775)

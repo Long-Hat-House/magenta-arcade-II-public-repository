@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" load_steps=0 format=3 uid="uid://bvax5pki5bfaj"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Boss_Lv2_Ball_Fall"
+id = 334622760
+guid = "{28AE8C9B-E0E1-4F00-BBF2-B64D64ACD379}"
+dummy = true

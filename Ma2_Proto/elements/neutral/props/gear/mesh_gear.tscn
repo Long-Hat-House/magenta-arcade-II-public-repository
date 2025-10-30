@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://r5hbiso3v7c"]
+
+[ext_resource type="PackedScene" uid="uid://dqd34tiojbe0m" path="res://elements/neutral/props/gear/gear.glb" id="1_i1eo8"]
+[ext_resource type="Material" uid="uid://dfkvltl08xewp" path="res://elements/neutral/props/gear/material/m_gear.tres" id="2_65lvl"]
+
+[node name="gear" instance=ExtResource("1_i1eo8")]
+
+[node name="Gear" parent="." index="0"]
+material_override = ExtResource("2_65lvl")

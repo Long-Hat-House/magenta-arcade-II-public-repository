@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://ir3twphhwgff"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Projectile_BigFollower"
+id = 3731676122
+guid = "{6171F81C-922A-4AE9-BAE6-4C9D905F9055}"
+dummy = true

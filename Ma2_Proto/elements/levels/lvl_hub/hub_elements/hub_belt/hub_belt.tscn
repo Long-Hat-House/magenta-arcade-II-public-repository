@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://clj52ihk416ib"]
+
+[ext_resource type="Material" uid="uid://dcir3bpyrqj2v" path="res://elements/levels/lvl_hub/hub_elements/hub_belt/m_lvl_hub_belt.tres" id="1_os2gc"]
+[ext_resource type="PackedScene" uid="uid://b84vnel2p14uw" path="res://elements/levels/lvl_hub/hub_elements/hub_belt/mesh_hub_belt_border.tscn" id="2_rta5s"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_at0bt"]
+size = Vector3(75, 0.2, 7.3)
+
+[node name="HubBelt" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
+material_override = ExtResource("1_os2gc")
+mesh = SubResource("BoxMesh_at0bt")
+skeleton = NodePath("../../..")
+
+[node name="hub_belt_border" parent="." instance=ExtResource("2_rta5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.004, 3.6)
+
+[node name="hub_belt_border2" parent="." instance=ExtResource("2_rta5s")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.004, -3.6)

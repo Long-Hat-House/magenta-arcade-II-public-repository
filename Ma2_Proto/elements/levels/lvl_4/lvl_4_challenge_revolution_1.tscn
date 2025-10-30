@@ -1,0 +1,507 @@
+[gd_scene load_steps=21 format=3 uid="uid://bqlmj8g5lrrvf"]
+
+[ext_resource type="Resource" uid="uid://bae0bxspqhf4x" path="res://systems/challenge/challenges/challenge_revolution_1.tres" id="1_3t5tu"]
+[ext_resource type="Script" uid="uid://bt3rgk2gx218p" path="res://systems/stage/level_stage_piece.gd" id="1_6l5p2"]
+[ext_resource type="PackedScene" uid="uid://l2ytgjefawwd" path="res://elements/background/element_factory_floor.tscn" id="2_4mc0w"]
+[ext_resource type="PackedScene" uid="uid://c00kqth38jmst" path="res://systems/stage/stage_screen_measure.tscn" id="2_x50mj"]
+[ext_resource type="PackedScene" uid="uid://bty1g36mrus4" path="res://elements/powerups/altar/powerup_altar_tweenable.tscn" id="2_ykukv"]
+[ext_resource type="PackedScene" uid="uid://dbxuel5aj5o6c" path="res://elements/powerups/button/holdable_button_challenge_wish.tscn" id="3_1hqu6"]
+[ext_resource type="PackedScene" uid="uid://uim4umwv6uj3" path="res://elements/neutral/props/Lab_mountain/mesh/element_mesh_colunm.tscn" id="5_a6i5f"]
+[ext_resource type="PackedScene" uid="uid://cl5uv7qchkiti" path="res://elements/background/element_clay_floor.tscn" id="5_ih4yy"]
+[ext_resource type="PackedScene" uid="uid://d0ljskkckqxgx" path="res://elements/neutral/props/Lab_mountain/mesh/mesh_mountain.tscn" id="13_wsmb2"]
+[ext_resource type="PackedScene" uid="uid://l3dy36lol626" path="res://elements/neutral/props/rock/mesh/mesh_rock.tscn" id="15_a5ptw"]
+[ext_resource type="PackedScene" uid="uid://bsy18pj7t3kwo" path="res://elements/enemy/copter/enemy_roboto_copter.tscn" id="16_vgskp"]
+[ext_resource type="Resource" uid="uid://b4sm3a668ml1i" path="res://elements/levels/level_structure/camera_movement_data_by_duration.tres" id="21_71rkg"]
+[ext_resource type="PackedScene" uid="uid://si0hnb5cwxif" path="res://elements/neutral/revolution/lair_npc_revolution_line.tscn" id="22_8q7k3"]
+[ext_resource type="PackedScene" uid="uid://dvh1lqyy0b4d5" path="res://elements/neutral/revolution/altar_revolution_circle.tscn" id="23_8q7k3"]
+[ext_resource type="PackedScene" uid="uid://ce0o66smctqbt" path="res://elements/npc/npc_talking_alone.tscn" id="24_ulmnw"]
+[ext_resource type="Script" uid="uid://50r22k8yalc" path="res://elements/levels/lvl_4/level_snippet_challenge_lines.gd" id="25_0hrvr"]
+
+[sub_resource type="GDScript" id="GDScript_d1btk"]
+script/source = "extends Level
+
+const CHALLENGE_DISPLAY_FLOAT_CURRENT_OF_TARGET = preload(\"res://elements/challenge/challenge_display_float_current_of_target.tscn\")
+
+var PIZZA = load(\"res://elements/enemy/pizza/enemy_pizza_roboto.tscn\")
+var RUSTY = load(\"res://elements/enemy/pizza/enemy_pizza_roboto_rusty.tscn\")
+var RUSTY_SHOOTER = load(\"res://elements/enemy/pizza/enemy_pizza_roboto_rusty_cannon.tscn\")
+var SHOOTER = load(\"res://elements/enemy/pizza/enemy_pizza_roboto_shooter.tscn\")
+var SUPER = load(\"res://elements/enemy/pizza/enemy_pizza_shooter_super.tscn\")
+var LASER = load(\"res://elements/enemy/laser/enemy_laser_roboto.tscn\")
+var SNAKE = load(\"res://elements/enemy/snake/enemy_snake.tscn\")
+var JAC = load(\"res://elements/enemy/roboto_jacare/enemy_jacare.tscn\")
+var BOMB = load(\"res://elements/enemy/bomb/enemy_bomb_roboto.tscn\")
+var TUC = load(\"res://elements/enemy/roboto_tucano/enemy_tucano.tscn\")
+
+
+var group:String = \"main\";
+
+@export var piece_main:LevelStagePiece;
+@export var challenge_info:ChallengeInfo;
+@export var lines_snippet:Level_Snippet_Node;
+@export var lines_to_start:Array[ConstantCreatorLine3D];
+@export var altar_scene:PackedScene;
+@export var button_scene:PackedScene;
+@export var display_challenge_id:String;
+@export var target_score_challenge:int = 20;
+@export var final_measure:StageMeasure;
+@export var prize_roda:Altar_Revolution_Circle
+
+@export var circle_to_start_spawning:Altar_Revolution_Circle;
+
+signal start_challenge;
+
+
+signal next_altars;
+signal closed_altars;
+signal pressed_prize_altar;
+
+var score:int;
+var display:DisplayFloat;
+
+func _ready():
+	await await_for_level_ready()
+
+	self.stage.attach_piece(piece_main);
+
+	display = CHALLENGE_DISPLAY_FLOAT_CURRENT_OF_TARGET.instantiate();
+	display.set_display(display_challenge_id, 0, target_score_challenge, 1);
+
+	cmd_array([
+		cmd_all(),
+		cmd_clear_measures(),
+		]);
+
+var hi:bool;
+func _physics_process(delta: float) -> void:
+	if Input.is_key_pressed(KEY_F):
+		if !hi:
+			next_altars.emit();
+		hi = true;
+	else:
+		hi = false;
+
+func make_altar()->AltarTweenable:
+	var altar:AltarTweenable = altar_scene.instantiate();
+	InstantiateUtils.get_topmost_instantiate_node().add_child(altar);
+	altar.carry(button_scene.instantiate())
+	return altar;
+
+func cmd_all()->Level.CMD:
+	return Level.CMD_Sequence.new([
+		CMD_Level_Environment.new(\"inside\"),
+		CMD_Music_Event.new(AK.EVENTS.MUSIC_LEVEL5_INVASION_START),
+		cmd_set_pivot_to_next_measure(0),
+		CMD_Callable.new(func():
+			for line:ConstantCreatorLine3D in lines_to_start:
+				line.creating = true;
+			),
+		CMD_Callable.new(func():
+			var altar:AltarTweenable = make_altar();
+			altar.position = stage.get_grid(0, 15);
+			altar.open(2.0);
+			altar.destroyed.connect(func():
+				start_challenge.emit();
+				)
+			),
+		cmd_camera_go_to_pivot0(2.0, false),
+		CMD_Wait_Signal.new(start_challenge),
+
+		CMD_Parallel.new([
+			cmd_challenge(target_score_challenge),
+			CMD_Sequence.new([ ## FIRST CHALLENGE
+				## In 0 anyway
+				lines_snippet.cmd(self),
+				CMD_Wait_Seconds.new(2),
+
+				cmd_go_to_current_measure_using_its_data(1, 0.25),
+				Level.CMD_Parallel.new([
+					cmd_wait_until_all_altars_die(\"first\", 0),
+					cmd_open_altars_sequence(\"first\", 0.5, 2, 5, next_altars),
+					Level.CMD_Sequence.new([
+						cmd_enemy_line([SUPER], [0], 0, 0, 13.5, Vector2(0,0), \"main\", func(pizza:AI_WalkAndDo):
+							pizza.distanceMax = 0;
+							),
+						objs.cmd_wait_group_or_time(\"main\", 8),
+						Level.CMD_Callable.new(next_altars.emit),
+						cmd_enemy_line([SHOOTER, SUPER], [0, 0, 1, 0, 0], 0, -4, -1, Vector2(2,0), \"main\"),
+						Level.CMD_Wait_Seconds.new(4),
+						Level.CMD_Callable.new(next_altars.emit),
+						objs.cmd_wait_group_or_time(\"main\", 10, 2),
+						Level.CMD_Callable.new(next_altars.emit),
+						Level.CMD_Wait_Seconds.new(2),
+						objs.cmd_create_object(LASER, \"main\", func(): return stage.get_grid(-10,-0.5), Vector3(1,0,1.1)),
+						objs.cmd_create_object(LASER, \"main\", func(): return stage.get_grid(10,-0.5), Vector3(-1,0,1.1)),
+						objs.cmd_wait_group_or_time(\"main\", 10),
+					]),
+				]),
+			])
+		]),
+	
+		Level.CMD_Callable.new(func():
+			HUD.instance.make_screen_effect(HUD.ScreenEffect.ShortFlash);
+			Game.instance.kill_all_enemies();
+			Game.instance.kill_all_projectiles();
+			),
+	
+		## Victory branch
+		Level.CMD_Branch.new(func challenge_condition():
+			return score >= target_score_challenge
+			,
+
+			## ON VICTORY
+			Level.CMD_Sequence.new([
+				ChallengeController.instance.cmd_victory(challenge_info, 0, [], CMD_Sequence.new([
+					Level.CMD_Parallel_Complete.new([
+						final_measure.cmd_default_camera_tween(self, 0.8),
+						cmd_make_altars(),
+					]),
+					Level.CMD_Wait_Seconds.new(0.5),
+					
+					
+					Level.CMD_Wait_Seconds.new(1),
+					Level.CMD_Callable.new(func():
+						for altar:Altar in AltarTweenable.get_altars_by_id(\"prize\"):
+							altar.open(0.2);
+							altar.holdable_done.connect(func():
+								AltarTweenable.close_all_altars_with_id(\"prize\")
+								pressed_prize_altar.emit()
+								, CONNECT_ONE_SHOT);
+						),
+					Level.CMD_Wait_Signal.new(pressed_prize_altar),
+					Level.CMD_Wait_Seconds.new(1),
+					Level.CMD_Print_Log.new(\"YOU WON\")
+				])),
+			]),
+
+			## ON DEFEAT
+			Level.CMD_Sequence.new([
+				ChallengeController.instance.cmd_fail(challenge_info),
+				Level.CMD_Wait_Seconds.new(2.5),
+			])),
+
+
+
+	]);
+	
+func cmd_make_altars()->Level.CMD:
+	return Level.CMD_Callable.new(func():
+		if prize_roda.circle.elements.size() <= 0:
+			var stuff:Array[Node3D] = [];
+			stuff.assign(challenge_info.scene_prizes.map(func(x):
+				return x.instantiate();
+				));
+			prize_roda.add_altars(stuff);
+		);
+
+func cmd_challenge(target_score:int)->Level.CMD:
+	return CMD_Sequence.new([
+		CMD_Callable.new(func():
+			ChallengeController.instance.add_metric_display(display);
+			),
+		ChallengeController.instance.cmd_begin(challenge_info, false),
+		CMD_Sequence.new([
+			CMD_Wait_Signal.new(Task_GlobalSignal.global_signal.happened),
+			CMD_Callable.new(func():
+				score += 1;
+				if is_instance_valid(display):
+					display.set_display_value(score);
+				)
+		], target_score - 1),
+	])
+
+func carry_and_open_visible_altars(items:Array, max_time:float):
+	var arr:Array[Altar] = AltarTweenable.get_random_unopened_altars(items.size());
+
+	for i in range(arr.size()):
+		arr[i].carry(items[i].instantiate());
+		arr[i].open(randf() * max_time);
+
+
+func cmd_wait_until_all_altars_die(id:StringName, amount:int = 0):
+	return CMD_Wait_Callable.new(func():
+		return AltarTweenable.get_altars_by_id(id).size() <= amount;
+		);
+
+func cmd_open_altars_sequence(id:StringName, delay_before:float, by_chunk:int, time_opened:float, next_signal:Signal):
+	var altars:Array = []
+	var recently_opened:Array = [];
+
+	var open_altars = func open_altars():
+		recently_opened.assign(altars.slice(0, by_chunk));
+		for altar in recently_opened:
+			if is_instance_valid(altar):
+				altar.open(randf());
+		altars.assign(altars.slice(by_chunk))
+
+	var close_altars = func close_altars():
+		closed_altars.emit();
+		for obj in recently_opened:
+			if obj:
+				var altar := obj as Altar;
+				if altar and is_instance_valid(altar) and not altar.is_queued_for_deletion():
+					altar.close(randf() * 0.1);
+		recently_opened.clear();
+
+	return Level.CMD_Sequence.new([
+		Level.CMD_Wait_Seconds.new(delay_before),
+		Level.CMD_Callable.new(func():
+			altars.assign(AltarTweenable.get_altars_by_id(id));
+			altars.shuffle();
+			),
+		Level.CMD_Repeat_While.new(func():
+			return not altars.is_empty();
+			,
+			[
+				Level.CMD_Sequence.new([
+					Level.CMD_Callable.new(open_altars),
+					Level.CMD_Wait_Seconds.new(time_opened),
+					#Level.CMD_Callable.new(close_altars),
+					Level.CMD_Wait_Signal.new(next_signal),
+				], -1)
+			])
+	]);
+"
+
+[sub_resource type="Curve3D" id="Curve3D_ulmnw"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, -15, 0, 0, 4.73122, -0.00012207, 14.7211, -2, 0, 0, 0, 0, 0, 1.6973, -0.000244141, -22.2336),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_yc2pq"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 10, 0, 0, -8, 0, 13.08, 8, 0, 0, 0, 0, 0, -6.07354, 0, -18.1333),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_71rkg"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 5, 0, 0, -1.092, 0, 11.0343, 8, 0, 0, 0, 0, 0, -2.05579, 0, -16.1333),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="LEVEL 4 - CHALLENGE INVASION" type="Node3D" node_paths=PackedStringArray("piece_main", "lines_snippet", "lines_to_start", "final_measure", "prize_roda")]
+script = SubResource("GDScript_d1btk")
+piece_main = NodePath("Stage Piece Fabrica Room")
+challenge_info = ExtResource("1_3t5tu")
+lines_snippet = NodePath("Level Snippet Challenge Lines")
+lines_to_start = [NodePath("Stage Piece Fabrica Room/NPCs/Lair_NPC_Revolution_Line"), NodePath("Stage Piece Fabrica Room/NPCs/Lair_NPC_Revolution_Line2")]
+altar_scene = ExtResource("2_ykukv")
+button_scene = ExtResource("3_1hqu6")
+target_score_challenge = 8
+final_measure = NodePath("Stage Piece Fabrica Room/StageScreenMeasure4")
+prize_roda = NodePath("Stage Piece Fabrica Room/NPCs/AltarRevolutionCircle PRIZE")
+
+[node name="Stage Piece Fabrica Room" type="Node3D" parent="." node_paths=PackedStringArray("pivot_forward", "pivot_backward", "pivot_right", "pivot_left")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, -29.25)
+script = ExtResource("1_6l5p2")
+pivot_forward = NodePath("Config/forward")
+pivot_backward = NodePath("Config/back")
+pivot_right = NodePath("Config/right")
+pivot_left = NodePath("Config/left")
+
+[node name="Config" type="Node3D" parent="Stage Piece Fabrica Room"]
+
+[node name="Wind Direction" type="Node3D" parent="Stage Piece Fabrica Room/Config"]
+transform = Transform3D(-2.04648e-07, 0, -1, 0, 1, 0, 1, 0, -2.04648e-07, 0.25, 6, 0)
+
+[node name="forward" type="Marker3D" parent="Stage Piece Fabrica Room/Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -78)
+gizmo_extents = 1.0
+
+[node name="back" type="Marker3D" parent="Stage Piece Fabrica Room/Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 38.25)
+gizmo_extents = 1.0
+
+[node name="right" type="Marker3D" parent="Stage Piece Fabrica Room/Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 6)
+gizmo_extents = 1.0
+
+[node name="left" type="Marker3D" parent="Stage Piece Fabrica Room/Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 6)
+gizmo_extents = 1.0
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Stage Piece Fabrica Room/Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -23)
+aabb = AABB(-29, 0, -56.4825, 58, 13.796, 118)
+
+[node name="Scenery" type="Node3D" parent="Stage Piece Fabrica Room"]
+
+[node name="FactoryFloor" parent="Stage Piece Fabrica Room/Scenery" instance=ExtResource("2_4mc0w")]
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 100, -24, 0, -62)
+visible = false
+
+[node name="Clay" parent="Stage Piece Fabrica Room/Scenery" instance=ExtResource("5_ih4yy")]
+transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 116.25, -14, 0, -78)
+
+[node name="COLUNM" type="Node3D" parent="Stage Piece Fabrica Room/Scenery"]
+
+[node name="colunm" parent="Stage Piece Fabrica Room/Scenery/COLUNM" instance=ExtResource("5_a6i5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.75)
+
+[node name="colunm4" parent="Stage Piece Fabrica Room/Scenery/COLUNM" instance=ExtResource("5_a6i5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -65.25)
+
+[node name="colunm2" parent="Stage Piece Fabrica Room/Scenery/COLUNM" instance=ExtResource("5_a6i5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.75)
+
+[node name="colunm3" parent="Stage Piece Fabrica Room/Scenery/COLUNM" instance=ExtResource("5_a6i5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 31.25)
+
+[node name="ROCK" type="Node3D" parent="Stage Piece Fabrica Room/Scenery"]
+
+[node name="rock2" parent="Stage Piece Fabrica Room/Scenery/ROCK" instance=ExtResource("15_a5ptw")]
+transform = Transform3D(-0.016052, -1.67097, -0.0313689, 0.801513, -0.030606, -0.247267, 0.0868992, -0.0263683, 2.27487, 2.9842, -0.317464, 13.443)
+
+[node name="rock8" parent="Stage Piece Fabrica Room/Scenery/ROCK" instance=ExtResource("15_a5ptw")]
+transform = Transform3D(0.0906987, -0.0447819, 2.56396, 0.836558, -0.0519791, -0.278691, 0.0167539, 2.83786, 0.0353553, -4.2658, -0.367464, 22.193)
+
+[node name="rock9" parent="Stage Piece Fabrica Room/Scenery/ROCK" instance=ExtResource("15_a5ptw")]
+transform = Transform3D(-0.247209, -0.146676, 3.03324, 1.62889, 0.432235, 0.491751, -0.403774, 1.83351, 0.126726, 3.7342, -0.71746, 28.943)
+
+[node name="rock3" parent="Stage Piece Fabrica Room/Scenery/ROCK" instance=ExtResource("15_a5ptw")]
+transform = Transform3D(0.00786782, -1.88185, 0.92793, 0.897591, 0.0879806, 0.551589, -0.137799, 0.465642, 3.64593, 3.7669, -0.380226, 23.8649)
+
+[node name="rock4" parent="Stage Piece Fabrica Room/Scenery/ROCK" instance=ExtResource("15_a5ptw")]
+transform = Transform3D(0.0404086, 1.58681, 0.0302622, 1.09611, -0.0606122, 0.186446, 0.113894, 0.0203421, -1.80509, 4.4054, -0.319525, 17.8499)
+
+[node name="rock10" parent="Stage Piece Fabrica Room/Scenery/ROCK" instance=ExtResource("15_a5ptw")]
+transform = Transform3D(0.130011, 5.10386, 0.0973422, 3.52663, -0.194955, 0.599729, 0.366443, 0.0654291, -5.8063, -6.5946, -0.319525, -23.1501)
+
+[node name="rock17" parent="Stage Piece Fabrica Room/Scenery/ROCK" instance=ExtResource("15_a5ptw")]
+transform = Transform3D(0.0261893, 3.19478, 0.0667075, 0.7104, -0.122033, 0.410988, 0.0738159, 0.0409555, -3.97899, -3.5946, -0.260626, -14.1501)
+
+[node name="rock11" parent="Stage Piece Fabrica Room/Scenery/ROCK" instance=ExtResource("15_a5ptw")]
+transform = Transform3D(0.387606, 1.38418, -5.58326, 3.52663, -0.194955, 0.599729, -0.0307384, -4.91301, -1.59681, 7.4054, -0.319525, -30.1501)
+
+[node name="rock12" parent="Stage Piece Fabrica Room/Scenery/ROCK" instance=ExtResource("15_a5ptw")]
+transform = Transform3D(-6.39879, 0.110933, 4.38287, -1.67373, 4.57076, -1.734, -5.31545, -1.57278, -4.73014, -7.5946, -0.319525, -47.1501)
+
+[node name="rock16" parent="Stage Piece Fabrica Room/Scenery/ROCK" instance=ExtResource("15_a5ptw")]
+transform = Transform3D(-3.47821, -1.5479, -5.70334, -1.67373, 4.57076, -1.734, 7.5565, 0.299913, -3.00928, 7.4054, -0.319525, -43.1501)
+
+[node name="rock13" parent="Stage Piece Fabrica Room/Scenery/ROCK" instance=ExtResource("15_a5ptw")]
+transform = Transform3D(-8.28322, -1.03368, -0.245557, -1.67373, 4.57076, -1.734, 0.766037, -1.19057, -6.44387, 8.4054, 0.680475, -17.1501)
+
+[node name="rock14" parent="Stage Piece Fabrica Room/Scenery/ROCK" instance=ExtResource("15_a5ptw")]
+transform = Transform3D(-2.92216, -0.777179, -0.144451, -0.590458, 3.43654, -1.02004, 0.270243, -0.895132, -3.79068, -2.5946, -0.319525, -27.1501)
+
+[node name="rock15" parent="Stage Piece Fabrica Room/Scenery/ROCK" instance=ExtResource("15_a5ptw")]
+transform = Transform3D(0.00847871, 3.01584, -1.62828, 1.42219, -0.887055, -2.19366, -1.14297, -1.08138, -2.74163, 3.4054, -0.319525, -35.1501)
+
+[node name="rock5" parent="Stage Piece Fabrica Room/Scenery/ROCK" instance=ExtResource("15_a5ptw")]
+transform = Transform3D(0.201443, 1.92572, 0.930695, 1.75561, -0.0855709, -0.294489, -0.207598, 1.14498, -1.58733, -4.8231, -0.699476, 12.4171)
+
+[node name="rock7" parent="Stage Piece Fabrica Room/Scenery/ROCK" instance=ExtResource("15_a5ptw")]
+transform = Transform3D(-0.169529, -1.09893, -1.61296, 1.06962, -0.0858601, -0.296936, 0.0481701, -1.96104, 0.916878, 0.0269012, -0.424476, 16.9171)
+
+[node name="rock6" parent="Stage Piece Fabrica Room/Scenery/ROCK" instance=ExtResource("15_a5ptw")]
+transform = Transform3D(0.47789, -1.1835, 0.90149, 0.466286, 0.374481, -1.23897, 0.193692, 2.0185, 0.758429, -3.7188, -0.327509, 32.4078)
+
+[node name="MOUNTAINS" type="Node3D" parent="Stage Piece Fabrica Room/Scenery"]
+
+[node name="mountain35" parent="Stage Piece Fabrica Room/Scenery/MOUNTAINS" instance=ExtResource("13_wsmb2")]
+transform = Transform3D(-0.9, 0, -6.1392e-08, 0, 1.04249, 0, 7.86808e-08, 0, -0.70224, -11.5423, -0.25, 12.6819)
+
+[node name="mountain36" parent="Stage Piece Fabrica Room/Scenery/MOUNTAINS" instance=ExtResource("13_wsmb2")]
+transform = Transform3D(-0.618461, 0, 0.0409949, 0, 1.04249, 0, -0.0440497, 0, -0.575572, 11.9729, -0.25, 14.6819)
+
+[node name="mountain37" parent="Stage Piece Fabrica Room/Scenery/MOUNTAINS" instance=ExtResource("13_wsmb2")]
+transform = Transform3D(-0.9, 0, -6.75312e-08, 0, 1.04249, 0, 7.86808e-08, 0, -0.772464, -12.5423, -0.25, -35.3181)
+
+[node name="mountain38" parent="Stage Piece Fabrica Room/Scenery/MOUNTAINS" instance=ExtResource("13_wsmb2")]
+transform = Transform3D(-0.9, 0, -6.75312e-08, 0, 1.04249, 0, 7.86808e-08, 0, -0.772464, 15.4577, -0.25, -35.3181)
+
+[node name="mountain39" parent="Stage Piece Fabrica Room/Scenery/MOUNTAINS" instance=ExtResource("13_wsmb2")]
+transform = Transform3D(-0.9, 0, -6.1392e-08, 0, 1.04249, 0, 7.86808e-08, 0, -0.70224, -12.7423, -0.25, -82.3181)
+
+[node name="mountain40" parent="Stage Piece Fabrica Room/Scenery/MOUNTAINS" instance=ExtResource("13_wsmb2")]
+transform = Transform3D(-0.9, 0, -6.1392e-08, 0, 1.04249, 0, 7.86808e-08, 0, -0.70224, 14.5577, -0.25, -82.3181)
+
+[node name="StageScreenMeasure0" parent="Stage Piece Fabrica Room" instance=ExtResource("2_x50mj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 9.5)
+default_movement = ExtResource("21_71rkg")
+
+[node name="StageScreenMeasure1" parent="Stage Piece Fabrica Room" instance=ExtResource("2_x50mj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -17.5)
+default_movement = ExtResource("21_71rkg")
+
+[node name="StageScreenMeasure4" parent="Stage Piece Fabrica Room" instance=ExtResource("2_x50mj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.5, -78.25)
+default_movement = ExtResource("21_71rkg")
+
+[node name="NPCs" type="Node3D" parent="Stage Piece Fabrica Room"]
+
+[node name="Lair_NPC_Revolution_Line" parent="Stage Piece Fabrica Room/NPCs" instance=ExtResource("22_8q7k3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.1, 26)
+curve = SubResource("Curve3D_ulmnw")
+creating = false
+warmed_time = 0.0
+
+[node name="Lair_NPC_Revolution_Line2" parent="Stage Piece Fabrica Room/NPCs" instance=ExtResource("22_8q7k3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84865, 0.25, 29)
+curve = SubResource("Curve3D_yc2pq")
+creating = false
+warmed_time = 0.0
+
+[node name="Lair_NPC_Revolution_Line4" parent="Stage Piece Fabrica Room/NPCs" instance=ExtResource("22_8q7k3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.91728, 0.25, -36.1977)
+curve = SubResource("Curve3D_71rkg")
+
+[node name="Lair_NPC_Revolution_Line3" parent="Stage Piece Fabrica Room/NPCs" instance=ExtResource("22_8q7k3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.87552, 0.25, -32.6645)
+curve = SubResource("Curve3D_71rkg")
+
+[node name="AltarRevolutionCircle FIRST" parent="Stage Piece Fabrica Room/NPCs" instance=ExtResource("23_8q7k3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1.5)
+id = &"first"
+circle_radius = 6.5
+circle_multiplier = Vector2(0.8, 1)
+circle_amount = 7
+circle_offset = 5.835
+
+[node name="AltarRevolutionCircle PRIZE" parent="Stage Piece Fabrica Room/NPCs" instance=ExtResource("23_8q7k3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -62.25)
+id = &"prize"
+circle_radius = 4.0
+velocity_angle = 15.0
+
+[node name="Talking NPCs" type="Node3D" parent="Stage Piece Fabrica Room/NPCs"]
+
+[node name="NpcTalkingAlone" parent="Stage Piece Fabrica Room/NPCs/Talking NPCs" instance=ExtResource("24_ulmnw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21.25)
+dialogue_id = "dial_lvl4_challenge_revolution_intro"
+appearence_fixed = 3
+
+[node name="NpcTalkingAlone2" parent="Stage Piece Fabrica Room/NPCs/Talking NPCs" instance=ExtResource("24_ulmnw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.25)
+dialogue_id = "dial_lvl4_challenge_revolution_1"
+appearence_fixed = 3
+
+[node name="NpcTalkingAlone5" parent="Stage Piece Fabrica Room/NPCs/Talking NPCs" instance=ExtResource("24_ulmnw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -60.25)
+dialogue_id = "dial_lvl4_challenge_revolution_3"
+appearence_fixed = 3
+
+[node name="Level Snippet Challenge Lines" type="Node" parent="."]
+script = ExtResource("25_0hrvr")
+altar_scene = ExtResource("2_ykukv")
+button_scene = ExtResource("3_1hqu6")
+wait_after_send_all = 0.5
+open_times = Array[float]([0.0, 1.25, 0.0, 0.5])
+copter_ok = ExtResource("16_vgskp")
+copters1 = Array[int]([0, 0, 0, 0, 0, 0, 0])
+copters2 = Array[int]([0, 0, 0, 0, 0])
+copters_pos1 = Vector2(-7.5, 3)
+copters_pos2 = Vector2(7.5, 6)
+copters12_delay = 3.0
+copters_line1 = Array[float]([-5.0, 2.0, 5.0, -2.0, 20.0])
+copters_line2 = Array[float]([6.0, 4.0, 4.0, 4.0, -20.0])
+
+[connection signal="screen_entered" from="Stage Piece Fabrica Room/Config/VisibleOnScreenNotifier3D" to="Stage Piece Fabrica Room" method="_on_screen_entered"]
+[connection signal="screen_exited" from="Stage Piece Fabrica Room/Config/VisibleOnScreenNotifier3D" to="Stage Piece Fabrica Room" method="_on_screen_exited"]

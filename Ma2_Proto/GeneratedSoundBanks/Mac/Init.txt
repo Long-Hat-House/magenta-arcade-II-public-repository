@@ -1,0 +1,113 @@
+Switch Group	ID	Name			Wwise Object Path	Notes
+	3647429270	game_ScoreCombo			\Default Work Unit\game_ScoreCombo	
+
+Switch	ID	Name	Switch Group			Notes
+	3975219728	combo_08	game_ScoreCombo			
+	3975219729	combo_09	game_ScoreCombo			
+	3975219737	combo_01	game_ScoreCombo			
+	3975219738	combo_02	game_ScoreCombo			
+	3975219739	combo_03	game_ScoreCombo			
+	3975219740	combo_04	game_ScoreCombo			
+	3975219741	combo_05	game_ScoreCombo			
+	3975219742	combo_06	game_ScoreCombo			
+	3975219743	combo_07	game_ScoreCombo			
+	3991997323	combo_10	game_ScoreCombo			
+
+State Group	ID	Name			Wwise Object Path	Notes
+	89505537	Gameplay			\Default Work Unit\Gameplay	
+	318623688	UI_Popup			\Default Work Unit\UI_Popup	
+	319258907	Paused			\Default Work Unit\Paused	
+	337406793	PlayerDamage			\Default Work Unit\PlayerDamage	
+	646625282	Hub			\Default Work Unit\Hub	
+	2988808205	Boss_MusicHold			\Default Work Unit\Boss_MusicHold	
+	3200174779	Boss_Final			\Default Work Unit\Boss_Final	
+	3255626661	LevelSwitch			\Music\LevelSwitch	
+
+State	ID	Name	State Group			Notes
+	251412225	Shop	Gameplay			
+	748895195	None	Gameplay			
+	782826392	Default	Gameplay			
+	1189762416	Challenge	Gameplay			
+	3026592080	Boss_Defeat	Gameplay			
+	3688152761	Boss_Fight	Gameplay			
+	3803289968	LevelClear	Gameplay			
+	4158285989	GameOver	Gameplay			
+	748895195	None	UI_Popup			
+	930712164	Off	UI_Popup			
+	1651971902	On	UI_Popup			
+	319258907	Paused	Paused			
+	748895195	None	Paused			
+	1365518790	Unpaused	Paused			
+	748895195	None	PlayerDamage			
+	930712164	Off	PlayerDamage			
+	1651971902	On	PlayerDamage			
+	26822469	Exit	Hub			
+	748895195	None	Hub			
+	782826392	Default	Hub			
+	2368844905	Enter	Hub			
+	3349798655	Phone_Zap	Hub			
+	4265022948	Phone_Ringtone	Hub			
+	748895195	None	Boss_MusicHold			
+	1281810935	Start	Boss_MusicHold			
+	2405648188	Release	Boss_MusicHold			
+	748895195	None	Boss_Final			
+	2002117580	Phase_01	Boss_Final			
+	2002117582	Phase_03	Boss_Final			
+	2002117583	Phase_02	Boss_Final			
+	748895195	None	LevelSwitch			
+	3152323980	Level01	LevelSwitch			
+	3152323982	Level03	LevelSwitch			
+	3152323983	Level02	LevelSwitch			
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	504532776	Brick			\Factory Acoustic Textures\Textures\Brick	
+	513139656	Mountain			\Factory Acoustic Textures\Textures\Mountain	
+	841620460	Concrete			\Factory Acoustic Textures\Textures\Concrete	
+	845949280	ui_BUS_Main			\UI\ui_BUS_Main	
+	1700381060	ui_BUS_Music			\UI\ui_BUS_Music	
+	1755085759	Wood_Deep			\Factory Acoustic Textures\Textures\Wood_Deep	
+	1873957695	Anechoic			\Factory Acoustic Textures\Textures\Anechoic	
+	1970351858	Fabric			\Factory Acoustic Textures\Textures\Fabric	
+	2058049674	Wood			\Factory Acoustic Textures\Textures\Wood	
+	2374590854	ui_BUS_SoundEffects			\UI\ui_BUS_SoundEffects	
+	2412606308	Carpet			\Factory Acoustic Textures\Textures\Carpet	
+	2637588553	Tile			\Factory Acoustic Textures\Textures\Tile	
+	2928161104	Curtains			\Factory Acoustic Textures\Textures\Curtains	
+	3195498748	Cork_Tiles			\Factory Acoustic Textures\Textures\Cork_Tiles	
+	3670307564	Drywall			\Factory Acoustic Textures\Textures\Drywall	
+	4058965243	ui_ACC_Panning			\UI\ui_ACC_Panning	
+	4168643977	Acoustic_Banner			\Factory Acoustic Textures\Textures\Acoustic_Banner	
+	4262522749	Wood_Bright			\Factory Acoustic Textures\Textures\Wood_Bright	
+
+Audio Bus	ID	Name			Wwise Object Path	Notes
+	202990286	Power_Tap			\Default Work Unit\Master Audio Bus\Game\Power\Power_Tap	
+	522849494	NPC_Main			\Default Work Unit\Master Audio Bus\Game\NPC\NPC_Main	
+	662417162	NPC			\Default Work Unit\Master Audio Bus\Game\NPC	
+	702482391	Game			\Default Work Unit\Master Audio Bus\Game	
+	1010055213	Enemy_Hit			\Default Work Unit\Master Audio Bus\Game\Enemies\Enemy_Hit	
+	1069431850	Player			\Default Work Unit\Master Audio Bus\Game\Player	
+	1205999388	Enemy_Death			\Default Work Unit\Master Audio Bus\Game\Enemies\Enemy_Death	
+	1417014765	NPC_Secondary			\Default Work Unit\Master Audio Bus\Game\NPC\NPC_Secondary	
+	1551306167	UI			\Default Work Unit\Master Audio Bus\UI	
+	2242381963	Enemies			\Default Work Unit\Master Audio Bus\Game\Enemies	
+	2275179450	GameplayMusic			\Default Work Unit\Master Audio Bus\Music\GameplayMusic	
+	2391494160	Power			\Default Work Unit\Master Audio Bus\Game\Power	
+	2609808943	World			\Default Work Unit\Master Audio Bus\Game\World	
+	2623579421	_DEBUG			\Default Work Unit\Master Audio Bus\_DEBUG	
+	3434129417	Attack_Laser			\Default Work Unit\Master Audio Bus\Game\Enemies\Attack_Laser	
+	3446858831	HubMusic			\Default Work Unit\Master Audio Bus\Music\HubMusic	
+	3577887872	Power_Hold			\Default Work Unit\Master Audio Bus\Game\Power\Power_Hold	
+	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
+	3991942870	Music			\Default Work Unit\Master Audio Bus\Music	
+
+Effect plug-ins	ID	Name	Type				Notes
+	2632156	Compressor (Custom)	Wwise Compressor			
+	345403662	Brick_Wall_Minus_6dB_Peak_Fast_Release (Custom)	Wwise Peak Limiter			
+	459083303	Compressor (Custom)	Wwise Compressor			
+	756707625	Holy (Custom)	Wwise RoomVerb			
+	860112101	Very_Bad_Connection (Custom)	Wwise Tremolo			
+
+Audio Devices	ID	Name	Type				Notes
+	2317455096	No_Output	No Output			
+	3859886410	System	System			
+

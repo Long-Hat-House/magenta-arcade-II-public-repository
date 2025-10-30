@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://nfcpngs2i6pg"]
+
+[ext_resource type="Material" uid="uid://ccaflrmnjfdvk" path="res://elements/neutral/props/traffic_decals/materials/m_decal_street_red.tres" id="1_dg1kc"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_q1g8k"]
+size = Vector2(1, 1)
+
+[node name="Decal Crosswalk Red BG" type="Node3D"]
+
+[node name="Decal Crosswalk Line" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.005, 0)
+layers = 3
+material_override = ExtResource("1_dg1kc")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_q1g8k")
+skeleton = NodePath("")

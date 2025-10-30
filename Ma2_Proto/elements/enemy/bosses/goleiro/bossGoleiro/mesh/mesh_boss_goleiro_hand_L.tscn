@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bakvdw67atune"]
+
+[ext_resource type="PackedScene" uid="uid://2cm24m7v6vsg" path="res://elements/enemy/bosses/goleiro/bossGoleiro/mesh/bossGoleiro_hand_L.glb" id="1_stc74"]
+[ext_resource type="Material" uid="uid://dml4tdm8qkb6g" path="res://elements/enemy/bosses/goleiro/bossGoleiro/material/m_bossGoleiro.tres" id="2_70pt8"]
+
+[node name="bossGoleiro_hand_L" instance=ExtResource("1_stc74")]
+
+[node name="hand_L" parent="." index="0"]
+material_override = ExtResource("2_70pt8")

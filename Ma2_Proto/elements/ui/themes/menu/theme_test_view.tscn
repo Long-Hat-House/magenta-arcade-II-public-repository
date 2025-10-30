@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://8ff52dgubjt7"]
+
+[ext_resource type="Texture2D" uid="uid://vwb2ibrn7run" path="res://elements/icons/icon_language.png" id="1_l4het"]
+[ext_resource type="Texture2D" path="res://elements/icons/icon_hold_yellow.svg" id="1_p8imw"]
+[ext_resource type="Texture2D" uid="uid://jvl2nsob4yl7" path="res://elements/ui/ui_art/ui_icon_health_lined.png" id="2_n4tls"]
+[ext_resource type="PackedScene" uid="uid://cxeo3sqv5l8o4" path="res://elements/ui/menus/pause_menu/pause_sub_2.tscn" id="3_wl7vq"]
+
+[node name="ThemeTestView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+text = "Button"
+icon = ExtResource("1_l4het")
+alignment = 0
+
+[node name="OptionButton" type="OptionButton" parent="PanelContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+item_count = 6
+popup/item_0/text = "First Option"
+popup/item_1/text = "Disabled Option"
+popup/item_1/id = 1
+popup/item_1/disabled = true
+popup/item_2/text = "Labeled Separator"
+popup/item_2/id = 2
+popup/item_2/separator = true
+popup/item_3/text = "After separator"
+popup/item_3/icon = ExtResource("1_p8imw")
+popup/item_3/id = 3
+popup/item_4/text = "Separator"
+popup/item_4/id = 4
+popup/item_4/separator = true
+popup/item_5/text = "Last"
+popup/item_5/icon = ExtResource("2_n4tls")
+popup/item_5/id = 5
+
+[node name="Pause Sub 2" parent="PanelContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("3_wl7vq")]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="PanelContainer/HBoxContainer/VBoxContainer2/Pause Sub 2/Container - All/Container Elements & AGs" index="0"]
+layout_mode = 2
+step = 10.0
+value = 50.0
+rounded = true
+tick_count = 11
+ticks_on_borders = true
+
+[editable path="PanelContainer/HBoxContainer/VBoxContainer2/Pause Sub 2"]

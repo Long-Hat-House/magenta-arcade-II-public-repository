@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://derqc4swptgl3"]
+
+[ext_resource type="Script" uid="uid://db6tliyv2a0no" path="res://elements/vfx/simple_vfx.gd" id="1_f005b"]
+[ext_resource type="WwiseEvent" uid="uid://cmqq4ub261q4v" path="res://Wwise/resources/Event/{78A7D91E-B11D-4553-B20A-5B82769425F1}.tres" id="2_arymg"]
+[ext_resource type="Material" uid="uid://d2wh0t6852qko" path="res://elements/neutral/props/vegetation/material/m_trunk.tres" id="3_qyti2"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qyti2"]
+material = ExtResource("3_qyti2")
+top_radius = 0.3
+bottom_radius = 0.2
+height = 1.0
+
+[sub_resource type="Curve" id="Curve_qyti2"]
+_data = [Vector2(0.752252, 1), 0.0, 0.0535779, 0, 0, Vector2(0.993243, 0.0175064), -3.36077, 0.0, 0, 0]
+point_count = 2
+
+[node name="Vfx Burst Metallic" type="Node3D" node_paths=PackedStringArray("_cpu_particles_3d", "sound")]
+script = ExtResource("1_f005b")
+_cpu_particles_3d = NodePath("CPUParticles3D4")
+animationSpeedScaleRange = 0.35
+xzRandomRange = 0.2
+sound = NodePath("SFX")
+
+[node name="SFX" type="AkEvent3D" parent="."]
+event = ExtResource("2_arymg")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00219727, 0.00830078, -0.00402832)
+
+[node name="CPUParticles3D4" type="CPUParticles3D" parent="."]
+sorting_offset = 10.0
+cast_shadow = 0
+emitting = false
+amount = 3
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("CylinderMesh_qyti2")
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 3.0
+angular_velocity_min = -173.05
+angular_velocity_max = 241.03
+damping_min = 1.0
+damping_max = 1.0
+scale_amount_min = 0.2
+scale_amount_curve = SubResource("Curve_qyti2")

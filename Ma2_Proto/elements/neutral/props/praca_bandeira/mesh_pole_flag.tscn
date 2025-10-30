@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bukkagy7l7q0q"]
+
+[ext_resource type="PackedScene" uid="uid://c1fq35swng8pj" path="res://elements/neutral/props/praca_bandeira/pole_flag.glb" id="1_x0hi6"]
+[ext_resource type="Material" uid="uid://cb8hki3r3tofp" path="res://elements/neutral/props/praca_bandeira/material/M_metal.tres" id="2_oi4kf"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="3_gxbik"]
+
+[node name="mesh_pole_flag" instance=ExtResource("1_x0hi6")]
+
+[node name="pole_flag" parent="." index="0"]
+transform = Transform3D(0.683785, 0, 0, 0, 0.683785, 0, 0, 0, 0.683785, 0, 0, 0)
+material_override = ExtResource("2_oi4kf")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="." index="1"]
+script = ExtResource("3_gxbik")
+high_contrast_group = &"enemy"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"

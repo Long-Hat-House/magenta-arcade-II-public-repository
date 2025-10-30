@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://8i34j3nqgewc"]
+
+[ext_resource type="Script" uid="uid://g3lfu2g84isn" path="res://elements/player/weapons/player_weapon_tap.gd" id="1_yeiec"]
+[ext_resource type="Texture2D" uid="uid://cy3nciis42c5r" path="res://elements/icons/icon_tap_red.png" id="2_7ed2j"]
+[ext_resource type="Script" uid="uid://dra7nitmq3ukf" path="res://elements/player/weapons/player_weapon_level_instantiate.gd" id="3_hirys"]
+[ext_resource type="PackedScene" uid="uid://dk177wrqsnup6" path="res://elements/player/projectiles/tap_red/proj_tap_red_bomb.tscn" id="4_cidfr"]
+
+[node name="Weapon_Red Tap" type="Node"]
+script = ExtResource("1_yeiec")
+_tap_cost = 22.0
+icon = ExtResource("2_7ed2j")
+title = "powerup_tap_red_title"
+id = 2
+type = 1
+color = Color(0.6, 0.121569, 0.2, 1)
+color_highlight = Color(0.960784, 0.454902, 0.2, 1)
+
+[node name="PlayerWeaponLevel_Instantiate" type="Node3D" parent="."]
+script = ExtResource("3_hirys")
+projectile = ExtResource("4_cidfr")

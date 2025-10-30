@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5uojefcelhmb"]
+
+[ext_resource type="PackedScene" uid="uid://pm7tkiwc0sdc" path="res://elements/neutral/props/mineirao_football_grass/mesh/mineirao_football_grass.glb" id="1_bdkkb"]
+[ext_resource type="Material" uid="uid://d07c8ccs3h37b" path="res://elements/neutral/props/mineirao_football_grass/material/m_mineirao_football_grass.tres" id="2_2iqeq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yi2w3"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_855ay"]
+_surfaces = [{
+"aabb": AABB(-14, 0, -31.7549, 28, 1e-05, 31.7549),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cbuqm"]
+resource_name = "mineirao_football_grass_mineirao_football_grass"
+_surfaces = [{
+"aabb": AABB(-14, 0, -31.7549, 28, 1e-05, 31.7549),
+"attribute_data": PackedByteArray(177, 254, 47, 2, 159, 0, 47, 2, 177, 254, 95, 255, 159, 0, 95, 255),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_yi2w3"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 255, 127, 255, 191, 255, 127, 255, 191, 255, 127, 255, 191, 255, 127, 255, 191)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_855ay")
+
+[node name="mineirao_football_grass" instance=ExtResource("1_bdkkb")]
+
+[node name="mineirao_football_grass" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.90703)
+material_override = ExtResource("2_2iqeq")
+
+[node name="mineirao_football_grass2" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 1.66316)
+material_override = ExtResource("2_2iqeq")
+mesh = SubResource("ArrayMesh_cbuqm")
+skeleton = NodePath("")

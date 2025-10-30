@@ -1,0 +1,179 @@
+[gd_scene load_steps=15 format=3 uid="uid://deyywk746ihpe"]
+
+[ext_resource type="Script" uid="uid://bt3rgk2gx218p" path="res://systems/stage/level_stage_piece.gd" id="1_5ceae"]
+[ext_resource type="PackedScene" uid="uid://cp25dirjxsvmu" path="res://elements/enemy/bosses/goleiro/bossGoleiro/mesh/mesh_boss_goleiro_trilho.tscn" id="2_xx2sq"]
+[ext_resource type="PackedScene" uid="uid://dtbmnavao67wh" path="res://elements/enemy/bosses/goleiro/bossGoleiro/mesh/bossGoleiro_trilho.glb" id="3_dquue"]
+[ext_resource type="PackedScene" uid="uid://b5uojefcelhmb" path="res://elements/neutral/props/mineirao_football_grass/mesh/mesh_mineirao_football_grass.tscn" id="3_g883i"]
+[ext_resource type="PackedScene" uid="uid://cyq2gafngh08" path="res://elements/neutral/props/poles/element_pole_light_small.tscn" id="3_ovtv5"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="7_0elm8"]
+[ext_resource type="PackedScene" uid="uid://c00kqth38jmst" path="res://systems/stage/stage_screen_measure.tscn" id="7_ibvnh"]
+[ext_resource type="Material" uid="uid://did1nmtt34t0l" path="res://elements/background/material/m_asphalt.tres" id="9_drwh1"]
+[ext_resource type="Resource" uid="uid://b4sm3a668ml1i" path="res://elements/levels/level_structure/camera_movement_data_by_duration.tres" id="9_m3el2"]
+[ext_resource type="PackedScene" uid="uid://ddkjraelfcg7p" path="res://elements/neutral/props/mineirao_football_grass/mesh/mesh_mineirao_football_grandstand.tscn" id="10_2yb0g"]
+[ext_resource type="PackedScene" uid="uid://b0npn6bnp3bwy" path="res://elements/enemy/bosses/goleiro/boss_goleiro_crowd_side.tscn" id="10_emt5v"]
+[ext_resource type="Script" uid="uid://bkt3i1q8w53tl" path="res://modules/text_flow/quick_dialogue.gd" id="11_f8nrb"]
+[ext_resource type="PackedScene" uid="uid://dbwklad3pauep" path="res://elements/neutral/props/mineirao_football_grass/mesh/mesh_mineirao_football_wall.tscn" id="11_no4mx"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_nj6va"]
+size = Vector2(5, 50)
+
+[node name="Lvl 2 Piece Boss Goleiro" type="Node3D" node_paths=PackedStringArray("pivot_forward", "pivot_backward")]
+script = ExtResource("1_5ceae")
+pivot_forward = NodePath("Config/forward")
+pivot_backward = NodePath("Config/back")
+
+[node name="Config" type="Node3D" parent="."]
+
+[node name="Wind Direction" type="Node3D" parent="Config"]
+transform = Transform3D(-2.04648e-07, 0, -1, 0, 1, 0, 1, 0, -2.04648e-07, 0, 6, 0)
+
+[node name="forward" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -52)
+gizmo_extents = 1.0
+
+[node name="back" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 0.281722, 0.959496, 0, -0.959496, 0.281722, 9, 0, 14.5)
+gizmo_extents = 1.0
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7095, 0, -22.2711)
+aabb = AABB(-7.39491, 0, -36.9158, 20.0562, 13.796, 73.8311)
+
+[node name="Scenery" type="Node3D" parent="."]
+
+[node name="Campo" type="Node3D" parent="Scenery"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75, 0, -12)
+
+[node name="bossGoleiro_trilho2" parent="Scenery/Campo" instance=ExtResource("2_xx2sq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21.7146)
+
+[node name="bossGoleiro_trilho" parent="Scenery/Campo" instance=ExtResource("3_dquue")]
+
+[node name="mineirao_football_grass" parent="Scenery/Campo" instance=ExtResource("3_g883i")]
+transform = Transform3D(0.909692, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.50808)
+
+[node name="mineirao_football_grandstand" parent="Scenery/Campo" instance=ExtResource("10_2yb0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14, 0.013, -32.748)
+
+[node name="mineirao_football_wall" parent="Scenery/Campo" instance=ExtResource("11_no4mx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10517, 0, -1.6674)
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="Scenery/Campo/mineirao_football_wall"]
+script = ExtResource("7_0elm8")
+high_contrast_group = &"scenery"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="mineirao_football_wall2" parent="Scenery/Campo" instance=ExtResource("11_no4mx")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.10517, 0, -1.6674)
+
+[node name="Pole" type="Node3D" parent="Scenery/Campo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.75, 0, 12)
+
+[node name="pole_light_small" parent="Scenery/Campo/Pole" instance=ExtResource("3_ovtv5")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.047, -0.202393, -33.2227)
+
+[node name="pole_light_small2" parent="Scenery/Campo/Pole" instance=ExtResource("3_ovtv5")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.047, -0.202393, -23.2227)
+
+[node name="pole_light_small5" parent="Scenery/Campo/Pole" instance=ExtResource("3_ovtv5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.3342, -0.202393, -23.2227)
+
+[node name="pole_light_small6" parent="Scenery/Campo/Pole" instance=ExtResource("3_ovtv5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.3342, -0.202393, -33.2227)
+
+[node name="StageScreenMeasureBeginning" parent="Scenery/Campo" instance=ExtResource("7_ibvnh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -36.75)
+default_movement = ExtResource("9_m3el2")
+
+[node name="StageScreenMeasure" parent="Scenery/Campo" instance=ExtResource("7_ibvnh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -32)
+default_movement = ExtResource("9_m3el2")
+
+[node name="StageScreenMeasureMin" parent="Scenery/Campo" instance=ExtResource("7_ibvnh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.2, -32)
+default_movement = ExtResource("9_m3el2")
+
+[node name="StageScreenMeasureMax" parent="Scenery/Campo" instance=ExtResource("7_ibvnh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.2, -32)
+default_movement = ExtResource("9_m3el2")
+
+[node name="Floor" type="Node3D" parent="Scenery"]
+transform = Transform3D(0.585, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 8.88371, 0.00619507, -42.5223)
+
+[node name="floor3" type="MeshInstance3D" parent="Scenery/Floor"]
+transform = Transform3D(1.7094, 0, 0, 0, 1, 0, 0, 0, 1, 24.1304, -28.8733, -0.000196331)
+material_override = ExtResource("9_drwh1")
+mesh = SubResource("QuadMesh_nj6va")
+skeleton = NodePath("../..")
+
+[node name="floor4" type="MeshInstance3D" parent="Scenery/Floor"]
+transform = Transform3D(1.7094, 0, 0, 0, 1, 0, 0, 0, 1, -24.8729, -28.8733, -0.000196331)
+material_override = ExtResource("9_drwh1")
+mesh = SubResource("QuadMesh_nj6va")
+skeleton = NodePath("../..")
+
+[node name="NPC" type="Node3D" parent="."]
+
+[node name="BossGoleiroCrowd_Side" parent="NPC" instance=ExtResource("10_emt5v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25, 0, -40.25)
+
+[node name="BossGoleiroCrowd_Side2" parent="NPC" instance=ExtResource("10_emt5v")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 0, -40.25)
+
+[node name="CrowdDialogue" type="Node3D" parent="NPC/BossGoleiroCrowd_Side2" node_paths=PackedStringArray("speakers_followee")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.97741, 1.91872, -0.665962)
+script = ExtResource("11_f8nrb")
+speakers_followee = [NodePath(".")]
+dialogue_id = &"dial_lvl2_boss_fan_celebration"
+loops = true
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="NPC/BossGoleiroCrowd_Side2/CrowdDialogue"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.165885, -1.09899, 0)
+aabb = AABB(-0.54155, -0.35332, -0.566142, 1.0831, 0.706639, 1.13228)
+
+[node name="CrowdDialogue2" type="Node3D" parent="NPC/BossGoleiroCrowd_Side2" node_paths=PackedStringArray("speakers_followee")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2105, 1.39898, -2.7846)
+script = ExtResource("11_f8nrb")
+speakers_followee = [NodePath(".")]
+dialogue_id = &"dial_lvl2_boss_fan_celebration"
+loops = true
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="NPC/BossGoleiroCrowd_Side2/CrowdDialogue2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.165885, -1.09899, 0)
+aabb = AABB(-0.54155, -0.35332, -0.566142, 1.0831, 0.706639, 1.13228)
+
+[node name="CrowdDialogue3" type="Node3D" parent="NPC/BossGoleiroCrowd_Side2" node_paths=PackedStringArray("speakers_followee")]
+transform = Transform3D(0.999988, 0, 0.00495671, 0, 1, 0, -0.00495671, 0, 0.999988, 10.423, 1.34006, -0.277973)
+script = ExtResource("11_f8nrb")
+speakers_followee = [NodePath(".")]
+dialogue_id = &"dial_lvl2_boss_fan_celebration"
+loops = true
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="NPC/BossGoleiroCrowd_Side2/CrowdDialogue3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.165885, -1.09899, 0)
+aabb = AABB(-0.54155, -0.35332, -0.566142, 1.0831, 0.706639, 1.13228)
+
+[node name="CrowdDialogue4" type="Node3D" parent="NPC/BossGoleiroCrowd_Side2" node_paths=PackedStringArray("speakers_followee")]
+transform = Transform3D(0.999988, 0, 0.00495671, 0, 1, 0, -0.00495671, 0, 0.999988, 7.0431, 2.41344, -4.35342)
+script = ExtResource("11_f8nrb")
+speakers_followee = [NodePath(".")]
+dialogue_id = &"dial_lvl2_boss_fan_celebration"
+loops = true
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="NPC/BossGoleiroCrowd_Side2/CrowdDialogue4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.165885, -1.09899, 0)
+aabb = AABB(-0.54155, -0.35332, -0.566142, 1.0831, 0.706639, 1.13228)
+
+[node name="CrowdDialogue5" type="Node3D" parent="NPC/BossGoleiroCrowd_Side2" node_paths=PackedStringArray("speakers_followee")]
+transform = Transform3D(0.999988, 0, 0.00495671, 0, 1, 0, -0.00495671, 0, 0.999988, -4.85666, 2.41344, -4.35342)
+script = ExtResource("11_f8nrb")
+speakers_followee = [NodePath(".")]
+dialogue_id = &"dial_lvl2_boss_fan_celebration"
+loops = true
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="NPC/BossGoleiroCrowd_Side2/CrowdDialogue5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.165885, -1.09899, 0)
+aabb = AABB(-0.54155, -0.35332, -0.566142, 1.0831, 0.706639, 1.13228)
+
+[connection signal="screen_entered" from="Config/VisibleOnScreenNotifier3D" to="." method="_on_screen_entered"]
+[connection signal="screen_exited" from="Config/VisibleOnScreenNotifier3D" to="." method="_on_screen_exited"]

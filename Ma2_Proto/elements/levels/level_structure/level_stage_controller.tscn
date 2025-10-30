@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://biri2jotjxrmk"]
+
+[ext_resource type="Script" uid="uid://b5002l25aq3yf" path="res://systems/stage/level_stage_controller.gd" id="1_0eeue"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4lth"]
+blend_mode = 1
+no_depth_test = true
+shading_mode = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_7bhib"]
+orientation = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_use27"]
+blend_mode = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gwb6u"]
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.156863, 0.156863, 0.156863, 0.431373)
+
+[node name="LevelStageController" type="Node" node_paths=PackedStringArray("visuals_black", "visuals_red", "visuals_white", "visual_labelZ", "visual_labelX")]
+script = ExtResource("1_0eeue")
+visuals_black = NodePath("VisualConfig/black")
+visuals_red = NodePath("VisualConfig/red")
+visuals_white = NodePath("VisualConfig/white")
+visual_labelZ = NodePath("VisualConfig/Z Text")
+visual_labelX = NodePath("VisualConfig/X Text")
+
+[node name="VisualConfig" type="Node3D" parent="."]
+visible = false
+
+[node name="white" type="MeshInstance3D" parent="VisualConfig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+material_override = SubResource("StandardMaterial3D_q4lth")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_7bhib")
+skeleton = NodePath("")
+
+[node name="red" type="MeshInstance3D" parent="VisualConfig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -1)
+material_override = SubResource("StandardMaterial3D_use27")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_7bhib")
+skeleton = NodePath("")
+
+[node name="black" type="MeshInstance3D" parent="VisualConfig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 1)
+material_override = SubResource("StandardMaterial3D_gwb6u")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_7bhib")
+skeleton = NodePath("")
+
+[node name="Z Text" type="Label3D" parent="VisualConfig"]
+billboard = 1
+no_depth_test = true
+render_priority = 2
+outline_render_priority = 1
+text = "1"
+font_size = 64
+outline_size = 30
+
+[node name="X Text" type="Label3D" parent="VisualConfig"]
+billboard = 1
+no_depth_test = true
+render_priority = 2
+outline_render_priority = 1
+modulate = Color(1, 1, 0, 1)
+text = "1"
+font_size = 64
+outline_size = 30

@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://3y7rpd6llc0a"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_MiniBoss_Lv4_Dog_Appear"
+id = 4090668092
+guid = "{B788D23C-0537-43C2-8DA5-398090868BC2}"
+dummy = true

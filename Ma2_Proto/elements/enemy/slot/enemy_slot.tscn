@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bapspdww1yi01"]
+
+[ext_resource type="Script" path="res://elements/enemy/slot/enemy_slot.gd" id="1_lwh44"]
+
+[node name="EnemySlot" type="Node3D" groups=["enemy_slot"]]
+script = ExtResource("1_lwh44")
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="."]
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+pixel_size = 0.015
+billboard = 1
+text = "ENEMY
+HERE"

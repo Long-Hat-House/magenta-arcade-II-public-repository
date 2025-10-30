@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cgmcmclklqqa2"]
+
+[ext_resource type="Script" uid="uid://b05yjml38p4ai" path="res://elements/enemy/bosses/trem/adao/boss_lvl_3_adao_wall.gd" id="1_02wwc"]
+[ext_resource type="PackedScene" uid="uid://c2tg7pmomkb8g" path="res://elements/enemy/bosses/trem/adao/mesh/mesh_adao_wall.tscn" id="2_02wwc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_50xc8"]
+size = Vector3(7, 1.5, 1.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mdsg4"]
+size = Vector3(0.5, 1.5, 2.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1lw3f"]
+size = Vector3(6.12842, 1.5, 4.47357)
+
+[node name="Boss_3_Adao_Wall" type="StaticBody3D"]
+collision_layer = 129
+collision_mask = 0
+script = ExtResource("1_02wwc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.75, -0.75)
+visible = false
+mesh = SubResource("BoxMesh_50xc8")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0.75, -2.75)
+visible = false
+mesh = SubResource("BoxMesh_mdsg4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.984728, 0.75, -2.38535)
+shape = SubResource("BoxShape3D_1lw3f")
+
+[node name="adao_wall" parent="." instance=ExtResource("2_02wwc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2.37195)

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://h36lpk1h65nj"]
+
+[ext_resource type="Script" uid="uid://clcaxc1x4n0lr" path="res://elements/levels/lvl_1/lvl_1_sub_boss.gd" id="1_55e1s"]
+
+[node name="LVL BOSS" type="Node3D"]
+script = ExtResource("1_55e1s")

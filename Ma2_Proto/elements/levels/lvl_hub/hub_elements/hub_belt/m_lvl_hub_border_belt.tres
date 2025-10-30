@@ -1,0 +1,23 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://j2sggf3d0suo"]
+
+[ext_resource type="Texture2D" uid="uid://bxn2unbl7sx1" path="res://elements/levels/lvl_hub/hub_elements/hub_belt/t_hub_belt_Normal.png" id="1_n2w1a"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p1o1v"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4rxue"]
+
+[resource]
+specular_mode = 2
+albedo_color = Color(0, 0.360784, 0.658824, 1)
+emission_energy_multiplier = 16.0
+emission_texture = SubResource("CompressedTexture2D_4rxue")
+normal_enabled = true
+normal_texture = ExtResource("1_n2w1a")
+rim_tint = 1.0
+clearcoat = 0.2
+clearcoat_roughness = 0.59
+anisotropy = 0.33
+ao_texture = SubResource("CompressedTexture2D_p1o1v")
+backlight = Color(0.0313726, 0.0313726, 0.0313726, 1)
+uv1_scale = Vector3(0.3, 0.3, 0.3)
+uv1_triplanar = true

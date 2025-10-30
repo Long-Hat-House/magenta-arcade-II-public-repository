@@ -1,0 +1,50 @@
+{
+ "ProjectInfo": {
+  "Project": {
+   "Name": "Magenta-Arcade_Wwise",
+   "GUID": "{2D2C0938-B450-4AE1-9760-E97C077E6B8A}",
+   "Generator": "2024.1.3.8749"
+  },
+  "CacheRoot": "../../Magenta-Arcade_Wwise/.cache",
+  "Platforms": [
+   {
+    "Name": "Android",
+    "GUID": "{45D0E0A8-5637-424D-A6FD-8E3F5299A2E1}",
+    "BasePlatform": "Android",
+    "BasePlatformGUID": "{A2D401DE-B8B6-4FEB-8142-137C34D507CA}",
+    "Path": "Android"
+   },
+   {
+    "Name": "iOS",
+    "GUID": "{D311459B-6D32-4DB4-9332-DF5E92A27441}",
+    "BasePlatform": "iOS",
+    "BasePlatformGUID": "{ECE03DB4-F948-462D-B2BB-A9173012B1F8}",
+    "Path": "iOS"
+   },
+   {
+    "Name": "Mac",
+    "GUID": "{C6633E3B-ED90-42CF-99D5-D26D493DF9D0}",
+    "BasePlatform": "Mac",
+    "BasePlatformGUID": "{9C6217D5-DD11-4795-87C1-6CE02853C540}",
+    "Path": "Mac"
+   },
+   {
+    "Name": "Windows",
+    "GUID": "{B3CF2282-E814-4E1C-BB25-6C422397ADE9}",
+    "BasePlatform": "Windows",
+    "BasePlatformGUID": "{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}",
+    "Path": "Windows"
+   }
+  ],
+  "Languages": [
+   {
+    "Name": "English(US)",
+    "Id": "684519430",
+    "GUID": "{0B047AFB-0A1A-421E-9B43-F17AD1AEF6E5}",
+    "Default": "true",
+    "UseAsStandIn": "true"
+   }
+  ],
+  "FileHash": "{20571C3B-18CF-774A-377D-406D64FF1637}"
+ }
+}

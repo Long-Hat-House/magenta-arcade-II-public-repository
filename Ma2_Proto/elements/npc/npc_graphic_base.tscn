@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://k0kg78hfmalj"]
+
+[ext_resource type="SpriteFrames" uid="uid://c8oohd40myha0" path="res://elements/npc/npc_art/NPC_believer_01.ase" id="1_7fovc"]
+[ext_resource type="Script" uid="uid://db3uov1b8nogk" path="res://elements/npc/npc_graphic.gd" id="2_6ugpc"]
+[ext_resource type="PackedScene" uid="uid://dskpdh8c11ga7" path="res://elements/npc/npc_high_contrast_sprite.tscn" id="3_q3mkc"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_h6xis"]
+height = 0.1
+radial_segments = 12
+rings = 1
+cap_bottom = false
+
+[node name="NPC_Graphic" type="AnimatedSprite3D"]
+cast_shadow = 0
+extra_cull_margin = 1.0
+offset = Vector2(0, 128)
+pixel_size = 0.0078
+billboard = 1
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = ExtResource("1_7fovc")
+animation = &"hit"
+script = ExtResource("2_6ugpc")
+
+[node name="Shadow" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0.2, 0)
+cast_shadow = 3
+mesh = SubResource("CylinderMesh_h6xis")
+
+[node name="NPC_HighContrastSprite" parent="." instance=ExtResource("3_q3mkc")]
+
+[editable path="NPC_HighContrastSprite"]

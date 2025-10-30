@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dh52m0ixk2k1m"]
+
+[node name="Camera" type="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.422618, 0.906308, 0, -0.906308, 0.422618, 0, 26, 13)
+keep_aspect = 0
+fov = 20.0
+size = 10.0
+near = 5.0
+far = 70.0

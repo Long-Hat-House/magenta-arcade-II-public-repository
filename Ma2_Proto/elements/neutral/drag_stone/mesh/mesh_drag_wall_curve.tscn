@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://thffjsol6m1r"]
+
+[ext_resource type="PackedScene" uid="uid://ctoxf2pv5fxln" path="res://elements/neutral/drag_stone/mesh/dragWallCurve.glb" id="1_7awcb"]
+[ext_resource type="Material" uid="uid://bmjotpgmcthq8" path="res://elements/neutral/drag_stone/material/m_dragWall.tres" id="2_7invy"]
+
+[node name="dragWallCurve" instance=ExtResource("1_7awcb")]
+
+[node name="drag_wall_curve" parent="." index="0"]
+material_override = ExtResource("2_7invy")

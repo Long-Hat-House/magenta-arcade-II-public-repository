@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c3lvc8wwb4v4h"]
+
+[ext_resource type="Shader" uid="uid://r81a8chulneq" path="res://elements/ui/themes/shaders_and_materials/s_ui_clouds.tres" id="1_cs8hs"]
+[ext_resource type="Texture2D" uid="uid://cdsllproihfm0" path="res://elements/ui/themes/shaders_and_materials/t_ui_clouds.tres" id="2_wg8vc"]
+
+[resource]
+shader = ExtResource("1_cs8hs")
+shader_parameter/cloud_1_scale = Vector2(1.5, 1.5)
+shader_parameter/cloud_1_speed = Vector2(-0.03, 0.01)
+shader_parameter/Texture2DParameter = ExtResource("2_wg8vc")
+shader_parameter/cloud_2_scale2 = Vector2(2.8, 2.8)
+shader_parameter/cloud_2_speed2 = Vector2(0.03, -0.01)

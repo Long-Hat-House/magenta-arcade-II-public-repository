@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=4 uid="uid://dxdked2kwk44o"]
+
+[ext_resource type="PackedScene" uid="uid://csjjh6odbdsmt" path="res://elements/player/projectiles/hold_green/mesh/leaf.glb" id="1_nyk6u"]
+[ext_resource type="Material" uid="uid://r1m6m874b01v" path="res://elements/m_simple_color_emission.tres" id="2_kov7p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_44gsn"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_7wvt4"]
+_surfaces = [{
+"aabb": AABB(-0.113027, -0.0154156, -0.399265, 0.226793, 0.0631238, 0.399486),
+"format": 34896613377,
+"index_count": 216,
+"index_data": PackedByteArray("HAAFABoAHAAEAAUAJQADACEAJQACAAMABgABAAcABgAAAAEAIwACACUAIwAGAAIAIgABACQAIgAHAAEAIQAHACIAIQADAAcAIAAGACMAIAAAAAYAAgAHAAMAAgAGAAcAEAANABMAEAAIAA0AEQAMABIAEQALAAwAEgAJAA4AEgAMAAkAEwAKAA8AEwANAAoADwALABEADwAKAAsAFAAJABgAFAAIAAkAGwARAB0AGwAPABEAHwAPABsAHwATAA8AHgAOABoAHgASAA4AHQASAB4AHQARABIAHAATAB8AHAAQABMACAAOAAkACAAQAA4AIAAYACQAIAAUABgACAAXAA0ACAAUABcACwAWAAwACwAVABYADAAYAAkADAAWABgADQAZAAoADQAXABkACgAVAAsACgAZABUABAAcAB8ABQAdAB4ABQAeABoABAAfABsABAAdAAUABAAbAB0AEAAaAA4AEAAcABoAAAAkAAEAAAAgACQAFAAjABcAFAAgACMAFQAiABYAFQAhACIAFgAkABgAFgAiACQAFwAlABkAFwAjACUAGQAhABUAGQAlACEA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 38,
+"vertex_data": PackedByteArray("GGoAAHb/AAAVahYvv/8AAG2ScgB8/wAAapKKL8X/AAD8f5w5AAAAAPl/LmhIAAAAln87J7b/AACTf81V//8AAAMADKyLgAAAAACe2tSAAAD//+msrYAAAPv/e9v1gAAAu3///x6BAAC+f2zR1oAAAAkdLMx0SQAA6eCDnUNJAAAMHZmdK0kAAObgFcyMSQAA0n8/9sJJAADVf63HeUkAAKgM13KHtAAAjPHpoe20AACpf73HGbUAAK1/KpnRtAAApAxpoc+0AACQ8VZzpLQAAB9DD6GTIAAA77kwc1sgAAAiQ55xSiAAAOu5paKlIAAA539otLkgAADqf9aFcSAAAO4vOyq23wAAI819WBLgAACcf7CFT+AAAJ9/HlcG4AAA6y/NWP/fAAAnzeopyd8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_psgfx"]
+resource_name = "leaf_Cube_005"
+_surfaces = [{
+"aabb": AABB(-0.113027, -0.0154156, -0.399265, 0.226793, 0.0631238, 0.399486),
+"attribute_data": PackedByteArray("i7A9dk2u0HRgsSR0Irp5dlG5WnR1vCt1vbLlzHOwJc72tELOQLjmIJe1+HWZtWRzzpyHoF+ap6Din+5Jm8v9oQbOaksGzkWi6banSjS0e6GknoCzm6VnOOrFGrQWofWyU8jTtArJiTl3t0A5qbNBs9ufu48Ayytc6cvSkGG2TVu+tI6QcJ1aj4eh1lp4yRGRyKW2wd6sTCvhvYfBIKi7wC3AqMJxwgIs5rfvKzWz/8DepueBH8RGanTF6oHvtW5pNLUCgqOk7IBOp1ppK8PGgg=="),
+"format": 34896613399,
+"index_count": 216,
+"index_data": PackedByteArray("JwAHACQAJwAGAAcAMwAFAC4AMwADAAUACgACAAsACgAAAAIAMAADADMAMAAKAAMALwACADIALwALAAIALQALAC8ALQAEAAsALAAKADAALAAAAAoAAwALAAQAAwAKAAsAFwATABsAFwAMABMAGQASABoAGQAQABIAGgAOABUAGgASAA4AGwAPABYAGwATAA8AFgARABgAFgAPABEAHAANACEAHAAMAA0AJgAYACgAJgAWABgAKwAWACYAKwAbABYAKgAVACUAKgAaABUAKQAaACoAKQAZABoAJwAbACsAJwAXABsADAAUAA0ADAAXABQALAAhADEALAAcACEADAAgABMADAAcACAAEAAfABIAEAAdAB8AEgAiAA4AEgAfACIAEwAjAA8AEwAgACMADwAeABEADwAjAB4ABgAnACsACQApACoACQAqACUABgArACYABgAoAAgABgAmACgAFwAkABQAFwAnACQAAAAxAAEAAAAsADEAHAAwACAAHAAsADAAHQAvAB8AHQAtAC8AHwAyACIAHwAvADIAIAAzACMAIAAwADMAIwAuAB4AIwAzAC4A"),
+"material": SubResource("StandardMaterial3D_44gsn"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 52,
+"vertex_data": PackedByteArray("GGoAAHb/ZL8VahYvv//vuxVqFi+//9mqbZJyAHz/M79qkoovxf8KqmqSii/F/2u9/H+cOQAAlcP5fy5oSAAW4vl/LmhIAN3h+X8uaEgA3NuWfzsntv8XypN/zVX///SuAwAMrIuALsUAAJ7a1IBv/wAAntrUgFS+///prK2AwMn7/3vb9YAQvvv/e9v1gOr2u3///x6BXr2+f2zR1oCjwgkdLMx0SS/mCR0szHRJO8fp4IOdQ0lzwQwdmZ0rSQXB5uAVzIxJfOPm4BXMjEkKx9J/P/bCSZ7E1X+tx3lJXbuoDNdyh7S/yozx6aHttDa2jPHpoe208Nmpf73HGbUqt61/KpnRtNnIpAxpoc+02takDGmhz7SotpDxVnOktJjKH0MPoZMgzeYfQw+hkyB+0e+5MHNbILu/IkOecUogAb/ruaWipSDu5eu5paKlIBnR539otLkgqsrqf9aFcSBKte4vOyq239vII819WBLgzLAjzX1YEuD1yJx/sIVP4B20n38eVwbg7MvrL81Y/98kx+svzVj/33KxJ83qKcnftMj2C1WV5JuTrrDoorFlE+J0Jc7CZMrQZRlEAPSAf9U3QarBUapJ/kx9vgLohJv/MYDdJxlsFXVquKP2+JUYHku7MOr5cgyTl7NQ/m18xgGFg7jTcCc7986VNxZysDYvXmptqluqkOmbc0j+rXzNAeuDTRvWsGTnzHDXzbIUNf7ge1QCRISMl1OxXfQ/mUow8WQZ18syH/drmNkNBqmFJjlzQbSupwfmW3NQ/t18CALvhKQVbqZJ3cVqE9HKG3X+UnzWAvuEIZ5ermvuBaPlJZ9q")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_7wvt4")
+
+[sub_resource type="Animation" id="Animation_gy01v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("leaf:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qmktb"]
+resource_name = "anim_hold_green"
+length = 0.500003
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("leaf:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 6.28319)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tba1f"]
+_data = {
+&"RESET": SubResource("Animation_gy01v"),
+&"anim_hold_green": SubResource("Animation_qmktb")
+}
+
+[node name="leaf" instance=ExtResource("1_nyk6u")]
+
+[node name="leaf" parent="." index="0"]
+material_override = ExtResource("2_kov7p")
+instance_shader_parameters/color = Color(0.0392157, 0.796078, 0, 1)
+instance_shader_parameters/emissive = Color(0.0392157, 0.796078, 0, 1)
+mesh = SubResource("ArrayMesh_psgfx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+&"": SubResource("AnimationLibrary_tba1f")
+}
+autoplay = "anim_hold_green"

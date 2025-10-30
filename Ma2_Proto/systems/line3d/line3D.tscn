@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bm054xp47f0ir"]
+
+[ext_resource type="Script" path="res://systems/line3d/child_line_3d.gd" id="1_f6oro"]
+
+[node name="line3D" type="Node3D"]
+script = ExtResource("1_f6oro")

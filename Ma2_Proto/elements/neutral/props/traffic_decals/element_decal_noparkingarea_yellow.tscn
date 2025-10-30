@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://djsov6ytrk5pp"]
+
+[ext_resource type="PackedScene" uid="uid://c866v88mqx28q" path="res://elements/neutral/props/traffic_decals/element_decal_noparkingarea.tscn" id="1_rlj47"]
+[ext_resource type="Material" uid="uid://k73b4bjamaps" path="res://elements/neutral/props/traffic_decals/materials/m_decal_noparkingarea_yellow.tres" id="2_pfsi8"]
+
+[node name="Decal No Parking Area Yellow" instance=ExtResource("1_rlj47")]
+material_override = ExtResource("2_pfsi8")

@@ -1,0 +1,966 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "161171466",
+    "Type": "User",
+    "GUID": "{0B5A116F-9B00-400A-B8FE-B4843C827D7A}",
+    "Language": "SFX",
+    "Hash": "{264DDF57-EA46-8EAF-DDC7-7104CAF8FC69}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\SFX_NPC",
+    "ShortName": "SFX_NPC",
+    "Path": "SFX_NPC.bnk",
+    "Media": [
+     {
+      "Id": "60162200",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_voice_fanactic_c_loop_01.wav",
+      "CachePath": "BB/{BBC4DE69-458B-6B14-EDC7-017436C60EA3}.wem"
+     },
+     {
+      "Id": "83892511",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_voice_nene_loop_01.wav",
+      "CachePath": "D6/{D6611F02-41BF-C1E4-3AF2-98C15902542C}.wem"
+     },
+     {
+      "Id": "90676896",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_reaction_generic_03.wav",
+      "CachePath": "E8/{E8F6E37E-957E-8139-7A92-E50580290066}.wem"
+     },
+     {
+      "Id": "124525188",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_death_04.wav",
+      "CachePath": "36/{36125D16-8E9E-B540-8E6E-E6C6818C1095}.wem"
+     },
+     {
+      "Id": "139818189",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_reaction_generic_10.wav",
+      "CachePath": "09/{09AEF272-1749-D8DD-2AA5-5B2A41371553}.wem"
+     },
+     {
+      "Id": "165726099",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_voice_follower_a_loop_01.wav",
+      "CachePath": "B8/{B8BD5024-99CE-486D-9801-66DAA22EEC82}.wem"
+     },
+     {
+      "Id": "221880871",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_reaction_generic_01.wav",
+      "CachePath": "2E/{2E720E6A-6BA7-FFD9-51EF-D86447FF1337}.wem"
+     },
+     {
+      "Id": "241306261",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_reaction_generic_09.wav",
+      "CachePath": "E3/{E38944E3-B55C-323C-57D8-E7B60A231FA5}.wem"
+     },
+     {
+      "Id": "278142286",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_reaction_generic_04.wav",
+      "CachePath": "2B/{2BBE517E-2CC3-57FB-2657-D67FC8A24E8F}.wem"
+     },
+     {
+      "Id": "329805836",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_voice_priest_loop_01.wav",
+      "CachePath": "5C/{5C172424-200B-7E81-6E4D-9B60CDB220A5}.wem"
+     },
+     {
+      "Id": "409592141",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_reaction_generic_06.wav",
+      "CachePath": "10/{10E4FA05-0828-5473-3112-93567EE69E1E}.wem"
+     },
+     {
+      "Id": "423310687",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_death_01.wav",
+      "CachePath": "50/{50E90C34-DD20-4949-5DE7-34E006DD3FC6}.wem"
+     },
+     {
+      "Id": "440211649",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_death_05.wav",
+      "CachePath": "49/{49EF2A3A-7A16-5EBC-73B2-5015B9C4185E}.wem"
+     },
+     {
+      "Id": "503687277",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_voice_adao_loop_01.wav",
+      "CachePath": "13/{13DD06E7-EC37-9EED-6795-621A432A358C}.wem"
+     },
+     {
+      "Id": "508058933",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_reaction_generic_05.wav",
+      "CachePath": "7F/{7F8D3B71-D6BD-70F7-67AC-9AF239F97796}.wem"
+     },
+     {
+      "Id": "513688268",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_voice_fanactic_b_loop_01.wav",
+      "CachePath": "58/{58C7D251-0661-6324-1702-E1D4A029FC67}.wem"
+     },
+     {
+      "Id": "519822842",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_death_02.wav",
+      "CachePath": "C3/{C392F3F0-64E9-0A60-92B4-C5F2899E02B1}.wem"
+     },
+     {
+      "Id": "527475305",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_voice_believer_b_loop_01.wav",
+      "CachePath": "07/{0711EEE0-B219-EF3C-ECA5-9CA1E63B02DC}.wem"
+     },
+     {
+      "Id": "563533017",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_voice_believer_a_loop_01.wav",
+      "CachePath": "E6/{E6FE23B1-DDDD-06A5-B377-EF302ADCC545}.wem"
+     },
+     {
+      "Id": "571218306",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_voice_follower_b_loop_01.wav",
+      "CachePath": "25/{2538A3A5-0F11-D30B-9C2A-E2E91BE696C3}.wem"
+     },
+     {
+      "Id": "573956174",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_reaction_generic_02.wav",
+      "CachePath": "EA/{EA55CF59-53AF-3705-42E5-49D9BB08897F}.wem"
+     },
+     {
+      "Id": "585868783",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_reaction_generic_08.wav",
+      "CachePath": "7D/{7DFC79AC-A4C0-6C75-4861-82A9F43ABE94}.wem"
+     },
+     {
+      "Id": "626311289",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_voice_follower_c_loop_01.wav",
+      "CachePath": "FD/{FDB5168F-992F-F932-59B1-EB0B1CF61E04}.wem"
+     },
+     {
+      "Id": "666419838",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_voice_fanactic_a_loop_01.wav",
+      "CachePath": "82/{82059A5D-6FD6-3AED-CB7E-77F9E12332E9}.wem"
+     },
+     {
+      "Id": "673029271",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_voice_believer_c_loop_01.wav",
+      "CachePath": "BC/{BCAD5D2F-A6FD-91A0-BAF8-87E399BB779D}.wem"
+     },
+     {
+      "Id": "678347974",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_voice_believer_c_loop_01.wav",
+      "CachePath": "15/{150625C0-C9EF-6F46-B7E5-F17EDD6958D1}.wem"
+     },
+     {
+      "Id": "754044765",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_reaction_generic_07.wav",
+      "CachePath": "D5/{D58C8D8E-D32E-7E8F-E226-32C376A2B741}.wem"
+     },
+     {
+      "Id": "766311415",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_voice_eva_loop_01.wav",
+      "CachePath": "B4/{B4B7223A-70C0-389A-3992-B967222CDE70}.wem"
+     },
+     {
+      "Id": "789221143",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_voice_nando_loop_01.wav",
+      "CachePath": "44/{44BF716D-CBF4-E04A-28F2-B098348C8BCD}.wem"
+     },
+     {
+      "Id": "799825061",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_voice_ju_loop_01.wav",
+      "CachePath": "EF/{EF04DD5F-559C-C275-9F18-699B4D4E15AD}.wem"
+     },
+     {
+      "Id": "869918099",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_voice_believer_b_loop_01.wav",
+      "CachePath": "2F/{2F942503-3F42-CD9E-EC91-11AB5CC28432}.wem"
+     },
+     {
+      "Id": "896914284",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_voice_turing_loop_01.wav",
+      "CachePath": "BF/{BFDF773B-A7D6-BC02-13EA-162D1F7D33A3}.wem"
+     },
+     {
+      "Id": "910433898",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_voice_believer_a_loop_01.wav",
+      "CachePath": "AC/{AC452CB2-B5E8-2AB5-1C28-CEC9F8F9B51F}.wem"
+     },
+     {
+      "Id": "1008907154",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CHR\\NPC\\chr_npc_death_03.wav",
+      "CachePath": "A2/{A2D54638-CEF1-DC53-2402-C50A1CD7F26D}.wem"
+     }
+    ],
+    "Plugins": {
+     "Custom": [
+      {
+       "Id": "707423996",
+       "Name": "Compressor (Custom)",
+       "ObjectPath": "\\Actor-Mixer Hierarchy\\NPC\\NPC_Reactions\\Voice_Character\\[Effect Slot [0]: (Compressor)]\\Compressor (Custom)",
+       "GUID": "{A836FCBD-C421-41DC-9453-816EA073C354}",
+       "LibName": "Wwise Compressor",
+       "LibId": "7077891"
+      }
+     ]
+    },
+    "Events": [
+     {
+      "Id": "3888855080",
+      "Name": "Play_NPC_Death",
+      "ObjectPath": "\\Events\\NPC\\Play_NPC_Death",
+      "GUID": "{D9075525-9E3F-43A8-B10E-1F4DEA429DB8}",
+      "Color": "21",
+      "MaxAttenuation": "50",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "124525188"
+       },
+       {
+        "Id": "423310687"
+       },
+       {
+        "Id": "440211649"
+       },
+       {
+        "Id": "519822842"
+       },
+       {
+        "Id": "563533017"
+       },
+       {
+        "Id": "678347974"
+       },
+       {
+        "Id": "869918099"
+       },
+       {
+        "Id": "1008907154"
+       }
+      ]
+     },
+     {
+      "Id": "253233444",
+      "Name": "Play_NPC_Voice",
+      "ObjectPath": "\\Events\\NPC\\Play_NPC_Voice",
+      "GUID": "{7A5C1FC3-D054-4BC2-B117-190DBA3D2F20}",
+      "Color": "21",
+      "MaxAttenuation": "50",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "90676896"
+       },
+       {
+        "Id": "139818189"
+       },
+       {
+        "Id": "221880871"
+       },
+       {
+        "Id": "241306261"
+       },
+       {
+        "Id": "278142286"
+       },
+       {
+        "Id": "409592141"
+       },
+       {
+        "Id": "508058933"
+       },
+       {
+        "Id": "573956174"
+       },
+       {
+        "Id": "585868783"
+       },
+       {
+        "Id": "754044765"
+       }
+      ],
+      "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "2571308781",
+         "Id": "3064974266",
+         "GUID": "{ECD42C00-8D05-4C51-9FDA-1354F952C65C}"
+        },
+        "Children": [
+         {
+          "SwitchValue": {
+           "GroupType": "Switch",
+           "GroupId": "3499340336",
+           "Id": "1977129223",
+           "GUID": "{CAE17403-438E-4321-BBBE-7D8340D0457D}"
+          },
+          "MediaRefs": [
+           {
+            "Id": "896914284"
+           }
+          ],
+          "PluginRefs": {
+           "Custom": [
+            {
+             "Id": "707423996"
+            }
+           ]
+          }
+         },
+         {
+          "SwitchValue": {
+           "GroupType": "Switch",
+           "GroupId": "3499340336",
+           "Id": "3239039443",
+           "GUID": "{44ED385B-1DE4-483E-9AA2-7B725221582D}"
+          },
+          "MediaRefs": [
+           {
+            "Id": "799825061"
+           }
+          ],
+          "PluginRefs": {
+           "Custom": [
+            {
+             "Id": "707423996"
+            }
+           ]
+          }
+         },
+         {
+          "SwitchValue": {
+           "GroupType": "Switch",
+           "GroupId": "3499340336",
+           "Id": "4032430747",
+           "GUID": "{EEE19F63-7CEB-4EE1-AB77-94C2E52461D6}"
+          },
+          "MediaRefs": [
+           {
+            "Id": "503687277"
+           }
+          ],
+          "PluginRefs": {
+           "Custom": [
+            {
+             "Id": "707423996"
+            }
+           ]
+          }
+         },
+         {
+          "SwitchValue": {
+           "GroupType": "Switch",
+           "GroupId": "3499340336",
+           "Id": "3187773810",
+           "GUID": "{D5856172-7131-48FB-B047-17898AD0BF05}"
+          },
+          "MediaRefs": [
+           {
+            "Id": "766311415"
+           }
+          ],
+          "PluginRefs": {
+           "Custom": [
+            {
+             "Id": "707423996"
+            }
+           ]
+          }
+         },
+         {
+          "SwitchValue": {
+           "GroupType": "Switch",
+           "GroupId": "3499340336",
+           "Id": "2674630308",
+           "GUID": "{2AB7F28D-C8FA-4A22-A49E-A6C3438CA9FB}"
+          },
+          "MediaRefs": [
+           {
+            "Id": "83892511"
+           }
+          ],
+          "PluginRefs": {
+           "Custom": [
+            {
+             "Id": "707423996"
+            }
+           ]
+          }
+         },
+         {
+          "SwitchValue": {
+           "GroupType": "Switch",
+           "GroupId": "3499340336",
+           "Id": "3867125212",
+           "GUID": "{F1A1A19E-A12D-4CCA-9722-920D1090B251}"
+          },
+          "MediaRefs": [
+           {
+            "Id": "789221143"
+           }
+          ],
+          "PluginRefs": {
+           "Custom": [
+            {
+             "Id": "707423996"
+            }
+           ]
+          }
+         },
+         {
+          "SwitchValue": {
+           "GroupType": "Switch",
+           "GroupId": "3499340336",
+           "Id": "2930593888",
+           "GUID": "{A09F7BDA-5B89-4019-A9C4-96854E354D8E}"
+          },
+          "MediaRefs": [
+           {
+            "Id": "329805836"
+           }
+          ],
+          "PluginRefs": {
+           "Custom": [
+            {
+             "Id": "707423996"
+            }
+           ]
+          }
+         },
+         {
+          "SwitchValue": {
+           "GroupType": "Switch",
+           "GroupId": "3499340336",
+           "Id": "2129643512",
+           "GUID": "{437825E4-B135-48F6-87F1-6D5C9660D11A}"
+          },
+          "MediaRefs": [
+           {
+            "Id": "666419838"
+           }
+          ],
+          "PluginRefs": {
+           "Custom": [
+            {
+             "Id": "707423996"
+            }
+           ]
+          }
+         },
+         {
+          "SwitchValue": {
+           "GroupType": "Switch",
+           "GroupId": "3499340336",
+           "Id": "3167559567",
+           "GUID": "{EE5AD026-B81A-4186-9F62-834C464F0CFB}"
+          },
+          "MediaRefs": [
+           {
+            "Id": "527475305"
+           }
+          ],
+          "PluginRefs": {
+           "Custom": [
+            {
+             "Id": "707423996"
+            }
+           ]
+          }
+         },
+         {
+          "SwitchValue": {
+           "GroupType": "Switch",
+           "GroupId": "3499340336",
+           "Id": "3167559566",
+           "GUID": "{0468B579-BB1A-4C1D-A029-774C794C9A1E}"
+          },
+          "MediaRefs": [
+           {
+            "Id": "673029271"
+           }
+          ],
+          "PluginRefs": {
+           "Custom": [
+            {
+             "Id": "707423996"
+            }
+           ]
+          }
+         },
+         {
+          "SwitchValue": {
+           "GroupType": "Switch",
+           "GroupId": "3499340336",
+           "Id": "3167559564",
+           "GUID": "{AB5419A3-9159-462F-AD75-796F07ACCAD0}",
+           "Default": "true"
+          },
+          "MediaRefs": [
+           {
+            "Id": "910433898"
+           }
+          ],
+          "PluginRefs": {
+           "Custom": [
+            {
+             "Id": "707423996"
+            }
+           ]
+          }
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "2571308781",
+         "Id": "1377093687",
+         "GUID": "{9D03AA41-0E08-4C3D-A4B1-6468EABF800D}"
+        },
+        "Children": [
+         {
+          "SwitchValue": {
+           "GroupType": "Switch",
+           "GroupId": "3499340336",
+           "Id": "3167559567",
+           "GUID": "{EE5AD026-B81A-4186-9F62-834C464F0CFB}"
+          },
+          "MediaRefs": [
+           {
+            "Id": "571218306"
+           }
+          ],
+          "PluginRefs": {
+           "Custom": [
+            {
+             "Id": "707423996"
+            }
+           ]
+          }
+         },
+         {
+          "SwitchValue": {
+           "GroupType": "Switch",
+           "GroupId": "3499340336",
+           "Id": "3167559566",
+           "GUID": "{0468B579-BB1A-4C1D-A029-774C794C9A1E}"
+          },
+          "MediaRefs": [
+           {
+            "Id": "626311289"
+           }
+          ],
+          "PluginRefs": {
+           "Custom": [
+            {
+             "Id": "707423996"
+            }
+           ]
+          }
+         },
+         {
+          "SwitchValue": {
+           "GroupType": "Switch",
+           "GroupId": "3499340336",
+           "Id": "3167559564",
+           "GUID": "{AB5419A3-9159-462F-AD75-796F07ACCAD0}",
+           "Default": "true"
+          },
+          "MediaRefs": [
+           {
+            "Id": "165726099"
+           }
+          ],
+          "PluginRefs": {
+           "Custom": [
+            {
+             "Id": "707423996"
+            }
+           ]
+          }
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "2571308781",
+         "Id": "3254822759",
+         "GUID": "{A4E75C81-D49A-4B02-AB53-EF0894F00369}"
+        },
+        "Children": [
+         {
+          "SwitchValue": {
+           "GroupType": "Switch",
+           "GroupId": "3499340336",
+           "Id": "3167559567",
+           "GUID": "{EE5AD026-B81A-4186-9F62-834C464F0CFB}"
+          },
+          "MediaRefs": [
+           {
+            "Id": "527475305"
+           }
+          ],
+          "PluginRefs": {
+           "Custom": [
+            {
+             "Id": "707423996"
+            }
+           ]
+          }
+         },
+         {
+          "SwitchValue": {
+           "GroupType": "Switch",
+           "GroupId": "3499340336",
+           "Id": "3167559566",
+           "GUID": "{0468B579-BB1A-4C1D-A029-774C794C9A1E}"
+          },
+          "MediaRefs": [
+           {
+            "Id": "673029271"
+           }
+          ],
+          "PluginRefs": {
+           "Custom": [
+            {
+             "Id": "707423996"
+            }
+           ]
+          }
+         },
+         {
+          "SwitchValue": {
+           "GroupType": "Switch",
+           "GroupId": "3499340336",
+           "Id": "3167559564",
+           "GUID": "{AB5419A3-9159-462F-AD75-796F07ACCAD0}",
+           "Default": "true"
+          },
+          "MediaRefs": [
+           {
+            "Id": "910433898"
+           }
+          ],
+          "PluginRefs": {
+           "Custom": [
+            {
+             "Id": "707423996"
+            }
+           ]
+          }
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "2571308781",
+         "Id": "1514842588",
+         "GUID": "{9779F3B8-CACD-42AC-9A56-43DE4FB8FC02}"
+        },
+        "Children": [
+         {
+          "SwitchValue": {
+           "GroupType": "Switch",
+           "GroupId": "3499340336",
+           "Id": "3167559567",
+           "GUID": "{EE5AD026-B81A-4186-9F62-834C464F0CFB}"
+          },
+          "MediaRefs": [
+           {
+            "Id": "513688268"
+           }
+          ],
+          "PluginRefs": {
+           "Custom": [
+            {
+             "Id": "707423996"
+            }
+           ]
+          }
+         },
+         {
+          "SwitchValue": {
+           "GroupType": "Switch",
+           "GroupId": "3499340336",
+           "Id": "3167559566",
+           "GUID": "{0468B579-BB1A-4C1D-A029-774C794C9A1E}"
+          },
+          "MediaRefs": [
+           {
+            "Id": "60162200"
+           }
+          ],
+          "PluginRefs": {
+           "Custom": [
+            {
+             "Id": "707423996"
+            }
+           ]
+          }
+         },
+         {
+          "SwitchValue": {
+           "GroupType": "Switch",
+           "GroupId": "3499340336",
+           "Id": "3167559564",
+           "GUID": "{AB5419A3-9159-462F-AD75-796F07ACCAD0}",
+           "Default": "true"
+          },
+          "MediaRefs": [
+           {
+            "Id": "666419838"
+           }
+          ],
+          "PluginRefs": {
+           "Custom": [
+            {
+             "Id": "707423996"
+            }
+           ]
+          }
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "Id": "1051341570",
+      "Name": "Play_Revolution_Entry",
+      "ObjectPath": "\\Events\\NPC\\Revolution\\Play_Revolution_Entry",
+      "GUID": "{3C1BFF7E-9332-49DF-B66B-0C4C4D46CB2D}",
+      "Color": "21",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "290359181",
+      "Name": "chr_VoicePitch",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\chr_VoicePitch",
+      "GUID": "{62C502D3-5A27-4852-8EDA-65F9AE0CDFDF}",
+      "Color": "14"
+     },
+     {
+      "Id": "3465040348",
+      "Name": "chr_TextLenght",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\chr_TextLenght",
+      "GUID": "{28ECC6C5-6841-40D9-B345-255A0B054B83}",
+      "Color": "14"
+     }
+    ],
+    "SwitchGroups": [
+     {
+      "Id": "2571308781",
+      "Name": "NPC_Voice",
+      "ObjectPath": "\\Switches\\Default Work Unit\\NPC_Voice",
+      "GUID": "{C11812D5-9C66-43A1-9776-FB446F7C4D26}",
+      "Switches": [
+       {
+        "Id": "1377093687",
+        "Name": "Follower",
+        "ObjectPath": "\\Switches\\Default Work Unit\\NPC_Voice\\Follower",
+        "GUID": "{9D03AA41-0E08-4C3D-A4B1-6468EABF800D}"
+       },
+       {
+        "Id": "1514842588",
+        "Name": "Fanactic",
+        "ObjectPath": "\\Switches\\Default Work Unit\\NPC_Voice\\Fanactic",
+        "GUID": "{9779F3B8-CACD-42AC-9A56-43DE4FB8FC02}"
+       },
+       {
+        "Id": "3064974266",
+        "Name": "Special",
+        "ObjectPath": "\\Switches\\Default Work Unit\\NPC_Voice\\Special",
+        "GUID": "{ECD42C00-8D05-4C51-9FDA-1354F952C65C}"
+       },
+       {
+        "Id": "3254822759",
+        "Name": "Believer",
+        "ObjectPath": "\\Switches\\Default Work Unit\\NPC_Voice\\Believer",
+        "GUID": "{A4E75C81-D49A-4B02-AB53-EF0894F00369}"
+       }
+      ]
+     },
+     {
+      "Id": "3499340336",
+      "Name": "NPC_Voice_Type",
+      "ObjectPath": "\\Switches\\Default Work Unit\\NPC_Voice_Type",
+      "GUID": "{3FAD53EF-14D1-4C44-91AC-EF9DED1E77BA}",
+      "Switches": [
+       {
+        "Id": "1977129223",
+        "Name": "Char_Turing",
+        "ObjectPath": "\\Switches\\Default Work Unit\\NPC_Voice_Type\\Char_Turing",
+        "GUID": "{CAE17403-438E-4321-BBBE-7D8340D0457D}"
+       },
+       {
+        "Id": "2129643512",
+        "Name": "Hub_Fanactic",
+        "ObjectPath": "\\Switches\\Default Work Unit\\NPC_Voice_Type\\Hub_Fanactic",
+        "GUID": "{437825E4-B135-48F6-87F1-6D5C9660D11A}"
+       },
+       {
+        "Id": "2674630308",
+        "Name": "Char_Nene",
+        "ObjectPath": "\\Switches\\Default Work Unit\\NPC_Voice_Type\\Char_Nene",
+        "GUID": "{2AB7F28D-C8FA-4A22-A49E-A6C3438CA9FB}"
+       },
+       {
+        "Id": "2930593888",
+        "Name": "Hub_Priest",
+        "ObjectPath": "\\Switches\\Default Work Unit\\NPC_Voice_Type\\Hub_Priest",
+        "GUID": "{A09F7BDA-5B89-4019-A9C4-96854E354D8E}"
+       },
+       {
+        "Id": "3167559564",
+        "Name": "Generic_A",
+        "ObjectPath": "\\Switches\\Default Work Unit\\NPC_Voice_Type\\Generic_A",
+        "GUID": "{AB5419A3-9159-462F-AD75-796F07ACCAD0}"
+       },
+       {
+        "Id": "3167559566",
+        "Name": "Generic_C",
+        "ObjectPath": "\\Switches\\Default Work Unit\\NPC_Voice_Type\\Generic_C",
+        "GUID": "{0468B579-BB1A-4C1D-A029-774C794C9A1E}"
+       },
+       {
+        "Id": "3167559567",
+        "Name": "Generic_B",
+        "ObjectPath": "\\Switches\\Default Work Unit\\NPC_Voice_Type\\Generic_B",
+        "GUID": "{EE5AD026-B81A-4186-9F62-834C464F0CFB}"
+       },
+       {
+        "Id": "3187773810",
+        "Name": "Char_Eva",
+        "ObjectPath": "\\Switches\\Default Work Unit\\NPC_Voice_Type\\Char_Eva",
+        "GUID": "{D5856172-7131-48FB-B047-17898AD0BF05}"
+       },
+       {
+        "Id": "3239039443",
+        "Name": "Char_Ju",
+        "ObjectPath": "\\Switches\\Default Work Unit\\NPC_Voice_Type\\Char_Ju",
+        "GUID": "{44ED385B-1DE4-483E-9AA2-7B725221582D}"
+       },
+       {
+        "Id": "3867125212",
+        "Name": "Char_Nando",
+        "ObjectPath": "\\Switches\\Default Work Unit\\NPC_Voice_Type\\Char_Nando",
+        "GUID": "{F1A1A19E-A12D-4CCA-9722-920D1090B251}"
+       },
+       {
+        "Id": "4032430747",
+        "Name": "Char_Adao",
+        "ObjectPath": "\\Switches\\Default Work Unit\\NPC_Voice_Type\\Char_Adao",
+        "GUID": "{EEE19F63-7CEB-4EE1-AB77-94C2E52461D6}"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{C128BC39-9A53-21B0-9491-33EBA4753FEB}"
+ }
+}

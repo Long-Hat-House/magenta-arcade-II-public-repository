@@ -1,0 +1,7 @@
+[gd_resource type="WwiseSwitchGroup" format=3 uid="uid://b28j3hbtmplxw"]
+
+[resource]
+name = "UI_LevelClear_Stars_Type"
+id = 1583877764
+guid = "{9E335634-A3D3-4EF0-A488-4C94A76522F2}"
+dummy = true

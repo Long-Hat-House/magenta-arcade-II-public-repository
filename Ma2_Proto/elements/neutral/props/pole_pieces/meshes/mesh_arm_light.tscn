@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfxxlalekm52f"]
+
+[ext_resource type="PackedScene" uid="uid://d04upxn6b68h0" path="res://elements/neutral/props/pole_pieces/meshes/mesh_arm_light.glb" id="1_4mpkb"]
+[ext_resource type="Material" uid="uid://b448018bi2e2g" path="res://elements/neutral/props/poles/material/m_pole_light.tres" id="2_tcsda"]
+
+[node name="mesh_arm_light" instance=ExtResource("1_4mpkb")]
+
+[node name="arm_light" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.019)
+material_override = ExtResource("2_tcsda")

@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://b8c8ikagvs20x"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Enemy_Carpa_Missile_Launch"
+id = 3842291993
+guid = "{867A91E8-DAFD-455F-B6ED-D403149BD67C}"
+dummy = true

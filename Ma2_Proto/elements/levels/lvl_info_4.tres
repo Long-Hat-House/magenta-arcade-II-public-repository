@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="LevelInfo" load_steps=18 format=3 uid="uid://cqocyay2fuac"]
+
+[ext_resource type="Script" uid="uid://dbvews5vjmnxf" path="res://elements/stage_pieces/shop/shop_object_info.gd" id="1_ytu48"]
+[ext_resource type="Texture2D" uid="uid://im4l817t7wa1" path="res://elements/icons/icon_lvl_4.png" id="2_36ylm"]
+[ext_resource type="PackedScene" uid="uid://ta33edhasg1x" path="res://elements/powerups/button/holdable_button_health.tscn" id="2_b8atj"]
+[ext_resource type="PackedScene" uid="uid://bqf8spkpeqp02" path="res://elements/powerups/button/powerup_weapon_button_hold_red.tscn" id="2_tfw41"]
+[ext_resource type="Texture2D" uid="uid://d2wj1dwim3j0w" path="res://modules/text_flow/zap/textures/text_flow_zap_speaker_icon_eva.png" id="3_iae15"]
+[ext_resource type="Script" uid="uid://r36vu12ey5m8" path="res://systems/level/level_info.gd" id="4_h8bcb"]
+[ext_resource type="Script" uid="uid://yt80jeaa705j" path="res://systems/ma2_meta/star_info.gd" id="5_kjupy"]
+[ext_resource type="Resource" uid="uid://y140vcldpdfh" path="res://systems/ma2_meta/stars/stars_lvl_4/star_lvl_4_score_1.tres" id="5_o2q6w"]
+[ext_resource type="Resource" uid="uid://c11rf6uvleey" path="res://systems/ma2_meta/stars/stars_lvl_4/star_lvl_4_score_2.tres" id="6_2rjxk"]
+[ext_resource type="Script" uid="uid://cwxu6khojrwjt" path="res://modules/text_flow/zap/src/text_flow_zap_speaker.gd" id="7_1bdbn"]
+[ext_resource type="Resource" uid="uid://cl3ngagmexr5x" path="res://elements/zap_characters/zap_speaker_turing.tres" id="7_7g30x"]
+[ext_resource type="Resource" uid="uid://ckuqr6uh30dwy" path="res://systems/ma2_meta/stars/stars_lvl_4/star_lvl_4_score_3.tres" id="7_fclmg"]
+[ext_resource type="Resource" uid="uid://bnh1nkl4ncbtf" path="res://elements/zap_characters/zap_speaker_eva.tres" id="8_f21wk"]
+
+[sub_resource type="Resource" id="Resource_51xvf"]
+script = ExtResource("1_ytu48")
+object_scene = ExtResource("2_b8atj")
+object_cost = 800
+metadata/_custom_type_script = "uid://dbvews5vjmnxf"
+
+[sub_resource type="Resource" id="Resource_2p4y6"]
+script = ExtResource("1_ytu48")
+object_scene = ExtResource("2_b8atj")
+object_cost = 1000
+metadata/_custom_type_script = "uid://dbvews5vjmnxf"
+
+[sub_resource type="Resource" id="Resource_ocn2d"]
+script = ExtResource("1_ytu48")
+object_scene = ExtResource("2_b8atj")
+object_cost = 1200
+metadata/_custom_type_script = "uid://dbvews5vjmnxf"
+
+[sub_resource type="Resource" id="Resource_b8atj"]
+script = ExtResource("1_ytu48")
+object_scene = ExtResource("2_tfw41")
+object_cost = 0
+metadata/_custom_type_script = "uid://dbvews5vjmnxf"
+
+[resource]
+script = ExtResource("4_h8bcb")
+lvl_id = &"lvl_4"
+lvl_resource_path = "res://elements/levels/lvl_4/lvl_4_set.tres"
+zap_speaker_bosses = Array[ExtResource("7_1bdbn")]([ExtResource("7_7g30x"), ExtResource("8_f21wk")])
+is_arcade_mode = false
+npc_mode = 1
+church_npc_max_count = 7
+always_unlocked = false
+score_max_seconds = 510
+level_goal_text = "lvl_4_goal"
+star_list = Array[ExtResource("5_kjupy")]([ExtResource("5_o2q6w"), ExtResource("6_2rjxk"), ExtResource("7_fclmg")])
+lvl_texture = ExtResource("3_iae15")
+lvl_icon = ExtResource("2_36ylm")
+lvl_color = Color(0.745098, 0, 0.784314, 1)
+lvl_color_highlight = Color(1, 0.658824, 0.909804, 1)
+map_coordinate = Vector3(-0.879, 0, -3.498)
+map_scale = 1.5
+dial_zap = "zap_lvl4"
+dial_hub_welcome = "dial_hub_welcome"
+dial_hub_win = "dial_hub_lvl_4_win"
+dial_hub_win_array = Array[String]([])
+dial_hub_pre_unlock = "dial_hub_lvl_4_pre_unlock"
+dial_hub_pos_unlock = "dial_hub_lvl_4_pos_unlock"
+dial_hub_lvl_still_locked = "dial_hub_lvl_still_locked"
+dial_hub_stars_locked = "dial_hub_stars_locked"
+dial_hub_stars_unlocked_first = "dial_hub_stars_unlocked_first"
+dial_hub_stars_unlocked_full = "dial_hub_stars_unlocked_full"
+buy_as_many = Array[ExtResource("1_ytu48")]([SubResource("Resource_51xvf"), SubResource("Resource_2p4y6"), SubResource("Resource_ocn2d")])
+buy_one = Array[ExtResource("1_ytu48")]([])
+buy_start = Array[ExtResource("1_ytu48")]([SubResource("Resource_b8atj")])
+_leaderboard_id = 5
+_achievement_beat_id = 5

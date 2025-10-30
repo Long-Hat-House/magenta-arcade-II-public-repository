@@ -1,0 +1,225 @@
+Event	ID	Name			Wwise Object Path	Notes
+	341840977	Play_UI_Coins_NotEnough			\UI\Coins\Play_UI_Coins_NotEnough	
+	514743570	Play_UI_Score_Boost_Increase			\UI\Score\Play_UI_Score_Boost_Increase	
+	687442261	Play_UI_Challenge_Victory			\UI\Challenge\Play_UI_Challenge_Victory	
+	756647417	Play_UI_Upgrade_Stars_Confirm_Down			\UI\Upgrade\Play_UI_Upgrade_Stars_Confirm_Down	
+	869515734	Play_UI_LevelClear			\UI\Level Clear\Play_UI_LevelClear	
+	1301238758	Play_UI_Upgrade_Stars_Increase			\UI\Upgrade\Play_UI_Upgrade_Stars_Increase	
+	1330313623	Play_UI_Score_Combo_Increase			\UI\Score\Play_UI_Score_Combo_Increase	
+	1428185736	Reset_UI_Upgrade_Stars			\UI\Upgrade\Reset_UI_Upgrade_Stars	
+	1643265098	Play_UI_Pause_Open			\UI\Pause\Play_UI_Pause_Open	
+	1730131854	Play_UI_Pause_Close			\UI\Pause\Play_UI_Pause_Close	
+	1736447005	Play_Game_Paused			\UI\Pause\Play_Game_Paused	
+	1844184335	Play_UI_Button_Delete			\UI\Common\Play_UI_Button_Delete	
+	1888300740	Play_UI_Challenge_Begin			\UI\Challenge\Play_UI_Challenge_Begin	
+	1923153687	Play_UI_GameOver			\UI\Play_UI_GameOver	
+	2143876607	Play_UI_Coins_Count			\UI\Coins\Play_UI_Coins_Count	
+	2219055143	Play_UI_GameOver_Complete			\UI\Play_UI_GameOver_Complete	
+	2323905208	Play_UI_LevelClear_Stars			\UI\Level Clear\Play_UI_LevelClear_Stars	
+	2348959405	Play_UI_LevelClear_Step_Pre			\UI\Level Clear\Play_UI_LevelClear_Step_Pre	
+	2579295914	Play_UI_Score_Combo_Points			\UI\Score\Play_UI_Score_Combo_Points	
+	2586193362	Play_UI_Score_Combo_Text			\UI\Score\Play_UI_Score_Combo_Text	
+	2656257272	Play_TitleScreenStart			\UI\Play_TitleScreenStart	
+	2952083749	Play_UI_Button_Untoggled			\UI\Common\Play_UI_Button_Untoggled	
+	3121796866	Play_UI_Score_Boost_Decrease			\UI\Score\Play_UI_Score_Boost_Decrease	
+	3217946907	Play_UI_Button_Back			\UI\Common\Play_UI_Button_Back	
+	3391936382	Play_UI_Upgrade_Stars_Decrease			\UI\Upgrade\Play_UI_Upgrade_Stars_Decrease	
+	3409627799	Play_UI_LevelClear_Step			\UI\Level Clear\Play_UI_LevelClear_Step	
+	3452408789	Play_UI_Slider_Changed			\UI\Common\Play_UI_Slider_Changed	
+	3480528918	Play_UI_Pause_Tab_Close			\UI\Pause\Play_UI_Pause_Tab_Close	
+	3534002376	Play_UI_Prompt_Close			\UI\Common\Play_UI_Prompt_Close	
+	3671476972	Play_UI_LevelClear_Complete			\UI\Level Clear\Play_UI_LevelClear_Complete	
+	3754632102	Play_UI_Pause_Tab_Change			\UI\Pause\Play_UI_Pause_Tab_Change	
+	3905923884	Play_UI_Prompt_Open			\UI\Common\Play_UI_Prompt_Open	
+	3960592670	Play_UI_Upgrade_Stars_Confirm_Up			\UI\Upgrade\Play_UI_Upgrade_Stars_Confirm_Up	
+	3983651624	Play_UI_Button_Pressed			\UI\Common\Play_UI_Button_Pressed	
+	4012712557	Play_UI_Challenge_Fail			\UI\Challenge\Play_UI_Challenge_Fail	
+	4104782297	Stop_UI_Coins_Count			\UI\Coins\Stop_UI_Coins_Count	
+	4158094875	Stop_Game_Paused			\UI\Pause\Stop_Game_Paused	
+	4173001919	Play_UI_Upgrade_Stars_Insuficient			\UI\Upgrade\Play_UI_Upgrade_Stars_Insuficient	
+
+Switch Group	ID	Name			Wwise Object Path	Notes
+	1583877764	UI_LevelClear_Stars_Type			\Default Work Unit\UI_LevelClear_Stars_Type	
+	3647429270	game_ScoreCombo			\Default Work Unit\game_ScoreCombo	
+	3937790049	UI_CoinsCount			\Default Work Unit\UI_CoinsCount	
+
+Switch	ID	Name	Switch Group			Notes
+	444308101	New	UI_LevelClear_Stars_Type			
+	930712164	Off	UI_LevelClear_Stars_Type			
+	1031377680	Old	UI_LevelClear_Stars_Type			
+	3975219728	combo_08	game_ScoreCombo			
+	3975219729	combo_09	game_ScoreCombo			
+	3975219737	combo_01	game_ScoreCombo			
+	3975219738	combo_02	game_ScoreCombo			
+	3975219739	combo_03	game_ScoreCombo			
+	3975219740	combo_04	game_ScoreCombo			
+	3975219741	combo_05	game_ScoreCombo			
+	3975219742	combo_06	game_ScoreCombo			
+	3975219743	combo_07	game_ScoreCombo			
+	3991997323	combo_10	game_ScoreCombo			
+	1544965421	Decrease	UI_CoinsCount			
+	3145449845	Increase	UI_CoinsCount			
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	3647429270	game_ScoreCombo			\Default Work Unit\game_ScoreCombo	
+
+Modulator Envelope	ID	Name			Wwise Object Path	Notes
+	17747083	Modulator Envelope (Custom)				
+	92404824	Modulator Envelope (Custom)				
+	329037127	Modulator Envelope (Custom)				
+	587468433	Modulator Envelope (Custom)				
+
+Effect plug-ins	ID	Name	Type				Notes
+	661796651	Blue_Distant_Echoes (Custom)	Wwise Stereo Delay			
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	6417400	ui_score_combo_voice_4_veryhigh_point_a_02	I:\MA2\Magenta-Arcade_Wwise\.cache\4B\{4B5F1505-3462-6944-66A6-5DEA941CAE88}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Voices\Combo_Text_Voice\Voice_4_VeryHigh\ui_score_combo_voice_4_veryhigh_point_a_02		9683
+	9485254	ui_score_combo_voice_4_veryhigh_point_a_03	I:\MA2\Magenta-Arcade_Wwise\.cache\5E\{5EE6EBE6-F9A9-960D-8878-B5B6CEE06219}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Voices\Combo_Text_Voice\Voice_4_VeryHigh\ui_score_combo_voice_4_veryhigh_point_a_03		10869
+	11365944	ui_level_clear_step_c_pre_01	I:\MA2\Magenta-Arcade_Wwise\.cache\A0\{A07268AB-9F94-8A0D-C8B3-C86DA4710B3C}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Screens\Level Clear\LevelClear_Step_Pre\ui_level_clear_step_c_pre_01		15662
+	21116428	ui_score_combo_voice_3_high_exp_a_03	I:\MA2\Magenta-Arcade_Wwise\.cache\0D\{0DA6E738-7787-AFAD-BD51-D38AD7B885DD}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Voices\Combo_Points_Exp\Exp_3_High\ui_score_combo_voice_3_high_exp_a_03		9370
+	22061155	ui_level_clear_step_c_01	I:\MA2\Magenta-Arcade_Wwise\.cache\ED\{ED8DA75C-5889-A978-A0E2-A4E3A9617505}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Screens\Level Clear\LevelClear_Step\ui_level_clear_step_c_01		77359
+	35334536	chr_npc_voice_nene_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\90\{90F30438-9362-4247-1F89-BDFC3121F6FF}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Buttons\NPC_Voices\chr_npc_voice_nene_loop_01		104301
+	46653792	ui_level_clear_step_a_01	I:\MA2\Magenta-Arcade_Wwise\.cache\F2\{F2029122-3926-55B8-5A61-9C612848F33B}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Screens\Level Clear\LevelClear_Step\ui_level_clear_step_a_01		77317
+	56559461	ui_score_combo_text_2_mid_01	I:\MA2\Magenta-Arcade_Wwise\.cache\22\{223A11F9-8E46-3270-9265-4277574AF163}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Text\Text_2_Mid\ui_score_combo_text_2_mid_01		25835
+	59314098	ui_score_boost_increase_03	I:\MA2\Magenta-Arcade_Wwise\.cache\E6\{E6FF9CE4-0C48-A2A3-6DE4-2BEDAA705552}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Boost\Boost_Increase\ui_score_boost_increase_03		7522
+	71812379	ui_score_combo_voice_5_perfect_exp_a_03	I:\MA2\Magenta-Arcade_Wwise\.cache\D6\{D6F1A71F-5FF8-B3B2-24A5-A9ADD5170940}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Voices\Combo_Points_Exp\Exp_5_Perfect\ui_score_combo_voice_5_perfect_exp_a_03		10453
+	94380521	ui_score_combo_increase_06	I:\MA2\Magenta-Arcade_Wwise\.cache\13\{139519D1-97B8-2FB8-8CE9-777856439E24}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Increase\Combo_Increase\ui_score_combo_increase_06		6683
+	94469038	ui_score_boost_decrease_03	I:\MA2\Magenta-Arcade_Wwise\.cache\97\{9757B872-2439-D493-177E-BF278535722C}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Boost\Boost_Decrease\ui_score_boost_decrease_03		7359
+	95269725	ui_coin_decrease_01	I:\MA2\Magenta-Arcade_Wwise\.cache\C4\{C4D4D695-50F9-39A1-9FF3-6E196C1EEA37}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Coins\Coin_Start\Coin_Decrease\ui_coin_decrease_01		31156
+	125480332	ui_upgrade_stars_count_decrease_03	I:\MA2\Magenta-Arcade_Wwise\.cache\89\{891FF459-01FB-7D4E-8981-FB4AEAE3730A}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Upgrade\Stars_Count\Stars_Decrease\ui_upgrade_stars_count_decrease_03		20119
+	126164382	ui_upgrade_star_basket_02	I:\MA2\Magenta-Arcade_Wwise\.cache\49\{49CA83CB-1AA1-B87A-5E47-E56D6E696365}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Upgrade\Stars_Basket\ui_upgrade_star_basket_02		9484
+	126231223	ui_score_combo_text_3_high_01	I:\MA2\Magenta-Arcade_Wwise\.cache\BC\{BCAF2147-4967-6A17-602B-9BDB4422E73F}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Text\Text_3_High\ui_score_combo_text_3_high_01		26261
+	127610373	ui_upgrade_stars_count_increase_02	I:\MA2\Magenta-Arcade_Wwise\.cache\5A\{5AA1FDE6-3AEB-A56A-11A9-84856A939AFC}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Screens\Level Clear\LevelClear_Stars\Star_A\ui_upgrade_stars_count_increase_02		6016
+	133594742	ui_score_combo_voice_3_high_exp_a_01	I:\MA2\Magenta-Arcade_Wwise\.cache\EB\{EB3B855E-EAED-D6E6-679A-D2D1913295AE}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Voices\Combo_Points_Exp\Exp_3_High\ui_score_combo_voice_3_high_exp_a_01		6763
+	144113696	ui_score_combo_voice_2_mid_point_a_01	I:\MA2\Magenta-Arcade_Wwise\.cache\C6\{C6D12B60-752C-E20B-F7CA-5EFDCC1E1069}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Voices\Combo_Text_Voice\Voice_2_Mid\ui_score_combo_voice_2_mid_point_a_01		6250
+	145849273	ui_button_click_03	I:\MA2\Magenta-Arcade_Wwise\.cache\98\{98690EEB-E662-70CE-CFBA-4237C25F34D4}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Buttons\Button_Click\ui_button_click_03		3410
+	152588644	ui_score_combo_score_increase_chord_arp_03	I:\MA2\Magenta-Arcade_Wwise\.cache\28\{2832CA83-6EFA-BDDF-7607-52C23541F8E0}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Increase\Combo_Increase_Arp\ui_score_combo_score_increase_chord_arp_03		18800
+	156236972	ui_button_prompt_open_01	I:\MA2\Magenta-Arcade_Wwise\.cache\FF\{FFB15B42-2BF9-54A8-BD1C-EA7522DE7F1C}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Buttons\Button_Prompt_Open\ui_button_prompt_open_01		4383
+	159868820	ui_upgrade_confirm_down_02	I:\MA2\Magenta-Arcade_Wwise\.cache\F2\{F29DBC57-7C9A-55D9-DF01-F493434B22CC}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Upgrade\Confirm\Confirm_Down\ui_upgrade_confirm_down_02		55879
+	165411896	ui_upgrade_confirm_down_01	I:\MA2\Magenta-Arcade_Wwise\.cache\82\{822EBB97-BF72-A098-914E-83AF26AF874E}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Upgrade\Confirm\Confirm_Down\ui_upgrade_confirm_down_01		57169
+	169500340	ui_button_click_tab_close_01	I:\MA2\Magenta-Arcade_Wwise\.cache\2B\{2B8FFF64-7DA0-C831-8CD1-DB3650F53F3C}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Buttons\Button_Tab_Close\ui_button_click_tab_close_01		2495
+	170885452	ui_coin_increase_03	I:\MA2\Magenta-Arcade_Wwise\.cache\02\{0292F51A-A867-9207-99F9-5F82CE7EE8E4}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Coins\Coin_Start\Coin_Increase\ui_coin_increase_03		37868
+	179181898	ui_game_over_complete_01	I:\MA2\Magenta-Arcade_Wwise\.cache\4A\{4A9838AB-8A7E-C6AD-D41B-E87E977FBC56}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Screens\Game Over\ui_game_over_complete_01		25811
+	193562483	ui_upgrade_stars_count_decrease_05	I:\MA2\Magenta-Arcade_Wwise\.cache\3A\{3A8DA94A-A9F3-68AB-BBA1-2D10E0CA10E7}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Upgrade\Stars_Count\Stars_Decrease\ui_upgrade_stars_count_decrease_05		20720
+	196938483	ui_score_combo_rise_01	I:\MA2\Magenta-Arcade_Wwise\.cache\EE\{EEB29E07-8CEB-EF60-0968-1D9EE5D9500F}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Increase\ui_score_combo_rise_01		65657
+	201240775	ui_level_clear_step_b_01	I:\MA2\Magenta-Arcade_Wwise\.cache\AB\{ABF967EE-8BD5-9EE6-C096-1EDC66AB3641}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Screens\Level Clear\LevelClear_Step\ui_level_clear_step_b_01		76918
+	204192602	ui_upgrade_confirm_up_02	I:\MA2\Magenta-Arcade_Wwise\.cache\C6\{C6EDA858-5C41-C546-AFA4-85C53578C015}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Upgrade\Confirm\Confirm_Up\ui_upgrade_confirm_up_02		58473
+	252041201	ui_score_combo_score_increase_chord_02	I:\MA2\Magenta-Arcade_Wwise\.cache\5D\{5D172064-89AF-3A88-48F8-DA6166FDBF93}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Increase\Combo_Increase_Chord\ui_score_combo_score_increase_chord_02		18088
+	268782208	ui_score_combo_voice_4_veryhigh_exp_a_01	I:\MA2\Magenta-Arcade_Wwise\.cache\48\{482C76A1-4C9D-56D0-D75D-00322A97F1D8}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Voices\Combo_Points_Exp\Exp_4_VeryHigh\ui_score_combo_voice_4_veryhigh_exp_a_01		7545
+	275332766	ui_score_combo_voice_4_veryhigh_exp_a_02	I:\MA2\Magenta-Arcade_Wwise\.cache\79\{7953C7A8-89CB-1A19-9159-887A21F17ADD}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Voices\Combo_Points_Exp\Exp_4_VeryHigh\ui_score_combo_voice_4_veryhigh_exp_a_02		8992
+	279736478	ui_score_combo_text_4_veryhigh_01	I:\MA2\Magenta-Arcade_Wwise\.cache\EE\{EE2D60AE-D1A7-E760-175F-FF4569B926B7}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Text\Text_4_VeryHigh\ui_score_combo_text_4_veryhigh_01		25764
+	288112379	ui_upgrade_stars_count_insuficient_01	I:\MA2\Magenta-Arcade_Wwise\.cache\A9\{A9B1BE83-B51F-7AD2-BAAA-DB15228ECA45}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Upgrade\Stars_Insuficient\ui_upgrade_stars_count_insuficient_01		22391
+	297614024	ui_score_combo_voice_2_mid_exp_a_01	I:\MA2\Magenta-Arcade_Wwise\.cache\FB\{FBB6013B-4EDF-2594-5E9E-6C3CF2567D34}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Voices\Combo_Points_Exp\Exp_2_Mid\ui_score_combo_voice_2_mid_exp_a_01		5868
+	301724058	ui_score_combo_score_increase_chord_arp_07	I:\MA2\Magenta-Arcade_Wwise\.cache\73\{7376A985-B4EA-1E1E-73C0-78BDD0F86A03}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Increase\Combo_Increase_Arp\ui_score_combo_score_increase_chord_arp_07		24104
+	306859643	ui_score_combo_score_increase_chord_arp_02	I:\MA2\Magenta-Arcade_Wwise\.cache\7B\{7B45CFD7-E994-4035-8D53-2AC5F3831ACC}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Increase\Combo_Increase_Arp\ui_score_combo_score_increase_chord_arp_02		18072
+	328231862	ui_score_combo_points_5_perfect_01	I:\MA2\Magenta-Arcade_Wwise\.cache\6E\{6E8B8C09-A4B0-E706-8D74-B1EF103014BD}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Points\Points_5_Perfect\ui_score_combo_points_5_perfect_01		15909
+	332940632	ui_button_click_01	I:\MA2\Magenta-Arcade_Wwise\.cache\5B\{5BEA8808-F4BE-D80C-6C6A-1DCEFFB17BFE}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Buttons\Button_Click\ui_button_click_01		2712
+	334556763	ui_upgrade_stars_count_increase_04	I:\MA2\Magenta-Arcade_Wwise\.cache\E4\{E4388778-8748-346A-5DEF-B841EF878540}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Upgrade\Stars_Count\Stars_Increase\ui_upgrade_stars_count_increase_04		27655
+	341397796	ui_upgrade_stars_count_decrease_01	I:\MA2\Magenta-Arcade_Wwise\.cache\48\{48EBEF8E-B782-F12E-CBB7-98A3720AA602}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Upgrade\Stars_Count\Stars_Decrease\ui_upgrade_stars_count_decrease_01		20691
+	341623678	ui_challenge_voice_begin_01	I:\MA2\Magenta-Arcade_Wwise\.cache\BA\{BAB06DCF-72A8-1CAF-9094-1514A0751DA2}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Challenge\Challenge_Voice\Voice_Begin\ui_challenge_voice_begin_01		43723
+	354247065	ui_score_combo_voice_5_perfect_point_a_01	I:\MA2\Magenta-Arcade_Wwise\.cache\7A\{7A6BEF88-D5EC-B974-3926-FC3C7B255AC6}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Voices\Combo_Text_Voice\Voice_5_Perfect\ui_score_combo_voice_5_perfect_point_a_01		14318
+	358620057	ui_score_combo_increase_05	I:\MA2\Magenta-Arcade_Wwise\.cache\C4\{C4CDB782-527A-94BB-7BF8-00720267F818}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Increase\Combo_Increase\ui_score_combo_increase_05		5327
+	363076419	ui_score_combo_voice_4_veryhigh_exp_a_03	I:\MA2\Magenta-Arcade_Wwise\.cache\28\{28F64CC3-E11D-B38F-38A5-6DC3777E032D}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Voices\Combo_Points_Exp\Exp_4_VeryHigh\ui_score_combo_voice_4_veryhigh_exp_a_03		9287
+	369126962	ui_button_back_01	I:\MA2\Magenta-Arcade_Wwise\.cache\58\{584D096C-F9AE-E83A-0259-27C53146E551}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Buttons\Button_Back\ui_button_back_01		2501
+	372052245	ui_button_click_tab_01	I:\MA2\Magenta-Arcade_Wwise\.cache\C8\{C8079FC8-ADB8-D9CA-4831-E8920E03805B}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Buttons\Button_Tab_Click\ui_button_click_tab_01		2778
+	389858773	ui_score_combo_points_2_mid_01	I:\MA2\Magenta-Arcade_Wwise\.cache\E3\{E3FCFE59-8E3A-9D3B-DFFA-F7390D9AA7EC}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Points\Points_2_Mid\ui_score_combo_points_2_mid_01		8028
+	395592826	ui_score_combo_voice_3_high_point_a_02	I:\MA2\Magenta-Arcade_Wwise\.cache\90\{9033275B-B826-A331-26F9-81593F11CC62}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Voices\Combo_Text_Voice\Voice_3_High\ui_score_combo_voice_3_high_point_a_02		8141
+	398600170	ui_button_back_03	I:\MA2\Magenta-Arcade_Wwise\.cache\D7\{D7D39D84-4684-FD86-B29B-084B910034C9}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Buttons\Button_Back\ui_button_back_03		2330
+	400053519	ui_score_combo_score_increase_chord_06	I:\MA2\Magenta-Arcade_Wwise\.cache\A3\{A3EBC899-0163-F065-598E-C030FB349C74}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Increase\Combo_Increase_Chord\ui_score_combo_score_increase_chord_06		21927
+	403331715	ui_level_clear_step_b_pre_01	I:\MA2\Magenta-Arcade_Wwise\.cache\9D\{9D6DE106-C7B5-6412-32F8-CD3E58805F3A}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Screens\Level Clear\LevelClear_Step_Pre\ui_level_clear_step_b_pre_01		22569
+	403938308	ui_score_combo_voice_2_mid_point_a_02	I:\MA2\Magenta-Arcade_Wwise\.cache\4B\{4B45307D-0115-52B1-9201-25860DFE588F}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Voices\Combo_Text_Voice\Voice_2_Mid\ui_score_combo_voice_2_mid_point_a_02		5632
+	412693238	ui_score_boost_increase_02	I:\MA2\Magenta-Arcade_Wwise\.cache\EC\{ECBE9279-D0C2-9860-EF57-9BCE4B4607A7}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Boost\Boost_Increase\ui_score_boost_increase_02		8491
+	418819891	ui_score_boost_decrease_02	I:\MA2\Magenta-Arcade_Wwise\.cache\F2\{F27B342F-A1E8-938A-A885-CDF51F0F87AF}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Boost\Boost_Decrease\ui_score_boost_decrease_02		8249
+	423492115	ui_score_combo_increase_10	I:\MA2\Magenta-Arcade_Wwise\.cache\BB\{BBE31B4A-1CB8-9860-792C-EB2634EF3128}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Increase\Combo_Increase\ui_score_combo_increase_10		4997
+	437095046	ui_game_over_start_01	I:\MA2\Magenta-Arcade_Wwise\.cache\40\{40D0F0F4-C1EE-1517-30F9-71146937547C}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Screens\Game Over\ui_game_over_start_01		130760
+	439294782	ui_score_combo_increase_03	I:\MA2\Magenta-Arcade_Wwise\.cache\94\{949B347B-C812-7373-4CBF-7BFA69B86E1F}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Increase\Combo_Increase\ui_score_combo_increase_03		5668
+	447774643	ui_score_combo_voice_5_perfect_exp_a_02	I:\MA2\Magenta-Arcade_Wwise\.cache\3A\{3A714BC2-5959-CC49-92A4-39BA629D7B1C}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Voices\Combo_Points_Exp\Exp_5_Perfect\ui_score_combo_voice_5_perfect_exp_a_02		9599
+	450004664	ui_challenge_voice_begin_02	I:\MA2\Magenta-Arcade_Wwise\.cache\98\{98A37902-78B3-102E-3DCC-006269CDC525}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Challenge\Challenge_Voice\Voice_Begin\ui_challenge_voice_begin_02		45405
+	457200551	ui_upgrade_star_basket_05	I:\MA2\Magenta-Arcade_Wwise\.cache\D8\{D8DC73A3-2259-A358-BEDD-4DBCC4AEC366}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Upgrade\Stars_Basket\ui_upgrade_star_basket_05		9717
+	472442973	ui_upgrade_stars_count_decrease_04	I:\MA2\Magenta-Arcade_Wwise\.cache\BB\{BBD612BB-1D90-0C8E-BF5E-61E746186F5A}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Upgrade\Stars_Count\Stars_Decrease\ui_upgrade_stars_count_decrease_04		20362
+	472464000	chr_npc_voice_turing_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\7B\{7B7B686E-724B-5F8D-5451-4CDCFE2F36B3}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Buttons\NPC_Voices\chr_npc_voice_turing_loop_01		114922
+	473728988	ui_score_combo_increase_02	I:\MA2\Magenta-Arcade_Wwise\.cache\50\{5002C8FF-5E5F-231D-AECF-291C9F154EB7}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Increase\Combo_Increase\ui_score_combo_increase_02		4883
+	480770706	ui_score_combo_text_5_perfect_01	I:\MA2\Magenta-Arcade_Wwise\.cache\AA\{AABC3289-4D78-A7DE-85C6-4324EFB1396E}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Text\Text_5_Perfect\ui_score_combo_text_5_perfect_01		25729
+	496468625	chr_npc_voice_nando_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\D1\{D1AD33A2-8A8F-9798-84C8-36F526E6D5DD}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Buttons\NPC_Voices\NPC_Voices_Random\chr_npc_voice_nando_loop_01		226951
+	510602406	ui_upgrade_stars_count_decrease_06	I:\MA2\Magenta-Arcade_Wwise\.cache\CD\{CDF03B5D-8475-A674-6E0E-95C8D087F92C}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Upgrade\Stars_Count\Stars_Decrease\ui_upgrade_stars_count_decrease_06		20640
+	514889468	ui_score_combo_score_increase_chord_arp_05	I:\MA2\Magenta-Arcade_Wwise\.cache\03\{03FDB569-0D1D-D92E-71F7-0BD72DFFB829}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Increase\Combo_Increase_Arp\ui_score_combo_score_increase_chord_arp_05		21398
+	550957622	ui_level_clear_start_01	I:\MA2\Magenta-Arcade_Wwise\.cache\21\{21212720-03D4-DD25-17B0-77C95492FF16}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Screens\Level Clear\LevelClear_Start\ui_level_clear_start_01		199842
+	553436388	ui_upgrade_stars_count_decrease_02	I:\MA2\Magenta-Arcade_Wwise\.cache\67\{67DB9467-C000-F258-B039-F385E3922F91}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Upgrade\Stars_Count\Stars_Decrease\ui_upgrade_stars_count_decrease_02		20162
+	558039574	ui_score_combo_score_increase_chord_04	I:\MA2\Magenta-Arcade_Wwise\.cache\C0\{C03076AC-58B3-47DD-0A65-AD5480AB21BA}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Increase\Combo_Increase_Chord\ui_score_combo_score_increase_chord_04		20922
+	558055102	ui_score_combo_voice_3_high_exp_a_04	I:\MA2\Magenta-Arcade_Wwise\.cache\2D\{2D1AF30C-38E0-4779-5F8C-1B4419C44439}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Voices\Combo_Points_Exp\Exp_3_High\ui_score_combo_voice_3_high_exp_a_04		5475
+	564176476	ui_level_clear_step_a_pre_01	I:\MA2\Magenta-Arcade_Wwise\.cache\5F\{5F7663B5-8B15-E704-A734-ABB5811B1231}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Screens\Level Clear\LevelClear_Step_Pre\ui_level_clear_step_a_pre_01		20606
+	570412448	chr_npc_voice_priest_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\8C\{8C9748EB-5D00-6558-3261-FFFFCBDCF4DD}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Buttons\NPC_Voices\NPC_Voices_Random\chr_npc_voice_priest_loop_01		153386
+	580063019	chr_npc_voice_adao_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\53\{53FA0224-8097-E0B8-9A5D-30D61E338E5A}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Buttons\NPC_Voices\NPC_Voices_Random\chr_npc_voice_adao_loop_01		95514
+	583996501	ui_score_combo_voice_2_mid_exp_a_02	I:\MA2\Magenta-Arcade_Wwise\.cache\A0\{A0224D88-4EC2-24DD-B250-623FC340BE58}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Voices\Combo_Points_Exp\Exp_2_Mid\ui_score_combo_voice_2_mid_exp_a_02		7587
+	607796681	ui_button_click_tab_02	I:\MA2\Magenta-Arcade_Wwise\.cache\C7\{C751DC51-1C4A-B51B-3F6D-465694D9AFB3}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Buttons\Button_Tab_Click\ui_button_click_tab_02		2720
+	608498449	chr_npc_voice_ju_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\3D\{3D6EB013-107A-C838-4A5B-CBF04116B831}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Buttons\NPC_Voices\NPC_Voices_Random\chr_npc_voice_ju_loop_01		118013
+	609962749	ui_button_pause_close_01	I:\MA2\Magenta-Arcade_Wwise\.cache\BB\{BB6C636A-8D51-A502-DFB9-E2CC69386B9A}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Buttons\Button_Pause_Close\ui_button_pause_close_01		3722
+	610337410	ui_upgrade_stars_count_increase_03	I:\MA2\Magenta-Arcade_Wwise\.cache\DB\{DBAF2142-9C38-F2AD-6765-BB905D0B6CA5}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Screens\Level Clear\LevelClear_Stars\Star_C\ui_upgrade_stars_count_increase_03		27375
+	624411768	ui_score_combo_voice_3_high_point_a_01	I:\MA2\Magenta-Arcade_Wwise\.cache\7F\{7FDCAE48-696E-D979-FE19-E92F97F62712}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Voices\Combo_Text_Voice\Voice_3_High\ui_score_combo_voice_3_high_point_a_01		8579
+	628439831	ui_upgrade_star_basket_01	I:\MA2\Magenta-Arcade_Wwise\.cache\AC\{AC3A4139-268F-199D-93F0-6E85D32A5815}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Upgrade\Stars_Basket\ui_upgrade_star_basket_01		10200
+	640651901	ui_upgrade_confirm_up_01	I:\MA2\Magenta-Arcade_Wwise\.cache\93\{935E2E60-7E16-084A-47FA-0A94CFCD93E5}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Upgrade\Confirm\Confirm_Up\ui_upgrade_confirm_up_01		58584
+	644056183	Coin_Loop	I:\MA2\Magenta-Arcade_Wwise\.cache\01\{01E44BA2-A455-7280-C326-DADF4849B2AD}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Coins\Coin_Loop		95785
+	644107530	ui_score_combo_increase_09	I:\MA2\Magenta-Arcade_Wwise\.cache\0C\{0C9B7652-349B-1EFD-CE6D-0961B32FA228}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Increase\Combo_Increase\ui_score_combo_increase_09		4375
+	654865491	ui_score_combo_score_increase_chord_arp_06	I:\MA2\Magenta-Arcade_Wwise\.cache\0E\{0E6C48FA-7CE2-699A-5191-94705721CD6A}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Increase\Combo_Increase_Arp\ui_score_combo_score_increase_chord_arp_06		22453
+	686320967	ui_upgrade_stars_count_increase_02	I:\MA2\Magenta-Arcade_Wwise\.cache\8C\{8CF550BC-C8FB-F2F6-3F1B-39B641EBF38E}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Upgrade\Stars_Count\Stars_Increase\ui_upgrade_stars_count_increase_02		28165
+	687994046	ui_upgrade_confirm_up_03	I:\MA2\Magenta-Arcade_Wwise\.cache\42\{429695A4-446D-98B5-2576-E3712C0508E3}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Upgrade\Confirm\Confirm_Up\ui_upgrade_confirm_up_03		58687
+	696630244	ui_button_pause_open_01	I:\MA2\Magenta-Arcade_Wwise\.cache\EA\{EA3F8BD4-AABA-A8E6-3E54-DE9B2BB4959B}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Buttons\Button_Pause_Open\ui_button_pause_open_01		43339
+	697185789	ui_score_combo_score_increase_chord_arp_09	I:\MA2\Magenta-Arcade_Wwise\.cache\0B\{0BCC8B5A-EB47-A8E3-5E5F-E67D6855FF8D}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Increase\Combo_Increase_Arp\ui_score_combo_score_increase_chord_arp_09		30120
+	697757598	ui_upgrade_stars_count_increase_02	I:\MA2\Magenta-Arcade_Wwise\.cache\66\{66941779-E6BF-A48F-D3F1-FDB8A178A724}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Screens\Level Clear\LevelClear_Stars\Star_B\ui_upgrade_stars_count_increase_02		5781
+	710904612	ui_score_combo_score_increase_chord_arp_08	I:\MA2\Magenta-Arcade_Wwise\.cache\6D\{6DB26C31-56A5-11F0-D4D7-828955919041}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Increase\Combo_Increase_Arp\ui_score_combo_score_increase_chord_arp_08		28229
+	716001533	ui_score_combo_points_4_veryhigh_01	I:\MA2\Magenta-Arcade_Wwise\.cache\24\{24193667-FC64-C0AF-A232-4E5805AE9E9B}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Points\Points_4_VeryHigh\ui_score_combo_points_4_veryhigh_01		12770
+	719339796	ui_score_combo_score_increase_chord_07	I:\MA2\Magenta-Arcade_Wwise\.cache\41\{418E5EDD-64FE-DF96-462D-8C5A605CD9DE}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Increase\Combo_Increase_Chord\ui_score_combo_score_increase_chord_07		23105
+	732302280	ui_score_combo_score_increase_chord_09	I:\MA2\Magenta-Arcade_Wwise\.cache\ED\{EDFEF3D7-7EC0-5785-55C1-7D5C9967F734}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Increase\Combo_Increase_Chord\ui_score_combo_score_increase_chord_09		27359
+	740923087	ui_score_combo_increase_07	I:\MA2\Magenta-Arcade_Wwise\.cache\69\{69CA68ED-1312-DDD7-A91B-FC0B59F27006}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Increase\Combo_Increase\ui_score_combo_increase_07		4795
+	745888962	ui_challenge_window_victory_01	I:\MA2\Magenta-Arcade_Wwise\.cache\A2\{A2B11DD7-AC20-C134-28D8-8CF151762C53}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Challenge\Challenge_Popup\Challenge_Victory\ui_challenge_window_victory_01		186661
+	750829168	ui_score_combo_voice_3_high_exp_a_02	I:\MA2\Magenta-Arcade_Wwise\.cache\59\{5920C816-AD08-E237-5BD2-C6D363932F5B}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Voices\Combo_Points_Exp\Exp_3_High\ui_score_combo_voice_3_high_exp_a_02		9981
+	758428499	ui_coin_increase_01	I:\MA2\Magenta-Arcade_Wwise\.cache\11\{1165BD75-C605-4491-9081-E421514BEA2D}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Coins\Coin_Start\Coin_Increase\ui_coin_increase_01		37335
+	759789729	chr_npc_voice_eva_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\88\{889EE58F-2DCA-6CCD-DDF6-55764AD76806}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Buttons\NPC_Voices\NPC_Voices_Random\chr_npc_voice_eva_loop_01		120521
+	769126744	ui_score_combo_voice_3_high_exp_a_05	I:\MA2\Magenta-Arcade_Wwise\.cache\89\{8914847E-BE60-4B24-AD47-481A3A9F71A0}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Voices\Combo_Points_Exp\Exp_3_High\ui_score_combo_voice_3_high_exp_a_05		5590
+	776864164	ui_score_boost_decrease_01	I:\MA2\Magenta-Arcade_Wwise\.cache\70\{70C5F97A-58E6-9735-4FD8-8E25FE1421E7}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Boost\Boost_Decrease\ui_score_boost_decrease_01		7593
+	777919677	ui_score_combo_points_3_high_01	I:\MA2\Magenta-Arcade_Wwise\.cache\1D\{1D8A87A9-6A59-1C54-F9DA-75E5AA8B1977}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Points\Points_3_High\ui_score_combo_points_3_high_01		9625
+	787532140	ui_coin_increase_02	I:\MA2\Magenta-Arcade_Wwise\.cache\00\{00CC2CB8-1F2E-4967-D35D-707596329E22}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Coins\Coin_Start\Coin_Increase\ui_coin_increase_02		36542
+	796381574	ui_coin_decrease_02	I:\MA2\Magenta-Arcade_Wwise\.cache\66\{66AC3454-905F-2442-B4B4-8D6481E8CDAA}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Coins\Coin_Start\Coin_Decrease\ui_coin_decrease_02		31208
+	797541501	ui_challenge_voice_victory_01	I:\MA2\Magenta-Arcade_Wwise\.cache\43\{43B1B95A-5E19-53D1-0C22-8027BE5AF049}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Challenge\Challenge_Voice\Voice_Victory\ui_challenge_voice_victory_01		44135
+	802897236	ui_score_combo_points_1_low_01	I:\MA2\Magenta-Arcade_Wwise\.cache\F8\{F8F488BD-73FC-8D42-0BE1-A86299C1E0A0}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Points\Points_1_Low\ui_score_combo_points_1_low_01		6679
+	818988298	ui_score_combo_score_increase_chord_10	I:\MA2\Magenta-Arcade_Wwise\.cache\75\{75A45819-1869-B4B0-242D-90612B67FCAC}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Points\Points_5_Perfect\ui_score_combo_score_increase_chord_10		29139
+	823467178	ui_challenge_window_begin_01	I:\MA2\Magenta-Arcade_Wwise\.cache\E1\{E134EF84-1ADB-E2A8-66D8-DB0071793BAD}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Challenge\Challenge_Popup\Challenge_Begin\ui_challenge_window_begin_01		109844
+	834416666	ui_score_combo_voice_5_perfect_exp_a_01	I:\MA2\Magenta-Arcade_Wwise\.cache\52\{521BC582-8980-A884-CEE9-A4435FF5AFE2}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Voices\Combo_Points_Exp\Exp_5_Perfect\ui_score_combo_voice_5_perfect_exp_a_01		9381
+	843507671	ui_button_back_02	I:\MA2\Magenta-Arcade_Wwise\.cache\DB\{DBD185CB-3634-C3CC-89A8-E04128296690}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Buttons\Button_Back\ui_button_back_02		2286
+	847685161	ui_button_click_02	I:\MA2\Magenta-Arcade_Wwise\.cache\8A\{8AAF9A1B-9D84-4F5C-A791-E48A64053151}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Buttons\Button_Click_Untoggle\ui_button_click_02		2840
+	851121963	ui_score_combo_score_increase_chord_arp_04	I:\MA2\Magenta-Arcade_Wwise\.cache\52\{528C5193-CA24-AD8F-7EF5-4239817259A2}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Increase\Combo_Increase_Arp\ui_score_combo_score_increase_chord_arp_04		20894
+	864499697	ui_score_combo_increase_04	I:\MA2\Magenta-Arcade_Wwise\.cache\F8\{F809D944-3AC9-BE47-45DA-0BCE928F47E9}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Increase\Combo_Increase\ui_score_combo_increase_04		5922
+	877114917	ui_upgrade_stars_count_increase_02	I:\MA2\Magenta-Arcade_Wwise\.cache\21\{21EC7A1D-9DEF-EE19-9FF1-3468E38D570B}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Screens\Level Clear\LevelClear_Stars\Star_C\ui_upgrade_stars_count_increase_02		6772
+	877809281	ui_level_clear_step_complete_01	I:\MA2\Magenta-Arcade_Wwise\.cache\B0\{B0D180D0-0354-D147-1B00-06C13DA374D7}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Screens\Level Clear\LevelClear_Complete\ui_level_clear_step_complete_01		150868
+	880204798	ui_score_combo_score_increase_chord_05	I:\MA2\Magenta-Arcade_Wwise\.cache\C2\{C2076ECA-A42B-6D50-0270-A464BE043107}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Increase\Combo_Increase_Chord\ui_score_combo_score_increase_chord_05		21107
+	888353158	ui_challenge_voice_fail_01	I:\MA2\Magenta-Arcade_Wwise\.cache\E0\{E0100A3E-3913-8CCE-DF97-B665F08E7C79}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Challenge\Challenge_Voice\Voice_Fail\ui_challenge_voice_fail_01		38063
+	892181452	ui_score_combo_voice_2_mid_exp_a_03	I:\MA2\Magenta-Arcade_Wwise\.cache\D5\{D59B3FEF-FE74-6BBA-C945-D4ABCFD0B4E1}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Voices\Combo_Points_Exp\Exp_2_Mid\ui_score_combo_voice_2_mid_exp_a_03		5995
+	893988345	ui_upgrade_stars_count_increase_06	I:\MA2\Magenta-Arcade_Wwise\.cache\7E\{7E12ECBA-7A0F-EC79-43DB-AC21FEE51D7C}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Upgrade\Stars_Count\Stars_Increase\ui_upgrade_stars_count_increase_06		26216
+	896632394	ui_score_combo_score_increase_chord_arp_10	I:\MA2\Magenta-Arcade_Wwise\.cache\8A\{8A1767A0-7CD3-9A18-62BE-AFAD49D4A8A3}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Points\Points_5_Perfect\ui_score_combo_score_increase_chord_arp_10		30040
+	900310812	ui_coin_loop_end_decrease_01	I:\MA2\Magenta-Arcade_Wwise\.cache\80\{80B03C22-D4ED-84E4-6BC7-02F3BD80C0A9}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Coins\Coin_End\ui_coin_loop_end_decrease_01		18068
+	912248512	ui_upgrade_stars_count_increase_05	I:\MA2\Magenta-Arcade_Wwise\.cache\6D\{6D4DBE4E-229D-5E47-FAE6-6A02C2F5833F}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Upgrade\Stars_Count\Stars_Increase\ui_upgrade_stars_count_increase_05		27123
+	919419906	ui_coin_decrease_03	I:\MA2\Magenta-Arcade_Wwise\.cache\A6\{A65A38CE-087A-CA75-43EC-A1623AC063E7}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Coins\Coin_Start\Coin_Decrease\ui_coin_decrease_03		33402
+	925209794	ui_score_combo_voice_4_veryhigh_point_a_01	I:\MA2\Magenta-Arcade_Wwise\.cache\BD\{BDAED48B-4D34-C050-754B-0EC3982A2E24}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Voices\Combo_Text_Voice\Voice_4_VeryHigh\ui_score_combo_voice_4_veryhigh_point_a_01		9625
+	926303105	chr_npc_voice_fanactic_a_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\A0\{A03C6C93-019C-578B-26A8-1BC21AAAB8DE}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Buttons\NPC_Voices\NPC_Voices_Random\chr_npc_voice_fanactic_a_loop_01		146104
+	928331016	ui_score_boost_increase_01	I:\MA2\Magenta-Arcade_Wwise\.cache\80\{807FC171-660A-5846-BEF1-731FF1A71693}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Boost\Boost_Increase\ui_score_boost_increase_01		7898
+	942744993	ui_challenge_window_begin_02	I:\MA2\Magenta-Arcade_Wwise\.cache\C0\{C007DBD6-6C17-AD54-36AE-C633294D4C8B}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Challenge\Challenge_Popup\Challenge_Begin\ui_challenge_window_begin_02		108510
+	943685488	ui_button_slider_02	I:\MA2\Magenta-Arcade_Wwise\.cache\66\{66F013EF-493D-2569-F2B9-6D40AE82AC0B}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Buttons\Button_Slider_Change\ui_button_slider_02		468
+	953607726	ui_game_over_title_01	I:\MA2\Magenta-Arcade_Wwise\.cache\BF\{BF1E2599-E48C-7EDE-33D5-A3DF313EF5E5}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Screens\Game Over\ui_game_over_title_01		48486
+	955210360	ui_button_slider_01	I:\MA2\Magenta-Arcade_Wwise\.cache\38\{3833D584-CFD7-0FC5-5726-341932D128A3}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Buttons\Button_Slider_Change\ui_button_slider_01		464
+	969422419	ui_upgrade_confirm_down_03	I:\MA2\Magenta-Arcade_Wwise\.cache\19\{19B1A843-C1C8-3EA8-34EC-806B0DA91367}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Upgrade\Confirm\Confirm_Down\ui_upgrade_confirm_down_03		57134
+	970188408	ui_score_combo_score_increase_chord_08	I:\MA2\Magenta-Arcade_Wwise\.cache\3A\{3A035D03-A4E3-3A52-EEC7-4E0036B9D3AE}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Increase\Combo_Increase_Chord\ui_score_combo_score_increase_chord_08		30864
+	975501486	ui_upgrade_star_basket_04	I:\MA2\Magenta-Arcade_Wwise\.cache\CF\{CF50541B-2811-7D35-A402-EF59063A3CB7}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Upgrade\Stars_Basket\ui_upgrade_star_basket_04		10014
+	990819673	ui_coin_loop_end_increase_01	I:\MA2\Magenta-Arcade_Wwise\.cache\7E\{7E68EA0B-0B83-4C2E-14CB-A3C5CB0CCD99}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Coins\Coin_End\ui_coin_loop_end_increase_01		16837
+	995298322	ui_score_combo_increase_08	I:\MA2\Magenta-Arcade_Wwise\.cache\86\{863342F7-A2D3-B525-3302-84D3B8393037}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Increase\Combo_Increase\ui_score_combo_increase_08		4750
+	998604406	ui_upgrade_stars_count_increase_01	I:\MA2\Magenta-Arcade_Wwise\.cache\82\{82BEFB46-0D92-F4EA-FACD-3176148C34E6}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Screens\Level Clear\LevelClear_Stars\Star_A\ui_upgrade_stars_count_increase_01		27912
+	1015285231	ui_challenge_window_fail_01	I:\MA2\Magenta-Arcade_Wwise\.cache\89\{89A845D5-A936-DDED-B9BA-3AB0C4ADA20C}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Challenge\Challenge_Popup\Challenge_Fail\ui_challenge_window_fail_01		24447
+	1022547371	ui_score_combo_voice_5_perfect_point_a_02	I:\MA2\Magenta-Arcade_Wwise\.cache\FF\{FF49E784-7B0B-8D04-E155-99CF9921DA47}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Voices\Combo_Text_Voice\Voice_5_Perfect\ui_score_combo_voice_5_perfect_point_a_02		14704
+	1026647529	ui_button_prompt_close_01	I:\MA2\Magenta-Arcade_Wwise\.cache\5E\{5E9E3E14-B63D-9A73-67D3-3935E1F71E53}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Buttons\Button_Prompt_Close\ui_button_prompt_close_01		4070
+	1029112750	ui_score_combo_score_increase_chord_03	I:\MA2\Magenta-Arcade_Wwise\.cache\9F\{9FAB5D55-3F7C-8CA9-97FC-3FA735470D7B}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Increase\Combo_Increase_Chord\ui_score_combo_score_increase_chord_03		18597
+	1045963494	ui_score_combo_text_1_low_01	I:\MA2\Magenta-Arcade_Wwise\.cache\8B\{8BC7D95B-B9EB-D511-32A7-59079B246D54}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Text\Text_1_Low\ui_score_combo_text_1_low_01		25335
+	1047345692	ui_score_combo_voice_3_high_point_a_03	I:\MA2\Magenta-Arcade_Wwise\.cache\12\{124AE35F-7E2A-5E69-D478-1DF88B19DC31}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Voices\Combo_Text_Voice\Voice_3_High\ui_score_combo_voice_3_high_point_a_03		8876
+	1050580425	ui_score_combo_voice_3_high_exp_a_06	I:\MA2\Magenta-Arcade_Wwise\.cache\88\{885A4865-EDFA-E8AF-42AE-62D1DDB07083}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Voices\Combo_Points_Exp\Exp_3_High\ui_score_combo_voice_3_high_exp_a_06		7721
+	1051274822	ui_score_combo_score_increase_chord_arp_01	I:\MA2\Magenta-Arcade_Wwise\.cache\03\{03F1C040-1386-FAF5-FEAC-E3E4EA89C6A6}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Increase\Combo_Increase_Arp\ui_score_combo_score_increase_chord_arp_01		11656
+	1058203110	ui_score_combo_voice_5_perfect_point_a_03	I:\MA2\Magenta-Arcade_Wwise\.cache\31\{31AF7CBE-02E9-F3E0-1F75-B58F8329F6F8}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Score\Combo\Combo_Voices\Combo_Text_Voice\Voice_5_Perfect\ui_score_combo_voice_5_perfect_point_a_03		14521
+	1058664883	ui_upgrade_star_basket_03	I:\MA2\Magenta-Arcade_Wwise\.cache\AD\{AD54D92B-325C-6BC4-B9E2-2E7D28CF718F}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\Upgrade\Stars_Basket\ui_upgrade_star_basket_03		9332
+

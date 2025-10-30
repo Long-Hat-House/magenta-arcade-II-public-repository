@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://c0rmu2xr0xr1g"]
+
+[ext_resource type="Script" uid="uid://d1paq4x7d6g7l" path="res://elements/player/projectiles/proj_hold_forward.gd" id="1_kdagq"]
+[ext_resource type="PackedScene" uid="uid://c3lm4xns487th" path="res://elements/vfx/vfx_hit/vfx_hit_red.tscn" id="2_gpbor"]
+[ext_resource type="Resource" uid="uid://com3qf7kk6fby" path="res://systems/ma2_meta/upgrades/upgrade_hold_damage.tres" id="3_3wb45"]
+[ext_resource type="PackedScene" uid="uid://dc38kup30frfo" path="res://elements/player/projectiles/hold_red/mesh_hold_red.tscn" id="3_ha8sv"]
+[ext_resource type="WwiseEvent" uid="uid://b78hmeqtk0dv1" path="res://Wwise/resources/Event/{28A4FA06-0306-46F4-98E4-840A61486292}.tres" id="5_2qvmx"]
+[ext_resource type="Shader" uid="uid://clbaserrhs5so" path="res://elements/player/projectiles/instance_color_albedo.gdshader" id="5_6eanw"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="5_t2p1j"]
+[ext_resource type="Texture2D" uid="uid://blhvegn66qcfw" path="res://elements/player/projectiles/hold_red/texture/t_hold_red_magma_BaseColor.png" id="6_7oclr"]
+[ext_resource type="Texture2D" uid="uid://dst5xstrtwa0a" path="res://elements/player/projectiles/hold_red/texture/t_hold_red_magma_Emission.png" id="7_4lv3d"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3c0xa"]
+radius = 0.52189
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dxqny"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("5_6eanw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ghkuu"]
+resource_local_to_scene = true
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("6_7oclr")
+emission_enabled = true
+emission_energy_multiplier = 3.0
+emission_texture = ExtResource("7_4lv3d")
+rim = 0.3
+rim_tint = 1.0
+anisotropy = 1.0
+uv1_scale = Vector3(0.505, 0.505, 0.505)
+disable_receive_shadows = true
+
+[node name="ProjectileRedHold" type="Area3D"]
+collision_layer = 8
+collision_mask = 132
+script = ExtResource("1_kdagq")
+vanish_on_hit = false
+hitVFX = ExtResource("2_gpbor")
+projectileVelocityRelative = Vector3(0, 0, 5)
+projectileVelocityAbsolute = Vector3(0, 0, 0)
+camera_multiplier = Vector3(0, 0, 1)
+tween_on_start = 1
+projectileTweenDistance = Vector3(0, 0, -9)
+projectileTweenDuration = 0.55
+projectileTweenEase = 1
+projectileTweenTrans = 2
+explode_on_tween_end = true
+amountDamage = 0.2
+damage_per_bonus = 0.035
+bonus_resource = ExtResource("3_3wb45")
+damagePriority = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("SphereShape3D_3c0xa")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-1.15958, -0.528831, -1, 2.31915, 1.05766, 2)
+
+[node name="hold_red" parent="." instance=ExtResource("3_ha8sv")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="sphere2" parent="hold_red" index="1"]
+material_override = SubResource("ShaderMaterial_dxqny")
+
+[node name="sphere" parent="hold_red" index="2"]
+material_override = SubResource("StandardMaterial3D_ghkuu")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="hold_red" node_paths=PackedStringArray("excluded_nodes")]
+script = ExtResource("5_t2p1j")
+high_contrast_group = &"player"
+excluded_nodes = [NodePath("../fire")]
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="SFX" type="AkEvent3D" parent="."]
+event = ExtResource("5_2qvmx")
+trigger_on = 1
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
+
+[editable path="hold_red"]

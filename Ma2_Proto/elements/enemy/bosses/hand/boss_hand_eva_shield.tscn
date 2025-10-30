@@ -1,0 +1,223 @@
+[gd_scene load_steps=21 format=3 uid="uid://y8flfks2eb4j"]
+
+[ext_resource type="Script" uid="uid://d3jsdd786bgv4" path="res://elements/enemy/bosses/hand/boss_hand_eva_shield.gd" id="1_nvyk0"]
+[ext_resource type="Material" uid="uid://or7d75qj406g" path="res://elements/general_use/material/m_magenta_shield.tres" id="1_pshoe"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="3_fdjtb"]
+[ext_resource type="Script" uid="uid://c1a23qdrmn8d1" path="res://elements/enemy/projectiles/damage_area/damage_area.gd" id="4_ald56"]
+[ext_resource type="WwiseEvent" uid="uid://0d8qj0a6y1p" path="res://Wwise/resources/Event/{37EB9218-D2DC-4816-8B57-BA5B29A796EF}.tres" id="5_fkttu"]
+[ext_resource type="WwiseEvent" uid="uid://b5vfx5cogbasg" path="res://Wwise/resources/Event/{B9F53A7D-79A9-4F94-B218-75738A377960}.tres" id="6_6wksj"]
+[ext_resource type="WwiseEvent" uid="uid://cgaqhrx1wie5" path="res://Wwise/resources/Event/{120D4C28-CBBF-418C-8671-FB2C36580914}.tres" id="6_aalye"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nvyk0"]
+radius = 2.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_fdjtb"]
+material = ExtResource("1_pshoe")
+radius = 2.5
+height = 2.5
+radial_segments = 32
+rings = 16
+is_hemisphere = true
+
+[sub_resource type="Animation" id="Animation_hpwq6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:instance_shader_parameters/Light")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.545098, 0.521569, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D:instance_shader_parameters/TransparencyMultiplier")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_ugrjn"]
+resource_name = "off"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.1, 1.1, 1.1), Vector3(1.15, 1.15, 1.15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:instance_shader_parameters/Light")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 0.133333, 0.233333, 0.433333),
+"transitions": PackedFloat32Array(1.41421, 0.392292, 1, 1),
+"update": 0,
+"values": [Color(0.801773, 0.000107717, 0.664801, 0), Color(1, 1, 1, 1), Color(0.77084, 0.770839, 0.770839, 0.517647), Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D:instance_shader_parameters/TransparencyMultiplier")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.19331, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_o40xy"]
+resource_name = "on"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:instance_shader_parameters/TransparencyMultiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_an0uv"]
+_data = {
+&"RESET": SubResource("Animation_hpwq6"),
+&"off": SubResource("Animation_ugrjn"),
+&"on": SubResource("Animation_o40xy")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vqpih"]
+animation = &"off"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4s6qg"]
+animation = &"on"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t74o8"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_suuf2"]
+xfade_time = 0.1
+advance_mode = 2
+advance_expression = "on
+"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2t2jp"]
+xfade_time = 0.01
+advance_mode = 2
+advance_expression = "!on"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ald56"]
+states/off/node = SubResource("AnimationNodeAnimation_vqpih")
+states/off/position = Vector2(348, 102)
+states/on/node = SubResource("AnimationNodeAnimation_4s6qg")
+states/on/position = Vector2(471, 104)
+transitions = ["Start", "off", SubResource("AnimationNodeStateMachineTransition_t74o8"), "off", "on", SubResource("AnimationNodeStateMachineTransition_suuf2"), "on", "off", SubResource("AnimationNodeStateMachineTransition_2t2jp")]
+
+[sub_resource type="GDScript" id="GDScript_sq5bj"]
+script/source = "extends AnimationTree
+
+@export var on:bool;
+"
+
+[node name="BossHand_Eva_Shield" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("1_nvyk0")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_fdjtb")
+immortal = true
+invulnerable = true
+intangible_if_dead = false
+debug = true
+metadata/_custom_type_script = "uid://b3g5atumyrird"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_nvyk0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+instance_shader_parameters/Light = Color(0, 0.545098, 0.521569, 0)
+instance_shader_parameters/Light2 = Color(0, 0.545098, 0.521569, 0)
+instance_shader_parameters/TransparencyMultiplier = 1.0
+mesh = SubResource("SphereMesh_fdjtb")
+
+[node name="DamageArea" type="Area3D" parent="."]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_ald56")
+amountDamage = 1.0
+metadata/_custom_type_script = "uid://c1a23qdrmn8d1"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
+shape = SubResource("SphereShape3D_nvyk0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_an0uv")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_ald56")
+anim_player = NodePath("../AnimationPlayer")
+script = SubResource("GDScript_sq5bj")
+on = true
+
+[node name="EnableSFX" type="AkEvent3D" parent="."]
+event = ExtResource("5_fkttu")
+
+[node name="ReflectSFX" type="AkEvent3D" parent="."]
+event = ExtResource("6_aalye")
+
+[node name="DisableSFX" type="AkEvent3D" parent="."]
+event = ExtResource("6_6wksj")
+
+[connection signal="hit_parameterless" from="Health" to="." method="_on_health_hit_parameterless"]
+[connection signal="try_damage_parameterless" from="Health" to="." method="_on_health_try_damage_parameterless"]
+[connection signal="onDamaged" from="DamageArea" to="." method="_on_damage_area_on_damaged"]

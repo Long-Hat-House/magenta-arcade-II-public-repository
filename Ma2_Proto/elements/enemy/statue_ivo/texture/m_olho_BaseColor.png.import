@@ -1,0 +1,36 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cfcfy55tfokrv"
+path.bptc="res://.godot/imported/m_olho_BaseColor.png-78c6bf7a95d9f0c6da15e3171d562dea.bptc.ctex"
+path.astc="res://.godot/imported/m_olho_BaseColor.png-78c6bf7a95d9f0c6da15e3171d562dea.astc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://elements/enemy/statue_ivo/texture/m_olho_BaseColor.png"
+dest_files=["res://.godot/imported/m_olho_BaseColor.png-78c6bf7a95d9f0c6da15e3171d562dea.bptc.ctex", "res://.godot/imported/m_olho_BaseColor.png-78c6bf7a95d9f0c6da15e3171d562dea.astc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=true
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

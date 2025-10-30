@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://w1eh4nesxlnp"]
+
+[ext_resource type="PackedScene" uid="uid://swc2oo3gesm4" path="res://elements/enemy/projectiles/proj_big_follower/proj_enemy_big_follower.tscn" id="1_r1t4e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rgjai"]
+resource_local_to_scene = true
+shading_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.0
+rim = 0.5
+rim_tint = 1.0
+disable_receive_shadows = true
+grow_amount = -0.252
+
+[sub_resource type="GDScript" id="GDScript_r1t4e"]
+script/source = "extends Node
+
+@onready var enemy_proj_big_follower_follow_player: Node3D = $\"..\"
+
+func _ready():
+	print(\"HEY STUFF IS READY BIG FOLLOWER\");
+	enemy_proj_big_follower_follow_player.direction_style = 1;
+"
+
+[node name="EnemyProjBigFollower_FollowPlayer" instance=ExtResource("1_r1t4e")]
+direction_style = 1
+
+[node name="White" parent="Graphic" index="0"]
+material_override = SubResource("StandardMaterial3D_rgjai")
+
+[node name="White2" parent="Graphic" index="3"]
+material_override = SubResource("StandardMaterial3D_rgjai")
+
+[node name="Node" type="Node" parent="." index="4"]
+script = SubResource("GDScript_r1t4e")

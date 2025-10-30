@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dunold50u758q"]
+
+[ext_resource type="PackedScene" uid="uid://8ib0jhqdqx1y" path="res://elements/neutral/boeing/mesh/boeing.glb" id="1_svsc5"]
+[ext_resource type="Material" uid="uid://b1k5lmjrvb16n" path="res://elements/neutral/boeing/material/m_boeing.tres" id="2_q18iv"]
+
+[node name="boeing" instance=ExtResource("1_svsc5")]
+
+[node name="boeing" parent="." index="0"]
+material_override = ExtResource("2_q18iv")
+
+[node name="stair" parent="." index="1"]
+material_override = ExtResource("2_q18iv")

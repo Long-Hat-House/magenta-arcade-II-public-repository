@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://ogo51q0i36xw"]
+
+[ext_resource type="PackedScene" uid="uid://ddtx26w7mxdgg" path="res://elements/enemy/projectiles/cannon/enemy_cannon.tscn" id="1_h1lqt"]
+
+[node name="Cannon_Invisible" instance=ExtResource("1_h1lqt")]
+lerpAngle = 0.0
+
+[node name="cannon" parent="." index="0"]
+visible = false
+
+[node name="InstantiatePlace" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.186262)

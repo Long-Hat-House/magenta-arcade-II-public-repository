@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://esbs0spixf8g"]
+
+[ext_resource type="Shader" uid="uid://cydf7ixf545sq" path="res://elements/vfx/vfx_movement_smoke/movement_smoke_shader.tres" id="1_8yitm"]
+[ext_resource type="Material" uid="uid://bch7ktm2n5jsr" path="res://elements/vfx/vfx_movement_smoke/movement_smoke_visual.tres" id="2_uure4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8amrn"]
+shader = ExtResource("1_8yitm")
+shader_parameter/totalAnimations = 4
+shader_parameter/maxAngle = 45.0
+shader_parameter/direction = Vector3(0, 0, -1)
+shader_parameter/spread = 120.0
+shader_parameter/flatness = 0.0
+shader_parameter/inherit_emitter_velocity_ratio = 0.0
+shader_parameter/initial_linear_velocity_min = 1.0
+shader_parameter/initial_linear_velocity_max = 10.0
+shader_parameter/directional_velocity_min = 1.0
+shader_parameter/directional_velocity_max = 1.0
+shader_parameter/angular_velocity_min = 0.0
+shader_parameter/angular_velocity_max = 0.0
+shader_parameter/orbit_velocity_min = 0.0
+shader_parameter/orbit_velocity_max = 0.0
+shader_parameter/radial_velocity_min = 0.0
+shader_parameter/radial_velocity_max = 0.0
+shader_parameter/linear_accel_min = 0.0
+shader_parameter/linear_accel_max = 0.0
+shader_parameter/radial_accel_min = 0.0
+shader_parameter/radial_accel_max = 0.0
+shader_parameter/tangent_accel_min = 0.0
+shader_parameter/tangent_accel_max = 0.0
+shader_parameter/damping_min = 0.3
+shader_parameter/damping_max = 6.91
+shader_parameter/initial_angle_min = 0.0
+shader_parameter/initial_angle_max = 0.0
+shader_parameter/scale_min = 0.3
+shader_parameter/scale_max = 0.7
+shader_parameter/hue_variation_min = 0.0
+shader_parameter/hue_variation_max = 0.0
+shader_parameter/anim_speed_min = 1.0
+shader_parameter/anim_speed_max = 1.0
+shader_parameter/anim_offset_min = 0.0
+shader_parameter/anim_offset_max = 0.0
+shader_parameter/lifetime_randomness = 0.0
+shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
+shader_parameter/emission_shape_scale = Vector3(4, 0, 2)
+shader_parameter/velocity_pivot = Vector3(0, 1, 0)
+shader_parameter/emission_sphere_radius = 0.2
+shader_parameter/color_value = Color(1, 1, 1, 1)
+shader_parameter/gravity = Vector3(0, -3, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_1dd8q"]
+material = ExtResource("2_uure4")
+
+[node name="MovementParticleVFX_Oneshot" type="GPUParticles3D"]
+cast_shadow = 0
+emitting = false
+amount = 28
+lifetime = 0.35
+one_shot = true
+explosiveness = 0.9
+randomness = 0.21
+fixed_fps = 60
+transform_align = 1
+process_material = SubResource("ShaderMaterial_8amrn")
+draw_pass_1 = SubResource("QuadMesh_1dd8q")

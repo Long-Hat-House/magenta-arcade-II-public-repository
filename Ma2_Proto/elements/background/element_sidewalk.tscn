@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://daethslhep56i"]
+
+[ext_resource type="Material" uid="uid://bigcloksla8qv" path="res://elements/background/material/m_sidewalk_brown.tres" id="1_hp46r"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_x1rts"]
+size = Vector2(1, 1)
+center_offset = Vector3(0.5, 0, 0.5)
+
+[node name="Sidewalk" type="Node3D"]
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+layers = 3
+material_override = ExtResource("1_hp46r")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_x1rts")

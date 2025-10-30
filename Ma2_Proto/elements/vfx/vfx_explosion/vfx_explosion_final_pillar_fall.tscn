@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvyjdcy6lg6ld"]
+
+[ext_resource type="PackedScene" uid="uid://ywymskkj85vs" path="res://elements/vfx/vfx_explosion/vfx_explosion.tscn" id="1_8bt4c"]
+[ext_resource type="WwiseEvent" uid="uid://by30o7nyxltm4" path="res://Wwise/resources/Event/{3F1386C8-5C33-4AA6-B086-F471B418CB7F}.tres" id="2_monlm"]
+
+[node name="VfxExplosion_FinalPillarFall" instance=ExtResource("1_8bt4c")]
+
+[node name="SFX" parent="Sprite3D" index="0"]
+event = ExtResource("2_monlm")

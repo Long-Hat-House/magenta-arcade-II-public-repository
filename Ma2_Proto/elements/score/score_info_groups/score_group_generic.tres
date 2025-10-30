@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ScoreInfo" load_steps=2 format=3 uid="uid://cjtsq3eb43sgx"]
+
+[ext_resource type="Script" uid="uid://xfqoedvnoauc" path="res://systems/score/score_info.gd" id="1_j62wv"]
+
+[resource]
+script = ExtResource("1_j62wv")
+score_title = &"score_group_generic"
+score_value = 100
+world_positioned = false
+works_in_shop_mode = false
+adds_to_combo = false
+ignore_boost_multiplier = true

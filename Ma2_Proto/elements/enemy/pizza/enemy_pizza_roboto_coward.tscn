@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://d124alssqbr44"]
+
+[ext_resource type="PackedScene" uid="uid://t7wocwarj2c3" path="res://elements/enemy/pizza/enemy_pizza_roboto.tscn" id="1_qtkn1"]
+[ext_resource type="Script" uid="uid://gp330idf3b2i" path="res://systems/pressable/pressable_feedback.gd" id="2_4qiml"]
+[ext_resource type="PackedScene" uid="uid://bc1bjl6ovy5s6" path="res://elements/enemy/projectiles/damage_area/damage_area.tscn" id="2_jdy3i"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_03x6n"]
+height = 0.5
+
+[node name="PizzaRoboto_Coward" instance=ExtResource("1_qtkn1")]
+walkAnimation = "PIZZA_SHOOTER_COWARD"
+idleAnimation = "PIZZA_SHOOTER_COWARD"
+pressable = true
+timeLeft = 20.0
+await_to_kill_self_on_collision = 0.1
+walkVelocity = Vector3(0, 0, -0.5)
+walkVelocityAdd = Vector3(0, 0, -1)
+
+[node name="PressableFeedback" type="Node" parent="." index="0" node_paths=PackedStringArray("mesh_getter", "only_if_seen")]
+script = ExtResource("2_4qiml")
+mesh_getter = [NodePath("../Body/Render/Pizza_Roboto/Rig_Pizza/Skeleton3D")]
+random_wait_before_min = 1.5
+random_wait_before_max = 5.0
+only_if_seen = NodePath("../Body/VisibleOnScreenNotifier3D")
+
+[node name="Health" parent="Body" index="1"]
+max_amount = 0.2
+
+[node name="AccessibilityHighContrastObject" parent="Body/Render/Pizza_Roboto" index="0"]
+high_contrast_group = &"neutral"
+
+[node name="AnimatedSprite3D" parent="Body/Render/Pizza_Roboto/Rig_Pizza/Skeleton3D/BoneAttachment3D" index="0"]
+animation = &"coward"
+
+[node name="Damage Enemies Area" parent="Body" index="5" node_paths=PackedStringArray("negate_body") instance=ExtResource("2_jdy3i")]
+collision_layer = 8
+collision_mask = 132
+amountDamage = 2.0
+negate_body = [NodePath("..")]
+scores = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Damage Enemies Area" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("CylinderShape3D_03x6n")
+
+[node name="VisibleOnScreenNotifier3D" parent="Body" index="6"]
+aabb = AABB(-0.722361, -0.14965, -0.625, 1.44472, 0.678207, 1.25)
+
+[node name="VisibleOnScreenEnabler3D" parent="Body" index="7"]
+enable_node_path = NodePath(".")
+
+[connection signal="onDamaged" from="Body/Damage Enemies Area" to="." method="_on_damage_area_on_damaged"]
+
+[editable path="Body/Render/Pizza_Roboto"]

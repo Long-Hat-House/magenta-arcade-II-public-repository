@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ZapImagesInfo" load_steps=2 format=3 uid="uid://cerui0p25xe7x"]
+
+[ext_resource type="Script" uid="uid://c2gkdd65t04jj" path="res://modules/text_flow/zap/src/zap_images_info.gd" id="1_h66u7"]
+
+[resource]
+script = ExtResource("1_h66u7")
+img_paths = Dictionary[StringName, String]({
+&"IMG_FACTORY_DESTROYED": "uid://2awl0gonhdia",
+&"IMG_IVO": "uid://d0u5lncny215j",
+&"IMG_JU_RESCUE": "uid://ct5tu47bfyt3e",
+&"IMG_NANDO_AND_NENE": "uid://cbggd0velum8d",
+&"IMG_NENE_SELFIE": "uid://dafes4et8qe3l",
+&"IMG_STADIUM": "uid://d0xawra0nkc52",
+&"STICKER_DEAD": "uid://d24d0inph60ll",
+&"STICKER_EYEROLL": "uid://cxddvluh6gjg4",
+&"STICKER_FACEPALM": "uid://cdp65se7qxc7j",
+&"STICKER_PROUD": "uid://dgp0j448l3gkf",
+&"STICKER_QUESTION": "uid://xalpmukcj0e0",
+&"STICKER_SLEEP": "uid://c61iriv10p41c",
+&"STICKER_SMIRK": "uid://by0yeawn6s4r0"
+})
+metadata/_custom_type_script = "uid://c2gkdd65t04jj"

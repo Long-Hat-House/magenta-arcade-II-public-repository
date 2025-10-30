@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PromptInfo" load_steps=2 format=3 uid="uid://bwfigdj7kkn0v"]
+
+[ext_resource type="Script" uid="uid://dumi28hio003k" path="res://modules/prompt_system/prompt_info.gd" id="1_1v5fa"]
+
+[resource]
+script = ExtResource("1_1v5fa")
+prompt_id = &"version_updated"
+title = "prompt_version_updated_title"
+text = "prompt_version_updated_text"
+when_to_show = 3
+cooldown_hours = 24.0
+good_since = ""
+good_until = ""
+validate = "GoodSince:-1 GoodUntil:-1"
+metadata/_custom_type_script = "uid://dumi28hio003k"

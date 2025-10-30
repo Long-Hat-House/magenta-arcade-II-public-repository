@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgftoju7i36ae"]
+
+[ext_resource type="Script" uid="uid://c3hu8ggatndrt" path="res://elements/general_use/feedback/squish_feedback.gd" id="1_iksfn"]
+
+[node name="SquishFeedback" type="Node"]
+script = ExtResource("1_iksfn")

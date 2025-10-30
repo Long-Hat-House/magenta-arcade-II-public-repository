@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://deo3lc7ofkj7l"]
+
+[ext_resource type="PackedScene" uid="uid://b3pp7ia1gxrqe" path="res://elements/levels/lvl_hub/hub_elements/hub_panel_star/hub_panel_star.glb" id="1_itnrw"]
+[ext_resource type="Material" uid="uid://ctmno8mm5rwjw" path="res://elements/levels/lvl_hub/hub_elements/hub_panel_star/material/m_hub_panel_star.tres" id="2_4f1gr"]
+
+[node name="hub_panel_star" instance=ExtResource("1_itnrw")]
+
+[node name="hub_panel_star" parent="." index="0"]
+material_override = ExtResource("2_4f1gr")

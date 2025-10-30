@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="UpgradeInfo" load_steps=3 format=3 uid="uid://sn08lr22to8h"]
+
+[ext_resource type="Script" uid="uid://dospanm60t0v5" path="res://systems/ma2_meta/upgrade_info.gd" id="1_2s321"]
+[ext_resource type="Texture2D" uid="uid://55fsv8lgfc6l" path="res://elements/icons/icons_upgrades/icon_upgrade_hold_speed.png" id="2_blkfq"]
+
+[resource]
+script = ExtResource("1_2s321")
+upgrade_id = &"upgrade_hold_speed"
+upgrade_description = &"upgrade_hold_speed_dialogue"
+upgrade_icon = ExtResource("2_blkfq")
+stars_per_progress = Array[int]([1, 1, 1])
+upgrade_developer_instruction = "In player ready:
+currentState.hold_warm_up_level = UPGRADE_HOLD_SPEED.get_progress()
+then in _process:
+currentState.hold_potencial_bar += delta / hold_warm_up_duration_per_upgrade_curve.sample(currentState.hold_warm_up_level)"
+float_val = 0.0
+float_val_array = Array[float]([])

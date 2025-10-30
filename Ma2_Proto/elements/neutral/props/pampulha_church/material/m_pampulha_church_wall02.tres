@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://ubi0tm5jcm03"]
+
+[ext_resource type="Texture2D" uid="uid://clqpfkvvm8me3" path="res://elements/neutral/props/pampulha_church/texture/t_pampulha_church_wall02_BaseColor.png" id="1_mrmkw"]
+[ext_resource type="Texture2D" uid="uid://cgvj00n8tpybh" path="res://elements/enemy/brawny/Texture/M_brawny_Box_Emission.png" id="2_026n7"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jie0d"]
+
+[resource]
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("1_mrmkw")
+roughness = 0.65
+emission_energy_multiplier = 9.0
+emission_texture = ExtResource("2_026n7")
+clearcoat = 0.69
+anisotropy = 0.33
+ao_texture = SubResource("CompressedTexture2D_jie0d")
+backlight = Color(0.0313726, 0.0313726, 0.0313726, 1)

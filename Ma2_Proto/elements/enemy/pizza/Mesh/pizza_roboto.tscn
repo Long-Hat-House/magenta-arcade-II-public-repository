@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsrp6kl536a5i"]
+
+[ext_resource type="PackedScene" uid="uid://cknvblfsk34d8" path="res://elements/enemy/pizza/Mesh/Pizza_Roboto.glb" id="1_nl5s2"]
+[ext_resource type="Script" uid="uid://cjeyn47cfqk8y" path="res://systems/graphics/animation_player_proxy.gd" id="2_e0u6y"]
+[ext_resource type="Material" uid="uid://dqhd0rjfjra3v" path="res://elements/enemy/pizza/Material/M_Pizza.tres" id="2_eb4rb"]
+[ext_resource type="SpriteFrames" uid="uid://ceujy4tgh8fb2" path="res://elements/enemy/pizza/sprite/pizza_roboto_eye.aseprite" id="3_jvnjw"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="5_mxlsn"]
+
+[sub_resource type="GDScript" id="GDScript_ei3ig"]
+script/source = "extends AnimatedSprite3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	play();
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[node name="Pizza_Roboto" instance=ExtResource("1_nl5s2")]
+script = ExtResource("2_e0u6y")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="." index="0"]
+script = ExtResource("5_mxlsn")
+high_contrast_group = &"enemy"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="Skeleton3D" parent="Rig_Pizza" index="0"]
+bones/2/position = Vector3(0, 0.240809, 0.175095)
+bones/4/position = Vector3(0.420646, 0.196704, 0.286711)
+bones/4/rotation = Quaternion(0, -1.19209e-07, 0, 1)
+bones/5/position = Vector3(0.0923181, -0.197125, 0.0676085)
+bones/5/rotation = Quaternion(0.293316, 0.921573, 0.107021, 0.230687)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/position = Vector3(0.350074, 0.196704, -0.220535)
+bones/6/rotation = Quaternion(0, 1.19209e-07, 0, 1)
+bones/7/position = Vector3(0.0922214, -0.0953346, -0.0675431)
+bones/7/rotation = Quaternion(-0.30471, 0.119023, -0.795838, 0.509537)
+bones/8/position = Vector3(-0.420646, 0.196704, 0.286711)
+bones/8/rotation = Quaternion(0, 1.19209e-07, 0, 1)
+bones/9/position = Vector3(-0.0923181, -0.197125, 0.0676085)
+bones/9/rotation = Quaternion(-0.293316, 0.921573, 0.107021, -0.230687)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/position = Vector3(-0.386511, 0.196704, -0.242397)
+bones/10/rotation = Quaternion(0, -1.19209e-07, 0, 1)
+bones/11/position = Vector3(-0.0922214, -0.0953347, -0.0675431)
+bones/11/rotation = Quaternion(-0.30471, -0.119023, 0.795838, 0.509537)
+
+[node name="base_Pe" parent="Rig_Pizza/Skeleton3D" index="0"]
+material_override = ExtResource("2_eb4rb")
+
+[node name="Boca" parent="Rig_Pizza/Skeleton3D" index="1"]
+material_override = ExtResource("2_eb4rb")
+blend_shapes/Boca_Volume = 0.769371
+
+[node name="Corpo" parent="Rig_Pizza/Skeleton3D" index="2"]
+material_override = ExtResource("2_eb4rb")
+
+[node name="Pe" parent="Rig_Pizza/Skeleton3D" index="3"]
+material_override = ExtResource("2_eb4rb")
+
+[node name="Tampa" parent="Rig_Pizza/Skeleton3D" index="4"]
+material_override = ExtResource("2_eb4rb")
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Rig_Pizza/Skeleton3D" index="5"]
+bone_name = "Root"
+bone_idx = 1
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Rig_Pizza/Skeleton3D/BoneAttachment3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.276096, -0.177964)
+pixel_size = 0.0064
+sprite_frames = ExtResource("3_jvnjw")
+script = SubResource("GDScript_ei3ig")
+
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = "PIZZA_SHOOTER _WALK"

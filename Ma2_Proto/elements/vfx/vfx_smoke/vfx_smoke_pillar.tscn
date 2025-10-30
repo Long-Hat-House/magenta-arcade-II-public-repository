@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://wqcyghcbouff"]
+
+[ext_resource type="Script" uid="uid://cjyu6s22xcscv" path="res://elements/vfx/vfx_smoke/vfx_smoke_pillar.gd" id="1_8tc0v"]
+[ext_resource type="Script" uid="uid://cns137slch3nx" path="res://systems/utils/look_at_camera_parent_y.gd" id="1_dqbpa"]
+[ext_resource type="SpriteFrames" uid="uid://bdru24cfwq2oj" path="res://elements/vfx/vfx_smoke/vfx_smoke_pillar.aseprite" id="2_dqbpa"]
+[ext_resource type="Script" uid="uid://d2rhxuigqg21b" path="res://systems/audio_wwise/AkEvent3DLoop.gd" id="4_hg5bn"]
+[ext_resource type="WwiseEvent" uid="uid://ckppgo3dlkxb7" path="res://Wwise/resources/Event/{02871C5B-7A38-4C24-A1E2-CB3444F546BD}.tres" id="5_dgh2d"]
+[ext_resource type="WwiseEvent" uid="uid://duwiwgg51qbuw" path="res://Wwise/resources/Event/{837B881B-86F6-4131-9219-4699576F3432}.tres" id="6_74y7y"]
+
+[node name="VfxSmokePillar" type="Node3D"]
+script = ExtResource("1_8tc0v")
+color_fg = Color(0.45098, 0.45098, 0.560784, 1)
+color_bg = Color(0.299547, 0.299547, 0.299547, 1)
+
+[node name="LookAtCameraParentY" type="Node3D" parent="."]
+script = ExtResource("1_dqbpa")
+metadata/_custom_type_script = "uid://cns137slch3nx"
+
+[node name="Foreground" type="AnimatedSprite3D" parent="LookAtCameraParentY"]
+cast_shadow = 0
+offset = Vector2(0, 64)
+pixel_size = 0.0156
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = ExtResource("2_dqbpa")
+animation = &"on"
+
+[node name="Background" type="AnimatedSprite3D" parent="LookAtCameraParentY"]
+transform = Transform3D(1.5, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, -0.05)
+cast_shadow = 0
+offset = Vector2(0, 64)
+modulate = Color(0.470076, 0.470076, 0.470076, 1)
+pixel_size = 0.0156
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = ExtResource("2_dqbpa")
+animation = &"on"
+
+[node name="AkEvent3DLoop" type="Node3D" parent="." node_paths=PackedStringArray("loop_begin_event", "loop_finish_event")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+script = ExtResource("4_hg5bn")
+loop_begin_event = NodePath("begin")
+loop_finish_event = NodePath("end")
+metadata/_custom_type_script = "uid://d2rhxuigqg21b"
+
+[node name="begin" type="AkEvent3D" parent="AkEvent3DLoop"]
+event = ExtResource("5_dgh2d")
+
+[node name="end" type="AkEvent3D" parent="AkEvent3DLoop"]
+event = ExtResource("6_74y7y")
+
+[connection signal="finished" from="." to="AkEvent3DLoop" method="stop_loop"]
+[connection signal="started" from="." to="AkEvent3DLoop" method="start_loop"]

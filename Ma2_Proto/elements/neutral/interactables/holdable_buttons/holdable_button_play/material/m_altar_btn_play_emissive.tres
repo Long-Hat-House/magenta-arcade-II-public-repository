@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://27tad3poms25"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.34902, 0.717647, 1, 1)
+emission_enabled = true
+emission_energy_multiplier = 8.91
+rim_tint = 1.0
+clearcoat = 0.69
+anisotropy = 0.33
+backlight = Color(0.0313726, 0.0313726, 0.0313726, 1)

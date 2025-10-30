@@ -1,0 +1,133 @@
+[gd_scene load_steps=14 format=3 uid="uid://1qibdxc26jnh"]
+
+[ext_resource type="Script" path="res://systems/challenge/challenge_prize_button.gd" id="1_c8his"]
+[ext_resource type="Theme" uid="uid://bfqq5qjsvg8no" path="res://elements/ui/themes/menu/menu_theme.tres" id="1_j1w7d"]
+[ext_resource type="Script" path="res://systems/utils/control_shaker.gd" id="3_jhh26"]
+[ext_resource type="Texture2D" uid="uid://b2j75lsv87rdk" path="res://elements/icons/icon_hold.png" id="4_fqank"]
+[ext_resource type="Texture2D" uid="uid://cyitenibdo01p" path="res://elements/icons/icon_tap.png" id="4_ososw"]
+[ext_resource type="Texture2D" uid="uid://cyidm6wsfq4u0" path="res://elements/icons/icon_hold_blue.png" id="4_w0g08"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_royhg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y18bp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jsyhw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8fa4y"]
+bg_color = Color(1, 1, 1, 0.196078)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7vo7m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uus3c"]
+bg_color = Color(0, 0, 0, 0.784314)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vfjvh"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Prize Button" type="Button" node_paths=PackedStringArray("_icon", "_bg_icon", "_title", "_text")]
+custom_minimum_size = Vector2(700, 200)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_j1w7d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_royhg")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_y18bp")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jsyhw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8fa4y")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7vo7m")
+icon_alignment = 1
+script = ExtResource("1_c8his")
+bg_hold = ExtResource("4_fqank")
+bg_tap = ExtResource("4_ososw")
+_icon = NodePath("VBoxContainer2/MarginContainer/Icon")
+_bg_icon = NodePath("VBoxContainer2/MarginContainer/Powerup BG")
+_title = NodePath("VBoxContainer2/BoxContainer/Title")
+_text = NodePath("VBoxContainer2/BoxContainer/Information")
+
+[node name="VBoxContainer2" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="BoxContainer" type="BoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+alignment = 1
+vertical = true
+
+[node name="Title" type="Label" parent="VBoxContainer2/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+theme_type_variation = &"label_powerup_title"
+text = "Poder Divino"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 0
+script = ExtResource("3_jhh26")
+shake_amplitude_ratio = 0.0
+
+[node name="Information" type="Label" parent="VBoxContainer2/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+theme_type_variation = &"label_powerup_description"
+theme_override_constants/line_spacing = 24
+text = "+3 Maremoto "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 0
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer2/BoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_uus3c")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vfjvh")
+max_value = 1.0
+step = 0.0
+show_percentage = false
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Powerup BG" type="TextureRect" parent="VBoxContainer2/MarginContainer"]
+self_modulate = Color(0.194349, 0.194349, 0.194349, 1)
+layout_mode = 2
+texture = ExtResource("4_fqank")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer2/MarginContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_w0g08")
+expand_mode = 5
+stretch_mode = 5
+
+[connection signal="time_upped" from="." to="VBoxContainer2/BoxContainer/Title" method="set_shake_amplitude_ratio"]
+[connection signal="time_upped" from="." to="VBoxContainer2/BoxContainer/ProgressBar" method="set_value"]
+[connection signal="time_zeroed" from="." to="VBoxContainer2/BoxContainer/Title" method="set_shake_amplitude_ratio" binds= [0.0]]
+[connection signal="time_zeroed" from="." to="VBoxContainer2/BoxContainer/ProgressBar" method="set_value" binds= [0.0]]

@@ -1,0 +1,186 @@
+[gd_scene load_steps=11 format=3 uid="uid://dsxpw55jcahf5"]
+
+[ext_resource type="PackedScene" uid="uid://biot2pkv6iuem" path="res://elements/enemy/snake/enemy_snake_body.tscn" id="1_8qe8e"]
+[ext_resource type="Script" uid="uid://bix71367c88dn" path="res://systems/utils/remote_transform_3d.gd" id="2_fotp4"]
+[ext_resource type="PackedScene" uid="uid://tlfhh2r1inw3" path="res://elements/enemy/laser/mesh/laserroboto_graphic.tscn" id="2_k1t5e"]
+[ext_resource type="Script" uid="uid://bpom8i4pvag2x" path="res://systems/variators/oning_offing_timed.gd" id="2_wctsf"]
+[ext_resource type="PackedScene" uid="uid://elu46raggotb" path="res://elements/enemy/projectiles/proj_laser/laser_area.tscn" id="2_y4qs4"]
+[ext_resource type="Shader" uid="uid://clbaserrhs5so" path="res://elements/player/projectiles/instance_color_albedo.gdshader" id="5_60s6w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yqmvm"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("5_60s6w")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yyw8i"]
+resource_local_to_scene = true
+shading_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.0
+rim = 0.5
+rim_tint = 1.0
+disable_receive_shadows = true
+grow_amount = -0.252
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3aars"]
+resource_local_to_scene = true
+render_priority = 10
+cull_mode = 2
+shading_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.0
+rim = 0.5
+rim_tint = 1.0
+disable_receive_shadows = true
+grow_amount = -0.252
+
+[sub_resource type="GDScript" id="GDScript_lfyh6"]
+script/source = "extends Node
+
+@onready var laserroboto_graphic: Graphic_LaserRoboto = %laserroboto_graphic
+@onready var laser_area: Enemy_LaserArea = %LaserArea
+@export var laser_pivot:Node3D;
+
+@export var pre_laser_time:float;
+
+var direction_want:Vector3;
+@export var direction_velocity:float = 2.5;
+@export var angle_max:float = 5;
+
+var direction_velocity_rad:float;
+var angle_max_rad:float;
+
+var side:bool;
+
+func _ready()-> void:
+	direction_want = Vector3.BACK;
+	
+	direction_velocity_rad = deg_to_rad(direction_velocity);
+	angle_max_rad = deg_to_rad(angle_max);
+	
+	side = true;
+	
+func _process(delta: float) -> void:
+	var basis:Basis = laser_pivot.basis;
+	var direction_now:Vector3 = basis.z;
+	var angle:float = direction_now.signed_angle_to(direction_want, Vector3.UP);
+	angle = move_toward(0.0, angle, delta * deg_to_rad(direction_velocity));
+	
+	laser_pivot.basis = basis.rotated(Vector3.UP, angle);
+
+func change(on:bool):
+	if !is_instance_valid(self) or !is_instance_valid(laser_area):
+		return;
+		
+		
+	if !is_node_ready():
+		await ready;
+	if on:
+		direction_want = Vector3.BACK.rotated(Vector3.UP, (angle_max_rad if side else -angle_max_rad) * 0.5)
+		side = !side;
+		
+		
+		laser_area.pre_laser();
+		laserroboto_graphic.set_shooting(Graphic_LaserRoboto.ShootPhase.Pre);
+		var t := create_tween();
+		t.tween_interval(pre_laser_time);
+		t.tween_callback(func():
+			if is_instance_valid(laser_area):
+				laserroboto_graphic.set_shooting(Graphic_LaserRoboto.ShootPhase.Shoot);
+				laser_area.start_laser();
+			);
+	else:
+		laserroboto_graphic.set_shooting(Graphic_LaserRoboto.ShootPhase.Post);
+		laser_area.stop_laser();
+"
+
+[node name="EnemySnakeBody_Cannon" instance=ExtResource("1_8qe8e")]
+
+[node name="TransformCleanser" type="Node" parent="." index="0"]
+
+[node name="RemoteTransform3D" type="Node3D" parent="TransformCleanser" index="0"]
+script = ExtResource("2_fotp4")
+who = NodePath("../..")
+follow_rotation = false
+follow_scale = false
+global_get = true
+
+[node name="Laser Pivot" type="Node3D" parent="TransformCleanser/RemoteTransform3D" index="0"]
+
+[node name="laserroboto_graphic" parent="TransformCleanser/RemoteTransform3D/Laser Pivot" index="0" instance=ExtResource("2_k1t5e")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0.25)
+
+[node name="Skeleton3D" parent="TransformCleanser/RemoteTransform3D/Laser Pivot/laserroboto_graphic/Rig_LaserCannon" index="0"]
+bones/3/position = Vector3(0.00602621, 0.220537, -0.248522)
+bones/5/position = Vector3(0.126316, 0.286904, 0.179749)
+bones/5/rotation = Quaternion(0.00880112, -0.145849, -0.0816334, 0.985894)
+bones/6/position = Vector3(-0.126316, 0.286904, 0.179749)
+bones/6/rotation = Quaternion(0.00880112, 0.145849, 0.0816334, 0.985894)
+bones/7/position = Vector3(2.35325e-16, 0.499348, 0.194824)
+
+[node name="Laser_Cannon" parent="TransformCleanser/RemoteTransform3D/Laser Pivot/laserroboto_graphic/Rig_LaserCannon/Skeleton3D" index="1"]
+blend_shapes/Cannon_Scale_UP = 0.0
+
+[node name="Laser_Cannon_Belt" parent="TransformCleanser/RemoteTransform3D/Laser Pivot/laserroboto_graphic/Rig_LaserCannon/Skeleton3D" index="2"]
+visible = false
+
+[node name="Laser_Cannon_Eye" parent="TransformCleanser/RemoteTransform3D/Laser Pivot/laserroboto_graphic/Rig_LaserCannon/Skeleton3D" index="4"]
+blend_shapes/Eye_change_A = 0.0
+
+[node name="Laser_Cannon_Tank" parent="TransformCleanser/RemoteTransform3D/Laser Pivot/laserroboto_graphic/Rig_LaserCannon/Skeleton3D" index="7"]
+visible = false
+
+[node name="Laser_Cannon_Tank_001" parent="TransformCleanser/RemoteTransform3D/Laser Pivot/laserroboto_graphic/Rig_LaserCannon/Skeleton3D" index="8"]
+visible = false
+
+[node name="LaserArea" parent="TransformCleanser/RemoteTransform3D/Laser Pivot/laserroboto_graphic" index="3" instance=ExtResource("2_y4qs4")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09278e-08, 0.75, 0.5)
+
+[node name="Inner dark" parent="TransformCleanser/RemoteTransform3D/Laser Pivot/laserroboto_graphic/LaserArea/Graphic" index="0"]
+transform = Transform3D(0.5, 0, 0, 0, -4.37114e-08, -0.5, 0, 1, -2.18557e-08, 0, 0, 20)
+material_override = SubResource("ShaderMaterial_yqmvm")
+
+[node name="Laser" parent="TransformCleanser/RemoteTransform3D/Laser Pivot/laserroboto_graphic/LaserArea/Graphic" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 20)
+material_override = SubResource("ShaderMaterial_yqmvm")
+
+[node name="Glow" parent="TransformCleanser/RemoteTransform3D/Laser Pivot/laserroboto_graphic/LaserArea/Graphic" index="2"]
+material_override = SubResource("StandardMaterial3D_yyw8i")
+
+[node name="Thorus1" parent="TransformCleanser/RemoteTransform3D/Laser Pivot/laserroboto_graphic/LaserArea/Graphic" index="3"]
+transform = Transform3D(0.6, 0, 0, 0, -4.37114e-10, -0.6, 0, 0.01, -2.62268e-08, 0, 0, -0.0073272)
+material_override = SubResource("StandardMaterial3D_3aars")
+
+[node name="OnOff" type="Node" parent="." index="5" node_paths=PackedStringArray("only_if_on_screen")]
+script = ExtResource("2_wctsf")
+oning_time = 1.5
+offing_time = 3.0
+only_if_on_screen = NodePath("../VisibleOnScreenNotifier3D")
+
+[node name="Laser" type="Node" parent="OnOff" index="0" node_paths=PackedStringArray("laser_pivot")]
+script = SubResource("GDScript_lfyh6")
+laser_pivot = NodePath("../../TransformCleanser/RemoteTransform3D/Laser Pivot")
+pre_laser_time = 1.0
+direction_velocity = 4.0
+angle_max = 10.0
+
+[node name="VisibleOnScreenNotifier3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0092178, 0)
+aabb = AABB(-1.1805, -0.651072, -1.20718, 2.361, 1.30213, 2.41436)
+
+[connection signal="dead_parameterless" from="Alive Health" to="TransformCleanser" method="queue_free" flags=3]
+[connection signal="dead_parameterless" from="Alive Health" to="OnOff" method="queue_free" flags=3]
+[connection signal="changed" from="OnOff" to="OnOff/Laser" method="change"]
+
+[editable path="TransformCleanser/RemoteTransform3D/Laser Pivot/laserroboto_graphic"]
+[editable path="TransformCleanser/RemoteTransform3D/Laser Pivot/laserroboto_graphic/LaserArea"]

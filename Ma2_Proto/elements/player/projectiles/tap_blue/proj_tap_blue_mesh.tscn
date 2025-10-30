@@ -1,0 +1,170 @@
+[gd_scene load_steps=13 format=3 uid="uid://375y6mcmkvlm"]
+
+[ext_resource type="PackedScene" uid="uid://btt8r1j473sep" path="res://elements/player/projectiles/tap_blue/proj_tap_blue_Mesh.glb" id="1_e3hqx"]
+[ext_resource type="Material" uid="uid://bdtt7tj077738" path="res://elements/player/projectiles/materials/proj_tap_blue.tres" id="2_ne8ws"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="4_o3i2j"]
+[ext_resource type="Shader" uid="uid://dfy5x0eqok747" path="res://elements/player/projectiles/materials/proj_tap_blue_shader.tres" id="4_xmkss"]
+
+[sub_resource type="GDScript" id="GDScript_7rvqa"]
+script/source = "extends Node3D
+
+
+func _enter_tree():
+	$tail_scale.play(\"tail_scale\")
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ijxha"]
+render_priority = 0
+shader = ExtResource("4_xmkss")
+shader_parameter/color = Color(0, 0.513726, 0.803922, 1)
+
+[sub_resource type="Animation" id="Animation_bny86"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tap_blue:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("tap_tail:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.975012, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("tap_blue:material_override:emission_energy_multiplier")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.4]
+}
+
+[sub_resource type="Animation" id="Animation_igh42"]
+resource_name = "tap_effect"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tap_blue:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.802289, 1, 1), Vector3(1, 1, 1), Vector3(0.802289, 1, 1), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("tap_tail:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.975012, 1, 1), Vector3(0.803109, 1, 1), Vector3(0.975012, 1, 1), Vector3(0.803109, 1, 1), Vector3(0.975012, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("tap_blue:material_override:emission_energy_multiplier")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.5, 6.0, 0.5, 6.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q0cky"]
+_data = {
+&"RESET": SubResource("Animation_bny86"),
+&"tap_effect": SubResource("Animation_igh42")
+}
+
+[sub_resource type="Animation" id="Animation_ndc6a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tap_tail:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.975012, 1, 0.589016)]
+}
+
+[sub_resource type="Animation" id="Animation_fv2xs"]
+resource_name = "tail_scale"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tap_tail:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.975012, 1, 0.589016), Vector3(1, 1, 6)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v7heo"]
+_data = {
+&"RESET": SubResource("Animation_ndc6a"),
+&"tail_scale": SubResource("Animation_fv2xs")
+}
+
+[node name="proj_tap_blue_Mesh" instance=ExtResource("1_e3hqx")]
+script = SubResource("GDScript_7rvqa")
+
+[node name="tap_blue" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0062089, 0.184562)
+material_override = ExtResource("2_ne8ws")
+cast_shadow = 0
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="tap_blue" index="0"]
+script = ExtResource("4_o3i2j")
+high_contrast_group = &"player"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="tap_tail" parent="." index="1"]
+transform = Transform3D(0.975012, 0, 0, 0, 1, 0, 0, 0, 0.589016, 0, -0.0062089, 0.356507)
+material_override = SubResource("ShaderMaterial_ijxha")
+cast_shadow = 0
+
+[node name="anim" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+&"": SubResource("AnimationLibrary_q0cky")
+}
+autoplay = "tap_effect"
+
+[node name="tail_scale" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_v7heo")
+}
+autoplay = "tail_scale"

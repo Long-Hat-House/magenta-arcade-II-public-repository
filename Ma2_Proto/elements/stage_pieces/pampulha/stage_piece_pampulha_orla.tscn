@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkdyne2bb76k8"]
+
+[ext_resource type="Script" path="res://systems/stage/level_stage_piece.gd" id="1_u534r"]
+[ext_resource type="PackedScene" uid="uid://dfi4oip83lo3f" path="res://elements/background/element_grass.tscn" id="2_ssmcx"]
+[ext_resource type="PackedScene" uid="uid://dtjg7g4ej01lh" path="res://elements/background/element_water.tscn" id="3_jj56j"]
+[ext_resource type="PackedScene" uid="uid://cd6ymp4wmjksa" path="res://elements/background/element_asphalt.tscn" id="4_11rr1"]
+[ext_resource type="PackedScene" uid="uid://c00kqth38jmst" path="res://systems/stage/stage_screen_measure.tscn" id="5_51nvq"]
+[ext_resource type="PackedScene" uid="uid://d10plu84jarp1" path="res://elements/npc/capybara/npc_capybara.tscn" id="6_uw36n"]
+
+[node name="Orla" type="Node3D" node_paths=PackedStringArray("pivot_forward", "pivot_backward")]
+script = ExtResource("1_u534r")
+pivot_forward = NodePath("Config/forward")
+pivot_backward = NodePath("Config/back")
+
+[node name="Config" type="Node3D" parent="."]
+
+[node name="Wind Direction" type="Node3D" parent="Config"]
+transform = Transform3D(-2.04648e-07, 0, -1, 0, 1, 0, 1, 0, -2.04648e-07, -1.15835e-06, 6, 26.5)
+
+[node name="forward" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+gizmo_extents = 1.0
+
+[node name="back" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 0.281722, 0.959496, 0, -0.959496, 0.281722, 9, 0, 30)
+gizmo_extents = 1.0
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8759, 0, 14.9674)
+aabb = AABB(-10.0286, 0, -18.7348, 20.0569, 13.796, 37.4688)
+
+[node name="Scenery" type="Node3D" parent="."]
+
+[node name="Grass" parent="Scenery" instance=ExtResource("2_ssmcx")]
+transform = Transform3D(2, 0, 0, 0, 1.2, 0, 0, 0, 30, 5, 0, 0)
+
+[node name="water" parent="Scenery" instance=ExtResource("3_jj56j")]
+transform = Transform3D(5, 0, 0, 0, 1.2, 0, 0, 0, 30, 2.5, 0.1, 15)
+
+[node name="Asphalt" parent="Scenery" instance=ExtResource("4_11rr1")]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 30, 7, 0.0349121, 0)
+
+[node name="StageScreenMeasure" parent="." instance=ExtResource("5_51nvq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.2, 2)
+
+[node name="Capybaras" type="Node3D" parent="."]
+
+[node name="NpcCapybara2" parent="Capybaras" instance=ExtResource("6_uw36n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1153, 0, 28.2302)
+
+[node name="NpcCapybara3" parent="Capybaras" instance=ExtResource("6_uw36n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.11527, 0, 21.2302)
+
+[node name="NpcCapybara4" parent="Capybaras" instance=ExtResource("6_uw36n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.708, 0, 13.9169)
+
+[node name="NpcCapybara5" parent="Capybaras" instance=ExtResource("6_uw36n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7606, 0, 17.848)
+
+[node name="NpcCapybara6" parent="Capybaras" instance=ExtResource("6_uw36n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.76057, 0, 10.848)
+
+[node name="NpcCapybara7" parent="Capybaras" instance=ExtResource("6_uw36n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7606, 0, 3.84798)
+
+[connection signal="screen_entered" from="Config/VisibleOnScreenNotifier3D" to="." method="_on_screen_entered"]
+[connection signal="screen_exited" from="Config/VisibleOnScreenNotifier3D" to="." method="_on_screen_exited"]

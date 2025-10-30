@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwc704cbltkqa"]
+
+[ext_resource type="PackedScene" uid="uid://t7wocwarj2c3" path="res://elements/enemy/pizza/enemy_pizza_roboto.tscn" id="1_p2kcc"]
+
+[node name="Enemy_PizzaRoboto" instance=ExtResource("1_p2kcc")]
+await_to_kill_self_on_collision = 0.1
+walkAndStop = true

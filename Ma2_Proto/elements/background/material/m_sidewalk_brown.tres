@@ -1,0 +1,26 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://bigcloksla8qv"]
+
+[ext_resource type="Texture2D" uid="uid://bp25ybofri7fv" path="res://elements/background/texture/generic_street_texture/T_Calcada_Branco_seamless_BaseColor.png" id="1_qhfdg"]
+[ext_resource type="Texture2D" uid="uid://c3sbrjkkf560h" path="res://elements/enemy/pizza/Texture/M_Pizza_Emission.png" id="2_pqjku"]
+[ext_resource type="Texture2D" uid="uid://ksdgbbd2nhrh" path="res://elements/background/texture/generic_street_texture/T_Calcada_Branco_seamless_Normal.png" id="3_u0j42"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7ykpu"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("1_qhfdg")
+emission_energy_multiplier = 16.0
+emission_texture = ExtResource("2_pqjku")
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = ExtResource("3_u0j42")
+rim_tint = 1.0
+clearcoat = 0.2
+clearcoat_roughness = 0.59
+anisotropy = 0.33
+ao_texture = SubResource("CompressedTexture2D_7ykpu")
+backlight = Color(0.0313726, 0.0313726, 0.0313726, 1)
+uv1_scale = Vector3(0.5, 0.5, 0.15)
+uv1_triplanar = true
+uv1_world_triplanar = true

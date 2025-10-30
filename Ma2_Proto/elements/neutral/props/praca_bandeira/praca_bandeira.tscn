@@ -1,0 +1,407 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5oxflc5oincv"]
+
+[ext_resource type="PackedScene" uid="uid://bo5wfjfhvx1lp" path="res://elements/neutral/props/praca_bandeira/mesh_bridge.tscn" id="1_8kgty"]
+[ext_resource type="PackedScene" uid="uid://c1b5r8t0thoqt" path="res://elements/neutral/props/praca_bandeira/mesh_floor_01.tscn" id="2_qohhk"]
+[ext_resource type="PackedScene" uid="uid://dsi8ffmxwik8q" path="res://elements/neutral/props/praca_bandeira/mesh_floor_02.tscn" id="3_q61bo"]
+[ext_resource type="PackedScene" uid="uid://8cuxp7yk2cwy" path="res://elements/neutral/props/praca_bandeira/mesh_support_metal.tscn" id="4_mt6fp"]
+[ext_resource type="Material" uid="uid://bsogem1di6hee" path="res://elements/neutral/props/praca_bandeira/material/M_floor_yellow.tres" id="5_ux56m"]
+[ext_resource type="Material" uid="uid://fd5v1bojtocd" path="res://elements/neutral/props/praca_bandeira/material/M_floor_gray.tres" id="6_uk0nj"]
+[ext_resource type="PackedScene" uid="uid://ctbkjd21yqlm4" path="res://elements/neutral/props/vegetation/element_bush.tscn" id="7_eu05i"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_6rm26"]
+
+[node name="praca_bandeira" type="Node3D"]
+
+[node name="bridge" parent="." instance=ExtResource("1_8kgty")]
+
+[node name="floor_01" parent="." instance=ExtResource("2_qohhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0244131, 0)
+
+[node name="floor_02" parent="." instance=ExtResource("3_q61bo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.823078, 0.003, -0.0716043, 1.656)
+
+[node name="support_metal" parent="." instance=ExtResource("4_mt6fp")]
+
+[node name="Tiles" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -2.63668, 0.01, -10.3402)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D71" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -2.637, 0.01, -13.144)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D72" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -5.334, 0.01, -12.707)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D73" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, 5.373, 0.01, -12.707)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -5.26939, 0.01, -10.3402)
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -2.63668, 0.01, -8.62318)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -5.26939, 0.01, -8.62318)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -7.88949, 0.01, -10.3402)
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -7.88949, 0.01, -7.76009)
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, 2.61143, 0.01, -10.3402)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D70" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, 2.611, 0.01, -13.214)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -0.0212794, 0.00999999, -10.5761)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D69" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -0.021, 0.01, -13.2917)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, 2.61143, 0.01, -8.62318)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -0.0212794, 0.01, -8.62318)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, 7.90022, 0.01, -10.3402)
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, 5.26751, 0.01, -10.3402)
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, 7.90022, 0.01, -7.76009)
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D28" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, 7.90022, 0.01, -6.04506)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, 5.26751, 0.01, -8.62318)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(-2.6, 2.27299e-07, 9.93556e-15, 0, -1.1365e-07, 2.6, 2.27299e-07, 2.6, 1.1365e-07, -2.63668, 0.01, -5.97658)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(-1.1365e-07, 2.6, 1.1365e-07, 0, -1.1365e-07, 2.6, 2.6, 1.1365e-07, 4.96778e-15, -5.26939, 0.01, -5.97658)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(-1.13649e-07, 2.6, 1.1365e-07, 0, -1.13649e-07, 2.6, 2.6, 1.13649e-07, 4.96778e-15, -2.63668, 0.01, -3.3114)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(-2.6, 2.27299e-07, 9.93556e-15, 0, -1.1365e-07, 2.6, 2.27299e-07, 2.6, 1.1365e-07, -5.26939, 0.01, -3.3114)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D19" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -7.88949, 0.01, -5.97658)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D20" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -7.88949, 0.01, -3.3114)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D60" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -10.6228, 0.01, -3.3114)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D21" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(-1.1365e-07, 2.6, 1.1365e-07, 0, -1.1365e-07, 2.6, 2.6, 1.1365e-07, 4.96778e-15, 2.61143, 0.01, -5.97658)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D22" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -0.0212794, 0.01, -5.97658)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D23" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.59863, 0.0845253, 3.69471e-09, 0, -1.1365e-07, 2.6, 0.0845253, -2.59863, -1.1359e-07, 2.61143, 0.01, -3.3114)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D24" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -0.0212794, 0.01, -3.3114)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D25" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(-2.6, 2.27299e-07, 9.93556e-15, 0, -1.1365e-07, 2.6, 2.27299e-07, 2.6, 1.1365e-07, 5.26751, 0.01, -5.97658)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D26" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, 7.90022, 0.01, -3.35838)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D27" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.5975, 0.114, 4.9831e-09, 0, -1.1365e-07, 2.6, 0.114, -2.5975, -1.1354e-07, 5.26751, 0.01, -3.3114)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D29" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.59876, -0.0803981, -3.51431e-09, 0, -1.1365e-07, 2.6, -0.0803981, -2.59876, -1.13595e-07, -2.63668, 0.01, -0.654484)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D30" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(-1.1365e-07, -2.6, -1.1365e-07, 0, -1.1365e-07, 2.6, -2.6, 1.1365e-07, 4.96778e-15, -5.26939, 0.01, -0.654484)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D31" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(-0.0453761, 2.5996, 1.13632e-07, 0, -1.1365e-07, 2.6, 2.5996, 0.0453761, 1.98345e-09, -7.88949, 0.01, -0.654484)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D32" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(-1.1365e-07, 2.6, 1.1365e-07, 0, -1.1365e-07, 2.6, 2.6, 1.1365e-07, 4.96778e-15, 2.61143, 0.01, -0.654484)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D33" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(-2.6, 2.27299e-07, 9.93556e-15, 0, -1.1365e-07, 2.6, 2.27299e-07, 2.6, 1.1365e-07, -0.0212794, 0.01, -0.654484)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D34" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(-2.6, 2.27299e-07, 9.93556e-15, 0, -1.1365e-07, 2.6, 2.27299e-07, 2.6, 1.1365e-07, 7.90022, 0.01, -0.654484)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D61" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, 10.5775, 0.01, -0.654484)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D62" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, 10.5102, 0.01, 2.06591)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D63" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, 10.5295, 0.01, 4.64142)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D35" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(-1.1365e-07, -2.6, -1.1365e-07, 0, -1.1365e-07, 2.6, -2.6, 1.1365e-07, 4.96778e-15, 5.26751, 0.01, -0.654484)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D36" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(-1.1365e-07, -2.6, -1.1365e-07, 0, -1.1365e-07, 2.6, -2.6, 1.1365e-07, 4.96778e-15, -2.63668, 0.01, 2.01411)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D37" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.59819, -0.0969516, -4.23789e-09, 0, -1.1365e-07, 2.6, -0.0969516, -2.59819, -1.13571e-07, -5.26939, 0.01, 2.01411)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D38" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(-0.0907386, -2.59842, -1.1358e-07, 0, -1.1365e-07, 2.6, -2.59842, 0.0907386, 3.96631e-09, -7.88949, 0.01, 2.01411)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D39" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.59957, 0.0471911, 2.06279e-09, 0, -1.1365e-07, 2.6, 0.0471911, -2.59957, -1.13631e-07, 2.61143, 0.01, 2.01411)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D40" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.59913, 0.0671983, 2.93733e-09, 0, -1.1365e-07, 2.6, 0.0671983, -2.59913, -1.13612e-07, -0.0212794, 0.01, 2.01411)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D41" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, 7.90022, 0.01, 2.01411)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D42" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, 5.26751, 0.01, 2.01411)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D43" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.59872, -0.0814413, -3.55991e-09, 0, -1.1365e-07, 2.6, -0.0814413, -2.59872, -1.13594e-07, -2.63668, 0.01, 4.65543)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D44" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -5.26939, 0.01, 4.65543)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D45" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -7.88949, 0.01, 4.65543)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D57" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -10.5653, 0.01, -0.654484)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D58" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -10.5653, 0.01, 2.01411)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D59" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -10.5653, 0.01, 4.65543)
+material_override = ExtResource("5_ux56m")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D46" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, 2.61143, 0.01, 4.65543)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D47" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -0.0212794, 0.01, 4.65543)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D48" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, 7.90022, 0.01, 4.65543)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D49" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, 5.26751, 0.01, 4.65543)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D50" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -2.7307, 0.01, 7.34707)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D51" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -5.36341, 0.01, 7.34707)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D52" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -7.9835, 0.01, 7.34707)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D53" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, 2.51741, 0.01, 7.34707)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D54" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -0.115299, 0.01, 7.34707)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D64" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -2.63668, 0.01, 9.99123)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D65" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, 2.61143, 0.01, 9.99123)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D66" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -0.0212794, 0.01, 9.99123)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D55" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, 7.97756, 0.01, 7.30233)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D56" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, 5.17349, 0.01, 7.34707)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D67" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, -5.26939, 0.01, 9.98857)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="MeshInstance3D68" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(2.6, 0, 0, 0, -1.1365e-07, 2.6, 0, -2.6, -1.1365e-07, 5.26751, 0.01, 9.98857)
+material_override = ExtResource("6_uk0nj")
+mesh = SubResource("QuadMesh_6rm26")
+
+[node name="bush" type="Node3D" parent="."]
+
+[node name="Palm" parent="bush" instance=ExtResource("7_eu05i")]
+transform = Transform3D(-1.07207, 0, 0.468577, 0, 1.17, 0, -0.468577, 0, -1.07207, 3.30864, 2.90835, -10.6569)
+
+[node name="Palm3" parent="bush" instance=ExtResource("7_eu05i")]
+transform = Transform3D(-1.07207, 0.332972, 0.329688, 0, 0.823204, -0.831405, -0.468577, -0.761817, -0.754301, 3.77867, 2.24999, -11.3888)
+
+[node name="Palm4" parent="bush" instance=ExtResource("7_eu05i")]
+transform = Transform3D(-0.827005, 0, -0.253551, 0, 0.865, 0, 0.253551, 0, -0.827005, -2.664, 2.86194, -10.4334)
+
+[node name="Palm8" parent="bush" instance=ExtResource("7_eu05i")]
+transform = Transform3D(0.941462, 0, -0.476103, 0, 1.055, 0, 0.476103, 0, 0.941462, -3.4034, 2.86194, -10.7559)
+
+[node name="Palm9" parent="bush" instance=ExtResource("7_eu05i")]
+transform = Transform3D(0.560953, 0, -0.347752, 0, 0.66, 0, 0.347752, 0, 0.560953, -4.10326, 2.86194, -10.5407)
+
+[node name="Palm5" parent="bush" instance=ExtResource("7_eu05i")]
+transform = Transform3D(0.698383, -0.0475498, 0, 0.0475498, 0.698383, 0, 0, 0, 0.7, 2.62537, 2.80352, -10.5035)
+
+[node name="Palm2" parent="bush" instance=ExtResource("7_eu05i")]
+transform = Transform3D(-0.41088, 0, 0.884196, 0, 0.975, 0, -0.884196, 0, -0.41088, 4.14781, 2.79331, -10.4608)

@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpweaq1hbvh31"]
+
+[ext_resource type="PackedScene" uid="uid://c6gv2ejlr58a2" path="res://elements/enemy/projectiles/proj_super/proj_enemy_super.tscn" id="1_hji0m"]
+[ext_resource type="PackedScene" uid="uid://cgbcffy8s76l4" path="res://elements/enemy/projectiles/proj_basic/proj_enemy_basic_follow_screen.tscn" id="2_tstv8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mycx8"]
+resource_local_to_scene = true
+shading_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.0
+rim = 0.5
+rim_tint = 1.0
+disable_receive_shadows = true
+grow_amount = -0.252
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2a1ur"]
+resource_local_to_scene = true
+render_priority = 10
+cull_mode = 2
+shading_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+albedo_color = Color(1, 0, 1, 1)
+emission_enabled = true
+emission = Color(1, 0, 1, 1)
+emission_energy_multiplier = 5.0
+rim = 0.5
+rim_tint = 1.0
+disable_receive_shadows = true
+grow_amount = -0.252
+
+[node name="EnemyProjectile_Super_FollowScreen" instance=ExtResource("1_hji0m")]
+accompany_screen = true
+
+[node name="Spawner" parent="." index="0"]
+proj = ExtResource("2_tstv8")
+
+[node name="White" parent="Pivot/Graphic" index="1"]
+material_override = SubResource("StandardMaterial3D_mycx8")
+
+[node name="Glow" parent="Pivot/Graphic" index="3"]
+material_override = SubResource("StandardMaterial3D_2a1ur")

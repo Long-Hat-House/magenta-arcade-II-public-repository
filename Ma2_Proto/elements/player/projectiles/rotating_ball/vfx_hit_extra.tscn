@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7fdi63i7pbst"]
+
+[ext_resource type="PackedScene" uid="uid://cqlmiiyyfqe3w" path="res://elements/vfx/vfx_hit/vfx_hit_blue.tscn" id="1_sg414"]
+
+[node name="VfxHit" instance=ExtResource("1_sg414")]

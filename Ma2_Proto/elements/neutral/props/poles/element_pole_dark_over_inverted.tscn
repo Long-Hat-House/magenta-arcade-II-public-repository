@@ -1,0 +1,173 @@
+[gd_scene load_steps=15 format=3 uid="uid://dvwae25ypufbj"]
+
+[ext_resource type="Script" uid="uid://dq10y5jeco3ay" path="res://systems/element_scene_structure/exposer_node_3d.gd" id="1_pllbo"]
+[ext_resource type="PackedScene" uid="uid://cqak21sgiaxw0" path="res://elements/neutral/props/pole_pieces/element_traffic_light_side.tscn" id="2_xkmq6"]
+[ext_resource type="PackedScene" uid="uid://bdwqtiy5314fv" path="res://elements/neutral/props/pole_pieces/element_traffic_light_top.tscn" id="3_xl3b7"]
+[ext_resource type="Script" uid="uid://0wf4obm88h88" path="res://elements/neutral/props/generic_tumbler.gd" id="4_we183"]
+[ext_resource type="Resource" uid="uid://7jb1h4bglavu" path="res://elements/neutral/props/pole_pieces/element_iron_pole_tumble_data.tres" id="5_1a8p0"]
+[ext_resource type="PackedScene" uid="uid://dsw7qeq5mn0jj" path="res://elements/neutral/props/poles/mesh/mesh_pole_dark_top.tscn" id="5_ohsci"]
+[ext_resource type="PackedScene" uid="uid://cqu7ohn46rew1" path="res://elements/neutral/props/poles/mesh/mesh_pole_dark.tscn" id="6_346t1"]
+[ext_resource type="Script" uid="uid://bebxjxq1gjo10" path="res://systems/element_scene_structure/exposable_node_3d_child_scene.gd" id="6_ytti2"]
+[ext_resource type="PackedScene" uid="uid://bk3c6a8vre6yr" path="res://elements/neutral/props/generic_body_and_presseable.tscn" id="7_se3ng"]
+[ext_resource type="Script" uid="uid://biqjvlcudqx0t" path="res://elements/player/force_receiver.gd" id="8_ov5y5"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="10_q55bi"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2m3ki"]
+radius = 0.189506
+height = 5.81893
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2thpc"]
+radius = 0.137389
+height = 2.95986
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sf20u"]
+radius = 0.137389
+height = 2.95986
+
+[node name="Pole Dark Over Inverted" type="Node3D"]
+script = ExtResource("1_pllbo")
+"GenericTumbler Ground/Parent/Mesh Pole Dark/Slot - Pole Center*scene" = ExtResource("2_xkmq6")
+"GenericTumbler Ground/Parent/Mesh Pole Dark/Slot - Pole Top*scene" = null
+"GenericTumbler Ground/Parent/Mesh Pole Dark/GenericTumbler Second/Mesh Pole Dark Over/Slot - Over 1*scene" = ExtResource("3_xl3b7")
+"GenericTumbler Ground/Parent/Mesh Pole Dark/GenericTumbler Second/Mesh Pole Dark Over/Slot - Over 2*scene" = null
+"GenericTumbler Ground/Parent/Mesh Pole Dark/GenericTumbler Second/Mesh Pole Dark Over/Slot - Over 3*scene" = null
+
+[node name="GenericBodyAndPresseable" parent="." node_paths=PackedStringArray("on_kill_queue_free", "visual_feedback_of_health") instance=ExtResource("7_se3ng")]
+on_kill_queue_free = [NodePath("..")]
+visual_feedback_of_health = [NodePath("../GenericTumbler Ground/Parent/Mesh Pole Dark")]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.433, 0)
+shape = SubResource("CapsuleShape3D_2m3ki")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(0.564967, -0.825113, 0, 0.825113, 0.564967, 0, 0, 0, 1, -1.271, 5.837, 0)
+shape = SubResource("CapsuleShape3D_2thpc")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(-0.00816804, 0.999967, 0, -0.999967, -0.00816804, 0, 0, 0, 1, -3.658, 6.627, 0)
+shape = SubResource("CapsuleShape3D_sf20u")
+
+[node name="ExplosionNode" type="Node3D" parent="GenericBodyAndPresseable"]
+
+[node name="ExplosionNode2" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="ExplosionNode3" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="ExplosionNode4" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="ExplosionNode5" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+
+[node name="ExplosionNode6" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15902, 5.85815, 0)
+
+[node name="ExplosionNode7" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26401, 6.65501, 0)
+
+[node name="ExplosionNode8" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.38944, 6.67544, 0)
+
+[node name="ExplosionNode9" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.57971, 6.67544, 0)
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.59001, 0)
+aabb = AABB(-5.5147, -2.82354, -0.485289, 6.00181, 8.0526, 0.970577)
+enable_node_path = NodePath("../..")
+
+[node name="GenericBodyAndPresseable Second" parent="GenericBodyAndPresseable" node_paths=PackedStringArray("on_kill_queue_free", "generic_tumbler", "visual_feedback_of_health") instance=ExtResource("7_se3ng")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+on_kill_queue_free = [NodePath("."), NodePath("../../GenericTumbler Ground/Parent/Mesh Pole Dark/GenericTumbler Second")]
+generic_tumbler = NodePath("../../GenericTumbler Ground/Parent/Mesh Pole Dark/GenericTumbler Second")
+visual_feedback_of_health = [NodePath("../../GenericTumbler Ground/Parent/Mesh Pole Dark/GenericTumbler Second/Mesh Pole Dark Over")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GenericBodyAndPresseable/GenericBodyAndPresseable Second"]
+transform = Transform3D(0.564967, -0.825113, 0, 0.825113, 0.564967, 0, 0, 0, 1, -1.271, 0.841202, 0)
+shape = SubResource("CapsuleShape3D_2thpc")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="GenericBodyAndPresseable/GenericBodyAndPresseable Second"]
+transform = Transform3D(-0.00816804, 0.999967, 0, -0.999967, -0.00816804, 0, 0, 0, 1, -3.658, 1.6312, 0)
+shape = SubResource("CapsuleShape3D_sf20u")
+
+[node name="ExplosionNode5" type="Node3D" parent="GenericBodyAndPresseable/GenericBodyAndPresseable Second"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0749884, 0)
+
+[node name="ExplosionNode6" type="Node3D" parent="GenericBodyAndPresseable/GenericBodyAndPresseable Second"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15902, 0.783162, 0)
+
+[node name="ExplosionNode7" type="Node3D" parent="GenericBodyAndPresseable/GenericBodyAndPresseable Second"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26401, 1.58002, 0)
+
+[node name="ExplosionNode8" type="Node3D" parent="GenericBodyAndPresseable/GenericBodyAndPresseable Second"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.38944, 1.60045, 0)
+
+[node name="ExplosionNode9" type="Node3D" parent="GenericBodyAndPresseable/GenericBodyAndPresseable Second"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.57971, 1.60045, 0)
+
+[node name="GenericTumbler Ground" type="Node3D" parent="." node_paths=PackedStringArray("receiver", "to_tumble")]
+script = ExtResource("4_we183")
+receiver = NodePath("../ForceReceiver")
+to_tumble = NodePath(".")
+tumble_data = ExtResource("5_1a8p0")
+tumble_radius = 0.1
+
+[node name="Parent" type="Node3D" parent="GenericTumbler Ground"]
+
+[node name="Mesh Pole Dark" parent="GenericTumbler Ground/Parent" instance=ExtResource("6_346t1")]
+
+[node name="Slot - Pole Center" type="Node3D" parent="GenericTumbler Ground/Parent/Mesh Pole Dark"]
+transform = Transform3D(0.938083, 0, -0.346412, 0, 1, 0, 0.346412, 0, 0.938083, 0, 3.41668, 0)
+script = ExtResource("6_ytti2")
+scene = ExtResource("2_xkmq6")
+
+[node name="Slot - Pole Top" type="Node3D" parent="GenericTumbler Ground/Parent/Mesh Pole Dark"]
+transform = Transform3D(0.915992, 0, -0.401197, 0, 1, 0, 0.401197, 0, 0.915992, -0.080776, 4.62274, 0.141576)
+script = ExtResource("6_ytti2")
+
+[node name="GenericTumbler Second" type="Node3D" parent="GenericTumbler Ground/Parent/Mesh Pole Dark" node_paths=PackedStringArray("receiver", "to_tumble", "up_from_circle_getter")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+script = ExtResource("4_we183")
+receiver = NodePath("ForceReceiver")
+to_tumble = NodePath(".")
+tumble_data = ExtResource("5_1a8p0")
+tumble_radius = 0.0
+up_from_circle_getter = NodePath("Up Getter")
+
+[node name="Mesh Pole Dark Over" parent="GenericTumbler Ground/Parent/Mesh Pole Dark/GenericTumbler Second" instance=ExtResource("5_ohsci")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Slot - Over 1" type="Node3D" parent="GenericTumbler Ground/Parent/Mesh Pole Dark/GenericTumbler Second/Mesh Pole Dark Over"]
+transform = Transform3D(-1, -1.51808e-08, 8.60946e-08, 0, 0.984807, 0.173648, -8.74228e-08, 0.173648, -0.984807, 4.56711, 1.63009, 0)
+script = ExtResource("6_ytti2")
+scene = ExtResource("3_xl3b7")
+
+[node name="Slot - Over 2" type="Node3D" parent="GenericTumbler Ground/Parent/Mesh Pole Dark/GenericTumbler Second/Mesh Pole Dark Over"]
+transform = Transform3D(-1, 2.11495e-08, -8.48259e-08, 0, 0.970295, 0.241922, 8.74228e-08, 0.241922, -0.970295, 2.86091, 1.63009, 0)
+script = ExtResource("6_ytti2")
+
+[node name="Slot - Over 3" type="Node3D" parent="GenericTumbler Ground/Parent/Mesh Pole Dark/GenericTumbler Second/Mesh Pole Dark Over"]
+transform = Transform3D(-1, -6.85911e-09, -8.71533e-08, 0, 0.996917, -0.0784591, 8.74228e-08, -0.0784591, -0.996917, 1.18855, 0.828543, 0)
+script = ExtResource("6_ytti2")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="GenericTumbler Ground/Parent/Mesh Pole Dark/GenericTumbler Second/Mesh Pole Dark Over"]
+script = ExtResource("10_q55bi")
+high_contrast_group = &"scenery"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="Up Getter" type="Node3D" parent="GenericTumbler Ground/Parent/Mesh Pole Dark/GenericTumbler Second"]
+transform = Transform3D(0.610878, -0.791725, 0, 0.791725, 0.610878, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Marker3D" type="Marker3D" parent="GenericTumbler Ground/Parent/Mesh Pole Dark/GenericTumbler Second/Up Getter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="ForceReceiver" type="Node3D" parent="GenericTumbler Ground/Parent/Mesh Pole Dark/GenericTumbler Second"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+script = ExtResource("8_ov5y5")
+
+[node name="ForceReceiver" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("8_ov5y5")

@@ -1,0 +1,430 @@
+[gd_scene load_steps=13 format=3 uid="uid://blkye1qre5wqc"]
+
+[ext_resource type="Resource" uid="uid://u5g6p3dvxng6" path="res://elements/levels/lvl_info_load.tres" id="1_syscc"]
+[ext_resource type="Texture2D" uid="uid://dp8j87dp24qul" path="res://modules/text_flow/textures/text_flow_bubble_bg.png" id="2_ncuoc"]
+[ext_resource type="Texture2D" uid="uid://bflh2uw7muqr3" path="res://elements/icons/icon_fingerprint.png" id="3_0rb4r"]
+[ext_resource type="Texture2D" uid="uid://bfd1nn1yo708" path="res://elements/ui/logos/game_splash.png" id="4_3hayx"]
+
+[sub_resource type="GDScript" id="GDScript_lyajk"]
+resource_name = "InitGame"
+script/source = "extends Node3D
+
+const LEVEL_TRANSITION_SIDESLIDE = preload(\"res://systems/level/level_transition_sideslide.tscn\")
+
+@export var _progress_bars:Array[ProgressBar]
+@export var _progress_bars_texture:Array[TextureProgressBar]
+@export var _progress_bars_float:Array[ProgressBarFloat]
+@export var _first_level:LevelInfo
+
+@export var _progress_icon:TextureProgressBar;
+
+var _timer:Timer = Timer.new()
+var _visual_progress:float = 0
+var _target_progress:float = 0
+var _progress_tween:Tween;
+var _target_progress_tween:float;
+
+func timeout(seconds:float):
+	_timer.start(seconds)
+	await _timer.timeout
+
+func _enter_tree() -> void:
+	print(\"[GAME INIT] Entering Tree!\")
+
+func _ready() -> void:
+	print(\"[GAME INIT] Readying!\")
+	for bar in _progress_bars_float:
+		bar.set_bar_data(true, {})
+	_set_progress(0)
+	_set_visual_progress(0)
+
+	_timer.one_shot = true
+	add_child(_timer)
+
+func _set_visual_progress(val:float):
+	_visual_progress = val
+	for bar in _progress_bars:
+		bar.value = val
+	for bar in _progress_bars_texture:
+		bar.value = val
+	for bar in _progress_bars_float:
+		bar.set_fill(val)
+
+func _set_progress(val:float):
+	_target_progress = val
+
+func _process(delta: float) -> void:
+	if _target_progress >= 1 && _visual_progress < 1:
+		_set_visual_progress(1)
+	elif _visual_progress < _target_progress:
+		_set_visual_progress(move_toward(_visual_progress, (_target_progress + _target_progress_tween) * 0.5, delta))
+
+func do_init() -> void:
+	print(\"[GAME INIT] Do Init! (first scene loaded)\")
+	_progress_tween = create_tween();
+	_progress_tween.tween_property(self, \"_target_progress_tween\", 1.0, 8).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC);
+
+	await timeout(.3)
+
+	var always_tweening_tween := _progress_icon.create_tween();
+	always_tweening_tween.tween_property(_progress_icon, \"scale\", Vector2(0.2, 0.2), 0.25).as_relative().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC);
+	always_tweening_tween.tween_property(_progress_icon, \"scale\", Vector2(-0.2, -0.2), 15).as_relative().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC);
+
+	_set_progress(.1)
+	await timeout(.2)
+	SocialPlatformManager.initialize()
+
+	_set_progress(.2)
+	await get_tree().process_frame
+	await AudioManager.await_initialize()
+
+	_set_progress(.3)
+	await get_tree().process_frame
+	var resources_scene_path:StringName = \"res://game_init_objs.tscn\"
+	ResourceLoader.load_threaded_request(resources_scene_path)
+	var p:Array[float] = [0]
+	while true:
+		if ResourceLoader.load_threaded_get_status(resources_scene_path, p) == ResourceLoader.ThreadLoadStatus.THREAD_LOAD_IN_PROGRESS:
+			_set_progress(lerpf(.3, .5, p[0]))
+			await get_tree().process_frame
+		else:
+			break
+
+	var load_objs = (ResourceLoader.load_threaded_get(resources_scene_path) as PackedScene).instantiate()
+	add_child(load_objs)
+
+	_set_progress(.5)
+	await get_tree().process_frame
+	await DevManager.await_initialize()
+
+	_set_progress(.6)
+	await timeout(.1)
+	await AccessibilityManager.await_initialize()
+
+	_set_progress(.7)
+	await timeout(.1)
+	var graphic_manager = GraphicSettingsManager.new()
+	get_tree().root.add_child(graphic_manager,true)
+	await graphic_manager.await_initialize()
+
+	_set_progress(.8)
+	await timeout(.1)
+
+	_set_progress(.95)
+	await timeout(1)
+	LevelManager.change_with_transition(LEVEL_TRANSITION_SIDESLIDE, _first_level)
+
+	if _progress_tween.is_running():
+		_progress_tween.kill();
+		_target_progress_tween = 1.;
+	if always_tweening_tween.is_running():
+		always_tweening_tween.kill();
+	var finish_tween := _progress_icon.create_tween();
+	finish_tween.tween_property(_progress_icon, \"scale\", Vector2(0.25,0.25), 0.2).as_relative().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC);
+	finish_tween.tween_property(_progress_icon, \"scale\", Vector2(-0.25, -0.25), 0.8).as_relative().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC);
+	_set_progress(1)
+	await timeout(.1)
+
+	await LevelManager.level_started
+
+	queue_free()
+
+	print(\"[GAME INIT] Finished Init!\")
+"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y1rk2"]
+content_margin_left = 20.0
+content_margin_top = 32.0
+content_margin_right = 20.0
+content_margin_bottom = 0.0
+texture = ExtResource("2_ncuoc")
+texture_margin_left = 15.0
+texture_margin_top = 14.0
+texture_margin_right = 15.0
+texture_margin_bottom = 19.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lhchp"]
+bg_color = Color(0, 0, 0, 1)
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3hayx"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 120
+corner_radius_top_right = 120
+corner_radius_bottom_right = 120
+corner_radius_bottom_left = 120
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pu3dl"]
+bg_color = Color(0.894118, 0.0627451, 0.494118, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Animation" id="Animation_i2ouq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Full 2D/LoadingPanel/MarginContainer/VBoxContainer/ProgressBar:custom_minimum_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(300, 30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Full 2D/LoadingPanel/MarginContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vqakp"]
+resource_name = "oning"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Full 2D/LoadingPanel/MarginContainer/VBoxContainer/ProgressBar:custom_minimum_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.96667),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(300, 30), Vector2(600, 30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Full 2D/LoadingPanel/MarginContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.96667),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.466667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k528y"]
+_data = {
+&"RESET": SubResource("Animation_i2ouq"),
+&"oning": SubResource("Animation_vqakp")
+}
+
+[node name="GameInit" type="Node3D" node_paths=PackedStringArray("_progress_bars", "_progress_bars_texture", "_progress_icon")]
+script = SubResource("GDScript_lyajk")
+_progress_bars = [NodePath("Full 2D/LoadingPanel/MarginContainer/VBoxContainer/ProgressBar")]
+_progress_bars_texture = [NodePath("Full 2D/LoadingPanel/MarginContainer/Panel/Pivot/TextureProgressBar")]
+_first_level = ExtResource("1_syscc")
+_progress_icon = NodePath("Full 2D/LoadingPanel/MarginContainer/Panel/Pivot/TextureProgressBar")
+
+[node name="Full 2D" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Stuff to load" type="Control" parent="Full 2D"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Full 2D/Stuff to load"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -132.88
+offset_top = -190.0
+offset_right = 132.88
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 32
+
+[node name="PanelContainer" type="PanelContainer" parent="Full 2D/Stuff to load/MarginContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_y1rk2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Full 2D/Stuff to load/MarginContainer/PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Full 2D/Stuff to load/MarginContainer/PanelContainer/VBoxContainer"]
+texture_filter = 2
+clip_contents = false
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "01234567890123456789 💛"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+meta_underlined = false
+hint_underlined = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="LoadingPanel" type="PanelContainer" parent="Full 2D"]
+z_index = 200
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lhchp")
+
+[node name="MarginContainer" type="MarginContainer" parent="Full 2D/LoadingPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 250
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 250
+
+[node name="Panel" type="PanelContainer" parent="Full 2D/LoadingPanel/MarginContainer"]
+clip_children = 1
+z_index = 11
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_3hayx")
+
+[node name="Pivot" type="Control" parent="Full 2D/LoadingPanel/MarginContainer/Panel"]
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Full 2D/LoadingPanel/MarginContainer/Panel/Pivot"]
+z_index = 25
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+pivot_offset = Vector2(64, 64)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.0
+value = 0.3
+fill_mode = 8
+radial_initial_angle = 180.0
+radial_center_offset = Vector2(0, 16.655)
+nine_patch_stretch = true
+texture_under = ExtResource("3_0rb4r")
+texture_progress = ExtResource("3_0rb4r")
+texture_progress_offset = Vector2(1, -1)
+tint_under = Color(0, 0.0156863, 0.278431, 1)
+tint_progress = Color(0.658824, 1, 0.909804, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Full 2D/LoadingPanel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 60
+alignment = 2
+
+[node name="Label" type="RichTextLabel" parent="Full 2D/LoadingPanel/MarginContainer/VBoxContainer"]
+visible = false
+clip_contents = false
+custom_minimum_size = Vector2(0, 7.59)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][wave]Carregando..."
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="ProgressBar" type="ProgressBar" parent="Full 2D/LoadingPanel/MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(300, 30)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_pu3dl")
+max_value = 1.0
+value = 0.4
+show_percentage = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_k528y")
+}
+autoplay = "oning"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+top_level = true
+z_index = 210
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -62.0
+offset_right = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_3hayx")
+stretch_mode = 5

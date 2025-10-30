@@ -1,0 +1,17 @@
+[gd_resource type="AnimatedTexture" load_steps=5 format=3 uid="uid://2o02of5isr55"]
+
+[ext_resource type="Texture2D" uid="uid://6f4f4bvpc3j0" path="res://elements/enemy/bosses/pirulito/texture/anim_sprite/m_pirulito_pole_alpha2.png" id="1_d4h1g"]
+[ext_resource type="Texture2D" uid="uid://cieunymv8q8iu" path="res://elements/enemy/bosses/pirulito/texture/anim_sprite/m_pirulito_pole_alpha3.png" id="2_mocw1"]
+[ext_resource type="Texture2D" uid="uid://dppbd7djtkuo5" path="res://elements/enemy/bosses/pirulito/texture/anim_sprite/m_pirulito_pole_alpha4.png" id="3_ih7d0"]
+[ext_resource type="Texture2D" uid="uid://bp2yhtbnbxp1t" path="res://elements/enemy/bosses/pirulito/texture/anim_sprite/m_pirulito_pole_alpha5.png" id="4_jm7nd"]
+
+[resource]
+frames = 4
+speed_scale = 10.0
+frame_0/texture = ExtResource("1_d4h1g")
+frame_1/texture = ExtResource("2_mocw1")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_ih7d0")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("4_jm7nd")
+frame_3/duration = 1.0

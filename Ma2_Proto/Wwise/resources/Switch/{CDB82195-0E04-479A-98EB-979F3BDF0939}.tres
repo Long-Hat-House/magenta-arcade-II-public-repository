@@ -1,0 +1,11 @@
+[gd_resource type="WwiseSwitch" load_steps=2 format=3 uid="uid://bfmrgeoyl6i0v"]
+
+[ext_resource type="WwiseSwitchGroup" uid="uid://b28j3hbtmplxw" path="res://Wwise/resources/Switch Group/{9E335634-A3D3-4EF0-A488-4C94A76522F2}.tres" id="1_siwpm"]
+
+[resource]
+group_ref = ExtResource("1_siwpm")
+group_id = 1583877764
+name = "New"
+id = 444308101
+guid = "{CDB82195-0E04-479A-98EB-979F3BDF0939}"
+dummy = true

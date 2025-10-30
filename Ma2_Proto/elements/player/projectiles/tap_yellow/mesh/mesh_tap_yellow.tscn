@@ -1,0 +1,338 @@
+[gd_scene load_steps=10 format=3 uid="uid://bh8b3rr3j6br"]
+
+[ext_resource type="PackedScene" uid="uid://c0mi3uk38igor" path="res://elements/player/projectiles/tap_yellow/mesh/tap_yellow.glb" id="1_o1cfx"]
+[ext_resource type="Material" uid="uid://c0d886lmq1odt" path="res://elements/player/projectiles/tap_yellow/material/m_tap_yellow_sphere.tres" id="2_g66ln"]
+[ext_resource type="Material" uid="uid://btp82ysunbocy" path="res://elements/player/projectiles/tap_yellow/material/m_tap_yellow.tres" id="2_o0beu"]
+[ext_resource type="Material" uid="uid://nke6k3nil4jv" path="res://elements/player/projectiles/tap_yellow/material/m_tap_yellow_center.tres" id="4_efdgw"]
+[ext_resource type="Material" uid="uid://b0b7tfim0wfjv" path="res://elements/enemy/projectiles/materials/wpn_glow_white_double_sided.tres" id="4_nw21m"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_msl61"]
+radial_segments = 16
+rings = 8
+
+[sub_resource type="Animation" id="Animation_6lp2u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tap_yellow_sphere:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("tap_yellow_circle:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("tap_yellow_circle:blend_shapes/inner_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("tap_yellow_shock:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("tap_yellow_shock:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("tap_yellow_shock:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.25, 1.25, 1.25)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("tap_yellow_center:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.25, 0.25, 0.25)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("tap_yellow_shock:material_override:albedo_color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("tap_yellow_shock:material_override:emission")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.901961, 0.858824, 0, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("tap_yellow_sphere:material_override:emission")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.901961, 0.858824, 0, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("tap_yellow_sphere:material_override:emission_energy_multiplier")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("tap_yellow_center:material_override:albedo_color")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.364706, 0.141176, 0.0627451, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sknhh"]
+resource_name = "anim_tap_yellow"
+length = 0.500003
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tap_yellow_sphere:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.233333, 0.3, 0.366667, 0.433333, 0.5),
+"transitions": PackedFloat32Array(0.5, 1, -2, 1, 1, 2, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.722, 0.853, 0.722), Vector3(0.85, 1.15, 0.85), Vector3(0.722, 0.853, 0.722), Vector3(0.711, 0.646, 0.711), Vector3(1.15, 0.85, 1.15), Vector3(0.867, 0.692, 0.867), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("tap_yellow_circle:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("tap_yellow_circle:blend_shapes/inner_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("tap_yellow_shock:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.837758, 0, 0), Vector3(-3.14159, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("tap_yellow_shock:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("tap_yellow_shock:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.133333, 0.166667, 0.266667, 0.3, 0.4, 0.433333),
+"transitions": PackedFloat32Array(0.5, 1, 0.5, 1, 0.5, 1, 0.5, 1),
+"update": 0,
+"values": [Vector3(0.85, 0.85, 0.85), Vector3(0.6, 0.6, 0.6), Vector3(0.85, 0.85, 0.85), Vector3(0.6, 0.6, 0.6), Vector3(0.85, 0.85, 0.85), Vector3(0.6, 0.6, 0.6), Vector3(0.85, 0.85, 0.85), Vector3(0.6, 0.6, 0.6)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("tap_yellow_center:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.25, 0.25, 0.25), Vector3(0.125, 0.125, 0.125), Vector3(0.25, 0.25, 0.25), Vector3(0.125, 0.125, 0.125), Vector3(0.25, 0.25, 0.25)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("tap_yellow_shock:material_override:albedo_color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667),
+"transitions": PackedFloat32Array(2, 1, 2, 1, 2, 1, 2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.901961, 0.858824, 0, 1), Color(1, 1, 1, 1), Color(0.901961, 0.858824, 0, 1), Color(1, 1, 1, 1), Color(0.901961, 0.858824, 0, 1), Color(1, 1, 1, 1), Color(0.901961, 0.858824, 0, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("tap_yellow_shock:material_override:emission")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667),
+"transitions": PackedFloat32Array(2, 1, 2, 1, 2, 1, 2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.901961, 0.858824, 0, 1), Color(1, 1, 1, 1), Color(0.901961, 0.858824, 0, 1), Color(1, 1, 1, 1), Color(0.901961, 0.858824, 0, 1), Color(0.96, 0.9312, 0.94464, 1), Color(0.901961, 0.858824, 0, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("tap_yellow_sphere:material_override:emission")
+tracks/9/interp = 0
+tracks/9/loop_wrap = false
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.901961, 0.858824, 0, 1), Color(1, 1, 1, 1), Color(0.901961, 0.858824, 0, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("tap_yellow_sphere:material_override:emission_energy_multiplier")
+tracks/10/interp = 0
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [3.0, 0.0, 3.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("tap_yellow_center:material_override:albedo_color")
+tracks/11/interp = 0
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.364706, 0.141176, 0.0627451, 1), Color(1, 1, 1, 1), Color(0.364706, 0.141176, 0.0627451, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m6ksv"]
+_data = {
+&"RESET": SubResource("Animation_6lp2u"),
+&"anim_tap_yellow": SubResource("Animation_sknhh")
+}
+
+[node name="tap_yellow" instance=ExtResource("1_o1cfx")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="tap_yellow_sphere" parent="." index="0"]
+material_override = ExtResource("2_g66ln")
+
+[node name="tap_yellow_center" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+material_override = ExtResource("4_efdgw")
+mesh = SubResource("SphereMesh_msl61")
+
+[node name="tap_yellow_circle" parent="." index="2"]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+material_override = ExtResource("4_nw21m")
+
+[node name="tap_yellow_shock" parent="." index="3"]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+material_override = ExtResource("2_o0beu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+libraries = {
+&"": SubResource("AnimationLibrary_m6ksv")
+}
+autoplay = "anim_tap_yellow"

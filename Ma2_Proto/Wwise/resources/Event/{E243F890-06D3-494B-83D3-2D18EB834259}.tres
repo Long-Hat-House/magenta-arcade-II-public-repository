@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://nrcrxxvcns7x"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_UI_Button_Back"
+id = 3217946907
+guid = "{E243F890-06D3-494B-83D3-2D18EB834259}"
+dummy = true

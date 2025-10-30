@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://joifbmlexk6j"]
+
+[ext_resource type="Script" uid="uid://dxunhrg6vjrv3" path="res://elements/enemy/bosses/boss_sillouette_high_contrast.gd" id="1_efoaq"]
+
+[node name="HighContrast_BossSillouette" type="Node" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_efoaq")
+sprite = NodePath("")
+metadata/_custom_type_script = "uid://bvot0eotmifyk"

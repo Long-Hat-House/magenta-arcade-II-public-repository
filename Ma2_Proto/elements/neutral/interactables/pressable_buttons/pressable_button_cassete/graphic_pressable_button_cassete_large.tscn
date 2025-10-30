@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://x2710to1v7vs"]
+
+[ext_resource type="Script" uid="uid://bwkeq6vnu35fv" path="res://systems/pressable/pressable_button_graphic.gd" id="1_nxjtl"]
+[ext_resource type="AnimationLibrary" uid="uid://dq1ag4ykw2pps" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_cassete/animations.res" id="2_mbvh6"]
+[ext_resource type="PackedScene" uid="uid://bjb6x68au3fvb" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_cassete/mesh/mesh_button_cassete_large.tscn" id="3_cxfqx"]
+[ext_resource type="Texture2D" uid="uid://b3s6bubwjtovt" path="res://elements/icons/icon_hold_yellow.png" id="4_ybyf1"]
+[ext_resource type="Script" uid="uid://bi4yfgewvcvwq" path="res://systems/switchable/switch_oning_offing_animation_player.gd" id="5_6sikp"]
+[ext_resource type="Texture2D" uid="uid://diwllkynpha7w" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_cassete/texture/t_button_cassete_DetailColor.png" id="5_lrh55"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8utrq"]
+size = Vector3(1.5, 1, 1.5)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jie0d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0sf28"]
+resource_local_to_scene = true
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.708865, 0.32951, 0.46196, 1)
+emission_enabled = true
+emission = Color(0.385493, 0.385492, 0.385492, 1)
+emission_energy_multiplier = 0.0
+clearcoat = 0.69
+anisotropy = 0.33
+ao_texture = SubResource("CompressedTexture2D_jie0d")
+backlight = Color(0.0313726, 0.0313726, 0.0313726, 1)
+detail_enabled = true
+detail_mask = ExtResource("5_lrh55")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_60djd"]
+resource_local_to_scene = true
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("4_ybyf1")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_qx82g"]
+size = Vector2(0.9, 0.9)
+orientation = 1
+
+[node name="Graphic Button Cassete" type="Node3D" node_paths=PackedStringArray("_icon_mesh", "_button_mesh", "_area_3d", "_on_off_animation_player")]
+script = ExtResource("1_nxjtl")
+_icon_mesh = NodePath("button_mesh/icon_mesh")
+_button_mesh = NodePath("button_mesh/button")
+_area_3d = NodePath("Area3D")
+_on_off_animation_player = NodePath("Switch_Oning_Offing_AnimationPlayer")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.75)
+shape = SubResource("BoxShape3D_8utrq")
+
+[node name="Switch_Oning_Offing_AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"animations": ExtResource("2_mbvh6")
+}
+script = ExtResource("5_6sikp")
+on_animation = "animations/on"
+off_animation = "animations/off"
+oning_animation = "animations/oning"
+offing_animation = "animations/offing"
+
+[node name="button_mesh" parent="." instance=ExtResource("3_cxfqx")]
+
+[node name="button" parent="button_mesh" index="0"]
+material_override = SubResource("StandardMaterial3D_0sf28")
+
+[node name="icon_mesh" type="MeshInstance3D" parent="button_mesh"]
+transform = Transform3D(0.8, 0, 0, 0, 0.767321, 0.226315, 0, -0.226315, 0.767321, 0, 0.857029, 0.919217)
+material_override = SubResource("StandardMaterial3D_60djd")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_qx82g")
+skeleton = NodePath("../..")
+
+[editable path="button_mesh"]

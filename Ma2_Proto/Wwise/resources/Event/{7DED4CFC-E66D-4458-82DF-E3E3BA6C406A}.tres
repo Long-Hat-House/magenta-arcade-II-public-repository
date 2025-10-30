@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://b11xbkxuash33"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_DEBUG_Stereo"
+id = 4075747422
+guid = "{7DED4CFC-E66D-4458-82DF-E3E3BA6C406A}"
+dummy = true

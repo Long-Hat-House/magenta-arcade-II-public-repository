@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwbv7ltrp3kev"]
+
+[ext_resource type="PackedScene" uid="uid://dmbucn8o07gb2" path="res://elements/neutral/props/carpet/mesh/barricade.glb" id="1_tptnm"]
+[ext_resource type="Material" uid="uid://mb3l313wn73u" path="res://elements/neutral/props/carpet/material/m_barricade.tres" id="2_hbjtq"]
+
+[node name="ribbon" instance=ExtResource("1_tptnm")]
+
+[node name="pole" parent="." index="0"]
+material_override = ExtResource("2_hbjtq")
+
+[node name="ribbon" parent="." index="1"]
+material_override = ExtResource("2_hbjtq")

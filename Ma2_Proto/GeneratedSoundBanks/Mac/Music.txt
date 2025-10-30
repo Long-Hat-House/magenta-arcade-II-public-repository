@@ -1,0 +1,149 @@
+Event	ID	Name			Wwise Object Path	Notes
+	254082907	Music_Boss_Start			\Music\Boss\Music_Boss_Start	
+	710994502	Music_Boss_Final_Phase2_Start			\Music\Boss\Music_Boss_Final_Phase2_Start	
+	725412667	Music_Shop_End			\Music\Shop\Music_Shop_End	
+	851377975	Music_Level5_Gameplay_End			\Music\Level5\Music_Level5_Gameplay_End	
+	878627499	Music_Hub_Start			\Music\HUB\Music_Hub_Start	
+	922357033	Music_Level2_Gameplay_Start			\Music\Level2\Music_Level2_Gameplay_Start	
+	999248293	Music_Boss_Final_End			\Music\Boss\Music_Boss_Final_End	
+	1212595920	Music_Boss_Dog_Start			\Music\Boss\Music_Boss_Dog_Start	
+	1509153952	Music_Level1_Gameplay_Start			\Music\Level1\Music_Level1_Gameplay_Start	
+	1609378734	Music_Level4_Start			\Music\Level4\Music_Level4_Start	
+	1773286911	Music_Level4_Gameplay_Start			\Music\Level4\Music_Level4_Gameplay_Start	
+	1936875868	Music_Level4_Gameplay_End			\Music\Level4\Music_Level4_Gameplay_End	
+	1938640389	Music_Level3_Gameplay_End			\Music\Level3\Music_Level3_Gameplay_End	
+	1952887438	Music_Level3_Gameplay_Start			\Music\Level3\Music_Level3_Gameplay_Start	
+	2030136416	Music_Shop_Start			\Music\Shop\Music_Shop_Start	
+	2129730527	Music_Level5_Boss_Dog_End			\Music\Level5\Music_Level5_Boss_Dog_End	
+	2287715908	Music_Level1_Flag_Destroy			\Music\Level1\Music_Level1_Flag_Destroy	
+	2327625744	Music_Hub_End			\Music\HUB\Music_Hub_End	
+	2399950597	Music_Level5_Invasion_Start			\Music\Level5\Music_Level5_Invasion_Start	
+	2547824105	Music_Level3_Start			\Music\Level3\Music_Level3_Start	
+	2596925620	Music_Level2_Start			\Music\Level2\Music_Level2_Start	
+	2888468026	Music_Level2_Gameplay_End			\Music\Level2\Music_Level2_Gameplay_End	
+	3227181061	Music_Stop			\Music\Music_Stop	
+	3303237283	Music_Level5_Start			\Music\Level5\Music_Level5_Start	
+	3372329102	Music_MainMenu_Stop			\Music\MainMenu\Music_MainMenu_Stop	
+	3401249541	Music_Boss_Final_Phase1_Start			\Music\Boss\Music_Boss_Final_Phase1_Start	
+	3419767675	Music_Level1_Gameplay_End			\Music\Level1\Music_Level1_Gameplay_End	
+	3478999332	Music_Level5_Gameplay_Start			\Music\Level5\Music_Level5_Gameplay_Start	
+	3672865688	Music_Level5_Boss_Hand_End			\Music\Level5\Music_Level5_Boss_Hand_End	
+	3775722203	Music_Boss_Final_Phase3_Start			\Music\Boss\Music_Boss_Final_Phase3_Start	
+	3890745583	Music_Level1_Start			\Music\Level1\Music_Level1_Start	
+	3951622205	Music_Boss_Death			\Music\Boss\Music_Boss_Death	
+	4186889390	Music_MainMenu_Start			\Music\MainMenu\Music_MainMenu_Start	
+
+State Group	ID	Name			Wwise Object Path	Notes
+	89505537	Gameplay			\Default Work Unit\Gameplay	
+	646625282	Hub			\Default Work Unit\Hub	
+	2988808205	Boss_MusicHold			\Default Work Unit\Boss_MusicHold	
+	3200174779	Boss_Final			\Default Work Unit\Boss_Final	
+
+State	ID	Name	State Group			Notes
+	251412225	Shop	Gameplay			
+	748895195	None	Gameplay			
+	782826392	Default	Gameplay			
+	1189762416	Challenge	Gameplay			
+	3026592080	Boss_Defeat	Gameplay			
+	3688152761	Boss_Fight	Gameplay			
+	3803289968	LevelClear	Gameplay			
+	4158285989	GameOver	Gameplay			
+	26822469	Exit	Hub			
+	748895195	None	Hub			
+	782826392	Default	Hub			
+	2368844905	Enter	Hub			
+	3349798655	Phone_Zap	Hub			
+	4265022948	Phone_Ringtone	Hub			
+	748895195	None	Boss_MusicHold			
+	1281810935	Start	Boss_MusicHold			
+	2405648188	Release	Boss_MusicHold			
+	748895195	None	Boss_Final			
+	2002117580	Phase_01	Boss_Final			
+	2002117582	Phase_03	Boss_Final			
+	2002117583	Phase_02	Boss_Final			
+
+Effect plug-ins	ID	Name	Type				Notes
+	2849147824	Medium	Wwise RoomVerb			
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	43802521	mus_level1_flag_arp_120	I:\MA2\Magenta-Arcade_Wwise\.cache\E5\{E5C00E64-2595-31F3-A73B-ACE08C026402}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level1\Level1_NpcIntro\NpcIntro\mus_level1_flag_arp_120		1926
+	70184894	mus_level5_gameplay_pre_116	I:\MA2\Magenta-Arcade_Wwise\.cache\34\{34E33FE4-86EB-328C-71B2-BA9C75B516AF}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level5\Level5_Challenge\Level5\mus_level5_gameplay_pre_116\mus_level5_gameplay_pre_116		2269
+	70546224	mus_level1_challenge_loop	I:\MA2\Magenta-Arcade_Wwise\.cache\88\{883761F4-856D-0878-67C4-6E4001E1B429}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level1\Level1_Challenge\Level1_Challenge\mus_level1_challenge_loop\mus_level1_challenge_loop		2302
+	121951088	mus_menu_loop_pre	I:\MA2\Magenta-Arcade_Wwise\.cache\99\{99BDFF5B-0E8E-2419-828E-B4F04B52B037}.wem		\Interactive Music Hierarchy\Default Work Unit\MainMenu\mus_menu_loop_pre\mus_menu_loop_pre		2639
+	157801274	mus_boss_final_phase1_intro	I:\MA2\Magenta-Arcade_Wwise\.cache\D2\{D20BE550-9712-A05C-E65A-549972E5D4C0}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Boss\Boss_Final\Phase1\mus_boss_final_phase1_intro\mus_boss_final_phase1_intro		3082
+	170274307	mus_boss_final_phase3_loop	I:\MA2\Magenta-Arcade_Wwise\.cache\4D\{4D237505-08E6-81F9-7CAD-C8B876FEF38D}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Boss\Boss_Final\Phase3\mus_boss_final_phase3_loop\mus_boss_final_phase3_loop		2589
+	174811141	plr_movement_wind_gust_01	I:\MA2\Magenta-Arcade_Wwise\.cache\DE\{DE030B9C-FFCC-F0D1-D921-7E277CE3C311}.wem		\Actor-Mixer Hierarchy\World\WORLD_Ambience\Ambience_Main\Shop\plr_movement_wind_gust_01		329711
+	188828171	mus_boss_dog_gameplay_loop_116	I:\MA2\Magenta-Arcade_Wwise\.cache\F1\{F1C36854-9CB8-FE05-3BB2-021EECFC3148}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Boss\Boss_Dog\mus_boss_dog_gameplay_loop_116\mus_boss_dog_gameplay_loop_116		1346
+	257611301	mus_shop_loop_lead	I:\MA2\Magenta-Arcade_Wwise\.cache\B1\{B1109BFE-66BD-39F6-C612-B4A977BAC007}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\ShopMusic\ShopMusic\mus_shop_loop_lead		664
+	302335666	mus_level2_challenge_loop	I:\MA2\Magenta-Arcade_Wwise\.cache\46\{46F7DCC2-2E18-317F-26F0-6FFAC668CCD9}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level2\Level2_Challenge\Level2_Challenge\mus_level2_challenge_loop\mus_level2_challenge_loop		2481
+	302992225	ui_boss_start_01	I:\MA2\Magenta-Arcade_Wwise\.cache\43\{43AC7C6A-AA97-6035-428A-A31CA4240712}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\UI_Pauseable\ui_boss_start_01		85345
+	341057311	mus_hub_flute	I:\MA2\Magenta-Arcade_Wwise\.cache\A1\{A1697149-94D9-9C7D-C696-27490FCDE942}.wem		\Interactive Music Hierarchy\Default Work Unit\HUB\HUB_v2\HUB\mus_hub_flute		800
+	349528451	mus_level5_challenge_intro_126	I:\MA2\Magenta-Arcade_Wwise\.cache\7C\{7CFB5C93-4DBE-E3B2-7D86-685695C5DD7D}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level5\Level5_Challenge\Level5_Challenge\mus_level5_challenge_intro_126\mus_level5_challenge_intro_126		2604
+	374714544	mus_shop_loop_base	I:\MA2\Magenta-Arcade_Wwise\.cache\CF\{CF20BFA4-A498-8058-FDFA-4BCD617AD8B5}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\ShopMusic\ShopMusic\mus_shop_loop_base		2217
+	387430442	mus_boss_dog_gameplay_pre_116	I:\MA2\Magenta-Arcade_Wwise\.cache\61\{61CC1344-5F3E-2448-0C70-2C9A29524367}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Boss\Boss_Dog\mus_boss_dog_gameplay_pre_116\mus_boss_dog_gameplay_pre_116		2406
+	389883034	mus_level3_challenge_intro	I:\MA2\Magenta-Arcade_Wwise\.cache\E1\{E13C66A7-1051-B382-442F-BC75128114C0}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level3\Level3_Challenge\Level3_Challenge\mus_level3_challenge_intro\mus_level3_challenge_intro		1001
+	405912915	mus_level2_gameplay_loop	I:\MA2\Magenta-Arcade_Wwise\.cache\D3\{D3CAF5B0-4D36-3A05-5932-84AE5378D3B2}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level2\Level2_Challenge\Level2\mus_level2_gameplay_loop\mus_level2_gameplay_loop		3661
+	413083381	mus_level2_gameplay_pre	I:\MA2\Magenta-Arcade_Wwise\.cache\E0\{E07BCAF9-DDE3-17A0-C6D6-6ED68BB53ABE}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level2\Level2_Challenge\Level2\mus_level2_gameplay_pre\mus_level2_gameplay_pre		1321
+	416331356	mus_level3_gameplay_pre	I:\MA2\Magenta-Arcade_Wwise\.cache\03\{03D85C6A-75AE-ED5C-F76A-F97F28B18883}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level3\Level3_Challenge\Level3\mus_level3_gameplay_pre\mus_level3_gameplay_pre		2415
+	435716481	world_cloud_heaven_entrance_01	I:\MA2\Magenta-Arcade_Wwise\.cache\27\{27DB627A-3F25-99B6-EE5E-3A63DE779CF7}.wem		\Actor-Mixer Hierarchy\World\WORLD_Ambience\world_cloud_heaven_entrance_01		217199
+	457275474	mus_boss_final_phase2_loop	I:\MA2\Magenta-Arcade_Wwise\.cache\67\{67D3529D-6BC1-94B1-479A-B1846ECC093C}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Boss\Boss_Final\Phase2\mus_boss_final_phase2_loop\mus_boss_final_phase2_loop		1908
+	617832039	mus_level4_challenge_loop	I:\MA2\Magenta-Arcade_Wwise\.cache\1A\{1AA8762D-096F-2AEE-3639-6E01065B0AC5}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level4\Level4_Challenge\Level4_Challenge\mus_level4_challenge_loop\mus_level4_challenge_loop		2169
+	635234321	mus_level2_challenge_intro	I:\MA2\Magenta-Arcade_Wwise\.cache\AE\{AE40D159-9E27-B4CF-B538-49559B4A3522}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level2\Level2_Challenge\Level2_Challenge\mus_level2_challenge_intro\mus_level2_challenge_intro		1094
+	652119297	mus_boss_final_phase1_loop	I:\MA2\Magenta-Arcade_Wwise\.cache\74\{74B36FF6-47E0-B98D-9CF5-59F64C012EC2}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Boss\Boss_Final\Phase1\mus_boss_final_phase1_loop\mus_boss_final_phase1_loop		3280
+	670378589	mus_hub_base_loop	I:\MA2\Magenta-Arcade_Wwise\.cache\80\{801E0CD1-787D-DAA6-9075-F88ED3372681}.wem		\Interactive Music Hierarchy\Default Work Unit\HUB\HUB_v2\HUB\mus_hub_base_loop		2190
+	683775089	mus_level4_gameplay_pre	I:\MA2\Magenta-Arcade_Wwise\.cache\83\{832CB8B1-5F0F-D5B4-472A-3A1E6E137D4D}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level4\Level4_Challenge\Level4\mus_level4_gameplay_pre\mus_level4_gameplay_pre		2293
+	695037841	mus_boss_gameplay_loop	I:\MA2\Magenta-Arcade_Wwise\.cache\8F\{8F64EEFE-5993-3F2A-5036-B2E26B8EC088}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Boss\Boss\mus_boss_gameplay_loop\mus_boss_gameplay_loop		3445
+	730429995	mus_level1_gameplay_pre	I:\MA2\Magenta-Arcade_Wwise\.cache\F2\{F2D364D6-2C5B-27C1-5F79-D70145FC19D6}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level1\Level1_Challenge\Level1\mus_level1_gameplay_pre\mus_level1_gameplay_pre		2168
+	758884861	mus_level5_challenge_loop_126	I:\MA2\Magenta-Arcade_Wwise\.cache\1C\{1C138F4B-FD4E-E4C1-222A-45A8B49C835A}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level5\Level5_Challenge\Level5_Challenge\mus_level5_challenge_loop_126\mus_level5_challenge_loop_126		2398
+	785168184	mus_level4_gameplay_loop	I:\MA2\Magenta-Arcade_Wwise\.cache\69\{699ED0B8-D293-1413-A054-ED6372DA8B8D}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level4\Level4_Challenge\Level4\mus_level4_gameplay_loop\mus_level4_gameplay_loop		3328
+	796139404	mus_level3_challenge_loop	I:\MA2\Magenta-Arcade_Wwise\.cache\6D\{6D4359A8-ADF0-4C14-A33E-F2DE0783DDA3}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level3\Level3_Challenge\Level3_Challenge\mus_level3_challenge_loop\mus_level3_challenge_loop		2386
+	813991583	mus_level4_challenge_intro	I:\MA2\Magenta-Arcade_Wwise\.cache\7F\{7F123E46-C446-8ECF-1701-BC96160CA183}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level4\Level4_Challenge\Level4_Challenge\mus_level4_challenge_intro\mus_level4_challenge_intro		718
+	814493213	ui_main_title_start_01	I:\MA2\Magenta-Arcade_Wwise\.cache\89\{8998F28B-CCEA-4828-B6DF-B36D9F13574C}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Screens\Menu\ui_main_title_start_01		88524
+	842187782	mus_shop_loop_flute_stacc	I:\MA2\Magenta-Arcade_Wwise\.cache\0D\{0DDB3FBE-76E9-E6A4-4FBD-D078386F3BE8}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\ShopMusic\ShopMusic\mus_shop_loop_flute_stacc		668
+	843428095	mus_level1_gameplay_loop	I:\MA2\Magenta-Arcade_Wwise\.cache\8C\{8C4A5508-CF11-9FC6-E0E0-E5ED3E74F763}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level1\Level1_Challenge\Level1\mus_level1_gameplay_loop\mus_level1_gameplay_loop		4431
+	882848506	mus_level3_gameplay_loop	I:\MA2\Magenta-Arcade_Wwise\.cache\DD\{DD8310F4-322A-9F50-906C-85009B82572D}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level3\Level3_Challenge\Level3\mus_level3_gameplay_loop\mus_level3_gameplay_loop		3578
+	885207708	mus_level5_gameplay_loop_116	I:\MA2\Magenta-Arcade_Wwise\.cache\0C\{0C1FD399-D68B-662F-3826-B6A2C2DB0112}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level5\Level5_Challenge\Level5\mus_level5_gameplay_loop_116\mus_level5_gameplay_loop_116		3300
+	899927189	mus_menu_loop_base	I:\MA2\Magenta-Arcade_Wwise\.cache\7D\{7D429F4F-03D4-2DC6-4B7F-BBB2677242D7}.wem		\Interactive Music Hierarchy\Default Work Unit\MainMenu\mus_menu_loop_base\mus_menu_loop_base		2880
+	994973454	mus_level1_challenge_intro	I:\MA2\Magenta-Arcade_Wwise\.cache\4D\{4DD6C0A0-61C7-534C-33D4-3EDA7BF5A11F}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level1\Level1_Challenge\Level1_Challenge\mus_level1_challenge_intro\mus_level1_challenge_intro		2271
+	1007023320	mus_boss_gameplay_pre	I:\MA2\Magenta-Arcade_Wwise\.cache\02\{0206A971-4592-745A-F8FF-AD0D7186FB10}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Boss\Boss\mus_boss_gameplay_pre\mus_boss_gameplay_pre		532
+	1008052854	mus_level1_flag_recorder_120	I:\MA2\Magenta-Arcade_Wwise\.cache\E4\{E43A070D-84E7-C402-CD05-46BB4F6C66DF}.wem		\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level1\Level1_NpcIntro\NpcIntro\mus_level1_flag_recorder_120		2076
+
+Streamed Audio	ID	Name	Audio source file	Generated audio file	Wwise Object Path	Notes
+	43802521	mus_level1_flag_arp_120	I:\MA2\Magenta-Arcade_Wwise\.cache\E5\{E5C00E64-2595-31F3-A73B-ACE08C026402}.wem	43802521.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level1\Level1_NpcIntro\NpcIntro\mus_level1_flag_arp_120	
+	70184894	mus_level5_gameplay_pre_116	I:\MA2\Magenta-Arcade_Wwise\.cache\34\{34E33FE4-86EB-328C-71B2-BA9C75B516AF}.wem	70184894.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level5\Level5_Challenge\Level5\mus_level5_gameplay_pre_116\mus_level5_gameplay_pre_116	
+	70546224	mus_level1_challenge_loop	I:\MA2\Magenta-Arcade_Wwise\.cache\88\{883761F4-856D-0878-67C4-6E4001E1B429}.wem	70546224.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level1\Level1_Challenge\Level1_Challenge\mus_level1_challenge_loop\mus_level1_challenge_loop	
+	121951088	mus_menu_loop_pre	I:\MA2\Magenta-Arcade_Wwise\.cache\99\{99BDFF5B-0E8E-2419-828E-B4F04B52B037}.wem	121951088.wem	\Interactive Music Hierarchy\Default Work Unit\MainMenu\mus_menu_loop_pre\mus_menu_loop_pre	
+	157801274	mus_boss_final_phase1_intro	I:\MA2\Magenta-Arcade_Wwise\.cache\D2\{D20BE550-9712-A05C-E65A-549972E5D4C0}.wem	157801274.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Boss\Boss_Final\Phase1\mus_boss_final_phase1_intro\mus_boss_final_phase1_intro	
+	170274307	mus_boss_final_phase3_loop	I:\MA2\Magenta-Arcade_Wwise\.cache\4D\{4D237505-08E6-81F9-7CAD-C8B876FEF38D}.wem	170274307.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Boss\Boss_Final\Phase3\mus_boss_final_phase3_loop\mus_boss_final_phase3_loop	
+	188828171	mus_boss_dog_gameplay_loop_116	I:\MA2\Magenta-Arcade_Wwise\.cache\F1\{F1C36854-9CB8-FE05-3BB2-021EECFC3148}.wem	188828171.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Boss\Boss_Dog\mus_boss_dog_gameplay_loop_116\mus_boss_dog_gameplay_loop_116	
+	257611301	mus_shop_loop_lead	I:\MA2\Magenta-Arcade_Wwise\.cache\B1\{B1109BFE-66BD-39F6-C612-B4A977BAC007}.wem	257611301.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\ShopMusic\ShopMusic\mus_shop_loop_lead	
+	302335666	mus_level2_challenge_loop	I:\MA2\Magenta-Arcade_Wwise\.cache\46\{46F7DCC2-2E18-317F-26F0-6FFAC668CCD9}.wem	302335666.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level2\Level2_Challenge\Level2_Challenge\mus_level2_challenge_loop\mus_level2_challenge_loop	
+	341057311	mus_hub_flute	I:\MA2\Magenta-Arcade_Wwise\.cache\A1\{A1697149-94D9-9C7D-C696-27490FCDE942}.wem	341057311.wem	\Interactive Music Hierarchy\Default Work Unit\HUB\HUB_v2\HUB\mus_hub_flute	
+	349528451	mus_level5_challenge_intro_126	I:\MA2\Magenta-Arcade_Wwise\.cache\7C\{7CFB5C93-4DBE-E3B2-7D86-685695C5DD7D}.wem	349528451.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level5\Level5_Challenge\Level5_Challenge\mus_level5_challenge_intro_126\mus_level5_challenge_intro_126	
+	374714544	mus_shop_loop_base	I:\MA2\Magenta-Arcade_Wwise\.cache\CF\{CF20BFA4-A498-8058-FDFA-4BCD617AD8B5}.wem	374714544.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\ShopMusic\ShopMusic\mus_shop_loop_base	
+	387430442	mus_boss_dog_gameplay_pre_116	I:\MA2\Magenta-Arcade_Wwise\.cache\61\{61CC1344-5F3E-2448-0C70-2C9A29524367}.wem	387430442.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Boss\Boss_Dog\mus_boss_dog_gameplay_pre_116\mus_boss_dog_gameplay_pre_116	
+	389883034	mus_level3_challenge_intro	I:\MA2\Magenta-Arcade_Wwise\.cache\E1\{E13C66A7-1051-B382-442F-BC75128114C0}.wem	389883034.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level3\Level3_Challenge\Level3_Challenge\mus_level3_challenge_intro\mus_level3_challenge_intro	
+	405912915	mus_level2_gameplay_loop	I:\MA2\Magenta-Arcade_Wwise\.cache\D3\{D3CAF5B0-4D36-3A05-5932-84AE5378D3B2}.wem	405912915.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level2\Level2_Challenge\Level2\mus_level2_gameplay_loop\mus_level2_gameplay_loop	
+	413083381	mus_level2_gameplay_pre	I:\MA2\Magenta-Arcade_Wwise\.cache\E0\{E07BCAF9-DDE3-17A0-C6D6-6ED68BB53ABE}.wem	413083381.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level2\Level2_Challenge\Level2\mus_level2_gameplay_pre\mus_level2_gameplay_pre	
+	416331356	mus_level3_gameplay_pre	I:\MA2\Magenta-Arcade_Wwise\.cache\03\{03D85C6A-75AE-ED5C-F76A-F97F28B18883}.wem	416331356.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level3\Level3_Challenge\Level3\mus_level3_gameplay_pre\mus_level3_gameplay_pre	
+	457275474	mus_boss_final_phase2_loop	I:\MA2\Magenta-Arcade_Wwise\.cache\67\{67D3529D-6BC1-94B1-479A-B1846ECC093C}.wem	457275474.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Boss\Boss_Final\Phase2\mus_boss_final_phase2_loop\mus_boss_final_phase2_loop	
+	617832039	mus_level4_challenge_loop	I:\MA2\Magenta-Arcade_Wwise\.cache\1A\{1AA8762D-096F-2AEE-3639-6E01065B0AC5}.wem	617832039.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level4\Level4_Challenge\Level4_Challenge\mus_level4_challenge_loop\mus_level4_challenge_loop	
+	635234321	mus_level2_challenge_intro	I:\MA2\Magenta-Arcade_Wwise\.cache\AE\{AE40D159-9E27-B4CF-B538-49559B4A3522}.wem	635234321.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level2\Level2_Challenge\Level2_Challenge\mus_level2_challenge_intro\mus_level2_challenge_intro	
+	652119297	mus_boss_final_phase1_loop	I:\MA2\Magenta-Arcade_Wwise\.cache\74\{74B36FF6-47E0-B98D-9CF5-59F64C012EC2}.wem	652119297.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Boss\Boss_Final\Phase1\mus_boss_final_phase1_loop\mus_boss_final_phase1_loop	
+	670378589	mus_hub_base_loop	I:\MA2\Magenta-Arcade_Wwise\.cache\80\{801E0CD1-787D-DAA6-9075-F88ED3372681}.wem	670378589.wem	\Interactive Music Hierarchy\Default Work Unit\HUB\HUB_v2\HUB\mus_hub_base_loop	
+	683775089	mus_level4_gameplay_pre	I:\MA2\Magenta-Arcade_Wwise\.cache\83\{832CB8B1-5F0F-D5B4-472A-3A1E6E137D4D}.wem	683775089.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level4\Level4_Challenge\Level4\mus_level4_gameplay_pre\mus_level4_gameplay_pre	
+	695037841	mus_boss_gameplay_loop	I:\MA2\Magenta-Arcade_Wwise\.cache\8F\{8F64EEFE-5993-3F2A-5036-B2E26B8EC088}.wem	695037841.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Boss\Boss\mus_boss_gameplay_loop\mus_boss_gameplay_loop	
+	730429995	mus_level1_gameplay_pre	I:\MA2\Magenta-Arcade_Wwise\.cache\F2\{F2D364D6-2C5B-27C1-5F79-D70145FC19D6}.wem	730429995.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level1\Level1_Challenge\Level1\mus_level1_gameplay_pre\mus_level1_gameplay_pre	
+	758884861	mus_level5_challenge_loop_126	I:\MA2\Magenta-Arcade_Wwise\.cache\1C\{1C138F4B-FD4E-E4C1-222A-45A8B49C835A}.wem	758884861.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level5\Level5_Challenge\Level5_Challenge\mus_level5_challenge_loop_126\mus_level5_challenge_loop_126	
+	785168184	mus_level4_gameplay_loop	I:\MA2\Magenta-Arcade_Wwise\.cache\69\{699ED0B8-D293-1413-A054-ED6372DA8B8D}.wem	785168184.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level4\Level4_Challenge\Level4\mus_level4_gameplay_loop\mus_level4_gameplay_loop	
+	796139404	mus_level3_challenge_loop	I:\MA2\Magenta-Arcade_Wwise\.cache\6D\{6D4359A8-ADF0-4C14-A33E-F2DE0783DDA3}.wem	796139404.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level3\Level3_Challenge\Level3_Challenge\mus_level3_challenge_loop\mus_level3_challenge_loop	
+	813991583	mus_level4_challenge_intro	I:\MA2\Magenta-Arcade_Wwise\.cache\7F\{7F123E46-C446-8ECF-1701-BC96160CA183}.wem	813991583.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level4\Level4_Challenge\Level4_Challenge\mus_level4_challenge_intro\mus_level4_challenge_intro	
+	842187782	mus_shop_loop_flute_stacc	I:\MA2\Magenta-Arcade_Wwise\.cache\0D\{0DDB3FBE-76E9-E6A4-4FBD-D078386F3BE8}.wem	842187782.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\ShopMusic\ShopMusic\mus_shop_loop_flute_stacc	
+	843428095	mus_level1_gameplay_loop	I:\MA2\Magenta-Arcade_Wwise\.cache\8C\{8C4A5508-CF11-9FC6-E0E0-E5ED3E74F763}.wem	843428095.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level1\Level1_Challenge\Level1\mus_level1_gameplay_loop\mus_level1_gameplay_loop	
+	882848506	mus_level3_gameplay_loop	I:\MA2\Magenta-Arcade_Wwise\.cache\DD\{DD8310F4-322A-9F50-906C-85009B82572D}.wem	882848506.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level3\Level3_Challenge\Level3\mus_level3_gameplay_loop\mus_level3_gameplay_loop	
+	885207708	mus_level5_gameplay_loop_116	I:\MA2\Magenta-Arcade_Wwise\.cache\0C\{0C1FD399-D68B-662F-3826-B6A2C2DB0112}.wem	885207708.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level5\Level5_Challenge\Level5\mus_level5_gameplay_loop_116\mus_level5_gameplay_loop_116	
+	899927189	mus_menu_loop_base	I:\MA2\Magenta-Arcade_Wwise\.cache\7D\{7D429F4F-03D4-2DC6-4B7F-BBB2677242D7}.wem	899927189.wem	\Interactive Music Hierarchy\Default Work Unit\MainMenu\mus_menu_loop_base\mus_menu_loop_base	
+	994973454	mus_level1_challenge_intro	I:\MA2\Magenta-Arcade_Wwise\.cache\4D\{4DD6C0A0-61C7-534C-33D4-3EDA7BF5A11F}.wem	994973454.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level1\Level1_Challenge\Level1_Challenge\mus_level1_challenge_intro\mus_level1_challenge_intro	
+	1007023320	mus_boss_gameplay_pre	I:\MA2\Magenta-Arcade_Wwise\.cache\02\{0206A971-4592-745A-F8FF-AD0D7186FB10}.wem	1007023320.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Boss\Boss\mus_boss_gameplay_pre\mus_boss_gameplay_pre	
+	1008052854	mus_level1_flag_recorder_120	I:\MA2\Magenta-Arcade_Wwise\.cache\E4\{E43A070D-84E7-C402-CD05-46BB4F6C66DF}.wem	1008052854.wem	\Interactive Music Hierarchy\Default Work Unit\GAMEPLAY -18 LUFS-I\Level1\Level1_NpcIntro\NpcIntro\mus_level1_flag_recorder_120	
+

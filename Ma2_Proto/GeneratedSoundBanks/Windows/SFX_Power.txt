@@ -1,0 +1,207 @@
+Event	ID	Name			Wwise Object Path	Notes
+	158080595	Play_Power_Tap_Red_Explosion			\Power\Tap\Red\Play_Power_Tap_Red_Explosion	
+	159089240	Stop_Power_Tap_Blue			\Power\Tap\Blue\Stop_Power_Tap_Blue	
+	317946170	Play_Power_Tap_Blue			\Power\Tap\Blue\Play_Power_Tap_Blue	
+	436239963	Play_Power_Tap_Green			\Power\Tap\Green\Play_Power_Tap_Green	
+	1181006764	Stop_Power_Tap_Yellow			\Power\Tap\Yellow\Stop_Power_Tap_Yellow	
+	1640321000	Play_Player_Hold_Potential_Up			\Power\Hold\Play_Player_Hold_Potential_Up	
+	1672770497	Stop_Power_Tap_Red			\Power\Tap\Red\Stop_Power_Tap_Red	
+	1926012202	Play_Power_Tap_Yellow			\Power\Tap\Yellow\Play_Power_Tap_Yellow	
+	2031812533	Stop_Power_Tap_Green			\Power\Tap\Green\Stop_Power_Tap_Green	
+	2882235395	Play_Power_Hold_Green			\Power\Hold\Play_Power_Hold_Green	
+	2942600495	Play_Power_Tap_Red			\Power\Tap\Red\Play_Power_Tap_Red	
+	2946666546	Play_Power_Hold_Yellow			\Power\Hold\Play_Power_Hold_Yellow	
+	3189917767	Play_Power_Hold_Red			\Power\Hold\Play_Power_Hold_Red	
+	3488687394	VFX_PowerUp_Button_Finished			\Power\VFX_PowerUp_Button_Finished	
+	3829139890	Play_Power_Hold_Blue			\Power\Hold\Play_Power_Hold_Blue	
+
+State Group	ID	Name			Wwise Object Path	Notes
+	89505537	Gameplay			\Default Work Unit\Gameplay	
+
+State	ID	Name	State Group			Notes
+	251412225	Shop	Gameplay			
+	748895195	None	Gameplay			
+	782826392	Default	Gameplay			
+	1189762416	Challenge	Gameplay			
+	3026592080	Boss_Defeat	Gameplay			
+	3688152761	Boss_Fight	Gameplay			
+	3803289968	LevelClear	Gameplay			
+	4158285989	GameOver	Gameplay			
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	845184309	pwr_Yellow_ProjectileLife			\Default Work Unit\pwr_Yellow_ProjectileLife	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	10554720	pwr_green_hold_29	I:\MA2\Magenta-Arcade_Wwise\.cache\C0\{C0EFA759-8C18-9717-6032-D39939D785C9}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_29		3479
+	11605300	pwr_blue_hold_08	I:\MA2\Magenta-Arcade_Wwise\.cache\D0\{D0B7C3DF-9A94-96F5-FF9C-B3F059F792CB}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_08		5455
+	16470828	pwr_green_hold_bird_02	I:\MA2\Magenta-Arcade_Wwise\.cache\B7\{B7E25339-684F-BAC6-B8FD-9E25315A4152}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Bird_Hold\pwr_green_hold_bird_02		3135
+	16903077	pwr_red_hold_02	I:\MA2\Magenta-Arcade_Wwise\.cache\BA\{BADCB2EE-2309-6F97-42C7-F229AC5BF4C2}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Red_Hold\pwr_red_hold_02		5603
+	18187924	pwr_green_hold_bird_15	I:\MA2\Magenta-Arcade_Wwise\.cache\F2\{F217FF41-90AF-F59A-78DA-30D32CC8805F}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Bird_Hold\pwr_green_hold_bird_15		3569
+	28529039	pwr_green_hold_19	I:\MA2\Magenta-Arcade_Wwise\.cache\1F\{1F0DE8C2-BA35-CAAB-987C-2A90C4514E93}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_19		3618
+	31334128	pwr_green_hold_20	I:\MA2\Magenta-Arcade_Wwise\.cache\9E\{9E8E8757-7F08-2A0F-F9A8-233363B7B7D2}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_20		4034
+	32355867	pwr_green_hold_30	I:\MA2\Magenta-Arcade_Wwise\.cache\D3\{D3F4BA81-5ED6-7273-0458-6F5D373A4ACB}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_30		3999
+	35747283	pwr_yellow_hold_08	I:\MA2\Magenta-Arcade_Wwise\.cache\9E\{9EB19C48-13EC-EBA9-9106-9E9075E08F51}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_08		10277
+	38948626	pwr_yellow_hold_23	I:\MA2\Magenta-Arcade_Wwise\.cache\34\{3413F0A8-14E1-33CE-1539-DB2044FD7771}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_23		16109
+	41597262	pwr_green_hold_01	I:\MA2\Magenta-Arcade_Wwise\.cache\3B\{3B512FDE-DCE0-65E3-6A5E-FBCA1FA2F8B4}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_01		3857
+	44292580	pwr_yellow_hold_29	I:\MA2\Magenta-Arcade_Wwise\.cache\C7\{C7B1204D-3E31-399D-2C64-F3A9A6A4440A}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_29		14438
+	52624592	world_int_holdable_button_powerup_02	I:\MA2\Magenta-Arcade_Wwise\.cache\47\{47687BBC-0832-14B5-013A-B2B8F6D0EFF7}.wem		\Actor-Mixer Hierarchy\Power\Power_Changes\Powerup_Energy_Release\Powerup_Energy_Release\world_int_holdable_button_powerup_02		170836
+	52833345	pwr_blue_hold_03	I:\MA2\Magenta-Arcade_Wwise\.cache\1B\{1B4307B7-801D-3B30-ECEE-2D99EC5629B0}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_03		5124
+	66544902	pwr_blue_hold_18	I:\MA2\Magenta-Arcade_Wwise\.cache\F5\{F59C4F4D-D718-0C65-0424-F3C0EBB2250D}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_18		5610
+	71325229	pwr_green_hold_bird_08	I:\MA2\Magenta-Arcade_Wwise\.cache\B4\{B4C044B0-E629-2D09-53D1-C0596DC2F0AD}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Bird_Hold\pwr_green_hold_bird_08		3288
+	74500793	pwr_red_tap_projectile_01	I:\MA2\Magenta-Arcade_Wwise\.cache\98\{9815CCDF-7B66-B1F4-494E-EFB3FAB2318D}.wem		\Actor-Mixer Hierarchy\Power\Power_Tap\Red_Tap\Red_Tap_Projectile\pwr_red_tap_projectile_01		60264
+	74789930	pwr_yellow_hold_04	I:\MA2\Magenta-Arcade_Wwise\.cache\C1\{C1BDD341-79C8-61F2-83F9-B02A8BBD1389}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_04		9951
+	81469587	pwr_blue_hold_30	I:\MA2\Magenta-Arcade_Wwise\.cache\9C\{9C9A45D7-4EBE-F752-123D-C65D1806BB05}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_30		5471
+	85796571	pwr_blue_hold_24	I:\MA2\Magenta-Arcade_Wwise\.cache\69\{69C36789-FC8B-794C-AC4B-F09D0BA3C548}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_24		6094
+	86963517	pwr_yellow_hold_15	I:\MA2\Magenta-Arcade_Wwise\.cache\94\{940E52D7-3972-12D5-8676-C41557B09CDB}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_15		11440
+	111226703	pwr_green_hold_13	I:\MA2\Magenta-Arcade_Wwise\.cache\C4\{C4525AD9-8643-D930-FDE1-32E3F53CF1CC}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_13		3479
+	114161431	pwr_blue_hold_11	I:\MA2\Magenta-Arcade_Wwise\.cache\F0\{F093E059-FD44-EB4D-F0B1-8CC638CF147F}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_11		6779
+	131700094	pwr_blue_hold_19	I:\MA2\Magenta-Arcade_Wwise\.cache\A7\{A763E3E0-2BBC-0F16-8EDC-1C333E9EDE83}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_19		4965
+	141844518	pwr_yellow_hold_13	I:\MA2\Magenta-Arcade_Wwise\.cache\1A\{1AB45E79-BDEE-D5CB-10D3-68F97A23CE57}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_13		13506
+	157159509	pwr_red_hold_19	I:\MA2\Magenta-Arcade_Wwise\.cache\5D\{5D1003C7-14CE-04CA-BAA1-17B5A421FA8E}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Red_Hold\pwr_red_hold_19		7758
+	159835504	pwr_red_hold_20	I:\MA2\Magenta-Arcade_Wwise\.cache\C2\{C23426CE-C02F-5D4D-4734-75193CA65C39}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Red_Hold\pwr_red_hold_20		9544
+	159849512	pwr_blue_hold_25	I:\MA2\Magenta-Arcade_Wwise\.cache\F5\{F5128621-C3C9-E9A0-7F0F-38DD56257135}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_25		5949
+	160317047	world_int_holdable_button_powerup_01	I:\MA2\Magenta-Arcade_Wwise\.cache\1B\{1B575DE7-05E9-7795-5266-44705DAADFE8}.wem		\Actor-Mixer Hierarchy\Power\Power_Changes\Powerup_Energy_Release\Powerup_Energy_Release\world_int_holdable_button_powerup_01		177313
+	171768969	pwr_red_hold_08	I:\MA2\Magenta-Arcade_Wwise\.cache\FD\{FDD33AD8-EC2C-DE97-AB24-49EBD18DBA8F}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Red_Hold\pwr_red_hold_08		8581
+	172146600	pwr_green_hold_10	I:\MA2\Magenta-Arcade_Wwise\.cache\E0\{E07F0CDB-5BCB-AADA-84A3-76721B40661A}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_10		3905
+	178939929	pwr_blue_hold_28	I:\MA2\Magenta-Arcade_Wwise\.cache\8A\{8A99AB46-9B42-E9D5-FE02-6D8B56F4BC01}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_28		4861
+	184332732	pwr_yellow_hold_25	I:\MA2\Magenta-Arcade_Wwise\.cache\DE\{DE10B2B7-C12F-0351-2F4F-1D2BBA057FB9}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_25		9202
+	185918801	pwr_blue_hold_13	I:\MA2\Magenta-Arcade_Wwise\.cache\76\{7680C0B3-AB08-2256-35FF-934B8DE0355E}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_13		5105
+	193750391	pwr_yellow_hold_27	I:\MA2\Magenta-Arcade_Wwise\.cache\AA\{AAB196E1-516B-FBAE-3D6A-B5B7A3CA3463}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_27		10809
+	196639178	pwr_blue_hold_35	I:\MA2\Magenta-Arcade_Wwise\.cache\D8\{D8D4DC83-5CD3-8D16-7578-50AB69DC7133}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_35		5947
+	197441413	pwr_green_hold_bird_13	I:\MA2\Magenta-Arcade_Wwise\.cache\0A\{0AFA9AC3-3624-AE55-984B-B91698236B7E}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Bird_Hold\pwr_green_hold_bird_13		4509
+	200411976	world_int_holdable_button_powerup_03	I:\MA2\Magenta-Arcade_Wwise\.cache\F7\{F788B838-1B1B-9480-DE58-6E76E246EB3C}.wem		\Actor-Mixer Hierarchy\Power\Power_Changes\Powerup_Energy_Release\Powerup_Energy_Release\world_int_holdable_button_powerup_03		173691
+	203668015	pwr_green_hold_14	I:\MA2\Magenta-Arcade_Wwise\.cache\8A\{8AFFD43E-0072-160D-BC01-748C1819F14D}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_14		3232
+	205679557	pwr_green_hold_09	I:\MA2\Magenta-Arcade_Wwise\.cache\8B\{8B176D96-C241-6A50-B338-6A6EBC292DF0}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_09		3369
+	210442357	pwr_blue_tap_start_05	I:\MA2\Magenta-Arcade_Wwise\.cache\74\{74D7FC6F-C0E6-69B5-2525-521F8A01AB1D}.wem		\Actor-Mixer Hierarchy\Power\Power_Tap\Blue_Tap\Blue_Tap_Start\pwr_blue_tap_start_05		24758
+	216822156	pwr_blue_hold_33	I:\MA2\Magenta-Arcade_Wwise\.cache\C0\{C01D4CF8-1041-57BD-CE9C-5C4DFE22AF2B}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_33		6096
+	219155435	pwr_green_hold_07	I:\MA2\Magenta-Arcade_Wwise\.cache\A7\{A7181DC2-E352-978D-ADE5-EF93DA2E5A40}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_07		3309
+	220996980	pwr_green_tap_start_04	I:\MA2\Magenta-Arcade_Wwise\.cache\0E\{0ED84559-D8F8-1020-D9C3-0E2B0092A7DF}.wem		\Actor-Mixer Hierarchy\Power\Power_Tap\Green_Tap\Green_Tap_Start\pwr_green_tap_start_04		49252
+	225745953	pwr_blue_hold_21	I:\MA2\Magenta-Arcade_Wwise\.cache\51\{5169FBFD-BED5-92B9-15B9-87AF58781E3D}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_21		6522
+	232773233	pwr_yellow_hold_07	I:\MA2\Magenta-Arcade_Wwise\.cache\A9\{A998337F-D872-A9EB-D8AB-D2A552643073}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_07		11268
+	233888425	pwr_blue_hold_05	I:\MA2\Magenta-Arcade_Wwise\.cache\C8\{C84575C2-FDEE-6D85-EADD-419B3028ED27}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_05		5759
+	248709353	pwr_green_hold_18	I:\MA2\Magenta-Arcade_Wwise\.cache\B1\{B16F7F57-5213-490E-75A6-9FBBF7685859}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_18		3594
+	252942098	pwr_green_hold_02	I:\MA2\Magenta-Arcade_Wwise\.cache\93\{930B5FD2-1F52-FA44-67AA-18F66BC81824}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_02		4963
+	254774048	pwr_blue_hold_26	I:\MA2\Magenta-Arcade_Wwise\.cache\04\{04929ACA-CE1F-CD62-1D5F-ED269866BA8A}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_26		4815
+	278372881	pwr_blue_tap_start_03	I:\MA2\Magenta-Arcade_Wwise\.cache\27\{27DB65A1-EEE0-BFB8-70FB-0DBAAC77FABC}.wem		\Actor-Mixer Hierarchy\Power\Power_Tap\Blue_Tap\Blue_Tap_Start\pwr_blue_tap_start_03		27510
+	287747278	pwr_green_hold_bird_03	I:\MA2\Magenta-Arcade_Wwise\.cache\C2\{C2AD94BF-F1E4-BC21-29E7-33513D559D47}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Bird_Hold\pwr_green_hold_bird_03		3537
+	291507575	pwr_blue_hold_23	I:\MA2\Magenta-Arcade_Wwise\.cache\46\{46BC234C-CB3E-CEA5-6B7C-1136673B26D4}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_23		6519
+	306922779	pwr_green_hold_03	I:\MA2\Magenta-Arcade_Wwise\.cache\CA\{CAA116DB-885E-CF51-A33A-ED8DFDCEB3AD}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_03		3324
+	316098628	pwr_blue_hold_01	I:\MA2\Magenta-Arcade_Wwise\.cache\64\{64E9FECD-1ADC-A651-8E44-04DA55C8282B}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_01		5406
+	318771081	pwr_green_hold_25	I:\MA2\Magenta-Arcade_Wwise\.cache\2D\{2DCFDA41-C677-D92B-CFFC-CE2A2D41A59F}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_25		3748
+	318945611	pwr_yellow_hold_14	I:\MA2\Magenta-Arcade_Wwise\.cache\C1\{C1D5B653-BD14-034A-838F-FF0DC09F1770}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_14		9965
+	328611350	pwr_red_hold_10	I:\MA2\Magenta-Arcade_Wwise\.cache\CD\{CD023495-1290-9F01-D069-EC60A9EBEE01}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Red_Hold\pwr_red_hold_10		9399
+	335737447	pwr_green_hold_22	I:\MA2\Magenta-Arcade_Wwise\.cache\27\{275E48D3-6B1E-F885-A213-9134EA6A2481}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_22		3400
+	336998737	pwr_red_tap_start_02	I:\MA2\Magenta-Arcade_Wwise\.cache\8E\{8EBDCC84-3225-7FDC-7C87-76F813921E63}.wem		\Actor-Mixer Hierarchy\Power\Power_Tap\Red_Tap\Red_Tap_Start\pwr_red_tap_start_02		24436
+	337489247	pwr_green_hold_bird_09	I:\MA2\Magenta-Arcade_Wwise\.cache\2B\{2B389B91-20E7-7078-DF2F-920F3CD274E3}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Bird_Hold\pwr_green_hold_bird_09		3564
+	348453285	pwr_blue_hold_12	I:\MA2\Magenta-Arcade_Wwise\.cache\99\{9923807B-20CA-DF2F-2DC4-E82451B191B4}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_12		5728
+	352482036	pwr_yellow_hold_09	I:\MA2\Magenta-Arcade_Wwise\.cache\E6\{E68D5A0A-BB88-07B3-72D6-6B83A9B38904}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_09		14843
+	353438021	pwr_yellow_hold_03	I:\MA2\Magenta-Arcade_Wwise\.cache\9B\{9B162BBA-2BC3-1953-2A37-67DEA0F0865D}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_03		10986
+	357349899	pwr_green_hold_16	I:\MA2\Magenta-Arcade_Wwise\.cache\18\{189C52B4-183D-A6EC-3CD6-F21DC30B0874}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_16		3661
+	360310862	pwr_green_hold_17	I:\MA2\Magenta-Arcade_Wwise\.cache\21\{21F0FF0E-AF91-7AE2-B739-D38F13AC6F94}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_17		3359
+	361739976	pwr_red_hold_22	I:\MA2\Magenta-Arcade_Wwise\.cache\23\{23F0DCBA-6600-2954-E9DA-5FCAB47BBEB8}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Red_Hold\pwr_red_hold_22		8636
+	366549094	pwr_red_hold_04	I:\MA2\Magenta-Arcade_Wwise\.cache\7E\{7E54A008-AA3D-4F36-42AF-809CE8D826DB}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Red_Hold\pwr_red_hold_04		7926
+	374779766	pwr_blue_hold_16	I:\MA2\Magenta-Arcade_Wwise\.cache\6D\{6D8EBBFE-DB4E-80F7-5FB7-644E7B0CD419}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_16		6238
+	378941303	pwr_blue_hold_31	I:\MA2\Magenta-Arcade_Wwise\.cache\67\{67C4AFA0-3660-E2BA-A648-A2FC7F800CB1}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_31		6134
+	380728055	pwr_red_hold_18	I:\MA2\Magenta-Arcade_Wwise\.cache\D8\{D8A2E77F-E93E-8325-1EAB-E9E55CA5F492}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Red_Hold\pwr_red_hold_18		7797
+	383682833	pwr_green_hold_15	I:\MA2\Magenta-Arcade_Wwise\.cache\5B\{5BC1BD54-DC19-708B-CE4C-18E9E821085E}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_15		3580
+	391474958	pwr_blue_hold_02	I:\MA2\Magenta-Arcade_Wwise\.cache\C5\{C570A187-635C-F3DB-877E-8744C2B3DA6F}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_02		5812
+	392978199	pwr_yellow_hold_20	I:\MA2\Magenta-Arcade_Wwise\.cache\05\{05D027FE-FEA4-5EF7-88A9-A263D30A50EB}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_20		10816
+	394370077	pwr_blue_tap_start_02	I:\MA2\Magenta-Arcade_Wwise\.cache\35\{359DAD1B-1D6D-639A-4631-BC6AB987EE01}.wem		\Actor-Mixer Hierarchy\Power\Power_Tap\Blue_Tap\Blue_Tap_Start\pwr_blue_tap_start_02		29596
+	403568007	pwr_blue_hold_14	I:\MA2\Magenta-Arcade_Wwise\.cache\27\{2771E6C0-89B8-5C4F-01D0-7B2534C6A5A3}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_14		7188
+	407322212	pwr_yellow_hold_28	I:\MA2\Magenta-Arcade_Wwise\.cache\77\{7741EA96-3654-8DC6-8B27-8E55F9A66001}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_28		10027
+	409199410	pwr_red_hold_23	I:\MA2\Magenta-Arcade_Wwise\.cache\55\{5502FE50-FDEC-B41F-48C5-084C06B669DE}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Red_Hold\pwr_red_hold_23		8100
+	412530377	pwr_green_hold_bird_11	I:\MA2\Magenta-Arcade_Wwise\.cache\37\{372693FF-6206-E21D-252D-9EF9F20934C2}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Bird_Hold\pwr_green_hold_bird_11		3614
+	422152134	world_int_holdable_button_powerup_04	I:\MA2\Magenta-Arcade_Wwise\.cache\8E\{8E41BAFB-AEBE-36AC-2A89-24471A051533}.wem		\Actor-Mixer Hierarchy\Power\Power_Changes\Powerup_Energy_Release\Powerup_Energy_Release\world_int_holdable_button_powerup_04		176575
+	424073995	pwr_green_hold_bird_01	I:\MA2\Magenta-Arcade_Wwise\.cache\7D\{7DED3288-140C-A750-DA70-C0A7960811E4}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Bird_Hold\pwr_green_hold_bird_01		4385
+	428578019	pwr_green_hold_28	I:\MA2\Magenta-Arcade_Wwise\.cache\81\{81526DA9-7B1D-421E-6E1C-83398EDD5CB3}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_28		3964
+	434646670	pwr_green_tap_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\F9\{F9FD1307-7304-FB51-7F4E-881CC60104C1}.wem		\Actor-Mixer Hierarchy\Power\Power_Tap\Green_Tap\Green_Tap_Loop\pwr_green_tap_loop_01		65464
+	436374468	pwr_green_hold_27	I:\MA2\Magenta-Arcade_Wwise\.cache\55\{55F49EDC-0CEF-6A5A-80D4-21C01EA54A0C}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_27		3767
+	436671045	pwr_green_tap_start_01	I:\MA2\Magenta-Arcade_Wwise\.cache\E8\{E8423354-14C5-AF45-7B5A-493B16506251}.wem		\Actor-Mixer Hierarchy\Power\Power_Tap\Green_Tap\Green_Tap_Start\pwr_green_tap_start_01		50650
+	462879451	pwr_blue_tap_start_04	I:\MA2\Magenta-Arcade_Wwise\.cache\1B\{1BF73C57-68F6-CA25-BFF0-7849754F1581}.wem		\Actor-Mixer Hierarchy\Power\Power_Tap\Blue_Tap\Blue_Tap_Start\pwr_blue_tap_start_04		25838
+	464470785	pwr_green_hold_05	I:\MA2\Magenta-Arcade_Wwise\.cache\F8\{F8A422EB-2A8C-6292-B175-C994BA819F22}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_05		3667
+	470733940	pwr_green_hold_12	I:\MA2\Magenta-Arcade_Wwise\.cache\25\{25C97A22-CAA2-E9A1-50E7-DF7FEB51EDD4}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_12		3505
+	472329384	pwr_green_hold_bird_14	I:\MA2\Magenta-Arcade_Wwise\.cache\D9\{D9700726-99A1-3B88-7C32-B54CE5241B4D}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Bird_Hold\pwr_green_hold_bird_14		3561
+	482848830	pwr_green_tap_start_05	I:\MA2\Magenta-Arcade_Wwise\.cache\C3\{C3477BED-8832-2734-FCB2-705387424245}.wem		\Actor-Mixer Hierarchy\Power\Power_Tap\Green_Tap\Green_Tap_Start\pwr_green_tap_start_05		49653
+	485018731	pwr_yellow_hold_19	I:\MA2\Magenta-Arcade_Wwise\.cache\01\{01B7A236-2411-4C60-7C44-4F86FFB8165D}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_19		11381
+	489150891	pwr_yellow_tap_projectile_01	I:\MA2\Magenta-Arcade_Wwise\.cache\AD\{AD007B6E-EFFD-F49A-FB4F-BC70B68727B3}.wem		\Actor-Mixer Hierarchy\Power\Power_Tap\Yellow_Tap\Yellow_Tap_Projectile\pwr_yellow_tap_projectile_01		291239
+	492046125	pwr_blue_hold_10	I:\MA2\Magenta-Arcade_Wwise\.cache\82\{827AE48A-3B4E-DF29-9DC0-70D22D224AE2}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_10		5481
+	499828709	pwr_red_hold_14	I:\MA2\Magenta-Arcade_Wwise\.cache\F1\{F1F3C377-7E58-B35F-B2E6-A41DAB7FB944}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Red_Hold\pwr_red_hold_14		7623
+	506691925	pwr_red_hold_15	I:\MA2\Magenta-Arcade_Wwise\.cache\85\{859AD15D-63D2-B758-4635-71329C1121CA}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Red_Hold\pwr_red_hold_15		5505
+	519267809	pwr_red_hold_21	I:\MA2\Magenta-Arcade_Wwise\.cache\65\{65BE6494-8707-4D2E-452D-D2FD150E3085}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Red_Hold\pwr_red_hold_21		7988
+	526645502	pwr_yellow_tap_start_03	I:\MA2\Magenta-Arcade_Wwise\.cache\91\{9169FDD0-6467-1EE5-F12C-FCE4F993F658}.wem		\Actor-Mixer Hierarchy\Power\Power_Tap\Yellow_Tap\Yellow_Tap_Start\pwr_yellow_tap_start_03		28257
+	527735323	pwr_green_hold_23	I:\MA2\Magenta-Arcade_Wwise\.cache\2D\{2DFFD7F5-0E64-845C-95A9-43BC5A3979ED}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_23		3759
+	529055325	pwr_blue_hold_09	I:\MA2\Magenta-Arcade_Wwise\.cache\FB\{FB749556-E1C2-AFD7-8C09-5C6C88D749BC}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_09		6308
+	537450117	pwr_green_hold_bird_17	I:\MA2\Magenta-Arcade_Wwise\.cache\2E\{2E2C689B-E19F-D227-7C05-13089E711390}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Bird_Hold\pwr_green_hold_bird_17		3854
+	563073000	pwr_red_hold_11	I:\MA2\Magenta-Arcade_Wwise\.cache\05\{05D1F9A3-196F-F486-0898-EEB281C810C4}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Red_Hold\pwr_red_hold_11		11409
+	565302262	pwr_green_hold_bird_16	I:\MA2\Magenta-Arcade_Wwise\.cache\A9\{A9B9A3AD-895B-2A3E-BAE9-D7191CED5FE6}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Bird_Hold\pwr_green_hold_bird_16		3502
+	575713190	pwr_green_hold_bird_23	I:\MA2\Magenta-Arcade_Wwise\.cache\30\{30CF68FD-1DF8-49C6-A58D-B4BDF04E1836}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Bird_Hold\pwr_green_hold_bird_23		3441
+	585883562	pwr_yellow_hold_10	I:\MA2\Magenta-Arcade_Wwise\.cache\F1\{F1FF1AF5-D912-5104-CC0A-54A049B28235}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_10		12561
+	588001420	pwr_green_hold_26	I:\MA2\Magenta-Arcade_Wwise\.cache\B4\{B4D3CE1B-8B2B-7BD0-95A0-3FBAA6B47DA2}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_26		3280
+	590273646	pwr_yellow_hold_24	I:\MA2\Magenta-Arcade_Wwise\.cache\C0\{C028D1E1-85BC-C5CC-EFC1-4C4609F55C6E}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_24		9995
+	594024776	pwr_green_hold_bird_22	I:\MA2\Magenta-Arcade_Wwise\.cache\53\{53B3B61A-F0B0-3F30-31E9-0D3660986C32}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Bird_Hold\pwr_green_hold_bird_22		4061
+	595783956	pwr_blue_tap_start_01	I:\MA2\Magenta-Arcade_Wwise\.cache\AF\{AFC869D8-62C3-21A2-0584-1D361027DA38}.wem		\Actor-Mixer Hierarchy\Power\Power_Tap\Blue_Tap\Blue_Tap_Start\pwr_blue_tap_start_01		28402
+	596585812	pwr_red_hold_13	I:\MA2\Magenta-Arcade_Wwise\.cache\DF\{DFC8713D-BF5E-D6FE-2FB3-188EE96CCBF4}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Red_Hold\pwr_red_hold_13		7862
+	597205087	pwr_red_hold_07	I:\MA2\Magenta-Arcade_Wwise\.cache\21\{21E70458-D8AB-31C9-6143-9D7EAE9F76C3}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Red_Hold\pwr_red_hold_07		7390
+	612214418	pwr_blue_hold_15	I:\MA2\Magenta-Arcade_Wwise\.cache\1A\{1A7910D7-FA7D-BCCC-CD50-04F054F034C8}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_15		6213
+	612920951	pwr_yellow_hold_01	I:\MA2\Magenta-Arcade_Wwise\.cache\BC\{BCC06ABB-B7CF-4AF9-47AB-D85C54530333}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_01		11822
+	614409934	pwr_red_hold_17	I:\MA2\Magenta-Arcade_Wwise\.cache\08\{080D92FB-4FFF-3E4D-95EF-A556431C888E}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Red_Hold\pwr_red_hold_17		6426
+	620454663	pwr_green_hold_bird_06	I:\MA2\Magenta-Arcade_Wwise\.cache\45\{457E2A7B-D772-31B0-769C-3290243B59E2}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Bird_Hold\pwr_green_hold_bird_06		3478
+	629802524	pwr_red_hold_16	I:\MA2\Magenta-Arcade_Wwise\.cache\38\{3867A5DE-8AB9-9208-D959-2F9D74C88062}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Red_Hold\pwr_red_hold_16		10590
+	638617051	pwr_red_hold_06	I:\MA2\Magenta-Arcade_Wwise\.cache\C4\{C47C8920-AE20-C9C6-48A0-751EE22B47B4}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Red_Hold\pwr_red_hold_06		9360
+	651624296	pwr_green_hold_31	I:\MA2\Magenta-Arcade_Wwise\.cache\73\{7313D418-DCBA-ABD6-8CC6-7968245A557C}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_31		3965
+	653924339	pwr_blue_tap_projectile_01	I:\MA2\Magenta-Arcade_Wwise\.cache\B5\{B5AB71FC-7DB4-6AE6-F01C-6837B4E2FA59}.wem		\Actor-Mixer Hierarchy\Power\Power_Tap\Blue_Tap\Blue_Tap_Projectile\pwr_blue_tap_projectile_01		58574
+	659189548	pwr_blue_hold_04	I:\MA2\Magenta-Arcade_Wwise\.cache\C8\{C8D3E237-7ED1-B0AE-2125-E035456BE33F}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_04		6376
+	663020332	pwr_blue_hold_27	I:\MA2\Magenta-Arcade_Wwise\.cache\8D\{8D5438C8-D613-B7D7-510D-6AF3008CC70F}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_27		6632
+	671498758	pwr_yellow_hold_30	I:\MA2\Magenta-Arcade_Wwise\.cache\6A\{6A0A2791-FC7F-BB5B-6E9A-AE889777317A}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_30		10940
+	681906561	pwr_green_hold_bird_04	I:\MA2\Magenta-Arcade_Wwise\.cache\00\{007D7BE0-2AD6-F8B1-D079-25A63020326B}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Bird_Hold\pwr_green_hold_bird_04		3209
+	682839945	pwr_green_tap_start_03	I:\MA2\Magenta-Arcade_Wwise\.cache\B3\{B33E5AC4-9483-D7EF-AA58-82ECECA8F02F}.wem		\Actor-Mixer Hierarchy\Power\Power_Tap\Green_Tap\Green_Tap_Start\pwr_green_tap_start_03		49118
+	684072782	pwr_blue_hold_17	I:\MA2\Magenta-Arcade_Wwise\.cache\32\{326BDED5-FCE1-7ED0-7C5E-6CDD16D5F15C}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_17		7285
+	686857083	pwr_yellow_hold_12	I:\MA2\Magenta-Arcade_Wwise\.cache\66\{6656A80B-8D81-8CC5-2D09-E4E10A1D4022}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_12		9634
+	714186183	pwr_red_hold_01	I:\MA2\Magenta-Arcade_Wwise\.cache\B8\{B8DB57FB-23AD-8DF4-7DC9-7C330935F8FD}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Red_Hold\pwr_red_hold_01		9028
+	715976674	pwr_green_hold_08	I:\MA2\Magenta-Arcade_Wwise\.cache\A7\{A7F9EF17-5C71-8211-F2E7-7B8861C7CF56}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_08		3904
+	721247476	pwr_yellow_tap_start_02	I:\MA2\Magenta-Arcade_Wwise\.cache\3A\{3A261A4A-F8CE-C766-1761-B314034C1FE5}.wem		\Actor-Mixer Hierarchy\Power\Power_Tap\Yellow_Tap\Yellow_Tap_Start\pwr_yellow_tap_start_02		28825
+	734167253	pwr_yellow_hold_31	I:\MA2\Magenta-Arcade_Wwise\.cache\DA\{DA45E081-7E62-77C1-8E85-49A2CBC1BC4B}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_31		10210
+	737703043	pwr_blue_hold_34	I:\MA2\Magenta-Arcade_Wwise\.cache\93\{93964FBB-DDED-FBA0-EE73-CA83D0572CAB}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_34		6384
+	745268784	pwr_green_hold_bird_19	I:\MA2\Magenta-Arcade_Wwise\.cache\C2\{C2A24CE9-8294-A24B-04DB-4F4CE1CDBD33}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Bird_Hold\pwr_green_hold_bird_19		3294
+	748955680	pwr_green_hold_bird_05	I:\MA2\Magenta-Arcade_Wwise\.cache\9F\{9FFF956A-5906-47EF-38A3-D1D830CF5D14}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Bird_Hold\pwr_green_hold_bird_05		3344
+	751640553	pwr_blue_hold_20	I:\MA2\Magenta-Arcade_Wwise\.cache\D6\{D6DBCD26-C5E3-4D5D-027C-C65C4CE457E4}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_20		5946
+	753256585	pwr_red_hold_24	I:\MA2\Magenta-Arcade_Wwise\.cache\38\{38B44657-C6F4-291B-0121-CF307E94FC9C}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Red_Hold\pwr_red_hold_24		10638
+	753966514	pwr_green_hold_bird_25	I:\MA2\Magenta-Arcade_Wwise\.cache\33\{33A623C9-1FD9-7D4B-9897-F722F479CB14}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Bird_Hold\pwr_green_hold_bird_25		3556
+	761232162	pwr_yellow_hold_16	I:\MA2\Magenta-Arcade_Wwise\.cache\D1\{D135245A-26C6-3123-615F-DA50A364CBCD}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_16		13159
+	769635153	pwr_red_tap_start_01	I:\MA2\Magenta-Arcade_Wwise\.cache\9E\{9E8C15E1-1C2D-1A07-09C0-8D1F7A686E32}.wem		\Actor-Mixer Hierarchy\Power\Power_Tap\Red_Tap\Red_Tap_Start\pwr_red_tap_start_01		22345
+	771159119	pwr_blue_hold_07	I:\MA2\Magenta-Arcade_Wwise\.cache\95\{9565B747-D97C-E936-5E1F-25DF87CD9EA6}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_07		5047
+	780640945	pwr_green_hold_bird_24	I:\MA2\Magenta-Arcade_Wwise\.cache\19\{19A1C4C4-622A-0DD0-DC41-002B45006A9A}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Bird_Hold\pwr_green_hold_bird_24		3449
+	789507344	pwr_yellow_hold_06	I:\MA2\Magenta-Arcade_Wwise\.cache\F1\{F1DB99DB-DE1C-8FB7-DF27-D7C3103B885C}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_06		10651
+	791168870	pwr_green_hold_24	I:\MA2\Magenta-Arcade_Wwise\.cache\75\{75F2CF1F-B5FB-D1CD-500D-F26BA3E1B21A}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_24		3963
+	803039637	pwr_red_hold_09	I:\MA2\Magenta-Arcade_Wwise\.cache\1B\{1B31DF1E-427F-02A7-9C57-00D4FE1A3694}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Red_Hold\pwr_red_hold_09		10910
+	803142404	pwr_blue_hold_29	I:\MA2\Magenta-Arcade_Wwise\.cache\24\{24B93536-23FF-054D-315D-EC7AF7ED5258}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_29		5692
+	804958810	pwr_green_hold_bird_20	I:\MA2\Magenta-Arcade_Wwise\.cache\43\{437A5222-972A-6A94-1A05-1794B023EBE9}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Bird_Hold\pwr_green_hold_bird_20		4493
+	832851031	pwr_red_hold_03	I:\MA2\Magenta-Arcade_Wwise\.cache\4F\{4FECBB7D-33B7-F83A-3446-A7E99E6B6380}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Red_Hold\pwr_red_hold_03		7437
+	868458188	pwr_blue_hold_06	I:\MA2\Magenta-Arcade_Wwise\.cache\CC\{CCCE0FD5-4CAF-31A6-2DDB-F241AB1AFBE3}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_06		6747
+	868580400	pwr_green_hold_21	I:\MA2\Magenta-Arcade_Wwise\.cache\5E\{5E759D1B-3AF7-123D-CF06-02D5C141C548}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_21		3516
+	873825361	pwr_yellow_hold_21	I:\MA2\Magenta-Arcade_Wwise\.cache\21\{21A2B400-B69C-059C-38E1-8C1314D56A58}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_21		10164
+	878256929	pwr_green_hold_06	I:\MA2\Magenta-Arcade_Wwise\.cache\2F\{2F18B764-7681-769A-8387-23E95DFFC5FD}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_06		3308
+	897740385	pwr_green_hold_bird_07	I:\MA2\Magenta-Arcade_Wwise\.cache\54\{54B87D3D-021A-DBB8-8532-039C63B67BEB}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Bird_Hold\pwr_green_hold_bird_07		3574
+	901440846	pwr_green_hold_bird_21	I:\MA2\Magenta-Arcade_Wwise\.cache\F5\{F5937BF4-E799-6C0F-DCAB-18C778BC33FA}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Bird_Hold\pwr_green_hold_bird_21		3247
+	911550412	pwr_red_explosion_01	I:\MA2\Magenta-Arcade_Wwise\.cache\2C\{2C530D76-75DB-911E-369D-06B531349AF0}.wem		\Actor-Mixer Hierarchy\Power\Power_Tap\Red_Tap\Red_Tap_Explosion\pwr_red_explosion_01		73322
+	927783523	pwr_green_hold_bird_18	I:\MA2\Magenta-Arcade_Wwise\.cache\EA\{EA6396CF-F76F-E3B5-FFAF-8D8F284946B3}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Bird_Hold\pwr_green_hold_bird_18		3723
+	939048381	pwr_blue_hold_22	I:\MA2\Magenta-Arcade_Wwise\.cache\06\{064899D2-B30C-BC3C-B901-538C714841EA}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_22		5598
+	942644022	pwr_blue_hold_32	I:\MA2\Magenta-Arcade_Wwise\.cache\C4\{C49FEB9E-100A-CCA4-B537-72A4CD0C79C9}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Blue_Hold\pwr_blue_hold_32		5857
+	951903583	pwr_green_hold_11	I:\MA2\Magenta-Arcade_Wwise\.cache\55\{554D0E3D-A8F4-3634-BB04-C7CDF480C97E}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_11		3534
+	969763245	pwr_yellow_hold_26	I:\MA2\Magenta-Arcade_Wwise\.cache\71\{71ADEC7B-350B-ED48-F9D2-BE7FCF1B245E}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_26		12074
+	979047427	pwr_green_hold_bird_10	I:\MA2\Magenta-Arcade_Wwise\.cache\BE\{BEDDEF75-3AD4-4172-9BAA-464E9C2FA4B9}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Bird_Hold\pwr_green_hold_bird_10		3814
+	983938826	pwr_yellow_hold_05	I:\MA2\Magenta-Arcade_Wwise\.cache\92\{92F3F6FE-45B7-ECDD-4D48-D5A36DE951B5}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_05		12315
+	988192968	pwr_yellow_hold_02	I:\MA2\Magenta-Arcade_Wwise\.cache\C8\{C85E7400-9A11-EC67-5FC4-782EFA69C85F}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_02		9933
+	992536640	pwr_green_hold_04	I:\MA2\Magenta-Arcade_Wwise\.cache\F6\{F65929AD-A4F5-0CEB-0074-6E4D3F0F0570}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Hold\pwr_green_hold_04		3609
+	994039378	pwr_yellow_tap_start_01	I:\MA2\Magenta-Arcade_Wwise\.cache\F9\{F9854D19-5012-B4B0-C732-A58615903C8A}.wem		\Actor-Mixer Hierarchy\Power\Power_Tap\Yellow_Tap\Yellow_Tap_Start\pwr_yellow_tap_start_01		28867
+	996964395	pwr_yellow_hold_22	I:\MA2\Magenta-Arcade_Wwise\.cache\8C\{8CECB7BF-75FD-7E4B-B40C-D99129151F71}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_22		14510
+	1004348956	pwr_red_hold_12	I:\MA2\Magenta-Arcade_Wwise\.cache\E6\{E6688BE9-3F18-7C02-1131-D007E404703A}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Red_Hold\pwr_red_hold_12		7970
+	1006528236	pwr_green_tap_start_02	I:\MA2\Magenta-Arcade_Wwise\.cache\11\{110C2493-4B21-04FF-95F1-CA396B870722}.wem		\Actor-Mixer Hierarchy\Power\Power_Tap\Green_Tap\Green_Tap_Start\pwr_green_tap_start_02		49897
+	1011769704	pwr_red_explosion_03	I:\MA2\Magenta-Arcade_Wwise\.cache\04\{048C7BFF-428F-BA57-C125-BAA2FB98587C}.wem		\Actor-Mixer Hierarchy\Power\Power_Tap\Red_Tap\Red_Tap_Explosion\pwr_red_explosion_03		72830
+	1024155433	pwr_red_explosion_02	I:\MA2\Magenta-Arcade_Wwise\.cache\99\{9904494F-254E-8F4E-66E7-039AD0B14B4A}.wem		\Actor-Mixer Hierarchy\Power\Power_Tap\Red_Tap\Red_Tap_Explosion\pwr_red_explosion_02		73696
+	1054851201	pwr_yellow_hold_17	I:\MA2\Magenta-Arcade_Wwise\.cache\CD\{CD7E3F4B-D53E-2B2F-2CBA-CB23E146B14B}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_17		13217
+	1056443940	pwr_red_tap_start_03	I:\MA2\Magenta-Arcade_Wwise\.cache\5A\{5A3FFC53-733F-C2BC-F69C-FB531D2B9F4D}.wem		\Actor-Mixer Hierarchy\Power\Power_Tap\Red_Tap\Red_Tap_Start\pwr_red_tap_start_03		24657
+	1071626603	pwr_red_hold_05	I:\MA2\Magenta-Arcade_Wwise\.cache\83\{8388A854-E5CA-7BC6-5871-6079DDE774A5}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Red_Hold\pwr_red_hold_05		10572
+	1072536260	pwr_green_hold_bird_12	I:\MA2\Magenta-Arcade_Wwise\.cache\E4\{E40DABA6-0911-E13D-0BEC-2ECFD19215B3}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Green_Bird_Hold\pwr_green_hold_bird_12		3159
+	1073200830	pwr_yellow_hold_11	I:\MA2\Magenta-Arcade_Wwise\.cache\A2\{A23ED512-2C60-9C5E-60B1-A7D1626D5F7D}.wem		\Actor-Mixer Hierarchy\Power\Power_Hold\Yellow_Hold\pwr_yellow_hold_11		9987
+

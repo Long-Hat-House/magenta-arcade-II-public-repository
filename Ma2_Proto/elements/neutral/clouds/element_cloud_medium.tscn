@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://djk4ra6n53ega"]
+
+[ext_resource type="PackedScene" uid="uid://baf4nwg0dpon2" path="res://elements/neutral/clouds/mesh_cloud_medium.tscn" id="2_7pgxl"]
+[ext_resource type="Material" uid="uid://5ra46jjkoflf" path="res://elements/neutral/clouds/m_clouds.tres" id="2_g57ka"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_1dt4p"]
+material = ExtResource("2_g57ka")
+radial_segments = 7
+rings = 3
+
+[sub_resource type="Curve" id="Curve_l4njc"]
+_data = [Vector2(0, 0), 0.0, 4.43246, 0, 0, Vector2(1, 0), -0.232937, 0.0, 0, 0]
+point_count = 2
+
+[node name="ElementCloudMedium" type="Node3D"]
+
+[node name="cloud_medium" parent="." instance=ExtResource("2_7pgxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00960127, -0.00960127, 0)
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.150494, 0.279465, -0.818948)
+amount = 4
+lifetime = 2.0
+mesh = SubResource("SphereMesh_1dt4p")
+emission_shape = 2
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector3(0, 0.5, 0)
+initial_velocity_min = 0.6
+initial_velocity_max = 0.7
+angular_velocity_min = 2.0
+angular_velocity_max = 4.0
+radial_accel_min = 1.0
+radial_accel_max = 2.0
+tangential_accel_min = -3.0
+tangential_accel_max = 3.0
+damping_min = 2.5
+damping_max = 2.5
+scale_amount_min = 0.5
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_l4njc")

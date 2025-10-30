@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbwklad3pauep"]
+
+[ext_resource type="PackedScene" uid="uid://d1sukqo72omfq" path="res://elements/neutral/props/mineirao_football_grass/mesh/mineirao_football_wall.glb" id="1_66ksx"]
+[ext_resource type="Material" uid="uid://40b2gbrghbtb" path="res://elements/neutral/props/mineirao_football_grass/material/m_mineirao_football_wall.tres" id="2_4gha8"]
+
+[node name="mineirao_football_wall" instance=ExtResource("1_66ksx")]
+
+[node name="mineirao_football_wall" parent="." index="0"]
+material_override = ExtResource("2_4gha8")

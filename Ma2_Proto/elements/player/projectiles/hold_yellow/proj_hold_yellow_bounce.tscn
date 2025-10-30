@@ -1,0 +1,92 @@
+[gd_scene load_steps=11 format=3 uid="uid://bemlfo6vma1bt"]
+
+[ext_resource type="Script" uid="uid://d1paq4x7d6g7l" path="res://elements/player/projectiles/proj_hold_forward.gd" id="1_u7u3u"]
+[ext_resource type="PackedScene" uid="uid://c3r806xt3i0nr" path="res://elements/vfx/vfx_hit/vfx_hit_yellow.tscn" id="2_5c3i4"]
+[ext_resource type="PackedScene" uid="uid://dpif7olg38ju8" path="res://elements/player/projectiles/hold_yellow/proj_hold_yellow.tscn" id="3_5c3i4"]
+[ext_resource type="Resource" uid="uid://com3qf7kk6fby" path="res://systems/ma2_meta/upgrades/upgrade_hold_damage.tres" id="3_vovmk"]
+[ext_resource type="PackedScene" uid="uid://dxgp32m5m71c0" path="res://elements/player/projectiles/hold_yellow/proj_hold_yellow_v2/proj_hold_yellow_v2_mesh.tscn" id="4_4bub1"]
+[ext_resource type="WwiseEvent" uid="uid://dt2igg7lmh6wq" path="res://Wwise/resources/Event/{40F3B0FF-880E-4DFB-8E2A-22611CF4AA42}.tres" id="5_1fsn4"]
+[ext_resource type="Material" uid="uid://b0b7tfim0wfjv" path="res://elements/enemy/projectiles/materials/wpn_glow_white_double_sided.tres" id="6_vovmk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x5ac5"]
+radius = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vovmk"]
+resource_local_to_scene = true
+render_priority = 10
+cull_mode = 2
+shading_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.0
+rim = 0.5
+rim_tint = 1.0
+disable_receive_shadows = true
+grow_amount = -0.252
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4bub1"]
+resource_local_to_scene = true
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0.720303, 0.320342, 5.77569e-07, 1)
+emission_enabled = true
+emission = Color(0.149918, 0.0535821, 0.0142503, 1)
+emission_energy_multiplier = 8.91
+rim = 0.3
+rim_tint = 1.0
+anisotropy = 1.0
+disable_receive_shadows = true
+
+[node name="ProjectileYellowHold_Bounce" type="Area3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+collision_layer = 8
+collision_mask = 132
+script = ExtResource("1_u7u3u")
+hitVFX = ExtResource("2_5c3i4")
+reflected_projectile = ExtResource("3_5c3i4")
+reflected_bent_multiplier = 5.0
+reflected_bent_is_directed_to_enemy = true
+reflected_bent_max_angle = 25.0
+projectileVelocityRelative = Vector3(0, 0, -25)
+projectileVelocityAbsolute = Vector3(0, 0, 0)
+tween_on_start = 2
+projectileTweenDistance = Vector3(0, 0, -20)
+projectileTweenDuration = 0.4
+amountDamage = 0.25
+bonus_resource = ExtResource("3_vovmk")
+damagePriority = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, 0, -1.63918e-08, 0.375)
+shape = SubResource("CapsuleShape3D_x5ac5")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-0.607547, -0.528831, -1, 1.21509, 1.05766, 2)
+
+[node name="proj_hold_yellow_Mesh2" parent="." instance=ExtResource("4_4bub1")]
+transform = Transform3D(6.99987, 0, 0.0428824, 0, 7, 0, -0.0428824, 0, 6.99987, 0, 0, -0.00621921)
+
+[node name="hold_yellow" parent="proj_hold_yellow_Mesh2" index="0"]
+material_override = ExtResource("6_vovmk")
+
+[node name="hold_yellow_top" parent="proj_hold_yellow_Mesh2" index="1"]
+material_override = SubResource("StandardMaterial3D_vovmk")
+
+[node name="hold_yellow_bot" parent="proj_hold_yellow_Mesh2" index="2"]
+material_override = SubResource("StandardMaterial3D_4bub1")
+
+[node name="AkEvent3D" type="AkEvent3D" parent="."]
+event = ExtResource("5_1fsn4")
+trigger_on = 1
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
+
+[editable path="proj_hold_yellow_Mesh2"]

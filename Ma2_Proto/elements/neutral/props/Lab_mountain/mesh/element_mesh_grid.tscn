@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm4h8qb8fxpwr"]
+
+[ext_resource type="PackedScene" uid="uid://bsvnacuwmxosa" path="res://elements/neutral/props/Lab_mountain/mesh/grid.glb" id="1_7umjf"]
+[ext_resource type="Material" uid="uid://b5teruhnbhq7k" path="res://elements/neutral/props/Lab_mountain/material/m_lab_props01.tres" id="2_ugpy2"]
+[ext_resource type="Material" uid="uid://dwr0qs7tlju7n" path="res://elements/neutral/props/Lab_mountain/material/m_grid.tres" id="2_wm8sw"]
+
+[node name="grid" instance=ExtResource("1_7umjf")]
+
+[node name="grid" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_wm8sw")
+surface_material_override/1 = ExtResource("2_ugpy2")

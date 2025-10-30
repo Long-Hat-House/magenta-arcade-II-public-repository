@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2e4gfw46mory"]
+
+[ext_resource type="PackedScene" uid="uid://d1und4qgj6int" path="res://elements/neutral/props/Factory/mesh/element_factory_support_roof.tscn" id="1_ukbwb"]
+[ext_resource type="PackedScene" uid="uid://56usmsd2wdhp" path="res://elements/neutral/props/Factory/mesh/element_megaphone_factory.tscn" id="3_upahs"]
+
+[node name="support_roof" instance=ExtResource("1_ukbwb")]
+supportRoof/Middle*scene = null
+supportRoof/Left*scene = ExtResource("3_upahs")
+supportRoof/Right*scene = ExtResource("3_upahs")
+
+[node name="Middle" parent="supportRoof" index="0"]
+scene = null
+
+[node name="Left" parent="supportRoof" index="1"]
+scene = ExtResource("3_upahs")
+
+[node name="Right" parent="supportRoof" index="2"]
+scene = ExtResource("3_upahs")

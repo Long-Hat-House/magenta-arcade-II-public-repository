@@ -1,0 +1,23 @@
+[gd_scene load_steps=12 format=3 uid="uid://busv6sx15qccg"]
+
+[ext_resource type="PackedScene" uid="uid://k0kg78hfmalj" path="res://elements/npc/npc_graphic_base.tscn" id="1_l22rv"]
+[ext_resource type="Script" uid="uid://upa6eg5siyuc" path="res://elements/npc/npc_graphic_regular_randomizer.gd" id="2_sx6uy"]
+[ext_resource type="SpriteFrames" uid="uid://c8oohd40myha0" path="res://elements/npc/npc_art/NPC_believer_01.ase" id="3_aa5u0"]
+[ext_resource type="SpriteFrames" uid="uid://b10thtmmibn6h" path="res://elements/npc/npc_art/NPC_believer_02.ase" id="4_pb6ye"]
+[ext_resource type="SpriteFrames" uid="uid://lb3s8071y5ir" path="res://elements/npc/npc_art/NPC_believer_03.ase" id="5_fvxb0"]
+[ext_resource type="SpriteFrames" uid="uid://djjxhvdhcctwh" path="res://elements/npc/npc_art/NPC_follower_01.ase" id="6_0ahcb"]
+[ext_resource type="SpriteFrames" uid="uid://3mk5gpa5r77a" path="res://elements/npc/npc_art/NPC_follower_02.ase" id="7_h46rp"]
+[ext_resource type="SpriteFrames" uid="uid://cd63q1jk1rdd8" path="res://elements/npc/npc_art/NPC_follower_03.ase" id="8_xbdw4"]
+[ext_resource type="SpriteFrames" uid="uid://bqwoa6ye1us4f" path="res://elements/npc/npc_art/NPC_fanatic_01.ase" id="9_15swm"]
+[ext_resource type="SpriteFrames" uid="uid://cclqstvtcqpeg" path="res://elements/npc/npc_art/NPC_fanatic_02.ase" id="10_1x435"]
+[ext_resource type="SpriteFrames" uid="uid://ca7rkf6bblpqw" path="res://elements/npc/npc_art/NPC_fanatic_03.ase" id="11_3jwaq"]
+
+[node name="NPC_Graphic_Regular" instance=ExtResource("1_l22rv")]
+
+[node name="RandomizeSpriteFrames" type="Node" parent="." index="1"]
+script = ExtResource("2_sx6uy")
+believers_sprite_frames = Array[SpriteFrames]([ExtResource("3_aa5u0"), ExtResource("4_pb6ye"), ExtResource("5_fvxb0")])
+followers_sprite_frames = Array[SpriteFrames]([ExtResource("6_0ahcb"), ExtResource("7_h46rp"), ExtResource("8_xbdw4")])
+fanatic_sprite_frames = Array[SpriteFrames]([ExtResource("9_15swm"), ExtResource("10_1x435"), ExtResource("11_3jwaq")])
+
+[editable path="NPC_HighContrastSprite"]

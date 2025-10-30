@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" load_steps=0 format=3 uid="uid://dfwbmd4awwj2q"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Boss_Lv3_Main_Immune_Disable"
+id = 147039988
+guid = "{9FC88923-42C9-44E9-A55F-17F422AF1DDA}"
+dummy = true

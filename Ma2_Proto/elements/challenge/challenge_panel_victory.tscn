@@ -1,0 +1,459 @@
+[gd_scene load_steps=18 format=3 uid="uid://cgdnc2s6uni1l"]
+
+[ext_resource type="Theme" uid="uid://bfqq5qjsvg8no" path="res://elements/ui/themes/menu/menu_theme.tres" id="1_om71o"]
+[ext_resource type="Script" uid="uid://cbrnheqba4ul4" path="res://systems/challenge/challenge_panel_victory.gd" id="1_v6md2"]
+[ext_resource type="PackedScene" uid="uid://s3dm3rmydb2n" path="res://elements/powerups/altar/challenge_altar.tscn" id="4_5rham"]
+[ext_resource type="Material" uid="uid://dkcegkcvgcvkh" path="res://elements/ui/hud/BossBG_Clouds.tres" id="5_47fm7"]
+[ext_resource type="Texture2D" uid="uid://cm5belis6bq0x" path="res://elements/icons/icon_star.png" id="5_bdajf"]
+[ext_resource type="StyleBox" uid="uid://bpes1tutm3iph" path="res://elements/challenge/challenge_panel_style_box.tres" id="5_k0ovf"]
+[ext_resource type="Script" uid="uid://bi4yfgewvcvwq" path="res://systems/switchable/switch_oning_offing_animation_player.gd" id="5_wcx6o"]
+[ext_resource type="Script" uid="uid://c3yme4hxpatpv" path="res://systems/utils/control_shaker.gd" id="6_bd13x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5egco"]
+
+[sub_resource type="Gradient" id="Gradient_1cc47"]
+offsets = PackedFloat32Array(0, 0.0895522, 0.652452, 0.955224)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_k0ovf"]
+offsets = PackedFloat32Array(0, 0.275053, 0.707889)
+colors = PackedColorArray(0, 0.831373, 0.792157, 1, 0.658824, 1, 0.909804, 1, 1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_j42ew"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/AllPivots/TitlePivot:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/AllPivots/PanelPivot:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/AllPivots/SubtitlePivot:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/AllPivots/SubtitlePivot:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_1eh04"]
+resource_name = "off"
+length = 0.1
+
+[sub_resource type="Animation" id="Animation_lwb35"]
+resource_name = "offing"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ow3bb"]
+resource_name = "on"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/AllPivots/SubtitlePivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.5),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.02, 1.02), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_imtgs"]
+resource_name = "oning"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/AllPivots/TitlePivot:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.45, 0.6),
+"transitions": PackedFloat32Array(2, 0.5, 2, 1),
+"update": 0,
+"values": [Vector2(10, 10), Vector2(1, 1), Vector2(0.8, 0.5), Vector2(1, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/AllPivots/VictoryParticles")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"restart"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/AllPivots/PanelPivot:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.55, 0.6),
+"transitions": PackedFloat32Array(0.5, 1, 2, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 0.615), Vector2(1, 0.615), Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MarginContainer/AllPivots/SubtitlePivot:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.75, 1),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wglr3"]
+_data = {
+&"RESET": SubResource("Animation_j42ew"),
+&"off": SubResource("Animation_1eh04"),
+&"offing": SubResource("Animation_lwb35"),
+&"on": SubResource("Animation_ow3bb"),
+&"oning": SubResource("Animation_imtgs")
+}
+
+[node name="ChallengeVictoryPanel" type="Control" node_paths=PackedStringArray("_title", "_text", "animation")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_om71o")
+script = ExtResource("1_v6md2")
+_title = NodePath("MarginContainer/AllPivots/TitlePivot/Victory Title")
+_text = NodePath("MarginContainer/AllPivots/SubtitlePivot/Victory Subtitle")
+_altar_scene = ExtResource("4_5rham")
+animation = NodePath("Switch_Oning_Offing_AnimationPlayer")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+material = SubResource("ShaderMaterial_5egco")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 700
+
+[node name="AllPivots" type="Control" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="PanelPivot" type="Control" parent="MarginContainer/AllPivots"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="MarginContainer/AllPivots/PanelPivot"]
+material = ExtResource("5_47fm7")
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -121.805
+offset_right = 450.0
+offset_bottom = 121.805
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(450, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("5_k0ovf")
+metadata/_edit_group_ = true
+
+[node name="Panel2" type="Panel" parent="MarginContainer/AllPivots/PanelPivot/Panel"]
+use_parent_material = true
+custom_minimum_size = Vector2(120, 15)
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("5_k0ovf")
+
+[node name="Panel3" type="Panel" parent="MarginContainer/AllPivots/PanelPivot/Panel"]
+use_parent_material = true
+custom_minimum_size = Vector2(120, 15)
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("5_k0ovf")
+
+[node name="TitlePivot" type="Control" parent="MarginContainer/AllPivots"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1.65805
+offset_top = 0.326073
+offset_right = 1.65805
+offset_bottom = 0.326073
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("6_bd13x")
+shake_amplitude_ratio = 0.2
+
+[node name="Victory Title" type="Label" parent="MarginContainer/AllPivots/TitlePivot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -286.375
+offset_top = -147.803
+offset_right = 283.625
+offset_bottom = 147.197
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+theme_type_variation = &"label_challenge_title"
+theme_override_font_sizes/font_size = 80
+text = "BOM TRABALHão !"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+justification_flags = 0
+uppercase = true
+visible_characters_behavior = 1
+
+[node name="SubtitlePivot" type="Control" parent="MarginContainer/AllPivots"]
+anchors_preset = 0
+offset_top = 186.0
+offset_bottom = 186.0
+mouse_filter = 2
+
+[node name="Victory Subtitle" type="Label" parent="MarginContainer/AllPivots/SubtitlePivot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -285.0
+offset_top = -250.0
+offset_right = 285.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+theme_type_variation = &"label_challenge_subtitle"
+text = "Selecione uma recompensa!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+justification_flags = 0
+uppercase = true
+visible_characters_behavior = 1
+
+[node name="VictoryParticles" type="CPUParticles2D" parent="MarginContainer/AllPivots"]
+position = Vector2(0, 120)
+emitting = false
+amount = 50
+texture = ExtResource("5_bdajf")
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.95
+emission_shape = 5
+emission_points = PackedVector2Array(-100, -300, 100, -300, -300, 0, 300, 0, 0, 0, -450, 500, 450, 500)
+emission_normals = PackedVector2Array(0, -1, 0, -1, 0, 1, 0, 1, 0, 1, 1, 0, -1, 0)
+emission_colors = PackedColorArray(1, 1, 1, 1)
+particle_flag_align_y = true
+spread = 82.57
+initial_velocity_min = 500.0
+initial_velocity_max = 1000.0
+scale_amount_min = 0.1
+scale_amount_max = 0.3
+color_ramp = SubResource("Gradient_1cc47")
+color_initial_ramp = SubResource("Gradient_k0ovf")
+
+[node name="Switch_Oning_Offing_AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wglr3")
+}
+script = ExtResource("5_wcx6o")

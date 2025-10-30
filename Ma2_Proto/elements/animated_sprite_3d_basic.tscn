@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjqq0uo3i62sd"]
+
+[ext_resource type="PackedScene" uid="uid://b2g5r65iw01ae" path="res://elements/base_shadow.tscn" id="1_wul32"]
+
+[node name="AnimatedSprite3D_Basic" type="AnimatedSprite3D"]
+cast_shadow = 0
+offset = Vector2(0, 128)
+pixel_size = 0.0078
+billboard = 1
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+animation = &""
+
+[node name="BaseShadow" parent="." instance=ExtResource("1_wul32")]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0.2, 0)

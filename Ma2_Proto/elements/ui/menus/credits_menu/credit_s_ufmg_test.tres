@@ -1,0 +1,58 @@
+[gd_resource type="Resource" script_class="CreditsSectionInfo" load_steps=8 format=3 uid="uid://bpbfscbe1hnvx"]
+
+[ext_resource type="Script" uid="uid://bkle5ca8utscg" path="res://elements/ui/menus/credits_menu/scripts/credits_entry_info.gd" id="1_fj8ng"]
+[ext_resource type="Script" uid="uid://brm0i2bj1yuok" path="res://elements/ui/menus/credits_menu/scripts/credits_section_info.gd" id="2_tf3oj"]
+
+[sub_resource type="Resource" id="Resource_fj8ng"]
+script = ExtResource("1_fj8ng")
+entry_name = &"Eduardo Santos Birchal"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[sub_resource type="Resource" id="Resource_tf3oj"]
+script = ExtResource("1_fj8ng")
+entry_name = &"Kailainy Cardoso"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[sub_resource type="Resource" id="Resource_4aksf"]
+script = ExtResource("1_fj8ng")
+entry_name = &"Layla Barcala Leão"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[sub_resource type="Resource" id="Resource_45ra7"]
+script = ExtResource("1_fj8ng")
+entry_name = &"Thaís Mayara Rodrigues de Almeida Oliveira"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[sub_resource type="Resource" id="Resource_bynjk"]
+script = ExtResource("1_fj8ng")
+entry_name = &"Tuender Durães de Lima"
+entry_role = &""
+entry_information = &""
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[resource]
+script = ExtResource("2_tf3oj")
+section_title = &"credits_ufmg_testing"
+section_info = &""
+section_color_highlight = Color(1, 1, 1, 1)
+section_color_bg = Color(0, 0.831373, 0.792157, 1)
+entries_list = Array[ExtResource("1_fj8ng")]([SubResource("Resource_fj8ng"), SubResource("Resource_tf3oj"), SubResource("Resource_4aksf"), SubResource("Resource_45ra7"), SubResource("Resource_bynjk")])
+metadata/_custom_type_script = "uid://brm0i2bj1yuok"

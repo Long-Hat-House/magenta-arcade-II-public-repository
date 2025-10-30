@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://m82250nsvvk7"]
+
+[ext_resource type="PackedScene" uid="uid://cdljnpgfolvdw" path="res://elements/neutral/props/pampulha_church/pampulha_church_border.glb" id="1_56rkr"]
+[ext_resource type="Material" uid="uid://cg73klkqs1lmx" path="res://elements/background/material/m_asphalt_dark.tres" id="2_7kgc4"]
+
+[node name="pampulha_church_border" instance=ExtResource("1_56rkr")]
+
+[node name="pampulha_church_border" parent="." index="0"]
+material_override = ExtResource("2_7kgc4")

@@ -1,0 +1,9 @@
+diff a/Ma2_Proto/elements/levels/lvl_3/lvl_3_challenge2.tscn b/Ma2_Proto/elements/levels/lvl_3/lvl_3_challenge2.tscn	(rejected hunks)
+@@ -138,6 +138,7 @@
+ }
+ point_count = 3
+ 
++[node name="LVL_FABRICA_Challenge2" type="Node3D" node_paths=PackedStringArray("stone", "door")]
+ script = SubResource("GDScript_0rqxg")
+ saws = Array[PackedScene]([ExtResource("1_pq3fx"), ExtResource("2_42s5g"), ExtResource("3_qsfvf")])
+ path_max_time_to_walk_all = 18.0

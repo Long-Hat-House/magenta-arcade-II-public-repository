@@ -1,0 +1,260 @@
+[gd_scene load_steps=22 format=3 uid="uid://drsikbf7n8ary"]
+
+[ext_resource type="Script" uid="uid://cqf8mldoj5yj8" path="res://elements/enemy/bosses/trem/boss_trem.gd" id="1_avho7"]
+[ext_resource type="Resource" uid="uid://x2juoif14es8" path="res://systems/screen/camera_shake_heavy_fall.tres" id="2_336tx"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="2_q8vw7"]
+[ext_resource type="Resource" uid="uid://iesh2ok5qwkx" path="res://systems/screen/camera_shake_small.tres" id="3_cf0w6"]
+[ext_resource type="Resource" uid="uid://4t81auxbmw2k" path="res://systems/screen/camera_shake_boss_death.tres" id="4_jvbnl"]
+[ext_resource type="PackedScene" uid="uid://dcok7fxxa6tb0" path="res://elements/enemy/bosses/trem/mesh/mesh_boss_train.tscn" id="5_atqvv"]
+[ext_resource type="SpriteFrames" uid="uid://k2i3e3185o1n" path="res://elements/enemy/bosses/trem/adao/enemy_boss_adao_magenta.ase" id="5_w3csh"]
+[ext_resource type="Script" uid="uid://dj2x7ekyg32b7" path="res://systems/score/score_giver.gd" id="6_moveg"]
+[ext_resource type="Resource" uid="uid://cvhld1iqqqx4y" path="res://elements/score/score_info_boss_train.tres" id="7_moveg"]
+[ext_resource type="Script" uid="uid://bkt3i1q8w53tl" path="res://modules/text_flow/quick_dialogue.gd" id="7_snw0j"]
+[ext_resource type="WwiseEvent" uid="uid://dnreid0k7kkjw" path="res://Wwise/resources/Event/{37E149CD-E55E-49CE-8033-11A7E8D2B2EE}.tres" id="9_g2fi5"]
+[ext_resource type="Script" uid="uid://bls4vce0lfvfc" path="res://elements/vfx/spawn_area.gd" id="9_ufgs3"]
+[ext_resource type="WwiseEvent" uid="uid://cfgcjrl8e3rne" path="res://Wwise/resources/Event/{502DA1D5-A967-4A92-8669-F7C2772806FA}.tres" id="10_2i0ln"]
+[ext_resource type="WwiseEvent" uid="uid://2is2vnsq7gl4" path="res://Wwise/resources/Event/{165A3C64-9D1A-4ABF-9129-F0ED8AA5367B}.tres" id="11_1pj78"]
+[ext_resource type="Script" uid="uid://d2rhxuigqg21b" path="res://systems/audio_wwise/AkEvent3DLoop.gd" id="15_3nnk8"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="15_gaooo"]
+[ext_resource type="WwiseRTPC" uid="uid://ddnv87pfj6k0w" path="res://Wwise/resources/Game Parameter/{68101DFE-4968-4831-9A01-2CA2F9E105C3}.tres" id="16_y0f4h"]
+[ext_resource type="WwiseEvent" uid="uid://4trdnxgsphuo" path="res://Wwise/resources/Event/{FDBB327C-9AAF-4161-A187-AA8DC9153E7A}.tres" id="17_hqlcb"]
+
+[sub_resource type="Curve" id="Curve_snw0j"]
+_data = [Vector2(0.503741, 0.00191939), 0.0, 0.0, 0, 0, Vector2(1, 0.993762), 5.00289, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_t5np4"]
+points = PackedVector3Array(-5, 0, 0, 0, 0, 1, 5, 0, 0, -5, 2, 0, 5, 2, 0, 0, 2, 1)
+
+[sub_resource type="GDScript" id="GDScript_snw0j"]
+resource_name = "BossTremAdaoIdle"
+script/source = "extends AnimatedSprite3D
+
+@export var main_idle:StringName = &\"idle_\";
+@export var idles:Array[StringName] = [
+	&\"attack\",
+	&\"idle\"
+	];
+@export var time_on_main_idle:float = 3.5;
+@export var time_on_other_idle:float = 2.0;
+@export var idles_to_speech:Array[StringName] = [
+	&\"attack\",
+	&\"idle_\"
+];
+var behaviour:Tween;
+
+signal started_vulnerable_loop;
+
+@onready var dialogue_idle: QuickDialogue = $\"Dialogue Idle\"
+@onready var dialogue_recover: QuickDialogue = $\"Dialogue Recover\"
+@onready var dialogue_death: QuickDialogue = $\"Dialogue Death\"
+
+var dead:bool;
+
+func _ready() -> void:
+	dialogue_idle.speech_start.connect(_speech_start);
+	
+func _speech_start():
+	if idles_to_speech.has(self.animation):
+		play(&\"speech\");
+
+func set_idle():
+	if dead: return;
+	
+	stop_idle();
+	if dialogue_recover.is_talking():
+		dialogue_recover.stop_dialogue();
+	dialogue_idle.start_dialogue();
+	behaviour = create_tween();
+	behaviour.tween_callback(play.bind(main_idle));
+	behaviour.tween_interval(time_on_main_idle);
+	behaviour.tween_callback(func():
+		play(idles.pick_random());
+		);
+	behaviour.tween_interval(time_on_other_idle);
+	behaviour.set_loops(-1);
+	
+
+func stop_idle():
+	dialogue_idle.stop_dialogue();
+	if behaviour and behaviour.is_valid():
+		behaviour.kill();
+		
+func vulnerable():
+	if dead: return;
+	
+	stop_idle();
+	play(&\"pre_vulnerable\");
+	await animation_looped;
+	started_vulnerable_loop.emit();
+	dialogue_recover.start_dialogue();
+	play(&\"vulnerable_loop\");
+	
+func finish_vulnerable():
+	set_idle();
+	
+func death():
+	dead = true;
+	stop_idle();
+	dialogue_idle.stop_dialogue();
+	dialogue_recover.stop_dialogue();
+	dialogue_death.start_dialogue();
+	
+"
+
+[node name="Boss Trem" type="AnimatableBody3D" node_paths=PackedStringArray("constant_shooting_origin")]
+collision_layer = 4
+collision_mask = 0
+sync_to_physics = false
+script = ExtResource("1_avho7")
+face_destroy_shake = ExtResource("2_336tx")
+cam_distance_min = 10.0
+cam_distance_max = 25.0
+constant_shooting_origin = NodePath("ConstantShootingOrigin")
+camera_shake_curve = SubResource("Curve_snw0j")
+camera_shake_strength = 0.25
+speed = 1.1
+
+[node name="Boss Health" type="Node" parent="." node_paths=PackedStringArray("feedback")]
+script = ExtResource("2_q8vw7")
+max_amount = 90.0
+feedback = [NodePath("../BossTrain")]
+feedback_scale_multiplier = Vector3(0.01, -0.01, 0.01)
+screen_shake_on_damaged = ExtResource("3_cf0w6")
+screen_shake_on_death = ExtResource("4_jvbnl")
+feedback_ignore_contains_divided_by_commas = "face"
+
+[node name="ScoreGiver" type="Node" parent="Boss Health" node_paths=PackedStringArray("health", "point_position")]
+script = ExtResource("6_moveg")
+info = ExtResource("7_moveg")
+health = NodePath("..")
+point_position = NodePath("../../BossTrain/Score Place")
+metadata/_custom_type_script = "uid://dj2x7ekyg32b7"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.5)
+shape = SubResource("ConvexPolygonShape3D_t5np4")
+
+[node name="Cannons" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.25)
+
+[node name="Cannon Center" type="Marker3D" parent="Cannons"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1.75)
+
+[node name="Cannon Center Left" type="Marker3D" parent="Cannons"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0.5, 1.5)
+
+[node name="Cannon Center Right" type="Marker3D" parent="Cannons"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0.5, 1.5)
+
+[node name="Cannon Left" type="Marker3D" parent="Cannons"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, 0.25)
+
+[node name="Cannon Left mid" type="Marker3D" parent="Cannons"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.28124, 0.5, 0.92969)
+
+[node name="Cannon Left far" type="Marker3D" parent="Cannons"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -0.25)
+
+[node name="Cannon Right" type="Marker3D" parent="Cannons"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 0.25)
+
+[node name="Cannon Right mid" type="Marker3D" parent="Cannons"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.28124, 0.5, 0.92969)
+
+[node name="Cannon Right far" type="Marker3D" parent="Cannons"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, -0.25)
+
+[node name="DeathSpawnArea" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 3.25)
+aabb = AABB(-3, -1, -2, 6, 2, 4)
+script = ExtResource("9_ufgs3")
+metadata/_custom_type_script = "uid://bls4vce0lfvfc"
+
+[node name="BossTrain" parent="." instance=ExtResource("5_atqvv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 3.5)
+
+[node name="Adao" type="AnimatedSprite3D" parent="BossTrain"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3.75, -0.49937)
+pixel_size = 0.0078
+billboard = 1
+shaded = true
+sprite_frames = ExtResource("5_w3csh")
+animation = &"idle"
+autoplay = "idle"
+script = SubResource("GDScript_snw0j")
+
+[node name="Dialogue Idle" type="Node3D" parent="BossTrain/Adao"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.25, 0)
+script = ExtResource("7_snw0j")
+voice = 9
+dialogue_id = &"dial_lvl3_boss_idle"
+needs_call = true
+loops = true
+metadata/_custom_type_script = "uid://bkt3i1q8w53tl"
+
+[node name="Dialogue Recover" type="Node3D" parent="BossTrain/Adao"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.25, 0)
+script = ExtResource("7_snw0j")
+voice = 9
+dialogue_id = &"dial_lvl3_boss_recover"
+needs_call = true
+metadata/_custom_type_script = "uid://bkt3i1q8w53tl"
+
+[node name="Dialogue Death" type="Node3D" parent="BossTrain/Adao"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.25, 0)
+script = ExtResource("7_snw0j")
+voice = 9
+dialogue_id = &"dial_lvl3_boss_end"
+needs_call = true
+metadata/_custom_type_script = "uid://bkt3i1q8w53tl"
+
+[node name="Sounds" type="Node3D" parent="BossTrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 2.5)
+
+[node name="SFX_Movement" type="AkEvent3D" parent="BossTrain/Sounds"]
+event = ExtResource("9_g2fi5")
+
+[node name="SFX_Death" type="AkEvent3D" parent="BossTrain/Sounds"]
+event = ExtResource("10_2i0ln")
+
+[node name="SFX_Deaccelerate" type="AkEvent3D" parent="BossTrain/Sounds"]
+event = ExtResource("11_1pj78")
+
+[node name="SFX_Movement_Loop" type="Node3D" parent="BossTrain/Sounds" node_paths=PackedStringArray("loop_begin_event", "loop_finish_event")]
+script = ExtResource("15_3nnk8")
+_stop_loop_on = 3
+loop_begin_event = NodePath("Play")
+loop_finish_event = NodePath("Stop")
+loop_rtpc = ExtResource("16_y0f4h")
+metadata/_custom_type_script = "uid://d2rhxuigqg21b"
+
+[node name="Play" type="AkEvent3D" parent="BossTrain/Sounds/SFX_Movement_Loop"]
+event = ExtResource("9_g2fi5")
+
+[node name="Stop" type="AkEvent3D" parent="BossTrain/Sounds/SFX_Movement_Loop"]
+event = ExtResource("17_hqlcb")
+
+[node name="Score Place" type="Node3D" parent="BossTrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 2.25)
+
+[node name="TremHighContrastObject" type="Node" parent="BossTrain"]
+script = ExtResource("15_gaooo")
+high_contrast_group = &"scenery"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="ConstantShootingOrigin" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.75)
+
+[connection signal="deaccelerate" from="." to="BossTrain/Sounds/SFX_Deaccelerate" method="post_event"]
+[connection signal="movement_tata" from="." to="BossTrain/Sounds/SFX_Movement" method="post_event"]
+[connection signal="dead_parameterless" from="Boss Health" to="BossTrain/Sounds/SFX_Death" method="post_event"]

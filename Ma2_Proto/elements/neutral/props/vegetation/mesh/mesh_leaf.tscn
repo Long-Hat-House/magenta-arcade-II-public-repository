@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1sscdr7sm8xq"]
+
+[ext_resource type="PackedScene" uid="uid://buvyjn0hrtfyi" path="res://elements/neutral/props/vegetation/mesh/leaf.glb" id="1_0c5ks"]
+[ext_resource type="Material" uid="uid://dly6jmk1k27rl" path="res://elements/neutral/props/vegetation/material/m_leaf.tres" id="2_5sr5v"]
+
+[node name="leaf" instance=ExtResource("1_0c5ks")]
+
+[node name="leaf" parent="." index="0"]
+material_override = ExtResource("2_5sr5v")

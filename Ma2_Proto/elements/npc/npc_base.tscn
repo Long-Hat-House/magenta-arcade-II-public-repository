@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://bgmbotnii0mn5"]
+
+[ext_resource type="Script" uid="uid://khusic6w7uok" path="res://elements/npc/npc_base_behaviour.gd" id="1_fgejp"]
+[ext_resource type="Script" uid="uid://bj8qwbado7bkt" path="res://systems/utils/look_at_camera.gd" id="2_pnhdc"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="3_2k0sh"]
+[ext_resource type="PackedScene" uid="uid://cux5kcyvhvhq4" path="res://modules/text_flow/scenes/text_flow_player_bubbles.tscn" id="4_54hmc"]
+[ext_resource type="Script" uid="uid://hbsjipy3xak5" path="res://systems/pressable/pressable.gd" id="6_2y6xn"]
+[ext_resource type="WwiseEvent" uid="uid://b2yl767euh45u" path="res://Wwise/resources/Event/{D9075525-9E3F-43A8-B10E-1F4DEA429DB8}.tres" id="8_ndrdn"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5edsx"]
+height = 1.5
+
+[node name="Npc" type="Node3D" node_paths=PackedStringArray("flow_offset")]
+script = ExtResource("1_fgejp")
+flow_offset = NodePath("HitArea/TextFlowOffset")
+
+[node name="HitArea" type="CharacterBody3D" parent="."]
+visible = false
+collision_layer = 128
+collision_mask = 24
+script = ExtResource("2_pnhdc")
+
+[node name="Health" type="Node" parent="HitArea"]
+script = ExtResource("3_2k0sh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("CapsuleShape3D_5edsx")
+
+[node name="TextFlowOffset" type="Marker3D" parent="HitArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.423, 0)
+
+[node name="TextFlowPlayerBubbles" parent="." instance=ExtResource("4_54hmc")]
+
+[node name="Pressable" type="Node3D" parent="."]
+script = ExtResource("6_2y6xn")
+search_for_area_inside = true
+
+[node name="PressArea" type="Area3D" parent="Pressable"]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("2_pnhdc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pressable/PressArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("CapsuleShape3D_5edsx")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.84023, 0)
+
+[node name="SFX Die" type="AkEvent3D" parent="."]
+event = ExtResource("8_ndrdn")
+
+[connection signal="dead" from="HitArea/Health" to="." method="_on_health_dead"]
+[connection signal="body_entered" from="Pressable/PressArea" to="." method="_on_press_area_body_entered"]
+[connection signal="body_exited" from="Pressable/PressArea" to="." method="_on_press_area_body_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

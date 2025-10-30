@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://ojhpauyaruop"]
+
+[ext_resource type="Script" uid="uid://8ry43vxpx43m" path="res://elements/enemy/bosses/trem/adao/boss_3_adao_sidekick.gd" id="1_y228m"]
+[ext_resource type="PackedScene" uid="uid://bjqq0uo3i62sd" path="res://elements/animated_sprite_3d_basic.tscn" id="2_ook80"]
+[ext_resource type="SpriteFrames" uid="uid://bgaojhr5ovs8t" path="res://elements/enemy/bosses/trem/adao/enemy_boss_adao_magenta_pre_trem.ase" id="3_l8450"]
+[ext_resource type="PackedScene" uid="uid://bc8er7wjckssi" path="res://elements/npc/npc_high_contrast_sprite_boss.tscn" id="4_l8450"]
+[ext_resource type="Script" uid="uid://bkt3i1q8w53tl" path="res://modules/text_flow/quick_dialogue.gd" id="4_ysvki"]
+[ext_resource type="WwiseEvent" uid="uid://dbmgrdti8t2ff" path="res://Wwise/resources/Event/{763BDCA2-3591-41D5-8CE8-A62617F7157F}.tres" id="5_ook80"]
+
+[node name="Boss_3_Adão_Sidekick" type="Node3D" node_paths=PackedStringArray("sfx_phone", "sfx_phone_shutdown")]
+script = ExtResource("1_y228m")
+time_before_talk = 1.0
+time_before_animation = 0.25
+time_between_talks = 0.25
+time_after_talk = 0.25
+first_idle = &"idle_phone"
+first_to_second = &"turn_off"
+sfx_phone = NodePath("SFX_EvaPhone")
+sfx_phone_shutdown = NodePath("SFX_Phone_Shutdown")
+
+[node name="AnimatedSprite3D_CorrectSize" parent="." instance=ExtResource("2_ook80")]
+sprite_frames = ExtResource("3_l8450")
+animation = &"idle_phone"
+frame_progress = 0.235995
+
+[node name="NPC_HighContrastSprite_Boss" parent="AnimatedSprite3D_CorrectSize" instance=ExtResource("4_l8450")]
+
+[node name="QuickDialogue-Idle" type="Node3D" parent="." node_paths=PackedStringArray("speakers_followee")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+script = ExtResource("4_ysvki")
+voice = 9
+speakers_followee = [NodePath("../Baloon Pos")]
+dialogue_id = &"dial_lvl3_boss_intro_booth"
+needs_call = true
+metadata/_custom_type_script = "uid://bkt3i1q8w53tl"
+
+[node name="QuickDialogue-Run" type="Node3D" parent="." node_paths=PackedStringArray("speakers_followee")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+script = ExtResource("4_ysvki")
+voice = 9
+speakers_followee = [NodePath("../Baloon Pos")]
+dialogue_id = &"dial_lvl3_boss_intro_retreat"
+needs_call = true
+metadata/_custom_type_script = "uid://bkt3i1q8w53tl"
+
+[node name="Baloon Pos" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 3, 0)
+
+[node name="OutNotifier" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+aabb = AABB(-1, -1.25, -1, 2, 2.5, 2)
+
+[node name="SFX_EvaPhone" type="AkEvent3D" parent="."]
+event = ExtResource("5_ook80")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="SFX_Phone_Shutdown" type="AkEvent3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[connection signal="screen_exited" from="OutNotifier" to="." method="_on_out_notifier_screen_exited"]

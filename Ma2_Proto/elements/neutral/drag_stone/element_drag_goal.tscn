@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://vqedhb303kpn"]
+
+[ext_resource type="Script" uid="uid://bw4px8363ygf5" path="res://elements/neutral/drag_stone/ai_element_drag_goal.gd" id="1_nhbqq"]
+[ext_resource type="PackedScene" uid="uid://c4rstflc6uf8l" path="res://elements/neutral/drag_stone/mesh/mesh_drag_goal.tscn" id="2_yiwly"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="3_aqmfx"]
+[ext_resource type="Script" uid="uid://c1a23qdrmn8d1" path="res://elements/enemy/projectiles/damage_area/damage_area.gd" id="3_e24rj"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mc6j8"]
+radius = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_apt62"]
+size = Vector3(14.373, 9.91455, 26.499)
+
+[node name="ElementDragGoal" type="Node3D"]
+script = ExtResource("1_nhbqq")
+call_duration = 0.5
+space_duration = 0.35
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 512
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_mc6j8")
+
+[node name="dragGoal" parent="." instance=ExtResource("2_yiwly")]
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="dragGoal"]
+script = ExtResource("3_aqmfx")
+high_contrast_group = &"interactable"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="DamageArea" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 20
+script = ExtResource("3_e24rj")
+amountDamage = 99999
+scores = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0508728, 4.45728, 12.7495)
+shape = SubResource("BoxShape3D_apt62")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

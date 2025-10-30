@@ -1,0 +1,11 @@
+[gd_resource type="WwiseSwitch" load_steps=2 format=3 uid="uid://bgaqpxa4s0yfp"]
+
+[ext_resource type="WwiseSwitchGroup" uid="uid://kjn11utivigr" path="res://Wwise/resources/Switch Group/{C11812D5-9C66-43A1-9776-FB446F7C4D26}.tres" id="1_ly0o5"]
+
+[resource]
+group_ref = ExtResource("1_ly0o5")
+group_id = 2571308781
+name = "Believer"
+id = 3254822759
+guid = "{A4E75C81-D49A-4B02-AB53-EF0894F00369}"
+dummy = true

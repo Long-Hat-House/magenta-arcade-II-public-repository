@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://b25dexi701r3x"]
+
+[ext_resource type="StyleBox" uid="uid://bu325l8dloady" path="res://button_tab_style.tres" id="1_2n14t"]
+[ext_resource type="StyleBox" uid="uid://bbugpt37qt2sn" path="res://elements/ui/themes/button_tab_pause_menu_pressed.tres" id="1_yg5d3"]
+[ext_resource type="ButtonGroup" uid="uid://bsgbcmp0ip44p" path="res://elements/ui/menus/pause_menu/pause_button_group.tres" id="2_lkio4"]
+[ext_resource type="Texture2D" uid="uid://bn7380h1vkbiw" path="res://elements/icons/icon_settings.png" id="3_o0g8v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pnpm6"]
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(150, 150)
+mouse_filter = 1
+theme_override_colors/icon_normal_color = Color(0, 0.831373, 0.792157, 1)
+theme_override_constants/icon_max_width = 96
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pnpm6")
+theme_override_styles/hover_pressed_mirrored = ExtResource("1_yg5d3")
+theme_override_styles/hover_pressed = ExtResource("1_yg5d3")
+theme_override_styles/hover_mirrored = ExtResource("1_2n14t")
+theme_override_styles/hover = ExtResource("1_2n14t")
+theme_override_styles/pressed_mirrored = ExtResource("1_yg5d3")
+theme_override_styles/pressed = ExtResource("1_yg5d3")
+theme_override_styles/normal_mirrored = ExtResource("1_2n14t")
+theme_override_styles/normal = ExtResource("1_2n14t")
+toggle_mode = true
+button_group = ExtResource("2_lkio4")
+icon = ExtResource("3_o0g8v")
+icon_alignment = 1
+expand_icon = true

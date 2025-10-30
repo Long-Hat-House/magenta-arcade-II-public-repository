@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://by3absoes3r57"]
+
+[ext_resource type="Shader" uid="uid://dc7aopf3xeml6" path="res://elements/ui/pressable/m_pressable_feedback_shader.tres" id="1_4lm8w"]
+[ext_resource type="Texture2D" uid="uid://b77kipsxbi8yi" path="res://elements/ui/ui_touchable_shine.png" id="2_w3c60"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_4lm8w")
+shader_parameter/Color = Color(1, 1, 1, 1)
+shader_parameter/TextureScale = Vector2(4, 4)
+shader_parameter/Time_Multiplier = 1.8
+shader_parameter/ShineTexture = ExtResource("2_w3c60")

@@ -1,0 +1,1698 @@
+[gd_scene load_steps=78 format=3 uid="uid://cocf0sqxwdkhy"]
+
+[ext_resource type="Theme" uid="uid://bfqq5qjsvg8no" path="res://elements/ui/themes/menu/menu_theme.tres" id="1_1e5cp"]
+[ext_resource type="Script" uid="uid://dr7vr1pcuueh8" path="res://modules/text_flow/zap/src/text_flow_player_zap.gd" id="2_xljss"]
+[ext_resource type="PackedScene" uid="uid://cvi4hakv20bx2" path="res://modules/text_flow/zap/scenes/text_flow_zap.tscn" id="3_q7o6e"]
+[ext_resource type="Texture2D" uid="uid://c7nc1fx5uhc2" path="res://elements/icons/icon_play.svg" id="3_xiq6u"]
+[ext_resource type="Script" uid="uid://cwxu6khojrwjt" path="res://modules/text_flow/zap/src/text_flow_zap_speaker.gd" id="4_823nb"]
+[ext_resource type="PackedScene" uid="uid://e0sowimd87iv" path="res://modules/text_flow/zap/scenes/text_flow_zap_system.tscn" id="4_a653r"]
+[ext_resource type="Resource" uid="uid://bnh1nkl4ncbtf" path="res://elements/zap_characters/zap_speaker_eva.tres" id="4_t0nhw"]
+[ext_resource type="Resource" uid="uid://h4so8aln0gis" path="res://elements/zap_characters/zap_speaker_nando.tres" id="5_lfhxj"]
+[ext_resource type="Resource" uid="uid://di2qgirffcysx" path="res://elements/zap_characters/zap_speaker_nene.tres" id="6_r6jce"]
+[ext_resource type="Resource" uid="uid://b7d4u8eb42ap4" path="res://elements/zap_characters/zap_speaker_ju.tres" id="7_jv52w"]
+[ext_resource type="StyleBox" uid="uid://db41ce6u5nmp2" path="res://modules/text_flow/zap/resources/text_flow_player_zap_box_background.tres" id="8_6emuk"]
+[ext_resource type="Texture2D" uid="uid://di8a5sfbal4es" path="res://modules/text_flow/zap/textures/text_flow_zap_speaker_icon_group.png" id="8_ajdtr"]
+[ext_resource type="Resource" uid="uid://m8ej5p2w2f1w" path="res://elements/zap_characters/zap_speaker_adao.tres" id="8_dhgwb"]
+[ext_resource type="Resource" uid="uid://cl3ngagmexr5x" path="res://elements/zap_characters/zap_speaker_turing.tres" id="9_ccaop"]
+[ext_resource type="Texture2D" uid="uid://bl4rnjntpyc8m" path="res://modules/text_flow/zap/textures/text_flow_zap_speaker_icon_unknown.png" id="9_yd28b"]
+[ext_resource type="Texture2D" uid="uid://bg17nj7c2mmt3" path="res://elements/icons/icon_coin.png" id="13_6ilgg"]
+[ext_resource type="StyleBox" uid="uid://bsb4jpe4s5a1u" path="res://modules/text_flow/zap/resources/text_flow_player_zap_box_hidden_button_clicked.tres" id="14_xunoe"]
+[ext_resource type="Texture2D" uid="uid://cm5belis6bq0x" path="res://elements/icons/icon_star.png" id="14_y4qfj"]
+[ext_resource type="Script" uid="uid://bi4yfgewvcvwq" path="res://systems/switchable/switch_oning_offing_animation_player.gd" id="15_t3hvu"]
+[ext_resource type="PackedScene" uid="uid://c07jckiqo75a8" path="res://modules/text_flow/zap/scenes/text_flow_player_zap_speaker_info_panel.tscn" id="16_x6s8o"]
+[ext_resource type="PackedScene" uid="uid://dpba0537q4xsx" path="res://modules/text_flow/zap/scenes/text_flow_player_zap_group_info_panel.tscn" id="17_hqlyv"]
+[ext_resource type="Script" uid="uid://c8n670yf78dlf" path="res://systems/ui/scroll_container_theme.gd" id="19_t2up5"]
+[ext_resource type="Script" uid="uid://bn4ao8qxkc535" path="res://systems/level/level_info_display.gd" id="23_2d0r1"]
+[ext_resource type="Texture2D" uid="uid://b47xfaanjqpjr" path="res://elements/icons/icon_lvl_0.png" id="23_6i60u"]
+[ext_resource type="Texture2D" uid="uid://do2qid1t2ard4" path="res://elements/icons/icon_warning.png" id="23_htew3"]
+[ext_resource type="Texture2D" uid="uid://115e0tveyqv6" path="res://elements/icons/icons_magenta_nando.png" id="24_hg0kq"]
+[ext_resource type="Script" uid="uid://dchiwt0niv03n" path="res://modules/text_flow/zap/src/text_flow_zap_speaker_info_display.gd" id="25_eq6f1"]
+[ext_resource type="Texture2D" uid="uid://civpv0qfgk31x" path="res://elements/icons/icon_play_white.png" id="25_q70er"]
+[ext_resource type="Script" uid="uid://bm2efqyiljc1f" path="res://systems/ma2_meta/meta_info_display.gd" id="29_vacsd"]
+[ext_resource type="Texture2D" uid="uid://bn3hl1nnjglbl" path="res://elements/icons/icon_zap_colors.png" id="31_26ef6"]
+
+[sub_resource type="Resource" id="Resource_0tll5"]
+script = ExtResource("4_823nb")
+id = "player"
+color = Color(0.717647, 0.545098, 0.494118, 1)
+icon_1 = ExtResource("9_yd28b")
+
+[sub_resource type="Animation" id="Animation_14p1v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MobileSizeFit/Screen Panel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MobileSizeFit/Screen Panel:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MobileSizeFit/Screen Panel/TextureRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(":modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qknjg"]
+resource_name = "off"
+
+[sub_resource type="Animation" id="Animation_uogq0"]
+resource_name = "offing"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MobileSizeFit/Screen Panel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MobileSizeFit/Screen Panel:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 0.466517),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MobileSizeFit/Screen Panel/TextureRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(":modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5pp7e"]
+resource_name = "on"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MobileSizeFit/Screen Panel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MobileSizeFit/Screen Panel/TextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(":modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.947199, 0.947199, 0.947199, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_r7ym1"]
+resource_name = "oning"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MobileSizeFit/Screen Panel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MobileSizeFit/Screen Panel:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.466517, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MobileSizeFit/Screen Panel/TextureRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(":modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ap1y"]
+_data = {
+&"RESET": SubResource("Animation_14p1v"),
+&"off": SubResource("Animation_qknjg"),
+&"offing": SubResource("Animation_uogq0"),
+&"on": SubResource("Animation_5pp7e"),
+&"oning": SubResource("Animation_r7ym1")
+}
+
+[sub_resource type="Animation" id="Animation_133xe"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MobileSizeFit/Screen Panel/Zap App Panel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MobileSizeFit/Screen Panel/Zap App Panel:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bh2o4"]
+resource_name = "off"
+length = 0.001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MobileSizeFit/Screen Panel/Zap App Panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MobileSizeFit/Screen Panel/Zap App Panel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_r334r"]
+resource_name = "offing"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MobileSizeFit/Screen Panel/Zap App Panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1.93187, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MobileSizeFit/Screen Panel/Zap App Panel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_njpvw"]
+resource_name = "on"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MobileSizeFit/Screen Panel/Zap App Panel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MobileSizeFit/Screen Panel/Zap App Panel:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_i3dqo"]
+resource_name = "oning"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MobileSizeFit/Screen Panel/Zap App Panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.366667),
+"transitions": PackedFloat32Array(0.466517, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MobileSizeFit/Screen Panel/Zap App Panel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ad2fo"]
+_data = {
+&"RESET": SubResource("Animation_133xe"),
+&"off": SubResource("Animation_bh2o4"),
+&"offing": SubResource("Animation_r334r"),
+&"on": SubResource("Animation_njpvw"),
+&"oning": SubResource("Animation_i3dqo")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8yobu"]
+content_margin_left = 15.0
+content_margin_top = 20.0
+content_margin_right = 15.0
+content_margin_bottom = 25.0
+bg_color = Color(0.08, 0.08, 0.08, 1)
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+corner_radius_bottom_right = 80
+corner_radius_bottom_left = 80
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ebjbo"]
+content_margin_left = 15.0
+content_margin_top = 0.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0.223529, 0.223529, 0.278431, 1)
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+expand_margin_top = 80.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ptll1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ucxd1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mx8hp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_st3pd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n1pd6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sb6ui"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tarqs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ymgwg"]
+
+[sub_resource type="GDScript" id="GDScript_gemo0"]
+resource_name = "GoToEnd"
+script/source = "extends Control
+
+@export var animator:Switch_Oning_Offing_AnimationPlayer
+@export var player:TextFlowPlayerZap
+@export var button:Button
+
+func _ready() -> void:
+	button.pressed.connect(player.go_to_end)
+	player.new_zap_finished.connect(_on_new_zap)
+
+func _recheck() -> void:
+	if animator.is_set_to_on() && player.is_at_end():
+		animator.set_switch(false)
+	elif animator.is_set_to_off() && !player.is_at_end():
+		animator.set_switch(true)
+
+func _on_new_zap(speaker:TextFlowZapSpeaker, message:String):
+	_recheck()
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0ioa"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0.164706, 0.164706, 0.203922, 1)
+border_width_left = 7
+border_width_top = 4
+border_width_right = 2
+border_width_bottom = 4
+border_color = Color(0.341176, 0.341176, 0.427451, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6cuk"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0.796078, 0.741176, 0.705882, 1)
+border_width_left = 7
+border_width_top = 4
+border_width_right = 2
+border_width_bottom = 4
+border_color = Color(0.341176, 0.341176, 0.427451, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="Animation" id="Animation_iqilj"]
+resource_name = "off"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/Content Panel (Margin)/Go To End:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/Content Panel (Margin)/Go To End:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_55put"]
+resource_name = "offing"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/Content Panel (Margin)/Go To End:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/Content Panel (Margin)/Go To End:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+
+[sub_resource type="Animation" id="Animation_mb7he"]
+resource_name = "on"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/Content Panel (Margin)/Go To End:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/Content Panel (Margin)/Go To End:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_6cfew"]
+resource_name = "oning"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/Content Panel (Margin)/Go To End:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/Content Panel (Margin)/Go To End:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5lr5n"]
+_data = {
+&"off": SubResource("Animation_iqilj"),
+&"offing": SubResource("Animation_55put"),
+&"on": SubResource("Animation_mb7he"),
+&"oning": SubResource("Animation_6cfew")
+}
+
+[sub_resource type="Gradient" id="Gradient_id80t"]
+offsets = PackedFloat32Array(0, 0.026506, 0.412048, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.760784, 0, 0, 0, 0.732755, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x1j1y"]
+gradient = SubResource("Gradient_id80t")
+width = 1
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Animation" id="Animation_07ave"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/Control CENTER/Control OFFSET:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/Control CENTER/Control OFFSET/VBox Content:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MarginContainer/Control CENTER/Control OFFSET/VBox Content/TextureRect:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MarginContainer/Control CENTER/Control OFFSET/VBox Content/Label:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_comyd"]
+resource_name = "off"
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/Control CENTER/Control OFFSET:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_oql18"]
+resource_name = "off"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/Control CENTER/Control OFFSET/VBox Content:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 1, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.46667, 2)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/Control CENTER/Control OFFSET:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.633333),
+"transitions": PackedFloat32Array(0.297302, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/Control CENTER/Control OFFSET/VBox Content/TextureRect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MarginContainer/Control CENTER/Control OFFSET/VBox Content/Label:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_4e4xr"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/Control CENTER/Control OFFSET:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.7),
+"transitions": PackedFloat32Array(1.56917, 1.51572, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.95, 0.95), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/Control CENTER/Control OFFSET/VBox Content:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/Control CENTER/Control OFFSET/VBox Content/TextureRect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MarginContainer/Control CENTER/Control OFFSET/VBox Content/Label:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_twqrs"]
+resource_name = "oning"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0, 0.56793, 1, -0.233333, -0.00966316, 0.25, 0),
+"times": PackedFloat32Array(0, 0.733333)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/Control CENTER/Control OFFSET:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.7),
+"transitions": PackedFloat32Array(1.56917, 1.51572, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.95, 0.95), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/Control CENTER/Control OFFSET/VBox Content:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/Control CENTER/Control OFFSET/VBox Content/TextureRect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MarginContainer/Control CENTER/Control OFFSET/VBox Content/Label:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ixooa"]
+_data = {
+&"RESET": SubResource("Animation_07ave"),
+&"off": SubResource("Animation_comyd"),
+&"offing": SubResource("Animation_oql18"),
+&"on": SubResource("Animation_4e4xr"),
+&"oning": SubResource("Animation_twqrs")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k12is"]
+content_margin_left = 30.0
+content_margin_top = 20.0
+content_margin_right = 30.0
+content_margin_bottom = 50.0
+bg_color = Color(0.223529, 0.223529, 0.278431, 1)
+corner_radius_bottom_right = 80
+corner_radius_bottom_left = 80
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8gipi"]
+bg_color = Color(0.164706, 0.164706, 0.203922, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="Animation" id="Animation_epujx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5to8h"]
+resource_name = "on"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.733333),
+"transitions": PackedFloat32Array(1, -0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fdshh"]
+_data = {
+&"RESET": SubResource("Animation_epujx"),
+&"on": SubResource("Animation_5to8h")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v1pc1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tuyyg"]
+
+[sub_resource type="GDScript" id="GDScript_8k10f"]
+resource_name = "SliderButton"
+script/source = "extends HSlider
+
+signal button_slided
+
+func _ready() -> void:
+	drag_ended.connect(_on_drag_ended)
+
+func _on_drag_ended(val:float):
+	if val >= 0.99:
+		button_slided.emit()
+	else:
+		set_value_no_signal(0)
+"
+
+[node name="TextFlowPlayerZap" type="Control" node_paths=PackedStringArray("_animation_app", "_animation_zap", "_animation_intercepting", "_lvl_unlocked_tab_container", "_zap_container", "_scroll_container", "_group_description", "_speaker_info_panel", "_group_info_panel", "_group_info_button", "_lvl_info_display")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 2
+theme = ExtResource("1_1e5cp")
+script = ExtResource("2_xljss")
+_animation_app = NodePath("MobileAppAnimation")
+_animation_zap = NodePath("ZapAnimation")
+_animation_intercepting = NodePath("MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/Intercepting Warning/Intercepting - Animation Player")
+_lvl_unlocked_tab_container = NodePath("MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer")
+zappers = Array[ExtResource("4_823nb")]([ExtResource("4_t0nhw"), ExtResource("5_lfhxj"), ExtResource("6_r6jce"), ExtResource("7_jv52w"), ExtResource("8_dhgwb"), ExtResource("9_ccaop"), SubResource("Resource_0tll5")])
+basic_zap_scene = ExtResource("3_q7o6e")
+system_zap_scene = ExtResource("4_a653r")
+_zap_container = NodePath("MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/Content Panel (Margin)/ScrollContainer/MarginContainer/VBoxContainer")
+_scroll_container = NodePath("MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/Content Panel (Margin)/ScrollContainer")
+_group_description = NodePath("MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/ZapHeader Panel/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/RichTextLabel")
+_speaker_info_panel = NodePath("MobileSizeFit/Screen Panel/Zap App Panel/Speaker Info Panel")
+_group_info_panel = NodePath("MobileSizeFit/Screen Panel/Zap App Panel/Group Info Panel")
+_group_info_button = NodePath("MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/ZapHeader Panel/VBoxContainer/HBoxContainer/MarginContainer/Show Group Info Button")
+_lvl_info_display = NodePath("MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Level Info Display")
+
+[node name="MobileAppAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4ap1y")
+}
+script = ExtResource("15_t3hvu")
+
+[node name="ZapAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ad2fo")
+}
+script = ExtResource("15_t3hvu")
+
+[node name="MobileSizeFit" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.895, 0.885)
+pivot_offset = Vector2(450, 900)
+
+[node name="Screen Panel" type="Panel" parent="MobileSizeFit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8yobu")
+
+[node name="TextureRect" type="TextureRect" parent="MobileSizeFit/Screen Panel"]
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 2
+offset_left = 330.0
+offset_top = 777.0
+offset_right = 570.0
+offset_bottom = 1017.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("31_26ef6")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Zap App Panel" type="MarginContainer" parent="MobileSizeFit/Screen Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(450, 900)
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 25
+
+[node name="Zap" type="VBoxContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Header+Zap" type="MarginContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ZapHeader Panel" type="PanelContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ebjbo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/ZapHeader Panel"]
+layout_mode = 2
+
+[node name="Phone Header Margin" type="MarginContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/ZapHeader Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/ZapHeader Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="CenterContainer" type="CenterContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/ZapHeader Panel/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Back Button" type="Button" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/ZapHeader Panel/VBoxContainer/HBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(110, 110)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ptll1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ucxd1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_mx8hp")
+theme_override_styles/pressed = ExtResource("14_xunoe")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_st3pd")
+
+[node name="TextureRect2" type="TextureRect" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/ZapHeader Panel/VBoxContainer/HBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+texture = ExtResource("3_xiq6u")
+expand_mode = 5
+stretch_mode = 5
+flip_h = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/ZapHeader Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/margin_top = 0
+
+[node name="Show Group Info Button" type="Button" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/ZapHeader Panel/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n1pd6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_sb6ui")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tarqs")
+theme_override_styles/pressed = ExtResource("14_xunoe")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ymgwg")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/ZapHeader Panel/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 20
+
+[node name="TextureRect" type="TextureRect" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/ZapHeader Panel/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("8_ajdtr")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/ZapHeader Panel/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/ZapHeader Panel/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"label_zap_groupinfo_title"
+theme_override_font_sizes/font_size = 46
+text = "zap_group_title"
+text_overrun_behavior = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/ZapHeader Panel/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_type_variation = &"richtextlabel_zap_bubble_text"
+bbcode_enabled = true
+text = "zap_ui_group_details_callout"
+scroll_active = false
+autowrap_mode = 0
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="Content Panel (Margin)" type="PanelContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer"]
+self_modulate = Color(0.25098, 0.0117647, 0.176471, 1)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("8_6emuk")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/Content Panel (Margin)"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+script = ExtResource("19_t2up5")
+_v_scroll_bar_theme = "scrollbar_zap"
+
+[node name="MarginContainer" type="MarginContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/Content Panel (Margin)/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/Content Panel (Margin)/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+alignment = 2
+
+[node name="Go To End" type="Control" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/Content Panel (Margin)" node_paths=PackedStringArray("animator", "player", "button")]
+visible = false
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+script = SubResource("GDScript_gemo0")
+animator = NodePath("GoToEndButtonAnimation")
+player = NodePath("../../../../../../../..")
+button = NodePath("Button")
+
+[node name="Button" type="Button" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/Content Panel (Margin)/Go To End"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+offset_right = 100.0
+offset_bottom = 100.0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxFlat_l0ioa")
+theme_override_styles/hover = SubResource("StyleBoxFlat_l0ioa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o6cuk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_l0ioa")
+icon_alignment = 1
+expand_icon = true
+
+[node name="TextureRect" type="TextureRect" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/Content Panel (Margin)/Go To End/Button"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+offset_left = 25.0
+offset_top = 31.035
+offset_right = 75.0
+offset_bottom = 81.035
+rotation = 1.5708
+pivot_offset = Vector2(25, 25)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_xiq6u")
+expand_mode = 5
+stretch_mode = 5
+flip_v = true
+
+[node name="GoToEndButtonAnimation" type="AnimationPlayer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/Content Panel (Margin)/Go To End"]
+root_node = NodePath("../../../../../../../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_5lr5n")
+}
+script = ExtResource("15_t3hvu")
+
+[node name="Intercepting Warning" type="MarginContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap"]
+process_mode = 3
+layout_mode = 2
+mouse_filter = 0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="VBox BG" type="VBoxContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/Intercepting Warning"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/Intercepting Warning/VBox BG"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_x1j1y")
+
+[node name="Control" type="Control" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/Intercepting Warning/VBox BG"]
+custom_minimum_size = Vector2(0, 800)
+layout_mode = 2
+
+[node name="MarginContainer" type="CenterContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/Intercepting Warning"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Control CENTER" type="Control" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/Intercepting Warning/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Control OFFSET" type="Control" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/Intercepting Warning/MarginContainer/Control CENTER"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -430.0
+offset_bottom = -430.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBox Content" type="VBoxContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/Intercepting Warning/MarginContainer/Control CENTER/Control OFFSET"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -171.0
+offset_right = 400.0
+offset_bottom = 171.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/Intercepting Warning/MarginContainer/Control CENTER/Control OFFSET/VBox Content"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("23_htew3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/Intercepting Warning/MarginContainer/Control CENTER/Control OFFSET/VBox Content"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_type_variation = &"label_zap_warning_title"
+theme_override_font_sizes/font_size = 60
+text = "zap_ui_warning_target_found"
+horizontal_alignment = 1
+autowrap_mode = 3
+uppercase = true
+
+[node name="Intercepting - Animation Player" type="AnimationPlayer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/Intercepting Warning"]
+libraries = {
+&"": SubResource("AnimationLibrary_ixooa")
+}
+script = ExtResource("15_t3hvu")
+
+[node name="Info Panel" type="PanelContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_k12is")
+
+[node name="TabContainer" type="TabContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel"]
+layout_mode = 2
+size_flags_vertical = 8
+current_tab = 0
+tabs_visible = false
+
+[node name="Level Info Display" type="MarginContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer" node_paths=PackedStringArray("_to_set_level_highlight_color", "_label_level_name", "_trect_level_icons", "_boss_display_duplicate")]
+layout_mode = 2
+script = ExtResource("23_2d0r1")
+_to_set_level_highlight_color = [NodePath("VBoxContainer/HBoxContainer2/MarginContainer/Control/Lvl Icon 2"), NodePath("VBoxContainer/HBoxContainer2/HBoxContainer/Button/MarginContainer")]
+_label_level_name = NodePath("VBoxContainer/HBoxContainer2/HBoxContainer/Button/MarginContainer/HBoxContainer/Level Name")
+_trect_level_icons = [NodePath("VBoxContainer/HBoxContainer2/MarginContainer/Control/Lvl Icon 2")]
+_boss_display_duplicate = NodePath("VBoxContainer/HBoxContainer2/MarginContainer/Level and Boss Info/Level and Boss/Level Characters/BossInfoDisplay")
+_max_bosses_display = 2
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Level Info Display"]
+layout_mode = 2
+
+[node name="Label Target Found" type="Label" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Level Info Display/VBoxContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"label_zap_warning_description"
+text = "zap_ui_warning_target_found"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Level Info Display/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="MarginContainer" type="MarginContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Level Info Display/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Level Info Display/VBoxContainer/HBoxContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="Lvl Icon 2" type="TextureRect" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Level Info Display/VBoxContainer/HBoxContainer2/MarginContainer/Control"]
+self_modulate = Color(1, 1, 1, 0.196078)
+clip_contents = true
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -123.883
+offset_top = -144.051
+offset_right = 126.117
+offset_bottom = 105.949
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+texture = ExtResource("23_6i60u")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level and Boss Info" type="VBoxContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Level Info Display/VBoxContainer/HBoxContainer2/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="Level and Boss" type="HBoxContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Level Info Display/VBoxContainer/HBoxContainer2/MarginContainer/Level and Boss Info"]
+layout_mode = 2
+alignment = 1
+
+[node name="Level Characters" type="GridContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Level Info Display/VBoxContainer/HBoxContainer2/MarginContainer/Level and Boss Info/Level and Boss"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 2
+
+[node name="BossInfoDisplay" type="Panel" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Level Info Display/VBoxContainer/HBoxContainer2/MarginContainer/Level and Boss Info/Level and Boss/Level Characters" node_paths=PackedStringArray("_trects_speaker_icons_2")]
+custom_minimum_size = Vector2(100, 120)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8gipi")
+script = ExtResource("25_eq6f1")
+_trects_speaker_icons_2 = [NodePath("TextureRect")]
+
+[node name="TextureRect" type="TextureRect" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Level Info Display/VBoxContainer/HBoxContainer2/MarginContainer/Level and Boss Info/Level and Boss/Level Characters/BossInfoDisplay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -60.0
+offset_right = 50.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("24_hg0kq")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Level Info Display/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Level Info Display/VBoxContainer/HBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(520, 150)
+layout_mode = 2
+theme_type_variation = &"button_level_zap"
+autowrap_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Level Info Display/VBoxContainer/HBoxContainer2/HBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+
+[node name="HBoxContainer" type="BoxContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Level Info Display/VBoxContainer/HBoxContainer2/HBoxContainer/Button/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Level Name" type="Label" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Level Info Display/VBoxContainer/HBoxContainer2/HBoxContainer/Button/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_type_variation = &"label_zap_warning_title"
+text = "Secret Magenta Family Coven"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Play Icon" type="TextureRect" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Level Info Display/VBoxContainer/HBoxContainer2/HBoxContainer/Button/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("25_q70er")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Level Info Display/VBoxContainer/HBoxContainer2/HBoxContainer/Button/MarginContainer/HBoxContainer/Play Icon"]
+libraries = {
+&"": SubResource("AnimationLibrary_fdshh")
+}
+autoplay = "on"
+
+[node name="Info Skip" type="HBoxContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer"]
+visible = false
+layout_mode = 2
+alignment = 1
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Info Skip"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Message for Interception" type="HBoxContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Info Skip/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Info Skip/VBoxContainer/Message for Interception"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_type_variation = &"label_zap_warning_title"
+text = "Interceptando Comunicação
+ da Família Magenta!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Slider for skip" type="HBoxContainer" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Info Skip/VBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="Control Size" type="Control" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Info Skip/VBoxContainer/Slider for skip"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Skip Slider" type="HSlider" parent="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Info Skip/VBoxContainer/Slider for skip/Control Size"]
+custom_minimum_size = Vector2(360, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -32.0
+offset_right = 240.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_type_variation = &"slider_zap_skip"
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_v1pc1")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_tuyyg")
+max_value = 1.0
+step = 0.0
+script = SubResource("GDScript_8k10f")
+
+[node name="Group Info Panel" parent="MobileSizeFit/Screen Panel/Zap App Panel" instance=ExtResource("17_hqlyv")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Speaker Info Panel" parent="MobileSizeFit/Screen Panel/Zap App Panel" instance=ExtResource("16_x6s8o")]
+visible = false
+layout_mode = 2
+
+[node name="PhoneHeader" type="HBoxContainer" parent="MobileSizeFit/Screen Panel"]
+modulate = Color(1, 1, 1, 0.454902)
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+offset_left = 81.0
+offset_top = 20.0
+offset_right = 820.0
+offset_bottom = 70.0
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Playtime" type="Label" parent="MobileSizeFit/Screen Panel/PhoneHeader" node_paths=PackedStringArray("_label_text")]
+layout_mode = 2
+size_flags_vertical = 1
+text = "21:34h Playtime"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("29_vacsd")
+_info_type = 4
+_label_text = NodePath(".")
+
+[node name="Control" type="Control" parent="MobileSizeFit/Screen Panel/PhoneHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MoneyIcon" type="TextureRect" parent="MobileSizeFit/Screen Panel/PhoneHeader"]
+custom_minimum_size = Vector2(30, 40)
+layout_mode = 2
+texture = ExtResource("13_6ilgg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MoneyValue" type="Label" parent="MobileSizeFit/Screen Panel/PhoneHeader" node_paths=PackedStringArray("_label_text")]
+layout_mode = 2
+size_flags_vertical = 1
+text = "12039"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("29_vacsd")
+_info_type = 1
+_label_text = NodePath(".")
+
+[node name="StarIcon" type="TextureRect" parent="MobileSizeFit/Screen Panel/PhoneHeader"]
+custom_minimum_size = Vector2(30, 40)
+layout_mode = 2
+texture = ExtResource("14_y4qfj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="StarValue" type="Label" parent="MobileSizeFit/Screen Panel/PhoneHeader" node_paths=PackedStringArray("_label_text")]
+layout_mode = 2
+size_flags_vertical = 1
+text = "23"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("29_vacsd")
+_label_text = NodePath(".")
+
+[connection signal="pressed" from="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Header+Zap/VBoxContainer/ZapHeader Panel/VBoxContainer/HBoxContainer/CenterContainer/Back Button" to="." method="_on_back_button_pressed"]
+[connection signal="speaker_clicked" from="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Level Info Display/VBoxContainer/HBoxContainer2/MarginContainer/Level and Boss Info/Level and Boss/Level Characters/BossInfoDisplay" to="MobileSizeFit/Screen Panel/Zap App Panel/Speaker Info Panel" method="show_speaker"]
+[connection signal="pressed" from="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Level Info Display/VBoxContainer/HBoxContainer2/HBoxContainer/Button" to="." method="_on_back_button_pressed"]
+[connection signal="button_slided" from="MobileSizeFit/Screen Panel/Zap App Panel/Zap/Info Panel/TabContainer/Info Skip/VBoxContainer/Slider for skip/Control Size/Skip Slider" to="." method="skip"]

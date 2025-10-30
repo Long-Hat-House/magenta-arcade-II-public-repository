@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bcynsolj53nkk"]
+
+[ext_resource type="Shader" uid="uid://dk6p3om82mpnd" path="res://elements/general_use/material/shader_magenta_shield.tres" id="1_ognns"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ognns")
+shader_parameter/WobblySpeed = 0.5
+shader_parameter/Time_Multiplier = 2.0
+shader_parameter/FillColor = Color(0.34902, 0.0627451, 0.403922, 1)
+shader_parameter/BorderColor = Color(1, 0.0784314, 0.839216, 1)

@@ -1,0 +1,184 @@
+[gd_scene load_steps=5 format=3 uid="uid://bu8da8ex3k0ji"]
+
+[ext_resource type="Theme" uid="uid://b04obcqohv34o" path="res://modules/dev_manager/theme_dev_ui.tres" id="1_iofw0"]
+[ext_resource type="StyleBox" uid="uid://byvpxccd2ogds" path="res://elements/ui/themes/menu/ui_button.tres" id="2_xwmus"]
+[ext_resource type="Texture2D" uid="uid://dor6oky7vl7im" path="res://elements/ui/ui_art/ui_bg_tile.svg" id="3_xwmus"]
+
+[sub_resource type="GDScript" id="GDScript_cb8kg"]
+script/source = "extends Control
+
+@onready var sub_viewport: SubViewport = $Everything/SubViewportContainer/SubViewport
+
+@export var use_custom_size:bool;
+@export var width:int;
+@export var height:int;
+
+
+func _ready() -> void:
+	GameInit.queue_free();
+	DevManager.hide();
+	
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed(\"ui_accept\"):
+		take_screenshot();
+		
+func take_screenshot():
+	if use_custom_size:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+		var res:Vector2i = Vector2i(width, height);
+		DisplayServer.window_set_size(res)
+		get_viewport().get_window().size = res
+		#SafeAreaMarginContainer.set_top_margin_override(safe_area_top_margin)
+		#print(\"[DEV MANAGER] JUST SET window size: \" + str(res) + \" and margin: \" + str(safe_area_top_margin))
+	
+	await RenderingServer.frame_post_draw
+	print(\"will save screenshot in \" + OS.get_user_data_dir());
+	OS.shell_open(OS.get_user_data_dir());
+	#var screenshot_name1:String = \"user://shot_%s.png\" % [Time.get_datetime_string_from_system(false, false).replace(\":\",\"-\")]
+	var screenshot_name2:String = \"user://shot_screen_%s.png\" % [Time.get_datetime_string_from_system(false, false).replace(\":\",\"-\")]
+	#sub_viewport.get_texture().get_image().save_png(screenshot_name1)
+	get_viewport().get_texture().get_image().save_png(screenshot_name2)
+	print(\"saved screenshot in \" + OS.get_user_data_dir());
+"
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_cb8kg")
+use_custom_size = true
+width = 1920
+height = 1080
+
+[node name="Everything" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Everything"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="Everything/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1080, 1980)
+render_target_update_mode = 4
+
+[node name="Everything" type="Control" parent="Everything/SubViewportContainer/SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("1_iofw0")
+
+[node name="Control" type="ColorRect" parent="Everything/SubViewportContainer/SubViewport/Everything"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.588235, 1, 1)
+
+[node name="Control2" type="Control" parent="Everything/SubViewportContainer/SubViewport/Everything"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Everything/SubViewportContainer/SubViewport/Everything"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Everything/SubViewportContainer/SubViewport/Everything/MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="DialoguePanel1" type="Panel" parent="Everything/SubViewportContainer/SubViewport/Everything/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("2_xwmus")
+
+[node name="Dialogue" type="Label" parent="Everything/SubViewportContainer/SubViewport/Everything/MarginContainer/VBoxContainer/DialoguePanel1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -189.0
+offset_top = -21.0
+offset_right = 189.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "Destroy your enemies!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DialoguePanel2" type="Panel" parent="Everything/SubViewportContainer/SubViewport/Everything/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("2_xwmus")
+
+[node name="Dialogue" type="Label" parent="Everything/SubViewportContainer/SubViewport/Everything/MarginContainer/VBoxContainer/DialoguePanel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -189.0
+offset_top = -21.0
+offset_right = 189.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "Destroy your enemies!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Everything"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_xwmus")
+stretch_mode = 1

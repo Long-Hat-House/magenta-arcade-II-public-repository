@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dh1clvlemdfas"]
+
+[ext_resource type="Texture2D" uid="uid://0ep7n6qx0d1r" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_cassete/texture/m_button_cassete_base_BaseColor.png" id="1_0x8a8"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jie0d"]
+
+[resource]
+resource_local_to_scene = true
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("1_0x8a8")
+emission = Color(0.0392157, 0.796078, 0, 1)
+emission_energy_multiplier = 2.37814
+clearcoat = 0.69
+anisotropy = 0.33
+ao_texture = SubResource("CompressedTexture2D_jie0d")
+backlight = Color(0.0313726, 0.0313726, 0.0313726, 1)

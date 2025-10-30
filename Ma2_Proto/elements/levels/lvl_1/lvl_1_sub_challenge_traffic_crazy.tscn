@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy4e2ntr4g1x8"]
+
+[ext_resource type="Script" uid="uid://k3lx0x2611ue" path="res://elements/levels/lvl_sub_challenge_traffic.gd" id="1_0ti18"]
+[ext_resource type="PackedScene" uid="uid://ceudsq1yfislt" path="res://elements/stage_pieces/stage_piece_afonso_pena_lanes3.tscn" id="3_1b1h5"]
+
+[node name="LVL CHALLENGE CARS CRAZY" type="Node3D"]
+script = ExtResource("1_0ti18")
+style = 1
+street_pieces = Array[PackedScene]([ExtResource("3_1b1h5")])

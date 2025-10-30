@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://c1itbp0p5ixgf"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Stop_UI_Coins_Count"
+id = 4104782297
+guid = "{15236697-3A07-4E19-8890-0563E2890DC9}"
+dummy = true

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cu6ibx30vr2lp"]
+
+[ext_resource type="PackedScene" uid="uid://gxlnx64hdfkt" path="res://elements/enemy/pizza/enemy_pizza_roboto_rusty_cannon.tscn" id="1_wm17f"]
+
+[node name="PizzaRobotoRusty_Cannon_Right" instance=ExtResource("1_wm17f")]
+walkVelocity = Vector3(2, 0, 0)

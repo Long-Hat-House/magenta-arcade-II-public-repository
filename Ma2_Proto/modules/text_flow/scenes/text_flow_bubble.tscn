@@ -1,0 +1,258 @@
+[gd_scene load_steps=12 format=3 uid="uid://cmwu7jd3gixin"]
+
+[ext_resource type="Script" uid="uid://b6h56qgtol4y3" path="res://modules/text_flow/src/text_flow_bubble.gd" id="1_7tu18"]
+[ext_resource type="Texture2D" uid="uid://dp8j87dp24qul" path="res://modules/text_flow/textures/text_flow_bubble_bg.png" id="2_tdabl"]
+[ext_resource type="Script" uid="uid://bi4yfgewvcvwq" path="res://systems/switchable/switch_oning_offing_animation_player.gd" id="3_7gebh"]
+[ext_resource type="Texture2D" uid="uid://bmh450wy37e2e" path="res://modules/text_flow/textures/text_flow_bubble_arrow.png" id="4_fjsdk"]
+[ext_resource type="WwiseEvent" uid="uid://v1lxnbnmndik" path="res://Wwise/resources/Event/{7A5C1FC3-D054-4BC2-B117-190DBA3D2F20}.tres" id="5_22ov4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v28x0"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+texture = ExtResource("2_tdabl")
+texture_margin_left = 15.0
+texture_margin_top = 14.0
+texture_margin_right = 15.0
+texture_margin_bottom = 19.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="Animation" id="Animation_0ha5l"]
+resource_name = "on"
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_iyutp"]
+resource_name = "offing"
+length = 0.35
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.23897, -0.2, -0.105601, 0.25, 0),
+"times": PackedFloat32Array(0, 0.35)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.23897, -0.2, 0.147843, 0.25, 0),
+"times": PackedFloat32Array(0, 0.35)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.399455, 0.0352006, 0.25, 0),
+"times": PackedFloat32Array(0, 0.35)
+}
+
+[sub_resource type="Animation" id="Animation_f75q5"]
+resource_name = "off"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.999609, -0.25, 0, 0.25, 0, 1.04185, -0.25, 0, 0.25, 0, 0.999609, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.999609, -0.25, 0, 0.25, 0, 1.04185, -0.25, 0, 0.25, 0, 0.999609, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/PanelContainer:self_modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.8, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+
+[sub_resource type="Animation" id="Animation_74y88"]
+resource_name = "onning"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0, 0.999609, -0.2, 0.182652, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0, 0.999609, -0.2, 0.337535, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-8.70216e-05, -0.25, 0, 0, 0.429447, 0.978489, -0.399455, 0.0352006, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v7vtk"]
+_data = {
+&"off": SubResource("Animation_0ha5l"),
+&"offing": SubResource("Animation_iyutp"),
+&"on": SubResource("Animation_f75q5"),
+&"oning": SubResource("Animation_74y88")
+}
+
+[node name="TextFlowBubble" type="Control" node_paths=PackedStringArray("_label", "_panel", "_anim", "_sfx_bubble")]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(0.999609, 0.999609)
+mouse_filter = 2
+script = ExtResource("1_7tu18")
+_prepend = "[center]"
+_label = NodePath("MarginContainer/PanelContainer/VBoxContainer/RichTextLabel")
+_panel = NodePath("MarginContainer/PanelContainer")
+_anim = NodePath("Switch_Oning_Offing_AnimationPlayer")
+_sfx_bubble = NodePath("SFX_Bubble")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -132.88
+offset_top = -190.0
+offset_right = 132.88
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_bottom = 32
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_v28x0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/PanelContainer/VBoxContainer"]
+texture_filter = 2
+clip_contents = false
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"richtextlabel_bubble"
+bbcode_enabled = true
+text = "0123456789 0123456789 0123456789 0123456789"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+meta_underlined = false
+hint_underlined = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="Switch_Oning_Offing_AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_v7vtk")
+}
+autoplay = "off"
+script = ExtResource("3_7gebh")
+
+[node name="Arrow" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = -16.0
+offset_top = -32.0
+offset_right = 16.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(16, 16)
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 2
+texture = ExtResource("4_fjsdk")
+stretch_mode = 2
+
+[node name="SFX_Bubble" type="AkEvent3D" parent="."]
+event = ExtResource("5_22ov4")
+stop_on = 3

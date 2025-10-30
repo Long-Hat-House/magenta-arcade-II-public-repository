@@ -1,0 +1,130 @@
+[gd_scene load_steps=10 format=3 uid="uid://5hcp1j1sttyq"]
+
+[ext_resource type="Script" uid="uid://bt3rgk2gx218p" path="res://systems/stage/level_stage_piece.gd" id="1_dmyo1"]
+[ext_resource type="PackedScene" uid="uid://l2ytgjefawwd" path="res://elements/background/element_factory_floor.tscn" id="2_7mycv"]
+[ext_resource type="PackedScene" uid="uid://c00kqth38jmst" path="res://systems/stage/stage_screen_measure.tscn" id="4_3nrqf"]
+[ext_resource type="PackedScene" uid="uid://dmf1l5p7w47hi" path="res://elements/neutral/props/Factory/mesh/element_pipe_curve_factory.tscn" id="6_aqh61"]
+[ext_resource type="PackedScene" uid="uid://dpeu4kli3hep7" path="res://elements/neutral/props/Factory/mesh/element_pipe_tube_factory.tscn" id="7_jljwl"]
+[ext_resource type="PackedScene" uid="uid://cd77fkxpi0jxa" path="res://elements/neutral/props/Factory/mesh/element_box_factory.tscn" id="9_c76op"]
+[ext_resource type="PackedScene" uid="uid://cqfl6r82tc8ni" path="res://elements/background/element_factory_gray_floor.tscn" id="9_xwner"]
+[ext_resource type="PackedScene" uid="uid://b5ywgn67tfmvg" path="res://elements/neutral/props/Factory/mesh/element_silo_factory.tscn" id="10_6247g"]
+[ext_resource type="PackedScene" uid="uid://d2e4gfw46mory" path="res://elements/neutral/props/Factory/mesh/element_factory_support_roof_alt1.tscn" id="11_h0c3g"]
+
+[node name="Stage Piece Fabrica Prize Room" type="Node3D"]
+script = ExtResource("1_dmyo1")
+
+[node name="StageScreenMeasure Prize" parent="." instance=ExtResource("4_3nrqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -2.75)
+default_ease_x = 1
+default_trans_x = 1
+default_ease_z = 1
+default_trans_z = 1
+
+[node name="Scenery" type="Node3D" parent="."]
+
+[node name="FactoryFloor" parent="Scenery" instance=ExtResource("2_7mycv")]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 40, -7.5, 0, -5)
+
+[node name="Scenery2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.25)
+
+[node name="pipe_curve_factory" parent="Scenery2" instance=ExtResource("6_aqh61")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8701, -0.0922852, 11.606)
+
+[node name="pipe_curve_factory2" parent="Scenery2" instance=ExtResource("6_aqh61")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.8701, -0.0922852, 11.606)
+
+[node name="pipe_tube_factory" parent="Scenery2" instance=ExtResource("7_jljwl")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, -4.8701, -0.0922852, 11.606)
+
+[node name="pipe_curve_factory3" parent="Scenery2" instance=ExtResource("6_aqh61")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1299, -0.0922852, 11.606)
+
+[node name="pipe_curve_factory4" parent="Scenery2" instance=ExtResource("6_aqh61")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.1299, -0.0922852, 11.606)
+
+[node name="pipe_tube_factory2" parent="Scenery2" instance=ExtResource("7_jljwl")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 2.1299, -0.0922852, 11.606)
+
+[node name="pipe_curve_factory5" parent="Scenery2" instance=ExtResource("6_aqh61")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1299, -0.0922852, 12.106)
+
+[node name="pipe_curve_factory6" parent="Scenery2" instance=ExtResource("6_aqh61")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.1299, -0.0922852, 12.106)
+
+[node name="pipe_tube_factory3" parent="Scenery2" instance=ExtResource("7_jljwl")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 2.1299, -0.0922852, 12.106)
+
+[node name="pipe_curve_factory7" parent="Scenery2" instance=ExtResource("6_aqh61")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8701, -0.0922852, 12.106)
+
+[node name="pipe_curve_factory8" parent="Scenery2" instance=ExtResource("6_aqh61")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.8701, -0.0922852, 12.106)
+
+[node name="pipe_tube_factory4" parent="Scenery2" instance=ExtResource("7_jljwl")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, -4.8701, -0.0922852, 12.106)
+
+[node name="FactoryGrayFloor" parent="Scenery2" instance=ExtResource("9_xwner")]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 2, -7.5, 0.001, 18.75)
+
+[node name="FactoryGrayFloor2" parent="Scenery2" instance=ExtResource("9_xwner")]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 4, -7.5, 0.001, 6.75)
+
+[node name="silo_factory" parent="Scenery2" instance=ExtResource("10_6247g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75, 0, 2.356)
+
+[node name="silo_factory3" parent="Scenery2" instance=ExtResource("10_6247g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75, 0, 17.356)
+
+[node name="support_roof" parent="Scenery2" instance=ExtResource("11_h0c3g")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 3.25, 6.5, 1.25)
+
+[node name="Boxes" type="Node3D" parent="."]
+
+[node name="factory_box" parent="Boxes" instance=ExtResource("9_c76op")]
+transform = Transform3D(0.465676, 0, -0.884955, 0, 1, 0, 0.884955, 0, 0.465676, -4.44238, 0, 0.38855)
+
+[node name="factory_box2" parent="Boxes" instance=ExtResource("9_c76op")]
+transform = Transform3D(-0.13938, 0, 0.990239, 0, 1, 0, -0.990239, 0, -0.13938, -3.19238, 0, 0.38855)
+
+[node name="factory_box3" parent="Boxes" instance=ExtResource("9_c76op")]
+transform = Transform3D(-0.595258, 0, 0.803535, 0, 1, 0, -0.803535, 0, -0.595258, -3.69238, 0, -0.61145)
+
+[node name="factory_box4" parent="Boxes" instance=ExtResource("9_c76op")]
+transform = Transform3D(0.128311, 0, 0.991734, 0, 1, 0, -0.991734, 0, 0.128311, -0.5, 0, -0.75)
+
+[node name="factory_box5" parent="Boxes" instance=ExtResource("9_c76op")]
+transform = Transform3D(0.100883, 0, -0.994898, 0, 1, 0, 0.994898, 0, 0.100883, 1.5, 0, 0.75)
+
+[node name="factory_box6" parent="Boxes" instance=ExtResource("9_c76op")]
+transform = Transform3D(0.1127, 0, 0.993629, 0, 1, 0, -0.993629, 0, 0.1127, -1, 0, 0.75)
+
+[node name="factory_box7" parent="Boxes" instance=ExtResource("9_c76op")]
+transform = Transform3D(-0.451438, 0, -0.892302, 0, 1, 0, 0.892302, 0, -0.451438, 2.25, 0, -0.5)
+
+[node name="factory_box8" parent="Boxes" instance=ExtResource("9_c76op")]
+transform = Transform3D(-0.394519, 0, -0.918888, 0, 1, 0, 0.918888, 0, -0.394519, 3.5, 0, 1.5)
+
+[node name="factory_box9" parent="Boxes" instance=ExtResource("9_c76op")]
+transform = Transform3D(-0.2117, 0, -0.977335, 0, 1, 0, 0.977335, 0, -0.2117, 2, 0, 2.75)
+
+[node name="factory_box10" parent="Boxes" instance=ExtResource("9_c76op")]
+transform = Transform3D(0.612907, 0, 0.790155, 0, 1, 0, -0.790155, 0, 0.612907, 4.5, 0, -0.75)
+
+[node name="factory_box11" parent="Boxes" instance=ExtResource("9_c76op")]
+transform = Transform3D(-0.429345, 0, -0.903141, 0, 1, 0, 0.903141, 0, -0.429345, 4.5, 0, 3.75)
+
+[node name="factory_box12" parent="Boxes" instance=ExtResource("9_c76op")]
+transform = Transform3D(0.215571, 0, -0.976488, 0, 1, 0, 0.976488, 0, 0.215571, -3.75, 1, 0.25)
+
+[node name="factory_box13" parent="Boxes" instance=ExtResource("9_c76op")]
+transform = Transform3D(-0.592941, 0, 0.805246, 0, 1, 0, -0.805246, 0, -0.592941, -5.25, 0, 3.75)
+
+[node name="factory_box14" parent="Boxes" instance=ExtResource("9_c76op")]
+transform = Transform3D(-0.235278, 0, 0.971928, 0, 1, 0, -0.971928, 0, -0.235278, -4.5, 0, 2)
+
+[node name="factory_box15" parent="Boxes" instance=ExtResource("9_c76op")]
+transform = Transform3D(-0.0739346, 0, 0.997263, 0, 1, 0, -0.997263, 0, -0.0739346, -3.5, 0, 3.75)
+
+[node name="factory_box16" parent="Boxes" instance=ExtResource("9_c76op")]
+transform = Transform3D(0.461872, 0, -0.886946, 0, 1, 0, 0.886946, 0, 0.461872, -3.75, 0, 5.25)

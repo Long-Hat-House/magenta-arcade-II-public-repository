@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ForceTumbleData" load_steps=2 format=3 uid="uid://ch2sx8gskxgfw"]
+
+[ext_resource type="Script" uid="uid://bgdocsgotim3u" path="res://elements/player/force_tumble_data.gd" id="3_sjxph"]
+
+[resource]
+script = ExtResource("3_sjxph")
+force_response_multiplier = 48.0
+return_force_multiplier = 70.0
+mass = 5.0
+scaled_mass = true
+min_velocity = 2.0
+min_force_to_min_velocity = 4.5
+velocity_dissipation = 1.8
+tumble_sensitivity = 0.75
+vibration_max_value_amplitude = 0.5
+vibration_frequency = 32.0
+vibration_increase = 4.0
+vibration_decrease = 32.0
+force_min_to_increase_vibration = 0.5
+add_tumble_hit_multiplier = 1.0
+add_tumble_hit_velocity_multiplier = 1.0
+add_vibration_influence_on_hit = 0.8

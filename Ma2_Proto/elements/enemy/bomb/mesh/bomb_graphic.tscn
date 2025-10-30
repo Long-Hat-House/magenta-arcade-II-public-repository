@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://5m6gwnynp3sa"]
+
+[ext_resource type="PackedScene" uid="uid://cn1kk2qe80am8" path="res://elements/enemy/bomb/mesh/roboto_bomba_relogio.tscn" id="1_k8rlc"]
+[ext_resource type="Script" path="res://elements/enemy/bomb/mesh/bomb_graphic.gd" id="2_5sbq3"]
+
+[node name="roboto_bomba_relogio" instance=ExtResource("1_k8rlc")]
+script = ExtResource("2_5sbq3")
+
+[node name="Skeleton3D" parent="rig_roboto_bomba_relogio" index="0"]
+bones/0/position = Vector3(0, 0, 0)
+bones/0/rotation = Quaternion(0, 0, 0, 1)
+bones/1/position = Vector3(0.432849, 0.281675, 0.153265)
+bones/1/rotation = Quaternion(0, 0, 0, 1)
+bones/2/rotation = Quaternion(0.986718, 0.135962, -0.0886026, 0.007126)
+bones/4/position = Vector3(-0.432849, 0.281675, 0.153265)
+bones/4/rotation = Quaternion(0, 0, 0, 1)
+bones/5/rotation = Quaternion(0.986718, -0.135962, 0.0886026, 0.007126)
+bones/8/rotation = Quaternion(-0.371959, 0, 0, 0.928249)
+bones/9/rotation = Quaternion(-0.437919, 0, 0, 0.899014)
+bones/10/rotation = Quaternion(-0.325824, -0.0633541, 0.13674, 0.933342)
+bones/11/rotation = Quaternion(-0.179003, -0.125741, 0.0895543, 0.971662)
+bones/12/rotation = Quaternion(-0.0836843, -1.01986e-07, -7.61426e-09, 0.996492)

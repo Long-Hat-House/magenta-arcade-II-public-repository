@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="CreditsSectionInfo" load_steps=10 format=3 uid="uid://bjgodsimywas4"]
+
+[ext_resource type="Texture2D" uid="uid://nelvyaghmtga" path="res://elements/ui/ui_art/ui_tap_FG.png" id="1_id0tb"]
+[ext_resource type="Script" uid="uid://bkle5ca8utscg" path="res://elements/ui/menus/credits_menu/scripts/credits_entry_info.gd" id="2_od4o0"]
+[ext_resource type="Texture2D" uid="uid://dq7pxqbdvwice" path="res://elements/icons/icons_upgrades/icon_upgrade_tap_max.png" id="3_idcxm"]
+[ext_resource type="Script" uid="uid://brm0i2bj1yuok" path="res://elements/ui/menus/credits_menu/scripts/credits_section_info.gd" id="5_5fkk0"]
+[ext_resource type="Texture2D" uid="uid://bus3no6usqwu3" path="res://elements/icons/icons_upgrades/icon_upgrade_tap_projectiles.png" id="5_kpfb8"]
+[ext_resource type="Texture2D" uid="uid://c60ke23mys8av" path="res://elements/icons/icons_upgrades/icon_upgrade_tap_speed.png" id="5_od4o0"]
+
+[sub_resource type="Resource" id="Resource_cq60e"]
+script = ExtResource("2_od4o0")
+entry_name = &"upgrade_tap_speed"
+entry_role = &"manual_upgrade_tap_speed"
+entry_information = &""
+entry_texture = ExtResource("5_od4o0")
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[sub_resource type="Resource" id="Resource_6c2xc"]
+script = ExtResource("2_od4o0")
+entry_name = &"upgrade_tap_max"
+entry_role = &"manual_upgrade_tap_max"
+entry_information = &""
+entry_texture = ExtResource("3_idcxm")
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[sub_resource type="Resource" id="Resource_27esn"]
+script = ExtResource("2_od4o0")
+entry_name = &"upgrade_tap_projectiles"
+entry_role = &"manual_upgrade_tap_projectiles"
+entry_information = &""
+entry_texture = ExtResource("5_kpfb8")
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[resource]
+script = ExtResource("5_5fkk0")
+section_title = &"manual_s_upgrades_tap_title"
+section_info = &""
+default_entry_texture_2 = ExtResource("1_id0tb")
+section_color_highlight = Color(1, 1, 1, 1)
+section_color_bg = Color(1, 1, 0, 1)
+entries_list = Array[ExtResource("2_od4o0")]([SubResource("Resource_cq60e"), SubResource("Resource_6c2xc"), SubResource("Resource_27esn")])
+metadata/_custom_type_script = "uid://brm0i2bj1yuok"

@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://t2ow3u5q1b7v"]
+
+[ext_resource type="PackedScene" uid="uid://ccn6065djpwhr" path="res://elements/powerups/button/powerup_holdable_button.tscn" id="1_i6n05"]
+[ext_resource type="Script" uid="uid://dn5xbh6gduayb" path="res://systems/tasks/specific/add_weapon_task.gd" id="2_dlswu"]
+[ext_resource type="Script" uid="uid://dj2x7ekyg32b7" path="res://systems/score/score_giver.gd" id="4_6jtw0"]
+[ext_resource type="Script" uid="uid://2losthclregu" path="res://systems/tasks/specific/give_point_task.gd" id="4_ppsyy"]
+[ext_resource type="Script" uid="uid://y0rj8qal8ijh" path="res://systems/tasks/parallel_task.gd" id="5_g6c7p"]
+[ext_resource type="Script" uid="uid://c0sp5v01fqjcq" path="res://systems/condition/specific/condition_has_maxed_weapon.gd" id="6_ij67v"]
+
+[node name="WeaponButton" node_paths=PackedStringArray("condition", "condition_false_task") instance=ExtResource("1_i6n05")]
+condition = NodePath("Condition_HasMaxedWeapon")
+condition_needs_true_so_label_appears = true
+condition_false_task = NodePath("ParallelTask")
+
+[node name="button_graphic" parent="Area3D" index="1" node_paths=PackedStringArray("_task_add_weapon")]
+_task_add_weapon = NodePath("../../ParallelTask/Task_AddWeapon")
+
+[node name="point target" type="Node3D" parent="Area3D/button_graphic" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.640122, -0.378097)
+
+[node name="Task_GiveScore" type="Node" parent="." index="3" node_paths=PackedStringArray("score_giver")]
+script = ExtResource("4_ppsyy")
+score_giver = NodePath("ScoreGiver")
+
+[node name="ScoreGiver" type="Node" parent="Task_GiveScore" index="0" node_paths=PackedStringArray("point_position")]
+script = ExtResource("4_6jtw0")
+point_position = NodePath("../../Area3D/button_graphic/point target")
+
+[node name="Condition_HasMaxedWeapon" type="Node" parent="." index="4"]
+script = ExtResource("6_ij67v")
+
+[node name="ParallelTask" type="Node" parent="." index="5"]
+script = ExtResource("5_g6c7p")
+
+[node name="Task_AddWeapon" type="Node" parent="ParallelTask" index="0"]
+script = ExtResource("2_dlswu")

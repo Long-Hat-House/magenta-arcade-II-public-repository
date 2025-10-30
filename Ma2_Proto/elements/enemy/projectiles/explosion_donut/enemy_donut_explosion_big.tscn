@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3n36dh5pf025"]
+
+[ext_resource type="PackedScene" uid="uid://st77q0pi2kle" path="res://elements/enemy/projectiles/explosion_donut/enemy_donut_explosion.tscn" id="1_diif2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p3qph"]
+height = 4.0
+
+[node name="EnemyExplosion_Big" instance=ExtResource("1_diif2")]
+duration = 1.0
+rotated_copies_shape = 10
+
+[node name="CollisionShape3D" parent="DamageArea" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -4.26215)
+shape = SubResource("CapsuleShape3D_p3qph")

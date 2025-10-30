@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="CreditsSectionInfo" load_steps=14 format=3 uid="uid://ox184qg1hqfw"]
+
+[ext_resource type="Script" uid="uid://bkle5ca8utscg" path="res://elements/ui/menus/credits_menu/scripts/credits_entry_info.gd" id="2_4y7fj"]
+[ext_resource type="Texture2D" uid="uid://u8st7b4hkfnj" path="res://elements/ui/ui_art/ui_hold_FG.png" id="3_4y7fj"]
+[ext_resource type="Texture2D" uid="uid://d1b2s7pd0lufb" path="res://elements/icons/icons_powerups/icon_powerup_hold_speed.png" id="3_6sgjv"]
+[ext_resource type="Texture2D" uid="uid://csqy4gu3cbqjk" path="res://elements/icons/icons_powerups/icon_powerup_hold_firerate.png" id="4_xnxvn"]
+[ext_resource type="Texture2D" uid="uid://t3fpbyht74d1" path="res://elements/icons/icons_powerups/icon_powerup_hold_lvl.png" id="5_4y7fj"]
+[ext_resource type="Texture2D" uid="uid://btan7e0h6acgs" path="res://elements/icons/icons_powerups/icon_powerup_health.png" id="6_fcqxe"]
+[ext_resource type="Script" uid="uid://brm0i2bj1yuok" path="res://elements/ui/menus/credits_menu/scripts/credits_section_info.gd" id="7_pbgw1"]
+[ext_resource type="Texture2D" uid="uid://d3v87fgglk6ib" path="res://elements/ui/ui_art/ui_icon_manual_bg.png" id="8_fcqxe"]
+
+[sub_resource type="Resource" id="Resource_7ywto"]
+script = ExtResource("2_4y7fj")
+entry_name = &"manual_powerup_extrashot_title"
+entry_role = &"manual_powerup_extrashot_description"
+entry_information = &"manual_powerup_extrashot_info"
+entry_texture_2 = ExtResource("3_4y7fj")
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[sub_resource type="Resource" id="Resource_k8t1d"]
+script = ExtResource("2_4y7fj")
+entry_name = &"manual_powerup_hold_speed_title"
+entry_role = &"manual_powerup_hold_speed_description"
+entry_information = &"manual_powerup_hold_speed_info"
+entry_texture = ExtResource("3_6sgjv")
+entry_texture_2 = ExtResource("3_4y7fj")
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[sub_resource type="Resource" id="Resource_vh73x"]
+script = ExtResource("2_4y7fj")
+entry_name = &"manual_powerup_hold_firerate_title"
+entry_role = &"manual_powerup_hold_firerate_description"
+entry_information = &"manual_powerup_hold_firerate_info"
+entry_texture = ExtResource("4_xnxvn")
+entry_texture_2 = ExtResource("3_4y7fj")
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[sub_resource type="Resource" id="Resource_6cxtm"]
+script = ExtResource("2_4y7fj")
+entry_name = &"manual_powerup_hold_lvl_title"
+entry_role = &"manual_powerup_hold_lvl_description"
+entry_information = &"manual_powerup_hold_lvl_info"
+entry_texture = ExtResource("5_4y7fj")
+entry_texture_2 = ExtResource("3_4y7fj")
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[sub_resource type="Resource" id="Resource_5upmf"]
+script = ExtResource("2_4y7fj")
+entry_name = &"manual_powerup_health_title"
+entry_role = &"manual_powerup_health_description"
+entry_information = &"manual_powerup_health_info"
+entry_texture = ExtResource("6_fcqxe")
+entry_texture_2 = ExtResource("8_fcqxe")
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[resource]
+script = ExtResource("7_pbgw1")
+section_title = &"manual_s_powerups_title"
+section_info = &"manual_s_powerups_description"
+section_color_highlight = Color(1, 1, 1, 1)
+section_color_bg = Color(0, 0.831373, 0.792157, 1)
+entries_list = Array[ExtResource("2_4y7fj")]([SubResource("Resource_7ywto"), SubResource("Resource_k8t1d"), SubResource("Resource_vh73x"), SubResource("Resource_6cxtm"), SubResource("Resource_5upmf")])
+metadata/_custom_type_script = "uid://brm0i2bj1yuok"

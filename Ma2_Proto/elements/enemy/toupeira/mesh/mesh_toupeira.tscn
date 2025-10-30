@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://em0s714jg74j"]
+
+[ext_resource type="PackedScene" uid="uid://lwq60i5n216s" path="res://elements/enemy/toupeira/mesh/toupeira.glb" id="1_i6xou"]
+[ext_resource type="Material" uid="uid://bkwc4o5lphh1i" path="res://elements/enemy/toupeira/material/m_toupeira.tres" id="2_71f4b"]
+
+[node name="toupeira" instance=ExtResource("1_i6xou")]
+
+[node name="toupeira" parent="." index="0"]
+material_override = ExtResource("2_71f4b")

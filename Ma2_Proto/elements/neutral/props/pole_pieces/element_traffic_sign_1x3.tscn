@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmkpxdlg3a6rf"]
+
+[ext_resource type="PackedScene" uid="uid://bw2hylvp70n01" path="res://elements/neutral/props/pole_pieces/element_traffic_sign_1x2_base.tscn" id="1_sknpm"]
+[ext_resource type="Texture2D" uid="uid://hmvpawc4835y" path="res://elements/neutral/props/pole_pieces/signs/trafficsign_afonsopena_1x3.png" id="2_pbsr6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpbll"]
+resource_local_to_scene = true
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("2_pbsr6")
+
+[node name="Traffic Sign" instance=ExtResource("1_sknpm")]
+texture = ExtResource("2_pbsr6")
+
+[node name="square_sign" parent="." index="1"]
+transform = Transform3D(1.24, 0, 0, 0, 0.79, 0, 0, 0, 1, 0, 0, 0.20727)
+surface_material_override/0 = SubResource("StandardMaterial3D_hpbll")
+
+[node name="MeshInstance3D" parent="." index="2"]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

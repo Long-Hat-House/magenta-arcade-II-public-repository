@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://pyd0fomi47py"]
+
+[ext_resource type="PackedScene" uid="uid://d2brg0vochoh0" path="res://elements/enemy/snake/mesh/snake.glb" id="1_eblxn"]
+[ext_resource type="Material" uid="uid://b60keo4o7lbls" path="res://elements/enemy/snake/material/m_snake.tres" id="2_aodcf"]
+
+[node name="snake" instance=ExtResource("1_eblxn")]
+
+[node name="snake" parent="." index="0"]
+material_override = ExtResource("2_aodcf")

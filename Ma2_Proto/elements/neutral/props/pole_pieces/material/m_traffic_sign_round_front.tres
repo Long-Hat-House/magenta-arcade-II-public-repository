@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dru0fkic4fs2n"]
+
+[ext_resource type="Texture2D" uid="uid://cu2k6v88b7dem" path="res://elements/neutral/props/pole_pieces/signs/roadsign_50kmh_1x1.png" id="1_3a44u"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jie0d"]
+
+[resource]
+resource_local_to_scene = true
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("1_3a44u")
+roughness = 0.65
+emission = Color(0.0392157, 0.796078, 0, 1)
+emission_energy_multiplier = 2.37814
+clearcoat = 0.69
+anisotropy = 0.33
+ao_texture = SubResource("CompressedTexture2D_jie0d")
+backlight = Color(0.0313726, 0.0313726, 0.0313726, 1)

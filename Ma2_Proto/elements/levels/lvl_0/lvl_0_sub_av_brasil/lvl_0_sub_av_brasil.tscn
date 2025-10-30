@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0k67wa8xc7ku"]
+
+[sub_resource type="GDScript" id="GDScript_mvg20"]
+resource_name = "lvl_sub"
+script/source = "extends Level
+
+const ENEMY_STATUE = preload(\"res://elements/enemy/bosses/estatua/enemy_statue_boss.tscn\")
+
+## stage pieces
+const STAGE_PIECE_AFONSO_PENA_AV_BRASIL = preload(\"res://elements/stage_pieces/stage_piece_afonso_pena_av_brasil.tscn\")
+const STAGE_PIECE_AFONSO_PENA_LANES_2 = preload(\"res://elements/stage_pieces/stage_piece_afonso_pena_lanes2.tscn\")
+
+func _ready():
+	await await_for_level_ready()
+
+	stage.create_piece_and_attach(STAGE_PIECE_AFONSO_PENA_LANES_2);
+	stage.create_piece_and_attach(STAGE_PIECE_AFONSO_PENA_AV_BRASIL);
+	stage.set_pivot_offset(Vector3.ZERO)
+	stage.repivot();
+
+	var statue:Enemy_Statue_Ivo = objs.create_object(ENEMY_STATUE, \"statue\", Vector3(0,0,stage.get_pos_z()+55)) as Enemy_Statue_Ivo;
+	statue.state_back()
+"
+
+[node name="LVL AV BRASIL" type="Node3D"]
+script = SubResource("GDScript_mvg20")

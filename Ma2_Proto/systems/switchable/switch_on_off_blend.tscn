@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://x6c6yv6vnw20"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vayce"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nlxke"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_8vxkl"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ucyxu"]
+nodes/Off/node = SubResource("AnimationNodeAnimation_vayce")
+nodes/Off/position = Vector2(300, 240)
+nodes/On/node = SubResource("AnimationNodeAnimation_nlxke")
+nodes/On/position = Vector2(300, 100)
+nodes/OnOffBlend/node = SubResource("AnimationNodeBlend2_8vxkl")
+nodes/OnOffBlend/position = Vector2(640, 120)
+nodes/output/position = Vector2(900, 120)
+node_connections = [&"OnOffBlend", 0, &"On", &"OnOffBlend", 1, &"Off", &"output", 0, &"OnOffBlend"]
+
+[node name="SwitchOnOff" type="AnimationTree"]
+tree_root = SubResource("AnimationNodeBlendTree_ucyxu")
+parameters/OnOffBlend/blend_amount = 0

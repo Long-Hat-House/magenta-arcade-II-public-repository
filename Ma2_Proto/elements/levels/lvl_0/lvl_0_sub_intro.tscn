@@ -1,0 +1,211 @@
+[gd_scene load_steps=8 format=3 uid="uid://dchgkwx8fk1go"]
+
+[ext_resource type="PackedScene" uid="uid://dlmo70g30qwuq" path="res://elements/stage_pieces/stage_piece_afonso_pena_intro.tscn" id="1_6373u"]
+[ext_resource type="PackedScene" uid="uid://b5k41aaenknm2" path="res://elements/neutral/props/praca_bandeira/mesh_platform.tscn" id="3_278y8"]
+[ext_resource type="PackedScene" uid="uid://cuonuihp4gsws" path="res://elements/powerups/button/powerup_weapon_button_hold_blue.tscn" id="3_nfk07"]
+[ext_resource type="PackedScene" uid="uid://yjglagfjn8er" path="res://elements/npc/npc.tscn" id="4_2gnot"]
+[ext_resource type="PackedScene" uid="uid://b8ef6p3rlvkoa" path="res://elements/ui/tutorial/tutorial_3D_label.tscn" id="5_asxpm"]
+
+[sub_resource type="GDScript" id="GDScript_rsn75"]
+resource_name = "LVL1 Intro"
+script/source = "extends Level
+
+const ELEMENT_IVO_FLAG_POLE = preload(\"res://elements/neutral/setpieces/ivo_flag_pole/element_ivo_flag_pole.tscn\")
+const WEAPON_HOLD_TOUCH_ONLY = preload(\"res://elements/player/weapons/weapon_hold_touch_only.tscn\")
+
+signal pole_destroyed()
+
+@export var flag_pole_position:Node3D
+@export var STAGE_PIECE_AFONSO_PENA_INTRO:LevelStagePiece
+@export var npc_speech:NPC
+@export var holdable:Holdable;
+@export var tutorial:Node3D;
+
+var _pole_destroyed:bool = false
+
+func _is_pole_destroyed() -> bool: return _pole_destroyed
+
+func _on_pole_destroyed():
+	_pole_destroyed = true
+
+func _ready() -> void:
+	await await_for_level_ready()
+
+	stage.attach_piece(STAGE_PIECE_AFONSO_PENA_INTRO);
+	stage.set_pivot_offset(Vector3(0,0,30))
+	stage.repivot()
+
+	tutorial.visible = false
+	holdable.button_hold_finished.connect(func(): tutorial.visible = true
+		, CONNECT_ONE_SHOT)
+
+	objs.add_to_group_node(npc_speech, \"npc_speech\")
+
+	stage.set_pivot_offset(Vector3(0,0,15))
+
+	AudioManager.post_music_event(AK.EVENTS.MUSIC_LEVEL1_START)
+	cmd_array([
+			CMD_Callable.new(func():
+				var pole = objs.create_object(ELEMENT_IVO_FLAG_POLE,\"\",flag_pole_position.global_position)
+				pole.destruction_starting.connect(_on_pole_destroyed)
+				),
+			cam.cmd_position_vector(stage.get_grid(0,0), 4.5, Tween.TRANS_QUAD, Tween.EASE_IN_OUT),
+			CMD_Wait_Seconds.new(4.1),
+			CMD_Callable.new(
+				func():
+					if is_instance_valid(npc_speech) && npc_speech._current_state != NPC.NPCState.DEAD:
+						npc_speech.talk(\"dial_lvl1_intro\")
+					),
+			CMD_Parallel.new([
+				CMD_Sequence.new([
+					CMD_Wait_Callable.new(func() -> bool:
+						return npc_speech.flow_player.is_playing() if is_instance_valid(npc_speech) else false
+						, false, CMD_Wait_Callable.Operator.EQUAL),
+					CMD_Callable.new(func():
+						if is_instance_valid(npc_speech):
+							npc_speech.talk(\"dial_lvl1_intro_loop\", true)
+						)
+				], 0),
+				CMD_Wait_Callable.new(_is_pole_destroyed),
+			]),
+			CMD_Wait_Callable.new(_is_pole_destroyed),
+			CMD_Music_Event.new(AK.EVENTS.MUSIC_LEVEL1_FLAG_DESTROY),
+			CMD_Wait_Seconds.new(0.5),
+		], false);
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mw6hu"]
+custom_solver_bias = 0.1
+size = Vector3(1, 0.01, 1)
+
+[node name="LVL INTRO" type="Node3D" node_paths=PackedStringArray("flag_pole_position", "STAGE_PIECE_AFONSO_PENA_INTRO", "npc_speech", "holdable", "tutorial")]
+script = SubResource("GDScript_rsn75")
+flag_pole_position = NodePath("Intro/FlagPolePosition")
+STAGE_PIECE_AFONSO_PENA_INTRO = NodePath("Intro")
+npc_speech = NodePath("Intro/Stage/NPC SPEECH")
+holdable = NodePath("Intro/Stage/WeaponButton_Hold_Blue")
+tutorial = NodePath("Intro/Tutorial_In_Game")
+
+[node name="Intro" parent="." instance=ExtResource("1_6373u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64.5)
+
+[node name="Stage" type="Marker3D" parent="Intro"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.470798, 21.4588)
+gizmo_extents = 8.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Intro/Stage"]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 2.23772, -0.922409)
+collision_layer = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Intro/Stage/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.515463, 0)
+shape = SubResource("BoxShape3D_mw6hu")
+
+[node name="platform" parent="Intro/Stage/StaticBody3D" instance=ExtResource("3_278y8")]
+transform = Transform3D(0.27, 0, 0, 0, 0.27, 0, 0, 0, 0.27, 0, -0.488168, 0)
+
+[node name="WeaponButton_Hold_Blue" parent="Intro/Stage" instance=ExtResource("3_nfk07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.93507, -0.419041)
+
+[node name="NPC SPEECH" parent="Intro/Stage" instance=ExtResource("4_2gnot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -1.73811)
+may_talk_when_idle = false
+may_walk_when_idle = false
+back_to_idle_after_pressed = true
+
+[node name="FlagPolePosition" type="Marker3D" parent="Intro"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 13)
+gizmo_extents = 2.0
+
+[node name="NPCs Stopped" type="Node3D" parent="Intro"]
+
+[node name="Npc" parent="Intro/NPCs Stopped" instance=ExtResource("4_2gnot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.74209, 15)
+may_talk_when_idle = false
+may_walk_when_idle = false
+back_to_idle_after_pressed = true
+
+[node name="Npc2" parent="Intro/NPCs Stopped" instance=ExtResource("4_2gnot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.48707, 2.72979, 15.3675)
+may_talk_when_idle = false
+may_walk_when_idle = false
+back_to_idle_after_pressed = true
+
+[node name="Npc5" parent="Intro/NPCs Stopped" instance=ExtResource("4_2gnot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55025, 2.78002, 15.0228)
+may_talk_when_idle = false
+may_walk_when_idle = false
+back_to_idle_after_pressed = true
+
+[node name="Npc6" parent="Intro/NPCs Stopped" instance=ExtResource("4_2gnot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52858, 2.8197, 15.0743)
+may_talk_when_idle = false
+may_walk_when_idle = false
+back_to_idle_after_pressed = true
+
+[node name="Npc7" parent="Intro/NPCs Stopped" instance=ExtResource("4_2gnot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.31176, 2.8197, 16.0318)
+may_talk_when_idle = false
+may_walk_when_idle = false
+back_to_idle_after_pressed = true
+
+[node name="Npc8" parent="Intro/NPCs Stopped" instance=ExtResource("4_2gnot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.16077, 0, 17.9451)
+may_talk_when_idle = false
+may_walk_when_idle = false
+back_to_idle_after_pressed = true
+
+[node name="Npc9" parent="Intro/NPCs Stopped" instance=ExtResource("4_2gnot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.688, 0, 18.532)
+may_talk_when_idle = false
+may_walk_when_idle = false
+back_to_idle_after_pressed = true
+
+[node name="Npc10" parent="Intro/NPCs Stopped" instance=ExtResource("4_2gnot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.12249, 0, 20.8708)
+may_talk_when_idle = false
+may_walk_when_idle = false
+back_to_idle_after_pressed = true
+
+[node name="Npc11" parent="Intro/NPCs Stopped" instance=ExtResource("4_2gnot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.23926, 0, 22.7676)
+may_talk_when_idle = false
+may_walk_when_idle = false
+back_to_idle_after_pressed = true
+
+[node name="Npc12" parent="Intro/NPCs Stopped" instance=ExtResource("4_2gnot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.47404, 0, 22.1204)
+may_talk_when_idle = false
+may_walk_when_idle = false
+back_to_idle_after_pressed = true
+
+[node name="Npc13" parent="Intro/NPCs Stopped" instance=ExtResource("4_2gnot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.938034, 0, 16.0255)
+may_talk_when_idle = false
+may_walk_when_idle = false
+back_to_idle_after_pressed = true
+
+[node name="NPCs walking by" type="Node3D" parent="Intro"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64.5)
+
+[node name="Npc" parent="Intro/NPCs walking by" instance=ExtResource("4_2gnot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.59221, 0, -31.7783)
+
+[node name="Npc2" parent="Intro/NPCs walking by" instance=ExtResource("4_2gnot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.946937, 0, -31.5263)
+
+[node name="Npc3" parent="Intro/NPCs walking by" instance=ExtResource("4_2gnot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.79672, 0, -34.2051)
+
+[node name="Npc4" parent="Intro/NPCs walking by" instance=ExtResource("4_2gnot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.38484, 0, -32.084)
+
+[node name="Npc5" parent="Intro/NPCs walking by" instance=ExtResource("4_2gnot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.737129, 0, -26.954)
+
+[node name="Npc6" parent="Intro/NPCs walking by" instance=ExtResource("4_2gnot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.33425, 0, -35.4228)
+
+[node name="Tutorial_In_Game" parent="Intro" instance=ExtResource("5_asxpm")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.546, 20.5)
+autowrap_mode = 3

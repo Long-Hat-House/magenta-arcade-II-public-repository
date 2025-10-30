@@ -1,0 +1,74 @@
+[gd_scene load_steps=12 format=3 uid="uid://biot2pkv6iuem"]
+
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="1_c8kja"]
+[ext_resource type="Script" uid="uid://d2ml2pkanh1ax" path="res://elements/enemy/snake/ai_enemy_snake_body.gd" id="1_v8r5p"]
+[ext_resource type="Script" uid="uid://b3uoomrpwsflo" path="res://systems/float_value.gd" id="2_5a1vt"]
+[ext_resource type="PackedScene" uid="uid://ywymskkj85vs" path="res://elements/vfx/vfx_explosion/vfx_explosion.tscn" id="2_q3mvi"]
+[ext_resource type="Script" uid="uid://dj2x7ekyg32b7" path="res://systems/score/score_giver.gd" id="3_1jujh"]
+[ext_resource type="PackedScene" uid="uid://dtleu6yxuimdg" path="res://elements/enemy/snake/mesh/mesh_snake_body.tscn" id="5_r4sqd"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="6_bva7u"]
+[ext_resource type="Resource" uid="uid://chbkkfjx2rcxc" path="res://elements/score/score_info_snake_body.tres" id="7_2mp4n"]
+[ext_resource type="Resource" uid="uid://cjwfn4dil1r88" path="res://elements/score/score_info_snake_body_after.tres" id="9_e5vd7"]
+
+[sub_resource type="Resource" id="Resource_ggbvk"]
+script = ExtResource("2_5a1vt")
+value = 0.01
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7iwva"]
+
+[node name="EnemySnakeBody" type="StaticBody3D" node_paths=PackedStringArray("notifier") groups=["enemy_position"]]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_v8r5p")
+explosion_vfx = ExtResource("2_q3mvi")
+notifier = NodePath("VisibleOnScreenNotifier3D")
+
+[node name="Alive Health" type="Node" parent="." node_paths=PackedStringArray("to_queue_free_on_death", "feedback") groups=["enemy_healths"]]
+script = ExtResource("1_c8kja")
+max_amount = 1.1
+wait_until_send_death_signal = 0.167
+frames_until_send_death_signal = 2
+to_queue_free_on_death = [NodePath(".")]
+feedback = [NodePath("../snakeBody")]
+frame_freeze_on_death = SubResource("Resource_ggbvk")
+
+[node name="Dead Health" type="Node" parent="." node_paths=PackedStringArray("feedback") groups=["enemy_healths"]]
+script = ExtResource("1_c8kja")
+max_amount = 2.0
+feedback = [NodePath("../snakeBody")]
+frame_freeze_on_death = SubResource("Resource_ggbvk")
+
+[node name="snakeBody" parent="." instance=ExtResource("5_r4sqd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.382764, 0)
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="snakeBody"]
+script = ExtResource("6_bva7u")
+high_contrast_group = &"enemy"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_7iwva")
+
+[node name="ScoreGiver" type="Node" parent="." node_paths=PackedStringArray("health", "point_position")]
+script = ExtResource("3_1jujh")
+info = ExtResource("7_2mp4n")
+health = NodePath("../Alive Health")
+point_position = NodePath("..")
+
+[node name="ScoreGiverAgain" type="Node" parent="." node_paths=PackedStringArray("health", "point_position")]
+script = ExtResource("3_1jujh")
+info = ExtResource("9_e5vd7")
+health = NodePath("../Dead Health")
+point_position = NodePath("..")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.297579, 0)
+aabb = AABB(-0.75, -1.36501, -0.75, 1.5, 2.73001, 1.5)
+
+[node name="Enemy Marker" type="Node3D" parent="." groups=["enemy_position"]]
+
+[connection signal="dead_parameterless" from="Alive Health" to="." method="_on_health_dead_parameterless"]
+[connection signal="dead_parameterless" from="Alive Health" to="snakeBody/AccessibilityHighContrastObject" method="change_group" binds= [&"neutral"]]
+[connection signal="dead_parameterless" from="Dead Health" to="." method="_on_dead_health_dead_parameterless"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="_on_entered_screen"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_left_screen"]

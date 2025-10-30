@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://cphuhabpiutca"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Enemy_Laser_Attack"
+id = 1838241229
+guid = "{07AD4BDC-6E70-4603-A657-4041856581DD}"
+dummy = true

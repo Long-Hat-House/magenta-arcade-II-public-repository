@@ -1,0 +1,101 @@
+[gd_scene load_steps=4 format=3 uid="uid://kwe16eipevaw"]
+
+[ext_resource type="Script" path="res://systems/stage/level_stage_piece.gd" id="1_qsn6f"]
+[ext_resource type="PackedScene" uid="uid://dfi4oip83lo3f" path="res://elements/background/element_grass.tscn" id="3_enqt5"]
+[ext_resource type="PackedScene" uid="uid://bwom4h3plpt56" path="res://elements/neutral/props/Factory/mesh/mesh_rail_factory.tscn" id="3_iiyb4"]
+
+[node name="Stage Piece Fabrica Boss Track" type="Node3D" node_paths=PackedStringArray("pivot_forward", "pivot_backward", "pivot_right", "pivot_left")]
+script = ExtResource("1_qsn6f")
+pivot_forward = NodePath("Config/forward")
+pivot_backward = NodePath("Config/back")
+pivot_right = NodePath("Config/right")
+pivot_left = NodePath("Config/left")
+
+[node name="Config" type="Node3D" parent="."]
+
+[node name="Wind Direction" type="Node3D" parent="Config"]
+transform = Transform3D(-2.04648e-07, 0, -1, 0, 1, 0, 1, 0, -2.04648e-07, 0.25, 6, 0)
+
+[node name="forward" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.25, 0, 0.025)
+gizmo_extents = 1.0
+
+[node name="back" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.25, 0, 30)
+gizmo_extents = 1.0
+
+[node name="right" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 15)
+gizmo_extents = 1.0
+
+[node name="left" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
+gizmo_extents = 1.0
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6259, 0, 18.0952)
+aabb = AABB(-7.7505, 0, -18.0803, 15.5, 13.796, 30)
+
+[node name="Scenery" type="Node3D" parent="."]
+
+[node name="Grass" parent="Scenery" instance=ExtResource("3_enqt5")]
+transform = Transform3D(17, 0, 0, 0, 1, 0, 0, 0, 30, 0, 0, 0)
+
+[node name="PROPS" type="Node3D" parent="Scenery"]
+
+[node name="RAIL" type="Node3D" parent="Scenery/PROPS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0)
+
+[node name="rail_factory" parent="Scenery/PROPS/RAIL" instance=ExtResource("3_iiyb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.05, 28)
+
+[node name="rail_factory2" parent="Scenery/PROPS/RAIL" instance=ExtResource("3_iiyb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.05, 26.25)
+
+[node name="rail_factory3" parent="Scenery/PROPS/RAIL" instance=ExtResource("3_iiyb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.05, 24.5)
+
+[node name="rail_factory4" parent="Scenery/PROPS/RAIL" instance=ExtResource("3_iiyb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.05, 22.75)
+
+[node name="rail_factory5" parent="Scenery/PROPS/RAIL" instance=ExtResource("3_iiyb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.05, 21)
+
+[node name="rail_factory6" parent="Scenery/PROPS/RAIL" instance=ExtResource("3_iiyb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.05, 19.25)
+
+[node name="rail_factory7" parent="Scenery/PROPS/RAIL" instance=ExtResource("3_iiyb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.05, 17.5)
+
+[node name="rail_factory8" parent="Scenery/PROPS/RAIL" instance=ExtResource("3_iiyb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.05, 15.75)
+
+[node name="rail_factory9" parent="Scenery/PROPS/RAIL" instance=ExtResource("3_iiyb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.05, 14)
+
+[node name="rail_factory10" parent="Scenery/PROPS/RAIL" instance=ExtResource("3_iiyb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.05, 12.25)
+
+[node name="rail_factory11" parent="Scenery/PROPS/RAIL" instance=ExtResource("3_iiyb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.05, 10.5)
+
+[node name="rail_factory12" parent="Scenery/PROPS/RAIL" instance=ExtResource("3_iiyb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.05, 8.75)
+
+[node name="rail_factory13" parent="Scenery/PROPS/RAIL" instance=ExtResource("3_iiyb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.05, 7)
+
+[node name="rail_factory14" parent="Scenery/PROPS/RAIL" instance=ExtResource("3_iiyb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.05, 5.25)
+
+[node name="rail_factory15" parent="Scenery/PROPS/RAIL" instance=ExtResource("3_iiyb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.05, 3.5)
+
+[node name="rail_factory16" parent="Scenery/PROPS/RAIL" instance=ExtResource("3_iiyb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.05, 1.75)
+
+[node name="rail_factory17" parent="Scenery/PROPS/RAIL" instance=ExtResource("3_iiyb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.05, 0)
+
+[connection signal="screen_entered" from="Config/VisibleOnScreenNotifier3D" to="." method="_on_screen_entered"]
+[connection signal="screen_exited" from="Config/VisibleOnScreenNotifier3D" to="." method="_on_screen_exited"]

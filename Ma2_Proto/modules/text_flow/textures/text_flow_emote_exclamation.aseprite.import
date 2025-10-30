@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://drdpxa3mwah5s"
+path="res://.godot/imported/text_flow_emote_exclamation.aseprite-f82ba94c2684cf03f7482477176696ca.res"
+
+[deps]
+
+source_file="res://modules/text_flow/textures/text_flow_emote_exclamation.aseprite"
+dest_files=["res://.godot/imported/text_flow_emote_exclamation.aseprite-f82ba94c2684cf03f7482477176696ca.res"]
+
+[params]
+
+exclude_layers_pattern="#.*"
+only_visible_layers=false

@@ -1,0 +1,706 @@
+[gd_scene load_steps=77 format=3 uid="uid://b3onnnsatntvo"]
+
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="1_6bdeh"]
+[ext_resource type="Script" uid="uid://d38l7ntl722v7" path="res://elements/enemy/bosses/ivo/ai_boss_final_ivo.gd" id="1_yecrn"]
+[ext_resource type="Script" uid="uid://drsxbf1dt6h8c" path="res://systems/screen/camera_shake_data.gd" id="2_d8c1d"]
+[ext_resource type="PackedScene" uid="uid://d16ne3w4axeju" path="res://elements/enemy/projectiles/ivo_spirit/proj_ivo_spirit.tscn" id="2_ot15p"]
+[ext_resource type="Resource" uid="uid://closknmoaixgs" path="res://systems/screen/camera_shake_enemy_laser.tres" id="2_qkb2e"]
+[ext_resource type="Resource" uid="uid://x2juoif14es8" path="res://systems/screen/camera_shake_heavy_fall.tres" id="2_yremc"]
+[ext_resource type="PackedScene" uid="uid://b6fyk4vb0siq5" path="res://elements/enemy/bosses/ivo/element_boss_rock_falls.tscn" id="3_7whvo"]
+[ext_resource type="PackedScene" uid="uid://bc0pvokl1d6tr" path="res://elements/enemy/projectiles/proj_fast/enemy_projectile_fast.tscn" id="3_27psr"]
+[ext_resource type="PackedScene" uid="uid://3scsmjmsc2oj" path="res://elements/enemy/projectiles/final_laser/final_laser.tscn" id="3_tv2ow"]
+[ext_resource type="Script" uid="uid://bnug7gfnrug7o" path="res://elements/enemy/bosses/ivo/ivo_boss_deactivate_activate_roboto.gd" id="4_d48sq"]
+[ext_resource type="Material" uid="uid://vhuwea7qmtxa" path="res://elements/enemy/bosses/ivo/m_deactivated_robot.tres" id="5_i6adt"]
+[ext_resource type="Script" uid="uid://bjicrvi70f2fh" path="res://elements/enemy/bosses/ivo/boss_final_ivo_esteira.gd" id="6_2cg1k"]
+[ext_resource type="PackedScene" uid="uid://ippyxt17txl5" path="res://elements/enemy/bosses/ivo/boss_final_ivo_eva_car.tscn" id="6_7ipv5"]
+[ext_resource type="PackedScene" uid="uid://cdfrvd5vgt8hh" path="res://elements/neutral/props/belt/element_belt.tscn" id="6_44etl"]
+[ext_resource type="SpriteFrames" uid="uid://cm0m83nptkiv3" path="res://elements/enemy/bosses/ivo/eva_sidekick_ivo/enemy_ivo_eva_sidekick_2.ase" id="8_jt23b"]
+[ext_resource type="PackedScene" uid="uid://bs2aaip5lllgx" path="res://elements/enemy/bosses/ivo/mesh/mesh_caixao_ivo.tscn" id="9_qoolq"]
+[ext_resource type="Script" uid="uid://d30g1xe2auxph" path="res://systems/utils/sine_movement.gd" id="10_j20od"]
+[ext_resource type="SpriteFrames" uid="uid://cjmtw81otl72k" path="res://elements/enemy/bosses/ivo/eva_sidekick_ivo/enemy_ivo_eva_sidekick_3.ase" id="10_qoolq"]
+[ext_resource type="PackedScene" uid="uid://bjqq0uo3i62sd" path="res://elements/animated_sprite_3d_basic.tscn" id="11_3fglh"]
+[ext_resource type="Texture2D" uid="uid://wtaih5tnquuk" path="res://elements/vfx/texture/smoke.png" id="11_3surx"]
+[ext_resource type="SpriteFrames" uid="uid://d4evdlj20tvdh" path="res://elements/enemy/bosses/ivo/eva_sidekick_ivo/enemy_ivo_eva_sidekick_1.ase" id="12_3fglh"]
+[ext_resource type="Script" uid="uid://pu4x6ds71ckx" path="res://systems/testing/animated_sprite_tester.gd" id="12_7ipv5"]
+[ext_resource type="PackedScene" uid="uid://bc8er7wjckssi" path="res://elements/npc/npc_high_contrast_sprite_boss.tscn" id="12_44sx7"]
+[ext_resource type="PackedScene" uid="uid://1hsjfwbjawv6" path="res://elements/vfx/vfx_player/movement_particle_vfx.tscn" id="12_g4cb2"]
+[ext_resource type="PackedScene" uid="uid://bnof3eu5oxwx1" path="res://elements/vfx/vfx_player/movement_particle_vfx_rocks.tscn" id="13_n5dyg"]
+[ext_resource type="Script" uid="uid://dj2x7ekyg32b7" path="res://systems/score/score_giver.gd" id="14_hrlsk"]
+[ext_resource type="Resource" uid="uid://kmw5fayunll4" path="res://elements/score/score_info_boss_final.tres" id="15_44sx7"]
+[ext_resource type="Material" uid="uid://cee2bblex8u2d" path="res://elements/neutral/props/rock/material/m_rock_2.tres" id="16_n5dyg"]
+[ext_resource type="Script" uid="uid://d2rhxuigqg21b" path="res://systems/audio_wwise/AkEvent3DLoop.gd" id="17_f45bs"]
+[ext_resource type="Script" uid="uid://bls4vce0lfvfc" path="res://elements/vfx/spawn_area.gd" id="17_olf1p"]
+[ext_resource type="PackedScene" uid="uid://d30kpprvaaie3" path="res://elements/vfx/vfx_pillar_of_light/vfx_pillar_of_light.tscn" id="18_h68hu"]
+[ext_resource type="Script" uid="uid://bkt3i1q8w53tl" path="res://modules/text_flow/quick_dialogue.gd" id="19_hm4rw"]
+[ext_resource type="WwiseEvent" uid="uid://bs2frhv54wi1g" path="res://Wwise/resources/Event/{A53C98D5-FFA6-452D-BFC2-1B1015CFB5E4}.tres" id="20_eweec"]
+[ext_resource type="WwiseEvent" uid="uid://ddpsju37poe0d" path="res://Wwise/resources/Event/{BA3BF870-E557-40ED-97C8-BD525A7E333E}.tres" id="20_gjc76"]
+[ext_resource type="WwiseEvent" uid="uid://d12o4pty1nol3" path="res://Wwise/resources/Event/{0F0CAC01-22F0-4BD5-9B22-74E94181165A}.tres" id="21_vajqn"]
+[ext_resource type="WwiseEvent" uid="uid://wr5solnjl584" path="res://Wwise/resources/Event/{C454E1BE-2F00-470C-BA34-E64F98336246}.tres" id="22_dyk5l"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="22_hng3n"]
+[ext_resource type="WwiseEvent" uid="uid://yphfjwtexs40" path="res://Wwise/resources/Event/{DEE79DFC-E565-4DCD-8E0E-4FEAAE3D3FED}.tres" id="23_dehtx"]
+[ext_resource type="PackedScene" uid="uid://cno5acmsj5pop" path="res://elements/enemy/bosses/vfx_magenta_energy_particles_package.tscn" id="23_r3a6a"]
+[ext_resource type="WwiseEvent" uid="uid://bmfu685xu0i4l" path="res://Wwise/resources/Event/{7918D26C-A75D-455C-BB6D-664D3E3D86A5}.tres" id="24_qkb2e"]
+[ext_resource type="WwiseEvent" uid="uid://ctmvfymcfravt" path="res://Wwise/resources/Event/{EE8068AC-7ED7-4FD8-AB0F-D983D6839577}.tres" id="26_dyk5l"]
+[ext_resource type="Texture2D" uid="uid://dmdcmwygywfob" path="res://elements/neutral/setpieces/hub_bh_map/t_hub_bh_map.png" id="27_2m03m"]
+[ext_resource type="Script" uid="uid://dwdgi7k67y1h0" path="res://elements/enemy/bosses/ivo/ending_sequence.gd" id="27_72q3f"]
+[ext_resource type="Script" uid="uid://b7n1kj0lt03wh" path="res://systems/utils/node3d_shaker.gd" id="27_gm5p1"]
+[ext_resource type="Texture2D" uid="uid://dr2x1oqniupe3" path="res://elements/general_use/texture/t_basic_shake_noise.tres" id="28_72q3f"]
+[ext_resource type="WwiseEvent" uid="uid://chntth7pr2jn8" path="res://Wwise/resources/Event/{CAE4C3D5-FDF7-4ABF-A624-58416DF09AB3}.tres" id="29_qkb2e"]
+[ext_resource type="WwiseEvent" uid="uid://516jnwfw51in" path="res://Wwise/resources/Event/{673153AD-4359-4F12-972B-6EB74606C8E7}.tres" id="30_p0yvs"]
+[ext_resource type="PackedScene" uid="uid://b75dpejvolw5a" path="res://elements/vfx/vfx_explosion/vfx_explosion_unshaded.tscn" id="31_72q3f"]
+[ext_resource type="WwiseEvent" uid="uid://d2eme3khfke0e" path="res://Wwise/resources/Event/{6B500747-8A05-494B-8568-84395D115802}.tres" id="31_kyam1"]
+[ext_resource type="WwiseEvent" uid="uid://b0uepcjj4pvaa" path="res://Wwise/resources/Event/{BA45FF1D-0707-4EBF-84FE-152B20A1FE11}.tres" id="32_get62"]
+
+[sub_resource type="Resource" id="Resource_olf1p"]
+script = ExtResource("2_d8c1d")
+absolute_strength = Vector3(0.2, 0.1, -0.3)
+rotated_strength = Vector3(0, 0, 0)
+durationIn = 7.0
+easeIn = 2
+transIn = 8
+durationOut = 20.0
+easeOut = 0
+transOut = 0
+metadata/_custom_type_script = "uid://drsxbf1dt6h8c"
+
+[sub_resource type="Curve" id="Curve_3surx"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2m03m"]
+curve = SubResource("Curve_3surx")
+
+[sub_resource type="Gradient" id="Gradient_2m03m"]
+offsets = PackedFloat32Array(0, 0.0948012, 0.443425, 0.880734, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.854902, 0.803922, 0.729412, 1, 0.935541, 0.935541, 0.935541, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ie4x0"]
+gradient = SubResource("Gradient_2m03m")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rvw0o"]
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_box_extents = Vector3(1.06, 0.345, 0.69)
+angle_min = -375.6
+angle_max = 408.8
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 3, 0)
+scale_min = 0.8
+scale_max = 1.4
+color_ramp = SubResource("GradientTexture1D_ie4x0")
+alpha_curve = SubResource("CurveTexture_2m03m")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gm5p1"]
+transparency = 1
+shading_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("11_3surx")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ie4x0"]
+material = SubResource("StandardMaterial3D_gm5p1")
+size = Vector2(2, 2)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dyk5l"]
+radius = 1.25
+height = 4.5
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hvfaw"]
+radius = 1.0
+height = 2.5
+radial_segments = 32
+rings = 4
+
+[sub_resource type="GDScript" id="GDScript_g4cb2"]
+resource_name = "WobbleCoffin"
+script/source = "extends Node3D
+
+@export var to_wobble:Node3D;
+@export var to_get_up:Node3D;
+@export var noise_tex:Texture2D;
+@export var velocity:float = 1;
+@export var force_max:float = 0.1
+@export var y_curve:Curve;
+@export var y_curve_force:float = 1;
+@export var curve_velocity:float = 1;
+@export var time_to_start:float = 1;
+
+@export var wobble_step:float = 1.0;
+var wobble_count:float;
+signal on_wobble_step;
+
+var old_pos:Vector3;
+
+var range:float = 0.0;
+var t:float;
+var count:float;
+
+var image:Image;
+var size:Vector2;
+
+func _ready() -> void:
+	var pos:Vector3 = global_position;
+	old_pos = pos;
+
+	size = Vector2(noise_tex.get_size());
+	
+	noise_tex.changed.connect(_on_noise_texture_changed)
+	_on_noise_texture_changed()
+
+func _on_noise_texture_changed():
+	image = noise_tex.get_image()
+
+func _process(delta: float) -> void:
+	if time_to_start > 0:
+		time_to_start -= delta;
+		old_pos = global_position;
+	else:	
+		var pos:Vector3 = global_position;
+		var dist:float = (pos - old_pos).length() * delta;
+		
+		t += dist * velocity;
+		range = clampf(range + randf_range(-1,1) * 0.1 * dist, 0.1, 1);
+		var point:Vector2i = (VectorUtils.get_circle_point_2d(t) * 0.5 + Vector2(0.5,0.5)) * range * size;
+		var color := image.get_pixel(floori(point.x), floori(point.y)) * clampf(t / velocity, 0.0, 1.0);
+		
+		count += dist * curve_velocity;
+		var curve_force:float = y_curve_force * y_curve.sample(fmod(count, 1.0));
+		
+		wobble_count += dist;
+		while wobble_count > wobble_step:
+			wobble_count -= wobble_step;
+			on_wobble_step.emit();
+		
+		TransformUtils.tumble_circle(to_wobble, Vector3(color.r - 0.5, 0.0, color.b - 0.4 - curve_force) * force_max, 0.1, to_get_up.global_basis.y);
+		
+		old_pos = pos;
+"
+
+[sub_resource type="Gradient" id="Gradient_g4cb2"]
+offsets = PackedFloat32Array(0, 0.252747, 0.494505, 0.747253, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.239216, 0.239216, 1, 1, 0.482353, 0.470588, 0, 1, 0.764706, 0, 1, 1, 1, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_n5dyg"]
+noise_type = 3
+seed = 2
+frequency = 0.0249
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g4cb2"]
+width = 128
+height = 128
+seamless = true
+seamless_blend_skirt = 0.285
+color_ramp = SubResource("Gradient_g4cb2")
+noise = SubResource("FastNoiseLite_n5dyg")
+
+[sub_resource type="Curve" id="Curve_g4cb2"]
+_data = [Vector2(0, 0), 0.0, 5.60069, 0, 0, Vector2(1, 0), -2.83146, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="GDScript" id="GDScript_h68hu"]
+script/source = "extends Node
+
+@onready var caixao_ivo: Boss_Ivo_Graphic = %caixao_ivo
+@export var value:float = 0.1;
+@export var duration_in:float = 0.15;
+@export var duration_out:float = 0.65;
+
+func _on_wobble_on_wobble_step() -> void:
+	caixao_ivo.bump(randf() > 0.5, value * randf_range(0.9, 1.1),
+			Tween.EASE_IN, Tween.TRANS_BACK, duration_in * randf_range(0.9, 1.1),
+			Tween.EASE_OUT, Tween.TRANS_BOUNCE, duration_out * randf_range(0.6, 1.4));
+"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6jme2"]
+radius = 0.9
+height = 4.0
+
+[sub_resource type="Curve" id="Curve_n5dyg"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, -360), 0.0, 0.0, 0, 0, Vector2(1, 360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_d8c1d"]
+curve = SubResource("Curve_n5dyg")
+
+[sub_resource type="Curve" id="Curve_olf1p"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.878049, 0.977528), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_h68hu"]
+curve = SubResource("Curve_olf1p")
+
+[sub_resource type="Curve" id="Curve_d8c1d"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.164773, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_olf1p"]
+curve = SubResource("Curve_d8c1d")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3surx"]
+lifetime_randomness = 0.5
+emission_shape_offset = Vector3(0, 10, 0)
+emission_shape = 3
+emission_box_extents = Vector3(6, 0, 20)
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+angle_curve = SubResource("CurveTexture_d8c1d")
+gravity = Vector3(0, -19.6, 0)
+scale_min = 0.0
+scale_curve = SubResource("CurveTexture_h68hu")
+turbulence_enabled = true
+turbulence_noise_strength = 0.1
+turbulence_influence_over_life = SubResource("CurveTexture_olf1p")
+collision_mode = 1
+collision_friction = 0.15
+collision_bounce = 0.3
+collision_use_scale = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_2m03m"]
+material = ExtResource("16_n5dyg")
+radial_segments = 8
+rings = 4
+
+[sub_resource type="Environment" id="Environment_2m03m"]
+background_mode = 1
+
+[node name="BossFinalIvo" type="Node3D" node_paths=PackedStringArray("initial_eva_position", "eva_1_sine_movement", "explode_vfx", "spawn_vfx_up", "spawn_vfx_down", "camera_follow", "eva_phases")]
+script = ExtResource("1_yecrn")
+percentage_level_2 = 0.55
+percentage_level_3 = 0.3
+initial_eva_position = NodePath("Initial Eva Position")
+opening_shake = ExtResource("2_qkb2e")
+eva_1_sine_movement = [NodePath("UpMovement"), NodePath("UpMovement/Eva First Phase")]
+end_camera_shake = SubResource("Resource_olf1p")
+end_duration_after_jump = 5.5
+scene_rock_fall = ExtResource("3_7whvo")
+explode_vfx = [NodePath("CameraFollow/IvoBody/Wobble/caixao_ivo/EyePosition/VFX_MagentaEnergyParticles_Package/LongParticlesLeft"), NodePath("CameraFollow/IvoBody/Wobble/caixao_ivo/EyePosition/VFX_MagentaEnergyParticles_Package/LongParticlesRight")]
+spawn_vfx_up = [NodePath("CameraFollow/IvoBody/Wobble/caixao_ivo/EyePosition/VFX_MagentaEnergyParticles_Package/ShortParticlesLeft")]
+spawn_vfx_down = [NodePath("CameraFollow/IvoBody/Wobble/caixao_ivo/EyePosition/VFX_MagentaEnergyParticles_Package/ShortParticlesRight")]
+crash_screen_shake = ExtResource("2_yremc")
+spirit_scene = ExtResource("2_ot15p")
+spirit_scene_shot = ExtResource("3_27psr")
+camera_follow = NodePath("CameraFollow")
+eva_phases = [NodePath("UpMovement/Eva First Phase"), NodePath("CameraFollow/eva_car/Eva Second Phase"), NodePath("CameraFollow/IvoBody/Eva Third Phase")]
+key_to_damage_cheat = 75
+
+[node name="CameraFollow" type="Node3D" parent="."]
+
+[node name="eva_car" parent="CameraFollow" instance=ExtResource("6_7ipv5")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, -11)
+
+[node name="Eva Second Phase" type="Node3D" parent="CameraFollow/eva_car"]
+
+[node name="Eva2" parent="CameraFollow/eva_car/Eva Second Phase" instance=ExtResource("11_3fglh")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2.5)
+sprite_frames = ExtResource("8_jt23b")
+animation = &"attack"
+script = ExtResource("12_7ipv5")
+
+[node name="Dialogue Pos" type="Node3D" parent="CameraFollow/eva_car/Eva Second Phase/Eva2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, 0)
+
+[node name="dial_lvl4_final_boss_chase_idle" type="Node3D" parent="CameraFollow/eva_car/Eva Second Phase/Eva2/Dialogue Pos"]
+unique_name_in_owner = true
+script = ExtResource("19_hm4rw")
+voice = 5
+needs_call = true
+loops = true
+metadata/_custom_type_script = "uid://bkt3i1q8w53tl"
+
+[node name="NPC_HighContrastSprite_Boss" parent="CameraFollow/eva_car/Eva Second Phase/Eva2" instance=ExtResource("12_44sx7")]
+
+[node name="SmokeParticles" type="GPUParticles3D" parent="CameraFollow/eva_car"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.75)
+lifetime = 2.0
+randomness = 0.2
+fixed_fps = 60
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_rvw0o")
+draw_pass_1 = SubResource("QuadMesh_ie4x0")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CameraFollow/eva_car"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraFollow/eva_car/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -2.18557e-08, -0.5)
+shape = SubResource("CapsuleShape3D_dyk5l")
+
+[node name="IvoBody" type="CharacterBody3D" parent="CameraFollow" groups=["enemy_position"]]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Ivo Target" type="Marker3D" parent="CameraFollow/IvoBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.25)
+
+[node name="BossHealth" type="Node" parent="CameraFollow/IvoBody" node_paths=PackedStringArray("feedback")]
+unique_name_in_owner = true
+script = ExtResource("1_6bdeh")
+max_amount = 140.0
+max_life_on_enter_tree = false
+max_life_on_ready = true
+feedback = [NodePath("..")]
+feedback_ignore_contains_divided_by_commas = "Laser"
+
+[node name="ScoreGiver" type="Node" parent="CameraFollow/IvoBody/BossHealth" node_paths=PackedStringArray("health", "point_position")]
+script = ExtResource("14_hrlsk")
+info = ExtResource("15_44sx7")
+health = NodePath("..")
+point_position = NodePath("../../Score Target")
+metadata/_custom_type_script = "uid://dj2x7ekyg32b7"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CameraFollow/IvoBody"]
+visible = false
+mesh = SubResource("CapsuleMesh_hvfaw")
+skeleton = NodePath("../../..")
+
+[node name="Wobble" type="Node3D" parent="CameraFollow/IvoBody" node_paths=PackedStringArray("to_wobble", "to_get_up")]
+script = SubResource("GDScript_g4cb2")
+to_wobble = NodePath(".")
+to_get_up = NodePath("caixao_ivo")
+noise_tex = SubResource("NoiseTexture2D_g4cb2")
+velocity = 40.0
+force_max = 1.25
+y_curve = SubResource("Curve_g4cb2")
+y_curve_force = 2.49
+curve_velocity = 28.0
+time_to_start = 5.0
+wobble_step = 0.025
+
+[node name="caixao_ivo" parent="CameraFollow/IvoBody/Wobble" instance=ExtResource("9_qoolq")]
+unique_name_in_owner = true
+transform = Transform3D(0.6, 0, 0, 0, 0.424264, -0.424264, 0, 0.424264, 0.424264, 0, 0.146126, -0.78262)
+
+[node name="MovementParticleVFX" parent="CameraFollow/IvoBody/Wobble/caixao_ivo" instance=ExtResource("12_g4cb2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="MovementParticleVFX_Rocks" parent="CameraFollow/IvoBody/Wobble/caixao_ivo/MovementParticleVFX" instance=ExtResource("13_n5dyg")]
+
+[node name="Sounds" type="Node3D" parent="CameraFollow/IvoBody/Wobble/caixao_ivo"]
+
+[node name="SFX_Coffin_Open" type="AkEvent3D" parent="CameraFollow/IvoBody/Wobble/caixao_ivo/Sounds"]
+event = ExtResource("20_eweec")
+
+[node name="SFX_Coffin_Closed" type="AkEvent3D" parent="CameraFollow/IvoBody/Wobble/caixao_ivo/Sounds"]
+event = ExtResource("21_vajqn")
+
+[node name="SFX_Death" type="AkEvent3D" parent="CameraFollow/IvoBody/Wobble/caixao_ivo/Sounds"]
+event = ExtResource("22_dyk5l")
+
+[node name="SFX_Shoot" type="AkEvent3D" parent="CameraFollow/IvoBody/Wobble/caixao_ivo/Sounds"]
+event = ExtResource("20_gjc76")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.75)
+
+[node name="SFX_Machine_Walk" type="AkEvent3D" parent="CameraFollow/IvoBody/Wobble/caixao_ivo/Sounds"]
+event = ExtResource("24_qkb2e")
+
+[node name="SFX_Appear" type="Node3D" parent="CameraFollow/IvoBody/Wobble/caixao_ivo/Sounds" node_paths=PackedStringArray("loop_begin_event", "loop_finish_event")]
+script = ExtResource("17_f45bs")
+loop_begin_event = NodePath("Begin")
+loop_finish_event = NodePath("End")
+metadata/_custom_type_script = "uid://d2rhxuigqg21b"
+
+[node name="Begin" type="AkEvent3D" parent="CameraFollow/IvoBody/Wobble/caixao_ivo/Sounds/SFX_Appear"]
+event = ExtResource("26_dyk5l")
+
+[node name="End" type="AkEvent3D" parent="CameraFollow/IvoBody/Wobble/caixao_ivo/Sounds/SFX_Appear"]
+event = ExtResource("23_dehtx")
+
+[node name="SFX_Cry" type="Node3D" parent="CameraFollow/IvoBody/Wobble/caixao_ivo/Sounds" node_paths=PackedStringArray("loop_begin_event", "loop_finish_event")]
+script = ExtResource("17_f45bs")
+loop_begin_event = NodePath("Begin")
+loop_finish_event = NodePath("End")
+metadata/_custom_type_script = "uid://d2rhxuigqg21b"
+
+[node name="Begin" type="AkEvent3D" parent="CameraFollow/IvoBody/Wobble/caixao_ivo/Sounds/SFX_Cry"]
+event = ExtResource("29_qkb2e")
+
+[node name="End" type="AkEvent3D" parent="CameraFollow/IvoBody/Wobble/caixao_ivo/Sounds/SFX_Cry"]
+event = ExtResource("30_p0yvs")
+
+[node name="SFX_Drag" type="Node3D" parent="CameraFollow/IvoBody/Wobble/caixao_ivo/Sounds" node_paths=PackedStringArray("loop_begin_event", "loop_finish_event")]
+script = ExtResource("17_f45bs")
+loop_begin_event = NodePath("Begin")
+loop_finish_event = NodePath("End")
+metadata/_custom_type_script = "uid://d2rhxuigqg21b"
+
+[node name="Begin" type="AkEvent3D" parent="CameraFollow/IvoBody/Wobble/caixao_ivo/Sounds/SFX_Drag"]
+event = ExtResource("31_kyam1")
+
+[node name="End" type="AkEvent3D" parent="CameraFollow/IvoBody/Wobble/caixao_ivo/Sounds/SFX_Drag"]
+event = ExtResource("32_get62")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="CameraFollow/IvoBody/Wobble/caixao_ivo"]
+script = ExtResource("22_hng3n")
+high_contrast_group = &"enemy"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="EyePosition" type="Marker3D" parent="CameraFollow/IvoBody/Wobble/caixao_ivo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, -0.89777)
+
+[node name="VFX_MagentaEnergyParticles_Package" parent="CameraFollow/IvoBody/Wobble/caixao_ivo/EyePosition" instance=ExtResource("23_r3a6a")]
+
+[node name="ShortParticlesLeft" parent="CameraFollow/IvoBody/Wobble/caixao_ivo/EyePosition/VFX_MagentaEnergyParticles_Package" index="2"]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0.986, -1.25, -0.5)
+
+[node name="ShortParticlesRight" parent="CameraFollow/IvoBody/Wobble/caixao_ivo/EyePosition/VFX_MagentaEnergyParticles_Package" index="3"]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0.983, -1.375, 2.375)
+
+[node name="Wobble Bump" type="Node" parent="CameraFollow/IvoBody/Wobble"]
+script = SubResource("GDScript_h68hu")
+value = 0.05
+duration_in = 0.45
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraFollow/IvoBody"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0.5, -0.5)
+shape = SubResource("CapsuleShape3D_6jme2")
+
+[node name="FinalLaser" parent="CameraFollow/IvoBody" instance=ExtResource("3_tv2ow")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)
+
+[node name="Eva Third Phase" type="Node3D" parent="CameraFollow/IvoBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
+
+[node name="Eva3" parent="CameraFollow/IvoBody/Eva Third Phase" instance=ExtResource("11_3fglh")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 1)
+flip_h = true
+sprite_frames = ExtResource("10_qoolq")
+animation = &"idle"
+script = ExtResource("12_7ipv5")
+
+[node name="Dialogue Pos" type="Node3D" parent="CameraFollow/IvoBody/Eva Third Phase/Eva3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, 0)
+
+[node name="dial_lvl4_final_boss_crash" type="Node3D" parent="CameraFollow/IvoBody/Eva Third Phase/Eva3/Dialogue Pos"]
+unique_name_in_owner = true
+script = ExtResource("19_hm4rw")
+voice = 5
+needs_call = true
+metadata/_custom_type_script = "uid://bkt3i1q8w53tl"
+
+[node name="dial_lvl4_final_boss_crash_idle" type="Node3D" parent="CameraFollow/IvoBody/Eva Third Phase/Eva3/Dialogue Pos"]
+unique_name_in_owner = true
+script = ExtResource("19_hm4rw")
+voice = 5
+needs_call = true
+loops = true
+metadata/_custom_type_script = "uid://bkt3i1q8w53tl"
+
+[node name="dial_lvl4_final_boss_end_prepare" type="Node3D" parent="CameraFollow/IvoBody/Eva Third Phase/Eva3/Dialogue Pos"]
+unique_name_in_owner = true
+script = ExtResource("19_hm4rw")
+voice = 5
+needs_call = true
+metadata/_custom_type_script = "uid://bkt3i1q8w53tl"
+
+[node name="dial_lvl4_final_boss_end_jump" type="Node3D" parent="CameraFollow/IvoBody/Eva Third Phase/Eva3/Dialogue Pos"]
+unique_name_in_owner = true
+script = ExtResource("19_hm4rw")
+voice = 5
+needs_call = true
+metadata/_custom_type_script = "uid://bkt3i1q8w53tl"
+
+[node name="dial_lvl4_final_boss_end" type="Node3D" parent="CameraFollow/IvoBody/Eva Third Phase/Eva3/Dialogue Pos"]
+unique_name_in_owner = true
+script = ExtResource("19_hm4rw")
+voice = 5
+needs_call = true
+metadata/_custom_type_script = "uid://bkt3i1q8w53tl"
+
+[node name="NPC_HighContrastSprite_Boss" parent="CameraFollow/IvoBody/Eva Third Phase/Eva3" instance=ExtResource("12_44sx7")]
+
+[node name="PillarsOfLight" type="VisibleOnScreenNotifier3D" parent="CameraFollow/IvoBody"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1.5)
+aabb = AABB(-1, -0.886206, -0.505561, 2, 1.77241, 1.01112)
+script = ExtResource("17_olf1p")
+scenes = Array[PackedScene]([ExtResource("18_h68hu")])
+spawn_multiple_default = 6
+spawn_multiple_default_duration = 9.0
+spawn_multiple_default_trans = 1
+metadata/_custom_type_script = "uid://bls4vce0lfvfc"
+
+[node name="Score Target" type="Marker3D" parent="CameraFollow/IvoBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 2.5)
+
+[node name="Stone Particles" type="GPUParticles3D" parent="CameraFollow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.04563, -2.16161)
+emitting = false
+lifetime = 4.0
+collision_base_size = 0.25
+draw_order = 3
+transform_align = 2
+process_material = SubResource("ParticleProcessMaterial_3surx")
+draw_pass_1 = SubResource("SphereMesh_2m03m")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="CameraFollow/Stone Particles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.75, -0.375)
+size = Vector3(16, 2, 40)
+
+[node name="DeactivatedRobot" type="Node" parent="."]
+script = ExtResource("4_d48sq")
+material_shutdown = ExtResource("5_i6adt")
+
+[node name="Initial Eva Position" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 3.5)
+
+[node name="Esteira" type="Node3D" parent="." node_paths=PackedStringArray("sfx_machine_walk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.25, 0, -8)
+script = ExtResource("6_2cg1k")
+sfx_machine_walk = NodePath("../CameraFollow/IvoBody/Wobble/caixao_ivo/Sounds/SFX_Machine_Walk")
+
+[node name="enemies_center" type="Node3D" parent="Esteira"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.25, 0.25, 3.5)
+
+[node name="enemies_parent" type="Node3D" parent="Esteira/enemies_center"]
+
+[node name="belt" parent="Esteira" instance=ExtResource("6_44etl")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.25, 0, 3.25)
+
+[node name="UpMovement" type="Node3D" parent="."]
+script = ExtResource("10_j20od")
+amplitude = Vector3(0, 0.21, -0.125)
+frequency_revolutions_per_second = 0.804
+metadata/_custom_type_script = "uid://d30g1xe2auxph"
+
+[node name="Eva First Phase" type="Node3D" parent="UpMovement"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0.75)
+script = ExtResource("10_j20od")
+amplitude = Vector3(3, 0, 0)
+frequency_revolutions_per_second = 0.25
+stopped = true
+
+[node name="Eva1" parent="UpMovement/Eva First Phase" instance=ExtResource("11_3fglh")]
+unique_name_in_owner = true
+sprite_frames = ExtResource("12_3fglh")
+animation = &"attack"
+script = ExtResource("12_7ipv5")
+
+[node name="Dialogue Pos" type="Node3D" parent="UpMovement/Eva First Phase/Eva1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, 0)
+
+[node name="dial_lvl4_final_boss_intro" type="Node3D" parent="UpMovement/Eva First Phase/Eva1/Dialogue Pos"]
+unique_name_in_owner = true
+script = ExtResource("19_hm4rw")
+voice = 5
+needs_call = true
+metadata/_custom_type_script = "uid://bkt3i1q8w53tl"
+
+[node name="dial_lvl4_final_boss_idle" type="Node3D" parent="UpMovement/Eva First Phase/Eva1/Dialogue Pos"]
+unique_name_in_owner = true
+script = ExtResource("19_hm4rw")
+voice = 5
+needs_call = true
+loops = true
+metadata/_custom_type_script = "uid://bkt3i1q8w53tl"
+
+[node name="NPC_HighContrastSprite_Boss" parent="UpMovement/Eva First Phase/Eva1" instance=ExtResource("12_44sx7")]
+
+[node name="Ending" type="Control" parent="." node_paths=PackedStringArray("ending_map", "ending_explosion", "ending_shake", "black_screen_over")]
+z_index = 999
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("27_72q3f")
+ending_map = NodePath("BlackScreen/SubViewportContainer/SubViewport/Camera3D/Ending_Shaker/Ending_Map")
+ending_explosion = NodePath("BlackScreen/SubViewportContainer/SubViewport/Camera3D/Ending_Shaker/Ending_Map/Ending_Explosion")
+ending_shake = NodePath("BlackScreen/SubViewportContainer/SubViewport/Camera3D/Ending_Shaker")
+black_screen_over = NodePath("BlackScreenOver")
+
+[node name="BlackScreen" type="ColorRect" parent="Ending"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Ending/BlackScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.6
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -600.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Ending/BlackScreen/SubViewportContainer"]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(900, 1220)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Ending/BlackScreen/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.72412, 12.5, 0.939761)
+keep_aspect = 0
+environment = SubResource("Environment_2m03m")
+projection = 1
+
+[node name="Ending_Shaker" type="Node3D" parent="Ending/BlackScreen/SubViewportContainer/SubViewport/Camera3D"]
+unique_name_in_owner = true
+script = ExtResource("27_gm5p1")
+noise_texture = ExtResource("28_72q3f")
+shake_amplitude_ratio = 0.0
+shake_amplitude = 0.034
+shake_frequency = 0.5
+metadata/_custom_type_script = "uid://b7n1kj0lt03wh"
+
+[node name="Ending_Map" type="Sprite3D" parent="Ending/BlackScreen/SubViewportContainer/SubViewport/Camera3D/Ending_Shaker"]
+transform = Transform3D(0.0814505, 0.0146026, -0.0194313, -0.00769839, 0.0799509, 0.0278135, 0.0230553, -0.0248921, 0.0779348, 0, 0, -10)
+alpha_cut = 1
+texture = ExtResource("27_2m03m")
+
+[node name="Ending_Explosion" type="VisibleOnScreenNotifier3D" parent="Ending/BlackScreen/SubViewportContainer/SubViewport/Camera3D/Ending_Shaker/Ending_Map" node_paths=PackedStringArray("parent")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19546, 4.18241, 0.671929)
+aabb = AABB(-1, -1, -0.43918, 2, 2, 0.87836)
+script = ExtResource("17_olf1p")
+scenes = Array[PackedScene]([ExtResource("31_72q3f")])
+parent = NodePath(".")
+enforce_normalized_basis = false
+metadata/_custom_type_script = "uid://bls4vce0lfvfc"
+
+[node name="BlackScreenOver" type="ColorRect" parent="Ending"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="on_wobble_step" from="CameraFollow/IvoBody/Wobble" to="CameraFollow/IvoBody/Wobble/Wobble Bump" method="_on_wobble_on_wobble_step"]
+[connection signal="door_inferior_closed" from="CameraFollow/IvoBody/Wobble/caixao_ivo" to="CameraFollow/IvoBody/Wobble/caixao_ivo/Sounds/SFX_Coffin_Closed" method="post_event"]
+[connection signal="door_inferior_opened" from="CameraFollow/IvoBody/Wobble/caixao_ivo" to="CameraFollow/IvoBody/Wobble/caixao_ivo/Sounds/SFX_Coffin_Open" method="post_event"]
+[connection signal="door_superior_closed" from="CameraFollow/IvoBody/Wobble/caixao_ivo" to="CameraFollow/IvoBody/Wobble/caixao_ivo/Sounds/SFX_Coffin_Closed" method="post_event"]
+[connection signal="door_superior_opened" from="CameraFollow/IvoBody/Wobble/caixao_ivo" to="CameraFollow/IvoBody/Wobble/caixao_ivo/Sounds/SFX_Coffin_Open" method="post_event"]
+[connection signal="changed_ratio" from="CameraFollow/IvoBody/Wobble/caixao_ivo/MovementParticleVFX" to="CameraFollow/IvoBody/Wobble/caixao_ivo/Sounds/SFX_Drag" method="set_rtpc_value"]
+[connection signal="enemy_created" from="Esteira" to="DeactivatedRobot" method="deactivate"]
+
+[editable path="CameraFollow/IvoBody/Wobble/caixao_ivo/EyePosition/VFX_MagentaEnergyParticles_Package"]
+[editable path="Esteira/belt"]

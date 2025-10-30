@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://rucbkol8qrp4"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "VFX_Enemy_Attention"
+id = 1061566721
+guid = "{4BBC522F-7D72-4E84-868A-94238D3EDBFC}"
+dummy = true

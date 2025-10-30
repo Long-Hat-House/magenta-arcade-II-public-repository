@@ -1,0 +1,105 @@
+[gd_scene load_steps=16 format=3 uid="uid://bsy18pj7t3kwo"]
+
+[ext_resource type="Script" uid="uid://f3jtsru11ylo" path="res://elements/enemy/copter/ai_roboto_copter.gd" id="1_0pbsx"]
+[ext_resource type="Script" uid="uid://c0gjria0frghh" path="res://elements/enemy/float_effect.gd" id="1_i633g"]
+[ext_resource type="Script" uid="uid://cccnp54xda20b" path="res://elements/enemy/constant_rotation.gd" id="2_h0fdy"]
+[ext_resource type="PackedScene" uid="uid://bxouk3hnvcybx" path="res://elements/enemy/copter/mesh/robotocopter_graphic.tscn" id="2_qo2a4"]
+[ext_resource type="PackedScene" uid="uid://ywymskkj85vs" path="res://elements/vfx/vfx_explosion/vfx_explosion.tscn" id="2_uqsuj"]
+[ext_resource type="Script" uid="uid://daxqix7g0q5bj" path="res://systems/pooling/poolable.gd" id="3_o16bg"]
+[ext_resource type="PackedScene" uid="uid://bc1bjl6ovy5s6" path="res://elements/enemy/projectiles/damage_area/damage_area.tscn" id="4_0s3ch"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="4_btcow"]
+[ext_resource type="Script" uid="uid://dj2x7ekyg32b7" path="res://systems/score/score_giver.gd" id="5_ev4dd"]
+[ext_resource type="Resource" uid="uid://b2nysufvkf1qb" path="res://elements/score/score_info_copter.tres" id="10_1xnp4"]
+[ext_resource type="PackedScene" uid="uid://bprokuvnxxv37" path="res://elements/enemy/eliminate_if_outside_screen.tscn" id="11_bodjv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1k0tq"]
+height = 1.25
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_np01k"]
+height = 1.25
+
+[sub_resource type="BoxMesh" id="BoxMesh_c3ivw"]
+size = Vector3(0.25, 0.1, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_csig8"]
+
+[node name="enemy_roboto_copter" type="Node3D"]
+script = ExtResource("1_0pbsx")
+velocityLine = 4.5
+vfxOnDie = ExtResource("2_uqsuj")
+time_outside_screen = 6.0
+
+[node name="Poolable" type="Node" parent="."]
+script = ExtResource("3_o16bg")
+
+[node name="Eliminate if Outside Screen" parent="." instance=ExtResource("11_bodjv")]
+time_without_process = 10.0
+
+[node name="Body" type="CharacterBody3D" parent="." groups=["enemy_position"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="DamageArea" parent="Body" instance=ExtResource("4_0s3ch")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/DamageArea"]
+shape = SubResource("CapsuleShape3D_1k0tq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
+shape = SubResource("CapsuleShape3D_1k0tq")
+
+[node name="Render" type="Node3D" parent="Body"]
+
+[node name="robotocopter_graphic" parent="Body/Render" instance=ExtResource("2_qo2a4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body/Render"]
+visible = false
+mesh = SubResource("CapsuleMesh_np01k")
+skeleton = NodePath("../..")
+script = ExtResource("1_i633g")
+amplitude = Vector3(0, 0.1, 0)
+
+[node name="Copter" type="Node3D" parent="Body/Render/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.106873, 0)
+script = ExtResource("2_h0fdy")
+angleVelocity = 15.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body/Render/MeshInstance3D/Copter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.563188, 0)
+mesh = SubResource("BoxMesh_c3ivw")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Body/Render/MeshInstance3D/Copter"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.563, 0)
+mesh = SubResource("BoxMesh_c3ivw")
+skeleton = NodePath("../..")
+
+[node name="Health" type="Node" parent="Body" node_paths=PackedStringArray("feedback") groups=["enemy_healths"]]
+script = ExtResource("4_btcow")
+max_amount = 0.3
+frames_until_send_death_signal = 3
+feedback = [NodePath("../Render/robotocopter_graphic")]
+
+[node name="ScoreGiver" type="Node" parent="Body" node_paths=PackedStringArray("health")]
+script = ExtResource("5_ev4dd")
+info = ExtResource("10_1xnp4")
+health = NodePath("../Health")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+aabb = AABB(-0.954691, -0.000499368, -0.894459, 1.90938, 1.907, 1.78892)
+
+[node name="EnemyNotTouchMe" type="Area3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/EnemyNotTouchMe"]
+shape = SubResource("SphereShape3D_csig8")
+
+[connection signal="dead" from="Body/Health" to="." method="_on_health_dead"]
+[connection signal="area_entered" from="Body/EnemyNotTouchMe" to="." method="_on_enemy_not_touch_me_area_entered"]
+[connection signal="area_exited" from="Body/EnemyNotTouchMe" to="." method="_on_enemy_not_touch_me_area_exited"]
+[connection signal="body_entered" from="Body/EnemyNotTouchMe" to="." method="_on_enemy_not_touch_me_body_entered"]
+[connection signal="body_exited" from="Body/EnemyNotTouchMe" to="." method="_on_enemy_not_touch_me_body_exited"]

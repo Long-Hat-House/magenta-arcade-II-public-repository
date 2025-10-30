@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=3 uid="uid://e0sowimd87iv"]
+
+[ext_resource type="Script" uid="uid://dml0g0uiy3de1" path="res://modules/text_flow/zap/src/text_flow_zap.gd" id="1_5eups"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gcbkt"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.223529, 0.227451, 0.313726, 1)
+border_color = Color(0.164706, 0.164706, 0.203922, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="TextFlowZap2" type="BoxContainer" node_paths=PackedStringArray("_line_text_label")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.0
+offset_top = -56.0
+offset_right = 145.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+vertical = true
+script = ExtResource("1_5eups")
+_chars_large = 15
+_text_prefix = "[center]"
+_line_text_label = NodePath("text_flow_zap_message/PanelContainer/VBoxContainer/RichTextLabel")
+
+[node name="Extra Space Between Characters" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="text_flow_zap_message" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="text_flow_zap_message"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 1
+theme_type_variation = &"panel_container_magenta"
+theme_override_styles/panel = SubResource("StyleBoxFlat_gcbkt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="text_flow_zap_message/PanelContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="text_flow_zap_message/PanelContainer/VBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+mouse_filter = 1
+theme_type_variation = &"richtextlabel_zap_bubble_text"
+bbcode_enabled = true
+text = "[center]I - Afonso Pena"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Space After" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+mouse_filter = 2

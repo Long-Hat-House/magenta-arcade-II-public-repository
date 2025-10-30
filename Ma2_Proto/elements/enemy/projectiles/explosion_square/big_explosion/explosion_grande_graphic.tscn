@@ -1,0 +1,125 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsojqu6cv8gbi"]
+
+[ext_resource type="PackedScene" uid="uid://ba15mtrggbhfe" path="res://elements/enemy/projectiles/explosion_square/big_explosion/big_explosion.tscn" id="1_bagdk"]
+[ext_resource type="Script" uid="uid://3u2twj0rhg3l" path="res://elements/enemy/projectiles/explosion_square/big_explosion/explosion_grande_graphic.gd" id="2_i3dtd"]
+[ext_resource type="Shader" uid="uid://clbaserrhs5so" path="res://elements/player/projectiles/instance_color_albedo.gdshader" id="3_yoeju"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q10ik"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_yoeju")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3yts"]
+resource_local_to_scene = true
+render_priority = 10
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0.368627, 0.313726, 0.298039, 1)
+emission = Color(1, 0, 1, 1)
+emission_energy_multiplier = 5.0
+rim = 0.5
+rim_tint = 1.0
+clearcoat_roughness = 1.0
+anisotropy = 1.0
+backlight = Color(0.901961, 0, 0.494118, 1)
+disable_receive_shadows = true
+grow_amount = -0.252
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jwark"]
+resource_local_to_scene = true
+render_priority = 10
+specular_mode = 2
+albedo_color = Color(0.478431, 0.415686, 0.380392, 1)
+emission = Color(1, 0, 1, 1)
+emission_energy_multiplier = 5.0
+rim = 0.5
+rim_tint = 1.0
+clearcoat_roughness = 1.0
+anisotropy = 1.0
+backlight = Color(0.901961, 0, 0.494118, 1)
+disable_receive_shadows = true
+grow_amount = -0.252
+
+[node name="explosionGrande_graphic" instance=ExtResource("1_bagdk")]
+script = ExtResource("2_i3dtd")
+
+[node name="cube_001" parent="." index="0"]
+material_override = SubResource("ShaderMaterial_q10ik")
+
+[node name="cube_002" parent="." index="1"]
+material_override = SubResource("ShaderMaterial_q10ik")
+
+[node name="cube_003" parent="." index="2"]
+material_override = SubResource("ShaderMaterial_q10ik")
+
+[node name="cube_004" parent="." index="3"]
+material_override = SubResource("ShaderMaterial_q10ik")
+
+[node name="cube_005" parent="." index="4"]
+material_override = SubResource("ShaderMaterial_q10ik")
+
+[node name="cube_006" parent="." index="5"]
+material_override = SubResource("ShaderMaterial_q10ik")
+
+[node name="cube_007" parent="." index="6"]
+material_override = SubResource("ShaderMaterial_q10ik")
+
+[node name="cube_008" parent="." index="7"]
+material_override = SubResource("ShaderMaterial_q10ik")
+
+[node name="cube_009" parent="." index="8"]
+material_override = SubResource("ShaderMaterial_q10ik")
+
+[node name="cube_010" parent="." index="9"]
+material_override = SubResource("ShaderMaterial_q10ik")
+
+[node name="cube_011" parent="Pink" index="0"]
+material_override = SubResource("ShaderMaterial_q10ik")
+
+[node name="cube_012" parent="Pink" index="1"]
+material_override = SubResource("ShaderMaterial_q10ik")
+
+[node name="cube_013" parent="Pink" index="2"]
+material_override = SubResource("ShaderMaterial_q10ik")
+
+[node name="cube_014" parent="Pink" index="3"]
+material_override = SubResource("ShaderMaterial_q10ik")
+
+[node name="cube_015" parent="Pink" index="4"]
+material_override = SubResource("ShaderMaterial_q10ik")
+
+[node name="cube_016" parent="Pink" index="5"]
+material_override = SubResource("ShaderMaterial_q10ik")
+
+[node name="cube_017" parent="Pink" index="6"]
+material_override = SubResource("ShaderMaterial_q10ik")
+
+[node name="cube_018" parent="Pink" index="7"]
+material_override = SubResource("ShaderMaterial_q10ik")
+
+[node name="cube_019" parent="Pink" index="8"]
+material_override = SubResource("ShaderMaterial_q10ik")
+
+[node name="cube_020" parent="Pink" index="9"]
+material_override = SubResource("ShaderMaterial_q10ik")
+
+[node name="rock_03" parent="." index="11"]
+material_override = SubResource("StandardMaterial3D_r3yts")
+
+[node name="rock_02" parent="." index="12"]
+material_override = SubResource("StandardMaterial3D_r3yts")
+
+[node name="rock_01" parent="." index="13"]
+material_override = SubResource("StandardMaterial3D_r3yts")
+
+[node name="rock_04" parent="." index="14"]
+material_override = SubResource("StandardMaterial3D_jwark")
+
+[node name="rock_05" parent="." index="15"]
+material_override = SubResource("StandardMaterial3D_jwark")
+
+[node name="rock_06" parent="." index="16"]
+material_override = SubResource("StandardMaterial3D_jwark")
+
+[node name="rock_07" parent="." index="17"]
+material_override = SubResource("StandardMaterial3D_jwark")

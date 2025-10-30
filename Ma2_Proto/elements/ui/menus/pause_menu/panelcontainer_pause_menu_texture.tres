@@ -1,0 +1,8 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://co5i4d6r54ndm"]
+
+[ext_resource type="Texture2D" uid="uid://cm4jljag3kxv7" path="res://elements/ui/ui_art/ui_squareborder_bg.png" id="1_n6js7"]
+
+[resource]
+texture = ExtResource("1_n6js7")
+region_rect = Rect2(0, 0, 128, 128)
+modulate_color = Color(0.650128, 0.650128, 0.650128, 1)

@@ -1,0 +1,464 @@
+[gd_scene load_steps=27 format=3 uid="uid://dlmo70g30qwuq"]
+
+[ext_resource type="Script" uid="uid://bt3rgk2gx218p" path="res://systems/stage/level_stage_piece.gd" id="1_yrmxv"]
+[ext_resource type="PackedScene" uid="uid://ngmv6dynft76" path="res://elements/stage_pieces/stage_piece_afonso_pena_lanes1.tscn" id="2_2pcnd"]
+[ext_resource type="PackedScene" uid="uid://cvrxspt6by06j" path="res://elements/neutral/props/vegetation/element_palm.tscn" id="5_3etb0"]
+[ext_resource type="Material" uid="uid://c0uf0wok0wpn" path="res://elements/neutral/props/traffic_decals/materials/m_decal_lane_line.tres" id="8_se06p"]
+[ext_resource type="PackedScene" uid="uid://icr3nye254ru" path="res://elements/neutral/props/traffic_decals/element_decal_white_line.tscn" id="9_7dfsk"]
+[ext_resource type="PackedScene" uid="uid://cd6ymp4wmjksa" path="res://elements/background/element_asphalt.tscn" id="10_hdsvv"]
+[ext_resource type="PackedScene" uid="uid://dvwae25ypufbj" path="res://elements/neutral/props/poles/element_pole_dark_over_inverted.tscn" id="11_tq00x"]
+[ext_resource type="PackedScene" uid="uid://c4sknhwemfrtu" path="res://elements/background/element_curb_sidewalk_path.tscn" id="11_wfc5j"]
+[ext_resource type="PackedScene" uid="uid://daethslhep56i" path="res://elements/background/element_sidewalk.tscn" id="12_4qh48"]
+[ext_resource type="PackedScene" uid="uid://dydq6g0x8y7v2" path="res://elements/neutral/props/pole_pieces/element_traffic_sign_2x3.tscn" id="13_34rpi"]
+[ext_resource type="PackedScene" uid="uid://dai2gw3u8skq" path="res://elements/background/element_tree_hole.tscn" id="13_kdxgl"]
+[ext_resource type="PackedScene" uid="uid://cmhgj367yxoi1" path="res://elements/neutral/props/poles/element_pole_dark_over.tscn" id="14_20t7m"]
+[ext_resource type="Texture2D" uid="uid://qray226rplp0" path="res://elements/neutral/props/pole_pieces/signs/trafficsign_cargohorizontal_2x3.png" id="14_81ued"]
+[ext_resource type="PackedScene" uid="uid://bmkpxdlg3a6rf" path="res://elements/neutral/props/pole_pieces/element_traffic_sign_1x3.tscn" id="15_olycd"]
+[ext_resource type="PackedScene" uid="uid://c5oxflc5oincv" path="res://elements/neutral/props/praca_bandeira/praca_bandeira.tscn" id="15_qguaj"]
+[ext_resource type="PackedScene" uid="uid://bl0etejkcs63v" path="res://elements/neutral/props/poles/element_pole_dark.tscn" id="16_3hjfa"]
+[ext_resource type="Texture2D" uid="uid://hmvpawc4835y" path="res://elements/neutral/props/pole_pieces/signs/trafficsign_afonsopena_1x3.png" id="16_ll8v2"]
+[ext_resource type="PackedScene" uid="uid://yjglagfjn8er" path="res://elements/npc/npc.tscn" id="18_2eyrl"]
+[ext_resource type="PackedScene" uid="uid://dnsq8icvvxl32" path="res://elements/neutral/props/poles/element_pole_dark_inverted.tscn" id="18_x4o2c"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rmnwh"]
+size = Vector2(1, 1)
+center_offset = Vector3(0.5, 0, 0.5)
+
+[sub_resource type="Curve3D" id="Curve3D_kk1ht"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(-1, 0, 1, 0, 0, 0, -3, -0.01, 8, 0, 0, 6, 0, 0, -6, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_htioc"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, -2, 0, -3, 3.89208, 8.60598e-05, 14.0391, 0, 0, 5, 0, 0, -5, 0, 0, 0, -2, 0, 3, 0, 0, 0, 3.88038, -0.0099032, -13.9783),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_mw12f"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(-1, 0, 1, 0, 0, 0, -3, -0.01, 8, 0, 0, 6, 0, 0, -6, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_ylqj4"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 0, 0.647094, 0, 1.87492, -0.647094, 0, -1.87492, -1.20035, 0, -4.9005, 0, 0, 0, 0, 0, 0, -1.5, 0, -7, -2.13884, 0, 0.00904751, 2.13884, 0, -0.00904751, 1.5, 0, -7, 0.5, 0, -2, -0.5, 0, 2, 2, 0, -4, 0, 0, -1, 0, 0, 0, 1.017, 0, -0.004),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_pwwh4"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 4.5, 0, 0, -4.5, 0, 0, 0, -2, 0, 0, 2, 0, 0, 7, 0, -5),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_5trui"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, -2, 0, -3, 4, 0, 14, 0, 0, 5, 0, 0, -5, 0, 0, 0, -2, 0, 3, 0, 0, 0, 4, 0, -14),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+up_vector_enabled = false
+
+[node name="Intro" type="Node3D" node_paths=PackedStringArray("pivot_forward", "pivot_backward")]
+script = ExtResource("1_yrmxv")
+pivot_forward = NodePath("Config/forward")
+pivot_backward = NodePath("Config/back")
+
+[node name="Config" type="Node3D" parent="."]
+
+[node name="Wind Direction" type="Node3D" parent="Config"]
+transform = Transform3D(-2.04648e-07, 0, -1, 0, 1, 0, 1, 0, -2.04648e-07, -1.15835e-06, 6, 26.5)
+
+[node name="forward" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18)
+gizmo_extents = 1.0
+
+[node name="back" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 54)
+gizmo_extents = 1.0
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Config"]
+aabb = AABB(-11, -4.4407, -23.0367, 24.99, 13.7964, 70.0733)
+
+[node name="Lanes 1" parent="Config" instance=ExtResource("2_2pcnd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
+
+[node name="Square" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+
+[node name="Floor" type="Node3D" parent="Square"]
+
+[node name="Bridge" type="Node3D" parent="Square"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, -0.409804, -1)
+
+[node name="Rotatoria" type="Node3D" parent="."]
+
+[node name="Crosswalks" type="Node3D" parent="Rotatoria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, -9)
+
+[node name="CrossWalk" type="Node3D" parent="Rotatoria/Crosswalks"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, 9)
+
+[node name="MeshInstance3D19" type="MeshInstance3D" parent="Rotatoria/Crosswalks/CrossWalk"]
+transform = Transform3D(9.96, 0, 0, 0, 1, 0, 0, 0, 0.5, -4.6, 0, -8.9574)
+layers = 3
+material_override = ExtResource("8_se06p")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_rmnwh")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Rotatoria/Crosswalks/CrossWalk"]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 3.2, -4.32872, 0, -7.59999)
+layers = 3
+material_override = ExtResource("8_se06p")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_rmnwh")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Rotatoria/Crosswalks/CrossWalk"]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 3.2, -3.32872, 0, -7.59999)
+layers = 3
+material_override = ExtResource("8_se06p")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_rmnwh")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Rotatoria/Crosswalks/CrossWalk"]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 3.2, -2.32872, 0, -7.6)
+layers = 3
+material_override = ExtResource("8_se06p")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_rmnwh")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Rotatoria/Crosswalks/CrossWalk"]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 3.2, -1.32872, 0, -7.6)
+layers = 3
+material_override = ExtResource("8_se06p")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_rmnwh")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Rotatoria/Crosswalks/CrossWalk"]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 3.2, -0.328711, 0, -7.6)
+layers = 3
+material_override = ExtResource("8_se06p")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_rmnwh")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Rotatoria/Crosswalks/CrossWalk"]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 3.2, 0.671288, 0, -7.6)
+layers = 3
+material_override = ExtResource("8_se06p")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_rmnwh")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Rotatoria/Crosswalks/CrossWalk"]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 3.2, 1.67128, 0, -7.6)
+layers = 3
+material_override = ExtResource("8_se06p")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_rmnwh")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="Rotatoria/Crosswalks/CrossWalk"]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 3.2, 2.67128, 0, -7.6)
+layers = 3
+material_override = ExtResource("8_se06p")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_rmnwh")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="Rotatoria/Crosswalks/CrossWalk"]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 3.2, 3.67128, 0, -7.6)
+layers = 3
+material_override = ExtResource("8_se06p")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_rmnwh")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="Rotatoria/Crosswalks/CrossWalk"]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 3.2, 4.67128, 0, -7.6)
+layers = 3
+material_override = ExtResource("8_se06p")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_rmnwh")
+skeleton = NodePath("")
+
+[node name="CrossWalk2" type="Node3D" parent="Rotatoria/Crosswalks"]
+transform = Transform3D(-0.998399, 0, -0.0565707, 0, 1, 0, 0.0565707, 0, -0.998399, 4.54246, 0, -7.10452)
+
+[node name="MeshInstance3D19" type="MeshInstance3D" parent="Rotatoria/Crosswalks/CrossWalk2"]
+transform = Transform3D(6.8, 0, 0, 0, 1, 0, 0, 0, 0.5, -3.99233, 0, -8.92297)
+layers = 3
+material_override = ExtResource("8_se06p")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_rmnwh")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Rotatoria/Crosswalks/CrossWalk2"]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 3.2, -3.32872, 0, -7.59999)
+layers = 3
+material_override = ExtResource("8_se06p")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_rmnwh")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Rotatoria/Crosswalks/CrossWalk2"]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 3.2, -2.32872, 0, -7.6)
+layers = 3
+material_override = ExtResource("8_se06p")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_rmnwh")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Rotatoria/Crosswalks/CrossWalk2"]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 3.2, -1.32872, 0, -7.6)
+layers = 3
+material_override = ExtResource("8_se06p")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_rmnwh")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Rotatoria/Crosswalks/CrossWalk2"]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 3.2, -0.328711, 0, -7.6)
+layers = 3
+material_override = ExtResource("8_se06p")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_rmnwh")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Rotatoria/Crosswalks/CrossWalk2"]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 3.2, 0.671288, 0, -7.6)
+layers = 3
+material_override = ExtResource("8_se06p")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_rmnwh")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Rotatoria/Crosswalks/CrossWalk2"]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 3.2, 1.67128, 0, -7.6)
+layers = 3
+material_override = ExtResource("8_se06p")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_rmnwh")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="Rotatoria/Crosswalks/CrossWalk2"]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 3.2, 2.67128, 0, -7.6)
+layers = 3
+material_override = ExtResource("8_se06p")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_rmnwh")
+skeleton = NodePath("")
+
+[node name="CrossWalk3" type="Node3D" parent="Rotatoria/Crosswalks"]
+transform = Transform3D(0.994591, 0, -0.103869, 0, 1, 0, 0.103869, 0, 0.994591, -5.52441, -1.90735e-06, 5.94454)
+
+[node name="MeshInstance3D19" type="MeshInstance3D" parent="Rotatoria/Crosswalks/CrossWalk3"]
+transform = Transform3D(6.79434, 0, 0.0203972, 0, 1, 0, -0.277402, 0, 0.499584, -3.81395, 4.76837e-07, -10.4354)
+layers = 3
+material_override = ExtResource("8_se06p")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_rmnwh")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Rotatoria/Crosswalks/CrossWalk3"]
+transform = Transform3D(0.499516, 0, -0.14081, 0, 1, 0, 0.0220015, 0, 3.1969, 0.461105, 0, -6.8111)
+layers = 3
+material_override = ExtResource("8_se06p")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_rmnwh")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="Rotatoria/Crosswalks/CrossWalk3"]
+transform = Transform3D(0.499516, 0, -0.14081, 0, 1, 0, 0.0220015, 0, 3.1969, -0.537927, 0, -6.8551)
+layers = 3
+material_override = ExtResource("8_se06p")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_rmnwh")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="Rotatoria/Crosswalks/CrossWalk3"]
+transform = Transform3D(0.499516, 0, -0.14081, 0, 1, 0, 0.0220015, 0, 3.1969, -1.53696, 0, -6.89911)
+layers = 3
+material_override = ExtResource("8_se06p")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_rmnwh")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="Rotatoria/Crosswalks/CrossWalk3"]
+transform = Transform3D(0.499516, 0, -0.14081, 0, 1, 0, 0.0220015, 0, 3.1969, -2.53599, 0, -6.94311)
+layers = 3
+material_override = ExtResource("8_se06p")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_rmnwh")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Rotatoria/Crosswalks/CrossWalk3"]
+transform = Transform3D(0.498936, 0, -0.208677, 0, 1, 0, 0.0326058, 0, 3.19319, 1.4611, 0, -6.8111)
+layers = 3
+material_override = ExtResource("8_se06p")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_rmnwh")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="Rotatoria/Crosswalks/CrossWalk3"]
+transform = Transform3D(0.498224, 0, -0.269439, 0, 1, 0, 0.0420998, 0, 3.18864, 2.4611, 0, -6.8111)
+layers = 3
+material_override = ExtResource("8_se06p")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_rmnwh")
+skeleton = NodePath("")
+
+[node name="Decal White Line" parent="Rotatoria/Crosswalks" instance=ExtResource("9_7dfsk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, 0, 11.5)
+curve = SubResource("Curve3D_kk1ht")
+
+[node name="Decal White Line3" parent="Rotatoria/Crosswalks" instance=ExtResource("9_7dfsk")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 0, 14.5)
+curve = SubResource("Curve3D_htioc")
+
+[node name="Decal White Line2" parent="Rotatoria/Crosswalks" instance=ExtResource("9_7dfsk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, 0, 8)
+curve = SubResource("Curve3D_mw12f")
+
+[node name="Asphalt" parent="Rotatoria" instance=ExtResource("10_hdsvv")]
+transform = Transform3D(28, 0, 0, 0, 1, 0, 0, 0, 26, -14, 0, -12)
+
+[node name="Curb Sidewalk Path" parent="Rotatoria" instance=ExtResource("11_wfc5j")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.5, 0, -12)
+curve = SubResource("Curve3D_ylqj4")
+
+[node name="Curb Sidewalk Path3" parent="Rotatoria" instance=ExtResource("11_wfc5j")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14, 0, -5)
+curve = SubResource("Curve3D_pwwh4")
+
+[node name="Curb Sidewalk Path4" parent="Rotatoria" instance=ExtResource("11_wfc5j")]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, 0, 0, 6)
+curve = SubResource("Curve3D_5trui")
+
+[node name="Sidewalk" parent="Rotatoria" instance=ExtResource("12_4qh48")]
+transform = Transform3D(-1.32661, 0, 2.69196e-07, 0, 1, 0, -1.15976e-07, 0, -3.07925, 0.576013, 0, -6.25972)
+
+[node name="Sidewalk7" parent="Rotatoria" instance=ExtResource("12_4qh48")]
+transform = Transform3D(7.13468, 0, 1.67933, 0, 1, 0, -3.16195, 0, 3.78929, -13.8955, 0.092226, 10.6775)
+
+[node name="Sidewalk8" parent="Rotatoria" instance=ExtResource("12_4qh48")]
+transform = Transform3D(6.45012, 0, 0.554363, 0, 1, 0, -1.35056, 0, 2.64758, -8.059, 0.02, 8.238)
+
+[node name="Sidewalk12" parent="Rotatoria" instance=ExtResource("12_4qh48")]
+transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 11.15, -3, -0.0184295, 9.5)
+
+[node name="Sidewalk9" parent="Rotatoria" instance=ExtResource("12_4qh48")]
+transform = Transform3D(6.60261, 0, -0.139903, 0, 1, 0, 0.32142, 0, 2.87389, -1.768, 0.02, 6.815)
+
+[node name="Sidewalk10" parent="Rotatoria" instance=ExtResource("12_4qh48")]
+transform = Transform3D(6.4441, 0, -0.769338, 0, 1, 0, 1.80371, 0, 2.7486, 4.252, 0.02, 7.214)
+
+[node name="Sidewalk11" parent="Rotatoria" instance=ExtResource("12_4qh48")]
+transform = Transform3D(6.12972, 0, -2.47454, 0, 1, 0, 2.41963, 0, 6.26882, 8.82444, 0, 8.46591)
+
+[node name="Sidewalk4" parent="Rotatoria" instance=ExtResource("12_4qh48")]
+transform = Transform3D(3.53362, 0, 1.73326, 0, 1, 0, -1.0798, 0, 5.67208, 9.56274, 0, -12)
+
+[node name="Sidewalk5" parent="Rotatoria" instance=ExtResource("12_4qh48")]
+transform = Transform3D(1.16931, 0, 3.0066, 0, 1, 0, -2.75139, 0, 1.27778, 10.9707, 0, -6.94286)
+
+[node name="Sidewalk2" parent="Rotatoria" instance=ExtResource("12_4qh48")]
+transform = Transform3D(-2.1708, 0, 1.3923e-07, 0, 1, 0, -1.89778e-07, 0, -1.59261, 0.920481, 0, -5.75971)
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="Palm3" parent="Objects" instance=ExtResource("5_3etb0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 33)
+
+[node name="Palm4" parent="Objects" instance=ExtResource("5_3etb0")]
+transform = Transform3D(1, 0, 0, 0, 0.665, 0, 0, 0, 1, 1, 0, 35)
+
+[node name="Palm11" parent="Objects" instance=ExtResource("5_3etb0")]
+transform = Transform3D(1, 0, 0, 0, 0.665, 0, 0, 0, 1, 10.5, 0, 30.5)
+
+[node name="Palm10" parent="Objects" instance=ExtResource("5_3etb0")]
+transform = Transform3D(1, 0, 0, 0, 0.665, 0, 0, 0, 1, -8.5, 0, 32.5)
+
+[node name="Palm5" parent="Objects" instance=ExtResource("5_3etb0")]
+transform = Transform3D(0.5, 0, 0, 0, 0.165, 0, 0, 0, 0.5, 5, 0, 19.25)
+
+[node name="Palm9" parent="Objects" instance=ExtResource("5_3etb0")]
+transform = Transform3D(0.5, 0, 0, 0, 0.165, 0, 0, 0, 0.5, -4, 0, 19.25)
+
+[node name="Palm6" parent="Objects" instance=ExtResource("5_3etb0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 34)
+
+[node name="Pole Dark Over" parent="Objects" instance=ExtResource("14_20t7m")]
+transform = Transform3D(-0.0780241, 0, 0.996951, 0, 1, 0, -0.996951, 0, -0.0780241, -2.38193, 0, 7.19143)
+
+[node name="Pole Dark2" parent="Objects" instance=ExtResource("16_3hjfa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.413575, 4.76837e-07, -12.6495)
+
+[node name="Pole Dark Over Inverted" parent="Objects" instance=ExtResource("11_tq00x")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -10.9902, 0, -6.79755)
+
+[node name="Pole Dark" parent="Objects" instance=ExtResource("18_x4o2c")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, -6.60829)
+"GenericTumbler/Mesh Pole Dark/Slot - Pole Center*scene" = null
+"GenericTumbler/Mesh Pole Dark/Slot - Pole Top*scene" = ExtResource("13_34rpi")
+"GenericTumbler/Mesh Pole Dark/Slot - Pole Top/Traffic Sign*texture" = ExtResource("14_81ued")
+"GenericTumbler/Mesh Pole Dark/Slot - Pole Bottom*scene" = ExtResource("15_olycd")
+"GenericTumbler/Mesh Pole Dark/Slot - Pole Bottom/Traffic Sign*texture" = ExtResource("16_ll8v2")
+
+[node name="Tree_hole" type="Node3D" parent="Objects"]
+
+[node name="Tree Hole" parent="Objects/Tree_hole" instance=ExtResource("13_kdxgl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.50371, 0, 18.7279)
+
+[node name="Tree Hole2" parent="Objects/Tree_hole" instance=ExtResource("13_kdxgl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.55365, 0, 18.645)
+
+[node name="Tree Hole5" parent="Objects/Tree_hole" instance=ExtResource("13_kdxgl")]
+transform = Transform3D(0.976194, 0, -0.2169, 0, 1, 0, 0.2169, 0, 0.976194, 4.89014, 0.0133753, 7.11435)
+
+[node name="NPCs" type="Node3D" parent="Objects"]
+
+[node name="Npc" parent="Objects/NPCs" instance=ExtResource("18_2eyrl")]
+
+[node name="Npc2" parent="Objects/NPCs" instance=ExtResource("18_2eyrl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
+
+[node name="Npc3" parent="Objects/NPCs" instance=ExtResource("18_2eyrl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -8)
+
+[node name="Npc4" parent="Objects/NPCs" instance=ExtResource("18_2eyrl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -9.5)
+
+[node name="Npc5" parent="Objects/NPCs" instance=ExtResource("18_2eyrl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -9.5)
+
+[node name="Npc6" parent="Objects/NPCs" instance=ExtResource("18_2eyrl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, -7.5)
+
+[node name="praca_bandeira" parent="." instance=ExtResource("15_qguaj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24)
+
+[connection signal="screen_entered" from="Config/VisibleOnScreenNotifier3D" to="." method="_on_screen_entered"]
+[connection signal="screen_exited" from="Config/VisibleOnScreenNotifier3D" to="." method="_on_screen_exited"]

@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvi4x7a5dflr4"]
+
+[ext_resource type="Script" path="res://systems/enemyGeneration/enemyGenerationTest.gd" id="1_64l6t"]
+[ext_resource type="PackedScene" uid="uid://t7wocwarj2c3" path="res://elements/enemy/pizza/enemy_pizza_roboto.tscn" id="2_aq2r6"]
+[ext_resource type="PackedScene" uid="uid://qrxqfwvyguto" path="res://elements/levels/level_base.tscn" id="2_waht0"]
+[ext_resource type="PackedScene" uid="uid://dh52m0ixk2k1m" path="res://camera.tscn" id="3_lwscj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_q8aer"]
+size = Vector3(20, 1, 20)
+
+[node name="EnemyGenerationTest" type="Node3D"]
+
+[node name="Script" type="Node" parent="."]
+script = ExtResource("1_64l6t")
+enemy = ExtResource("2_aq2r6")
+enemyStartFunction = "enemy_start_pizza"
+
+[node name="level_base" parent="." instance=ExtResource("2_waht0")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="level_base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_q8aer")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="level_base"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6, 0)
+spot_range = 15.692
+spot_attenuation = 0.659754
+spot_angle = 61.88
+
+[node name="Camera" parent="." instance=ExtResource("3_lwscj")]

@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://drj6gmwy6n8a5"]
+
+[ext_resource type="PackedScene" uid="uid://cuonuihp4gsws" path="res://elements/powerups/button/powerup_weapon_button_hold_blue.tscn" id="1_gfyxm"]
+[ext_resource type="PackedScene" uid="uid://ta33edhasg1x" path="res://elements/powerups/button/holdable_button_health.tscn" id="1_h4wfg"]
+[ext_resource type="PackedScene" uid="uid://djhown2ulvtjc" path="res://elements/powerups/button/powerup_weapon_button_tap_blue.tscn" id="3_sgkp1"]
+[ext_resource type="PackedScene" uid="uid://cfuplhe2nrpje" path="res://elements/powerups/button/sacrifice_button_health.tscn" id="4_llgqp"]
+[ext_resource type="PackedScene" uid="uid://c7ft4lc6ukiy0" path="res://elements/levels/level_structure/level_game_pack.tscn" id="4_lnq5m"]
+[ext_resource type="PackedScene" uid="uid://cqrb2x17wcl14" path="res://elements/levels/level_structure/level_environment_day_bright.tscn" id="4_vkj0v"]
+[ext_resource type="PackedScene" uid="uid://cnyvamjd1vxv5" path="res://elements/powerups/button/sacrifice_button_hold.tscn" id="5_gxwdp"]
+[ext_resource type="PackedScene" uid="uid://ny8m2vrq0djt" path="res://elements/powerups/button/sacrifice_button_tap.tscn" id="6_t3j0y"]
+[ext_resource type="PackedScene" uid="uid://ct2usghwibgvw" path="res://elements/powerups/button/sacrifice_button_score.tscn" id="7_pmcje"]
+[ext_resource type="PackedScene" uid="uid://d3i7oo0v7rbl3" path="res://elements/powerups/button/sacrifice_button_coins.tscn" id="8_niepc"]
+
+[sub_resource type="GDScript" id="GDScript_an7n0"]
+resource_name = "lvl_test"
+script/source = "extends Level
+const POWERUP_ALTAR = preload(\"res://elements/powerups/altar/powerup_altar.tscn\")
+
+const NPC_BELIEVER = preload(\"res://elements/npc/npc.tscn\")
+const STAGE_PIECE_AFONSO_PENA_LANES = preload(\"res://elements/stage_pieces/stage_piece_afonso_pena_lanes3.tscn\")
+
+#powerups
+const WEAPON_BUTTON_TAP_BLUE = preload(\"res://elements/powerups/button/powerup_weapon_button_tap_blue.tscn\")
+const WEAPON_BUTTON_HOLD_BLUE = preload(\"res://elements/powerups/button/powerup_weapon_button_hold_blue.tscn\")
+const POWERUP_WEAPON_BUTTON_HOLD_YELLOW = preload(\"res://elements/powerups/button/powerup_weapon_button_hold_yellow.tscn\")
+
+#enemies
+const ENEMY_ROBOTO_COPTER = preload(\"res://elements/enemy/copter/enemy_roboto_copter.tscn\")
+const ENEMY_LASER_ROBOTO = preload(\"res://elements/enemy/laser/enemy_laser_roboto.tscn\")
+const ENEMY_PIZZA_ROBOTO = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto_shooter.tscn\")
+
+const ELEMENT_TOTEM = preload(\"res://elements/neutral/props/totem/element_totem.tscn\")
+const ELEMENT_CAR = preload(\"res://elements/neutral/car/element_car.tscn\")
+
+@onready var _pieces_street:Array[PackedScene] = [STAGE_PIECE_AFONSO_PENA_LANES]
+@export var things_on_altars1:Array[PackedScene];
+@export var things_on_altars2:Array[PackedScene];
+var group:String = \"e\";
+
+func _ready():
+	prepare_level()
+	cmd_array([
+		CMD_Callable.new(scene_1),
+	])
+
+func prepare_level():
+	stage.set_stage_size(Vector3(12,0,27))
+	cam.set_offset(Vector3(0,26,28))
+
+func scene_1(invert:bool = false):
+
+	stage.fill_with(_pieces_street, stage._stage_size.z)
+	stage.set_pivot_offset(Vector3(-6 if invert else 6,0,0))
+	stage.repivot()
+
+	stage.set_grid_spacing(1, 1)
+
+
+	cmd_array([
+		cam.cmd_position_vector_wait(stage.get_grid(0, 0), 1),
+		CMD_Sequence.new([
+			Level_Cmd_Utils.cmd_multiple_altars_right_to_left(POWERUP_ALTAR, things_on_altars1, self, group),
+			objs.cmd_wait_group(group),
+			CMD_Wait_Seconds.new(0.5),
+			Level_Cmd_Utils.cmd_multiple_altars_left_to_right(POWERUP_ALTAR, things_on_altars2, self, group),
+			objs.cmd_wait_group(group),
+			CMD_Wait_Seconds.new(0.5),
+		], -1)
+	])
+"
+
+[node name="LVL1_TEST" type="Node3D"]
+script = SubResource("GDScript_an7n0")
+things_on_altars1 = Array[PackedScene]([ExtResource("1_h4wfg"), ExtResource("1_gfyxm"), ExtResource("3_sgkp1")])
+things_on_altars2 = Array[PackedScene]([ExtResource("4_llgqp"), ExtResource("5_gxwdp"), ExtResource("6_t3j0y"), ExtResource("7_pmcje"), ExtResource("8_niepc")])
+
+[node name="LevelEnvironmentDayBright" parent="." instance=ExtResource("4_vkj0v")]
+
+[node name="LevelGamePack" parent="." instance=ExtResource("4_lnq5m")]

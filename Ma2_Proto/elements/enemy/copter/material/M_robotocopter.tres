@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://ccjiqrh1iwat6"]
+
+[ext_resource type="Texture2D" uid="uid://qd1g16kpd46t" path="res://elements/enemy/copter/texture/M_Robotocopter_BaseColor.png" id="1_nybku"]
+[ext_resource type="Texture2D" uid="uid://bhhckquuor2nr" path="res://elements/enemy/copter/texture/M_Robotocopter_Emission.png" id="2_t2vfb"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("1_nybku")
+roughness = 0.65
+emission_enabled = true
+emission_texture = ExtResource("2_t2vfb")
+rim_tint = 1.0

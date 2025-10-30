@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsti5e1cvvxjh"]
+
+[ext_resource type="Script" uid="uid://bl5bjicdqfjvi" path="res://systems/ui/display_float.gd" id="1_ghedp"]
+[ext_resource type="FontFile" uid="uid://bogv4tg0kqs1" path="res://elements/ui/fonts/BalooBhaina2-Medium.ttf" id="2_acp0w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_le7er"]
+
+[node name="Challenge Display Float Current Of Target" type="PanelContainer" node_paths=PackedStringArray("label_id", "label_max", "label_value")]
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_le7er")
+script = ExtResource("1_ghedp")
+label_id = NodePath("MarginContainer/HBOX/ID")
+label_max = NodePath("MarginContainer/HBOX/Target")
+label_value = NodePath("MarginContainer/HBOX/Current")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HBOX" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ID" type="Label" parent="MarginContainer/HBOX"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"LabelSubtitle"
+theme_override_fonts/font = ExtResource("2_acp0w")
+text = "Pizza"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Current" type="Label" parent="MarginContainer/HBOX"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"LabelSubtitle"
+theme_override_fonts/font = ExtResource("2_acp0w")
+text = "3"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="OF" type="Label" parent="MarginContainer/HBOX"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"LabelSubtitle"
+theme_override_fonts/font = ExtResource("2_acp0w")
+text = "de"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Target" type="Label" parent="MarginContainer/HBOX"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"LabelSubtitle"
+theme_override_fonts/font = ExtResource("2_acp0w")
+text = "5"
+vertical_alignment = 1

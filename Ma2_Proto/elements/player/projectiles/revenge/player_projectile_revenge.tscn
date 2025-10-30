@@ -1,0 +1,123 @@
+[gd_scene load_steps=9 format=3 uid="uid://db8g4rring7g2"]
+
+[ext_resource type="Script" uid="uid://cv8acfwtfolku" path="res://elements/player/projectiles/revenge/player_projectile_revenge.gd" id="1_rd4hx"]
+[ext_resource type="Script" uid="uid://c1a23qdrmn8d1" path="res://elements/enemy/projectiles/damage_area/damage_area.gd" id="2_3mp2y"]
+[ext_resource type="Material" uid="uid://cl0o17cyrgk5o" path="res://elements/player/projectiles/m_extra_projectile_color.tres" id="2_ew302"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_rd4hx"]
+material = ExtResource("2_ew302")
+rings = 32
+ring_segments = 7
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xdxgx"]
+radius = 1.0
+
+[sub_resource type="Animation" id="Animation_xdxgx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shape:mesh:inner_radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shape:mesh:outer_radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shape:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ew302"]
+resource_name = "explode"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shape:mesh:inner_radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.166667, 1),
+"transitions": PackedFloat32Array(1.36604, 1),
+"update": 0,
+"values": [0.5, 20.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shape:mesh:outer_radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.659754, 1),
+"update": 0,
+"values": [1.0, 20.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shape:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.866667, 1),
+"transitions": PackedFloat32Array(1.8025, 1, 1.36604, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 0.2, 1), Vector3(1, 0.2, 1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eq2l1"]
+_data = {
+&"RESET": SubResource("Animation_xdxgx"),
+&"explode": SubResource("Animation_ew302")
+}
+
+[node name="PlayerProjectileRevenge" type="Node3D"]
+script = ExtResource("1_rd4hx")
+
+[node name="Shape" type="MeshInstance3D" parent="."]
+mesh = SubResource("TorusMesh_rd4hx")
+skeleton = NodePath("../ToIncrease")
+
+[node name="ToIncrease" type="Node3D" parent="."]
+
+[node name="DamageArea" type="Area3D" parent="ToIncrease"]
+collision_layer = 0
+collision_mask = 148
+script = ExtResource("2_3mp2y")
+amountDamage = 3.0
+recover_mana = true
+metadata/_custom_type_script = "uid://c1a23qdrmn8d1"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ToIncrease/DamageArea"]
+shape = SubResource("SphereShape3D_xdxgx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_eq2l1")
+}
+speed_scale = 2.0

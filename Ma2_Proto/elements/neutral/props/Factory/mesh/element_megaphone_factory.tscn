@@ -1,0 +1,92 @@
+[gd_scene load_steps=12 format=3 uid="uid://56usmsd2wdhp"]
+
+[ext_resource type="PackedScene" uid="uid://dywu246p1odg3" path="res://elements/neutral/props/Factory/mesh/megaphone_factory.glb" id="1_yhxw8"]
+[ext_resource type="Material" uid="uid://chct5jgl33x5t" path="res://elements/neutral/props/Factory/material/m_box_megaphone_cabinet.tres" id="2_dxoo5"]
+[ext_resource type="Script" uid="uid://0wf4obm88h88" path="res://elements/neutral/props/generic_tumbler.gd" id="3_dmo40"]
+[ext_resource type="Resource" uid="uid://xjo63p51vb5t" path="res://elements/neutral/props/totem/element_paper_box_tumble_data.tres" id="4_y6g7o"]
+[ext_resource type="Script" uid="uid://biqjvlcudqx0t" path="res://elements/player/force_receiver.gd" id="5_pblnu"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="6_y6g7o"]
+
+[sub_resource type="Animation" id="Animation_pblnu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("megaphone:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_y6g7o"]
+resource_name = "play"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("megaphone:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.266667, 0.6, 1.46667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.2, 1.2, 1.2), Vector3(1, 1, 1), Vector3(1.2, 1.2, 1.2), Vector3(1, 1, 1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_dmo40"]
+resource_name = "stop"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ot5qt"]
+_data = {
+&"RESET": SubResource("Animation_pblnu"),
+&"play": SubResource("Animation_y6g7o"),
+&"stop": SubResource("Animation_dmo40")
+}
+
+[sub_resource type="GDScript" id="GDScript_dmo40"]
+script/source = "extends AnimationPlayer
+
+func _enter_tree() -> void:
+	play(\"play\");
+"
+
+[node name="element_megaphone_factory" instance=ExtResource("1_yhxw8")]
+
+[node name="megaphone" parent="." index="0"]
+material_override = ExtResource("2_dxoo5")
+
+[node name="GenericTumbler" type="Node3D" parent="." index="1" node_paths=PackedStringArray("receiver", "to_tumble", "up_from_circle_getter")]
+script = ExtResource("3_dmo40")
+receiver = NodePath("ForceReceiver")
+to_tumble = NodePath("../megaphone")
+tumble_data = ExtResource("4_y6g7o")
+tumble_radius = 0.25
+up_from_circle_getter = NodePath("../Up Getter")
+metadata/_custom_type_script = "uid://0wf4obm88h88"
+
+[node name="ForceReceiver" type="Node3D" parent="GenericTumbler" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+script = ExtResource("5_pblnu")
+metadata/_custom_type_script = "uid://biqjvlcudqx0t"
+
+[node name="Up Getter" type="Node3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_ot5qt")
+}
+script = SubResource("GDScript_dmo40")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="." index="4"]
+script = ExtResource("6_y6g7o")
+high_contrast_group = &"neutral"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="." index="5"]

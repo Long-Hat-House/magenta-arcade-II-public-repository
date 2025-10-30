@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cny45il3f6qhu"]
+
+[ext_resource type="PackedScene" uid="uid://dq8q7rlwsb7si" path="res://elements/enemy/roboto_tucano/mesh/roboto_tucano.glb" id="1_1wmvu"]
+[ext_resource type="Material" uid="uid://b0hxx2llufjop" path="res://elements/enemy/roboto_tucano/material/m_roboto_tucano.tres" id="2_tmov7"]
+
+[node name="roboto_tucano" instance=ExtResource("1_1wmvu")]
+
+[node name="Skeleton3D" parent="rig_tucano" index="0"]
+bones/1/rotation = Quaternion(0, 3.27206e-08, -0.243532, 0.969893)
+bones/2/rotation = Quaternion(-4.57874e-16, -3.27206e-08, 0.243532, 0.969893)
+
+[node name="tucano" parent="rig_tucano/Skeleton3D" index="0"]
+material_override = ExtResource("2_tmov7")
+
+[node name="robo" parent="rig_tucano/Skeleton3D" index="1"]
+material_override = ExtResource("2_tmov7")
+
+[node name="support" parent="rig_tucano/Skeleton3D" index="2"]
+material_override = ExtResource("2_tmov7")
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "FLAP"

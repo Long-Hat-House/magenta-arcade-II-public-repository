@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" load_steps=0 format=3 uid="uid://cnsyhact10gni"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Boss_Lv2_Goal_Player"
+id = 2838410458
+guid = "{B8D8D3D6-9AE9-4C53-A468-447BA93CDCF2}"
+dummy = true

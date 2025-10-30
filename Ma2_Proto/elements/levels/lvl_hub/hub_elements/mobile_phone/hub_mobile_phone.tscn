@@ -1,0 +1,561 @@
+[gd_scene load_steps=29 format=3 uid="uid://hdi6nk2xwanh"]
+
+[ext_resource type="Script" uid="uid://cll6v2yovve8u" path="res://elements/levels/lvl_hub/hub_elements/mobile_phone/hub_mobile_phone.gd" id="1_555bq"]
+[ext_resource type="Script" uid="uid://bi4yfgewvcvwq" path="res://systems/switchable/switch_oning_offing_animation_player.gd" id="1_ofcqo"]
+[ext_resource type="PackedScene" uid="uid://cocf0sqxwdkhy" path="res://modules/text_flow/zap/scenes/text_flow_player_zap.tscn" id="2_8atnd"]
+[ext_resource type="WwiseEvent" uid="uid://d2a36efdg3s4b" path="res://Wwise/resources/Event/{522B1239-12E4-4E81-BE28-80FFE6FEE318}.tres" id="2_pc7r4"]
+[ext_resource type="WwiseEvent" uid="uid://gecbh2do3t2w" path="res://Wwise/resources/Event/{CCA0B949-A807-4AD1-AF02-52B011C0BFC2}.tres" id="3_8slw1"]
+[ext_resource type="PackedScene" uid="uid://bhc5t0ubi0acn" path="res://elements/levels/lvl_hub/hub_elements/mobile_phone/hub_mobile_phone_graphic.tscn" id="4_7gg3j"]
+[ext_resource type="WwiseEvent" uid="uid://7bupa8r7082p" path="res://Wwise/resources/Event/{32989132-71E8-4D4C-8C12-2A628B30B3F6}.tres" id="4_vud1a"]
+[ext_resource type="WwiseEvent" uid="uid://yemhbfl2b4yf" path="res://Wwise/resources/Event/{7918CD3B-5B61-4365-8BCA-FA121A406D70}.tres" id="5_7lq2x"]
+
+[sub_resource type="Curve3D" id="Curve3D_yc6vl"]
+_data = {
+"points": PackedVector3Array(-0.035, -1, -0.09, 0.255, 1.505, 0.255, 0.08, 0.06, 0.08, -0.522236, -0.137207, -2.80357, 0.522236, 0.137207, 2.80357, 3.31721, 4.80682, 3.50488, 2.0616, -0.00379038, -2.48585, -2.0616, 0.00379038, 2.48585, 0.431885, -0.668368, 8.26345, -0.0618896, -3.1984, -0.16722, 0.0618896, 3.1984, 0.16722, -1.94531, 5.57693, 12.1719, -0.502686, -2.15383, -1.65679, 0.502686, 2.15383, 1.65679, 0.228979, 13.9067, 14.5253, 0, -0.5, 0, 0, 0.5, 0, 0.705, 18.29, 15.475, 0, -0.83, -0.38, -1.60586, -3.39741, 0.42642, 0.706, 20.47, 16.015),
+"tilts": PackedFloat32Array(-3.065, -3.4, -2.48782, 1.83, 8.215, 7.483, 7.475)
+}
+point_count = 7
+
+[sub_resource type="Animation" id="Animation_lb0ci"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MobilePathFollow/MobileAnimatedRotation/GraphicMobilePhone/FlashLightRingingFeedback:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MobilePathFollow/MobileAnimatedRotation/GraphicMobilePhone:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MobilePathFollow/MobileAnimatedRotation/GraphicMobilePhone:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_aonn7"]
+resource_name = "off"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MobilePathFollow/MobileAnimatedRotation/GraphicMobilePhone/FlashLightRingingFeedback:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MobilePathFollow/MobileAnimatedRotation/GraphicMobilePhone:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MobilePathFollow/MobileAnimatedRotation/GraphicMobilePhone:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lfu31"]
+resource_name = "offing"
+
+[sub_resource type="Animation" id="Animation_30i1c"]
+resource_name = "on"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MobilePathFollow/MobileAnimatedRotation/GraphicMobilePhone/FlashLightRingingFeedback:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MobilePathFollow/MobileAnimatedRotation/GraphicMobilePhone:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.3, 0.5),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 0.5),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.12, 0), Vector3(0, 0, 0), Vector3(0, 0.35, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MobilePathFollow/MobileAnimatedRotation/GraphicMobilePhone:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.0698132), Vector3(0, 0, 0), Vector3(0, 0, -0.0698132), Vector3(0, -9.31322e-10, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_du58c"]
+resource_name = "oning"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MobilePathFollow/MobileAnimatedRotation/GraphicMobilePhone/FlashLightRingingFeedback:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MobilePathFollow/MobileAnimatedRotation/GraphicMobilePhone:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.633333, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 0.5, 2, 0.5),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1, -0.4), Vector3(0, 0, 0), Vector3(0, 1, -0.4), Vector3(0, 0, 0), Vector3(0, 0.1, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MobilePathFollow/MobileAnimatedRotation/GraphicMobilePhone:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(3.14159, 0, -0.0698132), Vector3(3.14159, 0, 0), Vector3(0, -9.31322e-10, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tsnoa"]
+_data = {
+&"RESET": SubResource("Animation_lb0ci"),
+&"off": SubResource("Animation_aonn7"),
+&"offing": SubResource("Animation_lfu31"),
+&"on": SubResource("Animation_30i1c"),
+&"oning": SubResource("Animation_du58c")
+}
+
+[sub_resource type="Animation" id="Animation_nfyyu"]
+resource_name = "RESET"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MobilePathFollow/Dark Fade:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MobilePathFollow/MobileAnimatedRotation:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5708, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MobilePathFollow/MobileAnimatedRotation/GraphicMobilePhone:screen_brightness")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_7068t"]
+resource_name = "off"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MobilePathFollow/Dark Fade:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MobilePathFollow/MobileAnimatedRotation:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5708, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MobilePathFollow/MobileAnimatedRotation/GraphicMobilePhone:screen_brightness")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_w4s0s"]
+resource_name = "offing"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667, 1.06667, 1.26667, 1.6),
+"transitions": PackedFloat32Array(2.92817, 1, 0.615572, 1.6245, 1),
+"update": 0,
+"values": [1.0, 0.903022, 0.38192, 0.180517, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MobilePathFollow/MobileAnimatedRotation:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.18333, 1.6),
+"transitions": PackedFloat32Array(2.14355, 1, 0.420448, 1),
+"update": 0,
+"values": [Vector3(0, -9.31322e-10, 0), Vector3(-4.71239, 0, 0), Vector3(-4.71239, 0, 0), Vector3(-1.5708, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MobilePathFollow/Dark Fade:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.46),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MobilePathFollow/MobileAnimatedRotation/GraphicMobilePhone:screen_brightness")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.56667),
+"transitions": PackedFloat32Array(5.27803, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_6ub0c"]
+resource_name = "on"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MobilePathFollow/MobileAnimatedRotation:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MobilePathFollow/Dark Fade:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MobilePathFollow/MobileAnimatedRotation/GraphicMobilePhone:screen_brightness")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_gw3xi"]
+resource_name = "new_animation"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667, 0.833333, 1.51667, 2),
+"transitions": PackedFloat32Array(-2, 1, 2, 0.287174, 1),
+"update": 0,
+"values": [0.0, 0.16, 0.21, 0.85, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MobilePathFollow/MobileAnimatedRotation:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.1, 1.51, 1.81667),
+"transitions": PackedFloat32Array(1, -2, 1, -2, 1),
+"update": 0,
+"values": [Vector3(-1.5708, 0, 0), Vector3(-1.5708, 0, 0), Vector3(1.5708, 0, 0), Vector3(1.5708, 0, 0), Vector3(-6.28319, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MobilePathFollow/Dark Fade:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.73333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MobilePathFollow/MobileAnimatedRotation/GraphicMobilePhone:screen_brightness")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.63333, 2),
+"transitions": PackedFloat32Array(1, 0.164939, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ghvk"]
+_data = {
+&"RESET": SubResource("Animation_nfyyu"),
+&"off": SubResource("Animation_7068t"),
+&"offing": SubResource("Animation_w4s0s"),
+&"on": SubResource("Animation_6ub0c"),
+&"oning": SubResource("Animation_gw3xi")
+}
+
+[sub_resource type="Gradient" id="Gradient_7hv00"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.122222, 0.67037, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.314815, 1, 1, 1, 0.037428, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0q1yd"]
+gradient = SubResource("Gradient_7hv00")
+fill = 1
+fill_from = Vector2(0.491453, 0.512821)
+fill_to = Vector2(0.482906, 0.273504)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_prpmy"]
+gradient = SubResource("Gradient_7hv00")
+fill = 1
+fill_from = Vector2(0.491453, 0.512821)
+fill_to = Vector2(0.5, 0.290598)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ojpa6"]
+transparency = 1
+blend_mode = 1
+albedo_texture = SubResource("GradientTexture2D_0q1yd")
+emission_enabled = true
+emission_energy_multiplier = 3.13
+emission_texture = SubResource("GradientTexture2D_prpmy")
+
+[sub_resource type="QuadMesh" id="QuadMesh_clkfl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ep6e2"]
+transparency = 1
+cull_mode = 2
+depth_draw_mode = 1
+shading_mode = 0
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0, 0, 0, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 5.0
+distance_fade_max_distance = 2.5
+
+[sub_resource type="QuadMesh" id="QuadMesh_kj7r2"]
+flip_faces = true
+size = Vector2(5, 5)
+
+[node name="HUBMobilePhone" type="Path3D" node_paths=PackedStringArray("_animation", "_ringing_animation", "_zap_player")]
+curve = SubResource("Curve3D_yc6vl")
+script = ExtResource("1_555bq")
+_animation = NodePath("MobileFlyAnimation")
+_ringing_animation = NodePath("RingingAnimation")
+_zap_player = NodePath("TextFlowPlayerZap")
+_sfx_phone_ringing_start = ExtResource("2_pc7r4")
+_sfx_phone_ringing_stop = ExtResource("3_8slw1")
+_sfx_phone_open = ExtResource("4_vud1a")
+_sfx_phone_close = ExtResource("5_7lq2x")
+
+[node name="RingingAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tsnoa")
+}
+script = ExtResource("1_ofcqo")
+
+[node name="MobileFlyAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6ghvk")
+}
+script = ExtResource("1_ofcqo")
+
+[node name="MobilePathFollow" type="Node3D" parent="."]
+transform = Transform3D(0.65231, 0.739616, -0.164745, 0.0178273, -0.232301, -0.972321, -0.757526, 0.63142, -0.164745, 0.08, 0.06, 0.08)
+
+[node name="MobileAnimatedRotation" type="Node3D" parent="MobilePathFollow"]
+transform = Transform3D(1, 0, 0, 0, -3.61999e-06, 1, 0, -1, -3.61999e-06, 0, 0, 0)
+
+[node name="GraphicMobilePhone" parent="MobilePathFollow/MobileAnimatedRotation" instance=ExtResource("4_7gg3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+brightness_multiplier = 30.0
+
+[node name="FlashLightRingingFeedback" type="MeshInstance3D" parent="MobilePathFollow/MobileAnimatedRotation/GraphicMobilePhone"]
+transform = Transform3D(1, -2.23517e-08, 0, -7.45058e-09, 1, 0, 0, -2.23517e-08, 1, -0.0691971, 0.5667, 0.0569512)
+material_override = SubResource("StandardMaterial3D_ojpa6")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_clkfl")
+
+[node name="Dark Fade" type="MeshInstance3D" parent="MobilePathFollow"]
+transform = Transform3D(1, 0, -4.65661e-10, -4.65661e-10, 1, 2.98023e-08, 0, -5.96046e-08, 1, 0, 0, 0.98)
+visible = false
+material_override = SubResource("StandardMaterial3D_ep6e2")
+mesh = SubResource("QuadMesh_kj7r2")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+transform = Transform3D(0.652371, 0.0284754, -0.16541, 0.017829, -0.00894368, -0.976244, -0.757597, 0.0243099, -0.16541, 0.08, 0.06, 0.08)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="PathFollow3D"]
+process_mode = 3
+transform = Transform3D(1.12626, 0, 0, 0, 0.997905, 0, 0, 0, 1.88689, 0, 0, 0)
+remote_path = NodePath("../../MobilePathFollow")
+update_scale = false
+
+[node name="TextFlowPlayerZap" parent="." instance=ExtResource("2_8atnd")]

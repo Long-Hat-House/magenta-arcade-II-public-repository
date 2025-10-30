@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://q8bvwf6q8yu2"]
+
+[ext_resource type="PackedScene" uid="uid://bsy18pj7t3kwo" path="res://elements/enemy/copter/enemy_roboto_copter.tscn" id="1_smq60"]
+[ext_resource type="PackedScene" uid="uid://ddtx26w7mxdgg" path="res://elements/enemy/projectiles/cannon/enemy_cannon.tscn" id="2_tqo5p"]
+
+[node name="enemy_roboto_copter_cannon" instance=ExtResource("1_smq60")]
+
+[node name="Cannon" parent="Body" index="5" instance=ExtResource("2_tqo5p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.67459, 0)

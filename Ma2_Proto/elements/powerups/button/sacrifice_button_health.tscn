@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfuplhe2nrpje"]
+
+[ext_resource type="PackedScene" uid="uid://ccn6065djpwhr" path="res://elements/powerups/button/powerup_holdable_button.tscn" id="1_aquc2"]
+[ext_resource type="Texture2D" uid="uid://cj48nxplm8t0j" path="res://elements/icons/icon_sacrifice_health.png" id="2_nlmp2"]
+[ext_resource type="Script" uid="uid://c2wv2dlj1g6g3" path="res://systems/tasks/specific/health_effect_task.gd" id="3_0tx0t"]
+[ext_resource type="Script" uid="uid://4ftebn1wdovh" path="res://systems/condition/specific/condition_has_health.gd" id="4_nphnh"]
+
+[node name="SacrificeButton-HEALTH" node_paths=PackedStringArray("condition_to_exist", "condition_false_task") instance=ExtResource("1_aquc2")]
+condition_to_exist = NodePath("Condition")
+condition_false_task = NodePath("Task")
+
+[node name="button_graphic" parent="Area3D" index="1"]
+default_icon = ExtResource("2_nlmp2")
+default_color = Color(0.745098, 0, 0.784314, 1)
+default_color_highlight = Color(0.87451, 0.576471, 0.796078, 1)
+
+[node name="Task" type="Node" parent="." index="4"]
+script = ExtResource("3_0tx0t")
+effect_value = -1
+
+[node name="Condition" type="Node" parent="." index="7"]
+script = ExtResource("4_nphnh")
+metadata/_custom_type_script = "uid://b1p4cguau2csw"

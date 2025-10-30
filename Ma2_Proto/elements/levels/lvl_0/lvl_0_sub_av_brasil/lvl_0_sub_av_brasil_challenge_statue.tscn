@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3nk8msqoufne"]
+
+[sub_resource type="GDScript" id="GDScript_mvg20"]
+resource_name = "lvl_sub"
+script/source = "extends Level
+
+const TEXT_ID_CHALLENGE_BEGIN 	= \"challenge_lvl1_statue_begin\"
+const TEXT_ID_CHALLENGE_VICTORY = \"challenge_lvl1_statue_victory\"
+
+## game elements
+const WEAPON_BUTTON_HOLD_BLUE = preload(\"res://elements/powerups/button/powerup_weapon_button_hold_blue.tscn\")
+const WEAPON_BUTTON_HOLD_YELLOW = preload(\"res://elements/powerups/button/powerup_weapon_button_hold_yellow.tscn\")
+const WEAPON_BUTTON_TAP_BLUE = preload(\"res://elements/powerups/button/powerup_weapon_button_tap_blue.tscn\")
+
+
+## pre-made formations
+@onready var line_entireScreen_Crazy:ChildLine3D = $Lines/Line_EntireScreen_Crazy
+
+@export var _wait_group:String = \"WaitGroup\"
+
+
+func _ready():
+	await await_for_level_ready()
+
+	var statue:Enemy_Statue_Ivo = objs.get_group_node(\"statue\").get_children()[0]
+	var eva:Enemy_Statue_Ivo_Eva_Sidekick = statue.eva
+
+	statue.health.damage_reduction = 3;
+
+	stage.set_pivot_offset(Vector3(-6,0,47))
+
+	stage.set_pivot_offset_x(0);
+	stage.add_pivot_offset(Vector3.FORWARD * 4);
+
+	cmd(statue.cmd_boss(self));
+"
+
+[node name="BOSS" type="Node3D"]
+script = SubResource("GDScript_mvg20")

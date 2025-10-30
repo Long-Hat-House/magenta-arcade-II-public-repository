@@ -1,0 +1,40 @@
+[gd_resource type="StandardMaterial3D" load_steps=8 format=3 uid="uid://du1bisafx0t01"]
+
+[ext_resource type="Texture2D" uid="uid://bn8kfedh2tgr5" path="res://elements/background/texture/generic_street_texture/clay_base.png" id="1_qirv4"]
+[ext_resource type="Texture2D" uid="uid://na7jddns1ch0" path="res://elements/background/texture/generic_street_texture/clay_dark.png" id="2_qrgxa"]
+[ext_resource type="Texture2D" uid="uid://cg6m460jnp4na" path="res://elements/background/texture/generic_street_texture/grass_normal.png" id="3_6mcpj"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jie0d"]
+
+[sub_resource type="Gradient" id="Gradient_j2mab"]
+offsets = PackedFloat32Array(0.19917, 0.319502, 0.767635)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cflxx"]
+noise_type = 0
+seed = 6
+frequency = 0.0019
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r1tge"]
+seamless = true
+color_ramp = SubResource("Gradient_j2mab")
+noise = SubResource("FastNoiseLite_cflxx")
+
+[resource]
+diffuse_mode = 3
+albedo_texture = ExtResource("1_qirv4")
+emission_energy_multiplier = 16.0
+normal_enabled = true
+normal_texture = ExtResource("3_6mcpj")
+rim_tint = 1.0
+clearcoat = 0.2
+clearcoat_roughness = 0.59
+anisotropy = 0.33
+ao_texture = SubResource("CompressedTexture2D_jie0d")
+backlight = Color(0.0313726, 0.0313726, 0.0313726, 1)
+detail_enabled = true
+detail_mask = SubResource("NoiseTexture2D_r1tge")
+detail_albedo = ExtResource("2_qrgxa")
+uv1_scale = Vector3(0.05, 0.05, 0.05)
+uv1_triplanar = true
+uv1_world_triplanar = true

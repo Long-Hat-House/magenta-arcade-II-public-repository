@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7bcu7pbfr6em"]
+
+[ext_resource type="Script" uid="uid://d2rhxuigqg21b" path="res://systems/audio_wwise/AkEvent3DLoop.gd" id="1_ir7jo"]
+[ext_resource type="WwiseEvent" uid="uid://cbsoexix1wnnh" path="res://Wwise/resources/Event/{B162549A-033B-4F44-8FF6-16C6EFFE90E0}.tres" id="2_suk1h"]
+[ext_resource type="WwiseEvent" uid="uid://dbin23w14krnu" path="res://Wwise/resources/Event/{3A11ADD1-F534-409C-8BE8-86ED97961AC2}.tres" id="3_1pore"]
+
+[node name="Altar SFX" type="Node3D" node_paths=PackedStringArray("loop_begin_event", "loop_finish_event")]
+script = ExtResource("1_ir7jo")
+loop_begin_event = NodePath("Start")
+loop_finish_event = NodePath("Stop")
+metadata/_custom_type_script = "uid://d2rhxuigqg21b"
+
+[node name="Start" type="AkEvent3D" parent="."]
+event = ExtResource("2_suk1h")
+
+[node name="Stop" type="AkEvent3D" parent="."]
+event = ExtResource("3_1pore")

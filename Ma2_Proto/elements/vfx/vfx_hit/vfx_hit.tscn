@@ -1,0 +1,128 @@
+[gd_scene load_steps=14 format=3 uid="uid://c5f7mdjgxid0m"]
+
+[ext_resource type="Script" uid="uid://db6tliyv2a0no" path="res://elements/vfx/simple_vfx.gd" id="1_8rj3a"]
+[ext_resource type="Texture2D" uid="uid://h7ga12pvkqtd" path="res://elements/vfx/vfx_hit/vfx_hit_art/vfx_hit_small_ma1_like.png" id="2_lth2s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6fk6"]
+atlas = ExtResource("2_lth2s")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tf3nn"]
+atlas = ExtResource("2_lth2s")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sq0cq"]
+atlas = ExtResource("2_lth2s")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikxum"]
+atlas = ExtResource("2_lth2s")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4y1s8"]
+atlas = ExtResource("2_lth2s")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2t8f"]
+atlas = ExtResource("2_lth2s")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xybo6"]
+atlas = ExtResource("2_lth2s")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0fnv"]
+atlas = ExtResource("2_lth2s")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwegc"]
+atlas = ExtResource("2_lth2s")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mjsb6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6fk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tf3nn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sq0cq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikxum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4y1s8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2t8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xybo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0fnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwegc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwegc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwegc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwegc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwegc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwegc")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_1qksu"]
+resource_name = "LookAtCamera"
+script/source = "extends AnimatedSprite3D
+
+var _random_angle;
+var cam3d;
+
+func _ready():
+	_random_angle = randf_range(0,360)
+	cam3d = LevelCameraController.instance;
+
+func _process(delta):
+	# Get the global position of the object
+	var global_position = global_transform.origin
+
+	# Get the global position of the camera
+	var camera_global_position = cam3d.global_transform.origin
+
+	look_at(camera_global_position, Vector3.UP, true)
+
+	rotate_object_local(Vector3.FORWARD, _random_angle)
+"
+
+[node name="VfxHit" type="Node3D"]
+script = ExtResource("1_8rj3a")
+glued_to_screen = 0.85
+
+[node name="Sprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+pixel_size = 0.0156
+shaded = true
+double_sided = false
+no_depth_test = true
+alpha_antialiasing_mode = 1
+alpha_antialiasing_edge = 0.45
+sprite_frames = SubResource("SpriteFrames_mjsb6")
+script = SubResource("GDScript_1qksu")

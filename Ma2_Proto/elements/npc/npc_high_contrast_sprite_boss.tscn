@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc8er7wjckssi"]
+
+[ext_resource type="PackedScene" uid="uid://dskpdh8c11ga7" path="res://elements/npc/npc_high_contrast_sprite.tscn" id="1_j2a61"]
+
+[node name="NPC_HighContrastSprite_Boss" instance=ExtResource("1_j2a61")]
+
+[node name="NPC_HighContrastSprite" parent="." index="0"]
+high_contrast_group = &"enemy"
+debug_color = Color(0.885047, 0.000762969, 0.908151, 1)

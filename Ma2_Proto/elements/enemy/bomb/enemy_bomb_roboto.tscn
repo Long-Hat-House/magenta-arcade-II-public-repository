@@ -1,0 +1,97 @@
+[gd_scene load_steps=17 format=3 uid="uid://msg6qpp4p7jt"]
+
+[ext_resource type="Script" uid="uid://buwqxafdtttup" path="res://elements/enemy/bomb/ai_bomb_roboto.gd" id="1_ipns6"]
+[ext_resource type="PackedScene" uid="uid://dc32mpbtq6y6m" path="res://elements/enemy/projectiles/explosion_square/enemy_square_explosion.tscn" id="2_0ht4m"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="3_x34nq"]
+[ext_resource type="PackedScene" uid="uid://ywymskkj85vs" path="res://elements/vfx/vfx_explosion/vfx_explosion.tscn" id="3_xb301"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="4_2maqb"]
+[ext_resource type="Script" uid="uid://dj2x7ekyg32b7" path="res://systems/score/score_giver.gd" id="5_4mlhh"]
+[ext_resource type="Resource" uid="uid://byvfb5i4ltg7h" path="res://systems/time/frame_freeze_medium.tres" id="5_7jq8e"]
+[ext_resource type="PackedScene" uid="uid://5m6gwnynp3sa" path="res://elements/enemy/bomb/mesh/bomb_graphic.tscn" id="5_oj7d0"]
+[ext_resource type="PackedScene" uid="uid://bupyq42vhixlj" path="res://elements/attack_previews/base_attack_preview_square.tscn" id="7_4t8m2"]
+[ext_resource type="Resource" uid="uid://j2bn4xx5dswf" path="res://elements/score/score_info_bomb.tres" id="7_51p16"]
+[ext_resource type="WwiseEvent" uid="uid://bgarusenj2psp" path="res://Wwise/resources/Event/{10C0DA32-46E5-4618-BBF5-BEAFC62F2B54}.tres" id="9_mv4pu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_grtqi"]
+radius = 0.7
+
+[sub_resource type="Animation" id="Animation_r4n61"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_q8l57"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_obdik"]
+resource_name = "warning"
+length = 0.8
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cvujq"]
+_data = {
+&"RESET": SubResource("Animation_r4n61"),
+&"idle": SubResource("Animation_q8l57"),
+&"warning": SubResource("Animation_obdik")
+}
+
+[node name="EnemyBomb" type="CharacterBody3D" node_paths=PackedStringArray("sfx_jump") groups=["enemy_position"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_ipns6")
+sfx_jump = NodePath("graphic/SFX Jump")
+time_to_explode = 0.5
+attack_scene = ExtResource("2_0ht4m")
+explosion_vfx = ExtResource("3_xb301")
+distanceMax = 23.5
+walkAndStop = true
+walkVelocity = Vector3(0, 0, 4)
+useTweenJumpInstead = true
+tweenJumpDistance = Vector3(0, 0, 6)
+tweenJumpHeight = 0.5
+tweenJumpDuration = 0.15
+tween_jump_duration_add_per_jump = 0.085
+tweenJumpAwaitConfirm = true
+tweenJumpTrans = 1
+tweenWaitTimeBetween = 0.0
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="."]
+script = ExtResource("4_2maqb")
+high_contrast_group = &"enemy"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("feedback") groups=["enemy_healths"]]
+script = ExtResource("3_x34nq")
+max_amount = 1.8
+feedback = [NodePath("../graphic")]
+frame_freeze_on_death = ExtResource("5_7jq8e")
+feedback_ignore_contains_divided_by_commas = "olho"
+
+[node name="ScoreGiver" type="Node" parent="." node_paths=PackedStringArray("health")]
+script = ExtResource("5_4mlhh")
+info = ExtResource("7_51p16")
+health = NodePath("../Health")
+
+[node name="graphic" parent="." instance=ExtResource("5_oj7d0")]
+
+[node name="SFX Jump" type="AkEvent3D" parent="graphic"]
+event = ExtResource("9_mv4pu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509764, 0)
+shape = SubResource("CapsuleShape3D_grtqi")
+
+[node name="BaseAttackPreview" parent="." instance=ExtResource("7_4t8m2")]
+size = 8.75
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_cvujq")
+}
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.981448, 0)
+aabb = AABB(-0.783208, -1, -1.26009, 1.56642, 2, 2.52019)
+
+[connection signal="dead" from="Health" to="." method="_on_health_dead"]
+[connection signal="hit" from="Health" to="." method="_on_health_hit"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

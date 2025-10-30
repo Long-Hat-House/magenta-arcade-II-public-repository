@@ -1,0 +1,10 @@
+[gd_resource type="FontVariation" load_steps=3 format=3 uid="uid://cq5jkjaykkaeu"]
+
+[ext_resource type="FontFile" uid="uid://c3tg0mdxhjidx" path="res://elements/ui/fonts/BalooBhaina2-ExtraBold.ttf" id="1_ujuti"]
+[ext_resource type="FontVariation" uid="uid://dcvesr7vb4a6o" path="res://elements/ui/fonts/NotoColorEmoji.tres" id="2_bjni8"]
+
+[resource]
+fallbacks = Array[Font]([ExtResource("2_bjni8")])
+base_font = ExtResource("1_ujuti")
+spacing_top = -26
+spacing_bottom = -36

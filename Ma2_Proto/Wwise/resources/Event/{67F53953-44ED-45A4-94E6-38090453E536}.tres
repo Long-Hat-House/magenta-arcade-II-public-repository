@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://bx8o3nnruq5fd"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_FinalBoss_Lv4_Final_Spirit_Heal"
+id = 338210742
+guid = "{67F53953-44ED-45A4-94E6-38090453E536}"
+dummy = true

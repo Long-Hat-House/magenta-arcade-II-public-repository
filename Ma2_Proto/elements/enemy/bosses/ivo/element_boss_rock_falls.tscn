@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6fyk4vb0siq5"]
+
+[ext_resource type="PackedScene" uid="uid://cyfvqk0c757jb" path="res://elements/enemy/bosses/ivo/mesh/mesh_rock_falls.tscn" id="1_hax2b"]
+
+[sub_resource type="GDScript" id="GDScript_hax2b"]
+script/source = "extends Node3D
+
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+@export var delay:float = 0;
+@export var animation_speed:float = 1;
+
+func _ready() -> void:
+	if delay > 0:
+		await get_tree().create_timer(delay).timeout;
+	animation_player.play(\"rock_fall\", -1, animation_speed);
+"
+
+[node name="Rock_falls" instance=ExtResource("1_hax2b")]
+script = SubResource("GDScript_hax2b")

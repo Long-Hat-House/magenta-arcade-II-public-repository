@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ChallengeInfo" load_steps=5 format=3 uid="uid://cho7u3baxdo74"]
+
+[ext_resource type="PackedScene" uid="uid://ta33edhasg1x" path="res://elements/powerups/button/holdable_button_health.tscn" id="1_iav4m"]
+[ext_resource type="Script" uid="uid://cuefq27ccwdoc" path="res://systems/challenge/challenge_info.gd" id="1_pkb3x"]
+[ext_resource type="PackedScene" uid="uid://ci8clax7whhvw" path="res://elements/powerups/button/holdable_button_extrashot.tscn" id="2_3d023"]
+[ext_resource type="PackedScene" uid="uid://4qqcmtywm6p0" path="res://elements/powerups/button/holdable_button_holdlvlup.tscn" id="3_w6vwx"]
+
+[resource]
+script = ExtResource("1_pkb3x")
+challenge_begin_title = &"menu_challenge_begin_title"
+challenge_fail_title = &"menu_challenge_fail_title"
+challenge_victory_title = &"menu_challenge_victory_title"
+challenge_victory_subtitle = &"menu_challenge_victory_subtitle"
+challenge_instruction_text = &"challenge_traffic_crazy_begin"
+scene_prizes = Array[PackedScene]([ExtResource("1_iav4m"), ExtResource("2_3d023"), ExtResource("3_w6vwx")])

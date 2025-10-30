@@ -1,11 +1,8 @@
 # Godot 4+ specific ignores
 .godot/
-.nomedia
 
 # Godot-specific ignores
 .import/
-export.cfg
-export_credentials.cfg
 
 # Imported translations (automatically generated from CSV files)
 *.translation
@@ -14,3 +11,25 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+Ma2_Proto/bin/
+*.tmp
+Ma2_Proto/android/
+Ma2_Proto/devlocal/
+
+#Wwise
+.backup*
+.cache*
+*.akd
+*.prof
+*.validationcache
+*.wsettings
+AkWwiseProjectData.asset
+IncrementalSoundBankData.xml
+Ma2_Proto/addons/Wwise/native/lib/win64/debug/~libwwise.windows.template_debug.dll
+Ma2_Proto/addons/Wwise/native/lib/win64/debug/~libwwise.windows.template_debug_0.pdb
+Ma2_Proto/Wwise/resources/Android.tres
+Ma2_Proto/Wwise/resources/iOS.tres
+Ma2_Proto/Wwise/resources/Mac.tres
+Ma2_Proto/Wwise/resources/Windows.tres
+Ma2_Proto/Wwise/resources/WwiseProjectData.tres
+Ma2_Proto/addons/Wwise/native/lib/win64/editor/profile/~libwwise.windows.editor.profile.dll

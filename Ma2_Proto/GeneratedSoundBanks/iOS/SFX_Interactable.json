@@ -1,0 +1,834 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "iOS",
+  "BasePlatform": "iOS",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "1292606183",
+    "Type": "User",
+    "GUID": "{BF3AEBF9-DB46-4599-BFF9-1EC3BAFDE0FC}",
+    "Language": "SFX",
+    "Hash": "{788A3825-7753-7423-4D4B-40B6FECB306C}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\SFX_Interactable",
+    "ShortName": "SFX_Interactable",
+    "Path": "SFX_Interactable.bnk",
+    "Media": [
+     {
+      "Id": "23679032",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_ALTAR\\world_int_altar_open_02.wav",
+      "CachePath": "52/{52F6C91F-2F93-6FA7-3011-F73442C30AEF}.wem"
+     },
+     {
+      "Id": "24412398",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_ALTAR\\world_int_altar_destroy_05.wav",
+      "CachePath": "A6/{A6027543-94FD-B6C1-5BB6-7807B7895F5D}.wem"
+     },
+     {
+      "Id": "71724442",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_PRESSABLE_BUTTON\\world_int_pressable_button_round_off_01.wav",
+      "CachePath": "35/{35A0CAF2-5A7E-B2C4-346E-BA51F45ADCA2}.wem"
+     },
+     {
+      "Id": "91302350",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_ALTAR\\world_int_altar_close_end_03.wav",
+      "CachePath": "FA/{FA38F2D3-A340-1AFE-85E9-251AF775748E}.wem"
+     },
+     {
+      "Id": "123794605",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_PRESSABLE_BUTTON\\world_int_pressable_button_cassete_on_02.wav",
+      "CachePath": "EF/{EFB8ECAA-64F8-61CE-837F-48C732AE37A8}.wem"
+     },
+     {
+      "Id": "136481630",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_ALTAR\\world_int_altar_close_01.wav",
+      "CachePath": "2F/{2F0A43ED-F9DB-012D-D19D-E41D78C1427E}.wem"
+     },
+     {
+      "Id": "148086566",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_HOLDABLE_BUTTON\\world_int_holdable_button_click_off_03.wav",
+      "CachePath": "0A/{0A048ED2-504F-54A1-7E9F-120EEA0F3CB5}.wem"
+     },
+     {
+      "Id": "168160162",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_ALTAR\\world_int_altar_close_03.wav",
+      "CachePath": "07/{07744F97-351D-9CAC-DDE5-706355B6497A}.wem"
+     },
+     {
+      "Id": "181189918",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_ALTAR\\world_int_altar_close_end_01.wav",
+      "CachePath": "5B/{5B403D59-CAFB-C2CD-D3BB-264247ADBE0F}.wem"
+     },
+     {
+      "Id": "271404527",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_ALTAR\\world_int_altar_open_01.wav",
+      "CachePath": "95/{95583BD8-D4A3-6DE5-B81E-DA7D03769E72}.wem"
+     },
+     {
+      "Id": "275774841",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_PRESSABLE_BUTTON\\world_int_pressable_button_round_on_03.wav",
+      "CachePath": "B6/{B6B41A99-6968-5AAF-A20A-EAAD1D049B13}.wem"
+     },
+     {
+      "Id": "280869895",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_ALTAR\\world_int_altar_open_03.wav",
+      "CachePath": "95/{9500D1B9-9A7E-2938-B551-7E2344CD6945}.wem"
+     },
+     {
+      "Id": "301530366",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_PRESSABLE_BUTTON\\world_int_pressable_button_round_on_02.wav",
+      "CachePath": "17/{1710E1A5-E021-C64F-AFE8-B509BDE8B77C}.wem"
+     },
+     {
+      "Id": "304711488",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_PRESSABLE_BUTTON\\world_int_pressable_button_cassete_open_01.wav",
+      "CachePath": "0C/{0CACC9BC-1948-F194-3D04-E799BAA4F31F}.wem"
+     },
+     {
+      "Id": "369411917",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_PRESSABLE_BUTTON\\world_int_pressable_button_round_on_01.wav",
+      "CachePath": "C3/{C393B127-EC12-B3A2-1A0A-DD2FE2B9157B}.wem"
+     },
+     {
+      "Id": "381512371",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\PHONE\\world_phone_ringtone_01.wav",
+      "CachePath": "D6/{D63D21ED-67C4-69AF-7736-3AC8A93FD08C}.wem"
+     },
+     {
+      "Id": "416866362",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_ALTAR\\world_int_altar_destroy_01.wav",
+      "CachePath": "BA/{BAFE4470-09D9-45BB-77EE-E7E72B587620}.wem"
+     },
+     {
+      "Id": "453381900",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_PRESSABLE_BUTTON\\world_int_pressable_button_round_off_02.wav",
+      "CachePath": "AB/{AB14E280-F564-7766-D7B9-DD2CADA9C1ED}.wem"
+     },
+     {
+      "Id": "485767167",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_PRESSABLE_BUTTON\\world_int_pressable_button_upgrade_on_02.wav",
+      "CachePath": "A8/{A8E50F04-F45D-D9D0-15A1-B80CBB2741F3}.wem"
+     },
+     {
+      "Id": "486423175",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_PRESSABLE_BUTTON\\world_int_pressable_button_upgrade_on_03.wav",
+      "CachePath": "C3/{C3B5D3FB-E39F-85A8-BFED-2DEBC817B38B}.wem"
+     },
+     {
+      "Id": "506857354",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_HOLDABLE_BUTTON\\world_int_holdable_button_charge_01.wav",
+      "CachePath": "92/{92FCA0A6-63C3-EA96-BF9A-A2EE09F437E6}.wem"
+     },
+     {
+      "Id": "508054095",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_HOLDABLE_BUTTON\\world_int_holdable_button_click_on_02.wav",
+      "CachePath": "26/{266D6C3A-924D-6951-3D12-4BE152F5AFCC}.wem"
+     },
+     {
+      "Id": "511891507",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_HOLDABLE_BUTTON\\world_int_holdable_button_charge_loop_01.wav",
+      "CachePath": "24/{249E15F0-C532-C9CE-47B2-D359D8947B4E}.wem"
+     },
+     {
+      "Id": "526644685",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_PRESSABLE_BUTTON\\world_int_pressable_button_upgrade_off_01.wav",
+      "CachePath": "9B/{9B78BB86-D538-FAC0-BE34-43755C8106D3}.wem"
+     },
+     {
+      "Id": "566355601",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_PRESSABLE_BUTTON\\world_int_pressable_button_round_off_03.wav",
+      "CachePath": "44/{44455426-9F66-9718-A461-AFAA0421E5FF}.wem"
+     },
+     {
+      "Id": "591659579",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_HOLDABLE_BUTTON\\world_int_holdable_button_click_on_03.wav",
+      "CachePath": "25/{25FBEF2C-417D-B478-9D6C-29E7A3519D28}.wem"
+     },
+     {
+      "Id": "596795654",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_HOLDABLE_BUTTON\\world_int_holdable_button_click_off_02.wav",
+      "CachePath": "86/{861686E9-128D-CED1-B0FF-A8C2A7DA17E4}.wem"
+     },
+     {
+      "Id": "644096736",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_PRESSABLE_BUTTON\\world_int_pressable_button_cassete_close_01.wav",
+      "CachePath": "6F/{6F1592E8-966A-403C-66E2-DF98C5672EE6}.wem"
+     },
+     {
+      "Id": "644281927",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_PRESSABLE_BUTTON\\world_int_pressable_button_cassete_on_01.wav",
+      "CachePath": "8A/{8AD11B1B-03E2-F4B2-340D-91DD753B2FAA}.wem"
+     },
+     {
+      "Id": "689697624",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\LANES\\world_lanes_hub_cogs_01.wav",
+      "CachePath": "C0/{C0AA28D3-3858-DD2B-5BCB-298F0B5D95AF}.wem"
+     },
+     {
+      "Id": "708031335",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_PRESSABLE_BUTTON\\world_int_pressable_button_upgrade_on_01.wav",
+      "CachePath": "FC/{FC208DAC-025C-D34D-0C30-0A9D1D60321D}.wem"
+     },
+     {
+      "Id": "743852740",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_ALTAR\\world_int_altar_close_02.wav",
+      "CachePath": "8D/{8D537E77-04BA-6EFD-83BF-27651633AF19}.wem"
+     },
+     {
+      "Id": "756017864",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\PHONE\\world_phone_open_movement_01.wav",
+      "CachePath": "4F/{4F945243-6A95-D70D-E288-C0465514DCEB}.wem"
+     },
+     {
+      "Id": "844801816",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_HOLDABLE_BUTTON\\world_int_holdable_button_click_off_01.wav",
+      "CachePath": "7F/{7FF73523-BCCF-DDCA-C419-D80D5E2855AE}.wem"
+     },
+     {
+      "Id": "861518492",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\LANES\\world_lanes_hub_cogs_02.wav",
+      "CachePath": "4D/{4D9D3AB7-3699-852F-060F-2190BA3AFFCA}.wem"
+     },
+     {
+      "Id": "867480489",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_HOLDABLE_BUTTON\\world_int_holdable_button_click_on_01.wav",
+      "CachePath": "63/{6346012C-DDB5-7A3D-428C-0B5BC76E2C87}.wem"
+     },
+     {
+      "Id": "878864194",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\PHONE\\world_phone_close_movement_01.wav",
+      "CachePath": "57/{5718C517-6ADD-50A4-9DA6-595D2BABF9B5}.wem"
+     },
+     {
+      "Id": "883865691",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_ALTAR\\world_int_altar_close_end_02.wav",
+      "CachePath": "82/{82B772D7-CCE5-C9A7-88A2-14EB2D2D954A}.wem"
+     },
+     {
+      "Id": "906136710",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_ALTAR\\world_int_altar_destroy_02.wav",
+      "CachePath": "17/{17650F15-FDCF-E43F-4AE4-7D15BF187895}.wem"
+     },
+     {
+      "Id": "973215378",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_PRESSABLE_BUTTON\\world_int_pressable_button_round_on_04.wav",
+      "CachePath": "E4/{E404A4B4-38E3-7DCF-1754-028B95A84AB1}.wem"
+     },
+     {
+      "Id": "974910142",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\LANES\\world_lanes_loop_01.wav",
+      "CachePath": "15/{15E172FF-07E6-62E3-EC75-FE681A6A6B61}.wem"
+     },
+     {
+      "Id": "1041881472",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_ALTAR\\world_int_altar_destroy_04.wav",
+      "CachePath": "D6/{D67B76E2-ADEF-696F-EAC4-BB8288FC07AE}.wem"
+     },
+     {
+      "Id": "1059683087",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_HOLDABLE_BUTTON\\world_int_holdable_button_click_on_04.wav",
+      "CachePath": "BA/{BA83980E-550D-9F0A-F383-6BA3AE33B3BF}.wem"
+     },
+     {
+      "Id": "1067043048",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\INT_ALTAR\\world_int_altar_destroy_03.wav",
+      "CachePath": "5B/{5B71EEF0-E7BA-FCE1-2E62-239D8A304BE3}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "4119019645",
+      "Name": "Play_Int_Altar_Close",
+      "ObjectPath": "\\Events\\World\\Interactable\\Altar\\Play_Int_Altar_Close",
+      "GUID": "{3A11ADD1-F534-409C-8BE8-86ED97961AC2}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.27837005",
+      "DurationMax": "0.45720834",
+      "MediaRefs": [
+       {
+        "Id": "136481630"
+       },
+       {
+        "Id": "168160162"
+       },
+       {
+        "Id": "743852740"
+       }
+      ]
+     },
+     {
+      "Id": "326371423",
+      "Name": "Play_Int_Altar_Close_End",
+      "ObjectPath": "\\Events\\World\\Interactable\\Altar\\Play_Int_Altar_Close_End",
+      "GUID": "{9298ABE9-9909-4E40-8739-5948AA9FF746}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.27306664",
+      "DurationMax": "0.5371263",
+      "MediaRefs": [
+       {
+        "Id": "91302350"
+       },
+       {
+        "Id": "181189918"
+       },
+       {
+        "Id": "883865691"
+       }
+      ]
+     },
+     {
+      "Id": "3291165179",
+      "Name": "Play_Int_Altar_Destroy",
+      "ObjectPath": "\\Events\\World\\Interactable\\Altar\\Play_Int_Altar_Destroy",
+      "GUID": "{2D3FC5DF-3DD4-4B82-8A0F-8E99E3B32F92}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.8682811",
+      "DurationMax": "2.2976315",
+      "MediaRefs": [
+       {
+        "Id": "24412398"
+       },
+       {
+        "Id": "416866362"
+       },
+       {
+        "Id": "906136710"
+       },
+       {
+        "Id": "1041881472"
+       },
+       {
+        "Id": "1067043048"
+       }
+      ]
+     },
+     {
+      "Id": "2939933975",
+      "Name": "Play_Int_Altar_Open",
+      "ObjectPath": "\\Events\\World\\Interactable\\Altar\\Play_Int_Altar_Open",
+      "GUID": "{B162549A-033B-4F44-8FF6-16C6EFFE90E0}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.4759443",
+      "DurationMax": "0.96356475",
+      "MediaRefs": [
+       {
+        "Id": "23679032"
+       },
+       {
+        "Id": "271404527"
+       },
+       {
+        "Id": "280869895"
+       }
+      ]
+     },
+     {
+      "Id": "3531596961",
+      "Name": "Play_Int_Holdable_Button_Charge",
+      "ObjectPath": "\\Events\\World\\Interactable\\Holdable_Button\\Play_Int_Holdable_Button_Charge",
+      "GUID": "{A2A99E0C-1C86-488A-B5B3-FEF4A7B14F4E}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "506857354"
+       },
+       {
+        "Id": "511891507"
+       }
+      ]
+     },
+     {
+      "Id": "3600714944",
+      "Name": "Play_Int_Holdable_Button_Off",
+      "ObjectPath": "\\Events\\World\\Interactable\\Holdable_Button\\Play_Int_Holdable_Button_Off",
+      "GUID": "{B4199BE6-29B8-4E6F-B05C-0025FBC4AD50}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.20802619",
+      "DurationMax": "0.24738622",
+      "MediaRefs": [
+       {
+        "Id": "148086566"
+       },
+       {
+        "Id": "596795654"
+       },
+       {
+        "Id": "844801816"
+       }
+      ]
+     },
+     {
+      "Id": "579027082",
+      "Name": "Play_Int_Holdable_Button_On",
+      "ObjectPath": "\\Events\\World\\Interactable\\Holdable_Button\\Play_Int_Holdable_Button_On",
+      "GUID": "{BFDEDA07-587D-4063-B14A-3576E5D0AB1B}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.115084",
+      "DurationMax": "0.13690417",
+      "MediaRefs": [
+       {
+        "Id": "508054095"
+       },
+       {
+        "Id": "591659579"
+       },
+       {
+        "Id": "867480489"
+       },
+       {
+        "Id": "1059683087"
+       }
+      ]
+     },
+     {
+      "Id": "3307402533",
+      "Name": "Play_Int_Phone_Close",
+      "ObjectPath": "\\Events\\World\\Interactable\\Phone\\Play_Int_Phone_Close",
+      "GUID": "{7918CD3B-5B61-4365-8BCA-FA121A406D70}",
+      "DurationType": "OneShot",
+      "DurationMin": "4.478083",
+      "DurationMax": "4.478083",
+      "MediaRefs": [
+       {
+        "Id": "878864194"
+       }
+      ],
+      "ActionSetState": [
+       {
+        "GroupId": "646625282",
+        "Id": "782826392",
+        "Name": "Default",
+        "ObjectPath": "\\States\\Default Work Unit\\Hub\\Default",
+        "GUID": "{576CCB35-3EC1-4918-9FA6-C836BD2DE449}"
+       }
+      ]
+     },
+     {
+      "Id": "2601660719",
+      "Name": "Play_Int_Phone_Open",
+      "ObjectPath": "\\Events\\World\\Interactable\\Phone\\Play_Int_Phone_Open",
+      "GUID": "{32989132-71E8-4D4C-8C12-2A628B30B3F6}",
+      "DurationType": "OneShot",
+      "DurationMin": "4.478083",
+      "DurationMax": "4.478083",
+      "MediaRefs": [
+       {
+        "Id": "756017864"
+       }
+      ],
+      "ActionSetState": [
+       {
+        "GroupId": "646625282",
+        "Id": "3349798655",
+        "Name": "Phone_Zap",
+        "ObjectPath": "\\States\\Default Work Unit\\Hub\\Phone_Zap",
+        "GUID": "{3CDF4899-9236-4BFA-B739-E23ECE47A90F}"
+       }
+      ]
+     },
+     {
+      "Id": "2486052939",
+      "Name": "Play_Int_Phone_Ringing",
+      "ObjectPath": "\\Events\\World\\Interactable\\Phone\\Play_Int_Phone_Ringing",
+      "GUID": "{522B1239-12E4-4E81-BE28-80FFE6FEE318}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "381512371"
+       }
+      ],
+      "ActionSetState": [
+       {
+        "GroupId": "646625282",
+        "Id": "4265022948",
+        "Name": "Phone_Ringtone",
+        "ObjectPath": "\\States\\Default Work Unit\\Hub\\Phone_Ringtone",
+        "GUID": "{A945081D-95E0-470E-BCCA-CEAC5E9AD1F0}"
+       }
+      ]
+     },
+     {
+      "Id": "4059652730",
+      "Name": "Play_Int_Pressable_Button_Cassette_Close",
+      "ObjectPath": "\\Events\\World\\Interactable\\Pressable_Button\\Play_Int_Pressable_Button_Cassette_Close",
+      "GUID": "{992D2393-B778-4EEF-9D45-156876003EFF}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.038875",
+      "DurationMax": "1.038875",
+      "MediaRefs": [
+       {
+        "Id": "644096736"
+       }
+      ]
+     },
+     {
+      "Id": "1622153173",
+      "Name": "Play_Int_Pressable_Button_Cassette_Off",
+      "ObjectPath": "\\Events\\World\\Interactable\\Pressable_Button\\Play_Int_Pressable_Button_Cassette_Off",
+      "GUID": "{CFCFBB82-1769-4535-B337-ED5E5241450B}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "3506300265",
+      "Name": "Play_Int_Pressable_Button_Cassette_On",
+      "ObjectPath": "\\Events\\World\\Interactable\\Pressable_Button\\Play_Int_Pressable_Button_Cassette_On",
+      "GUID": "{925A1BAC-C000-4E31-8B40-5592C6667106}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.0153959",
+      "DurationMax": "1.052",
+      "MediaRefs": [
+       {
+        "Id": "123794605"
+       },
+       {
+        "Id": "644281927"
+       }
+      ]
+     },
+     {
+      "Id": "124492286",
+      "Name": "Play_Int_Pressable_Button_Cassette_Open",
+      "ObjectPath": "\\Events\\World\\Interactable\\Pressable_Button\\Play_Int_Pressable_Button_Cassette_Open",
+      "GUID": "{FCD29B19-591B-4DB4-81FF-0BBD47898073}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.0761042",
+      "DurationMax": "1.0761042",
+      "MediaRefs": [
+       {
+        "Id": "304711488"
+       }
+      ]
+     },
+     {
+      "Id": "1905457451",
+      "Name": "Play_Int_Pressable_Button_Round_Off",
+      "ObjectPath": "\\Events\\World\\Interactable\\Pressable_Button\\Play_Int_Pressable_Button_Round_Off",
+      "GUID": "{9CCBF66C-396A-4426-84FB-F11A31ECA62F}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.25941667",
+      "DurationMax": "0.25941667",
+      "MediaRefs": [
+       {
+        "Id": "71724442"
+       },
+       {
+        "Id": "453381900"
+       },
+       {
+        "Id": "566355601"
+       }
+      ]
+     },
+     {
+      "Id": "2854315415",
+      "Name": "Play_Int_Pressable_Button_Round_On",
+      "ObjectPath": "\\Events\\World\\Interactable\\Pressable_Button\\Play_Int_Pressable_Button_Round_On",
+      "GUID": "{E4427C81-6C18-4D19-AD97-3962C1FC91EA}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.375",
+      "DurationMax": "1.375",
+      "MediaRefs": [
+       {
+        "Id": "275774841"
+       },
+       {
+        "Id": "301530366"
+       },
+       {
+        "Id": "369411917"
+       },
+       {
+        "Id": "973215378"
+       }
+      ]
+     },
+     {
+      "Id": "2045046241",
+      "Name": "Play_Int_Pressable_Button_UpgradeSet_Off",
+      "ObjectPath": "\\Events\\World\\Interactable\\Pressable_Button\\Play_Int_Pressable_Button_UpgradeSet_Off",
+      "GUID": "{F847C71B-6487-428E-8369-0BB8BE856916}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.65141666",
+      "DurationMax": "0.65141666",
+      "MediaRefs": [
+       {
+        "Id": "526644685"
+       }
+      ]
+     },
+     {
+      "Id": "1308077237",
+      "Name": "Play_Int_Pressable_Button_UpgradeSet_On",
+      "ObjectPath": "\\Events\\World\\Interactable\\Pressable_Button\\Play_Int_Pressable_Button_UpgradeSet_On",
+      "GUID": "{395B3C6D-FAAF-480B-9F38-94E1D5E8815C}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.3288333",
+      "DurationMax": "1.3288333",
+      "MediaRefs": [
+       {
+        "Id": "485767167"
+       },
+       {
+        "Id": "486423175"
+       },
+       {
+        "Id": "708031335"
+       }
+      ]
+     },
+     {
+      "Id": "807251578",
+      "Name": "Play_World_Lanes_Hub",
+      "ObjectPath": "\\Events\\World\\Interactable\\Lanes\\Play_World_Lanes_Hub",
+      "GUID": "{A94DAE86-B714-4E8D-92E5-22F96C670021}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "689697624"
+       },
+       {
+        "Id": "861518492"
+       },
+       {
+        "Id": "974910142"
+       }
+      ]
+     },
+     {
+      "Id": "1428185736",
+      "Name": "Reset_UI_Upgrade_Stars",
+      "ObjectPath": "\\Events\\UI\\Upgrade\\Reset_UI_Upgrade_Stars",
+      "GUID": "{7C53EE2D-4E45-4ADA-9579-2564C869FF13}",
+      "Color": "11",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "2524483255",
+      "Name": "Stop_Int_Holdable_Button_Charge",
+      "ObjectPath": "\\Events\\World\\Interactable\\Holdable_Button\\Stop_Int_Holdable_Button_Charge",
+      "GUID": "{83AA4E02-2A2D-4595-9676-6E3BB25690FD}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionPostEvent": [
+       {
+        "Id": "1428185736",
+        "Name": "Reset_UI_Upgrade_Stars",
+        "ObjectPath": "\\Events\\UI\\Upgrade\\Reset_UI_Upgrade_Stars",
+        "GUID": "{7C53EE2D-4E45-4ADA-9579-2564C869FF13}",
+        "Color": "11"
+       }
+      ]
+     },
+     {
+      "Id": "1929620237",
+      "Name": "Stop_Int_Phone_Ringing",
+      "ObjectPath": "\\Events\\World\\Interactable\\Phone\\Stop_Int_Phone_Ringing",
+      "GUID": "{CCA0B949-A807-4AD1-AF02-52B011C0BFC2}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "753128724",
+      "Name": "Stop_World_Lanes_Hub",
+      "ObjectPath": "\\Events\\World\\Interactable\\Lanes\\Stop_World_Lanes_Hub",
+      "GUID": "{1A67F3F1-2DFF-461D-8002-92FBB59D3194}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ],
+    "StateGroups": [
+     {
+      "Id": "646625282",
+      "Name": "Hub",
+      "ObjectPath": "\\States\\Default Work Unit\\Hub",
+      "GUID": "{06438018-19C7-4236-A929-DF9373AD12D7}",
+      "States": [
+       {
+        "Id": "26822469",
+        "Name": "Exit",
+        "ObjectPath": "\\States\\Default Work Unit\\Hub\\Exit",
+        "GUID": "{A77D9830-4FD0-4784-A745-155D78FB8C71}"
+       },
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\Hub\\None",
+        "GUID": "{7DAF8381-1D18-44F9-8373-C808FE172AF5}"
+       },
+       {
+        "Id": "782826392",
+        "Name": "Default",
+        "ObjectPath": "\\States\\Default Work Unit\\Hub\\Default",
+        "GUID": "{576CCB35-3EC1-4918-9FA6-C836BD2DE449}"
+       },
+       {
+        "Id": "2368844905",
+        "Name": "Enter",
+        "ObjectPath": "\\States\\Default Work Unit\\Hub\\Enter",
+        "GUID": "{830CCC34-4D34-4561-82DA-E2D1DBE31400}"
+       },
+       {
+        "Id": "3349798655",
+        "Name": "Phone_Zap",
+        "ObjectPath": "\\States\\Default Work Unit\\Hub\\Phone_Zap",
+        "GUID": "{3CDF4899-9236-4BFA-B739-E23ECE47A90F}"
+       },
+       {
+        "Id": "4265022948",
+        "Name": "Phone_Ringtone",
+        "ObjectPath": "\\States\\Default Work Unit\\Hub\\Phone_Ringtone",
+        "GUID": "{A945081D-95E0-470E-BCCA-CEAC5E9AD1F0}"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{F191E484-8EC8-2F53-F8D0-FDF8C534573A}"
+ }
+}

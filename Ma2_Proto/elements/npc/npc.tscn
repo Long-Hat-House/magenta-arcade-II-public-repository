@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://yjglagfjn8er"]
+
+[ext_resource type="Script" uid="uid://knn8b6p5ogdi" path="res://elements/npc/npc.gd" id="1_fqnvr"]
+[ext_resource type="Script" uid="uid://bj8qwbado7bkt" path="res://systems/utils/look_at_camera.gd" id="3_6qrn6"]
+[ext_resource type="PackedScene" uid="uid://busv6sx15qccg" path="res://elements/npc/npc_graphic_regular.tscn" id="3_yrs8w"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="4_0wv42"]
+[ext_resource type="PackedScene" uid="uid://cux5kcyvhvhq4" path="res://modules/text_flow/scenes/text_flow_player_bubbles.tscn" id="8_him58"]
+[ext_resource type="WwiseEvent" uid="uid://b2yl767euh45u" path="res://Wwise/resources/Event/{D9075525-9E3F-43A8-B10E-1F4DEA429DB8}.tres" id="8_uoda0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5edsx"]
+height = 1.5
+
+[node name="Npc" type="Node3D"]
+script = ExtResource("1_fqnvr")
+
+[node name="TextFlowPlayerBubbles" parent="." instance=ExtResource("8_him58")]
+
+[node name="NPC_Graphic_Regular" parent="." instance=ExtResource("3_yrs8w")]
+
+[node name="PressArea" type="Area3D" parent="."]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("3_6qrn6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PressArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("CapsuleShape3D_5edsx")
+
+[node name="HitArea" type="CharacterBody3D" parent="."]
+visible = false
+collision_layer = 132
+collision_mask = 24
+script = ExtResource("3_6qrn6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("CapsuleShape3D_5edsx")
+
+[node name="Health" type="Node" parent="HitArea"]
+script = ExtResource("4_0wv42")
+max_amount = 0.1
+
+[node name="TextFlowOffset" type="Marker3D" parent="HitArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.423, 0)
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.84023, 0)
+aabb = AABB(-1, -2, -1, 2, 4, 2)
+
+[node name="SFX Die" type="AkEvent3D" parent="."]
+event = ExtResource("8_uoda0")
+
+[connection signal="body_entered" from="PressArea" to="." method="add_touched"]
+[connection signal="body_exited" from="PressArea" to="." method="remove_touched"]
+[connection signal="dead" from="HitArea/Health" to="." method="_on_health_dead"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="on_enter_screen"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="queue_free"]
+
+[editable path="NPC_Graphic_Regular"]
+[editable path="NPC_Graphic_Regular/NPC_HighContrastSprite"]

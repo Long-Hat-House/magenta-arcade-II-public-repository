@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7kk4rbuycx0t"]
+
+[ext_resource type="PackedScene" uid="uid://c7xu28fitaur2" path="res://elements/neutral/props/lamp_floor/mesh/lamp_floor.glb" id="1_oggt2"]
+[ext_resource type="Material" uid="uid://xafc0gdfpy4p" path="res://elements/neutral/props/lamp_floor/material/lamp_floor.tres" id="2_brn8p"]
+
+[node name="lamp_floor" instance=ExtResource("1_oggt2")]
+
+[node name="lamp_floor" parent="." index="0"]
+material_override = ExtResource("2_brn8p")

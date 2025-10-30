@@ -1,0 +1,339 @@
+[gd_scene load_steps=34 format=3 uid="uid://c1oynncp4xm2p"]
+
+[ext_resource type="Script" uid="uid://bw3q3ffnlrv4g" path="res://elements/enemy/bosses/goleiro/ai_boss_goleiro.gd" id="1_0w534"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="2_ayv3c"]
+[ext_resource type="Script" uid="uid://b3uoomrpwsflo" path="res://systems/float_value.gd" id="3_n1ypp"]
+[ext_resource type="Script" uid="uid://dj2x7ekyg32b7" path="res://systems/score/score_giver.gd" id="4_u1fd4"]
+[ext_resource type="Script" uid="uid://b7n1kj0lt03wh" path="res://systems/utils/node3d_shaker.gd" id="4_xrumd"]
+[ext_resource type="Resource" uid="uid://bw5jnlq1ir5fw" path="res://elements/score/score_info_boss_goalkeeper.tres" id="5_3qo3g"]
+[ext_resource type="PackedScene" uid="uid://duunahhmaynab" path="res://elements/enemy/bosses/goleiro/bossGoleiro/mesh/mesh_bossGoleiro_popo.tscn" id="5_c2g37"]
+[ext_resource type="SpriteFrames" uid="uid://b0s0l1qn6n4gp" path="res://elements/enemy/bosses/goleiro/ju_magenta/enemy_boss_ju_magenta.ase" id="6_spekx"]
+[ext_resource type="Script" uid="uid://pu4x6ds71ckx" path="res://systems/testing/animated_sprite_tester.gd" id="7_wloxv"]
+[ext_resource type="PackedScene" uid="uid://ccdy8erk2hwhi" path="res://elements/enemy/bosses/goleiro/bossGoleiro/mesh/mesh_bossGoleiro_platform.tscn" id="9_kixpg"]
+[ext_resource type="Script" uid="uid://c5sbjrrtysbms" path="res://modules/text_flow/src/text_flow_player_bubbles.gd" id="9_qh5pw"]
+[ext_resource type="PackedScene" uid="uid://bftfha8mle0c1" path="res://elements/enemy/bosses/goleiro/bossGoleiro/mesh/mesh_bossGoleiro_head.tscn" id="10_6jv1d"]
+[ext_resource type="PackedScene" uid="uid://cmwu7jd3gixin" path="res://modules/text_flow/scenes/text_flow_bubble.tscn" id="10_kf1ap"]
+[ext_resource type="PackedScene" uid="uid://bc3i2ac8kfavt" path="res://elements/enemy/bosses/magenta_thunder_line.tscn" id="11_wrnvo"]
+[ext_resource type="PackedScene" uid="uid://joifbmlexk6j" path="res://elements/enemy/bosses/high_contrast_boss_sillouette.tscn" id="12_oc70h"]
+[ext_resource type="Script" uid="uid://chgb7ipc24h7w" path="res://elements/enemy/bosses/goleiro/boss_goleiro_score.gd" id="13_im4lp"]
+[ext_resource type="Script" uid="uid://cnbn1i46oihe3" path="res://systems/graphics/scaled_mesh_line.gd" id="13_kfoys"]
+[ext_resource type="PackedScene" uid="uid://bkbiirfemow2" path="res://elements/enemy/bosses/goleiro/boss_goleiro_hand_l.tscn" id="15_d2x3i"]
+[ext_resource type="PackedScene" uid="uid://3ace8ui2qdtm" path="res://elements/enemy/bosses/goleiro/boss_goleiro_hand_r.tscn" id="16_wn502"]
+[ext_resource type="WwiseEvent" uid="uid://c3sxy6ua6dvtu" path="res://Wwise/resources/Event/{1F79E59F-3649-40CB-837A-10FF460FE8BB}.tres" id="18_u1fd4"]
+[ext_resource type="WwiseEvent" uid="uid://cnsyhact10gni" path="res://Wwise/resources/Event/{B8D8D3D6-9AE9-4C53-A468-447BA93CDCF2}.tres" id="19_3qo3g"]
+[ext_resource type="WwiseEvent" uid="uid://dbkknvpyd341y" path="res://Wwise/resources/Event/{C972BFCE-701A-4801-98C0-EA892B11331B}.tres" id="20_oc70h"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="22_3qo3g"]
+
+[sub_resource type="Resource" id="Resource_fegsc"]
+script = ExtResource("3_n1ypp")
+value = 0.5
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_j0lnf"]
+noise_type = 0
+seed = 1
+frequency = 0.0059
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wbm3b"]
+width = 64
+height = 64
+generate_mipmaps = false
+normalize = false
+noise = SubResource("FastNoiseLite_j0lnf")
+
+[sub_resource type="GDScript" id="GDScript_t4afi"]
+script/source = "extends Node3D
+
+@export var target:Node3D;
+@export var max_angle:float = 45;
+@export var angle_velocity:float = 4;
+
+var angle_now:float;
+var max_angle_rad:float;
+var velocity_rad:float;
+
+var locked:bool;
+
+func set_inactive(inactive:bool):
+	self.locked = inactive
+
+func set_target(t:Node3D):
+	target = t;
+
+func _ready():
+	max_angle_rad = deg_to_rad(max_angle);
+	velocity_rad = deg_to_rad(angle_velocity);
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if locked:
+		return;
+	
+	var angle:float = 0;
+	if target:
+		var dist:Vector3 = target.global_position - global_position;
+		angle = Vector3.BACK.signed_angle_to(dist, Vector3.UP);
+		angle = clampf(angle, -max_angle_rad, max_angle_rad);
+	else:
+		angle = 0.0;
+		
+	angle_now = move_toward(angle_now, angle, velocity_rad * delta);		
+	
+	
+	basis = Basis(Quaternion(Vector3.UP, angle_now))
+	
+"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bv06s"]
+radius = 2.5
+
+[sub_resource type="Animation" id="Animation_vr2xy"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_445vo"]
+resource_name = "hit_head"
+
+[sub_resource type="Animation" id="Animation_fngpq"]
+resource_name = "idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5igyd"]
+_data = {
+&"RESET": SubResource("Animation_vr2xy"),
+&"hit_head": SubResource("Animation_445vo"),
+&"idle": SubResource("Animation_fngpq")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yuyh1"]
+radius = 3.5
+
+[node name="BossGoleiro" type="Node3D" node_paths=PackedStringArray("hand_shoot_origin_l", "hand_shoot_origin_r", "flow")]
+script = ExtResource("1_0w534")
+velocity_add = 4.0
+limit_distance = 5.0
+ball_attack_velocity = 15.0
+ball_attack_cooldown = 3.25
+velocity_to_lock = 10.0
+lock_time = 0.75
+extra_lock_time_per_extra_velocity = 0.125
+vulnerable_color = Color(0.517647, 0.415686, 0.466667, 1)
+normal_color = Color(0.545098, 0.623529, 0.729412, 1)
+hand_shoot_origin_l = NodePath("GoleiroBody/Node3DShaker/BossGraphic/Boss Hand Aim/bossGoleiro_hand_L/ShotOrigin_L")
+hand_shoot_origin_r = NodePath("GoleiroBody/Node3DShaker/BossGraphic/Boss Hand Aim/bossGoleiro_hand_R/ShotOrigin_R")
+flow = NodePath("GoleiroBody/Node3DShaker/BossGraphic/JuMagenta/TextFlowPlayerBubbles")
+
+[node name="GoleiroBody" type="CharacterBody3D" parent="." groups=["enemy_position"]]
+collision_layer = 4
+collision_mask = 136
+
+[node name="BossHealth" type="Node" parent="GoleiroBody" node_paths=PackedStringArray("feedback")]
+unique_name_in_owner = true
+script = ExtResource("2_ayv3c")
+max_amount = 280.0
+damage_reduction = 0.025
+frames_until_send_death_signal = 1
+feedback = [NodePath("../Node3DShaker/BossGraphic")]
+frame_freeze_on_death = SubResource("Resource_fegsc")
+
+[node name="ScoreGiver" type="Node" parent="GoleiroBody/BossHealth" node_paths=PackedStringArray("health", "point_position")]
+script = ExtResource("4_u1fd4")
+info = ExtResource("5_3qo3g")
+health = NodePath("..")
+point_position = NodePath("../../Score Target")
+metadata/_custom_type_script = "uid://dj2x7ekyg32b7"
+
+[node name="ShootSpawn" type="Node3D" parent="GoleiroBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="Center" type="Marker3D" parent="GoleiroBody/ShootSpawn"]
+
+[node name="R1" type="Marker3D" parent="GoleiroBody/ShootSpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, -0.5)
+
+[node name="L1" type="Marker3D" parent="GoleiroBody/ShootSpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, -0.5)
+
+[node name="R2" type="Marker3D" parent="GoleiroBody/ShootSpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -1)
+
+[node name="L2" type="Marker3D" parent="GoleiroBody/ShootSpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -1)
+
+[node name="Node3DShaker" type="Node3D" parent="GoleiroBody"]
+script = ExtResource("4_xrumd")
+noise_texture = SubResource("NoiseTexture2D_wbm3b")
+property_vector3 = &"rotation"
+extra_properties = Array[StringName]([&"position"])
+shake_amplitude_ratio = 0.0
+shake_amplitude = 0.3
+
+[node name="BossGraphic" type="Node3D" parent="GoleiroBody/Node3DShaker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+
+[node name="boss03_popo" parent="GoleiroBody/Node3DShaker/BossGraphic" instance=ExtResource("5_c2g37")]
+unique_name_in_owner = true
+
+[node name="JuMagenta" type="AnimatedSprite3D" parent="GoleiroBody/Node3DShaker/BossGraphic"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0.75)
+centered = false
+offset = Vector2(-145, 0)
+pixel_size = 0.0078
+billboard = 1
+no_depth_test = true
+sprite_frames = ExtResource("6_spekx")
+animation = &"stuck"
+script = ExtResource("7_wloxv")
+
+[node name="Bubble Pos" type="Marker3D" parent="GoleiroBody/Node3DShaker/BossGraphic/JuMagenta"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="TextFlowPlayerBubbles" type="Control" parent="GoleiroBody/Node3DShaker/BossGraphic/JuMagenta"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("9_qh5pw")
+_basic_bubble_scene = ExtResource("10_kf1ap")
+
+[node name="HighContrast_BossSillouette" parent="GoleiroBody/Node3DShaker/BossGraphic/JuMagenta" node_paths=PackedStringArray("sprite") instance=ExtResource("12_oc70h")]
+sprite = NodePath("..")
+
+[node name="boss03_platform" parent="GoleiroBody/Node3DShaker/BossGraphic" instance=ExtResource("9_kixpg")]
+
+[node name="boss03_head" parent="GoleiroBody/Node3DShaker/BossGraphic" instance=ExtResource("10_6jv1d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.18157, 0)
+
+[node name="BossHeadPosition" type="Marker3D" parent="GoleiroBody/Node3DShaker/BossGraphic/boss03_head"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.25, -0.75)
+
+[node name="PlacarScore" type="Node3D" parent="GoleiroBody/Node3DShaker/BossGraphic/boss03_head"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.982916, 0.184054, 0, -0.184054, 0.982916, 0, 4.25682, -0.182262)
+script = ExtResource("13_im4lp")
+
+[node name="Label3D" type="Label3D" parent="GoleiroBody/Node3DShaker/BossGraphic/boss03_head/PlacarScore"]
+shaded = true
+modulate = Color(0.701961, 0.701961, 0.701961, 0.784314)
+outline_modulate = Color(1, 0, 1, 0.862745)
+text = "3 | 3
+"
+font_size = 192
+
+[node name="Mouth" type="Label3D" parent="GoleiroBody/Node3DShaker/BossGraphic/boss03_head/PlacarScore"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.840492, 0)
+shaded = true
+modulate = Color(0.701961, 0.701961, 0.701961, 0.784314)
+outline_modulate = Color(1, 0, 1, 0.862745)
+text = "C"
+font_size = 192
+
+[node name="MagentaThunderLine_L" parent="GoleiroBody/Node3DShaker/BossGraphic" instance=ExtResource("11_wrnvo")]
+skeleton = NodePath("")
+
+[node name="ScaledMeshLine" type="Node" parent="GoleiroBody/Node3DShaker/BossGraphic/MagentaThunderLine_L" node_paths=PackedStringArray("line_to_scale", "target_origin", "target_destination")]
+script = ExtResource("13_kfoys")
+line_to_scale = NodePath("..")
+target_origin = NodePath("../../boss03_platform/platform/L")
+target_destination = NodePath("../../Boss Hand Aim/bossGoleiro_hand_L/Graphic/bossGoleiro_hand_L")
+
+[node name="MagentaThunderLine_R" parent="GoleiroBody/Node3DShaker/BossGraphic" instance=ExtResource("11_wrnvo")]
+skeleton = NodePath("")
+
+[node name="ScaledMeshLine" type="Node" parent="GoleiroBody/Node3DShaker/BossGraphic/MagentaThunderLine_R" node_paths=PackedStringArray("line_to_scale", "target_origin", "target_destination")]
+script = ExtResource("13_kfoys")
+line_to_scale = NodePath("..")
+target_origin = NodePath("../../boss03_platform/platform/R")
+target_destination = NodePath("../../Boss Hand Aim/bossGoleiro_hand_R/Graphic/bossGoleiro_hand_R")
+
+[node name="Boss Hand Aim" type="Node3D" parent="GoleiroBody/Node3DShaker/BossGraphic"]
+script = SubResource("GDScript_t4afi")
+max_angle = 30.0
+angle_velocity = 85.0
+
+[node name="bossGoleiro_hand_L" parent="GoleiroBody/Node3DShaker/BossGraphic/Boss Hand Aim" instance=ExtResource("15_d2x3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.65778, 2.80865, 0)
+radius = 1.0
+
+[node name="Health" parent="GoleiroBody/Node3DShaker/BossGraphic/Boss Hand Aim/bossGoleiro_hand_L/Area3D" index="0"]
+max_amount = 1.0
+
+[node name="ShotOrigin_L" type="Marker3D" parent="GoleiroBody/Node3DShaker/BossGraphic/Boss Hand Aim/bossGoleiro_hand_L"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.112284, 0.924947, 0.73233)
+
+[node name="bossGoleiro_hand_R" parent="GoleiroBody/Node3DShaker/BossGraphic/Boss Hand Aim" instance=ExtResource("16_wn502")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.658, 2.809, 0)
+radius = 1.0
+
+[node name="Health" parent="GoleiroBody/Node3DShaker/BossGraphic/Boss Hand Aim/bossGoleiro_hand_R/Area3D" index="0"]
+max_amount = 1.0
+
+[node name="ShotOrigin_R" type="Marker3D" parent="GoleiroBody/Node3DShaker/BossGraphic/Boss Hand Aim/bossGoleiro_hand_R"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.112, 0.925, 0.732)
+
+[node name="IdleR" type="Node3D" parent="GoleiroBody/Node3DShaker/BossGraphic/Boss Hand Aim"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.658, 2.809, 0)
+
+[node name="IdleL" type="Node3D" parent="GoleiroBody/Node3DShaker/BossGraphic/Boss Hand Aim"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.65778, 2.80865, 0)
+
+[node name="Stuck Pose" type="Node3D" parent="GoleiroBody/Node3DShaker/BossGraphic"]
+
+[node name="PoseR" type="Node3D" parent="GoleiroBody/Node3DShaker/BossGraphic/Stuck Pose"]
+transform = Transform3D(0.854296, 0.519787, 0, -0.519787, 0.854296, 0, 0, 0, 1, -0.537209, 4.08277, 1.74744)
+
+[node name="PoseL" type="Node3D" parent="GoleiroBody/Node3DShaker/BossGraphic/Stuck Pose"]
+transform = Transform3D(0.454659, 0.890666, 0, -0.890666, 0.454659, 0, 0, 0, 1, 3.11528, 1.87661, -2.06683)
+
+[node name="SFX" type="Node3D" parent="GoleiroBody/Node3DShaker/BossGraphic"]
+
+[node name="DeathSFX" type="AkEvent3D" parent="GoleiroBody/Node3DShaker/BossGraphic/SFX"]
+event = ExtResource("18_u1fd4")
+
+[node name="GoalPlayerSFX" type="AkEvent3D" parent="GoleiroBody/Node3DShaker/BossGraphic/SFX"]
+event = ExtResource("19_3qo3g")
+
+[node name="GoalAgainstSFX" type="AkEvent3D" parent="GoleiroBody/Node3DShaker/BossGraphic/SFX"]
+event = ExtResource("20_oc70h")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="GoleiroBody/Node3DShaker/BossGraphic"]
+script = ExtResource("22_3qo3g")
+high_contrast_group = &"enemy"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="SpawnArea" type="VisibleOnScreenNotifier3D" parent="GoleiroBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33948, 0)
+aabb = AABB(-2.00001, -2, -1, 4, 4, 2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoleiroBody"]
+shape = SubResource("SphereShape3D_bv06s")
+
+[node name="RightShotOrigin" type="Marker3D" parent="GoleiroBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 2)
+
+[node name="LeftShotOrigin" type="Marker3D" parent="GoleiroBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
+
+[node name="Score Target" type="Node3D" parent="GoleiroBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 1.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5igyd")
+}
+autoplay = "RESET"
+
+[node name="BallSensor" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BallSensor"]
+shape = SubResource("SphereShape3D_yuyh1")
+
+[connection signal="change_locked" from="." to="GoleiroBody/Node3DShaker/BossGraphic/Boss Hand Aim" method="set_inactive"]
+[connection signal="body_entered" from="BallSensor" to="." method="_on_ball_sensor_body_entered"]
+[connection signal="body_exited" from="BallSensor" to="." method="_on_ball_sensor_body_exited"]
+
+[editable path="GoleiroBody/Node3DShaker/BossGraphic/boss03_popo"]
+[editable path="GoleiroBody/Node3DShaker/BossGraphic/boss03_platform"]
+[editable path="GoleiroBody/Node3DShaker/BossGraphic/Boss Hand Aim/bossGoleiro_hand_L"]
+[editable path="GoleiroBody/Node3DShaker/BossGraphic/Boss Hand Aim/bossGoleiro_hand_R"]

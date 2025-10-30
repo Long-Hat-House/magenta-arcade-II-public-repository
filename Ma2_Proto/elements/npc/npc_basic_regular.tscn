@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmekr0guqqnyd"]
+
+[ext_resource type="PackedScene" uid="uid://bgmbotnii0mn5" path="res://elements/npc/npc_base.tscn" id="1_irihs"]
+[ext_resource type="PackedScene" uid="uid://busv6sx15qccg" path="res://elements/npc/npc_graphic_regular.tscn" id="2_bwhnk"]
+
+[sub_resource type="GDScript" id="GDScript_7dl47"]
+resource_name = "Randomize NPC Behaviour"
+script/source = "extends Node
+
+@export var randomize_based_on_player_hp:bool = true;
+@export var type_on_ready:GraphicNPC_RegularRandomizer.Type;
+
+@onready var randomize_sprite_frames:GraphicNPC_RegularRandomizer = $\"../NPC_Graphic_Regular/RandomizeSpriteFrames\"
+
+
+func _ready() -> void:
+	if randomize_based_on_player_hp:
+		match NPC.GetNPCTypeOnPlayerHP():
+			NPC.Kind.Believer:
+				randomize_sprite_frames.make_believer();
+			NPC.Kind.Follower:
+				randomize_sprite_frames.make_follower();
+			NPC.Kind.BelieverFanatic:
+				randomize_sprite_frames.make_fanatic();
+
+	match type_on_ready:
+		GraphicNPC_RegularRandomizer.Type.Believer:
+			randomize_sprite_frames.make_believer();
+		GraphicNPC_RegularRandomizer.Type.Magenta:
+			randomize_sprite_frames.make_follower();
+		GraphicNPC_RegularRandomizer.Type.BelieverFanatic:
+			randomize_sprite_frames.make_fanatic();
+"
+
+[node name="Npc_Basic" node_paths=PackedStringArray("graphic") instance=ExtResource("1_irihs")]
+graphic = NodePath("NPC_Graphic_Regular")
+
+[node name="Health" parent="HitArea" index="0"]
+max_amount = 0.1
+
+[node name="NPC_Graphic_Regular" parent="." index="2" instance=ExtResource("2_bwhnk")]
+
+[node name="Randomize NPC" type="Node" parent="." index="3"]
+script = SubResource("GDScript_7dl47")
+
+[editable path="NPC_Graphic_Regular"]

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LevelSet" load_steps=5 format=3 uid="uid://ct5v8ynmxkodd"]
+
+[ext_resource type="PackedScene" uid="uid://b0k67wa8xc7ku" path="res://elements/levels/lvl_0/lvl_0_sub_av_brasil/lvl_0_sub_av_brasil.tscn" id="1_qkrpk"]
+[ext_resource type="Script" path="res://systems/level/level_set.gd" id="2_rp107"]
+[ext_resource type="PackedScene" uid="uid://b7pps5f3esmok" path="res://elements/levels/lvl_0/lvl_0_sub_av_brasil/lvl_0_sub_av_brasil_waves_before.tscn" id="3_sf7p5"]
+[ext_resource type="PackedScene" uid="uid://c3nk8msqoufne" path="res://elements/levels/lvl_0/lvl_0_sub_av_brasil/lvl_0_sub_av_brasil_challenge_statue.tscn" id="4_vouwc"]
+
+[resource]
+script = ExtResource("2_rp107")
+open = false
+parent_level = ExtResource("1_qkrpk")
+sub_levels = Array[Resource]([ExtResource("3_sf7p5"), ExtResource("4_vouwc")])

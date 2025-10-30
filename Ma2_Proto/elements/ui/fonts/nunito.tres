@@ -1,0 +1,8 @@
+[gd_resource type="FontVariation" load_steps=3 format=3 uid="uid://baiccpodopoln"]
+
+[ext_resource type="FontFile" uid="uid://dasmvlnfe6mqw" path="res://elements/ui/fonts/Nunito-Black.ttf" id="1_bi7dk"]
+[ext_resource type="FontVariation" uid="uid://dcvesr7vb4a6o" path="res://elements/ui/fonts/NotoColorEmoji.tres" id="2_swhr4"]
+
+[resource]
+fallbacks = Array[Font]([ExtResource("2_swhr4")])
+base_font = ExtResource("1_bi7dk")

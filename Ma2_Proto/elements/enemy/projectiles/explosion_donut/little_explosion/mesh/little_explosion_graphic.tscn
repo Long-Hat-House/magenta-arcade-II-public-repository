@@ -1,0 +1,89 @@
+[gd_scene load_steps=5 format=3 uid="uid://5lxxo38k42gn"]
+
+[ext_resource type="PackedScene" uid="uid://ca5r8rkuqdbgh" path="res://elements/enemy/projectiles/explosion_donut/little_explosion/mesh/little_explosion.tscn" id="1_yhxgp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iriyg"]
+resource_local_to_scene = true
+render_priority = 10
+depth_draw_mode = 2
+no_depth_test = true
+disable_ambient_light = true
+disable_fog = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.0
+rim = 0.5
+rim_tint = 1.0
+clearcoat_roughness = 1.0
+anisotropy = 1.0
+backlight = Color(0.901961, 0, 0.494118, 1)
+disable_receive_shadows = true
+grow_amount = -0.252
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80kh8"]
+resource_local_to_scene = true
+render_priority = 10
+transparency = 1
+depth_draw_mode = 2
+no_depth_test = true
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0.901961, 0, 0.494118, 1)
+emission_enabled = true
+emission = Color(0.991754, 0.915888, 0.957449, 1)
+emission_energy_multiplier = 5.0
+rim = 0.5
+rim_tint = 1.0
+clearcoat_roughness = 1.0
+anisotropy = 1.0
+backlight = Color(0.901961, 0, 0.494118, 1)
+disable_receive_shadows = true
+grow_amount = -0.252
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_31htq"]
+resource_local_to_scene = true
+render_priority = 10
+disable_ambient_light = true
+disable_fog = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.0
+rim = 0.5
+rim_tint = 1.0
+clearcoat_roughness = 1.0
+anisotropy = 1.0
+backlight = Color(0.901961, 0, 0.494118, 1)
+disable_receive_shadows = true
+grow_amount = -0.252
+
+[node name="explosion2" instance=ExtResource("1_yhxgp")]
+
+[node name="esfera" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_iriyg")
+
+[node name="torus2" parent="." index="2"]
+material_override = SubResource("StandardMaterial3D_iriyg")
+
+[node name="esfera" parent="Esferas" index="0"]
+material_override = SubResource("StandardMaterial3D_80kh8")
+
+[node name="esfera2" parent="Esferas" index="1"]
+material_override = SubResource("StandardMaterial3D_80kh8")
+
+[node name="esfera3" parent="Esferas" index="2"]
+material_override = SubResource("StandardMaterial3D_80kh8")
+
+[node name="esfera4" parent="Esferas" index="3"]
+material_override = SubResource("StandardMaterial3D_80kh8")
+
+[node name="esfera5" parent="Esferas" index="4"]
+material_override = SubResource("StandardMaterial3D_80kh8")
+
+[node name="esfera6" parent="Esferas" index="5"]
+material_override = SubResource("StandardMaterial3D_80kh8")
+
+[node name="esfera2" parent="." index="4"]
+material_override = SubResource("StandardMaterial3D_31htq")
+
+[node name="esfera3" parent="." index="5"]
+material_override = SubResource("StandardMaterial3D_31htq")

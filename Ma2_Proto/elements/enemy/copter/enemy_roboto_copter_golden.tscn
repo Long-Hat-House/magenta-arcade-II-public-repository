@@ -1,0 +1,74 @@
+[gd_scene load_steps=10 format=3 uid="uid://4wxgfh50q8et"]
+
+[ext_resource type="PackedScene" uid="uid://bsy18pj7t3kwo" path="res://elements/enemy/copter/enemy_roboto_copter.tscn" id="1_07m15"]
+[ext_resource type="Material" uid="uid://b08rayv4i017x" path="res://elements/enemy/copter/material/M_robotocopter_golden.tres" id="2_ef7o1"]
+[ext_resource type="Resource" uid="uid://hhvjiyk2qsw" path="res://elements/score/score_info_copter_golden.tres" id="2_pviut"]
+[ext_resource type="Texture2D" uid="uid://cm5belis6bq0x" path="res://elements/icons/icon_star.png" id="3_c8qkc"]
+
+[sub_resource type="Curve" id="Curve_s3b73"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0221239, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.18502, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_72quh"]
+curve = SubResource("Curve_s3b73")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_aey1k"]
+lifetime_randomness = 0.75
+emission_shape_scale = Vector3(0.5, 1, 0.5)
+emission_shape = 1
+emission_sphere_radius = 1.0
+inherit_velocity_ratio = 0.2
+direction = Vector3(0, 0, 1)
+gravity = Vector3(0, 0.2, 0)
+linear_accel_min = -0.100002
+linear_accel_max = 0.0999978
+radial_accel_min = -0.100002
+radial_accel_max = 0.0999978
+tangential_accel_min = -0.100002
+tangential_accel_max = 0.0999978
+scale_curve = SubResource("CurveTexture_72quh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_getp3"]
+transparency = 1
+blend_mode = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 1)
+albedo_texture = ExtResource("3_c8qkc")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_88hob"]
+material = SubResource("StandardMaterial3D_getp3")
+size = Vector2(0.3, 0.3)
+orientation = 2
+
+[node name="enemy_roboto_copter_golden" instance=ExtResource("1_07m15")]
+
+[node name="Robotocopter_body" parent="Body/Render/robotocopter_graphic/Rig_Robotocopter/Skeleton3D" index="0"]
+material_override = ExtResource("2_ef7o1")
+
+[node name="Robotocopter_Eye" parent="Body/Render/robotocopter_graphic/Rig_Robotocopter/Skeleton3D" index="1"]
+transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, 0, -0.117584, -0.0963516)
+
+[node name="Robotocopter_Helix" parent="Body/Render/robotocopter_graphic/Rig_Robotocopter/Skeleton3D" index="2"]
+material_override = ExtResource("2_ef7o1")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Body/Render/robotocopter_graphic" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+amount = 16
+lifetime = 3.0
+interp_to_end = 0.01
+preprocess = 0.4
+explosiveness = 0.2
+process_material = SubResource("ParticleProcessMaterial_aey1k")
+draw_pass_1 = SubResource("PlaneMesh_88hob")
+
+[node name="Health" parent="Body" index="3"]
+max_amount = 3.5
+
+[node name="ScoreGiver" parent="Body" index="4" node_paths=PackedStringArray("point_position")]
+info = ExtResource("2_pviut")
+point_position = NodePath("..")
+
+[editable path="Body/Render/robotocopter_graphic"]

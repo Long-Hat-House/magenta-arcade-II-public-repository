@@ -1,0 +1,168 @@
+[gd_scene load_steps=17 format=3 uid="uid://t7wocwarj2c3"]
+
+[ext_resource type="Script" uid="uid://d28bm6j0uk8s8" path="res://elements/enemy/pizza/ai_pizza_roboto.gd" id="1_f7aol"]
+[ext_resource type="PackedScene" uid="uid://ywymskkj85vs" path="res://elements/vfx/vfx_explosion/vfx_explosion.tscn" id="2_nlk5p"]
+[ext_resource type="PackedScene" uid="uid://bsrp6kl536a5i" path="res://elements/enemy/pizza/Mesh/pizza_roboto.tscn" id="2_o6ika"]
+[ext_resource type="Script" uid="uid://dj2x7ekyg32b7" path="res://systems/score/score_giver.gd" id="2_w2hh0"]
+[ext_resource type="Script" uid="uid://daxqix7g0q5bj" path="res://systems/pooling/poolable.gd" id="3_p0036"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="3_skn80"]
+[ext_resource type="PackedScene" uid="uid://dofs6j5418rhr" path="res://elements/attack_previews/out_of_screen_warning_origin.tscn" id="4_hnvid"]
+[ext_resource type="Resource" uid="uid://bd6x1krvri6b7" path="res://systems/time/frame_freeze_minimal.tres" id="5_q6y0t"]
+[ext_resource type="Resource" uid="uid://xrvilm6dtlaq" path="res://elements/score/score_info_pizza.tres" id="8_k0uhf"]
+[ext_resource type="PackedScene" uid="uid://bprokuvnxxv37" path="res://elements/enemy/eliminate_if_outside_screen.tscn" id="10_h7jwq"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jj16y"]
+height = 1.0
+
+[sub_resource type="Animation" id="Animation_5rm7k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Render:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.2, 1.2, 1.2)]
+}
+
+[sub_resource type="Animation" id="Animation_q6ymc"]
+resource_name = "damaged"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Render:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.2, 1.2, 1.2), Vector3(1, 1, 1)]
+}
+tracks/1/type = "scale_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/Render")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array()
+
+[sub_resource type="Animation" id="Animation_i5e1k"]
+resource_name = "idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Render:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pyqkc"]
+_data = {
+&"RESET": SubResource("Animation_5rm7k"),
+&"damaged": SubResource("Animation_q6ymc"),
+&"idle": SubResource("Animation_i5e1k")
+}
+
+[sub_resource type="GDScript" id="GDScript_mc2ho"]
+script/source = "extends Node
+
+@export var shot_animation_name:StringName;
+@export var animation_player_proxy:AnimationPlayerProxy;
+@export var animation_speed:float = 1.2;
+@export var animations_prohibited:Array[StringName]
+
+func _on_cannon_invisible_shot() -> void:
+	if animation_player_proxy and not shot_animation_name.is_empty():
+		var current:StringName = animation_player_proxy.current_animation;
+		if animations_prohibited.any(func(anim:StringName): return current.contains(anim)):
+			return;
+		animation_player_proxy.play(shot_animation_name, -1, animation_speed);
+		animation_player_proxy.animation_finished.connect(func(anim: StringName):
+			if anim == shot_animation_name:
+				animation_player_proxy.play(current);
+			, CONNECT_ONE_SHOT);
+"
+
+[node name="Enemy_PizzaRoboto" type="Node3D" node_paths=PackedStringArray("simpleAnimation")]
+script = ExtResource("1_f7aol")
+simpleAnimation = NodePath("Body/Render/Pizza_Roboto")
+walkAnimation = "PIZZA_SHOOTER_WALK"
+idleAnimation = "PIZZA_SHOOTER_IDLE"
+vfxOnVanish = ExtResource("2_nlk5p")
+distanceMax = 6.0
+damage_on_collision = 0.5
+kill_self_on_collision = true
+await_to_kill_self_on_collision = 0.04
+walkVelocity = Vector3(0, 0, 3)
+accelerationBegin = 0.0
+accelerationDuration = 0.0
+
+[node name="Poolable" type="Node" parent="."]
+script = ExtResource("3_p0036")
+
+[node name="Body" type="CharacterBody3D" parent="." groups=["enemy_position"]]
+collision_layer = 4
+collision_mask = 130
+axis_lock_linear_y = true
+
+[node name="OutOfScreenWarningOrigin" parent="Body" instance=ExtResource("4_hnvid")]
+
+[node name="Health" type="Node" parent="Body" node_paths=PackedStringArray("feedback") groups=["enemy_healths"]]
+script = ExtResource("3_skn80")
+max_amount = 0.4
+feedback = [NodePath("../Render/Pizza_Roboto")]
+feedback_scale_multiplier = Vector3(0.4, -0.2, 0.4)
+frame_freeze_on_death = ExtResource("5_q6y0t")
+feedback_deepness = 3
+
+[node name="ScoreGiver" type="Node" parent="Body" node_paths=PackedStringArray("health")]
+script = ExtResource("2_w2hh0")
+info = ExtResource("8_k0uhf")
+health = NodePath("../Health")
+
+[node name="Render" type="Node3D" parent="Body"]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+
+[node name="Pizza_Roboto" parent="Body/Render" instance=ExtResource("2_o6ika")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_jj16y")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Body"]
+aabb = AABB(-0.625, -0.625, -0.625, 1.25, 1.25, 1.25)
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="Body"]
+aabb = AABB(-0.75, -1, -0.75, 1.5, 2, 1.5)
+
+[node name="AI" type="Node" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AI"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_pyqkc")
+}
+autoplay = "idle"
+
+[node name="Shoot Animation" type="Node" parent="AI"]
+script = SubResource("GDScript_mc2ho")
+shot_animation_name = &"PIZZA_SHOOTER"
+animations_prohibited = Array[StringName]([&"WALK"])
+
+[node name="Eliminate if Outside Screen" parent="AI" instance=ExtResource("10_h7jwq")]
+
+[connection signal="dead" from="Body/Health" to="." method="_on_health_dead"]
+[connection signal="screen_entered" from="Body/VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]
+[connection signal="screen_exited" from="Body/VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

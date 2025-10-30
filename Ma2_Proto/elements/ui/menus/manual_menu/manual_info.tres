@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CreditsInfo" load_steps=11 format=3 uid="uid://biero83xwfi84"]
+
+[ext_resource type="Script" uid="uid://cm1ao1cp6e5h0" path="res://elements/ui/menus/credits_menu/scripts/credits_info.gd" id="1_nyax1"]
+[ext_resource type="Script" uid="uid://brm0i2bj1yuok" path="res://elements/ui/menus/credits_menu/scripts/credits_section_info.gd" id="2_lumh4"]
+[ext_resource type="Resource" uid="uid://gvol4l2a3625" path="res://elements/ui/menus/manual_menu/manual_s_weapons_hold.tres" id="3_nx047"]
+[ext_resource type="Resource" uid="uid://bhkt0njdugd1k" path="res://elements/ui/menus/manual_menu/manual_s_weapons_tap.tres" id="4_v58x4"]
+[ext_resource type="Resource" uid="uid://dit4qhh5ky2wu" path="res://elements/ui/menus/manual_menu/manual_s_upgrades.tres" id="5_22eg4"]
+[ext_resource type="Resource" uid="uid://ox184qg1hqfw" path="res://elements/ui/menus/manual_menu/manual_s_powerups.tres" id="5_866ay"]
+[ext_resource type="Resource" uid="uid://dvvbm4achin40" path="res://elements/ui/menus/manual_menu/manual_s_upgrades_hold.tres" id="6_bbhuu"]
+[ext_resource type="Resource" uid="uid://bjgodsimywas4" path="res://elements/ui/menus/manual_menu/manual_s_upgrades_tap.tres" id="7_87edl"]
+[ext_resource type="Resource" uid="uid://bkmykqwlkugba" path="res://elements/ui/menus/manual_menu/manual_s_upgrades_health.tres" id="8_nx047"]
+[ext_resource type="Resource" uid="uid://d02nvranuqlfy" path="res://elements/ui/menus/manual_menu/manual_s_sacrifices.tres" id="10_1e326"]
+
+[resource]
+script = ExtResource("1_nyax1")
+reimport = false
+sections_list = Array[ExtResource("2_lumh4")]([ExtResource("3_nx047"), ExtResource("4_v58x4"), ExtResource("5_866ay"), ExtResource("5_22eg4"), ExtResource("6_bbhuu"), ExtResource("7_87edl"), ExtResource("8_nx047"), ExtResource("10_1e326")])
+metadata/_custom_type_script = "uid://cm1ao1cp6e5h0"

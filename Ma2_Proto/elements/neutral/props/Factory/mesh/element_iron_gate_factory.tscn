@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4ho6jieoklxe"]
+
+[ext_resource type="PackedScene" uid="uid://7r5u32spjkj7" path="res://elements/neutral/props/Factory/mesh/iron_gate_factory.glb" id="1_ofjrp"]
+[ext_resource type="Material" uid="uid://h22chf1td40x" path="res://elements/neutral/props/Factory/material/m_iron_gate_factory.tres" id="2_ei4aw"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="3_knvbx"]
+
+[node name="iron_gate_factory" instance=ExtResource("1_ofjrp")]
+
+[node name="cadeado" parent="." index="0"]
+material_override = ExtResource("2_ei4aw")
+
+[node name="iron_gate_L" parent="." index="1"]
+material_override = ExtResource("2_ei4aw")
+
+[node name="iron_gate_R" parent="." index="2"]
+material_override = ExtResource("2_ei4aw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="." index="4"]
+script = ExtResource("3_knvbx")
+high_contrast_group = &"neutral"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"

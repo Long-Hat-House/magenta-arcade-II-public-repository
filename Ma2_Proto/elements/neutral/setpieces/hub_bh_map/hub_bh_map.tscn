@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://86n3uyttowqm"]
+
+[ext_resource type="Texture2D" uid="uid://dmdcmwygywfob" path="res://elements/neutral/setpieces/hub_bh_map/t_hub_bh_map.png" id="1_6ddjd"]
+[ext_resource type="Texture2D" uid="uid://bwn1fcd162i61" path="res://elements/neutral/setpieces/hub_bh_map/paper_normal_map.tres" id="2_xa0bn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wgmqt"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+specular_mode = 2
+albedo_texture = ExtResource("1_6ddjd")
+normal_enabled = true
+normal_texture = ExtResource("2_xa0bn")
+
+[sub_resource type="QuadMesh" id="QuadMesh_0a2j6"]
+size = Vector2(8, 8)
+orientation = 1
+
+[node name="HubBhMap" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_wgmqt")
+mesh = SubResource("QuadMesh_0a2j6")

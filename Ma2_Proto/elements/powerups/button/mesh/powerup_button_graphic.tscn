@@ -1,0 +1,119 @@
+[gd_scene load_steps=13 format=3 uid="uid://ij8h5j2w4sp2"]
+
+[ext_resource type="Script" uid="uid://u1qryn801yys" path="res://elements/powerups/button/mesh/powerup_button_graphic.gd" id="2_4rhux"]
+[ext_resource type="PackedScene" uid="uid://bvhxeq8y0rqon" path="res://elements/powerups/button/mesh/button_base.tscn" id="3_aac4l"]
+[ext_resource type="PackedScene" uid="uid://li6e0bwwyi0c" path="res://elements/powerups/button/mesh/button_01.tscn" id="4_qo6aa"]
+[ext_resource type="PackedScene" uid="uid://d16n54s4dn4lt" path="res://elements/powerups/button/mesh/button_02.tscn" id="5_fuwqx"]
+[ext_resource type="PackedScene" uid="uid://ofvay0s4c05y" path="res://elements/powerups/button/mesh/button_03.tscn" id="6_0ovf8"]
+[ext_resource type="Texture2D" uid="uid://b3s6bubwjtovt" path="res://elements/icons/icon_hold_yellow.png" id="6_p3jwv"]
+[ext_resource type="Material" uid="uid://cr0etw40dbju3" path="res://elements/neutral/props/praca_bandeira/material/M_floor_brown.tres" id="7_efhbm"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="7_vwkhj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwkhj"]
+resource_local_to_scene = true
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("6_p3jwv")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_8j8pb"]
+size = Vector2(0.9, 0.9)
+orientation = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_wjiwk"]
+size = Vector3(1.65, 0.1, 0.35)
+
+[sub_resource type="SphereMesh" id="SphereMesh_3rrjv"]
+radius = 0.1
+height = 0.2
+radial_segments = 6
+rings = 2
+
+[node name="button_graphic" type="Node3D" node_paths=PackedStringArray("_hold_mesh_container", "_tap_mesh_container", "_other_mesh_container", "_label", "_button_parent", "_icon_sprite", "_icon_mesh")]
+script = ExtResource("2_4rhux")
+_hold_mesh_container = NodePath("button_parent/button03")
+_tap_mesh_container = NodePath("button_parent/button02")
+_other_mesh_container = NodePath("button_parent/button01")
+_label = NodePath("button_parent/full_label")
+_button_parent = NodePath("button_parent")
+_icon_sprite = NodePath("button_parent/Icon Sprite3D")
+_icon_mesh = NodePath("button_parent/Icon Mesh")
+
+[node name="button_base" parent="." instance=ExtResource("3_aac4l")]
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="button_base" node_paths=PackedStringArray("affected_material_overrides")]
+script = ExtResource("7_vwkhj")
+high_contrast_group = &"interactable"
+affected_material_overrides = [NodePath("../../button_parent/Icon Mesh")]
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="button_parent" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.157007, 0)
+
+[node name="button01" parent="button_parent" instance=ExtResource("4_qo6aa")]
+
+[node name="button02" parent="button_parent" instance=ExtResource("5_fuwqx")]
+
+[node name="button03" parent="button_parent" instance=ExtResource("6_0ovf8")]
+
+[node name="Icon Mesh" type="MeshInstance3D" parent="button_parent"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.42109e-14, 0, 1.42109e-14, 1, 0, 0.476, 0)
+material_override = SubResource("StandardMaterial3D_vwkhj")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_8j8pb")
+skeleton = NodePath("../../..")
+
+[node name="Icon Sprite3D" type="Sprite3D" parent="button_parent"]
+transform = Transform3D(0.8, 0, 0, 0, -3.49691e-08, 0.8, 0, -0.8, -3.49691e-08, 0, 0.476, 0)
+visible = false
+cast_shadow = 0
+shaded = true
+double_sided = false
+texture_filter = 1
+metadata/_aseprite_wizard_config_ = {
+"i_mode": -1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "#.*",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"op_exp": true,
+"player": "",
+"source": ""
+}
+
+[node name="full_label" type="MeshInstance3D" parent="button_parent"]
+transform = Transform3D(0.76806, 0, -0.640378, 0, 1, 0, 0.640378, 0, 0.76806, 0, 0.510311, 0)
+visible = false
+material_override = ExtResource("7_efhbm")
+mesh = SubResource("BoxMesh_wjiwk")
+skeleton = NodePath("../..")
+
+[node name="Label3D" type="Label3D" parent="button_parent/full_label"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.0753174, 0)
+pixel_size = 0.0075
+text = "misc_weapon_full"
+
+[node name="bolinha" type="MeshInstance3D" parent="button_parent/full_label"]
+transform = Transform3D(0.999999, 0, -2.98023e-07, 0, 1, 0, 2.98023e-07, 0, 0.999999, -0.764781, 0.0490851, -0.122525)
+material_override = ExtResource("7_efhbm")
+mesh = SubResource("SphereMesh_3rrjv")
+
+[node name="bolinha2" type="MeshInstance3D" parent="button_parent/full_label"]
+transform = Transform3D(0.999999, 0, -2.68221e-07, 0, 1, 0, 2.68221e-07, 0, 0.999999, -0.75215, 0.0490851, 0.122576)
+material_override = ExtResource("7_efhbm")
+mesh = SubResource("SphereMesh_3rrjv")
+
+[node name="bolinha3" type="MeshInstance3D" parent="button_parent/full_label"]
+transform = Transform3D(0.999999, 0, -2.98023e-07, 0, 1, 0, 2.98023e-07, 0, 0.999999, 0.772328, 0.0490851, -0.122581)
+material_override = ExtResource("7_efhbm")
+mesh = SubResource("SphereMesh_3rrjv")
+
+[node name="bolinha4" type="MeshInstance3D" parent="button_parent/full_label"]
+transform = Transform3D(0.999999, 0, -3.8743e-07, 0, 1, 0, 3.8743e-07, 0, 0.999999, 0.761479, 0.0490851, 0.111433)
+material_override = ExtResource("7_efhbm")
+mesh = SubResource("SphereMesh_3rrjv")

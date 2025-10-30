@@ -1,0 +1,61 @@
+[gd_resource type="Resource" script_class="CreditsSectionInfo" load_steps=13 format=3 uid="uid://gvol4l2a3625"]
+
+[ext_resource type="Texture2D" uid="uid://u8st7b4hkfnj" path="res://elements/ui/ui_art/ui_hold_FG.png" id="1_it2qn"]
+[ext_resource type="Script" uid="uid://bkle5ca8utscg" path="res://elements/ui/menus/credits_menu/scripts/credits_entry_info.gd" id="2_wgmyi"]
+[ext_resource type="Texture2D" uid="uid://cyidm6wsfq4u0" path="res://elements/icons/icon_hold_blue.png" id="3_qa8t3"]
+[ext_resource type="Texture2D" uid="uid://b3s6bubwjtovt" path="res://elements/icons/icon_hold_yellow.png" id="4_revij"]
+[ext_resource type="Texture2D" uid="uid://b18ksna62fuoq" path="res://elements/icons/icon_hold_green.png" id="5_f2e75"]
+[ext_resource type="Texture2D" uid="uid://eohd3w654qew" path="res://elements/icons/icon_hold_red.png" id="6_blnio"]
+[ext_resource type="Script" uid="uid://brm0i2bj1yuok" path="res://elements/ui/menus/credits_menu/scripts/credits_section_info.gd" id="7_vptqp"]
+[ext_resource type="Texture2D" uid="uid://b2j75lsv87rdk" path="res://elements/icons/icon_hold.png" id="8_wt1nd"]
+
+[sub_resource type="Resource" id="Resource_gqxqg"]
+script = ExtResource("2_wgmyi")
+entry_name = &"manual_powerup_hold_blue_title"
+entry_role = &"manual_powerup_hold_blue_description"
+entry_information = &"manual_powerup_hold_blue_info"
+entry_texture = ExtResource("3_qa8t3")
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0.709804, 0.94902, 1, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[sub_resource type="Resource" id="Resource_cguwt"]
+script = ExtResource("2_wgmyi")
+entry_name = &"manual_powerup_hold_yellow_title"
+entry_role = &"manual_powerup_hold_yellow_description"
+entry_information = &"manual_powerup_hold_yellow_info"
+entry_texture = ExtResource("4_revij")
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0.901961, 0.858824, 0, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[sub_resource type="Resource" id="Resource_vp1gx"]
+script = ExtResource("2_wgmyi")
+entry_name = &"manual_powerup_hold_green_title"
+entry_role = &"manual_powerup_hold_green_description"
+entry_information = &"manual_powerup_hold_green_info"
+entry_texture = ExtResource("5_f2e75")
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0.0392157, 0.796078, 0, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[sub_resource type="Resource" id="Resource_gvck0"]
+script = ExtResource("2_wgmyi")
+entry_name = &"manual_powerup_hold_red_title"
+entry_role = &"manual_powerup_hold_red_description"
+entry_information = &"manual_powerup_hold_red_info"
+entry_texture = ExtResource("6_blnio")
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(1, 0.392157, 0.403922, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[resource]
+script = ExtResource("7_vptqp")
+section_title = &"manual_s_weapons_hold_title"
+section_info = &"manual_s_weapons_hold_description"
+section_image = ExtResource("8_wt1nd")
+default_entry_texture_2 = ExtResource("1_it2qn")
+section_color_highlight = Color(1, 1, 1, 1)
+section_color_bg = Color(1, 0.6, 0, 1)
+entries_list = Array[ExtResource("2_wgmyi")]([SubResource("Resource_gqxqg"), SubResource("Resource_cguwt"), SubResource("Resource_vp1gx"), SubResource("Resource_gvck0")])
+metadata/_custom_type_script = "uid://brm0i2bj1yuok"

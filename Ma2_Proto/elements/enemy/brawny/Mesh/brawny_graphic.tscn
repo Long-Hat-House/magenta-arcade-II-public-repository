@@ -1,0 +1,217 @@
+[gd_scene load_steps=14 format=3 uid="uid://cybamowbsmrv"]
+
+[ext_resource type="PackedScene" uid="uid://bji4ujbq7oww0" path="res://elements/enemy/brawny/Mesh/brawny.tscn" id="1_u4xfg"]
+[ext_resource type="Script" uid="uid://d244o8g0rjfgt" path="res://elements/enemy/brawny/Mesh/graphic_brawny.gd" id="2_5lft2"]
+[ext_resource type="Script" uid="uid://b3qcjn4tpxoid" path="res://elements/enemy/brawny/Mesh/graphic_brawny_arm.gd" id="3_7r60j"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="3_cunbp"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="3_glp42"]
+[ext_resource type="PackedScene" uid="uid://ywymskkj85vs" path="res://elements/vfx/vfx_explosion/vfx_explosion.tscn" id="4_xqkou"]
+[ext_resource type="Script" uid="uid://cqfrebajleh0n" path="res://elements/enemy/projectiles/damage_area/damage_body.gd" id="5_b784l"]
+[ext_resource type="Script" uid="uid://b3iv4mshw4qab" path="res://elements/vfx/node_3d_target.gd" id="6_qxlpq"]
+[ext_resource type="Script" uid="uid://dj2x7ekyg32b7" path="res://systems/score/score_giver.gd" id="7_xxnbb"]
+[ext_resource type="Resource" uid="uid://cusj3l6d4ylci" path="res://elements/score/score_info_brawny_part.tres" id="8_tobyj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ane38"]
+size = Vector3(1.31299, 0.623848, 0.55542)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nkxlb"]
+size = Vector3(0.908035, 0.62439, 0.258911)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r7tdd"]
+size = Vector3(0.29958, 0.001, 0.258911)
+
+[node name="brawny_graphic" instance=ExtResource("1_u4xfg")]
+script = ExtResource("2_5lft2")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="." index="0"]
+script = ExtResource("3_cunbp")
+high_contrast_group = &"enemy"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="Skeleton3D" parent="Rig_Brawny" index="0"]
+bones/1/position = Vector3(0.309648, 0.253249, 0.40742)
+bones/2/position = Vector3(-0.309648, 0.253249, 0.40742)
+bones/3/position = Vector3(3.54956e-15, 0.0568001, 0.49743)
+bones/4/scale = Vector3(1, 1, 1)
+bones/6/position = Vector3(-0.327406, 0.316641, 0.329878)
+bones/6/rotation = Quaternion(-0.0732005, 1.18889e-07, -8.72618e-09, 0.997317)
+bones/6/scale = Vector3(1, 1, 1)
+bones/8/position = Vector3(2.58106e-17, 0.703988, -0.00305419)
+bones/9/position = Vector3(1.01011e-17, 0.167595, 0.873602)
+
+[node name="Brawny_Eye_L" parent="Rig_Brawny/Skeleton3D" index="0"]
+transform = Transform3D(1, -6.99164e-08, -2.27937e-07, 6.99162e-08, 1, -5.06639e-07, 2.27937e-07, 5.06639e-07, 1, 0.327406, 0.367658, 0.319721)
+
+[node name="Brawny_Eye_R" parent="Rig_Brawny/Skeleton3D" index="1"]
+transform = Transform3D(0.999999, 7.27253e-08, 2.28214e-07, -7.27252e-08, 0.999999, -4.47035e-07, -2.28214e-07, 4.47035e-07, 0.999999, -0.327406, 0.367721, 0.326278)
+
+[node name="Brawny_Box" parent="Rig_Brawny/Skeleton3D" index="2"]
+transform = Transform3D(0.399997, 1.46049e-24, -1.44757e-24, 8.40105e-25, 0.399997, -3.72529e-09, 1.24077e-24, 3.72529e-09, 0.399997, -3.5173e-21, -0.00707629, -0.0693053)
+
+[node name="Brawny_Cap" parent="Rig_Brawny/Skeleton3D" index="3"]
+transform = Transform3D(0.314468, 3.23117e-25, -8.78879e-25, 4.3944e-25, 0.314468, -3.72529e-09, 5.16988e-25, 3.72529e-09, 0.314468, -3.16976e-18, 0.67772, -0.207597)
+
+[node name="Rig_ArmL" parent="." index="2"]
+script = ExtResource("3_7r60j")
+explosionVFX = ExtResource("4_xqkou")
+
+[node name="Skeleton3D" parent="Rig_ArmL" index="0"]
+bones/2/rotation = Quaternion(0.640856, 0.298836, -0.298836, 0.640857)
+
+[node name="Cannon1" type="BoneAttachment3D" parent="Rig_ArmL/Skeleton3D" index="1"]
+transform = Transform3D(0.642788, 0.766044, -1.07288e-06, -1.66893e-06, 0, -1, -0.766044, 0.642788, 1.19209e-06, 0.624782, -0.13512, 1.10283)
+bone_name = "pivot01.L"
+bone_idx = 3
+
+[node name="Cannon2" type="BoneAttachment3D" parent="Rig_ArmL/Skeleton3D" index="2"]
+transform = Transform3D(0.642788, 0.766044, 5.96046e-07, -5.96046e-07, 1.19209e-06, -1, -0.766044, 0.642788, 1.19209e-06, 0.775959, -0.13512, 0.909585)
+bone_name = "pivot02.L"
+bone_idx = 2
+
+[node name="Cannon3" type="BoneAttachment3D" parent="Rig_ArmL/Skeleton3D" index="3"]
+transform = Transform3D(0.642788, 0.766044, -1.99676e-06, -3.12924e-06, 0, -1, -0.766044, 0.642788, 2.38419e-06, 0.885638, -0.13512, 0.706991)
+bone_name = "pivot03.L"
+bone_idx = 1
+
+[node name="Arm" type="BoneAttachment3D" parent="Rig_ArmL/Skeleton3D" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0731245, 0.0299941, 0.00990693)
+bone_name = "Bone"
+bone_idx = 0
+
+[node name="ArmBodyL" type="AnimatableBody3D" parent="Rig_ArmL/Skeleton3D/Arm" index="0"]
+collision_layer = 5
+collision_mask = 10
+sync_to_physics = false
+script = ExtResource("5_b784l")
+
+[node name="Health" type="Node" parent="Rig_ArmL/Skeleton3D/Arm/ArmBodyL" index="0" node_paths=PackedStringArray("feedback")]
+script = ExtResource("3_glp42")
+max_amount = 14.0
+feedback = [NodePath("../../../Arm_L")]
+feedback_deepness = 2
+
+[node name="ScoreGiver" type="Node" parent="Rig_ArmL/Skeleton3D/Arm/ArmBodyL" index="1" node_paths=PackedStringArray("health", "point_position")]
+script = ExtResource("7_xxnbb")
+info = ExtResource("8_tobyj")
+health = NodePath("../Health")
+point_position = NodePath("../../../Cannon3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rig_ArmL/Skeleton3D/Arm/ArmBodyL" index="2"]
+transform = Transform3D(0.999977, -2.89001e-08, -1.16825e-05, 4.092e-08, 1, -5.25324e-08, -4.47035e-06, 5.90226e-08, 0.999999, 0.358153, -0.0152243, -0.0167236)
+shape = SubResource("BoxShape3D_ane38")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Rig_ArmL/Skeleton3D/Arm/ArmBodyL" index="3"]
+transform = Transform3D(0.66262, 1.84627e-08, 0.748956, 9.99624e-10, 1, -2.55357e-08, -0.748956, 1.76692e-08, 0.66262, 0.684369, -0.0102384, 0.803491)
+shape = SubResource("BoxShape3D_nkxlb")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Rig_ArmL/Skeleton3D/Arm/ArmBodyL" index="4" groups=["enemy_position"]]
+transform = Transform3D(-0.0871543, -3.94097e-10, 0.996195, 1.51345e-09, 1, 5.2801e-10, -0.996195, 1.55371e-09, -0.0871543, 0.890014, -0.322493, 0.377333)
+shape = SubResource("BoxShape3D_r7tdd")
+
+[node name="VFXTarget" type="Node3D" parent="Rig_ArmL/Skeleton3D/Arm" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+script = ExtResource("6_qxlpq")
+
+[node name="VFXTarget2" type="Node3D" parent="Rig_ArmL/Skeleton3D/Arm" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.399997, -0.2, 0)
+script = ExtResource("6_qxlpq")
+
+[node name="VFXTarget3" type="Node3D" parent="Rig_ArmL/Skeleton3D/Arm" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.799994, -0.2, 0)
+script = ExtResource("6_qxlpq")
+
+[node name="VFXTarget4" type="Node3D" parent="Rig_ArmL/Skeleton3D/Arm" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.906473, -0.2, 0.399997)
+script = ExtResource("6_qxlpq")
+
+[node name="VFXTarget5" type="Node3D" parent="Rig_ArmL/Skeleton3D/Arm" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.799994, -0.2, 0.799994)
+script = ExtResource("6_qxlpq")
+
+[node name="VFXTarget6" type="Node3D" parent="Rig_ArmL/Skeleton3D/Arm" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.543483, -0.2, 1.03042)
+script = ExtResource("6_qxlpq")
+
+[node name="Rig_ArmR" parent="." index="3"]
+script = ExtResource("3_7r60j")
+explosionVFX = ExtResource("4_xqkou")
+
+[node name="Cannon4" type="BoneAttachment3D" parent="Rig_ArmR/Skeleton3D" index="1"]
+transform = Transform3D(0.642788, -0.766044, -1.99676e-06, -3.12924e-06, 0, -1, 0.766044, 0.642788, -2.38419e-06, -0.603203, -0.116979, 1.12566)
+bone_name = "pivot01.R"
+bone_idx = 3
+
+[node name="Cannon5" type="BoneAttachment3D" parent="Rig_ArmR/Skeleton3D" index="2"]
+transform = Transform3D(0.642787, -0.766045, -7.15256e-07, -1.84774e-06, -7.15256e-07, -1, 0.766045, 0.642787, -1.90735e-06, -0.760056, -0.116979, 0.937178)
+bone_name = "pivot02.R"
+bone_idx = 2
+
+[node name="Cannon6" type="BoneAttachment3D" parent="Rig_ArmR/Skeleton3D" index="3"]
+transform = Transform3D(0.642787, -0.766045, -7.15256e-07, -1.84774e-06, -7.15256e-07, -1, 0.766045, 0.642787, -1.90735e-06, -0.869653, -0.116979, 0.734514)
+bone_name = "pivot03.R"
+bone_idx = 1
+
+[node name="Arm" type="BoneAttachment3D" parent="Rig_ArmR/Skeleton3D" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.073126, 0.0299941, 0.00990693)
+bone_name = "Bone"
+bone_idx = 0
+
+[node name="ArmBodyR" type="AnimatableBody3D" parent="Rig_ArmR/Skeleton3D/Arm" index="0"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 4
+collision_mask = 10
+collision_priority = 2.0
+input_ray_pickable = false
+sync_to_physics = false
+script = ExtResource("5_b784l")
+
+[node name="Health" type="Node" parent="Rig_ArmR/Skeleton3D/Arm/ArmBodyR" index="0" node_paths=PackedStringArray("feedback")]
+script = ExtResource("3_glp42")
+max_amount = 14.0
+feedback = [NodePath("../../../Arm_R")]
+feedback_deepness = 2
+
+[node name="ScoreGiver" type="Node" parent="Rig_ArmR/Skeleton3D/Arm/ArmBodyR" index="1" node_paths=PackedStringArray("health", "point_position")]
+script = ExtResource("7_xxnbb")
+info = ExtResource("8_tobyj")
+health = NodePath("../Health")
+point_position = NodePath("../../../Cannon6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rig_ArmR/Skeleton3D/Arm/ArmBodyR" index="2"]
+transform = Transform3D(1, -2.45062e-08, 2.80152e-06, 2.45063e-08, 1, -3.58268e-08, -2.80152e-06, 3.58268e-08, 1, 0.358153, -0.014862, -0.0167235)
+shape = SubResource("BoxShape3D_ane38")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Rig_ArmR/Skeleton3D/Arm/ArmBodyR" index="3"]
+transform = Transform3D(0.66262, 1.84627e-08, 0.748956, 9.99624e-10, 1, -2.55357e-08, -0.748956, 1.76692e-08, 0.66262, 0.684369, -0.0102384, 0.803491)
+shape = SubResource("BoxShape3D_nkxlb")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Rig_ArmR/Skeleton3D/Arm/ArmBodyR" index="4" groups=["enemy_position"]]
+transform = Transform3D(-0.0871543, -3.94097e-10, 0.996195, 1.51345e-09, 1, 5.2801e-10, -0.996195, 1.55371e-09, -0.0871543, 0.890014, -0.322493, 0.377333)
+shape = SubResource("BoxShape3D_r7tdd")
+
+[node name="VFXTarget" type="Node3D" parent="Rig_ArmR/Skeleton3D/Arm/ArmBodyR" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+script = ExtResource("6_qxlpq")
+
+[node name="VFXTarget2" type="Node3D" parent="Rig_ArmR/Skeleton3D/Arm/ArmBodyR" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.399997, -0.2, 0)
+script = ExtResource("6_qxlpq")
+
+[node name="VFXTarget3" type="Node3D" parent="Rig_ArmR/Skeleton3D/Arm/ArmBodyR" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.799994, -0.2, 0)
+script = ExtResource("6_qxlpq")
+
+[node name="VFXTarget4" type="Node3D" parent="Rig_ArmR/Skeleton3D/Arm/ArmBodyR" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8976, -0.2, 0.399997)
+script = ExtResource("6_qxlpq")
+
+[node name="VFXTarget5" type="Node3D" parent="Rig_ArmR/Skeleton3D/Arm/ArmBodyR" index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.799994, -0.2, 0.799994)
+script = ExtResource("6_qxlpq")
+
+[node name="VFXTarget6" type="Node3D" parent="Rig_ArmR/Skeleton3D/Arm/ArmBodyR" index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.543483, -0.2, 1.03042)
+script = ExtResource("6_qxlpq")
+
+[connection signal="dead" from="Rig_ArmL/Skeleton3D/Arm/ArmBodyL/Health" to="Rig_ArmL" method="_on_health_dead"]
+[connection signal="dead" from="Rig_ArmR/Skeleton3D/Arm/ArmBodyR/Health" to="Rig_ArmR" method="_on_health_dead"]

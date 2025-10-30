@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" load_steps=0 format=3 uid="uid://i4l061bmuwfy"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Music_Level5_Boss_Hand_End"
+id = 3672865688
+guid = "{C79B1C4F-1C1F-4A7D-B240-20B6B3AA9588}"
+dummy = true

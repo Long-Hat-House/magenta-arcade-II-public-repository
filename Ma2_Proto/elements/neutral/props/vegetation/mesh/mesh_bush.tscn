@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://badnghs8o2sgx"]
+
+[ext_resource type="PackedScene" uid="uid://cr4qsj1di53ks" path="res://elements/neutral/props/vegetation/mesh/bush.glb" id="1_dlwh1"]
+[ext_resource type="Material" uid="uid://dvgbr1k1hhxmf" path="res://elements/neutral/props/vegetation/material/m_bush.tres" id="2_h3w0e"]
+
+[node name="mesh_bush" instance=ExtResource("1_dlwh1")]
+
+[node name="bush" parent="." index="0"]
+material_override = ExtResource("2_h3w0e")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://r032qwi6wnh2"]
+
+[ext_resource type="PackedScene" uid="uid://de0uovq34o2es" path="res://elements/neutral/car/mesh/wheel.glb" id="1_xn76c"]
+[ext_resource type="Material" uid="uid://dpyh5i4rxa2o3" path="res://elements/neutral/car/material/m_wheel.tres" id="2_2j24e"]
+
+[node name="roda" instance=ExtResource("1_xn76c")]
+
+[node name="pneu" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0734782, 0, 0)
+material_override = ExtResource("2_2j24e")

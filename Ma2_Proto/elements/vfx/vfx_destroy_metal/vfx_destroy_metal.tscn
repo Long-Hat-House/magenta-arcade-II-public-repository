@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://diqpx0aj2pk0a"]
+
+[ext_resource type="Script" uid="uid://db6tliyv2a0no" path="res://elements/vfx/simple_vfx.gd" id="1_yfjjo"]
+[ext_resource type="WwiseEvent" uid="uid://c25b01m4j2gxe" path="res://Wwise/resources/Event/{50217ED6-EFD5-4A95-8067-13D7C8248140}.tres" id="2_kya24"]
+[ext_resource type="Texture2D" uid="uid://dvtj7sb6s2biy" path="res://elements/enemy/projectiles/explosion_square/big_explosion/m_crack_a_BaseColor.png" id="3_wct6y"]
+[ext_resource type="SpriteFrames" uid="uid://bim7hpyjj364" path="res://elements/vfx/vfx_explosion_small/vfx_explosion_small_art/VFX_Explosion_small.aseprite" id="4_b1fih"]
+[ext_resource type="Script" uid="uid://bj8qwbado7bkt" path="res://systems/utils/look_at_camera.gd" id="5_k5t3l"]
+
+[sub_resource type="Gradient" id="Gradient_6xxne"]
+colors = PackedColorArray(0.442911, 0.442911, 0.442911, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b1fih"]
+gradient = SubResource("Gradient_6xxne")
+width = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k5t3l"]
+vertex_color_use_as_albedo = true
+metallic = 1.0
+metallic_texture = SubResource("GradientTexture1D_b1fih")
+detail_albedo = ExtResource("3_wct6y")
+billboard_keep_scale = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_iberj"]
+material = SubResource("StandardMaterial3D_k5t3l")
+size = Vector3(2, 0.1, 1)
+
+[sub_resource type="Curve" id="Curve_vwnn6"]
+_data = [Vector2(0.752252, 1), 0.0, 0.0535779, 0, 0, Vector2(0.993243, 0.0175064), -3.36077, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_wct6y"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.600478, 0.76555, 0.875598, 1)
+colors = PackedColorArray(0.164706, 0.164706, 0.203922, 1, 0.223529, 0.223529, 0.278431, 1, 0.341176, 0.341176, 0.427451, 1, 0.545098, 0.623529, 0.729412, 1, 0.596078, 0.533333, 0.305882, 1)
+
+[node name="Vfx Destroy Metal" type="Node3D" node_paths=PackedStringArray("_animated_sprite_3d", "_cpu_particles_3d", "sound")]
+script = ExtResource("1_yfjjo")
+_animated_sprite_3d = NodePath("Sprite3D")
+_cpu_particles_3d = NodePath("CPUParticles3D4")
+animationSpeedScaleRange = 0.35
+xzRandomRange = 0.2
+sound = NodePath("SFX")
+
+[node name="SFX" type="AkEvent3D" parent="."]
+event = ExtResource("2_kya24")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00219727, 0.00830078, -0.00402832)
+
+[node name="CPUParticles3D4" type="CPUParticles3D" parent="."]
+sorting_offset = 10.0
+cast_shadow = 0
+emitting = false
+amount = 2
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+mesh = SubResource("BoxMesh_iberj")
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+damping_min = 1.0
+damping_max = 1.0
+scale_amount_min = 0.2
+scale_amount_max = 0.4
+scale_amount_curve = SubResource("Curve_vwnn6")
+color_initial_ramp = SubResource("Gradient_wct6y")
+
+[node name="Sprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00219727, 0.00830078, -0.00402832)
+pixel_size = 0.0156
+shaded = true
+double_sided = false
+no_depth_test = true
+alpha_antialiasing_mode = 1
+alpha_antialiasing_edge = 0.45
+texture_filter = 0
+sprite_frames = ExtResource("4_b1fih")
+animation = &"play"
+script = ExtResource("5_k5t3l")
+enable_random_rotation = true

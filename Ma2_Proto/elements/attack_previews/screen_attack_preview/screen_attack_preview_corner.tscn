@@ -1,0 +1,173 @@
+[gd_scene load_steps=9 format=3 uid="uid://dtetsngjl358c"]
+
+[ext_resource type="Script" uid="uid://cns137slch3nx" path="res://systems/utils/look_at_camera_parent_y.gd" id="1_7tos2"]
+[ext_resource type="Texture2D" uid="uid://blgh1ekej27u8" path="res://elements/attack_previews/screen_attack_preview/screen_warning_corner.png" id="1_gtg77"]
+[ext_resource type="Script" uid="uid://dnsjfpmcxo7es" path="res://addons/gap/api/accessibility_high_contrast_sprite.gd" id="3_fxs6c"]
+
+[sub_resource type="GDScript" id="GDScript_78so2"]
+script/source = "extends Node3D
+
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+func _ready():
+	idle();
+	
+func idle():
+	animation_player.play(\"idle\");
+	
+	
+func cancel():
+	animation_player.play(\"cancel\");
+"
+
+[sub_resource type="Animation" id="Animation_d3b07"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LookatCamera/FG:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LookatCamera/BG:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LookatCamera/AccessibilityHighContrastSprite3D:high_contrast_group")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"enemy"]
+}
+
+[sub_resource type="Animation" id="Animation_78so2"]
+resource_name = "cancel"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LookatCamera/FG:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LookatCamera/BG:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.08, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uhgx8"]
+resource_name = "idle"
+length = 0.27
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LookatCamera/FG:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667),
+"transitions": PackedFloat32Array(1.56917, 0.517632, 1),
+"update": 0,
+"values": [Color(1, 0, 1, 0), Color(1, 1, 1, 1), Color(1, 0, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LookatCamera/AccessibilityHighContrastSprite3D:high_contrast_group")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"enemy", &"danger"]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LookatCamera/AccessibilityHighContrastSprite3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"update_high_contrast"
+}, {
+"args": [],
+"method": &"update_high_contrast"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k7kbe"]
+_data = {
+&"RESET": SubResource("Animation_d3b07"),
+&"cancel": SubResource("Animation_78so2"),
+&"idle": SubResource("Animation_uhgx8")
+}
+
+[node name="ScreenAttackPreviewCorner" type="Node3D"]
+script = SubResource("GDScript_78so2")
+
+[node name="LookatCamera" type="Node3D" parent="."]
+script = ExtResource("1_7tos2")
+
+[node name="BG" type="Sprite3D" parent="LookatCamera"]
+no_depth_test = true
+texture_filter = 0
+render_priority = 1
+texture = ExtResource("1_gtg77")
+hframes = 2
+
+[node name="FG" type="Sprite3D" parent="LookatCamera"]
+no_depth_test = true
+texture_filter = 0
+render_priority = 2
+texture = ExtResource("1_gtg77")
+hframes = 2
+frame = 1
+
+[node name="AccessibilityHighContrastSprite3D" type="Node3D" parent="LookatCamera" node_paths=PackedStringArray("sprite_base")]
+script = ExtResource("3_fxs6c")
+high_contrast_group = &"enemy"
+sprite_base = NodePath("../FG")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_k7kbe")
+}
+autoplay = "idle"

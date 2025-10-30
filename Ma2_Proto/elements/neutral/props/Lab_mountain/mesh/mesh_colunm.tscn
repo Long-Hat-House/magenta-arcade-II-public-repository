@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlrrolvsllr23"]
+
+[ext_resource type="PackedScene" uid="uid://h8i5irls4mks" path="res://elements/neutral/props/Lab_mountain/mesh/colunm.glb" id="1_0lcoj"]
+[ext_resource type="Material" uid="uid://hgygrecumeio" path="res://elements/neutral/props/Lab_mountain/material/m_door.tres" id="2_lwulr"]
+
+[node name="colunm" instance=ExtResource("1_0lcoj")]
+
+[node name="colunm" parent="." index="0"]
+material_override = ExtResource("2_lwulr")

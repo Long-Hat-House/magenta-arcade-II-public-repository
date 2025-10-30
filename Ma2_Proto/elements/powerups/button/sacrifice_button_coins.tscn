@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3i7oo0v7rbl3"]
+
+[ext_resource type="PackedScene" uid="uid://ccn6065djpwhr" path="res://elements/powerups/button/powerup_holdable_button.tscn" id="1_g22fq"]
+[ext_resource type="Texture2D" uid="uid://cvggxjuwa0cat" path="res://elements/icons/icon_sacrifice_coin.png" id="2_bfe1l"]
+
+[node name="SacrificeButton-COINS" instance=ExtResource("1_g22fq")]
+_initial_cost = 500
+
+[node name="button_graphic" parent="Area3D" index="1"]
+default_icon = ExtResource("2_bfe1l")
+default_color = Color(0.745098, 0, 0.784314, 1)
+default_color_highlight = Color(0.87451, 0.576471, 0.796078, 1)

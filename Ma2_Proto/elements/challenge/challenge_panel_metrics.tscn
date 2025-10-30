@@ -1,0 +1,299 @@
+[gd_scene load_steps=21 format=3 uid="uid://cq7pvxdip73e"]
+
+[ext_resource type="Script" uid="uid://bamm1csvyyup8" path="res://systems/challenge/challenge_panel_metrics.gd" id="1_ubsli"]
+[ext_resource type="Texture2D" uid="uid://cm5belis6bq0x" path="res://elements/icons/icon_star.png" id="2_1aje4"]
+[ext_resource type="PackedScene" uid="uid://duhifoyov8p8e" path="res://elements/challenge/challenge_display_float_check.tscn" id="2_ggpwi"]
+[ext_resource type="Script" uid="uid://c3urmlqxxva4s" path="res://modules/graphic_settings_manager/graphic_settings_enabler_2D.gd" id="2_rtilj"]
+[ext_resource type="PackedScene" uid="uid://dsti5e1cvvxjh" path="res://elements/challenge/challenge_display_float_current_of_target.tscn" id="3_rtilj"]
+[ext_resource type="PackedScene" uid="uid://dcc5x0abwxv8r" path="res://elements/challenge/challenge_display_float_progress_bar.tscn" id="4_71ip5"]
+[ext_resource type="PackedScene" uid="uid://cqqulf1epg7ju" path="res://elements/challenge/challenge_display_semaphor.tscn" id="5_rseqd"]
+[ext_resource type="Script" uid="uid://bi4yfgewvcvwq" path="res://systems/switchable/switch_oning_offing_animation_player.gd" id="5_xrbp5"]
+
+[sub_resource type="Gradient" id="Gradient_sb5it"]
+offsets = PackedFloat32Array(0, 0.1258, 0.292111, 0.594883, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 0, 0.831373, 0.792157, 1, 0, 0.831373, 0.792157, 1, 0, 0.831373, 0.792157, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ggpwi"]
+gradient = SubResource("Gradient_sb5it")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rtilj"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(15, 900, 0)
+spread = 50.0
+initial_velocity_min = 70.0
+initial_velocity_max = 110.0
+gravity = Vector3(0, 400, 0)
+damping_min = 40.0
+damping_max = 100.0
+scale_min = 0.2
+scale_max = 0.3
+color_ramp = SubResource("GradientTexture1D_ggpwi")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_71ip5"]
+gradient = SubResource("Gradient_sb5it")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rseqd"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(15, 900, 0)
+direction = Vector3(-1, 0, 0)
+spread = 50.0
+initial_velocity_min = 70.0
+initial_velocity_max = 110.0
+gravity = Vector3(0, 400, 0)
+damping_min = 40.0
+damping_max = 100.0
+scale_min = 0.2
+scale_max = 0.3
+color_ramp = SubResource("GradientTexture1D_71ip5")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rbklm"]
+content_margin_left = 30.0
+content_margin_top = 30.0
+content_margin_right = 30.0
+content_margin_bottom = 30.0
+bg_color = Color(0, 0.0156863, 0.278431, 0.239216)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="Animation" id="Animation_ggpwi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xrbp5"]
+resource_name = "off"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_71ip5"]
+resource_name = "offing"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mbv4k"]
+resource_name = "on"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.466667),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.690196), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rtilj"]
+resource_name = "oning"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rtilj"]
+_data = {
+&"RESET": SubResource("Animation_ggpwi"),
+&"off": SubResource("Animation_xrbp5"),
+&"offing": SubResource("Animation_71ip5"),
+&"on": SubResource("Animation_mbv4k"),
+&"oning": SubResource("Animation_rtilj")
+}
+
+[node name="Challenge Panel Metrics" type="Control" node_paths=PackedStringArray("_displays_container", "_displays_parent", "_particles_container", "animation")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ubsli")
+_displays_container = NodePath("MarginContainer/Side Panel/VBox Display Container")
+_displays_parent = NodePath("MarginContainer/Side Panel")
+_particles_container = NodePath("ParticlesContainer")
+animation = NodePath("Switch_Oning_Offing_AnimationPlayer")
+
+[node name="ParticlesContainer" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 450.0
+offset_top = 900.0
+offset_right = 450.0
+offset_bottom = 900.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="Graphic_Settings_Enabler2D" type="Node2D" parent="ParticlesContainer"]
+script = ExtResource("2_rtilj")
+special_condition = 1
+metadata/_custom_type_script = "uid://c3urmlqxxva4s"
+
+[node name="PLeft" type="GPUParticles2D" parent="ParticlesContainer/Graphic_Settings_Enabler2D"]
+position = Vector2(-450, 0)
+amount = 15
+texture = ExtResource("2_1aje4")
+randomness = 0.5
+fixed_fps = 0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_rtilj")
+
+[node name="PRight" type="GPUParticles2D" parent="ParticlesContainer/Graphic_Settings_Enabler2D"]
+position = Vector2(450, 0)
+amount = 15
+texture = ExtResource("2_1aje4")
+randomness = 0.5
+fixed_fps = 0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_rseqd")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 10
+
+[node name="Side Panel" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rbklm")
+
+[node name="VBox Display Container" type="VBoxContainer" parent="MarginContainer/Side Panel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 24
+
+[node name="Challenge Display Float Check" parent="MarginContainer/Side Panel/VBox Display Container" instance=ExtResource("2_ggpwi")]
+layout_mode = 2
+
+[node name="Challenge Display Float Current Of Target" parent="MarginContainer/Side Panel/VBox Display Container" instance=ExtResource("3_rtilj")]
+layout_mode = 2
+
+[node name="Challenge Metric Display Float Bar" parent="MarginContainer/Side Panel/VBox Display Container" instance=ExtResource("4_71ip5")]
+layout_mode = 2
+
+[node name="Challenge Display Float Check2" parent="MarginContainer/Side Panel/VBox Display Container" instance=ExtResource("5_rseqd")]
+layout_mode = 2
+
+[node name="Switch_Oning_Offing_AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_rtilj")
+}
+script = ExtResource("5_xrbp5")
+metadata/_custom_type_script = "uid://bi4yfgewvcvwq"

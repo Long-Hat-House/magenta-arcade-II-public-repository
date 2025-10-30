@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://ct4dull7cgb2q"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_MiniBoss_Lv4_Anim_Mouth_SemiOpen"
+id = 956615090
+guid = "{C86BAC7B-0B09-4BFF-8996-428E1BB28162}"
+dummy = true

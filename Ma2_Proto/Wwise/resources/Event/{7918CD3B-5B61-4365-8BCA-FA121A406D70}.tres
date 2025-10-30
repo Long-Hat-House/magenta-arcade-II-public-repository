@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://yemhbfl2b4yf"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Int_Phone_Close"
+id = 3307402533
+guid = "{7918CD3B-5B61-4365-8BCA-FA121A406D70}"
+dummy = true

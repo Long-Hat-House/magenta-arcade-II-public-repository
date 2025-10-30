@@ -1,0 +1,94 @@
+[gd_scene load_steps=9 format=3 uid="uid://uim4umwv6uj3"]
+
+[ext_resource type="PackedScene" uid="uid://h8i5irls4mks" path="res://elements/neutral/props/Lab_mountain/mesh/colunm.glb" id="1_cc5tm"]
+[ext_resource type="Material" uid="uid://hgygrecumeio" path="res://elements/neutral/props/Lab_mountain/material/m_door.tres" id="2_uoyxu"]
+[ext_resource type="PackedScene" uid="uid://bk3c6a8vre6yr" path="res://elements/neutral/props/generic_body_and_presseable.tscn" id="3_8rech"]
+[ext_resource type="Script" uid="uid://0wf4obm88h88" path="res://elements/neutral/props/generic_tumbler.gd" id="4_lynj0"]
+[ext_resource type="Resource" uid="uid://ch2sx8gskxgfw" path="res://elements/neutral/props/totem/element_iron_box_tumble_data.tres" id="5_guqpu"]
+[ext_resource type="Script" uid="uid://biqjvlcudqx0t" path="res://elements/player/force_receiver.gd" id="6_ocn77"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bgwf7"]
+size = Vector3(14.5, 1.25, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8rech"]
+size = Vector3(1.25, 7.5, 1.5)
+
+[node name="colunm" instance=ExtResource("1_cc5tm")]
+
+[node name="colunm" parent="." index="0"]
+material_override = ExtResource("2_uoyxu")
+
+[node name="GenericBodyAndPresseable" parent="." index="1" node_paths=PackedStringArray("on_kill_queue_free", "generic_tumbler") instance=ExtResource("3_8rech")]
+on_kill_queue_free = [NodePath("..")]
+generic_tumbler = NodePath("../GenericTumbler")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GenericBodyAndPresseable" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.875, 0)
+shape = SubResource("BoxShape3D_bgwf7")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="GenericBodyAndPresseable" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.875, 3.75, 0)
+shape = SubResource("BoxShape3D_8rech")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="GenericBodyAndPresseable" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.875, 3.75, 0)
+shape = SubResource("BoxShape3D_8rech")
+
+[node name="Explosion" type="Node3D" parent="GenericBodyAndPresseable" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.75, 6.5, 0)
+
+[node name="Explosion2" type="Node3D" parent="GenericBodyAndPresseable" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75, 6.5, 0)
+
+[node name="Explosion3" type="Node3D" parent="GenericBodyAndPresseable" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 6.5, 0)
+
+[node name="Explosion4" type="Node3D" parent="GenericBodyAndPresseable" index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 6.5, 0)
+
+[node name="Explosion5" type="Node3D" parent="GenericBodyAndPresseable" index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 6.5, 0)
+
+[node name="Explosion6" type="Node3D" parent="GenericBodyAndPresseable" index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 6.5, 0)
+
+[node name="Explosion7" type="Node3D" parent="GenericBodyAndPresseable" index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 0)
+
+[node name="Explosion8" type="Node3D" parent="GenericBodyAndPresseable" index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 6.5, 0)
+
+[node name="Explosion9" type="Node3D" parent="GenericBodyAndPresseable" index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 6.5, 0)
+
+[node name="Explosion10" type="Node3D" parent="GenericBodyAndPresseable" index="15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 6.5, 0)
+
+[node name="Explosion11" type="Node3D" parent="GenericBodyAndPresseable" index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 6.5, 0)
+
+[node name="Explosion12" type="Node3D" parent="GenericBodyAndPresseable" index="17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 6.5, 0)
+
+[node name="Explosion13" type="Node3D" parent="GenericBodyAndPresseable" index="18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25, 6.5, 0)
+
+[node name="GenericTumbler" type="Node3D" parent="." index="2" node_paths=PackedStringArray("receiver", "to_tumble", "tumble_box_corner")]
+script = ExtResource("4_lynj0")
+receiver = NodePath("ForceReceiver")
+to_tumble = NodePath("../colunm")
+tumble_data = ExtResource("5_guqpu")
+tumble_box_corner = NodePath("Corner")
+metadata/_custom_type_script = "uid://0wf4obm88h88"
+
+[node name="ForceReceiver" type="Node3D" parent="GenericTumbler" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+script = ExtResource("6_ocn77")
+metadata/_custom_type_script = "uid://biqjvlcudqx0t"
+
+[node name="Corner" type="Node3D" parent="GenericTumbler" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, 0.75)
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+aabb = AABB(-8.5, -4, -1, 17, 8, 2)

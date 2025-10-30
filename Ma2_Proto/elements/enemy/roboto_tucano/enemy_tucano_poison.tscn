@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://oftd6ohccj7d"]
+
+[ext_resource type="PackedScene" uid="uid://c60s66rh2v20w" path="res://elements/enemy/roboto_tucano/enemy_tucano.tscn" id="1_gg318"]
+[ext_resource type="PackedScene" uid="uid://dvn70k86sknr6" path="res://elements/enemy/smoke/enemy_smoke_poison.tscn" id="2_8j8ue"]
+
+[node name="EnemyTucano_Poison" instance=ExtResource("1_gg318")]
+speed = 14.0
+smoke = ExtResource("2_8j8ue")
+needs_screen_to_spawn = true
+
+[node name="OutOfScreenWarningOrigin" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.153157)

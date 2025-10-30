@@ -1,0 +1,44 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=7 format=3 uid="uid://c8vv8iekq2r1t"]
+
+[sub_resource type="Curve" id="Curve_cg8po"]
+_data = [Vector2(0, 1), 0.0, -3.37505, 0, 0, Vector2(1, 0), -0.0579743, -2.29603, 0, 0]
+point_count = 2
+metadata/_snap_enabled = true
+
+[sub_resource type="CurveTexture" id="CurveTexture_7w0ny"]
+width = 64
+curve = SubResource("Curve_cg8po")
+
+[sub_resource type="Curve" id="Curve_uh42w"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 4.49637, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_4wvo1"]
+width = 64
+curve_y = SubResource("Curve_uh42w")
+
+[sub_resource type="Curve" id="Curve_i6w10"]
+_data = [Vector2(0, 0), 0.0, 8.60793, 0, 0, Vector2(0.0225564, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.49916, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_klhth"]
+curve = SubResource("Curve_i6w10")
+
+[resource]
+lifetime_randomness = 0.5
+angle_min = -17.0
+angle_max = 383.4
+direction = Vector3(0, 0, 1)
+flatness = 0.261
+initial_velocity_min = 15.0
+initial_velocity_max = 20.0
+directional_velocity_min = 3.0
+directional_velocity_max = 5.0
+directional_velocity_curve = SubResource("CurveXYZTexture_4wvo1")
+gravity = Vector3(0, 0, 0)
+damping_min = 60.0
+damping_max = 70.0
+damping_curve = SubResource("CurveTexture_7w0ny")
+scale_min = 0.5
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_klhth")

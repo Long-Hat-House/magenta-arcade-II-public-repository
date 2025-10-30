@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://coii64xulmt0f"]
+
+[ext_resource type="Script" uid="uid://bsadpa8vw7owk" path="res://systems/pressable/pressable_button.gd" id="1_r6d4c"]
+[ext_resource type="WwiseEvent" uid="uid://bmbw2kg2b8kmk" path="res://Wwise/resources/Event/{925A1BAC-C000-4E31-8B40-5592C6667106}.tres" id="2_pp1ry"]
+[ext_resource type="PackedScene" uid="uid://ck52g8575oxss" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_cassete/graphic_pressable_button_cassete.tscn" id="3_abjk7"]
+[ext_resource type="WwiseEvent" uid="uid://83ud8ixuck6u" path="res://Wwise/resources/Event/{CFCFBB82-1769-4535-B337-ED5E5241450B}.tres" id="3_agrf0"]
+
+[node name="Pressable Button Cassete" type="Node3D" node_paths=PackedStringArray("graphic")]
+script = ExtResource("1_r6d4c")
+disallow_untogle = true
+toggle_mode = true
+graphic = NodePath("Graphic Button Cassete")
+_sfx_toggled_on = ExtResource("2_pp1ry")
+_sfx_toggled_off = ExtResource("3_agrf0")
+metadata/_edit_group_ = true
+
+[node name="Graphic Button Cassete" parent="." instance=ExtResource("3_abjk7")]

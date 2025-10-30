@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=3 uid="uid://4sg41fnp8nn7"]
+
+[ext_resource type="PackedScene" uid="uid://c60s66rh2v20w" path="res://elements/enemy/roboto_tucano/enemy_tucano.tscn" id="1_1nptc"]
+[ext_resource type="Script" uid="uid://8dyrx82an8v4" path="res://elements/enemy/roboto_tucano/enemy_tucano_challenge.gd" id="2_nem5h"]
+[ext_resource type="PackedScene" uid="uid://ogo51q0i36xw" path="res://elements/enemy/projectiles/cannon/enemy_cannon_invisible.tscn" id="3_nhtvj"]
+[ext_resource type="Script" uid="uid://qlwh2wc5xydx" path="res://systems/utils/look_at_player.gd" id="3_xsule"]
+[ext_resource type="PackedScene" uid="uid://cgbcffy8s76l4" path="res://elements/enemy/projectiles/proj_basic/proj_enemy_basic_follow_screen.tscn" id="5_16nj3"]
+
+[sub_resource type="GDScript" id="GDScript_26s5g"]
+resource_name = "MakeShotSlower"
+script/source = "extends Node
+
+@onready var cannon: AI_Cannon = $\"..\"
+@export var velocity_multiplier:float = 1.00;
+
+func _ready() -> void:
+	cannon.shot_projectile.connect(on_shoot);
+	
+func on_shoot(proj:Node3D)-> void:
+	proj.speedMultiplier = velocity_multiplier;
+"
+
+[node name="EnemyTucano_Challenge" instance=ExtResource("1_1nptc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0380058, 0)
+motion_mode = 1
+script = ExtResource("2_nem5h")
+pos_increase_ps_base = 0.4
+pos_increase_ps_accel = 1.4
+pos_damage = 0.8
+pos_damage_based_on_position = 0.1
+accel_damage = 0.75
+max_accel_count_damage = 1.25
+position_lose = 10.0
+position_min = -5.0
+increase_speed_on_lose = 10.0
+speed = 0.0
+smoke = null
+
+[node name="Health" parent="." index="0"]
+max_amount = 18.5
+min_amount = 10.5
+
+[node name="CollisionShape3D2" parent="." index="4"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 8.9578e-09, 0.271056, -0.264198)
+
+[node name="VisibleOnScreenNotifier3D" parent="." index="5"]
+enable_node_path = NodePath("../Look At Player")
+
+[node name="OutOfScreenWarningOrigin" parent="." index="7"]
+appear_left = false
+appear_right = false
+appear_down = false
+
+[node name="Look At Player" type="Node3D" parent="." index="8"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.25, -0.25)
+script = ExtResource("3_xsule")
+
+[node name="Cannon_Invisible" parent="Look At Player" index="0" instance=ExtResource("3_nhtvj")]
+projectile = ExtResource("5_16nj3")
+firstDelay = 2.6
+delayBetweenProjectiles = 1.75
+delay_after_shooting = 0.1
+save_position_in_interval_beginning = true
+shoot_delay_interval = Array[int]([0, 0, 0, 1])
+lookAtPlayer = false
+
+[node name="Make Shot Slower" type="Node" parent="Look At Player/Cannon_Invisible" index="4"]
+script = SubResource("GDScript_26s5g")
+
+[node name="Cannon_Invisible2" parent="Look At Player" index="1" instance=ExtResource("3_nhtvj")]
+transform = Transform3D(0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, 0, 0, 0)
+projectile = ExtResource("5_16nj3")
+firstDelay = 2.6
+delayBetweenProjectiles = 1.75
+delay_after_shooting = 0.1
+save_position_in_interval_beginning = true
+shoot_delay_interval = Array[int]([0, 0, 0, 1])
+lookAtPlayer = false
+
+[node name="Make Shot Slower" type="Node" parent="Look At Player/Cannon_Invisible2" index="4"]
+script = SubResource("GDScript_26s5g")
+
+[node name="Cannon_Invisible3" parent="Look At Player" index="2" instance=ExtResource("3_nhtvj")]
+transform = Transform3D(0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, 0, 0, 0)
+projectile = ExtResource("5_16nj3")
+firstDelay = 2.6
+delayBetweenProjectiles = 1.75
+delay_after_shooting = 0.1
+save_position_in_interval_beginning = true
+shoot_delay_interval = Array[int]([0, 0, 0, 1])
+lookAtPlayer = false
+
+[node name="Make Shot Slower" type="Node" parent="Look At Player/Cannon_Invisible3" index="4"]
+script = SubResource("GDScript_26s5g")
+
+[connection signal="hit" from="Health" to="." method="_on_health_hit"]

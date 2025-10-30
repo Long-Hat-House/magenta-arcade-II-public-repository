@@ -1,0 +1,432 @@
+[gd_scene load_steps=24 format=3 uid="uid://b7hxhnj57aca4"]
+
+[ext_resource type="PackedScene" uid="uid://drsikbf7n8ary" path="res://elements/enemy/bosses/trem/boss_trem.tscn" id="1_cwjmd"]
+[ext_resource type="PackedScene" uid="uid://3ovk8k8aoto1" path="res://elements/stage_pieces/factory/stage_piece_fabrica_room.tscn" id="2_2k3oj"]
+[ext_resource type="PackedScene" uid="uid://d2nqmop143ayt" path="res://elements/background/element_curb_train_station_path.tscn" id="2_anh0f"]
+[ext_resource type="PackedScene" uid="uid://cqfl6r82tc8ni" path="res://elements/background/element_factory_gray_floor.tscn" id="3_1dosm"]
+[ext_resource type="PackedScene" uid="uid://c00kqth38jmst" path="res://systems/stage/stage_screen_measure.tscn" id="4_5rlpo"]
+[ext_resource type="PackedScene" uid="uid://b5ywgn67tfmvg" path="res://elements/neutral/props/Factory/mesh/element_silo_factory.tscn" id="4_ggxvn"]
+[ext_resource type="PackedScene" uid="uid://cd77fkxpi0jxa" path="res://elements/neutral/props/Factory/mesh/element_box_factory.tscn" id="5_a0yj3"]
+[ext_resource type="PackedScene" uid="uid://kwe16eipevaw" path="res://elements/stage_pieces/factory/stage_piece_fabrica_boss_track.tscn" id="6_56lqg"]
+[ext_resource type="PackedScene" uid="uid://d0twtk6f36p1c" path="res://elements/neutral/props/Factory/mesh/element_barrel_factory.tscn" id="6_e1vsv"]
+[ext_resource type="PackedScene" uid="uid://dmf1l5p7w47hi" path="res://elements/neutral/props/Factory/mesh/element_pipe_curve_factory.tscn" id="7_kqd1m"]
+[ext_resource type="PackedScene" uid="uid://baj27etarf4uq" path="res://systems/stage/constant_piece_creator.tscn" id="7_vp1sc"]
+[ext_resource type="PackedScene" uid="uid://dpeu4kli3hep7" path="res://elements/neutral/props/Factory/mesh/element_pipe_tube_factory.tscn" id="8_pwl3k"]
+[ext_resource type="PackedScene" uid="uid://dq80q0mj0xxfn" path="res://elements/background/element_factory_wall.tscn" id="9_pubcw"]
+[ext_resource type="PackedScene" uid="uid://bhnvri2r370cj" path="res://elements/background/element_factory_icon_ivo_floor.tscn" id="10_0tgwf"]
+[ext_resource type="Resource" uid="uid://b4sm3a668ml1i" path="res://elements/levels/level_structure/camera_movement_data_by_duration.tres" id="12_mdsg4"]
+[ext_resource type="PackedScene" uid="uid://ojhpauyaruop" path="res://elements/enemy/bosses/trem/adao/boss_3_adao_sidekick.tscn" id="13_51bio"]
+[ext_resource type="PackedScene" uid="uid://cgmcmclklqqa2" path="res://elements/enemy/bosses/trem/adao/boss_3_adao_wall.tscn" id="14_50xc8"]
+[ext_resource type="Script" uid="uid://c85a7o7g4p6hu" path="res://systems/level/level_snippet_parallel.gd" id="15_2r7ae"]
+[ext_resource type="Script" uid="uid://dsvfipg4mxr7k" path="res://systems/line3d/child_line_3d.gd" id="15_50xc8"]
+
+[sub_resource type="GDScript" id="GDScript_d1btk"]
+script/source = "extends Level
+
+const BOSS_3 = preload(\"res://systems/boss/boss_3.tres\")
+
+var group:String = \"main\";
+
+@export var piece_main:LevelStagePiece;
+@export var piece_boss:LevelStagePiece;
+
+@export var pre_wave_boss:Level_Snippet_Node;
+
+@export var speed_max:float = 23;
+@export var speed_duration:float = 85;
+@export var boss:Boss_Trem;
+
+func _ready():
+	await await_for_level_ready()
+
+	boss.max_camera_speed = speed_max;
+
+	self.stage.attach_piece(piece_main);
+	self.stage.set_attachment_direction(LevelStagePiece.AttachmentDirection.RIGHT);
+	self.stage.attach_piece(piece_boss);
+
+
+	cmd_array([
+		cmd_all(),
+		cmd_clear_measures(),
+		]);
+
+func cmd_all()->Level.CMD:
+	return Level.CMD_Sequence.new([
+		cmd_boss_intro(),
+		Level.CMD_Parallel.new([
+			cmd_go_backwards(),
+			cmd_boss_ai(),
+		]),
+	]);
+
+func cmd_boss_intro()->Level.CMD:
+	return Level.CMD_Sequence.new([
+		## Go to the intro
+		cmd_set_pivot_to_next_measure(0),
+		cmd_camera_go_to_pivot0(2),
+		
+		## Pre boss
+		pre_wave_boss.cmd(self),
+
+		## Go to the boss
+		cmd_set_pivot_to_next_measure(1),
+		cmd_camera_go_to_pivot0(2.5, true),
+		cmd_show_boss_hp(),
+		CMD_Wait_Seconds.new(2),
+		CMD_Callable.new(func():
+			boss.reparent(InstantiateUtils.get_topmost_instantiate_node());
+			boss.follow_camera = true;
+			),
+	]);
+
+func cmd_go_backwards()->Level.CMD:
+	return Level.CMD_Sequence.new([
+		cam.cmd_speed(23.0, 85.0, LevelCameraController.MovementAxis.Z, Tween.TRANS_SINE, Tween.EASE_IN),
+		Level.CMD_Wait_Forever.new(),
+	]);
+
+func cmd_boss_ai()->Level.CMD:
+	return Level.CMD_Sequence.new([
+		boss.cmd_boss(),
+	]);
+
+func cmd_show_boss_hp()->Level.CMD:
+	return Level.CMD_Callable.new(func():
+		HUD.instance.show_boss_life(BOSS_3, boss.boss_health.get_health_percentage)
+		);
+
+func _get_configuration_warnings() -> PackedStringArray:
+	for child in get_children():
+		if child is LevelStagePiece:
+			return [];
+	return [\"Need a level stage piece as child of this!\"];
+"
+
+[sub_resource type="Curve3D" id="Curve3D_eblfl"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 37.125, 0, 0, 0.75, 0, 0, -0.75, 0, -0.03, -9.75),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[sub_resource type="GDScript" id="GDScript_psmeo"]
+resource_name = "Boss3SpriteMakeAndWait"
+script/source = "extends Level_Snippet_Node
+
+const SideKick = preload(\"res://elements/enemy/bosses/trem/adao/boss_3_adao_sidekick.gd\");
+
+@export var sidekick:SideKick;
+@export var after_run_wait:float = 1;
+
+
+func _cmd(lvl:Level):
+	return Level.CMD_Sequence.new([
+		Level.CMD_Callable.new(func():
+			sidekick.converse();
+			),
+		Level.CMD_Parallel.new([
+			Level.CMD_Wait_Signal.new(sidekick.ran_away),
+			Level.CMD_Sequence.new([
+				Level.CMD_Wait_Callable.new(func():
+					return Input.is_action_just_pressed(\"dev_skip_cutscene\");
+					),
+				Level.CMD_Callable.new(func():
+					sidekick.run();
+					),
+				Level.CMD_Wait_Forever.new(),
+			]),
+		]),
+		Level.CMD_Wait_Seconds.new(after_run_wait),
+	]);
+"
+
+[sub_resource type="GDScript" id="GDScript_51bio"]
+script/source = "extends Level_Snippet_Node
+
+const ENEMY_SNAKE = preload(\"res://elements/enemy/snake/enemy_snake.tscn\")
+const ENEMY_BRAWNY = preload(\"res://elements/enemy/brawny/enemy_brawny.tscn\")
+const PIZZA = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto.tscn\")
+const SHOOTER = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto_shooter.tscn\")
+const COPTER = preload(\"res://elements/enemy/copter/enemy_roboto_copter.tscn\")
+
+const Sidekick = preload(\"res://elements/enemy/bosses/trem/adao/boss_3_adao_sidekick.gd\")
+
+@export var props_bottom:Array[Node3D];
+@export var props_top:Array[Node3D];
+@export var copter_line_1:ChildLine3D;
+
+@export var sidekick:Sidekick;
+
+func destroy_all_props(arr:Array[Node3D]):
+	var ddata:Health.DamageData = Health.DamageData.new(500, null, false);
+	for prop:Node3D in arr:
+		if prop and is_instance_valid(prop):
+			Health.Damage(prop, ddata);
+
+func _cmd(lvl:Level):
+	
+	return Level.CMD_Sequence.new([
+		Level.CMD_Wait_Seconds.new(1),
+		Level.CMD_Parallel.new([
+			Level.CMD_Sequence.new([
+				lvl.objs.cmd_create_object(ENEMY_SNAKE, \"snake\", func(): return lvl.stage.get_grid(-8, 13), Vector3.RIGHT + Vector3.BACK * 0.5, false, func(snake:AI_Snake):
+					snake.set_bodies([0,0,0,0,2,0,0,0,0,1,2,1,0,0,0,0,0,2,0,0])
+					),
+				lvl.objs.cmd_wait_group(\"snake\"),
+				Level.CMD_Callable.new(destroy_all_props.bind(props_bottom)),
+				Level.CMD_Sequence.new([
+					lvl.cmd_enemy_line([PIZZA], [0,0,0], 0.0, -8, 20, Vector2(-2.0, 0), \"\", func(pizza:AI_WalkAndDo):
+						pizza.walkAndStop = false;
+						pizza.walkVelocity = pizza.walkVelocity.length() * Vector3.RIGHT;
+						),
+					Level.CMD_Wait_Seconds.new(2.5),
+				], -1),
+			]),
+			Level.CMD_Sequence.new([
+				Level.CMD_Wait_Seconds.new(4),
+				Level.CMD_Callable.new(destroy_all_props.bind(props_top)),
+				Level.CMD_Sequence.new([
+					lvl.cmd_enemy_line_dynamic_enemies([PIZZA, SHOOTER], func():
+						var arr:Array[int] = [0,0,1,1];
+						arr.shuffle();
+						return arr;
+						, 0.0, -8, 5, Vector2(-1.5, 0), \"\", func(pizza:AI_WalkAndDo):
+						pizza.walkAndStop = false;
+						pizza.walkVelocity = pizza.walkVelocity.length() * Vector3.RIGHT;
+						),
+					Level.CMD_Wait_Seconds.new(4),
+				], -1),
+			]),
+			Level.CMD_Sequence.new([
+				Level.CMD_Wait_Signal.new(sidekick.talked_to_eva),
+				lvl.objs.cmd_create_object(ENEMY_BRAWNY, \"main\", lvl.stage.get_grid.bind(-2.0, 11)),
+				Level.CMD_Wait_Seconds.new(2),
+				Level.CMD_Callable.new(lvl.make_copters.bind(COPTER, 4, copter_line_1, \"main\")),
+				Level.CMD_Wait_Seconds.new(5),
+				Level.CMD_Callable.new(lvl.make_copters.bind(COPTER, 4, copter_line_1, \"main\")),
+				lvl.objs.cmd_wait_group(\"main\"),
+				lvl.objs.cmd_create_object(ENEMY_BRAWNY, \"main\", lvl.stage.get_grid.bind(-2.0, 11)),
+				Level.CMD_Wait_Seconds.new(2),
+				Level.CMD_Callable.new(lvl.make_copters.bind(COPTER, 10, copter_line_1, \"main\")),
+				Level.CMD_Wait_Seconds.new(7),
+				Level.CMD_Callable.new(lvl.make_copters.bind(COPTER, 15, copter_line_1, \"main\")),
+				
+			])
+		]),
+		Level.CMD_Wait_Forever.new(),
+	]);
+	
+"
+
+[node name="LEVEL FABRICA BOSS" type="Node3D" node_paths=PackedStringArray("piece_main", "piece_boss", "pre_wave_boss", "boss")]
+script = SubResource("GDScript_d1btk")
+piece_main = NodePath("Stage Piece Fabrica Room")
+piece_boss = NodePath("Stage Piece Fabrica Boss Track")
+pre_wave_boss = NodePath("PreBoss Snippet")
+boss = NodePath("Stage Piece Fabrica Room/Boss Trem")
+
+[node name="Stage Piece Fabrica Room" parent="." instance=ExtResource("2_2k3oj")]
+
+[node name="right" parent="Stage Piece Fabrica Room/Config" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.75, 0, 14.25)
+
+[node name="VisibleOnScreenNotifier3D" parent="Stage Piece Fabrica Room/Config" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 13)
+aabb = AABB(-27.4996, 0, -18.0803, 54.9981, 13.796, 30)
+
+[node name="FactoryFloor" parent="Stage Piece Fabrica Room/Scenery" index="0"]
+transform = Transform3D(36, 0, 0, 0, 1, 0, 0, 0, 46, -9, 0, -5)
+
+[node name="PROPS" type="Node3D" parent="Stage Piece Fabrica Room/Scenery" index="1"]
+
+[node name="Curb Sidewalk Path2" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("2_anh0f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0.051, 4.75)
+curve = SubResource("Curve3D_eblfl")
+
+[node name="FactorygrayFloor" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("3_1dosm")]
+transform = Transform3D(36, 0, 0, 0, 1, 0, 0, 0, 4, -9, 0.001, 19)
+
+[node name="FactorygrayFloor3" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("3_1dosm")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 12, 11, 0.001, 7)
+
+[node name="FactorygrayFloor4" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("3_1dosm")]
+transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 6, -3, 0.001, 11)
+
+[node name="FactorygrayFloor2" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("3_1dosm")]
+transform = Transform3D(36, 0, 0, 0, 1, 0, 0, 0, 4, -9, 0.001, 3)
+
+[node name="silo_factory" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("4_ggxvn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75, 0, 7.25)
+
+[node name="silo_factory4" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("4_ggxvn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75, 0, 21.5)
+
+[node name="factory_box" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("5_a0yj3")]
+transform = Transform3D(1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 1.3326, 0, 5.1822)
+
+[node name="factory_box2" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("5_a0yj3")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -4.6674, 0, 9.6822)
+
+[node name="factory_box3" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("5_a0yj3")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 3.8326, 0, 16.1822)
+
+[node name="factory_box5" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("5_a0yj3")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 25.5826, 0, 17.9322)
+
+[node name="factory_box6" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("5_a0yj3")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 25.5826, 0, 16.4322)
+
+[node name="factory_box7" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("5_a0yj3")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 23.8326, 0, 16.9322)
+
+[node name="factory_box4" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("5_a0yj3")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 2.0826, 0, 3.9322)
+
+[node name="barrel_factory5" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("6_e1vsv")]
+transform = Transform3D(0.707106, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707106, 11.75, 0, 4.75)
+
+[node name="barrel_factory6" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("6_e1vsv")]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 17, 0, 4.75)
+
+[node name="barrel_factory7" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("6_e1vsv")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 25, 0, 10.75)
+
+[node name="barrel_factory8" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("6_e1vsv")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 16.25, 0, 19.5)
+
+[node name="barrel_factory9" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("6_e1vsv")]
+transform = Transform3D(-1, 0, -2.38419e-07, 0, 1, 0, 2.38419e-07, 0, -1, 17.25, 0, 19.5)
+
+[node name="barrel_factory10" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("6_e1vsv")]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 18.25, 0, 19.5)
+
+[node name="pipe_curve_factory" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("7_kqd1m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 2.5)
+
+[node name="pipe_curve_factory2" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("7_kqd1m")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 24.5, 0, 2.5)
+
+[node name="pipe_tube_factory" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("8_pwl3k")]
+transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 2.5)
+
+[node name="pipe_curve_factory3" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("7_kqd1m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 3)
+
+[node name="pipe_curve_factory4" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("7_kqd1m")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 24.5, 0, 3)
+
+[node name="pipe_tube_factory2" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("8_pwl3k")]
+transform = Transform3D(21, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 3)
+
+[node name="pipe_curve_factory5" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("7_kqd1m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 3.5)
+
+[node name="pipe_curve_factory6" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("7_kqd1m")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 24.5, 0, 3.5)
+
+[node name="pipe_tube_factory3" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("8_pwl3k")]
+transform = Transform3D(21, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 3.5)
+
+[node name="pipe_curve_factory7" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("7_kqd1m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 4)
+
+[node name="pipe_curve_factory8" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("7_kqd1m")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 21.5, 0, 4)
+
+[node name="pipe_tube_factory4" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("8_pwl3k")]
+transform = Transform3D(18, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 4)
+
+[node name="FactoryWall6" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("9_pubcw")]
+transform = Transform3D(-4.37114e-08, 0, 38, 0, 4, 0, -1, 0, -1.66103e-06, -9, 0, 2.25)
+
+[node name="FactoryIconIvoFloor" parent="Stage Piece Fabrica Room/Scenery/PROPS" instance=ExtResource("10_0tgwf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.022, 14)
+
+[node name="StageScreenMeasure" parent="Stage Piece Fabrica Room" instance=ExtResource("4_5rlpo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 1)
+default_movement = ExtResource("12_mdsg4")
+
+[node name="Enemy Marker Top 1" type="Marker3D" parent="Stage Piece Fabrica Room/StageScreenMeasure"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 7.25)
+
+[node name="Enemy Marker Top 2" type="Marker3D" parent="Stage Piece Fabrica Room/StageScreenMeasure"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 5)
+
+[node name="Enemy Marker Bottom 1" type="Marker3D" parent="Stage Piece Fabrica Room/StageScreenMeasure"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 17)
+
+[node name="Enemy Marker Bottom 2" type="Marker3D" parent="Stage Piece Fabrica Room/StageScreenMeasure"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.25, 0, 21.25)
+
+[node name="StageScreenMeasure2" parent="Stage Piece Fabrica Room" instance=ExtResource("4_5rlpo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0.25, 1)
+default_movement = ExtResource("12_mdsg4")
+
+[node name="Boss Trem" parent="Stage Piece Fabrica Room" instance=ExtResource("1_cwjmd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, 8.25)
+
+[node name="Boss_3_Adão_Sidekick" parent="Stage Piece Fabrica Room" instance=ExtResource("13_51bio")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 12.5)
+
+[node name="Boss_3_Adão_Wall" parent="Stage Piece Fabrica Room" instance=ExtResource("14_50xc8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 14.5)
+
+[node name="ChildLine3D" type="Node3D" parent="Stage Piece Fabrica Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25, 0, 12)
+script = ExtResource("15_50xc8")
+metadata/_custom_type_script = "uid://dsvfipg4mxr7k"
+
+[node name="Node3D" type="Node3D" parent="Stage Piece Fabrica Room/ChildLine3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
+
+[node name="Node3D2" type="Node3D" parent="Stage Piece Fabrica Room/ChildLine3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25, 0, 0)
+
+[node name="Node3D3" type="Node3D" parent="Stage Piece Fabrica Room/ChildLine3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25, 0, -3)
+
+[node name="Node3D4" type="Node3D" parent="Stage Piece Fabrica Room/ChildLine3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.25, 0, -3)
+
+[node name="Node3D5" type="Node3D" parent="Stage Piece Fabrica Room/ChildLine3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.25, 4, -3)
+
+[node name="Node3D6" type="Node3D" parent="Stage Piece Fabrica Room/ChildLine3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.25, 4, 5)
+
+[node name="Node3D7" type="Node3D" parent="Stage Piece Fabrica Room/ChildLine3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.25, 0, 5)
+
+[node name="Node3D8" type="Node3D" parent="Stage Piece Fabrica Room/ChildLine3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.25, 0, 5)
+
+[node name="Stage Piece Fabrica Boss Track" parent="." instance=ExtResource("6_56lqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.75, 0, 0)
+
+[node name="ConstantPieceCreator" parent="." instance=ExtResource("7_vp1sc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5, 0, 30.75)
+pieces = Array[PackedScene]([ExtResource("6_56lqg")])
+
+[node name="PreBoss Snippet" type="Node" parent="."]
+script = ExtResource("15_2r7ae")
+metadata/_custom_type_script = "uid://c85a7o7g4p6hu"
+
+[node name="Make Boss Sprite" type="Node" parent="PreBoss Snippet" node_paths=PackedStringArray("sidekick")]
+script = SubResource("GDScript_psmeo")
+sidekick = NodePath("../../Stage Piece Fabrica Room/Boss_3_Adão_Sidekick")
+after_run_wait = 2.0
+metadata/_custom_type_script = "uid://d3gwyabb6e0e0"
+
+[node name="Enemy Waves" type="Node" parent="PreBoss Snippet" node_paths=PackedStringArray("props_bottom", "props_top", "copter_line_1", "sidekick")]
+script = SubResource("GDScript_51bio")
+props_bottom = [NodePath("../../Stage Piece Fabrica Room/Scenery/PROPS/silo_factory4")]
+props_top = [NodePath("../../Stage Piece Fabrica Room/Scenery/PROPS/silo_factory")]
+copter_line_1 = NodePath("../../Stage Piece Fabrica Room/ChildLine3D")
+sidekick = NodePath("../../Stage Piece Fabrica Room/Boss_3_Adão_Sidekick")
+metadata/_custom_type_script = "uid://d3gwyabb6e0e0"
+
+[editable path="Stage Piece Fabrica Room"]
+[editable path="Stage Piece Fabrica Room/Boss_3_Adão_Wall"]

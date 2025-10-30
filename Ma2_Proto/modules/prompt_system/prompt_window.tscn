@@ -1,0 +1,312 @@
+[gd_scene load_steps=12 format=3 uid="uid://c65rnovq820gd"]
+
+[ext_resource type="Script" uid="uid://boaue3ewio8ob" path="res://modules/prompt_system/prompt_window.gd" id="1_v0cxi"]
+[ext_resource type="WwiseEvent" uid="uid://uidldyokmjcg" path="res://Wwise/resources/Event/{50FBC31A-2A45-4058-838E-839D41370A6D}.tres" id="2_3xhwn"]
+[ext_resource type="Script" uid="uid://bi4yfgewvcvwq" path="res://systems/switchable/switch_oning_offing_animation_player.gd" id="2_oydc5"]
+[ext_resource type="WwiseEvent" uid="uid://caicmgeuxne2s" path="res://Wwise/resources/Event/{3F988FCF-277E-4321-8C9E-A35095D62679}.tres" id="3_a6p6q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r4o4n"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.0627451, 0.34902, 0.580392, 0.784314)
+border_width_left = 80
+border_width_top = 50
+border_width_right = 80
+border_width_bottom = 50
+border_color = Color(0.0627451, 0.34902, 0.580392, 0)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="Animation" id="Animation_6q08y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/Control/ScalableCenter:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7px07"]
+resource_name = "off"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_03evr"]
+resource_name = "offing"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.233258, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7ci1v"]
+resource_name = "on"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5te3i"]
+resource_name = "oning"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.233258, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/Control/ScalableCenter:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.4),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0w4rc"]
+_data = {
+&"RESET": SubResource("Animation_6q08y"),
+&"off": SubResource("Animation_7px07"),
+&"offing": SubResource("Animation_03evr"),
+&"on": SubResource("Animation_7ci1v"),
+&"oning": SubResource("Animation_5te3i")
+}
+
+[node name="PromptWindow" type="Control" node_paths=PackedStringArray("switch_animation", "label_title", "label_text", "button_container")]
+process_mode = 3
+visible = false
+z_index = 20
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v0cxi")
+sfx_on = ExtResource("2_3xhwn")
+sfx_off = ExtResource("3_a6p6q")
+switch_animation = NodePath("Switch_Oning_Offing_AnimationPlayer")
+label_title = NodePath("MarginContainer/Control/ScalableCenter/PanelContainer2/PanelContainer/VBoxContainer/Title")
+label_text = NodePath("MarginContainer/Control/ScalableCenter/PanelContainer2/PanelContainer/VBoxContainer/RichTextLabel")
+button_container = NodePath("MarginContainer/Control/ScalableCenter/PanelContainer2/PanelContainer/VBoxContainer/Buttonscontainer")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ScalableCenter" type="Control" parent="MarginContainer/Control"]
+anchors_preset = 0
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/Control/ScalableCenter"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -390.0
+offset_top = -293.0
+offset_right = 390.0
+offset_bottom = 293.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"panelcontainer_sub2"
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/Control/ScalableCenter/PanelContainer2"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r4o4n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Control/ScalableCenter/PanelContainer2/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Title" type="Label" parent="MarginContainer/Control/ScalableCenter/PanelContainer2/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_type_variation = &"label_menu_title"
+text = "Title!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/Control/ScalableCenter/PanelContainer2/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_outline_color = Color(1, 1, 1, 0)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0)
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_offset_x = 0
+bbcode_enabled = true
+text = "Text"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/Control/ScalableCenter/PanelContainer2/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Buttonscontainer" type="VBoxContainer" parent="MarginContainer/Control/ScalableCenter/PanelContainer2/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Button" type="Button" parent="MarginContainer/Control/ScalableCenter/PanelContainer2/PanelContainer/VBoxContainer/Buttonscontainer"]
+layout_mode = 2
+text = "Close"
+
+[node name="Button2" type="Button" parent="MarginContainer/Control/ScalableCenter/PanelContainer2/PanelContainer/VBoxContainer/Buttonscontainer"]
+layout_mode = 2
+theme_type_variation = &"button_magenta"
+text = "Yes"
+
+[node name="Button3" type="Button" parent="MarginContainer/Control/ScalableCenter/PanelContainer2/PanelContainer/VBoxContainer/Buttonscontainer"]
+layout_mode = 2
+text = "No"
+
+[node name="Switch_Oning_Offing_AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0w4rc")
+}
+script = ExtResource("2_oydc5")

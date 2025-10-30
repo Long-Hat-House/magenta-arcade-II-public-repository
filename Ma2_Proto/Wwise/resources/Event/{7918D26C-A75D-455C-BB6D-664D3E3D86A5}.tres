@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://bmfu685xu0i4l"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_FinalBoss_Lv4_Final_Machine_Walk"
+id = 4139810843
+guid = "{7918D26C-A75D-455C-BB6D-664D3E3D86A5}"
+dummy = true

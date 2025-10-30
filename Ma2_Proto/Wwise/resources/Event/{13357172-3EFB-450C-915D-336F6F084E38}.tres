@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://djpx5vrysge2c"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_MiniBoss_Lv4_Attack_Warning"
+id = 1067264943
+guid = "{13357172-3EFB-450C-915D-336F6F084E38}"
+dummy = true

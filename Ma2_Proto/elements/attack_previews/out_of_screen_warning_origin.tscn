@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dofs6j5418rhr"]
+
+[ext_resource type="Script" uid="uid://dqmhtjh4px0o0" path="res://elements/attack_previews/out_of_screen_warning_origin.gd" id="1_yp3rp"]
+
+[node name="OutOfScreenWarningOrigin" type="VisibleOnScreenNotifier3D"]
+aabb = AABB(-0.5, -0.5, -0.5, 1, 1, 1)
+script = ExtResource("1_yp3rp")
+margin_x = 50.0
+margin_y = 200.0

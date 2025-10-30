@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4m4rwgvduke7"]
+
+[ext_resource type="PackedScene" uid="uid://by4ir8pvbp3l5" path="res://elements/neutral/props/rock/mesh/little_rock.glb" id="1_bp531"]
+[ext_resource type="Material" uid="uid://cdkpbup0tjcqe" path="res://elements/neutral/props/rock/material/m_little_rock.tres" id="2_27jpt"]
+
+[node name="little_rock" instance=ExtResource("1_bp531")]
+
+[node name="little_rock" parent="." index="0"]
+material_override = ExtResource("2_27jpt")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxc68gsmoe6lv"]
+
+[ext_resource type="Script" uid="uid://vbpy1c5jq7cq" path="res://marketing_tools/fake_hand/player_fake_finger.gd" id="1_rorcr"]
+[ext_resource type="SpriteFrames" uid="uid://bkpg7y8fbys00" path="res://marketing_tools/fake_hand/fake_hand.tres" id="2_vm8hm"]
+
+[node name="PlayerCursor_Tosco" type="Node2D"]
+script = ExtResource("1_rorcr")
+
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite2D" parent="Pivot"]
+unique_name_in_owner = true
+texture_filter = 2
+scale = Vector2(2.8, 2.8)
+sprite_frames = ExtResource("2_vm8hm")
+animation = &"floating"
+frame_progress = 0.20113
+offset = Vector2(100, 250)

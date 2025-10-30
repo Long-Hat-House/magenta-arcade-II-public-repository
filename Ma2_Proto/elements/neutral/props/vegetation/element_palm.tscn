@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://cvrxspt6by06j"]
+
+[ext_resource type="Script" uid="uid://bjnpmcrptfb85" path="res://systems/utils/random_rotation_local.gd" id="1_xerq5"]
+[ext_resource type="Script" uid="uid://0wf4obm88h88" path="res://elements/neutral/props/generic_tumbler.gd" id="2_10ocs"]
+[ext_resource type="PackedScene" uid="uid://dotqnvbaucd8j" path="res://elements/neutral/props/vegetation/mesh/mesh_palm.tscn" id="2_ntiu1"]
+[ext_resource type="Resource" uid="uid://bv7gqtc7bxel0" path="res://elements/neutral/props/vegetation/element_tree_tumble_data.tres" id="3_3suky"]
+[ext_resource type="PackedScene" uid="uid://derqc4swptgl3" path="res://elements/vfx/vfx_destroy_wood/vfx_destroy_wood.tscn" id="3_8g7ft"]
+[ext_resource type="PackedScene" uid="uid://dvvewkod8whps" path="res://elements/neutral/props/vegetation/mesh/vfx_leaf_explosion.tscn" id="3_jmdwd"]
+[ext_resource type="Script" uid="uid://biqjvlcudqx0t" path="res://elements/player/force_receiver.gd" id="4_wo67g"]
+[ext_resource type="PackedScene" uid="uid://bk3c6a8vre6yr" path="res://elements/neutral/props/generic_body_and_presseable.tscn" id="6_nbd3c"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qn04x"]
+radius = 0.545991
+height = 12.9082
+
+[node name="Palm" type="Node3D" node_paths=PackedStringArray("spawn_from_node")]
+transform = Transform3D(0.987688, -0.156434, 0, 0.154334, 0.974426, -0.163326, 0.0255498, 0.161315, 0.986572, 0, 0, 0)
+script = ExtResource("1_xerq5")
+spawn_from_y_duration = 0.1
+spawn_from_node = NodePath("GenericTumbler/Downer")
+
+[node name="GenericBodyAndPresseable" parent="." node_paths=PackedStringArray("on_kill_queue_free", "visual_feedback_of_health") instance=ExtResource("6_nbd3c")]
+explosion_vfx = ExtResource("3_8g7ft")
+extra_vfx = Array[PackedScene]([ExtResource("3_jmdwd")])
+on_kill_queue_free = [NodePath("..")]
+visual_feedback_of_health = [NodePath("../GenericTumbler/Downer/palm")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.314087, 6, 0)
+shape = SubResource("CapsuleShape3D_qn04x")
+
+[node name="Explosion" type="Node3D" parent="GenericBodyAndPresseable"]
+
+[node name="Explosion3" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="Explosion7" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.273743, 8, 0)
+
+[node name="Explosion11" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.464777, 10.9697, -2.5203)
+
+[node name="L_0" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 1.58325e-08, 0, -9.31323e-10, 1, 0, 1.86265e-09, 1.49012e-08, 1, -0.391144, 10.0518, -3.1722)
+
+[node name="L1_0" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 3.1665e-08, 0, 0, 1, 0, 5.58794e-09, 2.98023e-08, 1, 1.83928, 10.2632, 0.196877)
+
+[node name="L2_0" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 4.74975e-08, -1.86265e-09, 9.31323e-10, 1, 0, 9.31323e-09, 4.47035e-08, 1, -1.2864, 11.0231, 1.77654)
+
+[node name="L3_0" type="Node3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 6.33299e-08, -1.86265e-09, 2.32831e-09, 1, 0, 1.11759e-08, 5.96046e-08, 1, -2.91968, 10.9312, -0.315278)
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="GenericBodyAndPresseable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.59001, 0)
+aabb = AABB(-4.30684, -2.9581, -3.73509, 7.92227, 13.6935, 7.47019)
+enable_node_path = NodePath("../..")
+
+[node name="GenericTumbler" type="Node3D" parent="." node_paths=PackedStringArray("receiver", "to_tumble")]
+script = ExtResource("2_10ocs")
+receiver = NodePath("ForceReceiver")
+to_tumble = NodePath(".")
+tumble_data = ExtResource("3_3suky")
+
+[node name="ForceReceiver" type="Node3D" parent="GenericTumbler"]
+script = ExtResource("4_wo67g")
+
+[node name="Downer" type="Node3D" parent="GenericTumbler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 1.86265e-09, 1.49012e-08, 1, 0.119406, -0.0189121, 0)
+
+[node name="palm" parent="GenericTumbler/Downer" instance=ExtResource("2_ntiu1")]

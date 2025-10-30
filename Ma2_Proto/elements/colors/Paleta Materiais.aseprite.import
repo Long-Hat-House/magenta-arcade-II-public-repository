@@ -1,0 +1,18 @@
+[remap]
+
+importer="aseprite_wizard.plugin"
+type="SpriteFrames"
+uid="uid://diddb4whxrxuk"
+path="res://.godot/imported/Paleta Materiais.aseprite-95572a724cfe873d0948d330682f6fe6.res"
+
+[deps]
+
+source_file="res://elements/colors/Paleta Materiais.aseprite"
+dest_files=["res://.godot/imported/Paleta Materiais.aseprite-95572a724cfe873d0948d330682f6fe6.res"]
+
+[params]
+
+split_layers=false
+exclude_layers_pattern="#.*"
+only_visible_layers=false
+sheet_type="Packed"

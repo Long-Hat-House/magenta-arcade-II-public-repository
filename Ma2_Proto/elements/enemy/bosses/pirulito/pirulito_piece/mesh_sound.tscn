@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcen33kv1m7oq"]
+
+[ext_resource type="PackedScene" uid="uid://cjvwcxuuueu5s" path="res://elements/enemy/bosses/pirulito/pirulito_piece/sound.glb" id="1_qclp4"]
+[ext_resource type="Material" uid="uid://cdbjx8ca34s4r" path="res://elements/enemy/bosses/pirulito/material/m_column_pirulito.tres" id="2_77qe1"]
+
+[node name="sound" instance=ExtResource("1_qclp4")]
+
+[node name="sound_001" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("2_77qe1")

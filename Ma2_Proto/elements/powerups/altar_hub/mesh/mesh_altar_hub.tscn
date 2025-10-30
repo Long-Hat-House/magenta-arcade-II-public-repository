@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://djy7ibrx8e1lv"]
+
+[ext_resource type="PackedScene" uid="uid://bdidxtt286ny3" path="res://elements/powerups/altar_hub/mesh/altar_hub.glb" id="1_2unxr"]
+[ext_resource type="Material" uid="uid://bk2php1tj8bg8" path="res://elements/powerups/altar_hub/material/m_altar_hub.tres" id="2_qjyl1"]
+[ext_resource type="Material" uid="uid://c650xjk4sxw55" path="res://elements/powerups/altar_hub/material/m_altar_base_hub.tres" id="3_lyr6x"]
+
+[node name="altar_hub" instance=ExtResource("1_2unxr")]
+
+[node name="altar_box" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_qjyl1")
+surface_material_override/1 = ExtResource("3_lyr6x")
+
+[node name="altar_door_L" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_qjyl1")
+
+[node name="altar_door_R" parent="." index="2"]
+surface_material_override/0 = ExtResource("2_qjyl1")

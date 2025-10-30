@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cd6ymp4wmjksa"]
+
+[ext_resource type="Material" uid="uid://did1nmtt34t0l" path="res://elements/background/material/m_asphalt.tres" id="1_sppsg"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ao4am"]
+size = Vector2(1, 1)
+center_offset = Vector3(0.5, 0, 0.5)
+
+[node name="Asphalt" type="Node3D"]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+layers = 3
+material_override = ExtResource("1_sppsg")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_ao4am")

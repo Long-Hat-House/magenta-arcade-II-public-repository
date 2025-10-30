@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://b01gkqn7jphxt"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_UI_Challenge_Begin"
+id = 1888300740
+guid = "{B4F3359C-9ADA-403E-85F6-79156CA0D7AA}"
+dummy = true

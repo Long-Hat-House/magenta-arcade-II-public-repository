@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddkjraelfcg7p"]
+
+[ext_resource type="PackedScene" uid="uid://iuqatcwv74w1" path="res://elements/neutral/props/mineirao_football_grass/mesh/mineirao_football_grandstand.glb" id="1_5atdk"]
+[ext_resource type="Material" uid="uid://bfhi820epme40" path="res://elements/neutral/props/mineirao_football_grass/material/m_mineirao_football_grandstand.tres" id="2_57yqm"]
+
+[node name="mineirao_football_grandstand" instance=ExtResource("1_5atdk")]
+
+[node name="mineirao_football_grandstand" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_57yqm")

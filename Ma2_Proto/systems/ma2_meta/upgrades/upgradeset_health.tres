@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="UpgradeSet" load_steps=7 format=3 uid="uid://c8ohngf45805w"]
+
+[ext_resource type="Texture2D" uid="uid://5k740vn6ynjg" path="res://elements/icons/icon_health.png" id="1_jhgve"]
+[ext_resource type="Script" uid="uid://cxyan4ppm7npb" path="res://systems/ma2_meta/upgrade_set.gd" id="1_n3yuc"]
+[ext_resource type="Script" uid="uid://dospanm60t0v5" path="res://systems/ma2_meta/upgrade_info.gd" id="3_f6h1i"]
+[ext_resource type="Resource" uid="uid://c8d6usqn14l2a" path="res://systems/ma2_meta/upgrades/upgrade_health_heal.tres" id="4_fjya5"]
+[ext_resource type="Resource" uid="uid://dwbt1t0wi1gt0" path="res://systems/ma2_meta/upgrades/upgrade_health_initial.tres" id="5_d36kv"]
+[ext_resource type="Resource" uid="uid://bu002t6ajd6gk" path="res://systems/ma2_meta/upgrades/upgrade_health_revenge.tres" id="6_ee1jl"]
+
+[resource]
+script = ExtResource("1_n3yuc")
+set_id = &"upgradeset_health"
+set_description = &"upgradeset_health_description"
+icon = ExtResource("1_jhgve")
+color = Color(0, 0.376471, 0.360784, 1)
+color_highlight = Color(0, 0.831373, 0.792157, 1)
+upgrades_list = Array[ExtResource("3_f6h1i")]([ExtResource("6_ee1jl"), ExtResource("5_d36kv"), ExtResource("4_fjya5")])

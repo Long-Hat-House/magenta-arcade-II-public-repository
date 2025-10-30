@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://xn0hrj3aldfw"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Stop_MiniBoss_Lv4_Dog_Suck"
+id = 814220267
+guid = "{ACABCD40-4941-48D7-9C0F-A2313ED00834}"
+dummy = true

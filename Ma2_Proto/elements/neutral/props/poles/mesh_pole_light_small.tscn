@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpyyjsvm5xtdp"]
+
+[ext_resource type="PackedScene" uid="uid://qhxbgongbacl" path="res://elements/neutral/props/poles/mesh/pole_light_small.glb" id="1_c6y6t"]
+[ext_resource type="Material" uid="uid://rj7n8wsin3vi" path="res://elements/neutral/props/poles/material/m_small_pole.tres" id="2_0jnkn"]
+
+[node name="pole_light_small" instance=ExtResource("1_c6y6t")]
+
+[node name="pole_light_small" parent="." index="0"]
+material_override = ExtResource("2_0jnkn")

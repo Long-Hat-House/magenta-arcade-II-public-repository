@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://gxlnx64hdfkt"]
+
+[ext_resource type="PackedScene" uid="uid://bg2aqptipn8s" path="res://elements/enemy/pizza/enemy_pizza_roboto_rusty.tscn" id="1_yl60r"]
+[ext_resource type="PackedScene" uid="uid://cya5dbvbjhrvy" path="res://elements/vfx/vfx_explosion_small/vfx_explosion_small.tscn" id="2_e6mvc"]
+[ext_resource type="PackedScene" uid="uid://bqiu5ttqsaaf0" path="res://elements/enemy/pizza/Mesh/pizza_roboto_rusty_shooter.tscn" id="2_lrf65"]
+[ext_resource type="Script" uid="uid://cjeyn47cfqk8y" path="res://systems/graphics/animation_player_proxy.gd" id="3_2wj0o"]
+[ext_resource type="PackedScene" uid="uid://ogo51q0i36xw" path="res://elements/enemy/projectiles/cannon/enemy_cannon_invisible.tscn" id="5_1i0qi"]
+
+[node name="PizzaRobotoRusty_Cannon" node_paths=PackedStringArray("simpleAnimation") instance=ExtResource("1_yl60r")]
+simpleAnimation = NodePath("Body/Render/Pizza_Roboto_Shooter_Rusty")
+vfxOnVanish = ExtResource("2_e6mvc")
+kill_self_on_collision = false
+
+[node name="Health" parent="Body" index="1" node_paths=PackedStringArray("feedback")]
+max_amount = 0.3
+feedback = [NodePath("../Render/Pizza_Roboto"), NodePath("../Render/Pizza_Roboto_Rusty"), NodePath("../Render/Pizza_Roboto_Shooter_Rusty")]
+
+[node name="ScoreGiver" parent="Body" index="2"]
+info = null
+
+[node name="Pizza_Roboto_Shooter_Rusty" parent="Body/Render" index="0" instance=ExtResource("2_lrf65")]
+script = ExtResource("3_2wj0o")
+
+[node name="Pizza_Roboto_Rusty" parent="Body/Render" index="1"]
+visible = false
+
+[node name="Cannon_Invisible" parent="Body" index="4" instance=ExtResource("5_1i0qi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="VisibleOnScreenNotifier3D" parent="Body" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00880933, 0.5, 0)
+aabb = AABB(-0.563794, -0.524402, -0.60784, 1.12759, 0.691381, 1.21568)
+
+[node name="Shoot Animation" parent="AI" index="1" node_paths=PackedStringArray("animation_player_proxy")]
+animation_player_proxy = NodePath("../../Body/Render/Pizza_Roboto_Shooter_Rusty")
+animations_prohibited = Array[StringName]([&"RUST", &"WALK"])
+
+[connection signal="shot" from="Body/Cannon_Invisible" to="AI/Shoot Animation" method="_on_cannon_invisible_shot"]

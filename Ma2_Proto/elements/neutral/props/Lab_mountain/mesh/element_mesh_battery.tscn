@@ -1,0 +1,74 @@
+[gd_scene load_steps=10 format=3 uid="uid://c7a51rooj4wil"]
+
+[ext_resource type="PackedScene" uid="uid://cn0wwvgelvy8e" path="res://elements/neutral/props/Lab_mountain/mesh/battery.glb" id="1_kvrov"]
+[ext_resource type="Material" uid="uid://b5teruhnbhq7k" path="res://elements/neutral/props/Lab_mountain/material/m_lab_props01.tres" id="2_wjkyx"]
+[ext_resource type="Material" uid="uid://byyp0fl6w3f5q" path="res://elements/neutral/props/Lab_mountain/material/m_fluid.tres" id="3_s5f0c"]
+[ext_resource type="Script" uid="uid://0wf4obm88h88" path="res://elements/neutral/props/generic_tumbler.gd" id="4_yiked"]
+[ext_resource type="Resource" uid="uid://ch2sx8gskxgfw" path="res://elements/neutral/props/totem/element_iron_box_tumble_data.tres" id="5_g2l4h"]
+[ext_resource type="Script" uid="uid://biqjvlcudqx0t" path="res://elements/player/force_receiver.gd" id="6_7cj2l"]
+
+[sub_resource type="Animation" id="Animation_d5w8s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("battery:surface_material_override/1:uv1_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_omplh"]
+resource_name = "anim"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("battery:surface_material_override/1:uv1_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yiked"]
+_data = {
+&"RESET": SubResource("Animation_d5w8s"),
+&"anim": SubResource("Animation_omplh")
+}
+
+[node name="battery" instance=ExtResource("1_kvrov")]
+
+[node name="battery" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_wjkyx")
+surface_material_override/1 = ExtResource("3_s5f0c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+&"": SubResource("AnimationLibrary_yiked")
+}
+autoplay = "anim"
+
+[node name="GenericTumbler" type="Node3D" parent="." index="2" node_paths=PackedStringArray("receiver", "to_tumble", "only_in_screen")]
+script = ExtResource("4_yiked")
+receiver = NodePath("ForceReceiver")
+to_tumble = NodePath("../battery")
+tumble_data = ExtResource("5_g2l4h")
+only_in_screen = NodePath("../VisibleOnScreenEnabler3D")
+metadata/_custom_type_script = "uid://0wf4obm88h88"
+
+[node name="ForceReceiver" type="Node3D" parent="GenericTumbler" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.82758, 0)
+script = ExtResource("6_7cj2l")
+metadata/_custom_type_script = "uid://biqjvlcudqx0t"
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

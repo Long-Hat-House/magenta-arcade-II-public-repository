@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://ta33edhasg1x"]
+
+[ext_resource type="PackedScene" uid="uid://ccn6065djpwhr" path="res://elements/powerups/button/powerup_holdable_button.tscn" id="1_tnsa0"]
+[ext_resource type="Texture2D" uid="uid://5k740vn6ynjg" path="res://elements/icons/icon_health.png" id="2_lectk"]
+[ext_resource type="Resource" uid="uid://dmyvmlodsismk" path="res://elements/powerups/button/health_powerup_graphic_info.tres" id="3_e8gmj"]
+[ext_resource type="Script" uid="uid://c2wv2dlj1g6g3" path="res://systems/tasks/specific/health_effect_task.gd" id="3_pwdwb"]
+
+[node name="HoldableButton-HEALTH" node_paths=PackedStringArray("condition_false_task") instance=ExtResource("1_tnsa0")]
+condition_false_task = NodePath("Task")
+
+[node name="button_graphic" parent="Area3D" index="1"]
+default_icon = ExtResource("2_lectk")
+powerup_style = ExtResource("3_e8gmj")
+
+[node name="Task" type="Node" parent="." index="4"]
+script = ExtResource("3_pwdwb")

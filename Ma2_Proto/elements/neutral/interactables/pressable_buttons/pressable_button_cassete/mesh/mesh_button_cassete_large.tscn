@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjb6x68au3fvb"]
+
+[ext_resource type="PackedScene" uid="uid://buuu0pwt4yik5" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_cassete/mesh/button_cassete_large.glb" id="1_0ri5c"]
+[ext_resource type="Material" uid="uid://cg15ut57vovp2" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_cassete/material/m_button_cassete.tres" id="2_71y68"]
+
+[node name="button_cassete_large" instance=ExtResource("1_0ri5c")]
+
+[node name="button" parent="." index="0"]
+material_override = ExtResource("2_71y68")

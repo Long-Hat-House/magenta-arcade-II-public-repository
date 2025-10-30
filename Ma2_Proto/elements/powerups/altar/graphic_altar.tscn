@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3d1vwr8fvkor"]
+
+[ext_resource type="PackedScene" uid="uid://lchp1pvf0b3s" path="res://elements/powerups/altar/mesh/altar.tscn" id="1_1ss41"]
+[ext_resource type="Script" uid="uid://u88cqem2r4pm" path="res://elements/powerups/altar/mesh/altar_graphic.gd" id="2_notth"]
+[ext_resource type="Texture2D" uid="uid://d2qwm45lnw5qp" path="res://elements/powerups/altar/texture/altar_floor_inside.png" id="3_cl62r"]
+[ext_resource type="Material" uid="uid://onsluxoljgfn" path="res://elements/powerups/altar/material/m_altar_vanish.tres" id="4_eed0g"]
+[ext_resource type="Texture2D" uid="uid://473dqokuyisr" path="res://elements/powerups/altar/texture/altar_door_inside.png" id="4_emfbq"]
+[ext_resource type="PackedScene" uid="uid://c7bcu7pbfr6em" path="res://elements/powerups/altar/altar_sfx_loop_open.tscn" id="6_nrks6"]
+
+[node name="Altar_Graphic" node_paths=PackedStringArray("instantiate_place", "altar_box", "altar_ornament", "altar_door_l", "altar_door_r", "ornament_transform", "door_l_transform", "door_r_transform", "inside_sprite_box", "inside_sprite_l", "inside_sprite_r", "mesh_vanish", "sfx_loop_open") instance=ExtResource("1_1ss41")]
+script = ExtResource("2_notth")
+instantiate_place = NodePath("altar_box/Instantiate Place")
+altar_box = NodePath("altar_box")
+altar_ornament = NodePath("altar_ornament")
+altar_door_l = NodePath("altar_door_l")
+altar_door_r = NodePath("altar_door_r")
+ornament_transform = NodePath("altar_box/Ornament")
+door_l_transform = NodePath("altar_box/Door_L")
+door_r_transform = NodePath("altar_box/Door_R")
+inside_sprite_box = NodePath("altar_box/inside sprite box")
+inside_sprite_l = NodePath("altar_door_l/inside sprite l")
+inside_sprite_r = NodePath("altar_door_r/inside sprite r")
+mesh_vanish = NodePath("altar_box/mesh_vanish")
+sfx_loop_open = NodePath("Altar SFX Loop Open")
+
+[node name="inside sprite box" type="Sprite3D" parent="altar_box" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1, -0.207985, -0.215435)
+centered = false
+pixel_size = 0.011
+texture = ExtResource("3_cl62r")
+region_rect = Rect2(20.5, -11.25, 106, 211.25)
+
+[node name="Instantiate Place" type="Node3D" parent="altar_box" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.25)
+
+[node name="Front" type="Node3D" parent="altar_box" index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.719619, -0.69437, 0, 0.69437, 0.719619, 0, -0.35076, -0.0104182)
+
+[node name="Back" type="Node3D" parent="altar_box" index="3"]
+transform = Transform3D(1, 0, 0, 0, 0.719619, -0.69437, 0, 0.69437, 0.719619, 0, -0.35076, -2.99935)
+
+[node name="Ornament" type="Node3D" parent="altar_box" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.232536, 0)
+
+[node name="Door_L" type="Node3D" parent="altar_box" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.989383, 0.380699, -1.1204)
+
+[node name="Marker3D" type="Marker3D" parent="altar_box/Door_L" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.962207, 0, 0)
+
+[node name="Door_R" type="Node3D" parent="altar_box" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.989383, 0.380699, -1.1204)
+
+[node name="mesh_vanish" parent="altar_box" index="7"]
+material_override = ExtResource("4_eed0g")
+instance_shader_parameters/Transparency = 0.0
+
+[node name="inside sprite l" type="Sprite3D" parent="altar_door_l" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.078, 1)
+centered = false
+flip_h = true
+shaded = true
+render_priority = -1
+texture = ExtResource("4_emfbq")
+
+[node name="inside sprite r" type="Sprite3D" parent="altar_door_r" index="1"]
+transform = Transform3D(1, 0, 0, 0, 4.37114e-08, 1, 0, -1, 4.37114e-08, -1, 0.078, 1)
+centered = false
+shaded = true
+render_priority = -1
+texture = ExtResource("4_emfbq")
+
+[node name="Altar SFX Loop Open" parent="." index="4" instance=ExtResource("6_nrks6")]

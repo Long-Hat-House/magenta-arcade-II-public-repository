@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmr250i6ketpl"]
+
+[ext_resource type="PackedScene" uid="uid://d4gqrbhs3u57h" path="res://elements/enemy/bosses/pirulito/pirulito_piece/ornament.glb" id="1_ocvk0"]
+[ext_resource type="Material" uid="uid://dnblqgcyj734p" path="res://elements/enemy/bosses/pirulito/material/m_pirulito.tres" id="2_58mx1"]
+
+[node name="ornament" instance=ExtResource("1_ocvk0")]
+
+[node name="ornament" parent="." index="0"]
+material_override = ExtResource("2_58mx1")

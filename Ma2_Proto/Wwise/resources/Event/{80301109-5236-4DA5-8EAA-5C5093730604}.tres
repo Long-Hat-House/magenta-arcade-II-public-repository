@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://drcgw32sq7s2t"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Enemy_Square_Explosion"
+id = 3636341568
+guid = "{80301109-5236-4DA5-8EAA-5C5093730604}"
+dummy = true

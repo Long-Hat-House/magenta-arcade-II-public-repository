@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgbcffy8s76l4"]
+
+[ext_resource type="PackedScene" uid="uid://dhmi2sv2mhuqe" path="res://elements/enemy/projectiles/proj_basic/proj_enemy_basic.tscn" id="1_xmupi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iwf34"]
+resource_local_to_scene = true
+shading_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.0
+rim = 0.5
+rim_tint = 1.0
+disable_receive_shadows = true
+grow_amount = -0.252
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uws1y"]
+resource_local_to_scene = true
+render_priority = 10
+cull_mode = 2
+shading_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.0
+rim = 0.5
+rim_tint = 1.0
+disable_receive_shadows = true
+grow_amount = -0.252
+
+[node name="EnemyProjectile_FollowScreen" instance=ExtResource("1_xmupi")]
+accompany_screen = true
+
+[node name="White" parent="Pivot/Graphic" index="1"]
+material_override = SubResource("StandardMaterial3D_iwf34")
+
+[node name="Glow" parent="Pivot/Graphic" index="3"]
+material_override = SubResource("StandardMaterial3D_uws1y")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://breucom6nsp22"]
+
+[ext_resource type="PackedScene" uid="uid://cmxy2edjrd6id" path="res://elements/enemy/toupeira/mesh/toupeira_door.glb" id="1_1u7o5"]
+[ext_resource type="Material" uid="uid://bkwc4o5lphh1i" path="res://elements/enemy/toupeira/material/m_toupeira.tres" id="2_2tlag"]
+
+[node name="toupeira_door" instance=ExtResource("1_1u7o5")]
+
+[node name="door" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("2_2tlag")

@@ -1,0 +1,135 @@
+[gd_scene load_steps=7 format=3 uid="uid://bikmyqcfitu5t"]
+
+[ext_resource type="Material" uid="uid://v11p5obixhie" path="res://elements/enemy/roboto_jacare/material/M_roboto_jacare_corpo.tres" id="1_846ub"]
+[ext_resource type="PackedScene" uid="uid://c0y6fv5bwt7iq" path="res://elements/enemy/roboto_jacare/mesh/jacare_catapulta.glb" id="1_jeetf"]
+[ext_resource type="Material" uid="uid://b7qqtv5hqoosw" path="res://elements/enemy/roboto_jacare/material/M_roboto_jacare_esteira.tres" id="2_qtgd7"]
+
+[sub_resource type="Animation" id="Animation_f23ip"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rig_jacare_roboto/Skeleton3D/melt:surface_material_override/1:uv1_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wqgqu"]
+resource_name = "anim_melt"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rig_jacare_roboto/Skeleton3D/melt:surface_material_override/1:uv1_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2dqug"]
+_data = {
+"RESET": SubResource("Animation_f23ip"),
+"anim_melt": SubResource("Animation_wqgqu")
+}
+
+[node name="jacare_catapulta" instance=ExtResource("1_jeetf")]
+
+[node name="Skeleton3D" parent="rig_jacare_roboto" index="0"]
+bones/0/position = Vector3(2.21491e-05, 2.21491e-05, 0)
+bones/1/position = Vector3(-0.0730981, 0.40075, 0.553486)
+bones/1/rotation = Quaternion(-0.267725, -0.220379, -0.0630465, 0.935832)
+bones/2/rotation = Quaternion(0.644929, -2.79525e-07, -2.43357e-07, 0.764243)
+bones/3/position = Vector3(0.224506, 0.162026, -0.339316)
+bones/4/position = Vector3(-0.224506, 0.162026, -0.339316)
+bones/4/rotation = Quaternion(-0.644929, 2.70931e-07, 2.58816e-07, 0.764243)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.786273, -3.01895e-07, -3.70786e-07, 0.617879)
+bones/6/rotation = Quaternion(-0.706795, -0.0210031, -0.021003, 0.706795)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(1.15741e-07, -1.38383e-08, 0.114275, 0.993449)
+bones/8/rotation = Quaternion(1.43323e-10, -9.42219e-10, 0.156232, 0.98772)
+
+[node name="body" parent="rig_jacare_roboto/Skeleton3D" index="0"]
+material_override = ExtResource("1_846ub")
+
+[node name="lamp_off_01" parent="rig_jacare_roboto/Skeleton3D" index="1"]
+visible = false
+material_override = ExtResource("1_846ub")
+
+[node name="lamp_off_02" parent="rig_jacare_roboto/Skeleton3D" index="2"]
+visible = false
+material_override = ExtResource("1_846ub")
+
+[node name="lamp_off_03" parent="rig_jacare_roboto/Skeleton3D" index="3"]
+visible = false
+material_override = ExtResource("1_846ub")
+
+[node name="lamp_off_04" parent="rig_jacare_roboto/Skeleton3D" index="4"]
+visible = false
+material_override = ExtResource("1_846ub")
+
+[node name="lamp_off_05" parent="rig_jacare_roboto/Skeleton3D" index="5"]
+visible = false
+material_override = ExtResource("1_846ub")
+
+[node name="lamp_off_06" parent="rig_jacare_roboto/Skeleton3D" index="6"]
+visible = false
+material_override = ExtResource("1_846ub")
+
+[node name="lamp_on_01" parent="rig_jacare_roboto/Skeleton3D" index="7"]
+material_override = ExtResource("1_846ub")
+
+[node name="lamp_on_02" parent="rig_jacare_roboto/Skeleton3D" index="8"]
+material_override = ExtResource("1_846ub")
+
+[node name="lamp_on_03" parent="rig_jacare_roboto/Skeleton3D" index="9"]
+material_override = ExtResource("1_846ub")
+
+[node name="lamp_on_04" parent="rig_jacare_roboto/Skeleton3D" index="10"]
+material_override = ExtResource("1_846ub")
+
+[node name="lamp_on_05" parent="rig_jacare_roboto/Skeleton3D" index="11"]
+material_override = ExtResource("1_846ub")
+
+[node name="lamp_on_06" parent="rig_jacare_roboto/Skeleton3D" index="12"]
+material_override = ExtResource("1_846ub")
+
+[node name="melt" parent="rig_jacare_roboto/Skeleton3D" index="13"]
+surface_material_override/0 = ExtResource("1_846ub")
+surface_material_override/1 = ExtResource("2_qtgd7")
+
+[node name="mouth_inf" parent="rig_jacare_roboto/Skeleton3D" index="14"]
+material_override = ExtResource("1_846ub")
+
+[node name="mouth_sup" parent="rig_jacare_roboto/Skeleton3D" index="15"]
+material_override = ExtResource("1_846ub")
+
+[node name="neck" parent="rig_jacare_roboto/Skeleton3D" index="16"]
+material_override = ExtResource("1_846ub")
+
+[node name="tail01" parent="rig_jacare_roboto/Skeleton3D" index="17"]
+material_override = ExtResource("1_846ub")
+
+[node name="tail02" parent="rig_jacare_roboto/Skeleton3D" index="18"]
+material_override = ExtResource("1_846ub")
+
+[node name="tail03" parent="rig_jacare_roboto/Skeleton3D" index="19"]
+material_override = ExtResource("1_846ub")
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "IDLE"
+
+[node name="anim" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_2dqug")
+}
+autoplay = "anim_melt"

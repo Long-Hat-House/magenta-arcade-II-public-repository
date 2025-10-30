@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn1kk2qe80am8"]
+
+[ext_resource type="PackedScene" uid="uid://dsk38ad40lr1l" path="res://elements/enemy/bomb/mesh/roboto_bomba_relogio.glb" id="1_phiyl"]
+[ext_resource type="Material" uid="uid://6n1kbqnglgc3" path="res://elements/enemy/bomb/material/m_roboto_bomba_relogio.tres" id="2_dbg4g"]
+
+[node name="roboto_bomba_relogio" instance=ExtResource("1_phiyl")]
+
+[node name="Skeleton3D" parent="rig_roboto_bomba_relogio" index="0"]
+bones/0/position = Vector3(0, 0.120393, -0.0232624)
+bones/0/rotation = Quaternion(0.159781, 3.44173e-18, -2.30963e-17, 0.987153)
+bones/1/position = Vector3(0.385753, 0.253133, 0.156146)
+bones/1/rotation = Quaternion(7.4479e-09, -0.0837264, 0.00845313, 0.996453)
+bones/2/rotation = Quaternion(0.951294, 0.230117, -0.153992, 0.135548)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(-0.658746, -0.0397692, 0.146277, 0.736936)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/position = Vector3(-0.385753, 0.253133, 0.156146)
+bones/4/rotation = Quaternion(-8.76223e-11, 0.0837264, -0.00845313, 0.996453)
+bones/5/rotation = Quaternion(0.951138, -0.230499, 0.154376, 0.135552)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(-0.658746, 0.0397692, -0.146277, 0.736936)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(0, -3.23117e-25, -7.23783e-25, 1)
+bones/8/rotation = Quaternion(0.081588, -6.22461e-25, -2.17861e-24, 0.996666)
+bones/9/rotation = Quaternion(0.10847, -0.00100754, 0.0318419, 0.993589)
+bones/10/rotation = Quaternion(0.327131, -0.000501129, 0.0311082, 0.944467)
+bones/11/rotation = Quaternion(0.350539, 0.00542741, 0.055558, 0.934883)
+bones/12/rotation = Quaternion(-0.0131558, -0.111774, 4.92785e-05, 0.993647)
+
+[node name="cauda" parent="rig_roboto_bomba_relogio/Skeleton3D" index="0"]
+material_override = ExtResource("2_dbg4g")
+lod_bias = 20.0
+
+[node name="corpo" parent="rig_roboto_bomba_relogio/Skeleton3D" index="1"]
+material_override = ExtResource("2_dbg4g")
+
+[node name="olhos" parent="rig_roboto_bomba_relogio/Skeleton3D" index="2"]
+material_override = ExtResource("2_dbg4g")
+
+[node name="Pe" parent="rig_roboto_bomba_relogio/Skeleton3D" index="3"]
+material_override = ExtResource("2_dbg4g")

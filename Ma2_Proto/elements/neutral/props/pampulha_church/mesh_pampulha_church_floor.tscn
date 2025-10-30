@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq5mtekpyfxgq"]
+
+[ext_resource type="PackedScene" uid="uid://dl1vmlkhufxml" path="res://elements/neutral/props/pampulha_church/pampulha_church_floor.glb" id="1_qgb4o"]
+[ext_resource type="Material" uid="uid://bigcloksla8qv" path="res://elements/background/material/m_sidewalk_brown.tres" id="2_ovkkr"]
+
+[node name="pampulha_church_floor" instance=ExtResource("1_qgb4o")]
+
+[node name="pampulha_church_floor" parent="." index="0"]
+material_override = ExtResource("2_ovkkr")

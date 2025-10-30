@@ -1,0 +1,26 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://b6fh6mog2dl4x"]
+
+[ext_resource type="Texture2D" uid="uid://ce1agdicckbui" path="res://elements/neutral/car/texture/t_lataria_BaseColor.png" id="1_ssdbw"]
+
+[sub_resource type="Gradient" id="Gradient_7mewh"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.994536)
+colors = PackedColorArray(0.470588, 0.764706, 0.984314, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_us8j0"]
+gradient = SubResource("Gradient_7mewh")
+width = 1
+
+[resource]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0, 0.360784, 0.658824, 1)
+roughness = 0.7
+emission_energy_multiplier = 2.21
+rim_tint = 1.0
+clearcoat = 0.69
+anisotropy = 0.33
+backlight = Color(0.0313726, 0.0313726, 0.0313726, 1)
+detail_enabled = true
+detail_mask = ExtResource("1_ssdbw")
+detail_albedo = SubResource("GradientTexture1D_us8j0")

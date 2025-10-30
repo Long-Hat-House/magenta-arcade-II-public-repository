@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfgulrftuhytd"]
+
+[ext_resource type="Script" uid="uid://b7na1vx580d3l" path="res://elements/vfx/vfx_create_shot/vfx_create_shot.gd" id="1_1tvav"]
+[ext_resource type="Material" uid="uid://bkr7fa1lkklh3" path="res://elements/player/projectiles/materials/proj_White.tres" id="1_6hws4"]
+[ext_resource type="WwiseEvent" uid="uid://da5r1c0pxwdpp" path="res://Wwise/resources/Event/{FFCCE9BB-67F7-4BA7-8936-8D8E4089D222}.tres" id="3_7af01"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_1tvav"]
+material = ExtResource("1_6hws4")
+radius = 0.6
+height = 1.2
+radial_segments = 7
+rings = 6
+
+[node name="VfxCreateShot" type="Node3D"]
+script = ExtResource("1_1tvav")
+attached_to_screen = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("SphereMesh_1tvav")
+
+[node name="AkEvent3D" type="AkEvent3D" parent="."]
+event = ExtResource("3_7af01")
+trigger_on = 1

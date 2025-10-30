@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://d11lc3d1irmce"]
+
+[ext_resource type="Texture2D" uid="uid://cnxtmx113jhxr" path="res://elements/levels/lvl_hub/hub_elements/hub_pulpit/texture/t_hub_pulpit_BaseColor.png" id="1_4fl6q"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("1_4fl6q")

@@ -1,0 +1,656 @@
+[gd_scene load_steps=63 format=3 uid="uid://clp76n38cjy7n"]
+
+[ext_resource type="Script" uid="uid://bac7fenceib2h" path="res://elements/enemy/bosses/hand/ai_boss_evil_hand.gd" id="1_aya3s"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="1_fdkyw"]
+[ext_resource type="PackedScene" uid="uid://dhmi2sv2mhuqe" path="res://elements/enemy/projectiles/proj_basic/proj_enemy_basic.tscn" id="2_3xfpl"]
+[ext_resource type="PackedScene" uid="uid://dsdfm1kqlrxmn" path="res://elements/enemy/projectiles/rachadura/proj_enemy_rachadura.tscn" id="3_klfbv"]
+[ext_resource type="Resource" uid="uid://bpcww073hgdho" path="res://systems/screen/camera_shake_enemy_explosion.tres" id="4_l8duo"]
+[ext_resource type="Resource" uid="uid://x2juoif14es8" path="res://systems/screen/camera_shake_heavy_fall.tres" id="5_0k862"]
+[ext_resource type="PackedScene" uid="uid://2hh3g4c1pndq" path="res://elements/enemy/bosses/hand/mesh/mesh_boss_hand.tscn" id="5_wps4g"]
+[ext_resource type="PackedScene" uid="uid://wsluf0tauag1" path="res://elements/enemy/bosses/hand/mesh/mesh_eva_car.tscn" id="6_j21vt"]
+[ext_resource type="Script" uid="uid://b7n1kj0lt03wh" path="res://systems/utils/node3d_shaker.gd" id="7_58gbp"]
+[ext_resource type="Animation" uid="uid://d05c6gdtmcngi" path="res://elements/enemy/bosses/hand/anim/idle.res" id="7_ap7d2"]
+[ext_resource type="Script" uid="uid://bj5ddkcwflcww" path="res://elements/enemy/bosses/hand/boss_hand_animation_tree.gd" id="7_kmauv"]
+[ext_resource type="Script" uid="uid://dj2x7ekyg32b7" path="res://systems/score/score_giver.gd" id="7_tc257"]
+[ext_resource type="Shape3D" uid="uid://bmun1ws2eo4mt" path="res://elements/enemy/bosses/hand/boss_hand_falange_collider.tres" id="8_bdx4b"]
+[ext_resource type="Resource" uid="uid://igx7awcm36j2" path="res://elements/score/score_info_boss_hand.tres" id="8_imc0e"]
+[ext_resource type="Animation" uid="uid://dvgcdjfijqln7" path="res://elements/enemy/bosses/hand/anim/pre_touch.res" id="8_l8duo"]
+[ext_resource type="Texture2D" uid="uid://dr2x1oqniupe3" path="res://elements/general_use/texture/t_basic_shake_noise.tres" id="8_ljeei"]
+[ext_resource type="PackedScene" uid="uid://bc1bjl6ovy5s6" path="res://elements/enemy/projectiles/damage_area/damage_area.tscn" id="9_nha7j"]
+[ext_resource type="Animation" uid="uid://b26rehen7cmtr" path="res://elements/enemy/bosses/hand/anim/punch.res" id="9_ovm5n"]
+[ext_resource type="SpriteFrames" uid="uid://d00pcqx3i7vgc" path="res://elements/enemy/bosses/hand/eva/enemy_hand_eva_sidekick.ase" id="9_y87jb"]
+[ext_resource type="Script" uid="uid://pu4x6ds71ckx" path="res://systems/testing/animated_sprite_tester.gd" id="10_01ba1"]
+[ext_resource type="Animation" uid="uid://o0jfklfte5be" path="res://elements/enemy/bosses/hand/anim/touch.res" id="10_bdx4b"]
+[ext_resource type="Script" uid="uid://bkt3i1q8w53tl" path="res://modules/text_flow/quick_dialogue.gd" id="11_01ba1"]
+[ext_resource type="Animation" uid="uid://boctfksxrsiws" path="res://elements/enemy/bosses/hand/anim/idle_dois_dedos.res" id="11_nha7j"]
+[ext_resource type="PackedScene" uid="uid://bjqq0uo3i62sd" path="res://elements/animated_sprite_3d_basic.tscn" id="12_3h2ta"]
+[ext_resource type="SpriteFrames" uid="uid://drh62jrx13vjf" path="res://elements/enemy/bosses/hand/eva/enemy_hand_eva_sidekick_in_finger.ase" id="12_4kc4d"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="12_dfaic"]
+[ext_resource type="SpriteFrames" uid="uid://cm0m83nptkiv3" path="res://elements/enemy/bosses/ivo/eva_sidekick_ivo/enemy_ivo_eva_sidekick_2.ase" id="13_ahk1c"]
+[ext_resource type="Script" uid="uid://hba4e2bly6pq" path="res://systems/graphics/simple_skeleton_collider_follow.gd" id="14_ovm5n"]
+[ext_resource type="PackedScene" uid="uid://y8flfks2eb4j" path="res://elements/enemy/bosses/hand/boss_hand_eva_shield.tscn" id="22_ahk1c"]
+[ext_resource type="WwiseEvent" uid="uid://dil6a761wh2cs" path="res://Wwise/resources/Event/{B93C7553-775E-4068-9B34-2AF8B28EEFCB}.tres" id="24_qrugf"]
+[ext_resource type="WwiseEvent" uid="uid://bvqfsk4uwn1j1" path="res://Wwise/resources/Event/{D1474608-9A4F-42DA-A71B-6C195EC18884}.tres" id="25_tc257"]
+[ext_resource type="WwiseEvent" uid="uid://ccgw6hco8bc3x" path="res://Wwise/resources/Event/{5829919E-E6C1-485A-A4CC-5B2F4A9BB2BF}.tres" id="26_imc0e"]
+[ext_resource type="WwiseEvent" uid="uid://blq1xr5fc4gff" path="res://Wwise/resources/Event/{4EAE920C-0458-42C9-ADA1-3D019DCFECFD}.tres" id="27_rp0dd"]
+[ext_resource type="WwiseEvent" uid="uid://ddpsju37poe0d" path="res://Wwise/resources/Event/{BA3BF870-E557-40ED-97C8-BD525A7E333E}.tres" id="28_2ffay"]
+[ext_resource type="WwiseEvent" uid="uid://b03iue6rejeah" path="res://Wwise/resources/Event/{C6314F18-7D7D-434B-8D37-B5433F426B66}.tres" id="28_dfaic"]
+[ext_resource type="WwiseEvent" uid="uid://dqsfp7tq1hocd" path="res://Wwise/resources/Event/{BFD28107-7DF0-44BB-BE12-59B238F0A8B5}.tres" id="28_higv1"]
+[ext_resource type="WwiseEvent" uid="uid://ddrgf1b4tj77f" path="res://Wwise/resources/Event/{F14A9EF4-8CFA-407F-84F1-F42F3A98DAE2}.tres" id="28_k72wd"]
+[ext_resource type="WwiseEvent" uid="uid://bek3ss7tmhfa2" path="res://Wwise/resources/Event/{F3BD70C0-B181-4270-B9B6-03DAC221E6AE}.tres" id="29_higv1"]
+[ext_resource type="Script" uid="uid://d2rhxuigqg21b" path="res://systems/audio_wwise/AkEvent3DLoop.gd" id="30_k72wd"]
+[ext_resource type="WwiseEvent" uid="uid://dnihqv8x12tfi" path="res://Wwise/resources/Event/{E0F2D1C2-E5B2-4E0E-A2AC-BA3E6C0D5501}.tres" id="31_2ffay"]
+[ext_resource type="WwiseEvent" uid="uid://cdm6x8opic35m" path="res://Wwise/resources/Event/{33B73FE5-8ED4-49E4-92A7-4DA5D3B91DCF}.tres" id="32_lbf2l"]
+[ext_resource type="WwiseEvent" uid="uid://dmp40b3t2i8y" path="res://Wwise/resources/Event/{418EC042-4281-4BEF-8996-E8C99E7D9133}.tres" id="32_w6yei"]
+[ext_resource type="PackedScene" uid="uid://bc8er7wjckssi" path="res://elements/npc/npc_high_contrast_sprite_boss.tscn" id="38_rp0dd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l5dy3"]
+size = Vector3(9, 4.75, 13.5)
+
+[sub_resource type="Animation" id="Animation_kmauv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hand/falange_004:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.270526, 0.418879, -1.30725)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hand/falange_004/falange_017:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.970997, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hand/falange_001:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.642997, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("hand/falange:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.850674, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("hand/falange_002:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.872665, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("hand/falange_003:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.39865, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("hand/falange_003/falange_013:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.38658, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("hand/falange_002/falange_009:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.20431, 0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("hand/falange_001/falange_006:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.34111, 0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("hand/falange/falanges_001:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.758921, 0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("hand:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-3.38273, 3.13263, -3.91385)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("hand/falange_002/falange_009/falange_010:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.34507, 2.9127, 2.91831)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("hand/falange_003/falange_013/falange_014:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.36335, 2.33755, 2.34838)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("hand/falange_001/falange_006/falange_007:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.79936, 0, 0)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("hand/falange/falanges_001/falange_005/eva_car:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("hand:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.301855, 3.35994e-08, 0.217939)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("hand/falange_001:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.730583, 0.027936, 6.52625)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nua2h"]
+_data = {
+&"RESET": SubResource("Animation_kmauv"),
+&"idle": ExtResource("7_ap7d2"),
+&"idle_dois_dedos": ExtResource("11_nha7j"),
+&"pre_touch": ExtResource("8_l8duo"),
+&"punch": ExtResource("9_ovm5n"),
+&"touch": ExtResource("10_bdx4b")
+}
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_l8duo"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_kmauv"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nua2h"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ovm5n"]
+animation = &"idle_dois_dedos"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ud362"]
+animation = &"punch"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_wa1hf"]
+graph_offset = Vector2(-448.396, 7.48096)
+nodes/DoisDedos/node = SubResource("AnimationNodeBlend2_l8duo")
+nodes/DoisDedos/position = Vector2(-100, 80)
+nodes/IdlePunchBlend/node = SubResource("AnimationNodeBlend2_kmauv")
+nodes/IdlePunchBlend/position = Vector2(100, 80)
+nodes/idle/node = SubResource("AnimationNodeAnimation_nua2h")
+nodes/idle/position = Vector2(-360, 60)
+nodes/idle_2/node = SubResource("AnimationNodeAnimation_ovm5n")
+nodes/idle_2/position = Vector2(-420, 240)
+nodes/punch/node = SubResource("AnimationNodeAnimation_ud362")
+nodes/punch/position = Vector2(-80, 340)
+node_connections = [&"DoisDedos", 0, &"idle", &"DoisDedos", 1, &"idle_2", &"IdlePunchBlend", 0, &"DoisDedos", &"IdlePunchBlend", 1, &"punch", &"output", 0, &"IdlePunchBlend"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wa1hf"]
+animation = &"pre_touch"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1dwgy"]
+animation = &"touch"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ovm5n"]
+xfade_time = 0.01
+advance_mode = 2
+advance_expression = "attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1dwgy"]
+advance_mode = 2
+
+[sub_resource type="Curve" id="Curve_ljeei"]
+_data = [Vector2(0, 0), 0.0, 2.35271, 0, 0, Vector2(1, 1), -1.03071, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ap7d2"]
+xfade_time = 0.25
+xfade_curve = SubResource("Curve_ljeei")
+priority = 2
+advance_mode = 2
+advance_expression = "touching"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bdx4b"]
+xfade_time = 0.25
+advance_mode = 2
+advance_expression = "!touching"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nha7j"]
+xfade_time = 0.05
+switch_mode = 2
+advance_mode = 2
+advance_expression = "!attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ljeei"]
+xfade_time = 0.01
+advance_mode = 2
+advance_expression = "attack"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_nha7j"]
+states/IdlePunch/node = SubResource("AnimationNodeBlendTree_wa1hf")
+states/IdlePunch/position = Vector2(395, 164)
+states/Start/position = Vector2(182, 164)
+states/pre_touch/node = SubResource("AnimationNodeAnimation_wa1hf")
+states/pre_touch/position = Vector2(395, 71)
+states/touch/node = SubResource("AnimationNodeAnimation_1dwgy")
+states/touch/position = Vector2(576, 26)
+transitions = ["pre_touch", "touch", SubResource("AnimationNodeStateMachineTransition_ovm5n"), "Start", "IdlePunch", SubResource("AnimationNodeStateMachineTransition_1dwgy"), "IdlePunch", "pre_touch", SubResource("AnimationNodeStateMachineTransition_ap7d2"), "pre_touch", "IdlePunch", SubResource("AnimationNodeStateMachineTransition_bdx4b"), "touch", "pre_touch", SubResource("AnimationNodeStateMachineTransition_nha7j"), "IdlePunch", "touch", SubResource("AnimationNodeStateMachineTransition_ljeei")]
+graph_offset = Vector2(33, -31)
+
+[node name="BossHand" type="Node3D" node_paths=PackedStringArray("primary_shot_origin", "secondary_shot_origin")]
+script = ExtResource("1_aya3s")
+shot = ExtResource("2_3xfpl")
+tap_shot = ExtResource("3_klfbv")
+shake_on_tap = ExtResource("4_l8duo")
+shake_on_punch = ExtResource("5_0k862")
+punch_height = 8.0
+primary_shot_origin = NodePath("CharacterBody3D/Node3DShaker/boss_hand/hand/falange/falanges_001/falange_005/eva_car/FirstShotOrigin")
+secondary_shot_origin = NodePath("CharacterBody3D/Node3DShaker/boss_hand/hand/falange_001/falange_006/falange_007/SecondShotOrigin")
+backaway_distance = Vector3(0, 5, -20)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Health" type="Node" parent="CharacterBody3D" node_paths=PackedStringArray("feedback")]
+script = ExtResource("1_fdkyw")
+max_amount = 128.0
+damage_reduction = 0.1
+feedback = [NodePath("../Node3DShaker/boss_hand")]
+feedback_scale_multiplier = Vector3(0.01, 0, 0)
+feedback_deepness = 8
+
+[node name="ScoreGiver" type="Node" parent="CharacterBody3D/Health" node_paths=PackedStringArray("health", "point_position")]
+script = ExtResource("7_tc257")
+info = ExtResource("8_imc0e")
+health = NodePath("..")
+point_position = NodePath("../../Score Target")
+metadata/_custom_type_script = "uid://dj2x7ekyg32b7"
+
+[node name="Node3DShaker" type="Node3D" parent="CharacterBody3D"]
+script = ExtResource("7_58gbp")
+noise_texture = ExtResource("8_ljeei")
+shake_amplitude_ratio = 0.0
+metadata/_custom_type_script = "uid://b7n1kj0lt03wh"
+
+[node name="boss_hand" parent="CharacterBody3D/Node3DShaker" instance=ExtResource("5_wps4g")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.112185, 3.66969, -8.58332)
+
+[node name="hand" parent="CharacterBody3D/Node3DShaker/boss_hand" index="0"]
+transform = Transform3D(0.976345, -0.216218, 3.20803e-08, 0.206442, 0.932202, 0.297292, -0.0642798, -0.29026, 0.954787, -3.38273, 3.13263, -3.91385)
+
+[node name="falange" parent="CharacterBody3D/Node3DShaker/boss_hand/hand" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.659477, -0.751725, 0, 0.751725, 0.659477, 3.23231, 0.334661, 6.62177)
+
+[node name="falanges_001" parent="CharacterBody3D/Node3DShaker/boss_hand/hand/falange" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.725579, -0.688139, 0, 0.688139, 0.725579, -0.0120075, 0, 3.55596)
+
+[node name="falange_005" parent="CharacterBody3D/Node3DShaker/boss_hand/hand/falange/falanges_001" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.4113)
+
+[node name="eva_car" parent="CharacterBody3D/Node3DShaker/boss_hand/hand/falange/falanges_001/falange_005" index="0" instance=ExtResource("6_j21vt")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0768502, -0.0201459, 0.661173)
+
+[node name="FirstShotOrigin" type="Node3D" parent="CharacterBody3D/Node3DShaker/boss_hand/hand/falange/falanges_001/falange_005/eva_car" groups=["enemy_position"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.5)
+
+[node name="Dedo1Collisor" type="CollisionShape3D" parent="CharacterBody3D/Node3DShaker/boss_hand/hand/falange/falanges_001/falange_005/eva_car/FirstShotOrigin"]
+transform = Transform3D(1, 0, 0, 0, -8.9407e-08, -1, 0, 1, -8.9407e-08, -1.01514e-07, -9.53674e-07, -2.5)
+visible = false
+shape = ExtResource("8_bdx4b")
+
+[node name="EvaCommon" type="AnimatedSprite3D" parent="CharacterBody3D/Node3DShaker/boss_hand/hand/falange/falanges_001/falange_005/eva_car"]
+unique_name_in_owner = true
+transform = Transform3D(0.8, 1.15251e-08, -7.45058e-09, 4.65661e-10, -0.0157539, 0.799844, 4.65661e-09, -0.799844, -0.0157546, 0.0547124, 0.879194, 2.54448)
+visible = false
+cast_shadow = 0
+offset = Vector2(0, 128)
+pixel_size = 0.0078
+billboard = 1
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = ExtResource("12_4kc4d")
+animation = &"attack"
+autoplay = "idle"
+script = ExtResource("10_01ba1")
+
+[node name="dial_lvl4_mid_boss_monologue_1" type="Node3D" parent="CharacterBody3D/Node3DShaker/boss_hand/hand/falange/falanges_001/falange_005/eva_car/EvaCommon"]
+unique_name_in_owner = true
+transform = Transform3D(1.30208, 0, 0, 0, 1.30208, 0, 0, 0, 1.30208, 0, 2.5, -1)
+script = ExtResource("11_01ba1")
+voice = 5
+needs_call = true
+metadata/_custom_type_script = "uid://bkt3i1q8w53tl"
+
+[node name="dial_lvl4_mid_boss_monologue_2" type="Node3D" parent="CharacterBody3D/Node3DShaker/boss_hand/hand/falange/falanges_001/falange_005/eva_car/EvaCommon"]
+unique_name_in_owner = true
+transform = Transform3D(1.30208, 0, 0, 0, 1.30208, 0, 0, 0, 1.30208, 0, 2.5, -1)
+script = ExtResource("11_01ba1")
+voice = 5
+needs_call = true
+metadata/_custom_type_script = "uid://bkt3i1q8w53tl"
+
+[node name="dial_lvl4_mid_boss_monologue_attack" type="Node3D" parent="CharacterBody3D/Node3DShaker/boss_hand/hand/falange/falanges_001/falange_005/eva_car/EvaCommon"]
+unique_name_in_owner = true
+transform = Transform3D(1.30208, 0, 0, 0, 1.30208, 0, 0, 0, 1.30208, 0, 2.5, -1)
+script = ExtResource("11_01ba1")
+voice = 5
+needs_call = true
+metadata/_custom_type_script = "uid://bkt3i1q8w53tl"
+
+[node name="dial_lvl4_mid_boss_idle" type="Node3D" parent="CharacterBody3D/Node3DShaker/boss_hand/hand/falange/falanges_001/falange_005/eva_car/EvaCommon"]
+unique_name_in_owner = true
+transform = Transform3D(1.30208, 0, 0, 0, 1.30208, 0, 0, 0, 1.30208, 0, 2.5, -1)
+script = ExtResource("11_01ba1")
+voice = 5
+needs_call = true
+loops = true
+metadata/_custom_type_script = "uid://bkt3i1q8w53tl"
+
+[node name="EvaMotorista" parent="CharacterBody3D/Node3DShaker/boss_hand/hand/falange/falanges_001/falange_005/eva_car" instance=ExtResource("12_3h2ta")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2.5)
+visible = false
+sprite_frames = ExtResource("13_ahk1c")
+animation = &"speech"
+script = ExtResource("10_01ba1")
+
+[node name="dial_lvl4_mid_boss_end" type="Node3D" parent="CharacterBody3D/Node3DShaker/boss_hand/hand/falange/falanges_001/falange_005/eva_car/EvaMotorista"]
+unique_name_in_owner = true
+transform = Transform3D(1.04167, 0, 0, 0, 1.04167, 0, 0, 0, 1.04167, 0, 2.5, -2.5)
+script = ExtResource("11_01ba1")
+voice = 5
+needs_call = true
+metadata/_custom_type_script = "uid://bkt3i1q8w53tl"
+
+[node name="DeathMarker" type="Marker3D" parent="CharacterBody3D/Node3DShaker/boss_hand/hand/falange/falanges_001" index="1"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.75)
+
+[node name="DeathAABB" type="VisibleOnScreenNotifier3D" parent="CharacterBody3D/Node3DShaker/boss_hand/hand/falange/falanges_001/DeathMarker"]
+unique_name_in_owner = true
+aabb = AABB(-1, -1, -1.5, 2, 2, 3)
+
+[node name="falange_001" parent="CharacterBody3D/Node3DShaker/boss_hand/hand" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.800302, -0.599596, 0, 0.599596, 0.800302, 0.730583, 0.027936, 6.52625)
+
+[node name="falange_006" parent="CharacterBody3D/Node3DShaker/boss_hand/hand/falange_001" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.227672, -0.973738, 0, 0.973738, 0.227672, -0.0120077, -0.146012, 3.53414)
+
+[node name="falange_007" parent="CharacterBody3D/Node3DShaker/boss_hand/hand/falange_001/falange_006" index="0"]
+transform = Transform3D(1, 0, 0, 0, -0.226579, -0.973993, 0, 0.973993, -0.226579, -2.38419e-07, -1.19209e-07, 3.48046)
+
+[node name="SecondShotOrigin" type="Node3D" parent="CharacterBody3D/Node3DShaker/boss_hand/hand/falange_001/falange_006/falange_007" index="0" groups=["enemy_position"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="Dedo2Collisor" type="CollisionShape3D" parent="CharacterBody3D/Node3DShaker/boss_hand/hand/falange_001/falange_006/falange_007/SecondShotOrigin"]
+transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, -1.01514e-07, -9.53674e-07, -2.5)
+visible = false
+shape = ExtResource("8_bdx4b")
+
+[node name="falange_002" parent="CharacterBody3D/Node3DShaker/boss_hand/hand" index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.642787, -0.766044, 0, 0.766044, 0.642787, -1.78199, 0.334661, 6.06847)
+
+[node name="falange_009" parent="CharacterBody3D/Node3DShaker/boss_hand/hand/falange_002" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.358337, -0.933592, 0, 0.933592, 0.358337, -0.0120081, 0, 3.55596)
+
+[node name="falange_010" parent="CharacterBody3D/Node3DShaker/boss_hand/hand/falange_002/falange_009" index="0"]
+transform = Transform3D(0.99871, 3.20375e-06, 0.0507833, 0.0495597, -0.218258, -0.974632, 0.0110808, 0.975891, -0.217977, 0, 0, 3.48046)
+
+[node name="falange_003" parent="CharacterBody3D/Node3DShaker/boss_hand/hand" index="3"]
+transform = Transform3D(1, 0, 0, 0, 0.171297, -0.985219, 0, 0.985219, 0.171297, -4.16811, 0.334661, 5.34226)
+
+[node name="falange_013" parent="CharacterBody3D/Node3DShaker/boss_hand/hand/falange_003" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.183176, -0.98308, 0, 0.98308, 0.183176, -0.0120087, 0, 3.55596)
+
+[node name="falange_014" parent="CharacterBody3D/Node3DShaker/boss_hand/hand/falange_003/falange_013" index="0"]
+transform = Transform3D(0.988938, 2.35438e-06, 0.148327, 0.14677, -0.144494, -0.97856, 0.0214301, 0.989506, -0.142896, 0, 0, 3.48046)
+
+[node name="falange_004" parent="CharacterBody3D/Node3DShaker/boss_hand/hand" index="4"]
+transform = Transform3D(0.133042, 0.910319, 0.391944, -0.930359, 0.251032, -0.267238, -0.341662, -0.329095, 0.88032, 5.37187, -2.09169, 2.01585)
+
+[node name="falange_017" parent="CharacterBody3D/Node3DShaker/boss_hand/hand/falange_004" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.564477, -0.825449, 0, 0.825449, 0.564477, 0.149465, 0.0402329, 3.29167)
+
+[node name="DamageArea" parent="CharacterBody3D/Node3DShaker/boss_hand/hand" index="5" instance=ExtResource("9_nha7j")]
+
+[node name="Box" type="CollisionShape3D" parent="CharacterBody3D/Node3DShaker/boss_hand/hand/DamageArea"]
+transform = Transform3D(1, 0, 0, 0, 1, -9.83477e-07, 0, 9.83477e-07, 1, 0.25, -0.625014, -0.249991)
+shape = SubResource("BoxShape3D_l5dy3")
+debug_color = Color(0.94902, 0.6, 0.701961, 0.419608)
+
+[node name="anim" parent="CharacterBody3D/Node3DShaker/boss_hand" index="1"]
+libraries = {
+&"": SubResource("AnimationLibrary_nua2h")
+}
+autoplay = "idle"
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="CharacterBody3D/Node3DShaker/boss_hand"]
+script = ExtResource("12_dfaic")
+high_contrast_group = &"enemy"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="AnimationTree" type="AnimationTree" parent="CharacterBody3D/Node3DShaker/boss_hand"]
+tree_root = SubResource("AnimationNodeStateMachine_nha7j")
+anim_player = NodePath("../anim")
+parameters/IdlePunch/DoisDedos/blend_amount = 0.0
+parameters/IdlePunch/IdlePunchBlend/blend_amount = 0.0
+script = ExtResource("7_kmauv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 0)
+shape = ExtResource("8_bdx4b")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 3.25, 0)
+shape = ExtResource("8_bdx4b")
+
+[node name="Sounds" type="Node3D" parent="CharacterBody3D"]
+
+[node name="SFX_Appear" type="AkEvent3D" parent="CharacterBody3D/Sounds"]
+event = ExtResource("24_qrugf")
+
+[node name="SFX_Shoot" type="AkEvent3D" parent="CharacterBody3D/Sounds"]
+event = ExtResource("28_2ffay")
+
+[node name="SFX_Appear_Punch_Pre" type="AkEvent3D" parent="CharacterBody3D/Sounds"]
+event = ExtResource("28_k72wd")
+
+[node name="SFX_Appear_Punch" type="AkEvent3D" parent="CharacterBody3D/Sounds"]
+event = ExtResource("28_higv1")
+
+[node name="SFX_Death" type="AkEvent3D" parent="CharacterBody3D/Sounds"]
+event = ExtResource("25_tc257")
+
+[node name="SFX_Death_Leave" type="AkEvent3D" parent="CharacterBody3D/Sounds"]
+event = ExtResource("32_lbf2l")
+
+[node name="SFX_Tap_Lift" type="AkEvent3D" parent="CharacterBody3D/Sounds"]
+event = ExtResource("26_imc0e")
+
+[node name="SFX_Tap_Hit" type="AkEvent3D" parent="CharacterBody3D/Sounds"]
+event = ExtResource("27_rp0dd")
+
+[node name="SFX_Punch_Prepare" type="AkEvent3D" parent="CharacterBody3D/Sounds"]
+event = ExtResource("28_dfaic")
+
+[node name="SFX_Punch_Attack" type="AkEvent3D" parent="CharacterBody3D/Sounds"]
+event = ExtResource("29_higv1")
+
+[node name="SFX_Hold" type="Node3D" parent="CharacterBody3D/Sounds" node_paths=PackedStringArray("loop_begin_event", "loop_finish_event")]
+script = ExtResource("30_k72wd")
+loop_begin_event = NodePath("Begin")
+loop_finish_event = NodePath("End")
+metadata/_custom_type_script = "uid://d2rhxuigqg21b"
+
+[node name="Begin" type="AkEvent3D" parent="CharacterBody3D/Sounds/SFX_Hold"]
+event = ExtResource("31_2ffay")
+
+[node name="End" type="AkEvent3D" parent="CharacterBody3D/Sounds/SFX_Hold"]
+event = ExtResource("32_w6yei")
+
+[node name="Score Target" type="Marker3D" parent="CharacterBody3D"]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 2.1875, 1.5625)
+
+[node name="SimpleSkeleton" type="Node" parent="." node_paths=PackedStringArray("copied_to_copier")]
+script = ExtResource("14_ovm5n")
+copied_to_copier = {
+NodePath("../CharacterBody3D/Node3DShaker/boss_hand/hand/falange/falanges_001/falange_005/eva_car/FirstShotOrigin/Dedo1Collisor"): NodePath("../CharacterBody3D/CollisionShape3D"),
+NodePath("../CharacterBody3D/Node3DShaker/boss_hand/hand/falange_001/falange_006/falange_007/SecondShotOrigin/Dedo2Collisor"): NodePath("../CharacterBody3D/CollisionShape3D2")
+}
+
+[node name="eva_car_dest" parent="." instance=ExtResource("6_j21vt")]
+transform = Transform3D(0.96, 0, 0, 0, 0.960001, 0, 0, 0, 0.960001, -0.0879074, 0.983749, -0.581966)
+visible = false
+
+[node name="EvaOutside" parent="." instance=ExtResource("12_3h2ta")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+sprite_frames = ExtResource("9_y87jb")
+animation = &"turn"
+frame = 2
+frame_progress = 1.0
+
+[node name="BossHand_Eva_Shield" parent="EvaOutside" instance=ExtResource("22_ahk1c")]
+
+[node name="dial_lvl4_mid_boss_intro_1" type="Node3D" parent="EvaOutside"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1)
+script = ExtResource("11_01ba1")
+voice = 5
+needs_call = true
+metadata/_custom_type_script = "uid://bkt3i1q8w53tl"
+
+[node name="dial_lvl4_mid_boss_intro_2" type="Node3D" parent="EvaOutside"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1)
+script = ExtResource("11_01ba1")
+voice = 5
+needs_call = true
+metadata/_custom_type_script = "uid://bkt3i1q8w53tl"
+
+[node name="dial_lvl4_mid_boss_intro_3" type="Node3D" parent="EvaOutside"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1)
+script = ExtResource("11_01ba1")
+voice = 5
+needs_call = true
+metadata/_custom_type_script = "uid://bkt3i1q8w53tl"
+
+[node name="NPC_HighContrastSprite_Boss" parent="EvaOutside" instance=ExtResource("38_rp0dd")]
+
+[connection signal="dead_parameterless" from="CharacterBody3D/Health" to="." method="_on_health_dead_parameterless"]
+[connection signal="hold_state_change" from="CharacterBody3D/Node3DShaker/boss_hand/AnimationTree" to="CharacterBody3D/Sounds/SFX_Hold" method="set_looping"]
+
+[editable path="CharacterBody3D/Node3DShaker/boss_hand"]
+[editable path="CharacterBody3D/Node3DShaker/boss_hand/hand/falange/falanges_001/falange_005/eva_car"]
+[editable path="eva_car_dest"]

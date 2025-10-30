@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2fyutnrw0gio"]
+
+[ext_resource type="PackedScene" uid="uid://degdgkw4h4j0d" path="res://elements/player/projectiles/tap_red/mesh/tap_red_magma_circle.glb" id="1_sjvwr"]
+[ext_resource type="Material" uid="uid://bq833sisc2pon" path="res://elements/player/projectiles/tap_red/material/m_tap_red_magma.tres" id="2_pr3in"]
+[ext_resource type="PackedScene" uid="uid://c4m4rwgvduke7" path="res://elements/neutral/props/rock/mesh/mesh_little_rock.tscn" id="3_jqgav"]
+
+[sub_resource type="Animation" id="Animation_gyg4p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("magma_circle:material_override:uv1_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hwccd"]
+resource_name = "anim_magma"
+length = 2.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("magma_circle:material_override:uv1_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.2, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ijbyu"]
+_data = {
+"RESET": SubResource("Animation_gyg4p"),
+"anim_magma": SubResource("Animation_hwccd")
+}
+
+[node name="tap_red_magma_circle" instance=ExtResource("1_sjvwr")]
+
+[node name="magma_circle" parent="." index="0"]
+material_override = ExtResource("2_pr3in")
+
+[node name="little_rock2" parent="." index="1" instance=ExtResource("3_jqgav")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.817691, 0, 0.257421)
+
+[node name="little_rock3" parent="." index="2" instance=ExtResource("3_jqgav")]
+transform = Transform3D(-0.336889, -0.875069, 4.91129, -4.66615, 1.7964, 0, -1.76453, -4.58336, -0.937678, -2.48336, 0, -1.04483)
+
+[node name="little_rock4" parent="." index="3" instance=ExtResource("3_jqgav")]
+transform = Transform3D(-0.283998, -0.737683, 4.14022, -3.93356, 1.51437, 7.03376e-08, -1.4875, -3.86377, -0.790463, 1.44976, -1.73828e-08, -1.79575)
+
+[node name="little_rock5" parent="." index="4" instance=ExtResource("3_jqgav")]
+transform = Transform3D(-0.283998, -0.737683, 4.14022, -3.93356, 1.51437, 7.03376e-08, -1.4875, -3.86377, -0.790463, 0.551727, -0.0318605, 2.11318)
+
+[node name="little_rock6" parent="." index="5" instance=ExtResource("3_jqgav")]
+transform = Transform3D(-0.300707, -0.840941, 3.48898, -4.165, 1.72634, 4.52561e-08, -1.57502, -4.40461, -0.666127, -0.409438, -0.0318605, -2.83682)
+
+[node name="little_rock7" parent="." index="6" instance=ExtResource("3_jqgav")]
+transform = Transform3D(-0.300707, -0.840941, 3.48898, -4.165, 1.72634, 4.52561e-08, -1.57502, -4.40461, -0.666127, -2.45626, 0.0301627, 1.82884)
+
+[node name="little_rock8" parent="." index="7" instance=ExtResource("3_jqgav")]
+transform = Transform3D(-0.209263, -0.939393, 3.48898, -2.89843, 1.92845, 4.52561e-08, -1.09606, -4.92027, -0.666127, 2.83015, -0.0639535, 0.86767)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+"": SubResource("AnimationLibrary_ijbyu")
+}
+autoplay = "anim_magma"

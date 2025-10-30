@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://dbs7u0vnvw1p5"]
+
+[ext_resource type="Shader" uid="uid://3qdm82ratpjv" path="res://elements/vfx/vfx_wind/vfx_wind_particle.tres" id="1_1xc53"]
+[ext_resource type="Shader" uid="uid://0b7j76n8q741" path="res://elements/vfx/vfx_wind/vfx_wind_particle_graphic.tres" id="2_hiwgc"]
+[ext_resource type="Texture2D" uid="uid://d2l6lgdwqxodp" path="res://elements/vfx/vfx_wind/vfx_wind1.png" id="3_xlyb5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qvbj6"]
+shader = ExtResource("1_1xc53")
+shader_parameter/Speed = Vector3(0, 0, -1)
+shader_parameter/Spread = 45.0
+shader_parameter/SpeedMultiplier = Vector3(1, 1, 1)
+shader_parameter/pixel_size = 0.01
+
+[sub_resource type="Gradient" id="Gradient_iipj4"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.244576, 0.751479, 1)
+colors = PackedColorArray(0.0156863, 0, 0, 1, 0.0174552, 0.0174552, 0.0174552, 1, 0.50543, 0.50543, 0.50543, 1, 0.980392, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vmf7h"]
+gradient = SubResource("Gradient_iipj4")
+width = 64
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vmf7h"]
+render_priority = 0
+shader = ExtResource("2_hiwgc")
+shader_parameter/gradient_time = SubResource("GradientTexture1D_vmf7h")
+shader_parameter/columns = 3
+shader_parameter/rows = 2
+shader_parameter/main_tex = ExtResource("3_xlyb5")
+
+[sub_resource type="QuadMesh" id="QuadMesh_iipj4"]
+material = SubResource("ShaderMaterial_vmf7h")
+
+[node name="VfxWindParticle" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.729577, 0, 0.683898, 0, 1, 0, -0.683898, 0, 0.729577, 0, 0, 0)
+amount = 4
+preprocess = 1.4
+randomness = 0.5
+use_fixed_seed = true
+seed = 1
+fixed_fps = 60
+transform_align = 1
+process_material = SubResource("ShaderMaterial_qvbj6")
+draw_pass_1 = SubResource("QuadMesh_iipj4")

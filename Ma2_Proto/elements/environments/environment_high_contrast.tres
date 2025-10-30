@@ -1,0 +1,25 @@
+[gd_resource type="Environment" format=3 uid="uid://cjx6gph42rr0m"]
+
+[resource]
+resource_local_to_scene = true
+background_mode = 1
+ssao_radius = 4.63
+ssao_intensity = 9.34
+glow_levels/1 = 1.0
+glow_levels/2 = 2.0
+glow_levels/3 = 0.3
+glow_levels/5 = 0.2
+glow_intensity = 5.0
+glow_blend_mode = 1
+glow_hdr_threshold = 1.75
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.9
+fog_sky_affect = 0.0
+fog_depth_begin = 0.0
+fog_depth_end = 1.0
+volumetric_fog_density = 0.426
+volumetric_fog_emission_energy = 4.95
+volumetric_fog_length = 67.1
+volumetric_fog_ambient_inject = 2.7

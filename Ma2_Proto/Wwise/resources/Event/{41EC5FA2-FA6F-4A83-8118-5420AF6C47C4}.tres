@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://diiue5j0hrymr"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_UI_Coins_Count"
+id = 2143876607
+guid = "{41EC5FA2-FA6F-4A83-8118-5420AF6C47C4}"
+dummy = true

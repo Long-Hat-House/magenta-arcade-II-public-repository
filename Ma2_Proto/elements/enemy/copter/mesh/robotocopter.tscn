@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4dt27s34g8pk"]
+
+[ext_resource type="PackedScene" uid="uid://bwoahsmp3wj8d" path="res://elements/enemy/copter/mesh/robotocopter.glb" id="1_j37vw"]
+[ext_resource type="Material" uid="uid://ccjiqrh1iwat6" path="res://elements/enemy/copter/material/M_robotocopter.tres" id="2_kqr4d"]
+
+[node name="robotocopter" instance=ExtResource("1_j37vw")]
+
+[node name="Skeleton3D" parent="Rig_Robotocopter" index="0"]
+bones/2/position = Vector3(0.880136, 0.325601, 2.35049e-08)
+
+[node name="Robotocopter_body" parent="Rig_Robotocopter/Skeleton3D" index="0"]
+material_override = ExtResource("2_kqr4d")
+
+[node name="Robotocopter_Eye" parent="Rig_Robotocopter/Skeleton3D" index="1"]
+material_override = ExtResource("2_kqr4d")
+
+[node name="Robotocopter_Helix" parent="Rig_Robotocopter/Skeleton3D" index="2"]
+material_override = ExtResource("2_kqr4d")
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "ROBOTOCOPTER_CLOSE_EYE"

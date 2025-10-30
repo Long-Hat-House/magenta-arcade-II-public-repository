@@ -1,0 +1,115 @@
+[gd_scene load_steps=10 format=3 uid="uid://bhw8jphafce3w"]
+
+[ext_resource type="Script" uid="uid://dqiiki7832iq4" path="res://systems/level/level_manager.gd" id="1_lkfcg"]
+[ext_resource type="Texture2D" uid="uid://dor6oky7vl7im" path="res://elements/ui/ui_art/ui_bg_tile.svg" id="2_dud11"]
+
+[sub_resource type="Gradient" id="Gradient_toi11"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_42apc"]
+gradient = SubResource("Gradient_toi11")
+width = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j2rjy"]
+texture = ExtResource("2_dud11")
+expand_margin_left = 100.0
+expand_margin_top = 100.0
+expand_margin_right = 100.0
+expand_margin_bottom = 100.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_loyd5"]
+blend_mode = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bg6m"]
+bg_color = Color(0, 0, 0, 1)
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.658824, 1, 0.909804, 1)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+shadow_color = Color(1, 1, 1, 0.356863)
+shadow_size = 25
+anti_aliasing = false
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dbfe1"]
+blend_mode = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bx1bs"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 100
+border_width_top = 100
+border_width_right = 100
+border_width_bottom = 100
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+expand_margin_left = 100.0
+expand_margin_top = 100.0
+expand_margin_right = 100.0
+expand_margin_bottom = 100.0
+anti_aliasing = false
+
+[node name="LevelManager" type="Control" node_paths=PackedStringArray("_level_viewport")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lkfcg")
+_level_viewport = NodePath("AspectRatioContainer/SubViewportContainer/SubViewport")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_42apc")
+expand_mode = 1
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(450, 900)
+ratio = 0.5
+alignment_vertical = 2
+
+[node name="Panel" type="Panel" parent="AspectRatioContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_j2rjy")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="AspectRatioContainer"]
+custom_minimum_size = Vector2(0, 1400)
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="AspectRatioContainer/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(2, 1400)
+render_target_update_mode = 4
+
+[node name="Outline (OUT)" type="Panel" parent="AspectRatioContainer"]
+material = SubResource("CanvasItemMaterial_loyd5")
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7bg6m")
+
+[node name="Outline (OUT)2" type="Panel" parent="AspectRatioContainer"]
+material = SubResource("CanvasItemMaterial_dbfe1")
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bx1bs")

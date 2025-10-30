@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bq833sisc2pon"]
+
+[ext_resource type="Texture2D" uid="uid://cpwj1d7avty2w" path="res://elements/player/projectiles/tap_red/texture/t_tap_red_magma_BaseColor.png" id="1_qwyh8"]
+[ext_resource type="Texture2D" uid="uid://cq1g32vdjd74y" path="res://elements/player/projectiles/tap_red/texture/t_tap_red_magma_Emission.png" id="2_7njs6"]
+
+[resource]
+resource_local_to_scene = true
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("1_qwyh8")
+emission_enabled = true
+emission_energy_multiplier = 3.0
+emission_texture = ExtResource("2_7njs6")
+rim = 0.3
+rim_tint = 1.0
+anisotropy = 1.0
+uv1_scale = Vector3(1.17, 1.17, 1.17)
+disable_receive_shadows = true

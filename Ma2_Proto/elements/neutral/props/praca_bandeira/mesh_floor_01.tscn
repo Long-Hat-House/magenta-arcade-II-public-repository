@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1b5r8t0thoqt"]
+
+[ext_resource type="PackedScene" uid="uid://cix0cwh368mw3" path="res://elements/neutral/props/praca_bandeira/floor_01.glb" id="1_wcfcx"]
+[ext_resource type="Material" uid="uid://did1nmtt34t0l" path="res://elements/background/material/m_asphalt.tres" id="2_0lfjv"]
+
+[node name="floor_01" instance=ExtResource("1_wcfcx")]
+
+[node name="floor_01" parent="." index="0"]
+material_override = ExtResource("2_0lfjv")

@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://c4vbst8dl12io"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_MiniBoss_Lv4_Dog_Suck"
+id = 1473835385
+guid = "{4AFFCF2C-0B6B-4628-90A2-8B89A116646E}"
+dummy = true

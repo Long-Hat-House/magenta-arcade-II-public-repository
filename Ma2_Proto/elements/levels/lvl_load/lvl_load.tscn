@@ -1,0 +1,686 @@
+[gd_scene load_steps=33 format=3 uid="uid://0iydl7e7mvo8"]
+
+[ext_resource type="Material" uid="uid://c3lvc8wwb4v4h" path="res://elements/ui/themes/shaders_and_materials/m_ui_clouds.tres" id="1_a3cg2"]
+[ext_resource type="WwiseEvent" uid="uid://cxmqr8ty86jfb" path="res://Wwise/resources/Event/{BC7CCE49-9A10-4A8C-9F16-9581CB838C84}.tres" id="1_xr45c"]
+[ext_resource type="Script" uid="uid://c3yme4hxpatpv" path="res://systems/utils/control_shaker.gd" id="2_736fh"]
+[ext_resource type="Texture2D" uid="uid://dr2x1oqniupe3" path="res://elements/general_use/texture/t_basic_shake_noise.tres" id="2_b2rav"]
+[ext_resource type="Texture2D" uid="uid://de43wm5wch3ah" path="res://elements/ui/logos/logo_full_withbg.png" id="2_mrj05"]
+[ext_resource type="Shader" uid="uid://r81a8chulneq" path="res://elements/ui/themes/shaders_and_materials/s_ui_clouds.tres" id="3_7lyn3"]
+[ext_resource type="PackedScene" uid="uid://cawg0jvmypmd" path="res://elements/levels/lvl_load/slot_panel_button.tscn" id="3_h1eag"]
+[ext_resource type="Texture2D" uid="uid://cdsllproihfm0" path="res://elements/ui/themes/shaders_and_materials/t_ui_clouds.tres" id="4_0fu2c"]
+[ext_resource type="Texture2D" uid="uid://cm5belis6bq0x" path="res://elements/icons/icon_star.png" id="4_5dp7j"]
+[ext_resource type="Texture2D" uid="uid://beomg0u4lnp6d" path="res://modules/social_platform_system/play_games_icons/icon_savedgames.png" id="7_v5b7p"]
+[ext_resource type="Script" uid="uid://ddarqwqgi2ui" path="res://elements/ui/menus/ui_leaderboards_button.gd" id="8_pn5hy"]
+[ext_resource type="Texture2D" uid="uid://bp2u67flr6r7" path="res://modules/social_platform_system/play_games_icons/icon_leaderboards.png" id="8_wt8xx"]
+[ext_resource type="Texture2D" uid="uid://v348vhfhidq1" path="res://elements/icons/icon_back_white.png" id="9_28g6o"]
+[ext_resource type="Texture2D" uid="uid://ytc51omb1gqo" path="res://modules/social_platform_system/play_games_icons/icon_achievements.png" id="11_ukrtg"]
+[ext_resource type="Script" uid="uid://b7277psoyn05g" path="res://elements/ui/menus/ui_achievements_button.gd" id="11_wt8xx"]
+
+[sub_resource type="GDScript" id="GDScript_c3c0g"]
+resource_name = "LvlLoad"
+script/source = "extends Level
+
+const SAVE_ID_FIRST_LOAD = &\"LOAD_MENU.FIRST\"
+
+const ICON_BACK = preload(\"res://elements/icons/icon_back.png\")
+const ICON_ACCESSIBILITY = preload(\"res://elements/icons/icon_accessibility.png\")
+
+@export var _anim_player:AnimationPlayer
+@export var title_screen_sfx:WwiseEvent;
+
+var _save:GameSave = null
+
+var _accessibility_prompt_waiting:bool = false
+var _accessibility_prompt_answer:bool = true
+
+func _ready():
+	while !_level_ready:
+		await get_tree().process_frame
+		if !is_instance_valid(self) || !is_instance_valid(Menu):
+			return
+
+	var usec = Time.get_ticks_usec()
+
+	SaveManager.conflict_resolver.resolver_enabled = true
+
+	Menu.set_info(\"\", \"\")
+	Menu.hide_save_number()
+	prepare_level()
+
+	SaveManager.use_settings(_on_save_settings_ready)
+	while _save == null:
+		await get_tree().process_frame
+		if !is_instance_valid(self) || !is_instance_valid(Menu):
+			return
+
+	if _save.get_data(SAVE_ID_FIRST_LOAD, \"TRUE\") == \"TRUE\":
+		## PROMPT - Language
+		await TextManager.show_languages_prompt_await()
+
+		## PROMPT - Accessibility
+		var prompt_options:Array[PromptWindow.PromptEntry]
+
+		prompt_options.append(PromptWindow.PromptEntry.CreateButton(\"menu_accessibility_prompt_confirm\", 1, false, false, false, ICON_ACCESSIBILITY))
+
+		PromptWindow.new_prompt_advanced(
+			\"menu_accessibility_prompt_title\",
+			\"menu_accessibility_prompt_text\",
+			_on_accessibility_prompt_answered,
+			prompt_options,
+			false
+			)
+		_accessibility_prompt_waiting = true
+
+		while _accessibility_prompt_waiting:
+			await get_tree().process_frame
+			if !is_instance_valid(self) || !is_instance_valid(Menu):
+				return
+
+		if _accessibility_prompt_answer:
+			Menu.go_to_aggregator(\"Access\")
+
+		while Menu.is_paused():
+			await get_tree().process_frame
+			if !is_instance_valid(self) || !is_instance_valid(Menu):
+				return
+
+	await DevManager.awaitable_show_starting_prompts()
+
+	 #We need to wait a bit .3secs
+	var waitsecs:float = ((usec + 300000) - Time.get_ticks_usec()) / 1000000
+	if waitsecs > 0 :
+		await get_tree().create_timer(waitsecs)
+		if !is_instance_valid(self) || !is_instance_valid(Menu):
+			return
+
+	SaveManager.reload_game_saves()
+	_anim_player.play(\"oning\")
+	title_screen_sfx.post(self);
+	AudioManager.post_music_event(AK.EVENTS.MUSIC_MAINMENU_START)
+
+func _on_save_settings_ready(save:GameSave):
+	_save = save
+
+func _on_accessibility_prompt_answered(answer:int = -1):
+	_accessibility_prompt_waiting = false
+	_accessibility_prompt_answer = answer > 0
+	_save.set_data(SAVE_ID_FIRST_LOAD, \"FALSE\")
+
+func _exit_tree() -> void:
+	super._exit_tree()
+	if Menu:
+		Menu.show_save_number()
+	SaveManager.conflict_resolver.resolver_enabled = false
+
+func prepare_level():
+	pass
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mnqmy"]
+shader = ExtResource("3_7lyn3")
+shader_parameter/cloud_1_scale = Vector2(3, 3)
+shader_parameter/cloud_1_speed = Vector2(-0.3, 0.1)
+shader_parameter/Texture2DParameter = ExtResource("4_0fu2c")
+shader_parameter/cloud_2_scale2 = Vector2(1, 0.5)
+shader_parameter/cloud_2_speed2 = Vector2(0.3, 0.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yjst3"]
+bg_color = Color(1, 0, 1, 1)
+border_width_left = 50
+border_width_top = 100
+border_width_right = 60
+border_width_bottom = 110
+border_color = Color(1, 0, 1, 0)
+border_blend = true
+corner_radius_top_left = 130
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="GDScript" id="GDScript_ukrtg"]
+script/source = "extends Control
+
+func _ready() -> void:
+	var integrations_ui:bool = (
+		DevManager.get_setting(DevManager.SETTING_INTEGRATIONS_UI_ENABLED)
+		or
+		SocialPlatformManager.is_authenticated()
+		)
+
+	visible = integrations_ui
+
+	if !visible: return
+"
+
+[sub_resource type="GDScript" id="GDScript_tgvok"]
+script/source = "extends Button
+
+func _ready() -> void:
+	pressed.connect(SaveManager.reload_game_saves)
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wgf4o"]
+shading_mode = 0
+albedo_color = Color(0.290196, 0, 0.305882, 1)
+albedo_texture = ExtResource("2_b2rav")
+uv1_scale = Vector3(0.1, 0.01, 0.1)
+uv1_triplanar = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_7dhvy"]
+flip_faces = true
+radius = 60.0
+height = 120.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r5dt6"]
+transparency = 1
+no_depth_test = true
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_5dp7j")
+emission_enabled = true
+emission = Color(1, 0, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_iqe6g"]
+size = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_hq5m0"]
+offsets = PackedFloat32Array(0, 0.0539568, 0.785971, 1)
+colors = PackedColorArray(0.741, 0, 0.78, 0, 0.745098, 0, 0.784314, 1, 0.941318, 0.769784, 0.950346, 1, 1, 1, 1, 0)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8j0kb"]
+sky_top_color = Color(0, 0.0156863, 0.278431, 1)
+sky_horizon_color = Color(0, 0.686275, 0.654902, 1)
+ground_bottom_color = Color(0.180392, 0.00392157, 0.231373, 1)
+ground_horizon_color = Color(0, 0.686275, 0.654902, 1)
+
+[sub_resource type="Sky" id="Sky_f4dp6"]
+sky_material = SubResource("ProceduralSkyMaterial_8j0kb")
+
+[sub_resource type="Environment" id="Environment_2c0vr"]
+background_energy_multiplier = 1.37
+sky = SubResource("Sky_f4dp6")
+glow_enabled = true
+glow_levels/4 = 0.88
+glow_levels/5 = 0.0
+glow_normalized = true
+glow_intensity = 0.5
+glow_blend_mode = 1
+fog_enabled = true
+fog_light_color = Color(0.187795, 0.0207508, 0.106421, 1)
+
+[sub_resource type="Animation" id="Animation_m22m5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer/VBoxContainer2/LogoSpace/LogoMovementPivot/LogoShaker/TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer/VBoxContainer2/LogoSpace/LogoMovementPivot/LogoShaker/TextureRect:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/VBoxContainer2/HSeparator:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer/VBoxContainer2/VBoxContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CoverAll:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CoverAll:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PanelContainer/VBoxContainer2/LogoSpace/LogoMovementPivot:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PanelContainer/VBoxContainer2/LogoSpace/LogoMovementPivot/LogoShaker:shake_amplitude_ratio")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_slew7"]
+resource_name = "off"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer/VBoxContainer2/LogoSpace/LogoMovementPivot/LogoShaker/TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer/VBoxContainer2/LogoSpace/LogoMovementPivot/LogoShaker/TextureRect:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.174533]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/VBoxContainer2/HSeparator:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer/VBoxContainer2/VBoxContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CoverAll:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CoverAll:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PanelContainer/VBoxContainer2/LogoSpace/LogoMovementPivot:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 400)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PanelContainer/VBoxContainer2/LogoSpace/LogoMovementPivot/LogoShaker:shake_amplitude_ratio")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_3hvm7"]
+resource_name = "oning"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer/VBoxContainer2/LogoSpace/LogoMovementPivot/LogoShaker/TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.666667, 0.9, 1.3),
+"transitions": PackedFloat32Array(1, 0.5, 2, 2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(1.1, 1.1), Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer/VBoxContainer2/LogoSpace/LogoMovementPivot/LogoShaker/TextureRect:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.433333, 0.5, 0.533333, 0.6, 0.666667, 0.9),
+"transitions": PackedFloat32Array(1, -2, -2, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [-0.174533, -0.174533, 0.174533, -0.0872665, 0.0523599, 0.0174533, 0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/VBoxContainer2/HSeparator:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.46667, 1.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer/VBoxContainer2/VBoxContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.13333, 1.43333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CoverAll:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CoverAll:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.3, 1.36667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PanelContainer/VBoxContainer2/LogoSpace/LogoMovementPivot:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.3, 0.833333, 1.33333),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector2(0, 400), Vector2(0, 420), Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PanelContainer/VBoxContainer2/LogoSpace/LogoMovementPivot/LogoShaker:shake_amplitude_ratio")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.833333, 0.9, 1.13333, 1.6, 2),
+"transitions": PackedFloat32Array(-2, -2, 1, -2, -2, -2, -2),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 10.0, 0.0, 1.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f8m07"]
+_data = {
+&"RESET": SubResource("Animation_m22m5"),
+&"off": SubResource("Animation_slew7"),
+&"oning": SubResource("Animation_3hvm7")
+}
+
+[node name="LoadTitleScreen" type="Node3D" node_paths=PackedStringArray("_anim_player")]
+script = SubResource("GDScript_c3c0g")
+_anim_player = NodePath("AnimationPlayer")
+title_screen_sfx = ExtResource("1_xr45c")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+material = ExtResource("1_a3cg2")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="LogoSpace" type="Control" parent="PanelContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+
+[node name="LogoMovementPivot" type="Control" parent="PanelContainer/VBoxContainer2/LogoSpace"]
+anchors_preset = 0
+
+[node name="LogoShaker" type="Control" parent="PanelContainer/VBoxContainer2/LogoSpace/LogoMovementPivot"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 0.136008
+offset_top = 0.168137
+offset_right = 0.136008
+offset_bottom = 0.168137
+script = ExtResource("2_736fh")
+shake_amplitude = 1.0
+shake_frequency = 0.01
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer2/LogoSpace/LogoMovementPivot/LogoShaker"]
+z_index = 10
+texture_filter = 4
+layout_mode = 2
+offset_right = 810.0
+offset_bottom = 400.0
+pivot_offset = Vector2(405, 200)
+texture = ExtResource("2_mrj05")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer2/LogoSpace/LogoMovementPivot/LogoShaker/TextureRect"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_mnqmy")
+custom_minimum_size = Vector2(900, 450)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -250.0
+offset_right = 450.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yjst3")
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="Slot Panel Button" parent="PanelContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("3_h1eag")]
+layout_mode = 2
+
+[node name="Slot Panel Button2" parent="PanelContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("3_h1eag")]
+layout_mode = 2
+slot_id = &"slot_2"
+
+[node name="Slot Panel Button3" parent="PanelContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("3_h1eag")]
+layout_mode = 2
+slot_id = &"slot_3"
+
+[node name="Slot Panel Button4" parent="PanelContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("3_h1eag")]
+visible = false
+layout_mode = 2
+slot_id = &"slot_debug"
+debug_only = true
+
+[node name="SocialContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_type_variation = &"panel_outline_round"
+script = SubResource("GDScript_ukrtg")
+
+[node name="BoxContainer" type="BoxContainer" parent="PanelContainer/VBoxContainer2/SocialContainer"]
+layout_mode = 2
+
+[node name="CloudSaveIcon" type="TextureRect" parent="PanelContainer/VBoxContainer2/SocialContainer/BoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_v5b7p")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer2/SocialContainer/BoxContainer"]
+layout_mode = 2
+icon = ExtResource("9_28g6o")
+script = SubResource("GDScript_tgvok")
+
+[node name="LeaderboardButton" type="Button" parent="PanelContainer/VBoxContainer2/SocialContainer/BoxContainer"]
+layout_mode = 2
+icon = ExtResource("8_wt8xx")
+script = ExtResource("8_pn5hy")
+_enable_icon = true
+metadata/_custom_type_script = "uid://ddarqwqgi2ui"
+
+[node name="AchievementsButton" type="Button" parent="PanelContainer/VBoxContainer2/SocialContainer/BoxContainer"]
+layout_mode = 2
+icon = ExtResource("11_ukrtg")
+script = ExtResource("11_wt8xx")
+_enable_icon = true
+metadata/_custom_type_script = "uid://b7277psoyn05g"
+
+[node name="CoverAll" type="ColorRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+top_level = true
+z_index = 9
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(0.82936, -0.558715, 0, 0.5517, 0.818946, -0.157968, 0.0882594, 0.131013, 0.987444, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_wgf4o")
+mesh = SubResource("SphereMesh_7dhvy")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.896726, -0.442586, 0, 0.442586, 0.896726, 0, 25.7605, -107.209)
+material_override = SubResource("StandardMaterial3D_r5dt6")
+amount = 100
+lifetime = 5.0
+draw_order = 2
+mesh = SubResource("QuadMesh_iqe6g")
+emission_shape = 3
+emission_box_extents = Vector3(20, 50, 10)
+direction = Vector3(0, 0, 1)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+color_ramp = SubResource("Gradient_hq5m0")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2c0vr")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.974886, -0.124419, -0.18471, 0.222706, 0.544641, 0.808559, 0, -0.829389, 0.558672, -0.374017, 1.1356, 0.593426)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_f8m07")
+}
+autoplay = "off"

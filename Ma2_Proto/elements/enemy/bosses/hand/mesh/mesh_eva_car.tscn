@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://wsluf0tauag1"]
+
+[ext_resource type="PackedScene" uid="uid://chcwhvwtppm2m" path="res://elements/enemy/bosses/hand/mesh/eva_car.glb" id="1_jb36o"]
+[ext_resource type="Material" uid="uid://dlv65so6fp6d6" path="res://elements/enemy/bosses/hand/material/m_boss_eva_car.tres" id="2_pwlxw"]
+
+[node name="eva_car" instance=ExtResource("1_jb36o")]
+
+[node name="eva_car" parent="." index="0"]
+material_override = ExtResource("2_pwlxw")

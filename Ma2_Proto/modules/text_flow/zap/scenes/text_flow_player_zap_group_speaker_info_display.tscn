@@ -1,0 +1,107 @@
+[gd_scene load_steps=11 format=3 uid="uid://c8oo1ml7n0ygd"]
+
+[ext_resource type="Script" uid="uid://dchiwt0niv03n" path="res://modules/text_flow/zap/src/text_flow_zap_speaker_info_display.gd" id="1_2hoc5"]
+[ext_resource type="StyleBox" uid="uid://bsb4jpe4s5a1u" path="res://modules/text_flow/zap/resources/text_flow_player_zap_box_hidden_button_clicked.tres" id="2_hi0s0"]
+[ext_resource type="Texture2D" uid="uid://d2wj1dwim3j0w" path="res://modules/text_flow/zap/textures/text_flow_zap_speaker_icon_eva.png" id="2_o4ve0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ijdcc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hwcux"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j2x4q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_skufb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_goyiu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lnjsj"]
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5g2lt"]
+content_margin_left = 25.0
+content_margin_top = 10.0
+content_margin_right = 25.0
+content_margin_bottom = 10.0
+bg_color = Color(0.207843, 0.207843, 0.258824, 1)
+border_color = Color(0.341176, 0.341176, 0.427451, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="TextFlowZapGroupSpeakerInfoDisplay" type="PanelContainer" node_paths=PackedStringArray("_speaker_name_label", "_speaker_description_label", "_trects_speaker_icons_1")]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ijdcc")
+script = ExtResource("1_2hoc5")
+_speaker_name_label = NodePath("HBoxContainer/PanelContainer/VBoxContainer/Speaker Name Label")
+_speaker_description_label = NodePath("HBoxContainer/PanelContainer/VBoxContainer/Speaker Description Label")
+_trects_speaker_icons_1 = [NodePath("HBoxContainer/PortraitContainer/Speaker Potrait")]
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hwcux")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_j2x4q")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_skufb")
+theme_override_styles/pressed = ExtResource("2_hi0s0")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_goyiu")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="PortraitContainer" type="PanelContainer" parent="HBoxContainer"]
+clip_children = 1
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lnjsj")
+
+[node name="Speaker Potrait" type="TextureRect" parent="HBoxContainer/PortraitContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_o4ve0")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5g2lt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Speaker Name Label" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"label_zap_bubble_handle"
+text = "Turing Magenta"
+text_overrun_behavior = 3
+
+[node name="Speaker Description Label" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_type_variation = &"label_zap_speakerinfo_description"
+text = "Ciência, prosperidade, poder. asdasd asd asd asd sad "
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[connection signal="pressed" from="Button" to="." method="click_speaker"]

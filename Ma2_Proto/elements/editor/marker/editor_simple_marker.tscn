@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://kwce4gsnuww3"]
+
+[ext_resource type="Script" path="res://elements/editor/marker/editor_simple_marker.gd" id="1_qck01"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bvocr"]
+albedo_color = Color(0.825219, 3.32102e-05, 0.600393, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_bpql4"]
+material = SubResource("StandardMaterial3D_bvocr")
+radius = 0.125
+height = 0.25
+radial_segments = 6
+rings = 4
+
+[node name="SimpleMarker" type="Node3D"]
+script = ExtResource("1_qck01")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_bpql4")

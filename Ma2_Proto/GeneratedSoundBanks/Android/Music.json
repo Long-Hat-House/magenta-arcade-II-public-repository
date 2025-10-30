@@ -1,0 +1,1293 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Android",
+  "BasePlatform": "Android",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3991942870",
+    "Type": "User",
+    "GUID": "{65767782-93D2-43CA-891B-7B12F78031FF}",
+    "Language": "SFX",
+    "Hash": "{FBB9CE06-81CD-7AAB-3D42-82F860EB41D7}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\Music",
+    "ShortName": "Music",
+    "Path": "Music.bnk",
+    "Media": [
+     {
+      "Id": "43802521",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\mus_level1_flag_arp_120.wav",
+      "Path": "Media/43802521.wem",
+      "CachePath": "E5/{E5C00E64-2595-31F3-A73B-ACE08C026402}.wem",
+      "PrefetchSize": "1926"
+     },
+     {
+      "Id": "70184894",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\LEVEL5\\mus_level5_gameplay_pre_116.wav",
+      "Path": "Media/70184894.wem",
+      "CachePath": "34/{34E33FE4-86EB-328C-71B2-BA9C75B516AF}.wem",
+      "PrefetchSize": "2269"
+     },
+     {
+      "Id": "70546224",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\LEVEL1\\mus_level1_challenge_loop.wav",
+      "Path": "Media/70546224.wem",
+      "CachePath": "88/{883761F4-856D-0878-67C4-6E4001E1B429}.wem",
+      "PrefetchSize": "2302"
+     },
+     {
+      "Id": "121951088",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\MENU\\mus_menu_loop_pre.wav",
+      "Path": "Media/121951088.wem",
+      "CachePath": "99/{99BDFF5B-0E8E-2419-828E-B4F04B52B037}.wem",
+      "PrefetchSize": "2639"
+     },
+     {
+      "Id": "157801274",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\BOSS_FINAL\\mus_boss_final_phase1_intro.wav",
+      "Path": "Media/157801274.wem",
+      "CachePath": "D2/{D20BE550-9712-A05C-E65A-549972E5D4C0}.wem",
+      "PrefetchSize": "3082"
+     },
+     {
+      "Id": "170274307",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\BOSS_FINAL\\mus_boss_final_phase3_loop.wav",
+      "Path": "Media/170274307.wem",
+      "CachePath": "4D/{4D237505-08E6-81F9-7CAD-C8B876FEF38D}.wem",
+      "PrefetchSize": "2589"
+     },
+     {
+      "Id": "174811141",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "PLR\\MOVEMENT\\plr_movement_wind_gust_01.wav",
+      "CachePath": "DE/{DE030B9C-FFCC-F0D1-D921-7E277CE3C311}.wem"
+     },
+     {
+      "Id": "188828171",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\BOSS_DOG\\mus_boss_dog_gameplay_loop_116.wav",
+      "Path": "Media/188828171.wem",
+      "CachePath": "F1/{F1C36854-9CB8-FE05-3BB2-021EECFC3148}.wem",
+      "PrefetchSize": "1346"
+     },
+     {
+      "Id": "257611301",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\SHOP\\mus_shop_loop_lead.wav",
+      "Path": "Media/257611301.wem",
+      "CachePath": "B1/{B1109BFE-66BD-39F6-C612-B4A977BAC007}.wem",
+      "PrefetchSize": "664"
+     },
+     {
+      "Id": "302335666",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\LEVEL2\\mus_level2_challenge_loop.wav",
+      "Path": "Media/302335666.wem",
+      "CachePath": "46/{46F7DCC2-2E18-317F-26F0-6FFAC668CCD9}.wem",
+      "PrefetchSize": "2481"
+     },
+     {
+      "Id": "302992225",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "UI\\BOSS\\ui_boss_start_01.wav",
+      "CachePath": "43/{43AC7C6A-AA97-6035-428A-A31CA4240712}.wem"
+     },
+     {
+      "Id": "341057311",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\HUB\\mus_hub_flute.wav",
+      "Path": "Media/341057311.wem",
+      "CachePath": "A1/{A1697149-94D9-9C7D-C696-27490FCDE942}.wem",
+      "PrefetchSize": "800"
+     },
+     {
+      "Id": "349528451",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\LEVEL5\\mus_level5_challenge_intro_126.wav",
+      "Path": "Media/349528451.wem",
+      "CachePath": "7C/{7CFB5C93-4DBE-E3B2-7D86-685695C5DD7D}.wem",
+      "PrefetchSize": "2604"
+     },
+     {
+      "Id": "374714544",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\SHOP\\mus_shop_loop_base.wav",
+      "Path": "Media/374714544.wem",
+      "CachePath": "CF/{CF20BFA4-A498-8058-FDFA-4BCD617AD8B5}.wem",
+      "PrefetchSize": "2217"
+     },
+     {
+      "Id": "387430442",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\BOSS_DOG\\mus_boss_dog_gameplay_pre_116.wav",
+      "Path": "Media/387430442.wem",
+      "CachePath": "61/{61CC1344-5F3E-2448-0C70-2C9A29524367}.wem",
+      "PrefetchSize": "2406"
+     },
+     {
+      "Id": "389883034",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\LEVEL3\\mus_level3_challenge_intro.wav",
+      "Path": "Media/389883034.wem",
+      "CachePath": "E1/{E13C66A7-1051-B382-442F-BC75128114C0}.wem",
+      "PrefetchSize": "1001"
+     },
+     {
+      "Id": "405912915",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\LEVEL2\\mus_level2_gameplay_loop.wav",
+      "Path": "Media/405912915.wem",
+      "CachePath": "D3/{D3CAF5B0-4D36-3A05-5932-84AE5378D3B2}.wem",
+      "PrefetchSize": "3661"
+     },
+     {
+      "Id": "413083381",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\LEVEL2\\mus_level2_gameplay_pre.wav",
+      "Path": "Media/413083381.wem",
+      "CachePath": "E0/{E07BCAF9-DDE3-17A0-C6D6-6ED68BB53ABE}.wem",
+      "PrefetchSize": "1321"
+     },
+     {
+      "Id": "416331356",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\LEVEL3\\mus_level3_gameplay_pre.wav",
+      "Path": "Media/416331356.wem",
+      "CachePath": "03/{03D85C6A-75AE-ED5C-F76A-F97F28B18883}.wem",
+      "PrefetchSize": "2415"
+     },
+     {
+      "Id": "435716481",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WORLD\\CLOUD\\world_cloud_heaven_entrance_01.wav",
+      "CachePath": "27/{27DB627A-3F25-99B6-EE5E-3A63DE779CF7}.wem"
+     },
+     {
+      "Id": "457275474",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\BOSS_FINAL\\mus_boss_final_phase2_loop.wav",
+      "Path": "Media/457275474.wem",
+      "CachePath": "67/{67D3529D-6BC1-94B1-479A-B1846ECC093C}.wem",
+      "PrefetchSize": "1908"
+     },
+     {
+      "Id": "617832039",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\LEVEL4\\mus_level4_challenge_loop.wav",
+      "Path": "Media/617832039.wem",
+      "CachePath": "1A/{1AA8762D-096F-2AEE-3639-6E01065B0AC5}.wem",
+      "PrefetchSize": "2169"
+     },
+     {
+      "Id": "635234321",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\LEVEL2\\mus_level2_challenge_intro.wav",
+      "Path": "Media/635234321.wem",
+      "CachePath": "AE/{AE40D159-9E27-B4CF-B538-49559B4A3522}.wem",
+      "PrefetchSize": "1094"
+     },
+     {
+      "Id": "652119297",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\BOSS_FINAL\\mus_boss_final_phase1_loop.wav",
+      "Path": "Media/652119297.wem",
+      "CachePath": "74/{74B36FF6-47E0-B98D-9CF5-59F64C012EC2}.wem",
+      "PrefetchSize": "3280"
+     },
+     {
+      "Id": "670378589",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\HUB\\mus_hub_base_loop.wav",
+      "Path": "Media/670378589.wem",
+      "CachePath": "80/{801E0CD1-787D-DAA6-9075-F88ED3372681}.wem",
+      "PrefetchSize": "2190"
+     },
+     {
+      "Id": "683775089",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\LEVEL4\\mus_level4_gameplay_pre.wav",
+      "Path": "Media/683775089.wem",
+      "CachePath": "83/{832CB8B1-5F0F-D5B4-472A-3A1E6E137D4D}.wem",
+      "PrefetchSize": "2293"
+     },
+     {
+      "Id": "695037841",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\BOSS\\mus_boss_gameplay_loop.wav",
+      "Path": "Media/695037841.wem",
+      "CachePath": "8F/{8F64EEFE-5993-3F2A-5036-B2E26B8EC088}.wem",
+      "PrefetchSize": "3445"
+     },
+     {
+      "Id": "730429995",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\LEVEL1\\mus_level1_gameplay_pre.wav",
+      "Path": "Media/730429995.wem",
+      "CachePath": "F2/{F2D364D6-2C5B-27C1-5F79-D70145FC19D6}.wem",
+      "PrefetchSize": "2168"
+     },
+     {
+      "Id": "758884861",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\LEVEL5\\mus_level5_challenge_loop_126.wav",
+      "Path": "Media/758884861.wem",
+      "CachePath": "1C/{1C138F4B-FD4E-E4C1-222A-45A8B49C835A}.wem",
+      "PrefetchSize": "2398"
+     },
+     {
+      "Id": "785168184",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\LEVEL4\\mus_level4_gameplay_loop.wav",
+      "Path": "Media/785168184.wem",
+      "CachePath": "69/{699ED0B8-D293-1413-A054-ED6372DA8B8D}.wem",
+      "PrefetchSize": "3328"
+     },
+     {
+      "Id": "796139404",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\LEVEL3\\mus_level3_challenge_loop.wav",
+      "Path": "Media/796139404.wem",
+      "CachePath": "6D/{6D4359A8-ADF0-4C14-A33E-F2DE0783DDA3}.wem",
+      "PrefetchSize": "2386"
+     },
+     {
+      "Id": "813991583",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\LEVEL4\\mus_level4_challenge_intro.wav",
+      "Path": "Media/813991583.wem",
+      "CachePath": "7F/{7F123E46-C446-8ECF-1701-BC96160CA183}.wem",
+      "PrefetchSize": "718"
+     },
+     {
+      "Id": "814493213",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "UI\\MAIN_TITLE\\ui_main_title_start_01.wav",
+      "CachePath": "89/{8998F28B-CCEA-4828-B6DF-B36D9F13574C}.wem"
+     },
+     {
+      "Id": "842187782",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\SHOP\\mus_shop_loop_flute_stacc.wav",
+      "Path": "Media/842187782.wem",
+      "CachePath": "0D/{0DDB3FBE-76E9-E6A4-4FBD-D078386F3BE8}.wem",
+      "PrefetchSize": "668"
+     },
+     {
+      "Id": "843428095",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\LEVEL1\\mus_level1_gameplay_loop.wav",
+      "Path": "Media/843428095.wem",
+      "CachePath": "8C/{8C4A5508-CF11-9FC6-E0E0-E5ED3E74F763}.wem",
+      "PrefetchSize": "4431"
+     },
+     {
+      "Id": "882848506",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\LEVEL3\\mus_level3_gameplay_loop.wav",
+      "Path": "Media/882848506.wem",
+      "CachePath": "DD/{DD8310F4-322A-9F50-906C-85009B82572D}.wem",
+      "PrefetchSize": "3578"
+     },
+     {
+      "Id": "885207708",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\LEVEL5\\mus_level5_gameplay_loop_116.wav",
+      "Path": "Media/885207708.wem",
+      "CachePath": "0C/{0C1FD399-D68B-662F-3826-B6A2C2DB0112}.wem",
+      "PrefetchSize": "3300"
+     },
+     {
+      "Id": "899927189",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\MENU\\mus_menu_loop_base.wav",
+      "Path": "Media/899927189.wem",
+      "CachePath": "7D/{7D429F4F-03D4-2DC6-4B7F-BBB2677242D7}.wem",
+      "PrefetchSize": "2880"
+     },
+     {
+      "Id": "994973454",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\LEVEL1\\mus_level1_challenge_intro.wav",
+      "Path": "Media/994973454.wem",
+      "CachePath": "4D/{4DD6C0A0-61C7-534C-33D4-3EDA7BF5A11F}.wem",
+      "PrefetchSize": "2271"
+     },
+     {
+      "Id": "1007023320",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\BOSS\\mus_boss_gameplay_pre.wav",
+      "Path": "Media/1007023320.wem",
+      "CachePath": "02/{0206A971-4592-745A-F8FF-AD0D7186FB10}.wem",
+      "PrefetchSize": "532"
+     },
+     {
+      "Id": "1008052854",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "MUSIC\\mus_level1_flag_recorder_120.wav",
+      "Path": "Media/1008052854.wem",
+      "CachePath": "E4/{E43A070D-84E7-C402-CD05-46BB4F6C66DF}.wem",
+      "PrefetchSize": "2076"
+     }
+    ],
+    "Plugins": {
+     "ShareSets": [
+      {
+       "Id": "2849147824",
+       "Name": "Medium",
+       "ObjectPath": "\\Effects\\Factory Effects\\RoomVerb\\Cathedrals\\Medium",
+       "GUID": "{AEB3F175-958B-45F2-A4C2-3FBD4F456568}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      }
+     ]
+    },
+    "Events": [
+     {
+      "Id": "3951622205",
+      "Name": "Music_Boss_Death",
+      "ObjectPath": "\\Events\\Music\\Boss\\Music_Boss_Death",
+      "GUID": "{8541594F-ABDE-4CF5-9721-20BC494037B4}",
+      "Color": "26",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "1212595920",
+      "Name": "Music_Boss_Dog_Start",
+      "ObjectPath": "\\Events\\Music\\Boss\\Music_Boss_Dog_Start",
+      "GUID": "{630284A0-373F-4ED0-8371-5B6B9640AEB6}",
+      "Color": "26",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "188828171"
+       },
+       {
+        "Id": "302992225"
+       },
+       {
+        "Id": "387430442"
+       }
+      ],
+      "ActionSetState": [
+       {
+        "GroupId": "89505537",
+        "Id": "3688152761",
+        "Name": "Boss_Fight",
+        "ObjectPath": "\\States\\Default Work Unit\\Gameplay\\Boss_Fight",
+        "GUID": "{1FE98355-9982-415F-A3AC-4747EFD3F6DB}"
+       }
+      ]
+     },
+     {
+      "Id": "999248293",
+      "Name": "Music_Boss_Final_End",
+      "ObjectPath": "\\Events\\Music\\Boss\\Music_Boss_Final_End",
+      "GUID": "{DD24DC7F-044C-4CC5-8B6A-E44601AF2EAA}",
+      "Color": "26",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "3401249541",
+      "Name": "Music_Boss_Final_Phase1_Start",
+      "ObjectPath": "\\Events\\Music\\Boss\\Music_Boss_Final_Phase1_Start",
+      "GUID": "{91F8408C-37E9-46C8-A2DA-856806BD9529}",
+      "Color": "26",
+      "DurationType": "Infinite",
+      "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "3200174779",
+         "Id": "2002117580",
+         "GUID": "{BC54B106-A3FF-4A30-95AA-3A715604DF8E}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "157801274"
+         },
+         {
+          "Id": "652119297"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "3200174779",
+         "Id": "2002117583",
+         "GUID": "{4DE9F6D1-D076-4654-95FD-CBA3025E8EED}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "457275474"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "3200174779",
+         "Id": "2002117582",
+         "GUID": "{AC8F0738-48D6-4E66-8BE9-919F63325301}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "170274307"
+         }
+        ]
+       }
+      ],
+      "ActionSetState": [
+       {
+        "GroupId": "3200174779",
+        "Id": "2002117580",
+        "Name": "Phase_01",
+        "ObjectPath": "\\States\\Default Work Unit\\Boss_Final\\Phase_01",
+        "GUID": "{BC54B106-A3FF-4A30-95AA-3A715604DF8E}"
+       }
+      ]
+     },
+     {
+      "Id": "710994502",
+      "Name": "Music_Boss_Final_Phase2_Start",
+      "ObjectPath": "\\Events\\Music\\Boss\\Music_Boss_Final_Phase2_Start",
+      "GUID": "{34ACC15A-4032-46ED-BABA-AF5B69093402}",
+      "Color": "26",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "3200174779",
+        "Id": "2002117583",
+        "Name": "Phase_02",
+        "ObjectPath": "\\States\\Default Work Unit\\Boss_Final\\Phase_02",
+        "GUID": "{4DE9F6D1-D076-4654-95FD-CBA3025E8EED}"
+       }
+      ]
+     },
+     {
+      "Id": "3775722203",
+      "Name": "Music_Boss_Final_Phase3_Start",
+      "ObjectPath": "\\Events\\Music\\Boss\\Music_Boss_Final_Phase3_Start",
+      "GUID": "{E8CEB5C5-FD97-465C-BC40-176AFC86193B}",
+      "Color": "26",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "3200174779",
+        "Id": "2002117582",
+        "Name": "Phase_03",
+        "ObjectPath": "\\States\\Default Work Unit\\Boss_Final\\Phase_03",
+        "GUID": "{AC8F0738-48D6-4E66-8BE9-919F63325301}"
+       }
+      ]
+     },
+     {
+      "Id": "254082907",
+      "Name": "Music_Boss_Start",
+      "ObjectPath": "\\Events\\Music\\Boss\\Music_Boss_Start",
+      "GUID": "{38B5AD34-AD37-424C-A0C9-2B590A5DE20F}",
+      "Color": "26",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "302992225"
+       },
+       {
+        "Id": "695037841"
+       },
+       {
+        "Id": "1007023320"
+       }
+      ],
+      "ActionSetState": [
+       {
+        "GroupId": "89505537",
+        "Id": "3688152761",
+        "Name": "Boss_Fight",
+        "ObjectPath": "\\States\\Default Work Unit\\Gameplay\\Boss_Fight",
+        "GUID": "{1FE98355-9982-415F-A3AC-4747EFD3F6DB}"
+       }
+      ]
+     },
+     {
+      "Id": "2327625744",
+      "Name": "Music_Hub_End",
+      "ObjectPath": "\\Events\\Music\\HUB\\Music_Hub_End",
+      "GUID": "{1953D8A3-BECD-4574-8247-DCF7777EC1CE}",
+      "Color": "26",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "646625282",
+        "Id": "26822469",
+        "Name": "Exit",
+        "ObjectPath": "\\States\\Default Work Unit\\Hub\\Exit",
+        "GUID": "{A77D9830-4FD0-4784-A745-155D78FB8C71}"
+       }
+      ]
+     },
+     {
+      "Id": "878627499",
+      "Name": "Music_Hub_Start",
+      "ObjectPath": "\\Events\\Music\\HUB\\Music_Hub_Start",
+      "GUID": "{21726F01-0D22-4534-AC08-1DE429BE12F2}",
+      "Color": "26",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "341057311"
+       },
+       {
+        "Id": "435716481"
+       },
+       {
+        "Id": "670378589"
+       }
+      ],
+      "ActionSetState": [
+       {
+        "GroupId": "646625282",
+        "Id": "782826392",
+        "Name": "Default",
+        "ObjectPath": "\\States\\Default Work Unit\\Hub\\Default",
+        "GUID": "{576CCB35-3EC1-4918-9FA6-C836BD2DE449}"
+       },
+       {
+        "GroupId": "646625282",
+        "Id": "2368844905",
+        "Name": "Enter",
+        "ObjectPath": "\\States\\Default Work Unit\\Hub\\Enter",
+        "GUID": "{830CCC34-4D34-4561-82DA-E2D1DBE31400}"
+       }
+      ]
+     },
+     {
+      "Id": "2287715908",
+      "Name": "Music_Level1_Flag_Destroy",
+      "ObjectPath": "\\Events\\Music\\Level1\\Music_Level1_Flag_Destroy",
+      "GUID": "{50BF9674-EF93-4D4D-A31D-D641CCDB0F3E}",
+      "Color": "26",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "3419767675",
+      "Name": "Music_Level1_Gameplay_End",
+      "ObjectPath": "\\Events\\Music\\Level1\\Music_Level1_Gameplay_End",
+      "GUID": "{1A84356E-960F-4CE8-BB34-44E041C6922F}",
+      "Color": "26",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "1509153952",
+      "Name": "Music_Level1_Gameplay_Start",
+      "ObjectPath": "\\Events\\Music\\Level1\\Music_Level1_Gameplay_Start",
+      "GUID": "{E3F15E4D-1744-41DF-8436-0D8158463100}",
+      "Color": "26",
+      "DurationType": "Infinite",
+      "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "89505537",
+         "Id": "782826392",
+         "GUID": "{6E00D407-0F37-485C-88D0-9A1776404330}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "730429995"
+         },
+         {
+          "Id": "843428095"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "89505537",
+         "Id": "1189762416",
+         "GUID": "{D3763462-0863-4769-A24E-430DBA512945}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "70546224"
+         },
+         {
+          "Id": "994973454"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "Id": "3890745583",
+      "Name": "Music_Level1_Start",
+      "ObjectPath": "\\Events\\Music\\Level1\\Music_Level1_Start",
+      "GUID": "{A9C39E38-2163-44B7-869C-22B22E6696C7}",
+      "Color": "26",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "43802521"
+       },
+       {
+        "Id": "1008052854"
+       }
+      ]
+     },
+     {
+      "Id": "2888468026",
+      "Name": "Music_Level2_Gameplay_End",
+      "ObjectPath": "\\Events\\Music\\Level2\\Music_Level2_Gameplay_End",
+      "GUID": "{B0347E06-F7C5-45F1-9774-014EAE1ADA5D}",
+      "Color": "26",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "922357033",
+      "Name": "Music_Level2_Gameplay_Start",
+      "ObjectPath": "\\Events\\Music\\Level2\\Music_Level2_Gameplay_Start",
+      "GUID": "{CC1C358D-4560-4A70-8592-B99A2D98F595}",
+      "Color": "26",
+      "DurationType": "Infinite",
+      "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "89505537",
+         "Id": "782826392",
+         "GUID": "{6E00D407-0F37-485C-88D0-9A1776404330}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "405912915"
+         },
+         {
+          "Id": "413083381"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "89505537",
+         "Id": "1189762416",
+         "GUID": "{D3763462-0863-4769-A24E-430DBA512945}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "302335666"
+         },
+         {
+          "Id": "635234321"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "Id": "2596925620",
+      "Name": "Music_Level2_Start",
+      "ObjectPath": "\\Events\\Music\\Level2\\Music_Level2_Start",
+      "GUID": "{8411B3C2-F99C-4E00-9D36-6D0A19C563CB}",
+      "Color": "26",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "1938640389",
+      "Name": "Music_Level3_Gameplay_End",
+      "ObjectPath": "\\Events\\Music\\Level3\\Music_Level3_Gameplay_End",
+      "GUID": "{131274A1-02CB-40A3-9087-70377975C0A8}",
+      "Color": "26",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "1952887438",
+      "Name": "Music_Level3_Gameplay_Start",
+      "ObjectPath": "\\Events\\Music\\Level3\\Music_Level3_Gameplay_Start",
+      "GUID": "{90C98F58-28A7-4C61-9D3A-FDCD8DCB6B8B}",
+      "Color": "26",
+      "DurationType": "Infinite",
+      "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "89505537",
+         "Id": "782826392",
+         "GUID": "{6E00D407-0F37-485C-88D0-9A1776404330}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "416331356"
+         },
+         {
+          "Id": "882848506"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "89505537",
+         "Id": "1189762416",
+         "GUID": "{D3763462-0863-4769-A24E-430DBA512945}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "389883034"
+         },
+         {
+          "Id": "796139404"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "Id": "2547824105",
+      "Name": "Music_Level3_Start",
+      "ObjectPath": "\\Events\\Music\\Level3\\Music_Level3_Start",
+      "GUID": "{39D980C4-A461-4F91-AE30-A10368AC9863}",
+      "Color": "26",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "1936875868",
+      "Name": "Music_Level4_Gameplay_End",
+      "ObjectPath": "\\Events\\Music\\Level4\\Music_Level4_Gameplay_End",
+      "GUID": "{E68224AC-CF76-49BA-8459-183AA225A102}",
+      "Color": "26",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "1773286911",
+      "Name": "Music_Level4_Gameplay_Start",
+      "ObjectPath": "\\Events\\Music\\Level4\\Music_Level4_Gameplay_Start",
+      "GUID": "{01A7FC34-2FFE-4BC7-9D6E-E0E351DE9574}",
+      "Color": "26",
+      "DurationType": "Infinite",
+      "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "89505537",
+         "Id": "782826392",
+         "GUID": "{6E00D407-0F37-485C-88D0-9A1776404330}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "683775089"
+         },
+         {
+          "Id": "785168184"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "89505537",
+         "Id": "1189762416",
+         "GUID": "{D3763462-0863-4769-A24E-430DBA512945}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "617832039"
+         },
+         {
+          "Id": "813991583"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "Id": "1609378734",
+      "Name": "Music_Level4_Start",
+      "ObjectPath": "\\Events\\Music\\Level4\\Music_Level4_Start",
+      "GUID": "{6E99FD47-5122-481C-A342-3FDEB4E5823A}",
+      "Color": "26",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "2129730527",
+      "Name": "Music_Level5_Boss_Dog_End",
+      "ObjectPath": "\\Events\\Music\\Level5\\Music_Level5_Boss_Dog_End",
+      "GUID": "{C921BBE4-C1C4-422E-B995-5518B654620B}",
+      "Color": "26",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "89505537",
+        "Id": "782826392",
+        "Name": "Default",
+        "ObjectPath": "\\States\\Default Work Unit\\Gameplay\\Default",
+        "GUID": "{6E00D407-0F37-485C-88D0-9A1776404330}"
+       }
+      ]
+     },
+     {
+      "Id": "3672865688",
+      "Name": "Music_Level5_Boss_Hand_End",
+      "ObjectPath": "\\Events\\Music\\Level5\\Music_Level5_Boss_Hand_End",
+      "GUID": "{C79B1C4F-1C1F-4A7D-B240-20B6B3AA9588}",
+      "Color": "26",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "89505537",
+        "Id": "782826392",
+        "Name": "Default",
+        "ObjectPath": "\\States\\Default Work Unit\\Gameplay\\Default",
+        "GUID": "{6E00D407-0F37-485C-88D0-9A1776404330}"
+       }
+      ]
+     },
+     {
+      "Id": "851377975",
+      "Name": "Music_Level5_Gameplay_End",
+      "ObjectPath": "\\Events\\Music\\Level5\\Music_Level5_Gameplay_End",
+      "GUID": "{1DC6913A-C777-4F86-9F0F-52484957BD62}",
+      "Color": "26",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "3478999332",
+      "Name": "Music_Level5_Gameplay_Start",
+      "ObjectPath": "\\Events\\Music\\Level5\\Music_Level5_Gameplay_Start",
+      "GUID": "{5D890531-9772-4C1B-9332-DA645728A7BF}",
+      "Color": "26",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "2399950597",
+      "Name": "Music_Level5_Invasion_Start",
+      "ObjectPath": "\\Events\\Music\\Level5\\Music_Level5_Invasion_Start",
+      "GUID": "{97353A7B-99A6-483E-89BF-A2F351205FED}",
+      "Color": "26",
+      "DurationType": "Infinite",
+      "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "89505537",
+         "Id": "782826392",
+         "GUID": "{6E00D407-0F37-485C-88D0-9A1776404330}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "70184894"
+         },
+         {
+          "Id": "885207708"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "89505537",
+         "Id": "1189762416",
+         "GUID": "{D3763462-0863-4769-A24E-430DBA512945}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "349528451"
+         },
+         {
+          "Id": "758884861"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "Id": "3303237283",
+      "Name": "Music_Level5_Start",
+      "ObjectPath": "\\Events\\Music\\Level5\\Music_Level5_Start",
+      "GUID": "{A386A827-99E4-45B4-B87E-3D5D2126CCB6}",
+      "Color": "26",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "4186889390",
+      "Name": "Music_MainMenu_Start",
+      "ObjectPath": "\\Events\\Music\\MainMenu\\Music_MainMenu_Start",
+      "GUID": "{93611ADC-08D8-4877-929E-5F763E99F597}",
+      "Color": "26",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "121951088"
+       },
+       {
+        "Id": "814493213"
+       },
+       {
+        "Id": "899927189"
+       }
+      ]
+     },
+     {
+      "Id": "3372329102",
+      "Name": "Music_MainMenu_Stop",
+      "ObjectPath": "\\Events\\Music\\MainMenu\\Music_MainMenu_Stop",
+      "GUID": "{A332B807-9B6F-493D-BF98-9809B4C32096}",
+      "Color": "26",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "725412667",
+      "Name": "Music_Shop_End",
+      "ObjectPath": "\\Events\\Music\\Shop\\Music_Shop_End",
+      "GUID": "{33E73A96-A31A-4A7F-AC24-DBB1CDA6305B}",
+      "Color": "26",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "89505537",
+        "Id": "782826392",
+        "Name": "Default",
+        "ObjectPath": "\\States\\Default Work Unit\\Gameplay\\Default",
+        "GUID": "{6E00D407-0F37-485C-88D0-9A1776404330}"
+       }
+      ]
+     },
+     {
+      "Id": "2030136416",
+      "Name": "Music_Shop_Start",
+      "ObjectPath": "\\Events\\Music\\Shop\\Music_Shop_Start",
+      "GUID": "{BF4AD9D3-20C2-448F-BC6A-5A13080414D8}",
+      "Color": "26",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "174811141"
+       },
+       {
+        "Id": "257611301"
+       },
+       {
+        "Id": "374714544"
+       },
+       {
+        "Id": "842187782"
+       }
+      ],
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "2849147824"
+        }
+       ]
+      },
+      "ActionSetState": [
+       {
+        "GroupId": "89505537",
+        "Id": "251412225",
+        "Name": "Shop",
+        "ObjectPath": "\\States\\Default Work Unit\\Gameplay\\Shop",
+        "GUID": "{4916C877-443A-4F05-BAF8-9C79521C0167}"
+       }
+      ]
+     },
+     {
+      "Id": "3227181061",
+      "Name": "Music_Stop",
+      "ObjectPath": "\\Events\\Music\\Music_Stop",
+      "GUID": "{37EFB0C9-8BC0-46BA-822E-60E998E35A6D}",
+      "Color": "26",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ],
+    "StateGroups": [
+     {
+      "Id": "89505537",
+      "Name": "Gameplay",
+      "ObjectPath": "\\States\\Default Work Unit\\Gameplay",
+      "GUID": "{0FD24778-2B38-4284-AB9B-B176F6E1F2AC}",
+      "States": [
+       {
+        "Id": "251412225",
+        "Name": "Shop",
+        "ObjectPath": "\\States\\Default Work Unit\\Gameplay\\Shop",
+        "GUID": "{4916C877-443A-4F05-BAF8-9C79521C0167}"
+       },
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\Gameplay\\None",
+        "GUID": "{11602F6F-7591-443C-9061-D3F3314EBFD8}"
+       },
+       {
+        "Id": "782826392",
+        "Name": "Default",
+        "ObjectPath": "\\States\\Default Work Unit\\Gameplay\\Default",
+        "GUID": "{6E00D407-0F37-485C-88D0-9A1776404330}"
+       },
+       {
+        "Id": "1189762416",
+        "Name": "Challenge",
+        "ObjectPath": "\\States\\Default Work Unit\\Gameplay\\Challenge",
+        "GUID": "{D3763462-0863-4769-A24E-430DBA512945}"
+       },
+       {
+        "Id": "3026592080",
+        "Name": "Boss_Defeat",
+        "ObjectPath": "\\States\\Default Work Unit\\Gameplay\\Boss_Defeat",
+        "GUID": "{772B5431-47E5-4F36-9961-A30FAEDBBA93}"
+       },
+       {
+        "Id": "3688152761",
+        "Name": "Boss_Fight",
+        "ObjectPath": "\\States\\Default Work Unit\\Gameplay\\Boss_Fight",
+        "GUID": "{1FE98355-9982-415F-A3AC-4747EFD3F6DB}"
+       },
+       {
+        "Id": "3803289968",
+        "Name": "LevelClear",
+        "ObjectPath": "\\States\\Default Work Unit\\Gameplay\\LevelClear",
+        "GUID": "{B07200D4-BFD9-4296-ACE6-AD722F3AA493}"
+       },
+       {
+        "Id": "4158285989",
+        "Name": "GameOver",
+        "ObjectPath": "\\States\\Default Work Unit\\Gameplay\\GameOver",
+        "GUID": "{6C7F5941-4D1F-4ADB-A28C-83557418D2DC}"
+       }
+      ]
+     },
+     {
+      "Id": "646625282",
+      "Name": "Hub",
+      "ObjectPath": "\\States\\Default Work Unit\\Hub",
+      "GUID": "{06438018-19C7-4236-A929-DF9373AD12D7}",
+      "States": [
+       {
+        "Id": "26822469",
+        "Name": "Exit",
+        "ObjectPath": "\\States\\Default Work Unit\\Hub\\Exit",
+        "GUID": "{A77D9830-4FD0-4784-A745-155D78FB8C71}"
+       },
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\Hub\\None",
+        "GUID": "{7DAF8381-1D18-44F9-8373-C808FE172AF5}"
+       },
+       {
+        "Id": "782826392",
+        "Name": "Default",
+        "ObjectPath": "\\States\\Default Work Unit\\Hub\\Default",
+        "GUID": "{576CCB35-3EC1-4918-9FA6-C836BD2DE449}"
+       },
+       {
+        "Id": "2368844905",
+        "Name": "Enter",
+        "ObjectPath": "\\States\\Default Work Unit\\Hub\\Enter",
+        "GUID": "{830CCC34-4D34-4561-82DA-E2D1DBE31400}"
+       },
+       {
+        "Id": "3349798655",
+        "Name": "Phone_Zap",
+        "ObjectPath": "\\States\\Default Work Unit\\Hub\\Phone_Zap",
+        "GUID": "{3CDF4899-9236-4BFA-B739-E23ECE47A90F}"
+       },
+       {
+        "Id": "4265022948",
+        "Name": "Phone_Ringtone",
+        "ObjectPath": "\\States\\Default Work Unit\\Hub\\Phone_Ringtone",
+        "GUID": "{A945081D-95E0-470E-BCCA-CEAC5E9AD1F0}"
+       }
+      ]
+     },
+     {
+      "Id": "3200174779",
+      "Name": "Boss_Final",
+      "ObjectPath": "\\States\\Default Work Unit\\Boss_Final",
+      "GUID": "{8383B015-A5E7-4014-9F0F-4E742C0C0060}",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\Boss_Final\\None",
+        "GUID": "{772667F9-51A1-4D2E-895B-D94A9CC88F04}"
+       },
+       {
+        "Id": "2002117580",
+        "Name": "Phase_01",
+        "ObjectPath": "\\States\\Default Work Unit\\Boss_Final\\Phase_01",
+        "GUID": "{BC54B106-A3FF-4A30-95AA-3A715604DF8E}"
+       },
+       {
+        "Id": "2002117582",
+        "Name": "Phase_03",
+        "ObjectPath": "\\States\\Default Work Unit\\Boss_Final\\Phase_03",
+        "GUID": "{AC8F0738-48D6-4E66-8BE9-919F63325301}"
+       },
+       {
+        "Id": "2002117583",
+        "Name": "Phase_02",
+        "ObjectPath": "\\States\\Default Work Unit\\Boss_Final\\Phase_02",
+        "GUID": "{4DE9F6D1-D076-4654-95FD-CBA3025E8EED}"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{ED309147-47AA-15B9-6C6A-1ABCB30AC64D}"
+ }
+}

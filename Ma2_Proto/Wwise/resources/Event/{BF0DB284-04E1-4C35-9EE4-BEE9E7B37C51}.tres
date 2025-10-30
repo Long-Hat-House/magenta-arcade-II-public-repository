@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://c7cu4odol77nw"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Power_Tap_Green"
+id = 436239963
+guid = "{BF0DB284-04E1-4C35-9EE4-BEE9E7B37C51}"
+dummy = true

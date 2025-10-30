@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6yt277swytr7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8jfr8"]
+albedo_color = Color(0.703808, 0.703808, 0.703808, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gmqlj"]
+material = SubResource("StandardMaterial3D_8jfr8")
+size = Vector2(1, 1)
+
+[node name="Scenario_Boss_Goleiro_Line" type="MeshInstance3D"]
+mesh = SubResource("PlaneMesh_gmqlj")

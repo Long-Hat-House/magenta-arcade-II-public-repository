@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cla4sjqkj5dhg"]
+
+[ext_resource type="PackedScene" uid="uid://dfi4oip83lo3f" path="res://elements/background/element_grass.tscn" id="1_eggl1"]
+[ext_resource type="Material" uid="uid://cchl01ii18wfc" path="res://elements/background/material/m_grid_floor.tres" id="2_eggl1"]
+
+[node name="GridFloor" instance=ExtResource("1_eggl1")]
+
+[node name="MeshInstance3D3" parent="." index="0"]
+material_override = ExtResource("2_eggl1")

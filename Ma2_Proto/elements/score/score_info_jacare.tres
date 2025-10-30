@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ScoreInfo" load_steps=2 format=3 uid="uid://chxc7jei6iwap"]
+
+[ext_resource type="Script" uid="uid://xfqoedvnoauc" path="res://systems/score/score_info.gd" id="1_ymnq6"]
+
+[resource]
+script = ExtResource("1_ymnq6")
+score_value = 50
+score_title = &"Jacaré"
+world_positioned = true
+breaks_combos = true
+combo_max_count = 4
+combo_value_extra_enemy = 20
+combo_value_last_enemy = 100
+combo_extra_time = 0.25
+ignore_boost_multiplier = false

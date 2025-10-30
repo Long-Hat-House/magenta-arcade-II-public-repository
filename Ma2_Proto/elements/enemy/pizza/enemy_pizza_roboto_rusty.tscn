@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bg2aqptipn8s"]
+
+[ext_resource type="PackedScene" uid="uid://t7wocwarj2c3" path="res://elements/enemy/pizza/enemy_pizza_roboto.tscn" id="1_b10h7"]
+[ext_resource type="PackedScene" uid="uid://ce55vfa4assok" path="res://elements/enemy/pizza/Mesh/pizza_roboto_rusty.tscn" id="2_i5bio"]
+[ext_resource type="Resource" uid="uid://cyi54dxqhgsld" path="res://elements/score/score_info_pizza_rusty.tres" id="2_u15j5"]
+
+[node name="Enemy_PizzaRobotoRusty" node_paths=PackedStringArray("simpleAnimation") instance=ExtResource("1_b10h7")]
+simpleAnimation = NodePath("Body/Render/Pizza_Roboto_Rusty")
+walkAnimation = "PIZZA_SHOOTER_RUST"
+await_to_kill_self_on_collision = 0.1
+
+[node name="Health" parent="Body" index="1" node_paths=PackedStringArray("feedback")]
+max_amount = 0.2
+feedback = [NodePath("../Render/Pizza_Roboto"), NodePath("../Render/Pizza_Roboto_Rusty")]
+
+[node name="ScoreGiver" parent="Body" index="2"]
+info = ExtResource("2_u15j5")
+
+[node name="Pizza_Roboto_Rusty" parent="Body/Render" index="0" instance=ExtResource("2_i5bio")]
+
+[node name="Pizza_Roboto" parent="Body/Render" index="1"]
+visible = false
+
+[node name="VisibleOnScreenNotifier3D" parent="Body" index="5"]
+aabb = AABB(-1.0902, -0.0706903, -0.625, 2.1716, 0.660912, 1.25)
+
+[node name="Shoot Animation" parent="AI" index="1" node_paths=PackedStringArray("animation_player_proxy")]
+animation_player_proxy = NodePath("../../Body/Render/Pizza_Roboto_Rusty")

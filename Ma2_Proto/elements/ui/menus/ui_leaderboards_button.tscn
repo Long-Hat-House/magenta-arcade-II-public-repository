@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://detgpi5k8134c"]
+
+[ext_resource type="Script" uid="uid://ddarqwqgi2ui" path="res://elements/ui/menus/ui_leaderboards_button.gd" id="1_kg2ha"]
+[ext_resource type="Texture2D" uid="uid://bp2u67flr6r7" path="res://modules/social_platform_system/play_games_icons/icon_leaderboards.png" id="1_qcn10"]
+
+[node name="UiLeaderboardsButton" type="Button"]
+icon = ExtResource("1_qcn10")
+script = ExtResource("1_kg2ha")
+_enable_icon = true
+metadata/_custom_type_script = "uid://b1njn8wc1dxbf"

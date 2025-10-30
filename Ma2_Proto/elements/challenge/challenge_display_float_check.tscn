@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://duhifoyov8p8e"]
+
+[ext_resource type="Script" path="res://systems/ui/display_float.gd" id="1_l50ex"]
+[ext_resource type="Texture2D" uid="uid://dtf0la8c0firj" path="res://elements/icons/icon_hold.svg" id="2_58j3i"]
+[ext_resource type="Texture2D" uid="uid://5k740vn6ynjg" path="res://elements/icons/icon_health.png" id="3_h6fci"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wkcf2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3nax"]
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Challenge Display Float Check" type="PanelContainer" node_paths=PackedStringArray("label_id", "enable_bellow_min", "enable_above_max")]
+offset_right = 512.0
+offset_bottom = 64.0
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wkcf2")
+script = ExtResource("1_l50ex")
+label_id = NodePath("MarginContainer/HBOX/ID")
+enable_bellow_min = NodePath("MarginContainer/HBOX/Panel - Check Box/MarginContainer/Bellow Min")
+enable_above_max = NodePath("MarginContainer/HBOX/Panel - Check Box/MarginContainer/Above Max")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HBOX" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="ID" type="Label" parent="MarginContainer/HBOX"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"LabelSubtitle"
+text = "Pizza Antes do Copter"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Panel - Check Box" type="PanelContainer" parent="MarginContainer/HBOX"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c3nax")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBOX/Panel - Check Box"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="Bellow Min" type="TextureRect" parent="MarginContainer/HBOX/Panel - Check Box/MarginContainer"]
+modulate = Color(0.6, 0.121569, 0.2, 1)
+layout_mode = 2
+texture = ExtResource("2_58j3i")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Above Max" type="TextureRect" parent="MarginContainer/HBOX/Panel - Check Box/MarginContainer"]
+modulate = Color(0.972549, 0.933333, 0.894118, 1)
+layout_mode = 2
+texture = ExtResource("3_h6fci")
+expand_mode = 1
+stretch_mode = 5

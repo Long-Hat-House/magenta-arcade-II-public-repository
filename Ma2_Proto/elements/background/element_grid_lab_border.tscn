@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck5ldp5xql6lo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_um7dx"]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.45098, 0.45098, 0.560784, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ao4am"]
+size = Vector2(1, 1)
+center_offset = Vector3(0.5, 0, 0.5)
+
+[node name="Clay" type="Node3D"]
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0)
+layers = 3
+material_override = SubResource("StandardMaterial3D_um7dx")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_ao4am")

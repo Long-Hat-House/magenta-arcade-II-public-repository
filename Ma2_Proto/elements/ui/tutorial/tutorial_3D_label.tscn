@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8ef6p3rlvkoa"]
+
+[ext_resource type="Script" path="res://elements/ui/tutorial/tutorial_3d_label.gd" id="1_bhei1"]
+
+[node name="Tutorial_In_Game" type="Label3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+text = "tutorial_lvl0_hold"
+font_size = 90
+outline_size = 25
+width = 750.0
+script = ExtResource("1_bhei1")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-8, -1.5, -1, 16, 3, 2)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

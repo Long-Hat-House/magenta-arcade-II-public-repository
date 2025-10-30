@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeInfo" load_steps=3 format=3 uid="uid://c3w610ru0i0kl"]
+
+[ext_resource type="Script" uid="uid://dospanm60t0v5" path="res://systems/ma2_meta/upgrade_info.gd" id="1_ddlg8"]
+[ext_resource type="Texture2D" uid="uid://bus3no6usqwu3" path="res://elements/icons/icons_upgrades/icon_upgrade_tap_projectiles.png" id="2_3uian"]
+
+[resource]
+script = ExtResource("1_ddlg8")
+upgrade_id = &"upgrade_tap_projectiles"
+upgrade_description = &"upgrade_tap_projectiles_dialogue"
+upgrade_icon = ExtResource("2_3uian")
+stars_per_progress = Array[int]([2, 2, 2, 3])
+upgrade_developer_instruction = "Player state set in player ready = progress()"
+float_val = 0.0
+float_val_array = Array[float]([])

@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://dxqbyrnb5qbj4"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_MiniBoss_Lv4_Dog_Attack"
+id = 3604075775
+guid = "{31C9C2B6-A21A-48DA-9F32-D0FAC2A4FA33}"
+dummy = true

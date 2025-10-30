@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfc5nt7ds3a7m"]
+
+[ext_resource type="PackedScene" uid="uid://dwd6c512hf4mm" path="res://elements/levels/lvl_hub/hub_elements/hub_pulpit/hub_pulpit.glb" id="1_fisil"]
+[ext_resource type="Material" uid="uid://d11lc3d1irmce" path="res://elements/levels/lvl_hub/hub_elements/hub_pulpit/material/m_hub_pulpit.tres" id="2_5jed3"]
+
+[node name="hub_pulpit" instance=ExtResource("1_fisil")]
+
+[node name="hub_pulpit" parent="." index="0"]
+material_override = ExtResource("2_5jed3")

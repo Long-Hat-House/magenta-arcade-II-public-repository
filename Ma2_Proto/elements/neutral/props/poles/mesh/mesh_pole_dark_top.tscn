@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsw7qeq5mn0jj"]
+
+[ext_resource type="PackedScene" uid="uid://bkjgxt50rqbj0" path="res://elements/neutral/props/poles/mesh/mesh_pole_dark_top.glb" id="1_nmw3u"]
+[ext_resource type="Material" uid="uid://jd3sh32wkwiq" path="res://elements/neutral/props/poles/material/m_pole_traffic.tres" id="2_hvywl"]
+
+[node name="Mesh Pole Dark Over" instance=ExtResource("1_nmw3u")]
+
+[node name="pole_traffic_001" parent="." index="0"]
+material_override = ExtResource("2_hvywl")

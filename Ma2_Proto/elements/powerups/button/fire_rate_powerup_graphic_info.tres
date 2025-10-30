@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Powerup_Graphic_Info" load_steps=3 format=3 uid="uid://cxrharcloxerh"]
+
+[ext_resource type="Texture2D" uid="uid://csqy4gu3cbqjk" path="res://elements/icons/icons_powerups/icon_powerup_hold_firerate.png" id="1_gtcdl"]
+[ext_resource type="Script" uid="uid://dxkrj56eyujng" path="res://elements/powerups/powerup_graphic_info.gd" id="2_yjlmx"]
+
+[resource]
+script = ExtResource("2_yjlmx")
+icon = ExtResource("1_gtcdl")
+icon_color_custom = Color(1, 1, 1, 1)
+use_color_custom_for_icon = false
+highlight = Color(0, 0.686275, 0.654902, 1)
+normal = Color(0, 0.545098, 0.521569, 1)
+button_style = 2
+metadata/_custom_type_script = "uid://dxkrj56eyujng"

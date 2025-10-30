@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://by30o7nyxltm4"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_FinalBoss_Lv4_Final_Pillar_Hit"
+id = 3515597876
+guid = "{3F1386C8-5C33-4AA6-B086-F471B418CB7F}"
+dummy = true

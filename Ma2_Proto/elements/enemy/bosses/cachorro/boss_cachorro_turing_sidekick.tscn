@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://dl6nu44ltfrol"]
+
+[ext_resource type="Script" uid="uid://ccq6y50d2pl47" path="res://elements/enemy/bosses/cachorro/boss_cachorro_turing_sidekick.gd" id="1_q0cf3"]
+[ext_resource type="SpriteFrames" uid="uid://csmsln4gem53w" path="res://elements/enemy/bosses/cachorro/turing/enemy_boss_turing_magenta.ase" id="2_mjx5n"]
+[ext_resource type="Script" uid="uid://pu4x6ds71ckx" path="res://systems/testing/animated_sprite_tester.gd" id="3_gpp5l"]
+[ext_resource type="PackedScene" uid="uid://b2g5r65iw01ae" path="res://elements/base_shadow.tscn" id="4_7gw2k"]
+[ext_resource type="Script" uid="uid://bkt3i1q8w53tl" path="res://modules/text_flow/quick_dialogue.gd" id="4_8awo7"]
+[ext_resource type="PackedScene" uid="uid://bc8er7wjckssi" path="res://elements/npc/npc_high_contrast_sprite_boss.tscn" id="6_2sv5v"]
+[ext_resource type="Texture2D" uid="uid://cl6cndwm4yp40" path="res://elements/enemy/bosses/cachorro/turing/enemy_boss_turing_magenta.png" id="7_aotco"]
+
+[node name="Boss_Cachorro_Turing_Sidekick" type="Node3D"]
+script = ExtResource("1_q0cf3")
+
+[node name="Cachorro Sprite" type="AnimatedSprite3D" parent="."]
+offset = Vector2(0, 80)
+pixel_size = 0.0078
+billboard = 1
+shaded = true
+texture_filter = 0
+sprite_frames = ExtResource("2_mjx5n")
+animation = &"defeat_frame"
+autoplay = "idle"
+speed_scale = 1.1
+script = ExtResource("3_gpp5l")
+key_code = 75
+
+[node name="BaseShadow" parent="Cachorro Sprite" instance=ExtResource("4_7gw2k")]
+
+[node name="QuickDialogue" type="Node3D" parent="Cachorro Sprite"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+script = ExtResource("4_8awo7")
+voice = 10
+metadata/_custom_type_script = "uid://bkt3i1q8w53tl"
+
+[node name="NPC_HighContrastSprite_Boss" parent="Cachorro Sprite" instance=ExtResource("6_2sv5v")]
+
+[node name="NPC_HighContrastSprite" parent="Cachorro Sprite/NPC_HighContrastSprite_Boss" index="0"]
+texture = ExtResource("7_aotco")
+uv_frame = Vector2i(0, 0)
+
+[editable path="Cachorro Sprite/NPC_HighContrastSprite_Boss"]

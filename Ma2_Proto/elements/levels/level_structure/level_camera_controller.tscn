@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://duesy185j8y3k"]
+
+[ext_resource type="Script" uid="uid://bkty3rlyw552p" path="res://systems/level/level_camera_controller.gd" id="1_by45f"]
+[ext_resource type="Script" uid="uid://bgwvr06wf8e60" path="res://systems/screen/camera_shaker.gd" id="2_lt2w2"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_tcojv"]
+radial_segments = 8
+rings = 8
+
+[node name="LevelCameraController" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26, 13)
+script = ExtResource("1_by45f")
+manual_control_length = 2.0
+manual_control_length_multiplier = 0.046
+manual_control_velocity_relative_on = 1.0
+manual_control_velocity_relative_off = 0.625
+manual_control_velocity_absolute_on = 0.4
+manual_control_in_multiplier = Vector3(2, 0, 1)
+manual_control_out_multiplier = Vector3(1, 0, 0.65)
+
+[node name="Dynamic Position" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Manual Control" type="Node3D" parent="Dynamic Position"]
+
+[node name="Shake" type="Node3D" parent="Dynamic Position/Manual Control"]
+script = ExtResource("2_lt2w2")
+
+[node name="Camera3D" type="Camera3D" parent="Dynamic Position/Manual Control/Shake"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.422618, 0.906308, 0, -0.906308, 0.422618, 0, 0, 0)
+keep_aspect = 0
+fov = 22.0
+near = 0.5
+far = 70.0
+
+[node name="CenterOfScreen" type="Node3D" parent="Dynamic Position"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -26, -13)
+
+[node name="AimReference" type="Marker3D" parent="Dynamic Position/CenterOfScreen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.5)
+
+[node name="Ref" type="MeshInstance3D" parent="Dynamic Position/CenterOfScreen/AimReference"]
+visible = false
+mesh = SubResource("SphereMesh_tcojv")

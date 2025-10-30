@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct2usghwibgvw"]
+
+[ext_resource type="PackedScene" uid="uid://ccn6065djpwhr" path="res://elements/powerups/button/powerup_holdable_button.tscn" id="1_lknnw"]
+[ext_resource type="Texture2D" uid="uid://bkdqdnsj1y2hf" path="res://elements/icons/icon_sacrifice_score.png" id="2_imh5r"]
+[ext_resource type="Resource" uid="uid://c3k6k2hy6yhks" path="res://elements/score/score_info_sacrifice.tres" id="4_imh5r"]
+
+[node name="SacrificeButton-SCORE" instance=ExtResource("1_lknnw")]
+
+[node name="button_graphic" parent="Area3D" index="1"]
+default_icon = ExtResource("2_imh5r")
+default_color = Color(0.745098, 0, 0.784314, 1)
+default_color_highlight = Color(0.87451, 0.576471, 0.796078, 1)
+
+[node name="ScoreGiver" parent="." index="3"]
+info = ExtResource("4_imh5r")

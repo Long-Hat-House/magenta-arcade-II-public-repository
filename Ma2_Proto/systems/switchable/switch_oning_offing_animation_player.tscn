@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://3adk15ksmyj7"]
+
+[ext_resource type="Script" path="res://systems/switchable/switch_oning_offing_animation_player.gd" id="1_wr7o8"]
+
+[node name="SwitchOningOffing" type="AnimationPlayer"]
+script = ExtResource("1_wr7o8")

@@ -1,0 +1,181 @@
+[gd_scene load_steps=6 format=3 uid="uid://ku8b1fm4emee"]
+
+[ext_resource type="Script" uid="uid://deq066lsjb36v" path="res://elements/player/weapons/player_weapon_hold.gd" id="1_agpvy"]
+[ext_resource type="Curve" uid="uid://ernxmpp76nsa" path="res://elements/player/player_hold_basic_curve_interval_per_upgrade.tres" id="2_1ldtt"]
+[ext_resource type="Texture2D" uid="uid://eohd3w654qew" path="res://elements/icons/icon_hold_red.png" id="2_8wv20"]
+[ext_resource type="Script" uid="uid://dra7nitmq3ukf" path="res://elements/player/weapons/player_weapon_level_instantiate.gd" id="3_wv75k"]
+[ext_resource type="PackedScene" uid="uid://c0rmu2xr0xr1g" path="res://elements/player/projectiles/hold_red/proj_hold_red.tscn" id="4_kip6w"]
+
+[node name="Weapon_Red Hold" type="Node"]
+script = ExtResource("1_agpvy")
+hold_interval_multiplier_per_fire_rate_level = ExtResource("2_1ldtt")
+icon = ExtResource("2_8wv20")
+title = "powerup_hold_red_title"
+id = 2
+color = Color(0.827451, 0.12549, 0.286275, 1)
+color_highlight = Color(1, 0.392157, 0.403922, 1)
+
+[node name="Level1" type="Node3D" parent="."]
+script = ExtResource("3_wv75k")
+projectile = ExtResource("4_kip6w")
+delayBetweenProjectilesContainsName = "M"
+holdInterval = 0.182
+
+[node name="Marker3D" type="Marker3D" parent="Level1"]
+
+[node name="Level2" type="Node3D" parent="."]
+script = ExtResource("3_wv75k")
+projectile = ExtResource("4_kip6w")
+delayBetweenProjectilesContainsName = "M"
+holdInterval = 0.278
+
+[node name="Marker3D" type="Marker3D" parent="Level2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="Level2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+
+[node name="Level3" type="Node3D" parent="."]
+script = ExtResource("3_wv75k")
+projectile = ExtResource("4_kip6w")
+delayBetweenProjectilesContainsName = "M"
+holdInterval = 0.32
+
+[node name="Marker3D" type="Marker3D" parent="Level3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="Level3"]
+
+[node name="Marker3D3" type="Marker3D" parent="Level3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Level4" type="Node3D" parent="."]
+script = ExtResource("3_wv75k")
+projectile = ExtResource("4_kip6w")
+delayBetweenProjectilesContainsName = "M"
+holdInterval = 0.352
+
+[node name="Marker3D" type="Marker3D" parent="Level4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+
+[node name="Check Distance" type="Marker3D" parent="Level4/Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="Marker3D4" type="Marker3D" parent="Level4"]
+transform = Transform3D(0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, -0.5, 0, 0)
+
+[node name="Check Distance" type="Marker3D" parent="Level4/Marker3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="Marker3D2" type="Marker3D" parent="Level4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+
+[node name="Check Distance" type="Marker3D" parent="Level4/Marker3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="Marker3D3" type="Marker3D" parent="Level4"]
+transform = Transform3D(0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, 0.5, 0, 0)
+
+[node name="Check Distance" type="Marker3D" parent="Level4/Marker3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="Level5" type="Node3D" parent="."]
+script = ExtResource("3_wv75k")
+projectile = ExtResource("4_kip6w")
+delayBetweenProjectilesContainsName = "M"
+holdInterval = 0.444
+
+[node name="Marker3D" type="Marker3D" parent="Level5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+
+[node name="Check Distance" type="Marker3D" parent="Level5/Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="Marker3D4" type="Marker3D" parent="Level5"]
+transform = Transform3D(0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, -0.5, 0, 0)
+
+[node name="Check Distance" type="Marker3D" parent="Level5/Marker3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="Marker3D5" type="Marker3D" parent="Level5"]
+transform = Transform3D(0.970296, 0, -0.241922, 0, 1, 0, 0.241922, 0, 0.970296, -0.5, 0, 0)
+
+[node name="Check Distance" type="Marker3D" parent="Level5/Marker3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="Marker3D2" type="Marker3D" parent="Level5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+
+[node name="Check Distance" type="Marker3D" parent="Level5/Marker3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="Marker3D3" type="Marker3D" parent="Level5"]
+transform = Transform3D(0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, 0.5, 0, 0)
+
+[node name="Check Distance" type="Marker3D" parent="Level5/Marker3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="Marker3D6" type="Marker3D" parent="Level5"]
+transform = Transform3D(0.97437, 0, 0.224951, 0, 1, 0, -0.224951, 0, 0.97437, 0.5, 0, 0)
+
+[node name="Check Distance" type="Marker3D" parent="Level5/Marker3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="Level6" type="Node3D" parent="."]
+script = ExtResource("3_wv75k")
+projectile = ExtResource("4_kip6w")
+delayBetweenProjectilesContainsName = "M"
+holdInterval = 0.526
+
+[node name="Marker3D7" type="Marker3D" parent="Level6"]
+
+[node name="Check Distance" type="Marker3D" parent="Level6/Marker3D7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="Marker3D" type="Marker3D" parent="Level6"]
+transform = Transform3D(0.987748, 0, -0.156055, 0, 1, 0, 0.156055, 0, 0.987748, -0.5, 0, 0)
+
+[node name="Check Distance" type="Marker3D" parent="Level6/Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="Marker3D4" type="Marker3D" parent="Level6"]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -0.5, 0, 0)
+
+[node name="Check Distance" type="Marker3D" parent="Level6/Marker3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="Marker3D5" type="Marker3D" parent="Level6"]
+transform = Transform3D(0.939692, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939692, -0.5, 0, 0)
+
+[node name="Check Distance" type="Marker3D" parent="Level6/Marker3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="Marker3D8" type="Marker3D" parent="Level6"]
+transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, -0.5, 0, 0)
+
+[node name="Check Distance" type="Marker3D" parent="Level6/Marker3D8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="Marker3D2" type="Marker3D" parent="Level6"]
+transform = Transform3D(0.987688, 0, 0.156434, 0, 1, 0, -0.156434, 0, 0.987688, 0.5, 0, 0)
+
+[node name="Check Distance" type="Marker3D" parent="Level6/Marker3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="Marker3D3" type="Marker3D" parent="Level6"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0.5, 0, 0)
+
+[node name="Check Distance" type="Marker3D" parent="Level6/Marker3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="Marker3D6" type="Marker3D" parent="Level6"]
+transform = Transform3D(0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 0.5, 0, 0)
+
+[node name="Check Distance" type="Marker3D" parent="Level6/Marker3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="Marker3D9" type="Marker3D" parent="Level6"]
+transform = Transform3D(0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 0.5, 0, 0)
+
+[node name="Check Distance" type="Marker3D" parent="Level6/Marker3D9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)

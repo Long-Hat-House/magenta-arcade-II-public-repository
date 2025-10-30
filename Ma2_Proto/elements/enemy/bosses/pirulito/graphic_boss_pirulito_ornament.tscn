@@ -1,0 +1,319 @@
+[gd_scene load_steps=15 format=3 uid="uid://c8s8uff28rexx"]
+
+[ext_resource type="PackedScene" uid="uid://dmr250i6ketpl" path="res://elements/enemy/bosses/pirulito/pirulito_piece/mesh_ornament.tscn" id="1_snecp"]
+[ext_resource type="Material" uid="uid://dnblqgcyj734p" path="res://elements/enemy/bosses/pirulito/material/m_pirulito.tres" id="2_03lwt"]
+[ext_resource type="Script" path="res://elements/enemy/bosses/pirulito/graphic_boss_pirulito_ornament.gd" id="2_oyb0g"]
+[ext_resource type="Texture2D" uid="uid://doc03wk50ionh" path="res://ephemeral/winamp.JPG" id="3_q0q8f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7etol"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xleuv"]
+_surfaces = [{
+"aabb": AABB(-0.346452, 0.658906, 1.49048, 0.342875, 0.620754, 0.249673),
+"format": 34896613377,
+"index_count": 102,
+"index_data": PackedByteArray(11, 0, 2, 0, 17, 0, 0, 0, 12, 0, 4, 0, 0, 0, 11, 0, 12, 0, 10, 0, 2, 0, 5, 0, 10, 0, 13, 0, 2, 0, 3, 0, 9, 0, 10, 0, 3, 0, 1, 0, 9, 0, 3, 0, 6, 0, 1, 0, 3, 0, 0, 0, 6, 0, 2, 0, 13, 0, 15, 0, 5, 0, 3, 0, 10, 0, 17, 0, 2, 0, 15, 0, 7, 0, 16, 0, 8, 0, 7, 0, 18, 0, 16, 0, 8, 0, 14, 0, 6, 0, 8, 0, 16, 0, 14, 0, 0, 0, 4, 0, 7, 0, 0, 0, 7, 0, 8, 0, 6, 0, 0, 0, 8, 0, 7, 0, 12, 0, 18, 0, 7, 0, 4, 0, 12, 0, 11, 0, 18, 0, 12, 0, 11, 0, 17, 0, 18, 0, 17, 0, 16, 0, 18, 0, 17, 0, 15, 0, 16, 0, 15, 0, 14, 0, 16, 0, 15, 0, 13, 0, 14, 0, 13, 0, 9, 0, 14, 0, 13, 0, 10, 0, 9, 0, 1, 0, 14, 0, 9, 0, 1, 0, 6, 0, 14, 0, 2, 0, 11, 0, 0, 0, 3, 0, 2, 0, 0, 0, 3, 0, 5, 0, 2, 0),
+"lods": [0.0429651, PackedByteArray(0, 0, 12, 0, 4, 0, 0, 0, 2, 0, 12, 0, 3, 0, 2, 0, 0, 0, 3, 0, 5, 0, 2, 0, 10, 0, 2, 0, 5, 0, 10, 0, 16, 0, 2, 0, 2, 0, 16, 0, 12, 0, 16, 0, 10, 0, 9, 0, 3, 0, 9, 0, 10, 0, 3, 0, 1, 0, 9, 0, 5, 0, 3, 0, 10, 0, 3, 0, 8, 0, 1, 0, 3, 0, 0, 0, 8, 0, 0, 0, 4, 0, 8, 0, 8, 0, 12, 0, 16, 0, 8, 0, 4, 0, 12, 0, 1, 0, 8, 0, 16, 0, 1, 0, 16, 0, 9, 0)],
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 19,
+"vertex_data": PackedByteArray(253, 255, 39, 195, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 253, 255, 39, 195, 255, 255, 0, 0, 253, 255, 0, 0, 0, 0, 0, 0, 253, 255, 255, 255, 0, 0, 0, 0, 253, 255, 0, 0, 255, 255, 0, 0, 0, 0, 4, 161, 0, 0, 0, 0, 121, 103, 69, 243, 0, 0, 0, 0, 185, 27, 129, 208, 0, 0, 0, 0, 0, 0, 0, 0, 221, 218, 0, 0, 243, 34, 0, 0, 255, 255, 0, 0, 253, 255, 218, 242, 255, 255, 0, 0, 253, 255, 255, 255, 221, 218, 0, 0, 12, 35, 46, 161, 255, 255, 0, 0, 0, 0, 4, 161, 221, 218, 0, 0, 54, 59, 31, 202, 255, 255, 0, 0, 185, 27, 129, 208, 221, 218, 0, 0, 183, 124, 251, 231, 255, 255, 0, 0, 121, 103, 69, 243, 221, 218, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_evix3"]
+resource_name = "ornament_ornament"
+_surfaces = [{
+"aabb": AABB(-0.346452, 0.658906, 1.49048, 0.342875, 0.620754, 0.249673),
+"attribute_data": PackedByteArray(174, 87, 232, 9, 174, 243, 55, 221, 23, 99, 168, 25, 174, 243, 96, 248, 5, 209, 242, 37, 204, 113, 41, 70, 97, 236, 55, 221, 174, 87, 168, 25, 174, 243, 247, 236, 174, 243, 247, 236, 174, 87, 255, 4, 174, 243, 78, 216, 5, 209, 169, 9, 236, 113, 19, 86, 97, 236, 247, 236, 97, 236, 247, 236, 23, 99, 169, 12, 5, 209, 244, 24, 123, 94, 6, 6, 5, 209, 137, 16, 219, 97, 212, 8, 5, 209, 237, 20, 150, 237, 96, 248, 248, 101, 14, 86, 29, 215, 242, 37, 97, 236, 209, 246, 240, 103, 19, 86, 97, 236, 93, 217, 150, 113, 38, 66, 150, 237, 78, 216, 95, 113, 129, 64, 29, 215, 169, 9, 19, 104, 31, 73, 26, 102, 16, 73, 29, 215, 244, 24, 28, 105, 223, 69, 80, 103, 41, 69, 29, 215, 237, 20, 218, 107, 112, 67, 156, 106, 32, 66, 29, 215, 137, 16, 5, 209, 237, 20, 95, 113, 129, 64, 29, 215, 237, 20),
+"format": 34896613399,
+"index_count": 102,
+"index_data": PackedByteArray(28, 0, 5, 0, 38, 0, 1, 0, 29, 0, 11, 0, 1, 0, 27, 0, 29, 0, 26, 0, 5, 0, 13, 0, 26, 0, 32, 0, 5, 0, 8, 0, 22, 0, 25, 0, 8, 0, 3, 0, 22, 0, 7, 0, 16, 0, 2, 0, 7, 0, 0, 0, 16, 0, 5, 0, 32, 0, 35, 0, 14, 0, 8, 0, 25, 0, 38, 0, 5, 0, 35, 0, 19, 0, 37, 0, 21, 0, 19, 0, 40, 0, 37, 0, 21, 0, 34, 0, 17, 0, 21, 0, 37, 0, 34, 0, 0, 0, 10, 0, 18, 0, 0, 0, 18, 0, 20, 0, 16, 0, 0, 0, 20, 0, 19, 0, 31, 0, 40, 0, 19, 0, 12, 0, 31, 0, 28, 0, 39, 0, 30, 0, 28, 0, 38, 0, 39, 0, 38, 0, 36, 0, 39, 0, 38, 0, 35, 0, 36, 0, 35, 0, 33, 0, 36, 0, 35, 0, 32, 0, 33, 0, 32, 0, 23, 0, 33, 0, 32, 0, 26, 0, 23, 0, 4, 0, 34, 0, 24, 0, 4, 0, 17, 0, 34, 0, 6, 0, 27, 0, 1, 0, 9, 0, 6, 0, 1, 0, 9, 0, 15, 0, 6, 0),
+"lods": [0.0429651, PackedByteArray(1, 0, 29, 0, 11, 0, 1, 0, 6, 0, 29, 0, 9, 0, 6, 0, 1, 0, 9, 0, 15, 0, 6, 0, 26, 0, 5, 0, 13, 0, 26, 0, 36, 0, 5, 0, 5, 0, 36, 0, 42, 0, 36, 0, 26, 0, 23, 0, 8, 0, 22, 0, 25, 0, 8, 0, 3, 0, 22, 0, 14, 0, 8, 0, 25, 0, 7, 0, 20, 0, 2, 0, 7, 0, 0, 0, 20, 0, 0, 0, 10, 0, 20, 0, 41, 0, 31, 0, 43, 0, 41, 0, 12, 0, 31, 0, 4, 0, 41, 0, 43, 0, 4, 0, 43, 0, 24, 0)],
+"material": SubResource("StandardMaterial3D_7etol"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 44,
+"vertex_data": PackedByteArray(253, 255, 39, 195, 0, 0, 255, 255, 253, 255, 39, 195, 0, 0, 255, 191, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 84, 213, 0, 0, 0, 0, 0, 0, 255, 191, 253, 255, 39, 195, 255, 255, 102, 129, 253, 255, 39, 195, 255, 255, 255, 191, 253, 255, 0, 0, 0, 0, 255, 255, 253, 255, 0, 0, 0, 0, 84, 213, 253, 255, 0, 0, 0, 0, 255, 191, 253, 255, 255, 255, 0, 0, 255, 255, 253, 255, 255, 255, 0, 0, 255, 191, 253, 255, 255, 255, 0, 0, 229, 209, 253, 255, 0, 0, 255, 255, 0, 128, 253, 255, 0, 0, 255, 255, 84, 213, 253, 255, 0, 0, 255, 255, 255, 191, 0, 0, 4, 161, 0, 0, 255, 255, 0, 0, 4, 161, 0, 0, 62, 192, 121, 103, 69, 243, 0, 0, 255, 255, 121, 103, 69, 243, 0, 0, 54, 204, 185, 27, 129, 208, 0, 0, 255, 255, 185, 27, 129, 208, 0, 0, 127, 195, 0, 0, 0, 0, 221, 218, 84, 213, 0, 0, 0, 0, 221, 218, 204, 154, 0, 0, 0, 0, 221, 218, 255, 191, 243, 34, 0, 0, 255, 255, 84, 213, 243, 34, 0, 0, 255, 255, 101, 141, 253, 255, 218, 242, 255, 255, 255, 191, 253, 255, 218, 242, 255, 255, 12, 147, 253, 255, 255, 255, 221, 218, 255, 191, 253, 255, 255, 255, 221, 218, 7, 163, 253, 255, 255, 255, 221, 218, 229, 209, 12, 35, 46, 161, 255, 255, 196, 142, 0, 0, 4, 161, 221, 218, 253, 154, 0, 0, 4, 161, 221, 218, 62, 192, 54, 59, 31, 202, 255, 255, 129, 144, 185, 27, 129, 208, 221, 218, 29, 156, 185, 27, 129, 208, 221, 218, 127, 195, 183, 124, 251, 231, 255, 255, 151, 146, 121, 103, 69, 243, 221, 218, 148, 159, 121, 103, 69, 243, 221, 218, 54, 204, 185, 27, 129, 208, 0, 0, 201, 197, 253, 255, 255, 255, 221, 218, 19, 143, 185, 27, 129, 208, 221, 218, 93, 193, 255, 127, 254, 255, 255, 127, 0, 0, 255, 127, 255, 255, 84, 85, 84, 85, 255, 127, 255, 255, 255, 127, 255, 127, 255, 127, 0, 0, 255, 127, 254, 255, 85, 85, 84, 85, 255, 127, 0, 0, 255, 127, 254, 255, 255, 127, 0, 0, 120, 168, 12, 175, 255, 127, 255, 255, 84, 85, 84, 85, 255, 127, 0, 0, 255, 127, 254, 255, 165, 136, 179, 238, 255, 127, 254, 255, 28, 164, 197, 183, 255, 127, 254, 255, 81, 152, 91, 207, 85, 85, 84, 85, 43, 131, 44, 255, 255, 127, 255, 255, 85, 85, 84, 85, 140, 128, 226, 255, 255, 127, 0, 0, 43, 227, 156, 145, 255, 127, 0, 0, 224, 227, 43, 147, 120, 168, 12, 175, 156, 146, 143, 236, 59, 147, 65, 239, 165, 136, 179, 238, 157, 181, 218, 200, 176, 176, 139, 205, 81, 152, 91, 207, 108, 215, 171, 162, 167, 207, 88, 170, 28, 164, 197, 183, 174, 156, 160, 198, 53, 214, 166, 161, 96, 145, 60, 221)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_xleuv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ew3qn"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_m26uj"]
+material = SubResource("StandardMaterial3D_ew3qn")
+size = Vector3(1.01, 0.625, 0.2)
+
+[sub_resource type="Animation" id="Animation_ynn03"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ornament:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ornament2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot Inside/Sprite3D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot Inside:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.114575, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2dfu3"]
+resource_name = "closed"
+length = 0.001
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ornament:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ornament2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fmraf"]
+resource_name = "opened"
+length = 0.500002
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ornament:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0166667),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.5, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ornament2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0166667),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.5, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot Inside/Sprite3D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0166667),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot Inside:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.583333),
+"transitions": PackedFloat32Array(1, 0.68302, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.1, 1.1, 1), Vector3(1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.6),
+"transitions": PackedFloat32Array(1, 0.840896, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.08, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gfiv0"]
+resource_name = "opening"
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ornament:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.716667, 1),
+"transitions": PackedFloat32Array(2, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.55, 0, 0), Vector3(-0.5, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ornament2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.716667, 1),
+"transitions": PackedFloat32Array(2, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.55, 0, 0), Vector3(0.5, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot Inside/Sprite3D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.716667, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot Inside:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.716667, 0.983333),
+"transitions": PackedFloat32Array(2, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1, 1), Vector3(1.1, 1, 1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xl1ty"]
+_data = {
+"RESET": SubResource("Animation_ynn03"),
+"closed": SubResource("Animation_2dfu3"),
+"opened": SubResource("Animation_fmraf"),
+"opening": SubResource("Animation_gfiv0")
+}
+
+[node name="boss_pirulito_ornament_graphic" instance=ExtResource("1_snecp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.114575, 0)
+script = ExtResource("2_oyb0g")
+
+[node name="ornament2" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("2_03lwt")
+mesh = SubResource("ArrayMesh_evix3")
+skeleton = NodePath("")
+
+[node name="Pivot Inside" type="Node3D" parent="." index="2"]
+transform = Transform3D(0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 1.7)
+
+[node name="Sprite3D" type="Sprite3D" parent="Pivot Inside" index="0"]
+modulate = Color(0, 0, 0, 1)
+pixel_size = 0.0013
+transparent = false
+double_sided = false
+texture = ExtResource("3_q0q8f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot Inside" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0663636, -0.102899)
+mesh = SubResource("BoxMesh_m26uj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_xl1ty")
+}
+autoplay = "closed"

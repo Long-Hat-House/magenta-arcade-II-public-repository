@@ -1,0 +1,83 @@
+[gd_scene load_steps=12 format=3 uid="uid://d83pr7wk7kb5"]
+
+[ext_resource type="PackedScene" uid="uid://perdatax8ocw" path="res://elements/neutral/props/pampulha_church/pampulha_church.glb" id="1_4xb28"]
+[ext_resource type="Material" uid="uid://blrf1ny2qkg4m" path="res://elements/neutral/props/pampulha_church/material/m_pampulha_church.tres" id="2_6fpvr"]
+[ext_resource type="Material" uid="uid://krokg0ov76cf" path="res://elements/neutral/props/pampulha_church/material/m_pampulha_church_wall01.tres" id="3_1w3bu"]
+[ext_resource type="Material" uid="uid://ubi0tm5jcm03" path="res://elements/neutral/props/pampulha_church/material/m_pampulha_church_wall02.tres" id="4_qlwj4"]
+[ext_resource type="Texture2D" uid="uid://ddgdf3jr2ijpv" path="res://elements/neutral/props/pampulha_church/texture/t_pampulha_church_wall01_BaseColor.png" id="5_ibn7e"]
+[ext_resource type="Texture2D" uid="uid://1tvay4bgglsg" path="res://elements/neutral/props/pampulha_church/texture/t_pampulha_church_crack_wall01_BaseColor.png" id="6_70v3v"]
+[ext_resource type="Texture2D" uid="uid://clqpfkvvm8me3" path="res://elements/neutral/props/pampulha_church/texture/t_pampulha_church_wall02_BaseColor.png" id="7_lmbta"]
+[ext_resource type="Texture2D" uid="uid://3ohnqcr8exrj" path="res://elements/neutral/props/pampulha_church/texture/t_pampulha_church_crack_wall02_BaseColor.png" id="8_e5g8d"]
+
+[sub_resource type="Animation" id="Animation_q4mnt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pampulha_church:surface_material_override/1:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_ibn7e")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pampulha_church:surface_material_override/2:albedo_texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_lmbta")]
+}
+
+[sub_resource type="Animation" id="Animation_egg3t"]
+resource_name = "pampulha_church_crack"
+length = 0.0667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pampulha_church:surface_material_override/1:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("5_ibn7e"), ExtResource("6_70v3v")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pampulha_church:surface_material_override/2:albedo_texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("7_lmbta"), ExtResource("8_e5g8d")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l8yo8"]
+_data = {
+&"RESET": SubResource("Animation_q4mnt"),
+&"pampulha_church_crack": SubResource("Animation_egg3t")
+}
+
+[node name="pampulha_church" instance=ExtResource("1_4xb28")]
+
+[node name="pampulha_church" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_6fpvr")
+surface_material_override/1 = ExtResource("3_1w3bu")
+surface_material_override/2 = ExtResource("4_qlwj4")
+
+[node name="anim" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+&"": SubResource("AnimationLibrary_l8yo8")
+}

@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://cfd8gaynbowye"]
+
+[ext_resource type="Texture2D" uid="uid://b88p1lsb8eb7a" path="res://elements/neutral/props/Lab_mountain/texture/lvl04_mid_boss_Base_color.png" id="1_kbu3u"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jie0d"]
+
+[resource]
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("1_kbu3u")
+roughness = 0.65
+emission_energy_multiplier = 9.0
+clearcoat = 0.69
+anisotropy = 0.33
+ao_texture = SubResource("CompressedTexture2D_jie0d")
+backlight = Color(0.0313726, 0.0313726, 0.0313726, 1)

@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://bak4hg8opohlm"
+path="res://.godot/imported/text_flow_emote_surprise.aseprite-5cb5a404c863aea7ace1d2c210804bc8.res"
+
+[deps]
+
+source_file="res://modules/text_flow/textures/text_flow_emote_surprise.aseprite"
+dest_files=["res://.godot/imported/text_flow_emote_surprise.aseprite-5cb5a404c863aea7ace1d2c210804bc8.res"]
+
+[params]
+
+exclude_layers_pattern="#.*"
+only_visible_layers=false

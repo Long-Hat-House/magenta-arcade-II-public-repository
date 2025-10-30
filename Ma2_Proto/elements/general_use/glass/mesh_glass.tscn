@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://3hxy3cewovld"]
+
+[ext_resource type="PackedScene" uid="uid://nr5jo61veok1" path="res://elements/general_use/glass/glass.glb" id="1_5evsl"]
+[ext_resource type="Material" uid="uid://dndaw2ybocvou" path="res://elements/general_use/glass/m_glass.tres" id="2_pphrj"]
+
+[node name="glass" instance=ExtResource("1_5evsl")]
+
+[node name="glass" parent="." index="0"]
+material_override = ExtResource("2_pphrj")

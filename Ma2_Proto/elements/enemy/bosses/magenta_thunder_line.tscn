@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc3i2ac8kfavt"]
+
+[ext_resource type="Shader" uid="uid://diis7ouxg16xu" path="res://elements/enemy/bosses/pirulito/enemy_boss_pirulito_lamp_thunder.tres" id="1_p7egk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jx0l3"]
+render_priority = 0
+shader = ExtResource("1_p7egk")
+shader_parameter/Color = Color(0.984314, 0.647059, 0.894118, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_avb55"]
+lightmap_size_hint = Vector2i(5, 5)
+material = SubResource("ShaderMaterial_jx0l3")
+add_uv2 = true
+uv2_padding = 0.0
+size = Vector2(1, 1)
+
+[node name="MagentaThunderLine" type="MeshInstance3D"]
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_avb55")
+skeleton = NodePath("../..")

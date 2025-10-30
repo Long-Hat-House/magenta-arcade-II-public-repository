@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdypmotd6a3d5"]
+
+[ext_resource type="PackedScene" uid="uid://prgevhq1nrt6" path="res://elements/enemy/bosses/cachorro/mesh/boss_cachorro_disco.glb" id="1_0ysvk"]
+[ext_resource type="Material" uid="uid://w55qiq7su44p" path="res://elements/enemy/bosses/cachorro/material/m_boss_cachorro_disco.tres" id="2_1dcry"]
+
+[node name="boss_cachorro_disco" instance=ExtResource("1_0ysvk")]
+
+[node name="boss_cachorro_disco" parent="." index="0"]
+material_override = ExtResource("2_1dcry")

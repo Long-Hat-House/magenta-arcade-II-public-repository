@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://8cuxp7yk2cwy"]
+
+[ext_resource type="PackedScene" uid="uid://clnmbrq4l6x8n" path="res://elements/neutral/props/praca_bandeira/support_metal.glb" id="1_l4uli"]
+[ext_resource type="Material" uid="uid://cb8hki3r3tofp" path="res://elements/neutral/props/praca_bandeira/material/M_metal.tres" id="2_d17rm"]
+
+[node name="support_metal" instance=ExtResource("1_l4uli")]
+
+[node name="support_metal" parent="." index="0"]
+material_override = ExtResource("2_d17rm")

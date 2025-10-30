@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://08efckgmmw8w"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Music_Level5_Boss_Dog_End"
+id = 2129730527
+guid = "{C921BBE4-C1C4-422E-B995-5518B654620B}"
+dummy = true

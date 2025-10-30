@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://dwdcoc3gt2iel"
+path="res://.godot/imported/text_flow_emote_anger.aseprite-bed4e011edd529c341cafe2142df76d5.res"
+
+[deps]
+
+source_file="res://modules/text_flow/textures/text_flow_emote_anger.aseprite"
+dest_files=["res://.godot/imported/text_flow_emote_anger.aseprite-bed4e011edd529c341cafe2142df76d5.res"]
+
+[params]
+
+exclude_layers_pattern="#.*"
+only_visible_layers=false

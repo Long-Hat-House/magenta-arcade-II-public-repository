@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2tg7pmomkb8g"]
+
+[ext_resource type="PackedScene" uid="uid://3ab0eormsfmh" path="res://elements/enemy/bosses/trem/adao/mesh/adao_wall.glb" id="1_647tp"]
+[ext_resource type="Material" uid="uid://bs8fmo3sjm6md" path="res://elements/enemy/bosses/trem/material/m_adaoWall.tres" id="2_60173"]
+
+[node name="adao_wall" instance=ExtResource("1_647tp")]
+
+[node name="adao_wall" parent="." index="0"]
+material_override = ExtResource("2_60173")

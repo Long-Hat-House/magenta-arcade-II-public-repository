@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://nat3jb8s50g"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Power_Tap_Red"
+id = 2942600495
+guid = "{34F1944B-FFAC-4DC1-918D-01289463FFBF}"
+dummy = true

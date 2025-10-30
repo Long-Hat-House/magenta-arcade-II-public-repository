@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp25dirjxsvmu"]
+
+[ext_resource type="PackedScene" uid="uid://dtbmnavao67wh" path="res://elements/enemy/bosses/goleiro/bossGoleiro/mesh/bossGoleiro_trilho.glb" id="1_tbnju"]
+[ext_resource type="Material" uid="uid://dml4tdm8qkb6g" path="res://elements/enemy/bosses/goleiro/bossGoleiro/material/m_bossGoleiro.tres" id="2_w3qt8"]
+
+[node name="bossGoleiro_trilho" instance=ExtResource("1_tbnju")]
+
+[node name="trilho" parent="." index="0"]
+material_override = ExtResource("2_w3qt8")

@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://5sb1ed3btwbv"]
+
+[ext_resource type="Script" uid="uid://caa8h3xyq27yk" path="res://modules/menu_system/menu_agregator.gd" id="1_55228"]
+[ext_resource type="PackedScene" uid="uid://cxeo3sqv5l8o4" path="res://elements/ui/menus/pause_menu/pause_sub_2.tscn" id="2_jpowe"]
+[ext_resource type="Script" uid="uid://dkfbksfshet22" path="res://modules/ui_factory/extended_label.gd" id="3_1gda4"]
+[ext_resource type="Texture2D" uid="uid://c7nc1fx5uhc2" path="res://elements/icons/icon_play.svg" id="3_3rab6"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j4gkt"]
+
+[node name="Pause Sub 1" type="VBoxContainer" node_paths=PackedStringArray("_container_subaggregators", "_container_elements", "_label_title", "_icon_rect")]
+offset_right = 573.0
+offset_bottom = 555.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+script = ExtResource("1_55228")
+_subaggregator_scene = ExtResource("2_jpowe")
+_container_subaggregators = NodePath("Panel Container - Options Area/Pause/Scroll Margin/Container - Elements & Ags")
+_container_elements = NodePath("Panel Container - Options Area/Pause/Scroll Margin/Container - Elements & Ags")
+_label_title = NodePath("VBoxContainer2/Main")
+_icon_rect = NodePath("Panel Container - Options Area/Icon")
+metadata/_tab_index = 0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Main" type="Label" parent="VBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_type_variation = &"label_menu_title"
+theme_override_colors/font_color = Color(1, 0.658824, 0.909804, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.0156863, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(0.658824, 1, 0.909804, 0.196078)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 5
+text = "Tab Title"
+horizontal_alignment = 1
+text_overrun_behavior = 3
+uppercase = true
+script = ExtResource("3_1gda4")
+
+[node name="Panel Container - Options Area" type="PanelContainer" parent="."]
+material = SubResource("CanvasItemMaterial_j4gkt")
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"panelcontainer_sub1"
+
+[node name="Icon" type="TextureRect" parent="Panel Container - Options Area"]
+self_modulate = Color(0, 0.545098, 0.521569, 1)
+show_behind_parent = true
+layout_mode = 2
+texture = ExtResource("3_3rab6")
+stretch_mode = 1
+
+[node name="Pause" type="ScrollContainer" parent="Panel Container - Options Area"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="Scroll Margin" type="MarginContainer" parent="Panel Container - Options Area/Pause"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="Container - Elements & Ags" type="VBoxContainer" parent="Panel Container - Options Area/Pause/Scroll Margin"]
+layout_mode = 2
+size_flags_horizontal = 3

@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://df5kmmjfypljv"]
+
+[ext_resource type="PackedScene" uid="uid://t7wocwarj2c3" path="res://elements/enemy/pizza/enemy_pizza_roboto.tscn" id="1_lg76q"]
+[ext_resource type="Script" uid="uid://c1a23qdrmn8d1" path="res://elements/enemy/projectiles/damage_area/damage_area.gd" id="2_0h8qp"]
+[ext_resource type="Script" uid="uid://dxmvddkqotane" path="res://elements/enemy/bosses/pirulito/ai_enemy_boss_pirulito_pizza.gd" id="2_luola"]
+[ext_resource type="PackedScene" uid="uid://ywymskkj85vs" path="res://elements/vfx/vfx_explosion/vfx_explosion.tscn" id="3_154ay"]
+[ext_resource type="PackedScene" uid="uid://cihylhp2du28q" path="res://elements/enemy/bosses/energy_particles.tscn" id="5_p62un"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jj16y"]
+height = 1.0
+
+[node name="Enemy_PizzaRoboto_Boss" instance=ExtResource("1_lg76q")]
+script = ExtResource("2_luola")
+explosion_scene = ExtResource("3_154ay")
+
+[node name="RayCast3D" type="RayCast3D" parent="Body" index="0"]
+transform = Transform3D(-0.281504, 0, 0.95956, 0, 1, 0, -0.95956, 0, -0.281504, 0, 1.71832, 0)
+enabled = false
+target_position = Vector3(0, -2, 0)
+debug_shape_custom_color = Color(0.60221, 0, 0.190938, 1)
+debug_shape_thickness = 5
+
+[node name="DamageArea" type="Area3D" parent="Body" index="1"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_0h8qp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/DamageArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_jj16y")
+
+[node name="EnergyParticles" parent="Body/Render" index="1" instance=ExtResource("5_p62un")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.476052, 0)

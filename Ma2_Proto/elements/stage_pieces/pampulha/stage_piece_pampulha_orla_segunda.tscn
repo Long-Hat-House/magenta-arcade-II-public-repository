@@ -1,0 +1,586 @@
+[gd_scene load_steps=37 format=3 uid="uid://cg4uhcbes35qe"]
+
+[ext_resource type="Script" uid="uid://bt3rgk2gx218p" path="res://systems/stage/level_stage_piece.gd" id="1_7d2ce"]
+[ext_resource type="PackedScene" uid="uid://dfi4oip83lo3f" path="res://elements/background/element_grass.tscn" id="2_1cvoy"]
+[ext_resource type="PackedScene" uid="uid://cfqb1t3qdu78v" path="res://elements/neutral/props/traffic_decals/element_decal_lane_arrow.tscn" id="2_7if3f"]
+[ext_resource type="PackedScene" uid="uid://bli56i7oi7ylq" path="res://elements/neutral/props/traffic_decals/element_decal_lane_line.tscn" id="2_83a7d"]
+[ext_resource type="PackedScene" uid="uid://cxqe15ub6mrk1" path="res://elements/neutral/props/vegetation/element_tree.tscn" id="2_s0t02"]
+[ext_resource type="PackedScene" uid="uid://bu8nido6d1s4t" path="res://elements/neutral/props/traffic_decals/element_decal_lane_line_blue.tscn" id="3_4xrtr"]
+[ext_resource type="PackedScene" uid="uid://dtjg7g4ej01lh" path="res://elements/background/element_water.tscn" id="3_cnv2q"]
+[ext_resource type="PackedScene" uid="uid://8clihqgqklqi" path="res://elements/neutral/props/traffic_decals/element_decal_bike.tscn" id="3_lbqpn"]
+[ext_resource type="PackedScene" uid="uid://cd6ymp4wmjksa" path="res://elements/background/element_asphalt.tscn" id="4_h78rl"]
+[ext_resource type="PackedScene" uid="uid://c00kqth38jmst" path="res://systems/stage/stage_screen_measure.tscn" id="5_7eayv"]
+[ext_resource type="PackedScene" uid="uid://bb1ghixcy2bam" path="res://elements/neutral/props/vegetation/mesh/mesh_grass_border.tscn" id="5_77kwi"]
+[ext_resource type="PackedScene" uid="uid://sbnc0uylbyp5" path="res://elements/npc/capybara/npc_capybara.tscn" id="6_ki5ot"]
+[ext_resource type="PackedScene" uid="uid://dg51ehomjdm26" path="res://elements/background/element_curb2_sidewalk_path.tscn" id="6_t1rqc"]
+[ext_resource type="PackedScene" uid="uid://c0qm7pqjstsp1" path="res://elements/neutral/props/traffic_decals/element_decal_yellow_line.tscn" id="6_v5dwh"]
+[ext_resource type="PackedScene" uid="uid://gnbxexqyxadj" path="res://elements/background/element_curb_sidewalk_pampulha_path.tscn" id="7_dx8g0"]
+[ext_resource type="PackedScene" uid="uid://ofnacu44b8gj" path="res://elements/background/element_curb_walking_track_path.tscn" id="8_mmq5h"]
+[ext_resource type="PackedScene" uid="uid://ctbkjd21yqlm4" path="res://elements/neutral/props/vegetation/element_bush.tscn" id="9_2rngt"]
+[ext_resource type="PackedScene" uid="uid://bjclcksyf7gw5" path="res://elements/neutral/props/traffic_decals/element_decall_triangle_red.tscn" id="9_gm5qn"]
+[ext_resource type="PackedScene" uid="uid://cyq2gafngh08" path="res://elements/neutral/props/poles/element_pole_light_small.tscn" id="10_f1r3p"]
+[ext_resource type="Material" uid="uid://dg6b7og6mbtm8" path="res://elements/background/material/m_grass_full.tres" id="14_t6w4v"]
+[ext_resource type="PackedScene" uid="uid://l3dy36lol626" path="res://elements/neutral/props/rock/mesh/mesh_rock.tscn" id="16_ih5e5"]
+[ext_resource type="Material" uid="uid://bgw08081tgpwk" path="res://elements/neutral/props/traffic_decals/materials/m_decal_street_red.tres" id="17_37wrx"]
+[ext_resource type="Resource" uid="uid://rqo67vcv2o8o" path="res://elements/levels/level_structure/camera_movement_data_by_speed.tres" id="22_kr4nb"]
+[ext_resource type="Script" uid="uid://b56c3dq1oftud" path="res://systems/level/level_camera_movement_data.gd" id="23_ymfw2"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_lqaea"]
+
+[sub_resource type="Curve3D" id="Curve3D_fqgdf"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(2.27448, 0, 1.81958, -2.27448, 0, -1.81958, 1.19633, 0, 2.70744, -1.19657, 0, 0.662564, 1.19657, 0, -0.662564, 1.30723, 0, -2.87409, -0.998792, 0, -2.15581, 0.998792, 0, 2.15581, 6.06384, 0, -1.63796, 0.672454, 0, -0.553784, -0.672454, 0, 0.553784, 5.27272, 0, 2.52532, 0.683305, 0, 0.0285783, -0.683305, 0, -0.0285783, 2.97405, 0, 3.22748, 0.315362, 0, 0.1365, -0.315362, 0, -0.1365, 1.17717, 0, 2.69329),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="Curve3D" id="Curve3D_xldb5"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(8.72652, 0, 6.232, -8.72652, 0, -6.232, 7.88434, 0, -0.0792046, 0.0689774, 0, 7.03576, -0.0689774, 0, -7.03576, -0.157035, 0, -24.9884, 0.304396, 0, 2.71757, -0.304396, 0, -2.71757, -0.0567898, 0, -45.9712, 14.9144, 0, 3.04268, -14.9144, 0, -3.04268, -16.8208, 0, -64.3684),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_enma3"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0.285135, 0, 2.30999, -0.285135, 0, -2.30999, -0.234045, 0, 0.00681686, -3.99113, 0, 5.989, 3.99113, 0, -5.989, 3.55683, 0, -16.2488, -2.11363, 0, 2.16178, 2.11363, 0, -2.16178, 17.8105, 0, -31.7181, -3.07144, 0, 4.79478, 3.07144, 0, -4.79478, 29.9943, 0, -44.2194, 0.615219, 0, 2.84938, -0.615219, 0, -2.84938, 32.0986, 0, -55.6189, 0, 0, 0, 0, 0, 0, 29.2521, 0, -61.5952),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_3rbpf"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(2.56452, 0, 1.89075, -2.56452, 0, -1.89075, -0.082901, 0, 0.219744, 1.56178, 0, 7.61506, -1.56178, 0, -7.61506, -8.71165, 0, -13.411, 0, 0, 0, 0, 0, 0, -9.40256, 0, -43.3843, 17.3769, 0, 2.99578, -17.3769, 0, -2.99578, -24.7687, 0, -64.2481),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_os7xk"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(1.44525, 0.00317383, 5.79401, -1.44525, -0.00317383, -5.79401, 2.5602, 0, -2.2854, 2.93307, -0.0511475, -1.28863, -2.93307, 0.0511475, 1.28863, -8.05552, 0.0235596, -8.06197, -1.02687, 0, -3.57004, 1.02687, 0, 3.57004, -12.9366, 0.00384524, 0.890533, -4.95392, 0, 0.431936, 4.95392, 0, -0.431936, -4.44992, -0.000122041, 7.26682, 1.13091, 0, 4.42027, -1.13091, 0, -4.42027, 2.4904, -0.00445554, -2.40981),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_oj3ti"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(-14.4483, 0, -0.599514, 14.4483, 0, 0.599514, -13.6938, 0, 23.8623, 0.149356, 0, 13.7014, -0.149356, 0, -13.7014, -0.152883, 0, 5.83323, 7.02607, 0, 2.45571, -7.02607, 0, -2.45571, -8.92815, 0, -11.979),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_d1ucd"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0.0388546, 0, 2.58382, -0.0388546, 0, -2.58382, 3.61616, 0, -2.19588, 1.53475, 0, 0.582817, -1.53475, 0, -0.582817, 2.48555, 0, -5.54335, 0.43553, 0, -1.60206, -0.43553, 0, 1.60206, -13.9077, -0.00415039, -2.89803, -0.53454, 0, -1.30546, 0.53454, 0, 1.30546, -13.9252, -0.00439453, -0.923017, -1.45704, 0, 0.874226, 1.45704, 0, -0.874226, 2.47941, 0.00646973, 1.58305, -0.13599, 0, 3.05007, 0.13599, 0, -3.05007, 3.61557, 0.00646973, -2.21551),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_0hojn"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0.0388546, 0, 2.58382, -0.0388546, 0, -2.58382, 3.61616, 0, -2.19588, 1.53475, 0, 0.582817, -1.53475, 0, -0.582817, 2.48555, 0, -5.54335, 0.43553, 0, -1.60206, -0.43553, 0, 1.60206, -13.9077, -0.00415039, -2.89803, -0.53454, 0, -1.30546, 0.53454, 0, 1.30546, -13.9252, -0.00439453, -0.923017, -1.45704, 0, 0.874226, 1.45704, 0, -0.874226, 2.47941, 0.00646973, 1.58305, -0.13599, 0, 3.05007, 0.13599, 0, -3.05007, 3.61557, 0.00646973, -2.21551),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_ld2uh"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(-3.65232, 0, -0.252678, 3.65232, 0, 0.252678, -14.5329, -3.05381e-05, -4.12345, -0.545788, -0.00012207, 0.428689, 0.545788, 0.00012207, -0.428689, 5.38601, -3.05381e-05, -2.28775, -0.472816, 0, 0.714788, 0.472816, 0, -0.714788, 9.40928, -3.05381e-05, -6.44026, 0, 0, 0, 0, 0, 0, 14.8271, -3.05381e-05, -30.3967),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+up_vector_enabled = false
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_cfo5u"]
+top_radius = 7.0
+bottom_radius = 7.0
+height = 0.1
+
+[sub_resource type="Resource" id="Resource_il6yj"]
+script = ExtResource("23_ymfw2")
+camera_duration = 1.9
+camera_speed = 24.0
+camera_duration_style = 0
+ease_x = 2
+trans_x = 4
+duration_multiplier_x = 1.3
+ease_z = 2
+trans_z = 4
+duration_multiplier_z = 1.0
+metadata/_custom_type_script = "uid://b56c3dq1oftud"
+
+[node name="Stage_Piece_Pampulha_Orla_Segunda" type="Node3D" node_paths=PackedStringArray("pivot_forward", "pivot_backward")]
+script = ExtResource("1_7d2ce")
+pivot_forward = NodePath("Config/forward")
+pivot_backward = NodePath("Config/back")
+
+[node name="Config" type="Node3D" parent="."]
+
+[node name="Wind Direction" type="Node3D" parent="Config"]
+transform = Transform3D(-2.04648e-07, 0, -1, 0, 1, 0, 1, 0, -2.04648e-07, -9, 6, -4.5)
+
+[node name="forward" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.3299, 0, -35.2081)
+gizmo_extents = 1.0
+
+[node name="back" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 29.25)
+gizmo_extents = 1.0
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1241, 0, 3.9674)
+aabb = AABB(-10.0286, 0, -63.0004, 20.0569, 13.796, 126)
+
+[node name="Scenery" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -31)
+
+[node name="Poles" type="Node3D" parent="Scenery"]
+
+[node name="pole_light_small2" parent="Scenery/Poles" instance=ExtResource("10_f1r3p")]
+transform = Transform3D(-0.416011, 0, 0.90936, 0, 1, 0, -0.90936, 0, -0.416011, 10.4036, 0, 9.50088)
+
+[node name="pole_light_small4" parent="Scenery/Poles" instance=ExtResource("10_f1r3p")]
+transform = Transform3D(-0.0120774, 0, 0.999927, 0, 1, 0, -0.999927, 0, -0.0120774, 11.5234, 0, 18.9289)
+
+[node name="pole_light_small3" parent="Scenery/Poles" instance=ExtResource("10_f1r3p")]
+transform = Transform3D(-0.807465, 0, 0.589915, 0, 1, 0, -0.589915, 0, -0.807465, 4.44421, 0, 0.829983)
+
+[node name="Decals" type="Node3D" parent="Scenery"]
+
+[node name="Line_Sun" type="Node3D" parent="Scenery/Decals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33864, 0, 0)
+
+[node name="Decal Lane Line" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(1.89483, 0, -2.32586, 0, 3, 0, 2.32586, 0, 1.89483, 19.0464, 0.05, 15.0696)
+
+[node name="Decal Lane Line12" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(2.81059, 0, -1.0491, 0, 3, 0, 1.0491, 0, 2.81059, 18.1665, 0.05, 14.4154)
+
+[node name="Decal Lane Line29" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(2.57153, 0, -1.54507, 0, 3, 0, 1.54507, 0, 2.57153, 22.2966, 0.05, 16.446)
+
+[node name="Decal Lane Line30" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(2.99982, 0, -0.0333523, 0, 3, 0, 0.0333523, 0, 2.99982, 21.2469, 0.05, 16.1291)
+
+[node name="Decal Lane Line31" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(2.96773, 0, -0.438871, 0, 3, 0, 0.438871, 0, 2.96773, 25.9515, 0.05, 16.4706)
+
+[node name="Decal Lane Line32" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(2.78254, 0, 1.12139, 0, 3, 0, -1.12139, 0, 2.78254, 24.8606, 0.05, 16.5812)
+
+[node name="Decal Lane Line33" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(2.95746, 0, 0.503457, 0, 3, 0, -0.503457, 0, 2.95746, 29.1852, 0.05, 15.3576)
+
+[node name="Decal Lane Line34" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(2.29736, 0, 1.92929, 0, 3, 0, -1.92929, 0, 2.29736, 28.1825, 0.05, 15.8012)
+
+[node name="Decal Lane Line35" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(2.58452, 0, 1.52325, 0, 3, 0, -1.52325, 0, 2.58452, 32.1102, 0.05, 13.0256)
+
+[node name="Decal Lane Line36" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(1.46011, 0, 2.62071, 0, 3, 0, -2.62071, 0, 1.46011, 31.3311, 0.05, 13.7971)
+
+[node name="Decal Lane Line13" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(0.860227, 0, -2.87403, 0, 3, 0, 2.87403, 0, 0.860227, 16.4053, 0.05, 12.6007)
+
+[node name="Decal Lane Line14" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(2.19496, 0, -2.04504, 0, 3, 0, 2.04504, 0, 2.19496, 15.8428, 0.05, 11.6596)
+
+[node name="Decal Lane Line15" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(-0.134572, 0, -2.99698, 0, 3, 0, 2.99698, 0, -0.134572, 15.0037, 0.05, 9.47268)
+
+[node name="Decal Lane Line16" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(1.39875, 0, -2.65397, 0, 3, 0, 2.65397, 0, 1.39875, 14.7826, 0.05, 8.39876)
+
+[node name="Decal Lane Line17" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(-1.20891, 0, -2.74564, 0, 3, 0, 2.74564, 0, -1.20891, 14.6728, 0.05, 5.9462)
+
+[node name="Decal Lane Line18" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(0.344709, 0, -2.98014, 0, 3, 0, 2.98014, 0, 0.344709, 14.8549, 0.05, 4.86499)
+
+[node name="Decal Lane Line21" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(-2.74317, 0, -1.21452, 0, 3, 0, 1.21452, 0, -2.74317, 17.8529, 0.05, -0.332148)
+
+[node name="Decal Lane Line22" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(-1.75305, 0, -2.43452, 0, 3, 0, 2.43452, 0, -1.75305, 18.7159, 0.05, -1.00842)
+
+[node name="Decal Lane Line23" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(-2.99591, 0, -0.1568, 0, 3, 0, 0.1568, 0, -2.99591, 20.8116, 0.05, -2.23069)
+
+[node name="Decal Lane Line24" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(-2.50576, 0, -1.64961, 0, 3, 0, 1.64961, 0, -2.50576, 21.859, 0.05, -2.55487)
+
+[node name="Decal Lane Line25" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(-2.25484, 0, 1.97883, 0, 3, 0, -1.97883, 0, -2.25484, 27.8364, 0.05, -2.16032)
+
+[node name="Decal Lane Line26" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(-2.94581, 0, 0.567698, 0, 3, 0, -0.567698, 0, -2.94581, 28.8127, 0.05, -1.6614)
+
+[node name="Decal Lane Line27" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(-1.53884, 0, 2.57528, 0, 3, 0, -2.57528, 0, -1.53884, 30.9353, 0.05, -0.44005)
+
+[node name="Decal Lane Line28" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(-2.62949, 0, 1.44425, 0, 3, 0, -1.44425, 0, -2.62949, 31.7115, 0.05, 0.33441)
+
+[node name="Decal Lane Line39" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(-0.294578, 0, 2.98552, 0, 3, 0, -2.98552, 0, -0.294578, 33.154, 0.05, 2.63579)
+
+[node name="Decal Lane Line40" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(-1.76324, 0, 2.42715, 0, 3, 0, -2.42715, 0, -1.76324, 33.5262, 0.05, 3.6672)
+
+[node name="Decal Lane Line41" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(0.681485, 0, 2.92159, 0, 3, 0, -2.92159, 0, 0.681485, 34.0085, 0.05, 6.12238)
+
+[node name="Decal Lane Line42" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(-0.888731, 0, 2.86535, 0, 3, 0, -2.86535, 0, -0.888731, 34.0291, 0.05, 7.21868)
+
+[node name="Decal Lane Line43" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(1.57112, 0, 2.55572, 0, 3, 0, -2.55572, 0, 1.57112, 33.6859, 0.05, 9.59732)
+
+[node name="Decal Lane Line44" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(0.0638188, 0, 2.99933, 0, 3, 0, -2.99933, 0, 0.0638188, 33.3585, 0.05, 10.6438)
+
+[node name="Decal Lane Line37" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(-2.83169, 0, 0.990754, 0, 3, 0, -0.990754, 0, -2.83169, 24.3371, 0.05, -2.84189)
+
+[node name="Decal Lane Line38" parent="Scenery/Decals/Line_Sun" instance=ExtResource("3_4xrtr")]
+transform = Transform3D(-2.94411, 0, -0.576441, 0, 3, 0, 0.576441, 0, -2.94411, 25.4292, 0.05, -2.74478)
+
+[node name="Stripe2" type="Node3D" parent="Scenery/Decals"]
+transform = Transform3D(0.954104, 0, -0.299474, 0, 1, 0, 0.299474, 0, 0.954104, 12.8667, 0, 20.5689)
+
+[node name="stripe" type="MeshInstance3D" parent="Scenery/Decals/Stripe2"]
+transform = Transform3D(5.72463, -1.04816, -1.30904e-08, 0, -1.5299e-07, 1, -1.79684, -3.33937, -4.17052e-08, 3.49536, 0.014, 2.73625)
+material_override = ExtResource("17_37wrx")
+mesh = SubResource("QuadMesh_lqaea")
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Line2" parent="Scenery/Decals/Stripe2" instance=ExtResource("2_83a7d")]
+transform = Transform3D(1.90357, 0, 0.61355, 0, 2, 0, -0.61355, 0, 1.90357, 1.70798, 0.025, 3.24771)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Line11" parent="Scenery/Decals/Stripe2" instance=ExtResource("2_83a7d")]
+transform = Transform3D(1.9148, 0, 0.577562, 0, 2, 0, -0.577562, 0, 1.9148, 1.01593, 0.025, 3.46494)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Line3" parent="Scenery/Decals/Stripe2" instance=ExtResource("2_83a7d")]
+transform = Transform3D(1.91195, 0, 0.586912, 0, 2, 0, -0.586912, 0, 1.91195, 2.42304, 0.025, 3.05024)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Line4" parent="Scenery/Decals/Stripe2" instance=ExtResource("2_83a7d")]
+transform = Transform3D(1.90357, 0, 0.61355, 0, 2, 0, -0.61355, 0, 1.90357, 3.12512, 0.025, 2.8239)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Line5" parent="Scenery/Decals/Stripe2" instance=ExtResource("2_83a7d")]
+transform = Transform3D(1.90357, 0, 0.61355, 0, 2, 0, -0.61355, 0, 1.90357, 3.8243, 0.025, 2.6101)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Line6" parent="Scenery/Decals/Stripe2" instance=ExtResource("2_83a7d")]
+transform = Transform3D(1.90357, 0, 0.61355, 0, 2, 0, -0.61355, 0, 1.90357, 4.51604, 0.03, 2.36992)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Line7" parent="Scenery/Decals/Stripe2" instance=ExtResource("2_83a7d")]
+transform = Transform3D(1.90357, 0, 0.61355, 0, 2, 0, -0.61355, 0, 1.90357, 5.26688, 0.03, 2.17204)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Line8" parent="Scenery/Decals/Stripe2" instance=ExtResource("2_83a7d")]
+transform = Transform3D(1.90357, 0, 0.61355, 0, 2, 0, -0.61355, 0, 1.90357, 5.95178, 0.03, 1.97696)
+skeleton = NodePath("../../..")
+
+[node name="Stripe3" type="Node3D" parent="Scenery/Decals"]
+transform = Transform3D(0.948174, 0, -0.317752, 0, 1, 0, 0.317752, 0, 0.948174, 28.588, 0.0249329, 20.5689)
+
+[node name="stripe" type="MeshInstance3D" parent="Scenery/Decals/Stripe3"]
+transform = Transform3D(5.79857, -0.540119, -6.75132e-09, 0, -1.52859e-07, 1, -0.906479, -3.45504, -4.31869e-08, 0.81813, 0.014, 4.65329)
+material_override = ExtResource("17_37wrx")
+mesh = SubResource("QuadMesh_lqaea")
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Line2" parent="Scenery/Decals/Stripe3" instance=ExtResource("2_83a7d")]
+transform = Transform3D(1.97358, 0, 0.324033, 0, 2, 0, -0.324033, 0, 1.97358, -0.924199, 0.025, 4.90472)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Line11" parent="Scenery/Decals/Stripe3" instance=ExtResource("2_83a7d")]
+transform = Transform3D(1.97358, 0, 0.324033, 0, 2, 0, -0.324033, 0, 1.97358, -1.6169, 0.025, 5.01495)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Line3" parent="Scenery/Decals/Stripe3" instance=ExtResource("2_83a7d")]
+transform = Transform3D(1.97358, 0, 0.324033, 0, 2, 0, -0.324033, 0, 1.97358, -0.248545, 0.025, 4.82612)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Line4" parent="Scenery/Decals/Stripe3" instance=ExtResource("2_83a7d")]
+transform = Transform3D(1.97358, 0, 0.324033, 0, 2, 0, -0.324033, 0, 1.97358, 0.48741, 0.025, 4.70562)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Line5" parent="Scenery/Decals/Stripe3" instance=ExtResource("2_83a7d")]
+transform = Transform3D(1.97358, 0, 0.324033, 0, 2, 0, -0.324033, 0, 1.97358, 1.21482, 0.025, 4.5961)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Line6" parent="Scenery/Decals/Stripe3" instance=ExtResource("2_83a7d")]
+transform = Transform3D(1.97358, 0, 0.324033, 0, 2, 0, -0.324033, 0, 1.97358, 1.88606, 0.03, 4.46889)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Line7" parent="Scenery/Decals/Stripe3" instance=ExtResource("2_83a7d")]
+transform = Transform3D(1.97358, 0, 0.324033, 0, 2, 0, -0.324033, 0, 1.97358, 2.58928, 0.03, 4.39513)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Line8" parent="Scenery/Decals/Stripe3" instance=ExtResource("2_83a7d")]
+transform = Transform3D(1.97358, 0, 0.324033, 0, 2, 0, -0.324033, 0, 1.97358, 3.24507, 0.03, 4.27966)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Arrow" parent="Scenery/Decals" instance=ExtResource("2_7if3f")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 9.77302, 0.017, 37.2099)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Arrow2" parent="Scenery/Decals" instance=ExtResource("2_7if3f")]
+transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.5, 0, -7.54979e-08, 0, -0.5, 10.7092, 0.017, 37.3426)
+skeleton = NodePath("../../..")
+
+[node name="Decal Bike" parent="Scenery/Decals" instance=ExtResource("3_lbqpn")]
+transform = Transform3D(-0.45, 0, -6.79481e-08, 0, 0.45, 0, 6.79481e-08, 0, -0.45, 10.7038, 0.017, 36.3785)
+
+[node name="Decal Bike2" parent="Scenery/Decals" instance=ExtResource("3_lbqpn")]
+transform = Transform3D(0.45, 0, 1.07288e-07, 0, 0.45, 0, -1.07288e-07, 0, 0.45, 9.76992, 0.017, 38.148)
+
+[node name="Decal Yellow Line" parent="Scenery/Decals" instance=ExtResource("6_v5dwh")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 24.4124, 0, 16.2694)
+curve = SubResource("Curve3D_fqgdf")
+
+[node name="decall_triangle_red" parent="Scenery/Decals" instance=ExtResource("9_gm5qn")]
+transform = Transform3D(0.989755, 0, 2.16254, 0, 2.14, 0, -1.77809, 0, 1.20376, 17.596, 0.05, 3.16067)
+
+[node name="Curbs" type="Node3D" parent="Scenery"]
+
+[node name="Curb Sidewalk Path" parent="Scenery/Curbs" instance=ExtResource("6_t1rqc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7562, 0, 60.4441)
+curve = SubResource("Curve3D_xldb5")
+
+[node name="Curb Sidewalk Path2" parent="Scenery/Curbs" instance=ExtResource("7_dx8g0")]
+transform = Transform3D(0.697765, 0, 0.716326, 0, 1, 0, -0.716326, 0, 0.697765, 18.2527, 0, 64.4149)
+curve = SubResource("Curve3D_enma3")
+
+[node name="Curb Sidewalk Path3" parent="Scenery/Curbs" instance=ExtResource("8_mmq5h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8038, 0, 62.516)
+curve = SubResource("Curve3D_3rbpf")
+
+[node name="Curb Sidewalk Path4" parent="Scenery/Curbs" instance=ExtResource("6_t1rqc")]
+transform = Transform3D(-0.73756, 0, -0.675281, 0, 1, 0, 0.675281, 0, -0.73756, 19.8214, 0, 9.94856)
+curve = SubResource("Curve3D_os7xk")
+
+[node name="Curb Sidewalk Path5" parent="Scenery/Curbs" instance=ExtResource("6_t1rqc")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 16.5554, 0, 43.1421)
+visible = false
+curve = SubResource("Curve3D_oj3ti")
+
+[node name="Curb Sidewalk Path6" parent="Scenery/Curbs" instance=ExtResource("6_t1rqc")]
+transform = Transform3D(0.0799031, 0, 0.996803, 0, 1, 0, -0.996803, 0, 0.0799031, 23.6648, 0, 22.9731)
+curve = SubResource("Curve3D_d1ucd")
+
+[node name="Curb Sidewalk Path8" parent="Scenery/Curbs" instance=ExtResource("6_t1rqc")]
+transform = Transform3D(-0.999821, 0, -0.0189358, 0, 1, 0, 0.0189358, 0, -0.999821, 40.0838, 0, 4.43645)
+curve = SubResource("Curve3D_0hojn")
+
+[node name="Curb Sidewalk Path7" parent="Scenery/Curbs" instance=ExtResource("6_t1rqc")]
+transform = Transform3D(-0.997408, 0, -0.07195, 0, 1, 0, 0.07195, 0, -0.997408, 40.2899, 0.0166321, 13.5524)
+curve = SubResource("Curve3D_ld2uh")
+
+[node name="Trees" type="Node3D" parent="Scenery"]
+
+[node name="Tree" parent="Scenery/Trees" instance=ExtResource("2_s0t02")]
+transform = Transform3D(0.950564, 0, 0.310527, 0, 1, 0, -0.310527, 0, 0.950564, 7.07669, 0, 60.1238)
+
+[node name="Tree8" parent="Scenery/Trees" instance=ExtResource("2_s0t02")]
+transform = Transform3D(0.743051, 0, 0.669234, 0, 1, 0, -0.669234, 0, 0.743051, 0.921176, 0, 62.4459)
+
+[node name="Tree4" parent="Scenery/Trees" instance=ExtResource("2_s0t02")]
+transform = Transform3D(0.991887, 0, -0.127117, 0, 1, 0, 0.127117, 0, 0.991887, 13.6029, 0, 61.0587)
+
+[node name="Tree2" parent="Scenery/Trees" instance=ExtResource("2_s0t02")]
+transform = Transform3D(0.942827, 0, 0.33328, 0, 1, 0, -0.33328, 0, 0.942827, 5.75021, 0, 29.0922)
+
+[node name="Tree3" parent="Scenery/Trees" instance=ExtResource("2_s0t02")]
+transform = Transform3D(0.748319, 0, -0.663338, 0, 1, 0, 0.663338, 0, 0.748319, 7.07629, 0, 23.1267)
+
+[node name="Tree5" parent="Scenery/Trees" instance=ExtResource("2_s0t02")]
+transform = Transform3D(0.748319, 0, -0.663338, 0, 1, 0, 0.663338, 0, 0.748319, 1.20912, 0, 5.12401)
+
+[node name="Tree9" parent="Scenery/Trees" instance=ExtResource("2_s0t02")]
+transform = Transform3D(0.747847, -0.03551, -0.66292, 0.0265728, 0.999369, -0.0235551, 0.663338, 0, 0.748319, 23.435, -0.103638, 2.29902)
+
+[node name="Tree10" parent="Scenery/Trees" instance=ExtResource("2_s0t02")]
+transform = Transform3D(-0.00710716, 0.0612924, -0.998094, 0.000436436, 0.99812, 0.0612908, 0.999974, 0, -0.00712055, 27.9067, -0.145081, 8.99064)
+
+[node name="Tree11" parent="Scenery/Trees" instance=ExtResource("2_s0t02")]
+transform = Transform3D(-0.00710716, 0.0612924, -0.998094, 0.000436436, 0.99812, 0.0612908, 0.999974, 0, -0.00712055, 19.7548, -0.145081, 8.80155)
+
+[node name="Tree6" parent="Scenery/Trees" instance=ExtResource("2_s0t02")]
+transform = Transform3D(-0.447743, 0, -0.894161, 0, 1, 0, 0.894161, 0, -0.447743, 6.0241, 0, 15.0531)
+
+[node name="Tree7" parent="Scenery/Trees" instance=ExtResource("2_s0t02")]
+transform = Transform3D(-0.994864, 0, -0.101213, 0, 1, 0, 0.101213, 0, -0.994864, -4.95804, 0, 2.01491)
+
+[node name="Bush" parent="Scenery/Trees" instance=ExtResource("9_2rngt")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 27.6456, 0.206323, 3.51684)
+
+[node name="Bush2" parent="Scenery/Trees" instance=ExtResource("9_2rngt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4915, 0.206323, 6.80619)
+
+[node name="Bush3" parent="Scenery/Trees" instance=ExtResource("9_2rngt")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 25.0975, 0.206323, 6.21935)
+
+[node name="Bush5" parent="Scenery/Trees" instance=ExtResource("9_2rngt")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 20.9499, 0.206323, 21.8009)
+
+[node name="Bush6" parent="Scenery/Trees" instance=ExtResource("9_2rngt")]
+transform = Transform3D(0.855, 0, 0, 0, 0.855, 0, 0, 0, 0.855, 23.3911, 0.206323, 24.341)
+
+[node name="Bush7" parent="Scenery/Trees" instance=ExtResource("9_2rngt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6241, 0.206323, 26.421)
+
+[node name="Bush4" parent="Scenery/Trees" instance=ExtResource("9_2rngt")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 24.4026, 0.206323, 12.273)
+
+[node name="Rocks" type="Node3D" parent="Scenery"]
+
+[node name="rock" parent="Scenery/Rocks" instance=ExtResource("16_ih5e5")]
+transform = Transform3D(0.861904, 0, -0.507072, 0, 1, 0, 0.507072, 0, 0.861904, 22.1324, 0.384949, 11.9951)
+
+[node name="rock2" parent="Scenery/Rocks" instance=ExtResource("16_ih5e5")]
+transform = Transform3D(-0.724755, 0, -0.192951, 0, 0.75, 0, 0.192951, 0, -0.724755, 28.9696, 0.384949, 4.88835)
+
+[node name="rock3" parent="Scenery/Rocks" instance=ExtResource("16_ih5e5")]
+transform = Transform3D(-0.48317, 0, -0.128634, 0, 0.5, 0, 0.128634, 0, -0.48317, 18.4319, 0.384949, 4.49625)
+
+[node name="Grass" type="Node3D" parent="Scenery"]
+
+[node name="Grass" parent="Scenery/Grass" instance=ExtResource("2_1cvoy")]
+transform = Transform3D(4.29283, 0, 4.39918, 0, 1.2, 0, -2.1808, 0, 8.65965, 2.71629, -0.025, 3.8994)
+
+[node name="Grass3" parent="Scenery/Grass" instance=ExtResource("2_1cvoy")]
+transform = Transform3D(7.73, 0, 0, 0, 1.2, 0, 0, 0, 52.673, 4.331, -0.025, 7.725)
+
+[node name="Grass7" parent="Scenery/Grass" instance=ExtResource("2_1cvoy")]
+transform = Transform3D(6.50414, 0, -0.725121, 0, 1.2, 0, 0.521368, 0, 9.04598, 18.9824, -0.025, 18.8968)
+
+[node name="Grass11" parent="Scenery/Grass" instance=ExtResource("2_1cvoy")]
+transform = Transform3D(4.41085, 0, -0.633632, 0, 1.2, 0, 0.353571, 0, 7.90464, 19.0663, -0.025, 27.9874)
+
+[node name="Grass10" parent="Scenery/Grass" instance=ExtResource("2_1cvoy")]
+transform = Transform3D(-0.123556, 0, 9.07337, 0, 1.2, 0, -6.52383, 0, -0.171842, 36.4899, -0.025, 9.49855)
+
+[node name="Grass12" parent="Scenery/Grass" instance=ExtResource("2_1cvoy")]
+transform = Transform3D(-0.083791, 0, 7.92857, 0, 1.2, 0, -4.4242, 0, -0.15016, 45.5278, -0.025, 8.51724)
+
+[node name="Grass8" parent="Scenery/Grass" instance=ExtResource("2_1cvoy")]
+transform = Transform3D(21.6653, 0, -3.37001, 0, 1.2, 0, 2.71699, 0, 26.8725, 32.1391, -0.00836792, 18.045)
+
+[node name="Grass9" parent="Scenery/Grass" instance=ExtResource("2_1cvoy")]
+transform = Transform3D(19.4558, 0, -0.236416, 0, 1.2, 0, 1.0656, 0, 4.31653, 34.45, -0.00836792, 16.0557)
+
+[node name="Grass5" parent="Scenery/Grass" instance=ExtResource("2_1cvoy")]
+transform = Transform3D(12.74, 0, 0, 0, 1.2, 0, 0, 0, 25.868, 17.3871, -0.025, 22.8238)
+visible = false
+
+[node name="Grass6" parent="Scenery/Grass" instance=ExtResource("2_1cvoy")]
+transform = Transform3D(12.2034, 0, 0.648997, 0, 1.2, 0, -1.99227, 0, 3.97537, 18.4066, -0.025, 20.9495)
+visible = false
+
+[node name="Grass4" parent="Scenery/Grass" instance=ExtResource("2_1cvoy")]
+transform = Transform3D(6.7964, 0, 5.81246, 0, 1.2, 0, -2.37674, 0, 16.621, 5.47062, -0.025, 46.9304)
+
+[node name="Grass2" parent="Scenery/Grass" instance=ExtResource("2_1cvoy")]
+transform = Transform3D(3.57336, 0, 11.708, 0, 1.2, 0, -6.38854, 0, 6.54872, -6.74526, -0.025, 2.29268)
+
+[node name="grass_border" parent="Scenery/Grass" instance=ExtResource("5_77kwi")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 0.3, 0, 1, 0, -4.37114e-08, 4.84922, 0, 57.3042)
+
+[node name="grass_border2" parent="Scenery/Grass" instance=ExtResource("5_77kwi")]
+transform = Transform3D(-0.945029, 0, -0.326987, 0, 0.3, 0, 0.326987, 0, -0.945029, 2.24058, 0, 61.2545)
+
+[node name="grass_border3" parent="Scenery/Grass" instance=ExtResource("5_77kwi")]
+transform = Transform3D(0.00766465, 0, -0.799988, 0, 0.3, 0, 1.38098, 0, 0.00444006, 4.5509, 0, 50.5997)
+
+[node name="grass_border4" parent="Scenery/Grass" instance=ExtResource("5_77kwi")]
+transform = Transform3D(0.0036624, 0, -0.594302, 0, 0.3, 0, 1.20599, 0, 0.0018048, 4.68676, 0, 42.341)
+
+[node name="grass_border5" parent="Scenery/Grass" instance=ExtResource("5_77kwi")]
+transform = Transform3D(-0.0132184, 0, -0.589501, 0, 0.3, 0, 1.20593, 0, -0.00646163, 4.8531, 0, 35.0021)
+
+[node name="grass_border7" parent="Scenery/Grass" instance=ExtResource("5_77kwi")]
+transform = Transform3D(-0.0134499, 0, -0.79995, 0, 0.3, 0, 1.20592, 0, -0.00892198, 3.99191, 0, 17.1813)
+
+[node name="grass_border8" parent="Scenery/Grass" instance=ExtResource("5_77kwi")]
+transform = Transform3D(0.315144, 0, -0.772203, 0, 0.3, 0, 1.1641, 0, 0.209051, 3.93423, 0, 10.876)
+
+[node name="grass_border9" parent="Scenery/Grass" instance=ExtResource("5_77kwi")]
+transform = Transform3D(0.675373, 0, -0.463305, 0, 0.3, 0, 0.51485, 0, 0.607756, 0.394104, 0, 6.0781)
+
+[node name="grass_border10" parent="Scenery/Grass" instance=ExtResource("5_77kwi")]
+transform = Transform3D(1.25329, 0, -0.24566, 0, 0.3, 0, 0.425458, 0, 0.72365, -3.94571, 0, 3.53526)
+
+[node name="grass_border6" parent="Scenery/Grass" instance=ExtResource("5_77kwi")]
+transform = Transform3D(0.0733225, 0, -0.768763, 0, 0.3, 0, 1.57762, 0, 0.0357295, 4.39118, 0, 25.8521)
+
+[node name="water" parent="Scenery" instance=ExtResource("3_cnv2q")]
+transform = Transform3D(12.465, 0, 0, 0, 1.2, 0, 0, 0, 60, -1.49161, -0.017, 30.4233)
+
+[node name="Asphalt" parent="Scenery" instance=ExtResource("4_h78rl")]
+transform = Transform3D(45.13, 0, 0, 0, 1.877, 0, 0, 0, 72, 10.7547, -0.002, -11.7728)
+
+[node name="Asphalt2" parent="Scenery" instance=ExtResource("4_h78rl")]
+transform = Transform3D(20.4972, 0, -7.99952, 0, 1, 0, 11.8976, 0, 13.7816, 0.512143, -0.002, -17.0996)
+
+[node name="floor" type="MeshInstance3D" parent="Scenery"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.0932, 0.0446297, 6.83291)
+material_override = ExtResource("14_t6w4v")
+mesh = SubResource("CylinderMesh_cfo5u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Scenery"]
+
+[node name="StageScreenMeasure" parent="." instance=ExtResource("5_7eayv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -0.5)
+default_movement = ExtResource("22_kr4nb")
+
+[node name="StageScreenMeasure2" parent="." instance=ExtResource("5_7eayv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.90055, 0.2, -24.8492)
+default_movement = SubResource("Resource_il6yj")
+
+[node name="Capybaras" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -31)
+
+[node name="NpcCapybara2" parent="Capybaras" instance=ExtResource("6_ki5ot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1153, 0, 28.2302)
+
+[node name="NpcCapybara3" parent="Capybaras" instance=ExtResource("6_ki5ot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.9776, 0, 28.8694)
+
+[node name="NpcCapybara4" parent="Capybaras" instance=ExtResource("6_ki5ot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.708, 0, 13.9169)
+
+[node name="NpcCapybara5" parent="Capybaras" instance=ExtResource("6_ki5ot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7606, 0, 17.848)
+
+[node name="NpcCapybara6" parent="Capybaras" instance=ExtResource("6_ki5ot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7695, 0, 14.2094)
+
+[node name="NpcCapybara7" parent="Capybaras" instance=ExtResource("6_ki5ot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5458, 0, 11.4657)
+
+[connection signal="screen_entered" from="Config/VisibleOnScreenNotifier3D" to="." method="_on_screen_entered"]
+[connection signal="screen_exited" from="Config/VisibleOnScreenNotifier3D" to="." method="_on_screen_exited"]

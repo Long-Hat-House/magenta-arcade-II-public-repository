@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BossInfo" load_steps=3 format=3 uid="uid://bijxcy1ttija3"]
+
+[ext_resource type="Texture2D" uid="uid://be2hksisxb3v" path="res://elements/icons/icons_boss_4.png" id="1_xebp5"]
+[ext_resource type="Script" path="res://systems/boss/boss_info.gd" id="2_teies"]
+
+[resource]
+script = ExtResource("2_teies")
+boss_id = &"boss_4_id"
+boss_presentation_text = &"boss_4_presentation"
+boss_icon = ExtResource("1_xebp5")

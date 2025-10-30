@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="UpgradeSet" load_steps=7 format=3 uid="uid://b8m0rjfq0elkf"]
+
+[ext_resource type="Script" uid="uid://cxyan4ppm7npb" path="res://systems/ma2_meta/upgrade_set.gd" id="1_gl6sf"]
+[ext_resource type="Texture2D" uid="uid://b2j75lsv87rdk" path="res://elements/icons/icon_hold.png" id="2_ocxse"]
+[ext_resource type="Script" uid="uid://dospanm60t0v5" path="res://systems/ma2_meta/upgrade_info.gd" id="3_ikk16"]
+[ext_resource type="Resource" uid="uid://xgbkdgdaselq" path="res://systems/ma2_meta/upgrades/upgrade_hold_firerate.tres" id="5_rk7qq"]
+[ext_resource type="Resource" uid="uid://sn08lr22to8h" path="res://systems/ma2_meta/upgrades/upgrade_hold_speed.tres" id="6_pgjlq"]
+[ext_resource type="Resource" uid="uid://1dfai2p6pbnv" path="res://systems/ma2_meta/upgrades/upgrade_hold_start.tres" id="6_rk7qq"]
+
+[resource]
+script = ExtResource("1_gl6sf")
+set_id = &"upgradeset_hold"
+set_description = &"upgradeset_hold_description"
+icon = ExtResource("2_ocxse")
+color = Color(0.537255, 0.321569, 0.105882, 1)
+color_highlight = Color(0.960784, 0.454902, 0.2, 1)
+upgrades_list = Array[ExtResource("3_ikk16")]([ExtResource("6_pgjlq"), ExtResource("6_rk7qq"), ExtResource("5_rk7qq")])

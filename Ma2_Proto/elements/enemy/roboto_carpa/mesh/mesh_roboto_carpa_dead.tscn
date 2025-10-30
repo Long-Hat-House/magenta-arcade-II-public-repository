@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://os4mfmrwqkpx"]
+
+[ext_resource type="PackedScene" uid="uid://c5f36jdfstx6r" path="res://elements/enemy/roboto_carpa/mesh/roboto_carpa_dead.glb" id="1_r3p53"]
+[ext_resource type="Material" uid="uid://dyvj4hreno57m" path="res://elements/enemy/roboto_carpa/material/m_roboto_carpa.tres" id="2_sbaww"]
+
+[node name="roboto_carpa_dead" instance=ExtResource("1_r3p53")]
+
+[node name="tail" parent="." index="0"]
+material_override = ExtResource("2_sbaww")
+
+[node name="hand_L" parent="." index="1"]
+material_override = ExtResource("2_sbaww")
+
+[node name="eye_white" parent="." index="2"]
+material_override = ExtResource("2_sbaww")
+
+[node name="head" parent="." index="3"]
+material_override = ExtResource("2_sbaww")
+
+[node name="body01" parent="." index="4"]
+material_override = ExtResource("2_sbaww")
+
+[node name="body02" parent="." index="5"]
+material_override = ExtResource("2_sbaww")
+
+[node name="eye_x" parent="." index="6"]
+material_override = ExtResource("2_sbaww")
+
+[node name="hand_R" parent="." index="7"]
+material_override = ExtResource("2_sbaww")

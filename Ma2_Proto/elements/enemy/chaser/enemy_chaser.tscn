@@ -1,0 +1,75 @@
+[gd_scene load_steps=14 format=3 uid="uid://cr2uh84sb72q"]
+
+[ext_resource type="Script" uid="uid://g0ovy2lso2i5" path="res://elements/enemy/chaser/ai_enemy_chaser.gd" id="1_xhkv8"]
+[ext_resource type="PackedScene" uid="uid://ywymskkj85vs" path="res://elements/vfx/vfx_explosion/vfx_explosion.tscn" id="2_7jj0c"]
+[ext_resource type="PackedScene" uid="uid://st77q0pi2kle" path="res://elements/enemy/projectiles/explosion_donut/enemy_donut_explosion.tscn" id="3_jhbtc"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="3_lla88"]
+[ext_resource type="WwiseEvent" uid="uid://cwyw07cldy2f8" path="res://Wwise/resources/Event/{1FB9A65B-F4FC-48D4-8DBA-B2414F345520}.tres" id="4_2kkry"]
+[ext_resource type="PackedScene" uid="uid://cahc6wpv0ks6s" path="res://elements/enemy/chaser/mesh/roboto_bomba_perseguidora_graphic.tscn" id="4_eyrne"]
+[ext_resource type="Script" uid="uid://dj2x7ekyg32b7" path="res://systems/score/score_giver.gd" id="5_cbr15"]
+[ext_resource type="WwiseEvent" uid="uid://wgch2ackkutf" path="res://Wwise/resources/Event/{B410EEB4-D9C6-4A96-8444-631DD9EC6EE1}.tres" id="5_ovo52"]
+[ext_resource type="PackedScene" uid="uid://bc1bjl6ovy5s6" path="res://elements/enemy/projectiles/damage_area/damage_area.tscn" id="6_36gto"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="6_ovo52"]
+[ext_resource type="Resource" uid="uid://b8n5gmtsrb55g" path="res://elements/score/score_info_chaser.tres" id="6_xokoj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uxa5e"]
+radius = 0.4
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0oohk"]
+radius = 3.0
+height = 6.0
+
+[node name="EnemyChaser" type="CharacterBody3D" groups=["enemy_position"]]
+collision_layer = 4
+collision_mask = 10
+script = ExtResource("1_xhkv8")
+explosion_vfx = ExtResource("2_7jj0c")
+attack_explosion = ExtResource("3_jhbtc")
+warning_time = 0.75
+neutral_position_screen_offset = Vector3(0, 0, 15)
+_sfx_warning_start = ExtResource("4_2kkry")
+_sfx_warning_stop = ExtResource("5_ovo52")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="."]
+script = ExtResource("6_ovo52")
+high_contrast_group = &"enemy"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("feedback") groups=["enemy_healths"]]
+script = ExtResource("3_lla88")
+max_amount = 0.3
+feedback = [NodePath("../roboto_bomba_perseguidora")]
+
+[node name="ScoreGiver" type="Node" parent="." node_paths=PackedStringArray("health")]
+script = ExtResource("5_cbr15")
+info = ExtResource("6_xokoj")
+health = NodePath("../Health")
+
+[node name="roboto_bomba_perseguidora" parent="." instance=ExtResource("4_eyrne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.413836, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.413836, 0)
+shape = SubResource("CapsuleShape3D_uxa5e")
+
+[node name="DamageArea" parent="." instance=ExtResource("6_36gto")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.413836, 0)
+shape = SubResource("CapsuleShape3D_uxa5e")
+
+[node name="ExplosionArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="ExplosionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.413836, 0)
+shape = SubResource("CapsuleShape3D_0oohk")
+
+[connection signal="dead" from="Health" to="." method="_on_health_dead"]
+[connection signal="hit" from="Health" to="." method="_on_health_hit"]
+[connection signal="area_entered" from="DamageArea" to="." method="_on_damage_area_area_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
+[connection signal="onDamaged" from="DamageArea" to="." method="_on_damage_area_on_damaged"]
+[connection signal="area_entered" from="ExplosionArea" to="." method="_on_explosion_area_area_entered"]
+[connection signal="body_entered" from="ExplosionArea" to="." method="_on_explosion_area_body_entered"]

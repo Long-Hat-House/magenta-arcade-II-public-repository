@@ -1,0 +1,433 @@
+Event	ID	Name			Wwise Object Path	Notes
+	16796003	Play_Boss_Shield_Enable			\Enemy\Boss\Shield\Play_Boss_Shield_Enable	
+	77229317	Play_Boss_Lv1_Shoot_Sequence			\Enemy\Boss\Lv1\Play_Boss_Lv1_Shoot_Sequence	
+	133225406	Stop_FinalBoss_Lv4_Final_Drag			\Enemy\Boss\Lv4_Final\_BLOCKED\Stop_FinalBoss_Lv4_Final_Drag	
+	147039988	Play_Boss_Lv3_Main_Immune_Disable			\Enemy\Boss\Lv3\Play_Boss_Lv3_Main_Immune_Disable	
+	334431868	Play_FinalBoss_Lv4_Final_Spirit_Warning			\Enemy\Boss\Lv4_Final\_DONE\Laser\Spirit\Play_FinalBoss_Lv4_Final_Spirit_Warning	
+	334622760	Play_Boss_Lv2_Ball_Fall			\Enemy\Boss\Lv2\Play_Boss_Lv2_Ball_Fall	
+	338210742	Play_FinalBoss_Lv4_Final_Spirit_Heal			\Enemy\Boss\Lv4_Final\_DONE\Laser\Spirit\Play_FinalBoss_Lv4_Final_Spirit_Heal	
+	348075477	Play_FinalBoss_Lv4_Final_CloseCoffin			\Enemy\Boss\Lv4_Final\_DONE\Coffin\Play_FinalBoss_Lv4_Final_CloseCoffin	
+	374330747	Play_Enemy_Laser_Attack_Pre			\Enemy\Laser\Play_Enemy_Laser_Attack_Pre	
+	457997532	Play_FinalBoss_Lv4_Final_Death			\Enemy\Boss\Lv4_Final\Play_FinalBoss_Lv4_Final_Death	
+	486399768	Play_Boss_Lv3_Anim_FirstPhase_Phone			\Enemy\Boss\Lv3\Play_Boss_Lv3_Anim_FirstPhase_Phone	
+	575187776	Play_FinalBoss_Lv4_Final_Drag			\Enemy\Boss\Lv4_Final\_TODO\Play_FinalBoss_Lv4_Final_Drag	
+	671071623	Play_Boss_Lv3_Child_Immune_Disable			\Enemy\Boss\Lv3\Play_Boss_Lv3_Child_Immune_Disable	
+	706119212	Play_Boss_Lv0_Shoot_Release			\Enemy\Boss\Lv0\Play_Boss_Lv0_Shoot_Release	
+	761368881	Play_FinalBoss_Lv4_Final_OpenCoffin			\Enemy\Boss\Lv4_Final\_DONE\Coffin\Play_FinalBoss_Lv4_Final_OpenCoffin	
+	814220267	Stop_MiniBoss_Lv4_Dog_Suck			\Enemy\Boss\Lv4_Dog\Stop_MiniBoss_Lv4_Dog_Suck	
+	911650709	Play_Boss_Lv0_Shoot_Charge			\Enemy\Boss\Lv0\Play_Boss_Lv0_Shoot_Charge	
+	933849180	Play_Boss_Lv3_Anim_Death			\Enemy\Boss\Lv3\Play_Boss_Lv3_Anim_Death	
+	1056027922	Stop_Enemy_Chaser_Warning			\Enemy\Chaser\Stop_Enemy_Chaser_Warning	
+	1061566721	VFX_Enemy_Attention			\Enemy\VFX_Enemy_Attention	
+	1067264943	Play_MiniBoss_Lv4_Attack_Warning			\Enemy\Boss\Lv4_Dog\Play_MiniBoss_Lv4_Attack_Warning	
+	1213427897	Stop_FinalBoss_Lv4_Final_Laser			\Enemy\Boss\Lv4_Final\_DONE\Laser\Stop_FinalBoss_Lv4_Final_Laser	
+	1215187609	Play_MidBoss_Lv4_Hand_Appear_Punch			\Enemy\Boss\Lv4_Hand\_DONE\Play_MidBoss_Lv4_Hand_Appear_Punch	
+	1313647561	Stop_MiniBoss_Lv4_Attack_Warning			\Enemy\Boss\Lv4_Dog\Stop_MiniBoss_Lv4_Attack_Warning	
+	1347661547	Play_MidBoss_Lv4_Hand_Death_Leave			\Enemy\Boss\Lv4_Hand\Play_MidBoss_Lv4_Hand_Death_Leave	
+	1349950757	Play_Boss_Lv3_Main_Immune_Enable			\Enemy\Boss\Lv3\Play_Boss_Lv3_Main_Immune_Enable	
+	1398942372	Play_MidBoss_Lv4_Hand_Punch_Attack			\Enemy\Boss\Lv4_Hand\_DONE\Play_MidBoss_Lv4_Hand_Punch_Attack	
+	1430328284	Play_Enemy_Bomb_Jump			\Enemy\Bomb\Play_Enemy_Bomb_Jump	
+	1448584828	Stop_Boss_Lv3_Train_Movement			\Enemy\Boss\Lv3\Stop_Boss_Lv3_Train_Movement	
+	1473835385	Play_MiniBoss_Lv4_Dog_Suck			\Enemy\Boss\Lv4_Dog\Play_MiniBoss_Lv4_Dog_Suck	
+	1481624070	Stop_MidBoss_Lv4_Hand_Hold			\Enemy\Boss\Lv4_Hand\Stop_MidBoss_Lv4_Hand_Hold	
+	1508277944	Play_MidBoss_Lv4_Hand_Tap_Projectile_Part_Appear			\Enemy\Boss\Lv4_Hand\_DONE\Play_MidBoss_Lv4_Hand_Tap_Projectile_Part_Appear	
+	1547670912	Play_MidBoss_Lv4_Hand_Appear			\Enemy\Boss\Lv4_Hand\_DONE\Play_MidBoss_Lv4_Hand_Appear	
+	1631403871	Play_Enemy_Brawny_Fall_Impact			\Enemy\Brawny\Play_Enemy_Brawny_Fall_Impact	
+	1685812457	Play_Enemy_FakeStatue_Death			\Enemy\FakeStatue\Play_Enemy_FakeStatue_Death	
+	1735088279	Play_MidBoss_Lv4_Hand_Appear_Punch_Pre			\Enemy\Boss\Lv4_Hand\_DONE\Play_MidBoss_Lv4_Hand_Appear_Punch_Pre	
+	1749435355	Play_Boss_Lv2_Anim_Death			\Enemy\Boss\Lv2\Play_Boss_Lv2_Anim_Death	
+	1778311832	Play_Enemy_Screen_Attack_Interrupt			\Enemy\Play_Enemy_Screen_Attack_Interrupt	
+	1838241229	Play_Enemy_Laser_Attack			\Enemy\Laser\Play_Enemy_Laser_Attack	
+	1860111446	Play_FinalBoss_Lv4_Final_Pillar_Fall			\Enemy\Boss\Lv4_Final\Play_FinalBoss_Lv4_Final_Pillar_Fall	
+	1879689318	Play_Boss_Lv1_Anim_Death			\Enemy\Boss\Lv1\Play_Boss_Lv1_Anim_Death	
+	1925283406	Play_Boss_Lv2_Goal_Against			\Enemy\Boss\Lv2\Play_Boss_Lv2_Goal_Against	
+	1985632730	Play_Boss_Lv0_Anim_SecondPhase			\Enemy\Boss\Lv0\Play_Boss_Lv0_Anim_SecondPhase	
+	1995325602	Stop_Boss_Lv3_Steam			\Enemy\Boss\Lv3\Stop_Boss_Lv3_Steam	
+	2037670519	Play_MiniBoss_Lv4_Dog_Eat			\Enemy\Boss\Lv4_Dog\Play_MiniBoss_Lv4_Dog_Eat	
+	2039595772	Play_FinalBoss_Lv4_Final_Spirit_Attack			\Enemy\Boss\Lv4_Final\_DONE\Spirit\Play_FinalBoss_Lv4_Final_Spirit_Attack	
+	2062636802	Play_FinalBoss_Lv4_Final_Laser_Charge			\Enemy\Boss\Lv4_Final\_DONE\Laser\Play_FinalBoss_Lv4_Final_Laser_Charge	
+	2126747653	Play_MidBoss_Lv4_Hand_Tap_LiftFinger			\Enemy\Boss\Lv4_Hand\_DONE\Play_MidBoss_Lv4_Hand_Tap_LiftFinger	
+	2151835758	Play_FinalBoss_Lv4_Final_Cry			\Enemy\Boss\Lv4_Final\Play_FinalBoss_Lv4_Final_Cry	
+	2232797143	Stop_Enemy_Laser_Attack			\Enemy\Laser\Stop_Enemy_Laser_Attack	
+	2297649241	Play_Enemy_Hurt_Basic			\Enemy\Play_Enemy_Hurt_Basic	
+	2337351044	Play_Boss_Lv3_Child_Immune_Enable			\Enemy\Boss\Lv3\Play_Boss_Lv3_Child_Immune_Enable	
+	2400499982	VFX_Enemy_Shoot			\Enemy\VFX_Enemy_Shoot	
+	2546887463	Play_Enemy_FakeStatue_Shoot_Release_Multiple			\Enemy\FakeStatue\Play_Enemy_FakeStatue_Shoot_Release_Multiple	
+	2618773963	Play_Boss_Lv3_Train_Deaccelerate			\Enemy\Boss\Lv3\Play_Boss_Lv3_Train_Deaccelerate	
+	2628648422	Play_Boss_Shield_Disable			\Enemy\Boss\Shield\Play_Boss_Shield_Disable	
+	2637838234	Play_Boss_Death_PillarOfLight			\Enemy\Boss\Play_Boss_Death_PillarOfLight	
+	2655709623	Play_Enemy_Destroy_Part			\Enemy\Play_Enemy_Destroy_Part	
+	2731174523	Play_MidBoss_Lv4_Hand_Death			\Enemy\Boss\Lv4_Hand\Play_MidBoss_Lv4_Hand_Death	
+	2749392763	Stop_FinalBoss_Lv4_Final_Appear			\Enemy\Boss\Lv4_Final\Stop_FinalBoss_Lv4_Final_Appear	
+	2749677879	Play_Boss_Lv2_Ball_Bounce			\Enemy\Boss\Lv2\Play_Boss_Lv2_Ball_Bounce	
+	2826205056	Stop_FinalBoss_Lv4_Final_Cry			\Enemy\Boss\Lv4_Final\Stop_FinalBoss_Lv4_Final_Cry	
+	2838410458	Play_Boss_Lv2_Goal_Player			\Enemy\Boss\Lv2\Play_Boss_Lv2_Goal_Player	
+	2920664516	Play_Enemy_FakeStatue_Shoot_Release			\Enemy\FakeStatue\Play_Enemy_FakeStatue_Shoot_Release	
+	2961288361	Play_FinalBoss_Lv4_Final_Appear			\Enemy\Boss\Lv4_Final\_TODO\Play_FinalBoss_Lv4_Final_Appear	
+	2975268622	Play_Boss_Lv0_Anim_FirstPhase			\Enemy\Boss\Lv0\Play_Boss_Lv0_Anim_FirstPhase	
+	3027531151	Play_Boss_Lv0_Shoot_Release_Multiple			\Enemy\Boss\Lv0\Play_Boss_Lv0_Shoot_Release_Multiple	
+	3034000287	Play_FinalBoss_Lv4_Final_Laser			\Enemy\Boss\Lv4_Final\_DONE\Laser\Play_FinalBoss_Lv4_Final_Laser	
+	3062858453	Play_Boss_Lv1_Shoot_Speaker			\Enemy\Boss\Lv1\Play_Boss_Lv1_Shoot_Speaker	
+	3067083821	Play_Enemy_Square_Explosion_Start			\Enemy\Explosion\Play_Enemy_Square_Explosion_Start	
+	3080357604	Play_FinalBoss_Lv4_Final_Spirit_Create			\Enemy\Boss\Lv4_Final\_DONE\Spirit\Play_FinalBoss_Lv4_Final_Spirit_Create	
+	3137197893	Play_Enemy_Destroy			\Enemy\Play_Enemy_Destroy	
+	3264678641	Play_MidBoss_Lv4_Hand_Punch_Prepare			\Enemy\Boss\Lv4_Hand\_DONE\Play_MidBoss_Lv4_Hand_Punch_Prepare	
+	3277379733	Play_Boss_Shield_Block			\Enemy\Boss\Shield\Play_Boss_Shield_Block	
+	3292778019	Play_Enemy_Round_Explosion			\Enemy\Explosion\Play_Enemy_Round_Explosion	
+	3355175508	Play_MidBoss_Lv4_Hand_Tap_BangFinger			\Enemy\Boss\Lv4_Hand\_DONE\Play_MidBoss_Lv4_Hand_Tap_BangFinger	
+	3369140556	Play_MidBoss_Lv4_Hand_Shoot			\Enemy\Boss\Lv4_Hand\Play_MidBoss_Lv4_Hand_Shoot	
+	3405995788	Play_MidBoss_Lv4_Hand_Hold			\Enemy\Boss\Lv4_Hand\Play_MidBoss_Lv4_Hand_Hold	
+	3406533881	Play_Enemy_Carpa_Warning			\Enemy\Carpa\Play_Enemy_Carpa_Warning	
+	3460728917	Play_Boss_Lv0_Anim_Death			\Enemy\Boss\Lv0\Play_Boss_Lv0_Anim_Death	
+	3515597876	Play_FinalBoss_Lv4_Final_Pillar_Hit			\Enemy\Boss\Lv4_Final\Play_FinalBoss_Lv4_Final_Pillar_Hit	
+	3554376830	Play_Enemy_Screen_Attack_Charging			\Enemy\Play_Enemy_Screen_Attack_Charging	
+	3560042016	Play_Enemy_Brawny_Fall_Pre			\Enemy\Brawny\Play_Enemy_Brawny_Fall_Pre	
+	3573384103	Play_Boss_Lv1_Anim_FirstPhase			\Enemy\Boss\Lv1\Play_Boss_Lv1_Anim_FirstPhase	
+	3589814336	Play_Boss_Lv3_Steam			\Enemy\Boss\Lv3\Play_Boss_Lv3_Steam	
+	3604075775	Play_MiniBoss_Lv4_Dog_Attack			\Enemy\Boss\Lv4_Dog\Play_MiniBoss_Lv4_Dog_Attack	
+	3624987022	Play_Enemy_Carpa_Missile_Impact			\Enemy\Carpa\Play_Enemy_Carpa_Missile_Impact	
+	3636341568	Play_Enemy_Square_Explosion			\Enemy\Explosion\Play_Enemy_Square_Explosion	
+	3695176782	Play_Boss_Death			\Enemy\Boss\Play_Boss_Death	
+	3731676122	Play_Projectile_BigFollower			\Enemy\Play_Projectile_BigFollower	
+	3842291993	Play_Enemy_Carpa_Missile_Launch			\Enemy\Carpa\Play_Enemy_Carpa_Missile_Launch	
+	3909290888	Play_Boss_Lv2_Anim_FirstPhase_Reveal			\Enemy\Boss\Lv2\Play_Boss_Lv2_Anim_FirstPhase_Reveal	
+	3950481135	Play_MiniBoss_Lv4_Dog_Death			\Enemy\Boss\Lv4_Dog\Play_MiniBoss_Lv4_Dog_Death	
+	4031440584	Play_Enemy_Chaser_Warning			\Enemy\Chaser\Play_Enemy_Chaser_Warning	
+	4082085297	Play_Boss_Lv1_Anim_SecondPhase			\Enemy\Boss\Lv1\Play_Boss_Lv1_Anim_SecondPhase	
+	4090668092	Play_MiniBoss_Lv4_Dog_Appear			\Enemy\Boss\Lv4_Dog\_BLOCKED\Play_MiniBoss_Lv4_Dog_Appear	
+	4101087618	Play_Boss_Lv3_Train_Movement			\Enemy\Boss\Lv3\Play_Boss_Lv3_Train_Movement	
+	4139810843	Play_FinalBoss_Lv4_Final_Machine_Walk			\Enemy\Boss\Lv4_Final\_DONE\Spirit\Play_FinalBoss_Lv4_Final_Machine_Walk	
+	4175167205	Play_Enemy_Immune_Basic			\Enemy\Play_Enemy_Immune_Basic	
+	4288995512	Stop_Enemy_Screen_Attack_Charging			\Enemy\Stop_Enemy_Screen_Attack_Charging	
+
+State Group	ID	Name			Wwise Object Path	Notes
+	89505537	Gameplay			\Default Work Unit\Gameplay	
+
+State	ID	Name	State Group			Notes
+	251412225	Shop	Gameplay			
+	748895195	None	Gameplay			
+	782826392	Default	Gameplay			
+	1189762416	Challenge	Gameplay			
+	3026592080	Boss_Defeat	Gameplay			
+	3688152761	Boss_Fight	Gameplay			
+	3803289968	LevelClear	Gameplay			
+	4158285989	GameOver	Gameplay			
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	303428584	enm_AttackWarning			\Default Work Unit\enm_AttackWarning	
+	3144762221	game_ScoreBoost			\Default Work Unit\game_ScoreBoost	
+	4271324752	enm_Lv3_Boss_Train			\Default Work Unit\enm_Lv3_Boss_Train	
+
+Modulator Envelope	ID	Name			Wwise Object Path	Notes
+	107582592	Modulator Envelope (Custom)				
+	300298973	Modulator Envelope (Custom)				
+	353344897	Modulator Envelope (Custom)				
+	404383906	Modulator Envelope (Custom)				
+	764640821	Modulator Envelope (Custom)				
+
+Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
+	75097291	Sine	Wwise Sine		\Actor-Mixer Hierarchy\_DEBUG\DEBUG_Sounds\Beep_Short\Sine	
+	284624949	Tone Generator	Wwise Tone Generator		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Steam\Steam_Loop\Tone Generator	
+	951206736	Sine	Wwise Sine		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Final\Beep_Short\Sine	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	15453842	enm_damage_explosion_basic_05	I:\MA2\Magenta-Arcade_Wwise\.cache\86\{86ADE8AE-E338-9F92-D9F5-23E526EBADAF}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Death\Explosion_Basic\enm_damage_explosion_basic_05		20545
+	16100467	enm_boss_death_light_ray_09	I:\MA2\Magenta-Arcade_Wwise\.cache\6C\{6C9659F1-B2E5-D06B-7E80-6CE6DEA1FCDC}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Death\Light_Ray\enm_boss_death_light_ray_09		18957
+	16983127	enm_boss_lv4_dog_eat_chew_01	I:\MA2\Magenta-Arcade_Wwise\.cache\EC\{ECBB94AD-8A8B-67E7-ED67-5D257C98453C}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Dog\Eat\Eat_Chew\enm_boss_lv4_dog_eat_chew_01		17464
+	22436129	enm_damage_metal_bits_03	I:\MA2\Magenta-Arcade_Wwise\.cache\02\{02EE5BE9-41B2-46F0-D925-F6091083D8DF}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Death\Metal_Bits\enm_damage_metal_bits_03		16964
+	23666327	enm_chaser_warning_07	I:\MA2\Magenta-Arcade_Wwise\.cache\02\{025C141E-74EA-099F-859D-A7C63ECD7CBB}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_CHASER\Warning_Short\enm_chaser_warning_07		13525
+	26247976	enm_boss_lv4_hand_tap_impact_02	I:\MA2\Magenta-Arcade_Wwise\.cache\F2\{F280D8AD-D6C0-4853-750E-B39FD56E72C9}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Hand\Tap\Tap_Impact\enm_boss_lv4_hand_tap_impact_02		33288
+	27560830	enm_boss_lv3_child_immune_enable_02	I:\MA2\Magenta-Arcade_Wwise\.cache\DC\{DCC73052-3200-A88B-2E4C-C06FBCE659E3}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Child_Immune_Enable\enm_boss_lv3_child_immune_enable_02		26512
+	29898062	enm_damage_immune_13	I:\MA2\Magenta-Arcade_Wwise\.cache\FA\{FAD73CD7-0814-0E85-13CE-88E0CDB22CC3}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Hit\Damage_Immune\enm_damage_immune_13		3296
+	39712206	enm_boss_lv2_goal_player_02	I:\MA2\Magenta-Arcade_Wwise\.cache\59\{59A751F3-AB41-D759-5FFF-DFB07C87EED7}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv2\Goal_Player\enm_boss_lv2_goal_player_02		15076
+	41355662	enm_boss_lv3_train_movement_single_09	I:\MA2\Magenta-Arcade_Wwise\.cache\4A\{4AA01867-08C1-DA71-0545-9046EC7D0A00}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Train_Movement_Single\enm_boss_lv3_train_movement_single_09		3664
+	48367902	enm_bomb_voice_up_11	I:\MA2\Magenta-Arcade_Wwise\.cache\A9\{A94C800D-1624-39D1-B069-2B30B6E8EB0A}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Up\enm_bomb_voice_up_11		3001
+	52089936	enm_attack_laser_start_01	I:\MA2\Magenta-Arcade_Wwise\.cache\05\{05103C02-298A-C847-98F3-2F88854421D3}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\Enemy_Shoot\enm_attack_laser_start_01		15915
+	52799711	enm_boss_lv3_phone_speaker_01	I:\MA2\Magenta-Arcade_Wwise\.cache\FF\{FF19513F-E534-5577-F27A-062AA9F5A769}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\enm_boss_lv3_phone_speaker_01		87343
+	57002063	enm_chaser_warning_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\EA\{EA301439-80C9-1E0F-CFF9-3430E8EDDCB1}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_CHASER\Warning_Loop\enm_chaser_warning_loop_01		152981
+	60559864	enm_boss_lv4_final_spirit_heal_02	I:\MA2\Magenta-Arcade_Wwise\.cache\02\{02250FE2-94B9-A493-F001-9FB41878AD8F}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Final\Spirit\Spirit_Warning\enm_boss_lv4_final_spirit_heal_02		26491
+	60716892	enm_chaser_warning_03	I:\MA2\Magenta-Arcade_Wwise\.cache\FE\{FE76E72E-4CDD-4F0A-1931-FD77FFEBC24D}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_CHASER\Warning_Short\enm_chaser_warning_03		12279
+	62406604	enm_boss_lv2_ball_bounce_01	I:\MA2\Magenta-Arcade_Wwise\.cache\AE\{AE0850F0-528F-9884-1158-BAD6A66710EF}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv2\Ball_Bounce\enm_boss_lv2_ball_bounce_01		1840
+	69328776	enm_boss_lv4_dog_eat_start_02	I:\MA2\Magenta-Arcade_Wwise\.cache\83\{83AE2745-677A-227F-730D-58903A802575}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Dog\Eat\Eat_Start\enm_boss_lv4_dog_eat_start_02		16279
+	70175384	enm_attack_warning_interrupt_01	I:\MA2\Magenta-Arcade_Wwise\.cache\68\{68A0C3C1-5F19-81D6-9533-69583F7B0F4F}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Warning\Warning_Interrupt\enm_attack_warning_interrupt_01		14825
+	70972793	enm_boss_lv4_hand_tap_lift_01	I:\MA2\Magenta-Arcade_Wwise\.cache\10\{107A87F3-AC08-38DA-ACD6-48D1C5E04F14}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Hand\Tap\Tap_Lift\enm_boss_lv4_hand_tap_lift_01		6881
+	73870852	enm_attack_square_explosion_glitch_04	I:\MA2\Magenta-Arcade_Wwise\.cache\AF\{AF1DEC66-0459-9DF8-50F9-7C5C4D696BB7}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Explosion\Square_Explosion\Glitch\enm_attack_square_explosion_glitch_04		15930
+	80021334	enm_bomb_voice_up_01	I:\MA2\Magenta-Arcade_Wwise\.cache\02\{02D0B697-B99E-462C-F118-F6A0D5E222BF}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Up\enm_bomb_voice_up_01		2774
+	89614470	enm_chaser_warning_08	I:\MA2\Magenta-Arcade_Wwise\.cache\C2\{C20C9AE8-5074-31F5-52C3-BC39526E8E1D}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_CHASER\Warning_Short\enm_chaser_warning_08		12729
+	92026899	enm_boss_lv4_final_spirit_create_02	I:\MA2\Magenta-Arcade_Wwise\.cache\0F\{0F8DB757-AFB4-3B28-C051-1C9C5E71A2D1}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Final\Spirit\Spirit_Create\enm_boss_lv4_final_spirit_create_02		44659
+	96119322	enm_damage_generic_v2_01	I:\MA2\Magenta-Arcade_Wwise\.cache\AE\{AE9BD8FC-25D8-08A1-4CDE-43CFBD558925}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Hit\Damage_Generic\enm_damage_generic_v2_01		3651
+	98636557	enm_boss_lv3_train_movement_single_04	I:\MA2\Magenta-Arcade_Wwise\.cache\E7\{E7345F9C-89EE-CF55-742A-69B9110AC4BF}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Train_Movement_Single\enm_boss_lv3_train_movement_single_04		4241
+	127166587	enm_boss_death_light_ray_01	I:\MA2\Magenta-Arcade_Wwise\.cache\6B\{6B7CECC6-6D5A-E1D0-D523-45B3EEE2F2A7}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Death\Light_Ray\enm_boss_death_light_ray_01		18980
+	138478106	enm_boss_lv2_goal_player_03	I:\MA2\Magenta-Arcade_Wwise\.cache\5F\{5F8EEB33-899D-5BF0-0E27-B6835F7A9B1F}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv2\Goal_Player\enm_boss_lv2_goal_player_03		15993
+	145340289	enm_boss_lv4_dog_attack_02	I:\MA2\Magenta-Arcade_Wwise\.cache\54\{5473755B-86D1-4781-75EE-8E051F607CF3}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Dog\Attack_Laser\enm_boss_lv4_dog_attack_02		71634
+	148575303	enm_boss_lv0_shoot_release_03	I:\MA2\Magenta-Arcade_Wwise\.cache\1D\{1DAC71F1-EC74-AF0E-678C-5F39B2477BBA}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv0\Shoot Release\enm_boss_lv0_shoot_release_03		18755
+	149895650	enm_boss_lv1_shield_block_04	I:\MA2\Magenta-Arcade_Wwise\.cache\29\{29EAF3FA-CA7D-FB81-2739-F88D7CB6D960}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv1\Shield_Block\enm_boss_lv1_shield_block_04		3514
+	153911218	enm_damage_immune_01	I:\MA2\Magenta-Arcade_Wwise\.cache\96\{96E30E3A-8889-19F8-E678-E3A7D4B0A1D4}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Hit\Damage_Immune\enm_damage_immune_01		3234
+	159323240	enm_attack_laser_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\F7\{F74D5F8D-21E9-ABD2-EA55-19F17E2ED8C3}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Final\Laser\Laser_Loop\enm_attack_laser_loop_01		76158
+	168183728	enm_chaser_warning_01	I:\MA2\Magenta-Arcade_Wwise\.cache\88\{88DF964B-3CDE-04A8-4CB4-7FE391130669}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_CHASER\Warning_Short\enm_chaser_warning_01		15051
+	169133488	enm_damage_immune_08	I:\MA2\Magenta-Arcade_Wwise\.cache\DA\{DA8E40EF-AD44-5BE0-3B9B-F2DBCD435AB6}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Hit\Damage_Immune\enm_damage_immune_08		3368
+	173673328	enm_damage_explosion_basic_09	I:\MA2\Magenta-Arcade_Wwise\.cache\76\{765447B0-2494-D907-7C39-03788664AC3F}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Death\Explosion_Basic\enm_damage_explosion_basic_09		19369
+	176257587	enm_boss_lv0_anim_secondphase_01	I:\MA2\Magenta-Arcade_Wwise\.cache\71\{71146185-B23B-EA2A-3636-0C36FA4EC93D}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv0\enm_boss_lv0_anim_secondphase_01		194946
+	176739327	enm_damage_generic_v2_05	I:\MA2\Magenta-Arcade_Wwise\.cache\4F\{4FDFA246-B33D-CB14-D022-4833840E1419}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Hit\Damage_Generic\enm_damage_generic_v2_05		2857
+	177437714	enm_carpa_missile_launch_01	I:\MA2\Magenta-Arcade_Wwise\.cache\37\{3739CC8C-13CC-C3B2-4D4F-1625A30FC779}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_CARPA\Missile_Launch\enm_carpa_missile_launch_01		70700
+	180098937	enm_carpa_voice_path_04	I:\MA2\Magenta-Arcade_Wwise\.cache\A6\{A607449D-C8DA-24D8-5FE3-14BB48432D69}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_CARPA\Voice\Voice_Path\enm_carpa_voice_path_04		22098
+	181760444	enm_carpa_warning_01	I:\MA2\Magenta-Arcade_Wwise\.cache\ED\{ED00FD26-FBE5-BA7D-7272-38F51D039B17}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_CARPA\Carpa_Warning\enm_carpa_warning_01		46919
+	185574887	enm_carpa_voice_impact_05	I:\MA2\Magenta-Arcade_Wwise\.cache\A8\{A87941E3-EAC4-FAE0-3114-7FFC0662EF8B}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_CARPA\Voice\Voice_Impact\enm_carpa_voice_impact_05		10551
+	186959923	enm_boss_lv4_dog_eat_start_03	I:\MA2\Magenta-Arcade_Wwise\.cache\11\{11A4D1AF-3E93-B1EA-9DB6-9DCEA41F5D94}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Dog\Eat\Eat_Start\enm_boss_lv4_dog_eat_start_03		15362
+	187661334	enm_bomb_jump_mech_06	I:\MA2\Magenta-Arcade_Wwise\.cache\B9\{B9D00CAE-2064-DC66-7CE3-B3DF7B5C37B6}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Jump\enm_bomb_jump_mech_06		4128
+	188939634	enm_boss_lv4_final_spirit_create_03	I:\MA2\Magenta-Arcade_Wwise\.cache\C9\{C94F6CA8-F6A1-F162-DA92-0DBB4E3A23E6}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Final\Spirit\Spirit_Create\enm_boss_lv4_final_spirit_create_03		41722
+	189848931	enm_bomb_voice_short_13	I:\MA2\Magenta-Arcade_Wwise\.cache\55\{551669CC-C867-2D59-027E-350E20FD64B0}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Short\enm_bomb_voice_short_13		2068
+	193615673	enm_bomb_voice_up_07	I:\MA2\Magenta-Arcade_Wwise\.cache\B1\{B1E74AB1-9B1B-DE96-AC51-0F490CB19F5F}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Up\enm_bomb_voice_up_07		3717
+	198358312	enm_boss_lv3_steam_start_02	I:\MA2\Magenta-Arcade_Wwise\.cache\2C\{2C41E15A-8712-0A25-CEA5-52CF110B82BB}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Steam\Steam_Start\enm_boss_lv3_steam_start_02		24710
+	200267163	enm_boss_lv4_final_spirit_heal_04	I:\MA2\Magenta-Arcade_Wwise\.cache\BA\{BA997961-54B2-E05A-A5A5-5308C2CFA1B0}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Final\Spirit\Spirit_Warning\enm_boss_lv4_final_spirit_heal_04		28650
+	203282128	enm_damage_immune_11	I:\MA2\Magenta-Arcade_Wwise\.cache\3E\{3E1E2D6A-624A-026C-4ECD-BB453CB7B379}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Hit\Damage_Immune\enm_damage_immune_11		3275
+	209404606	enm_attack_laser_start_03	I:\MA2\Magenta-Arcade_Wwise\.cache\25\{2555088C-D013-64DE-1028-335ECF22185C}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv1\Shoot_Speaker\Shoot_Sweetener\enm_attack_laser_start_03		18089
+	211253492	enm_boss_death_light_ray_06	I:\MA2\Magenta-Arcade_Wwise\.cache\18\{1872F4A7-E8BD-5F6F-BAF9-9E2DB7B2DC8F}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Death\Light_Ray\enm_boss_death_light_ray_06		18677
+	214716763	enm_bomb_voice_short_08	I:\MA2\Magenta-Arcade_Wwise\.cache\7C\{7CD1337A-1639-3AF6-2935-AE0C39C614A7}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Short\enm_bomb_voice_short_08		1919
+	219206103	enm_boss_lv4_hand_death_leave_01	I:\MA2\Magenta-Arcade_Wwise\.cache\7F\{7FE69660-1B91-CA9C-CAAB-06C95B501F8A}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Hand\enm_boss_lv4_hand_death_leave_01		43217
+	224850128	enm_boss_lv4_hand_tap_projectile_03	I:\MA2\Magenta-Arcade_Wwise\.cache\51\{51427532-27D4-8490-697B-95D289274D44}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Hand\Tap\Tap_Projectile\enm_boss_lv4_hand_tap_projectile_03		31789
+	224949133	enm_boss_lv2_anim_death_01	I:\MA2\Magenta-Arcade_Wwise\.cache\E1\{E19B6712-2A08-3228-315B-193AA84A19D1}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv2\enm_boss_lv2_anim_death_01		114619
+	229773007	enm_boss_lv3_train_movement_single_12	I:\MA2\Magenta-Arcade_Wwise\.cache\CD\{CD6B2248-7279-5417-8AF0-5972898F318B}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Train_Movement_Single\enm_boss_lv3_train_movement_single_12		4247
+	230389480	enm_attack_laser_loop_tone_03	I:\MA2\Magenta-Arcade_Wwise\.cache\46\{46875076-37FF-BC60-0AA3-95D51DE5C586}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Laser\Laser_Attack\Laser_Loop_Tone\enm_attack_laser_loop_tone_03		63035
+	232014120	enm_bomb_jump_mech_03	I:\MA2\Magenta-Arcade_Wwise\.cache\90\{90298AC8-8687-B233-4820-7ED1EE0D5EB8}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Jump\enm_bomb_jump_mech_03		5083
+	232602723	enm_boss_lv3_train_movement_single_11	I:\MA2\Magenta-Arcade_Wwise\.cache\1F\{1F6153CF-57FC-EE3C-8EEE-21621DD00342}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Train_Movement_Single\enm_boss_lv3_train_movement_single_11		3739
+	234048547	enm_bomb_voice_short_15	I:\MA2\Magenta-Arcade_Wwise\.cache\52\{5272F265-7072-CBE9-1324-6250703A0ECA}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Short\enm_bomb_voice_short_15		2127
+	241499546	enm_attack_round_explosion_a_04	I:\MA2\Magenta-Arcade_Wwise\.cache\B6\{B624CD86-958D-D56A-BD7E-4012DBA3BB64}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Explosion\Round_Explosion\Round_Explosion_A\enm_attack_round_explosion_a_04		35595
+	242649007	enm_boss_lv2_goal_whistle_01	I:\MA2\Magenta-Arcade_Wwise\.cache\AC\{AC74F3BE-C82A-BCF3-E8E2-EE39C12F3D5E}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv2\Goal_Whistle\enm_boss_lv2_goal_whistle_01		5110
+	243488515	enm_carpa_voice_impact_07	I:\MA2\Magenta-Arcade_Wwise\.cache\7D\{7D2C5074-5539-7D4C-661D-A58488F77DB2}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_CARPA\Voice\Voice_Impact\enm_carpa_voice_impact_07		8598
+	244279958	enm_boss_death_light_ray_11	I:\MA2\Magenta-Arcade_Wwise\.cache\DC\{DC1872EB-F5C8-021F-E7C8-1476BB8E328B}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Death\Light_Ray\enm_boss_death_light_ray_11		19749
+	246301435	enm_boss_lv1_shield_block_01	I:\MA2\Magenta-Arcade_Wwise\.cache\FD\{FD192380-803A-C8DA-4EAA-EFE718F34A4A}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv1\Shield_Block\enm_boss_lv1_shield_block_01		3436
+	247090060	enm_boss_lv1_shoot_speaker_02	I:\MA2\Magenta-Arcade_Wwise\.cache\EF\{EF4DF472-6B53-15D2-D65E-9CFC2D407C9B}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv1\Shoot_Speaker\Shoot_Speaker\enm_boss_lv1_shoot_speaker_02		17066
+	247720679	enm_boss_lv0_anim_death_01	I:\MA2\Magenta-Arcade_Wwise\.cache\1F\{1F1B990E-D6DD-6803-BAF8-14998332A304}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv0\enm_boss_lv0_anim_death_01		44473
+	249546516	enm_attack_laser_loop_tone_04	I:\MA2\Magenta-Arcade_Wwise\.cache\1C\{1C09B88C-B3EE-93EC-9C90-5B5C57848823}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Laser\Laser_Attack\Laser_Loop_Tone\enm_attack_laser_loop_tone_04		65472
+	250056544	enm_damage_metal_bits_01	I:\MA2\Magenta-Arcade_Wwise\.cache\12\{12119808-2F0B-CC96-BB05-8B94D8A3B36D}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Death\Metal_Bits\enm_damage_metal_bits_01		21369
+	262298693	enm_bomb_jump_mech_02	I:\MA2\Magenta-Arcade_Wwise\.cache\5D\{5D2192C1-C1F4-6B29-E5ED-207861D7CC9C}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Jump\enm_bomb_jump_mech_02		4698
+	268997804	enm_damage_immune_03	I:\MA2\Magenta-Arcade_Wwise\.cache\E7\{E75E7EA1-982E-E18F-B059-D4980895A251}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Hit\Damage_Immune\enm_damage_immune_03		3220
+	269639258	enm_attack_round_explosion_a_02	I:\MA2\Magenta-Arcade_Wwise\.cache\2C\{2C11AA61-BCED-A662-2D97-8263DDFE024F}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Explosion\Round_Explosion\Round_Explosion_A\enm_attack_round_explosion_a_02		34486
+	274012309	enm_damage_explosion_basic_06	I:\MA2\Magenta-Arcade_Wwise\.cache\E2\{E23D2AC8-D80E-AAF0-0DE9-A334D6A54A85}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Death\Explosion_Basic_Part\enm_damage_explosion_basic_06		19060
+	282907149	enm_boss_lv3_train_movement_single_02	I:\MA2\Magenta-Arcade_Wwise\.cache\E3\{E3234465-1A36-41AA-83E7-50530EF15F2A}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Train_Movement_Single\enm_boss_lv3_train_movement_single_02		3707
+	283042748	enm_attack_square_explosion_glitch_01	I:\MA2\Magenta-Arcade_Wwise\.cache\18\{18D415DC-C63C-1E2B-07EA-074FC78C4E38}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Explosion\Square_Explosion\Glitch\enm_attack_square_explosion_glitch_01		15341
+	288907257	enm_bomb_voice_up_04	I:\MA2\Magenta-Arcade_Wwise\.cache\DD\{DDE18F79-CAE4-F18A-F3E5-70778187717B}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Up\enm_bomb_voice_up_04		2592
+	293109985	enm_boss_lv3_steam_start_04	I:\MA2\Magenta-Arcade_Wwise\.cache\69\{69FA52B3-C756-4A69-BA26-840ACC1CB3E0}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Steam\Steam_Start\enm_boss_lv3_steam_start_04		24623
+	298390029	enm_chaser_warning_02	I:\MA2\Magenta-Arcade_Wwise\.cache\C6\{C6D3790F-C45B-A7A6-D22F-3845401AC67A}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_CHASER\Warning_Short\enm_chaser_warning_02		13023
+	299027740	enm_damage_metal_bits_07	I:\MA2\Magenta-Arcade_Wwise\.cache\E6\{E611E201-8ED7-5F28-657C-9E76FC144484}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Death\Metal_Bits\enm_damage_metal_bits_07		19014
+	301261324	enm_boss_lv4_final_spirit_heal_03	I:\MA2\Magenta-Arcade_Wwise\.cache\5E\{5ED7CF96-E82D-37C8-D133-1E39F979DCF1}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Final\Spirit\Spirit_Heal\enm_boss_lv4_final_spirit_heal_03		28394
+	306178359	enm_boss_lv3_steam_start_01	I:\MA2\Magenta-Arcade_Wwise\.cache\37\{37BC125D-EE42-5A75-EB6D-51F8EC96B4E0}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Steam\Steam_Start\enm_boss_lv3_steam_start_01		23896
+	308284777	enm_bomb_voice_up_06	I:\MA2\Magenta-Arcade_Wwise\.cache\C0\{C09D79AB-EA16-314D-6A89-547C56EFDA5F}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Up\enm_bomb_voice_up_06		3486
+	309349662	enm_brawny_impact_01	I:\MA2\Magenta-Arcade_Wwise\.cache\17\{174CA86A-5790-208F-B995-B11B1F7CE408}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BRAWNY\Fall_Impact\enm_brawny_impact_01		35152
+	309411765	enm_boss_lv3_steam_start_03	I:\MA2\Magenta-Arcade_Wwise\.cache\1A\{1AC6D202-1E14-9C6B-D884-8CC02DD41AFB}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Steam\Steam_Start\enm_boss_lv3_steam_start_03		24135
+	317465235	enm_boss_death_light_ray_07	I:\MA2\Magenta-Arcade_Wwise\.cache\9A\{9A89EA0F-1ED8-BC17-AADA-24EBD22089DE}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Death\Light_Ray\enm_boss_death_light_ray_07		17843
+	319494602	enm_bomb_voice_up_03	I:\MA2\Magenta-Arcade_Wwise\.cache\31\{31FBB51E-3AAD-F82B-798A-E2BB3FCE7CA5}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Up\enm_bomb_voice_up_03		2707
+	323460468	enm_boss_lv4_hand_anim_punch_appear_pre_01	I:\MA2\Magenta-Arcade_Wwise\.cache\2C\{2CAE28AF-6CB8-BA72-E381-EE9E17B6C704}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Hand\Anim\enm_boss_lv4_hand_anim_punch_appear_pre_01		60159
+	325306840	enm_damage_immune_09	I:\MA2\Magenta-Arcade_Wwise\.cache\3E\{3EEFFB86-4DCB-BE8C-1154-D1D24F7044A3}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Hit\Damage_Immune\enm_damage_immune_09		3296
+	327984768	enm_bomb_jump_mech_01	I:\MA2\Magenta-Arcade_Wwise\.cache\2F\{2FA3DDCC-BCBB-0073-3D97-D5347268B010}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Jump\enm_bomb_jump_mech_01		4676
+	328527280	enm_boss_lv4_final_laser_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\E9\{E9FA741F-5CE1-1E78-4B8F-4A3E8507B45E}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Final\Laser\Laser_Loop\enm_boss_lv4_final_laser_loop_01		103253
+	329787769	enm_boss_lv2_crowd_cheer_02	I:\MA2\Magenta-Arcade_Wwise\.cache\B2\{B2DC44AC-6232-CA8F-6105-DCF2E0B63DF5}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv2\Crowd_Cheer\enm_boss_lv2_crowd_cheer_02		81581
+	331254348	enm_chaser_warning_09	I:\MA2\Magenta-Arcade_Wwise\.cache\F2\{F2AEE1E2-5EDB-FF0E-0E0C-337F32C95E87}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_CHASER\Warning_Short\enm_chaser_warning_09		10523
+	331535075	enm_boss_lv3_train_movement_freight_01	I:\MA2\Magenta-Arcade_Wwise\.cache\EC\{EC121BA9-F3F8-C328-A2B1-4FFC8023BAF7}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Train_Freight\enm_boss_lv3_train_movement_freight_01		78797
+	336459323	enm_boss_death_light_ray_08	I:\MA2\Magenta-Arcade_Wwise\.cache\E5\{E5F0400B-732A-1209-4430-4E1479633DE2}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Death\Light_Ray\enm_boss_death_light_ray_08		17493
+	341415582	enm_boss_lv2_goal_whistle_02	I:\MA2\Magenta-Arcade_Wwise\.cache\01\{01542880-651F-724D-012B-8939C585B8F6}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv2\Goal_Whistle\enm_boss_lv2_goal_whistle_02		4492
+	346956923	enm_boss_lv1_shield_disable_02	I:\MA2\Magenta-Arcade_Wwise\.cache\E3\{E32D074C-9BE6-784A-F343-8AC6AC0E1066}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv1\Shield_Disable\enm_boss_lv1_shield_disable_02		40843
+	351036601	enm_damage_metal_bits_10	I:\MA2\Magenta-Arcade_Wwise\.cache\67\{674F0003-B79C-C1F0-BB66-8897D82E48EE}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Death\Metal_Bits\enm_damage_metal_bits_10		11922
+	354801287	enm_attack_square_explosion_step_a_01	I:\MA2\Magenta-Arcade_Wwise\.cache\F6\{F66D78DF-1C61-0A30-FCD8-FF465F4E37D4}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Explosion\Square_Explosion\Square_Explosion_Step\Step_A\enm_attack_square_explosion_step_a_01		28400
+	357710247	enm_damage_immune_05	I:\MA2\Magenta-Arcade_Wwise\.cache\7D\{7D8940E0-F048-9634-9072-F4224FC4307D}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Hit\Damage_Immune\enm_damage_immune_05		3221
+	362759982	enm_boss_lv3_child_immune_disable_03	I:\MA2\Magenta-Arcade_Wwise\.cache\6E\{6E0EAE94-DCC9-E808-25A0-E2C5D986502E}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Child_Immune_Disable\enm_boss_lv3_child_immune_disable_03		21257
+	363947593	enm_boss_lv3_train_movement_single_13	I:\MA2\Magenta-Arcade_Wwise\.cache\73\{73155DE2-71C6-CE8D-79E7-21DB572D0DD6}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Train_Movement_Single\enm_boss_lv3_train_movement_single_13		4906
+	368599866	enm_bomb_voice_up_02	I:\MA2\Magenta-Arcade_Wwise\.cache\3A\{3A85EBED-C4DE-B8BD-53E8-F3E5F6F98F70}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Up\enm_bomb_voice_up_02		2707
+	382552148	enm_attack_warning_interrupt_02	I:\MA2\Magenta-Arcade_Wwise\.cache\4A\{4A1046D6-1135-6D24-19FA-EE8BA2A0B7E9}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Warning\Warning_Interrupt\enm_attack_warning_interrupt_02		14578
+	382626575	enm_boss_death_light_ray_05	I:\MA2\Magenta-Arcade_Wwise\.cache\52\{52F1CB77-CD12-B705-B234-A0953B4ADDB2}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Death\Light_Ray\enm_boss_death_light_ray_05		17401
+	384849960	enm_chaser_warning_06	I:\MA2\Magenta-Arcade_Wwise\.cache\88\{882E4540-B07F-004F-22C5-9BCD47B6AE4E}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_CHASER\Warning_Short\enm_chaser_warning_06		13470
+	388168230	enm_bomb_voice_short_02	I:\MA2\Magenta-Arcade_Wwise\.cache\78\{78809BD8-B9AE-C34D-0AC2-3345CDEA84DA}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Short\enm_bomb_voice_short_02		2585
+	389647532	enm_bomb_jump_mech_04	I:\MA2\Magenta-Arcade_Wwise\.cache\4D\{4DC91B7C-9FB4-37E1-F26B-F94ECD1F6F94}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Jump\enm_bomb_jump_mech_04		4676
+	394590779	enm_attack_laser_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\0F\{0F941F1D-5E36-7400-E023-30FA870245D9}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Laser\Laser_Attack\Laser_Loop\enm_attack_laser_loop_01		76158
+	410935932	enm_attack_square_explosion_step_a_02	I:\MA2\Magenta-Arcade_Wwise\.cache\2C\{2CEA4987-35EC-4EC5-CFD4-946F6D5E7F4C}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Explosion\Square_Explosion\Square_Explosion_Step\Step_A\enm_attack_square_explosion_step_a_02		28202
+	414381182	enm_carpa_voice_impact_06	I:\MA2\Magenta-Arcade_Wwise\.cache\99\{99FE821A-C91E-1C63-86EF-6B121561EE77}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_CARPA\Voice\Voice_Impact\enm_carpa_voice_impact_06		9347
+	414444869	enm_attack_round_explosion_a_06	I:\MA2\Magenta-Arcade_Wwise\.cache\5D\{5D8D4761-32D7-D3DA-E800-C3022EA77AC5}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Explosion\Round_Explosion\Round_Explosion_A\enm_attack_round_explosion_a_06		29818
+	416956696	enm_boss_lv3_death_01	I:\MA2\Magenta-Arcade_Wwise\.cache\DD\{DDED1FD7-2BB3-C520-B6C3-12CADE937789}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\enm_boss_lv3_death_01		99921
+	437600514	enm_bomb_jump_impact_01	I:\MA2\Magenta-Arcade_Wwise\.cache\10\{1077E1A0-2C01-B65B-060B-A12FE1B699C7}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Fall\enm_bomb_jump_impact_01		4253
+	438888000	enm_damage_metal_bits_05	I:\MA2\Magenta-Arcade_Wwise\.cache\3B\{3BED22D6-D6B9-8D3E-7E64-E8BE73812ACE}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Death\Metal_Bits\enm_damage_metal_bits_05		19520
+	442725335	enm_boss_death_light_ray_10	I:\MA2\Magenta-Arcade_Wwise\.cache\74\{74700282-23A7-95B6-6001-C933D1AA2A70}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Death\Light_Ray\enm_boss_death_light_ray_10		17830
+	444767605	enm_bomb_voice_short_11	I:\MA2\Magenta-Arcade_Wwise\.cache\F5\{F532CAD0-A7A9-BB9D-A661-DE587D25030D}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Short\enm_bomb_voice_short_11		2120
+	447072487	enm_attack_square_explosion_step_c_03	I:\MA2\Magenta-Arcade_Wwise\.cache\BE\{BE2E6291-52B5-312E-FC84-FF3896E58C9F}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Explosion\Square_Explosion\Square_Explosion_Step\Step_C\enm_attack_square_explosion_step_c_03		75406
+	464721498	enm_boss_lv4_final_coffin_open_02	I:\MA2\Magenta-Arcade_Wwise\.cache\DA\{DAE4C12F-292D-C00E-2180-948CB3D7D687}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Final\Coffin\Coffin_Open\enm_boss_lv4_final_coffin_open_02		4752
+	473377439	enm_boss_lv4_final_spirit_attack_05	I:\MA2\Magenta-Arcade_Wwise\.cache\12\{128B12D0-DF6D-7EA8-D68B-A20C45EF9B2A}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Final\Spirit\Spirit_Attack\enm_boss_lv4_final_spirit_attack_05		11384
+	479752863	enm_damage_metal_bits_13	I:\MA2\Magenta-Arcade_Wwise\.cache\9D\{9D3ECC94-5EA4-A2FB-7C4E-D9CB52417736}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Death\Metal_Bits\enm_damage_metal_bits_13		12276
+	481577329	enm_damage_generic_v2_10	I:\MA2\Magenta-Arcade_Wwise\.cache\60\{60056CA6-17EF-B295-9FFD-00CE5ED8C04A}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Hit\Damage_Generic\enm_damage_generic_v2_10		3080
+	482920356	enm_carpa_voice_path_05	I:\MA2\Magenta-Arcade_Wwise\.cache\3F\{3F7A9361-9216-19ED-EC34-94956CED82E6}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_CARPA\Voice\Voice_Path\enm_carpa_voice_path_05		22016
+	483709428	enm_bomb_voice_short_03	I:\MA2\Magenta-Arcade_Wwise\.cache\6C\{6CEAD772-7E8F-F111-B015-AFEE07FE7CCD}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Short\enm_bomb_voice_short_03		1948
+	484625380	enm_attack_round_explosion_a_03	I:\MA2\Magenta-Arcade_Wwise\.cache\70\{7017CB59-755D-40BD-1966-C24D8F9BF64D}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Explosion\Round_Explosion\Round_Explosion_A\enm_attack_round_explosion_a_03		35922
+	494092095	enm_boss_lv4_final_coffin_close_02	I:\MA2\Magenta-Arcade_Wwise\.cache\9D\{9DCDA28B-F4E6-F035-6688-C635024469FB}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Final\Coffin\Coffin_Close\enm_boss_lv4_final_coffin_close_02		4766
+	498423423	enm_damage_explosion_basic_03	I:\MA2\Magenta-Arcade_Wwise\.cache\57\{5748CAA8-22DC-9721-06ED-795F70AB6745}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Death\Explosion_Basic\enm_damage_explosion_basic_03		17022
+	500013179	enm_boss_lv4_final_spirit_create_01	I:\MA2\Magenta-Arcade_Wwise\.cache\DE\{DE5B2547-9DE8-23B1-0394-EE6598415EB9}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Final\Spirit\Spirit_Create\enm_boss_lv4_final_spirit_create_01		41728
+	506686897	enm_boss_lv4_hand_death_01	I:\MA2\Magenta-Arcade_Wwise\.cache\AC\{AC59C4E2-D4E6-EB8C-7D2A-58069BC084CC}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Hand\enm_boss_lv4_hand_death_01		158894
+	506992226	enm_boss_lv2_ball_bounce_07	I:\MA2\Magenta-Arcade_Wwise\.cache\A1\{A1E41606-3314-05A9-00BD-33ED79801827}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv2\Ball_Bounce\enm_boss_lv2_ball_bounce_07		1923
+	507969449	enm_damage_generic_v2_02	I:\MA2\Magenta-Arcade_Wwise\.cache\89\{891CFED9-69FD-7BEF-D914-62CEAA11E543}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Hit\Damage_Generic\enm_damage_generic_v2_02		4015
+	510225389	enm_boss_lv1_shield_enable_02	I:\MA2\Magenta-Arcade_Wwise\.cache\B5\{B5375D7F-3E42-F1EE-AC64-CA83454FE6F9}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv1\Shield_Enable\enm_boss_lv1_shield_enable_02		34410
+	520770671	enm_boss_lv2_ball_bounce_03	I:\MA2\Magenta-Arcade_Wwise\.cache\8F\{8F3C1149-9D47-CA5C-F7F9-78FF027835A9}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv2\Ball_Bounce\enm_boss_lv2_ball_bounce_03		1942
+	521080545	enm_carpa_missile_impact_01	I:\MA2\Magenta-Arcade_Wwise\.cache\5C\{5C5D9941-5C86-7D82-428D-EE153B4848B9}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_CARPA\Missile_Impact\enm_carpa_missile_impact_01		50722
+	522800825	enm_damage_explosion_basic_07	I:\MA2\Magenta-Arcade_Wwise\.cache\25\{25BD8C77-7B0F-54BE-28D2-95621E25094B}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Death\Explosion_Basic_Part\enm_damage_explosion_basic_07		21578
+	524864672	enm_boss_lv3_train_movement_single_07	I:\MA2\Magenta-Arcade_Wwise\.cache\BC\{BC9E8810-0E79-2C76-148E-7DA99EBEA570}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Train_Movement_Single\enm_boss_lv3_train_movement_single_07		4056
+	527120130	enm_boss_lv3_train_movement_single_10	I:\MA2\Magenta-Arcade_Wwise\.cache\01\{01B14FAA-27D1-0C74-A2A8-490AD0562FB8}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Train_Movement_Single\enm_boss_lv3_train_movement_single_10		4583
+	529784344	enm_boss_lv4_final_laser_start_01	I:\MA2\Magenta-Arcade_Wwise\.cache\CD\{CD7EB2B6-D495-3E6D-D702-95A1150002CE}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Final\Laser\Laser_Start\enm_boss_lv4_final_laser_start_01		102902
+	531734611	enm_bomb_voice_short_06	I:\MA2\Magenta-Arcade_Wwise\.cache\60\{603471D5-84B8-27CC-0BFA-BF70A1C40F24}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Short\enm_bomb_voice_short_06		2040
+	534130661	enm_boss_lv4_final_spirit_attack_03	I:\MA2\Magenta-Arcade_Wwise\.cache\A9\{A9E6AE66-412D-ADC2-D259-AF07B771C272}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Final\Spirit\Spirit_Attack\enm_boss_lv4_final_spirit_attack_03		11354
+	537360014	enm_attack_square_explosion_glitch_02	I:\MA2\Magenta-Arcade_Wwise\.cache\92\{9258DEF4-FEF0-F1B7-FD8D-D164E83CE214}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Explosion\Square_Explosion\Glitch\enm_attack_square_explosion_glitch_02		17738
+	537873841	enm_boss_death_light_ray_03	I:\MA2\Magenta-Arcade_Wwise\.cache\25\{25B67143-9E2C-3222-6F95-7EAD0BEE6FF5}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Death\Light_Ray\enm_boss_death_light_ray_03		17892
+	552025169	enm_damage_explosion_basic_04	I:\MA2\Magenta-Arcade_Wwise\.cache\0F\{0F094C36-5A3E-EC00-F1E3-8323D48AFAAA}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Death\Explosion_Basic\enm_damage_explosion_basic_04		19423
+	553535236	enm_attack_square_explosion_glitch_05	I:\MA2\Magenta-Arcade_Wwise\.cache\37\{3768D416-E021-E6DA-E300-62BC8707DBEE}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Explosion\Square_Explosion\Glitch\enm_attack_square_explosion_glitch_05		17014
+	568414064	enm_carpa_voice_impact_04	I:\MA2\Magenta-Arcade_Wwise\.cache\6E\{6EC2A856-F03B-1358-FD43-5093DFB48289}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_CARPA\Voice\Voice_Impact\enm_carpa_voice_impact_04		10021
+	569455517	enm_bomb_voice_short_14	I:\MA2\Magenta-Arcade_Wwise\.cache\14\{14BD8E55-A596-A0C2-9CF7-C9C5EC5FE60F}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Short\enm_bomb_voice_short_14		2065
+	572811116	enm_boss_lv4_hand_punch_attack_02	I:\MA2\Magenta-Arcade_Wwise\.cache\E7\{E7FCD36C-E607-BC24-BA57-F397D165F6EF}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Hand\Punch\Punch_Attack\enm_boss_lv4_hand_punch_attack_02		50135
+	573529998	enm_damage_metal_bits_08	I:\MA2\Magenta-Arcade_Wwise\.cache\8B\{8BFEDCFF-BD35-5075-34DE-2E6D1B5E7BED}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Death\Metal_Bits\enm_damage_metal_bits_08		15172
+	576021672	enm_attack_laser_loop_tone_02	I:\MA2\Magenta-Arcade_Wwise\.cache\4A\{4A2764A7-629F-6CCB-81AE-209185CE402C}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Laser\Laser_Attack\Laser_Loop_Tone\enm_attack_laser_loop_tone_02		67981
+	577658797	enm_boss_lv4_hand_tap_projectile_04	I:\MA2\Magenta-Arcade_Wwise\.cache\4E\{4E88BD07-8424-37CF-D70C-3CED512842FB}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Hand\Tap\Tap_Projectile\enm_boss_lv4_hand_tap_projectile_04		31248
+	578668339	enm_boss_lv3_train_movement_single_08	I:\MA2\Magenta-Arcade_Wwise\.cache\F6\{F6DC6C4C-5C31-5ED1-EAEA-066387E29130}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Train_Movement_Single\enm_boss_lv3_train_movement_single_08		4061
+	579171959	enm_boss_death_light_ray_02	I:\MA2\Magenta-Arcade_Wwise\.cache\BD\{BDE1CDE2-2E21-BB3F-40E9-0755CEB0547A}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Death\Light_Ray\enm_boss_death_light_ray_02		17303
+	580070641	enm_damage_generic_v2_09	I:\MA2\Magenta-Arcade_Wwise\.cache\52\{52E21D03-5785-FE80-3FDE-99E4F6516456}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Hit\Damage_Generic\enm_damage_generic_v2_09		3534
+	586064248	enm_boss_lv3_main_immune_disable_01	I:\MA2\Magenta-Arcade_Wwise\.cache\68\{6877214A-E28B-9D6C-F9CC-238A1C6FC0BC}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Main_Immune_Disable\enm_boss_lv3_main_immune_disable_01		34237
+	587155105	enm_attack_laser_start_02	I:\MA2\Magenta-Arcade_Wwise\.cache\10\{10B1E547-6831-4F6F-0AC7-A5D4BFC5D531}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Laser\Laser_Pre\enm_attack_laser_start_02		16277
+	590408055	enm_boss_lv4_final_coffin_open_03	I:\MA2\Magenta-Arcade_Wwise\.cache\97\{977A3576-45F9-DC4D-8275-2F3B8523DBB6}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Final\Coffin\Coffin_Open\enm_boss_lv4_final_coffin_open_03		5169
+	593550971	enm_boss_lv4_hand_punch_prepare_02	I:\MA2\Magenta-Arcade_Wwise\.cache\8B\{8B0EBDC2-0080-4656-4CF0-7692366FA237}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Hand\Punch\Punch_Prepare\enm_boss_lv4_hand_punch_prepare_02		57298
+	594467622	enm_boss_death_light_ray_13	I:\MA2\Magenta-Arcade_Wwise\.cache\CD\{CDD3679F-3D57-E11C-1488-930C4CDAADAE}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Death\Light_Ray\enm_boss_death_light_ray_13		18007
+	597168241	enm_bomb_jump_impact_05	I:\MA2\Magenta-Arcade_Wwise\.cache\37\{3711244A-7485-5E07-230C-F859BF342377}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Fall\enm_bomb_jump_impact_05		5282
+	606855137	enm_boss_lv1_shield_enable_01	I:\MA2\Magenta-Arcade_Wwise\.cache\FC\{FCAF1642-A5CF-CD3F-B7DD-7676BE4B31E6}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv1\Shield_Enable\enm_boss_lv1_shield_enable_01		34084
+	608380708	enm_carpa_voice_impact_01	I:\MA2\Magenta-Arcade_Wwise\.cache\3E\{3E2EE1BD-E95D-6958-5CBE-2C99101863EC}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_CARPA\Voice\Voice_Impact\enm_carpa_voice_impact_01		8036
+	630087467	enm_bomb_voice_up_08	I:\MA2\Magenta-Arcade_Wwise\.cache\4C\{4C83EF9B-AFF6-014E-A5C6-FCE6AAB1E70A}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Up\enm_bomb_voice_up_08		3311
+	633207728	enm_boss_lv0_shoot_release_01	I:\MA2\Magenta-Arcade_Wwise\.cache\4C\{4CD4EEEA-51E5-1363-79A4-6C9337E91202}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv0\Shoot Release\enm_boss_lv0_shoot_release_01		20526
+	637830421	enm_boss_lv4_dog_eat_chew_02	I:\MA2\Magenta-Arcade_Wwise\.cache\CA\{CA66401A-0426-8699-6EAC-D692479E97B2}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Dog\Eat\Eat_Chew\enm_boss_lv4_dog_eat_chew_02		15726
+	646209928	enm_boss_lv1_shield_block_03	I:\MA2\Magenta-Arcade_Wwise\.cache\14\{1451586E-0836-6801-4E56-1FE67D79B5B9}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv1\Shield_Block\enm_boss_lv1_shield_block_03		3076
+	652319037	enm_damage_immune_14	I:\MA2\Magenta-Arcade_Wwise\.cache\B1\{B17F2E59-9C45-2C03-60BF-E9D16DF322FB}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Hit\Damage_Immune\enm_damage_immune_14		3209
+	652759360	enm_chaser_warning_05	I:\MA2\Magenta-Arcade_Wwise\.cache\D1\{D107960A-1868-34BC-AB30-2DF08B54F24E}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_CHASER\Warning_Short\enm_chaser_warning_05		12692
+	656177835	enm_boss_lv4_hand_tap_lift_02	I:\MA2\Magenta-Arcade_Wwise\.cache\DD\{DD128FD2-4A1E-AB00-F4AB-159412E542C2}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Hand\Tap\Tap_Lift\enm_boss_lv4_hand_tap_lift_02		5704
+	661317945	enm_boss_lv4_hand_tap_lift_03	I:\MA2\Magenta-Arcade_Wwise\.cache\74\{74781483-F5D4-0C4E-C977-D51B2DF833AD}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Hand\Tap\Tap_Lift\enm_boss_lv4_hand_tap_lift_03		5950
+	664424453	enm_damage_metal_bits_12	I:\MA2\Magenta-Arcade_Wwise\.cache\1E\{1EA2DE77-A039-91EC-B709-3D92FAD1D9C3}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Death\Metal_Bits\enm_damage_metal_bits_12		13221
+	667379807	enm_carpa_voice_impact_03	I:\MA2\Magenta-Arcade_Wwise\.cache\A4\{A4EDA622-89BB-37A0-238B-11E6F5D334F6}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_CARPA\Voice\Voice_Impact\enm_carpa_voice_impact_03		9456
+	680713499	enm_attack_laser_loop_tone_01	I:\MA2\Magenta-Arcade_Wwise\.cache\C6\{C604CF1B-C1C0-5269-C62E-C2D362D997A3}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Laser\Laser_Attack\Laser_Loop_Tone\enm_attack_laser_loop_tone_01		63514
+	682235123	enm_bomb_voice_short_07	I:\MA2\Magenta-Arcade_Wwise\.cache\2E\{2E72F960-8B84-E8B6-AAE3-88C010DAA47A}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Short\enm_bomb_voice_short_07		2037
+	682286847	enm_bomb_voice_short_10	I:\MA2\Magenta-Arcade_Wwise\.cache\37\{3754B80D-D369-46DD-A1A9-E919655AC319}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Short\enm_bomb_voice_short_10		2124
+	683468325	enm_boss_lv4_hand_anim_appear_01	I:\MA2\Magenta-Arcade_Wwise\.cache\7F\{7FB572E1-3EEE-C662-C647-970604B336D3}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Hand\Anim\enm_boss_lv4_hand_anim_appear_01		169216
+	683834478	enm_boss_lv4_final_spirit_create_04	I:\MA2\Magenta-Arcade_Wwise\.cache\3C\{3CBE1202-DFAB-D8D7-4D5E-0AAC692B006D}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Final\Spirit\Spirit_Create\enm_boss_lv4_final_spirit_create_04		40517
+	685365706	enm_boss_death_fade_to_white_01	I:\MA2\Magenta-Arcade_Wwise\.cache\44\{4489C090-D2CA-21A0-7CCA-D331F977DCC8}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Death\enm_boss_death_fade_to_white_01		289215
+	688969196	enm_boss_lv4_final_spirit_attack_01	I:\MA2\Magenta-Arcade_Wwise\.cache\26\{267BD3B3-F8B3-583F-A68A-C126B7FBB9D8}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Final\Spirit\Spirit_Attack\enm_boss_lv4_final_spirit_attack_01		11375
+	689697624	world_lanes_hub_cogs_01	I:\MA2\Magenta-Arcade_Wwise\.cache\C0\{C0AA28D3-3858-DD2B-5BCB-298F0B5D95AF}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Final\Machine_Walk\Cogs\world_lanes_hub_cogs_01		11564
+	691234891	enm_brawny_impact_pre_01	I:\MA2\Magenta-Arcade_Wwise\.cache\46\{46F909E2-032B-D4F2-ADC6-9321045841D7}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BRAWNY\Fall_Pre\enm_brawny_impact_pre_01		8315
+	692895964	enm_attack_square_explosion_step_c_02	I:\MA2\Magenta-Arcade_Wwise\.cache\93\{9358C620-969A-2A7F-938C-C5EC8BB003E0}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Explosion\Square_Explosion\Square_Explosion_Step\Step_C\enm_attack_square_explosion_step_c_02		76171
+	699814029	enm_bomb_jump_impact_04	I:\MA2\Magenta-Arcade_Wwise\.cache\48\{48701961-66D6-D864-EF4F-1B4AF2F191C4}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Fall\enm_bomb_jump_impact_04		3911
+	700282159	enm_boss_lv4_hand_anim_punch_appear_01	I:\MA2\Magenta-Arcade_Wwise\.cache\B8\{B817360B-B308-587B-9790-4665D338A365}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Hand\Anim\enm_boss_lv4_hand_anim_punch_appear_01		68701
+	701480995	enm_boss_lv4_dog_attack_warning_02	I:\MA2\Magenta-Arcade_Wwise\.cache\30\{30C9DF0D-6FD2-8926-F4FC-05FB0339D357}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Dog\Attack_Warning\enm_boss_lv4_dog_attack_warning_02		16239
+	706467939	enm_bomb_voice_short_01	I:\MA2\Magenta-Arcade_Wwise\.cache\AA\{AACC854C-E309-3C44-1419-2801BD94BB4F}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Short\enm_bomb_voice_short_01		1981
+	706827860	enm_boss_lv2_anim_firstphase_01	I:\MA2\Magenta-Arcade_Wwise\.cache\1D\{1D991F4E-CA86-3568-5543-C6549F9EE987}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv2\enm_boss_lv2_anim_firstphase_01		91926
+	712526529	enm_boss_lv4_hand_tap_projectile_02	I:\MA2\Magenta-Arcade_Wwise\.cache\23\{23FA322D-8A19-25B3-4061-2D03B762F918}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Hand\Tap\Tap_Projectile\enm_boss_lv4_hand_tap_projectile_02		31625
+	717547991	enm_attack_laser_start_04	I:\MA2\Magenta-Arcade_Wwise\.cache\72\{72CDB755-3521-FB13-0A32-87B9B67FBC97}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Laser\Laser_Attack\Laser_Start\enm_attack_laser_start_04		18384
+	721808357	enm_boss_lv4_hand_punch_attack_01	I:\MA2\Magenta-Arcade_Wwise\.cache\90\{908915BD-4235-C875-C333-961BC59C73A8}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Hand\Punch\Punch_Attack\enm_boss_lv4_hand_punch_attack_01		43781
+	722306295	enm_attack_square_explosion_glitch_03	I:\MA2\Magenta-Arcade_Wwise\.cache\86\{86CDC1EB-6343-4B67-D923-81D22D84AD43}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Explosion\Square_Explosion\Glitch\enm_attack_square_explosion_glitch_03		17492
+	727921312	enm_attack_square_explosion_step_c_01	I:\MA2\Magenta-Arcade_Wwise\.cache\DE\{DEEA4C06-FB67-09F2-8CFF-3E62D919CB83}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Explosion\Square_Explosion\Square_Explosion_Step\Step_C\enm_attack_square_explosion_step_c_01		75766
+	731905304	enm_damage_generic_v2_11	I:\MA2\Magenta-Arcade_Wwise\.cache\FD\{FD0803C1-4A4C-54CA-F761-E151E74547B8}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Hit\Damage_Generic\enm_damage_generic_v2_11		3238
+	738128483	enm_damage_generic_v2_12	I:\MA2\Magenta-Arcade_Wwise\.cache\52\{52AC1E91-F090-18D9-609C-6F2ADC88D37B}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Hit\Damage_Generic\enm_damage_generic_v2_12		3020
+	738871773	enm_damage_immune_02	I:\MA2\Magenta-Arcade_Wwise\.cache\44\{44A2FFEE-66CB-B836-1C13-3E7AE8ABF82D}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Hit\Damage_Immune\enm_damage_immune_02		3249
+	745012191	enm_chaser_warning_10	I:\MA2\Magenta-Arcade_Wwise\.cache\77\{778FC72C-2F09-9F62-BE43-8CF419E68FE5}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_CHASER\Warning_Short\enm_chaser_warning_10		12413
+	745469353	enm_boss_lv1_shoot_speaker_03	I:\MA2\Magenta-Arcade_Wwise\.cache\68\{681B69AD-C0EA-D649-BEA0-5B9CCF9A1CB9}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv1\Shoot_Speaker\Shoot_Speaker\enm_boss_lv1_shoot_speaker_03		15213
+	754610147	enm_attack_round_explosion_a_05	I:\MA2\Magenta-Arcade_Wwise\.cache\73\{73D9EA82-4664-3DEF-EC8B-D38C84710D49}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Explosion\Round_Explosion\Round_Explosion_A\enm_attack_round_explosion_a_05		35758
+	754708347	enm_bomb_voice_short_09	I:\MA2\Magenta-Arcade_Wwise\.cache\CE\{CE50A313-C0BD-1810-406A-4751D1A07506}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Short\enm_bomb_voice_short_09		2078
+	758532617	enm_bomb_voice_short_04	I:\MA2\Magenta-Arcade_Wwise\.cache\40\{40163207-BE3D-61E5-A75E-91AFDE07F532}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Short\enm_bomb_voice_short_04		2084
+	771754309	enm_carpa_voice_path_03	I:\MA2\Magenta-Arcade_Wwise\.cache\15\{159F3281-1A3B-B136-F32A-B317BF74135E}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_CARPA\Voice\Voice_Path\enm_carpa_voice_path_03		22555
+	774422747	enm_boss_lv2_crowd_cheer_01	I:\MA2\Magenta-Arcade_Wwise\.cache\BE\{BE9DDF10-0C27-554D-E237-75001D364004}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv2\Crowd_Cheer\enm_boss_lv2_crowd_cheer_01		84605
+	780976736	enm_bomb_voice_up_10	I:\MA2\Magenta-Arcade_Wwise\.cache\8C\{8C2CE290-98AC-2EEC-FF4A-3A672DF018F7}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Up\enm_bomb_voice_up_10		3227
+	783203302	enm_attack_warning_start_02	I:\MA2\Magenta-Arcade_Wwise\.cache\E0\{E07D092A-A924-8FD4-ED86-768802760E65}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Warning\Warning_Start\enm_attack_warning_start_02		28001
+	789090110	enm_boss_lv0_shoot_release_multiple_03	I:\MA2\Magenta-Arcade_Wwise\.cache\8F\{8FABBF4D-E93D-E223-F617-0D56249051A2}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_FAKESTATUE\Shoot_Release_Multiple\enm_boss_lv0_shoot_release_multiple_03		18912
+	789196657	enm_damage_explosion_basic_08	I:\MA2\Magenta-Arcade_Wwise\.cache\59\{59B5BCFD-4EF2-8160-6AC4-862935BAD63F}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Death\Explosion_Basic\enm_damage_explosion_basic_08		21522
+	791929598	enm_boss_lv3_main_immune_enable_01	I:\MA2\Magenta-Arcade_Wwise\.cache\2E\{2E2F91D1-8FA1-29A1-136E-2FE5D0362B28}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Main_Immune_Enable\enm_boss_lv3_main_immune_enable_01		27934
+	793034229	enm_boss_lv4_dog_attack_01	I:\MA2\Magenta-Arcade_Wwise\.cache\BE\{BEC7FD68-40E2-E266-3235-D05F329B4875}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Dog\Attack_Laser\enm_boss_lv4_dog_attack_01		72387
+	796917489	enm_boss_lv1_shield_enable_03	I:\MA2\Magenta-Arcade_Wwise\.cache\84\{8463A8EA-BD2D-43C1-98DD-D1A05DACE444}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv1\Shield_Enable\enm_boss_lv1_shield_enable_03		34019
+	800197287	enm_attack_warning_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\5C\{5C9B1207-E452-4293-D3AE-FBFBEDD8ADE8}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Warning\enm_attack_warning_loop_01		34061
+	801612386	enm_boss_lv2_ball_bounce_10	I:\MA2\Magenta-Arcade_Wwise\.cache\55\{551E4115-7838-ED26-466D-59795F454768}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv2\Ball_Bounce\enm_boss_lv2_ball_bounce_10		2045
+	805060101	enm_boss_death_light_ray_12	I:\MA2\Magenta-Arcade_Wwise\.cache\35\{350B185A-8049-9561-BE2A-57AC2E60F129}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Death\Light_Ray\enm_boss_death_light_ray_12		18343
+	805692865	enm_attack_square_explosion_step_b_01	I:\MA2\Magenta-Arcade_Wwise\.cache\AF\{AF82D4CC-8E42-88A7-7007-24FCA550B7DB}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Explosion\Square_Explosion\Square_Explosion_Step\Step_B\enm_attack_square_explosion_step_b_01		44240
+	808633949	enm_damage_generic_v2_08	I:\MA2\Magenta-Arcade_Wwise\.cache\9C\{9CCA93EC-B222-C8CA-217F-8B730622301C}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Hit\Damage_Generic\enm_damage_generic_v2_08		3557
+	812050595	enm_damage_metal_bits_11	I:\MA2\Magenta-Arcade_Wwise\.cache\CC\{CC57AFB9-332B-9ECD-DACF-32E1D166CCBC}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Death\Metal_Bits\enm_damage_metal_bits_11		14559
+	814647877	enm_boss_lv2_crowd_cheer_03	I:\MA2\Magenta-Arcade_Wwise\.cache\09\{097DD14B-8D5C-B721-7CA0-A1150562C304}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv2\Crowd_Cheer\enm_boss_lv2_crowd_cheer_03		85140
+	828539393	enm_damage_immune_04	I:\MA2\Magenta-Arcade_Wwise\.cache\47\{4700A798-75BA-0286-1226-DA91CE924979}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Hit\Damage_Immune\enm_damage_immune_04		3114
+	829579378	enm_boss_lv4_final_spirit_attack_02	I:\MA2\Magenta-Arcade_Wwise\.cache\02\{02D4EE72-7D61-A112-0045-B39468A30855}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Final\Spirit\Spirit_Attack\enm_boss_lv4_final_spirit_attack_02		11371
+	830599113	enm_boss_lv2_ball_bounce_08	I:\MA2\Magenta-Arcade_Wwise\.cache\12\{12940A79-4FC4-6EF0-E87D-2083A4B66762}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv2\Ball_Bounce\enm_boss_lv2_ball_bounce_08		1987
+	830828633	enm_attack_warning_start_01	I:\MA2\Magenta-Arcade_Wwise\.cache\A1\{A1D6D8C6-F840-9F67-E425-BEB81E2ADAA8}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Warning\Warning_Start\enm_attack_warning_start_01		29362
+	831108049	enm_boss_lv3_main_immune_enable_02	I:\MA2\Magenta-Arcade_Wwise\.cache\0B\{0B450025-3FA7-7BE5-06B3-5575B0C5BED7}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Main_Immune_Enable\enm_boss_lv3_main_immune_enable_02		28125
+	831585862	enm_boss_lv3_train_movement_single_05	I:\MA2\Magenta-Arcade_Wwise\.cache\CE\{CE043188-7C51-1D13-D91C-12EF98E81F0B}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Train_Movement_Single\enm_boss_lv3_train_movement_single_05		4242
+	837433827	enm_boss_lv2_ball_bounce_06	I:\MA2\Magenta-Arcade_Wwise\.cache\76\{7655626D-AA39-7C34-189C-971ED8AF0EFD}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv2\Ball_Bounce\enm_boss_lv2_ball_bounce_06		2041
+	846719543	enm_boss_lv4_hand_tap_projectile_05	I:\MA2\Magenta-Arcade_Wwise\.cache\4D\{4D6625A3-CBED-388D-89B5-74B891C43E78}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Hand\Tap\Tap_Projectile\enm_boss_lv4_hand_tap_projectile_05		31613
+	848831193	enm_bomb_jump_impact_02	I:\MA2\Magenta-Arcade_Wwise\.cache\B6\{B64D9C52-7154-4DC5-0CF1-7C1823764A51}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Fall\enm_bomb_jump_impact_02		4845
+	850338584	enm_damage_immune_06	I:\MA2\Magenta-Arcade_Wwise\.cache\5A\{5A541D26-5C3C-8B37-E8CC-DF9BAD2BB5F0}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Hit\Damage_Immune\enm_damage_immune_06		3179
+	855312388	enm_boss_lv4_dog_attack_warning_01	I:\MA2\Magenta-Arcade_Wwise\.cache\17\{172274F1-2EB4-8916-4518-C016FFA295CA}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Dog\Attack_Warning\enm_boss_lv4_dog_attack_warning_01		15791
+	856553250	enm_bomb_voice_short_16	I:\MA2\Magenta-Arcade_Wwise\.cache\AB\{ABC7CD0B-D23C-F508-A234-2BCD1AC3A4A5}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Short\enm_bomb_voice_short_16		1953
+	859839411	enm_boss_lv3_child_immune_disable_01	I:\MA2\Magenta-Arcade_Wwise\.cache\80\{80EC41D4-A601-2EB4-56A2-B7A416B2D71B}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Child_Immune_Disable\enm_boss_lv3_child_immune_disable_01		20923
+	860193305	enm_boss_lv4_hand_tap_projectile_01	I:\MA2\Magenta-Arcade_Wwise\.cache\3A\{3AE62D25-1385-F3A4-FF6A-FE48187E2BC3}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Hand\Tap\Tap_Projectile\enm_boss_lv4_hand_tap_projectile_01		32101
+	861518492	world_lanes_hub_cogs_02	I:\MA2\Magenta-Arcade_Wwise\.cache\4D\{4D9D3AB7-3699-852F-060F-2190BA3AFFCA}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Final\Machine_Walk\Cogs\world_lanes_hub_cogs_02		13722
+	862561372	enm_bomb_jump_mech_05	I:\MA2\Magenta-Arcade_Wwise\.cache\F7\{F7441620-A6E7-EDEC-5B96-11A33DF33BB6}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Jump\enm_bomb_jump_mech_05		4072
+	866442015	enm_boss_lv0_shoot_release_multiple_01	I:\MA2\Magenta-Arcade_Wwise\.cache\CE\{CE20999B-0DE3-444B-0F15-4E5ED168F5A0}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_FAKESTATUE\Shoot_Release_Multiple\enm_boss_lv0_shoot_release_multiple_01		19059
+	870409494	enm_boss_lv1_shoot_speaker_04	I:\MA2\Magenta-Arcade_Wwise\.cache\42\{424B6A0B-40F1-EE7D-94A0-CD560761275C}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv1\Shoot_Speaker\Shoot_Speaker\enm_boss_lv1_shoot_speaker_04		11981
+	871741398	enm_damage_generic_v2_06	I:\MA2\Magenta-Arcade_Wwise\.cache\DA\{DAE82A66-15D1-F38F-E2E8-E12AF68EBD89}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Hit\Damage_Generic\enm_damage_generic_v2_06		3518
+	878564695	enm_damage_immune_12	I:\MA2\Magenta-Arcade_Wwise\.cache\1E\{1E03009A-2CC2-876D-AE42-4E82635A94E7}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Hit\Damage_Immune\enm_damage_immune_12		3274
+	878760216	enm_attack_round_explosion_a_01	I:\MA2\Magenta-Arcade_Wwise\.cache\85\{8586E501-43A5-CA77-E29D-C5F311DEBCD4}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Explosion\Round_Explosion\Round_Explosion_A\enm_attack_round_explosion_a_01		34962
+	880922227	enm_boss_lv4_dog_death_01	I:\MA2\Magenta-Arcade_Wwise\.cache\E3\{E3193EE9-55C2-0520-1808-C5FC5F35BB28}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Dog\enm_boss_lv4_dog_death_01		90817
+	882337857	enm_bomb_voice_short_05	I:\MA2\Magenta-Arcade_Wwise\.cache\62\{624EB050-09E5-59A8-E87A-AE941BA33881}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Short\enm_bomb_voice_short_05		2092
+	885970789	enm_boss_lv4_hand_tap_impact_03	I:\MA2\Magenta-Arcade_Wwise\.cache\B9\{B9214111-A658-8422-73A7-326111CE1669}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Hand\Tap\Tap_Impact\enm_boss_lv4_hand_tap_impact_03		33248
+	891452234	enm_boss_lv2_ball_bounce_02	I:\MA2\Magenta-Arcade_Wwise\.cache\B0\{B0279102-4FD1-8A4B-B9BD-0C55A39A25DA}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv2\Ball_Bounce\enm_boss_lv2_ball_bounce_02		1877
+	896068900	enm_boss_lv0_shoot_release_multiple_02	I:\MA2\Magenta-Arcade_Wwise\.cache\7F\{7F85A7DB-433A-A112-EDB7-FA500077376B}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_FAKESTATUE\Shoot_Release_Multiple\enm_boss_lv0_shoot_release_multiple_02		19243
+	896444676	enm_bomb_voice_up_05	I:\MA2\Magenta-Arcade_Wwise\.cache\66\{66BDFF18-BEFF-4801-01D0-1B52EEF2B18A}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Up\enm_bomb_voice_up_05		2938
+	899433962	enm_chaser_warning_04	I:\MA2\Magenta-Arcade_Wwise\.cache\26\{26DDB0C1-29EC-85FF-B8AA-52D1D1AB80B5}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_CHASER\Warning_Short\enm_chaser_warning_04		13028
+	905098208	enm_boss_lv3_train_movement_single_01	I:\MA2\Magenta-Arcade_Wwise\.cache\3C\{3CE96F79-6DA5-6F4B-EBF2-434FAED86F48}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Train_Movement_Single\enm_boss_lv3_train_movement_single_01		3729
+	914269626	enm_carpa_voice_path_01	I:\MA2\Magenta-Arcade_Wwise\.cache\29\{29367114-BA72-D47B-13AA-C5C974648B82}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_CARPA\Voice\Voice_Path\enm_carpa_voice_path_01		19851
+	916103152	enm_bomb_voice_short_17	I:\MA2\Magenta-Arcade_Wwise\.cache\CF\{CF2FF827-E517-3B6B-9734-B63C44B960EC}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Short\enm_bomb_voice_short_17		2075
+	918288449	enm_damage_metal_bits_04	I:\MA2\Magenta-Arcade_Wwise\.cache\14\{14578EF2-924B-F02B-595B-F6FAED07CE1D}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Death\Metal_Bits\enm_damage_metal_bits_04		13428
+	923528463	enm_boss_lv4_final_coffin_open_01	I:\MA2\Magenta-Arcade_Wwise\.cache\65\{65C8F151-66EA-50DD-87AF-9C087F837CD6}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Final\Coffin\Coffin_Open\enm_boss_lv4_final_coffin_open_01		4480
+	927119621	enm_boss_lv2_goal_whistle_03	I:\MA2\Magenta-Arcade_Wwise\.cache\63\{63CE5AE7-BEA8-BAC6-83DB-45AD72875696}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv2\Goal_Whistle\enm_boss_lv2_goal_whistle_03		3659
+	946713443	enm_boss_lv0_shoot_release_02	I:\MA2\Magenta-Arcade_Wwise\.cache\D5\{D5B72E96-C948-8FDB-C402-B71A33098D6B}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv0\Shoot Release\enm_boss_lv0_shoot_release_02		18104
+	951293771	enm_boss_lv0_shoot_release_multiple_04	I:\MA2\Magenta-Arcade_Wwise\.cache\6B\{6B81F59F-1A4F-3293-B862-6E74A96B9115}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv0\Shoot_Release_Multiple\enm_boss_lv0_shoot_release_multiple_04		19614
+	957008380	enm_damage_metal_bits_06	I:\MA2\Magenta-Arcade_Wwise\.cache\FE\{FE4D35BE-CE4C-9FBC-E3FB-8D2C94745E6D}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Death\Metal_Bits\enm_damage_metal_bits_06		17796
+	957389714	enm_boss_lv4_final_spirit_heal_01	I:\MA2\Magenta-Arcade_Wwise\.cache\66\{66B2D07A-F8E3-693B-9B06-45F691D8D272}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Final\Spirit\Spirit_Warning\enm_boss_lv4_final_spirit_heal_01		28499
+	962584044	enm_boss_lv3_main_immune_disable_02	I:\MA2\Magenta-Arcade_Wwise\.cache\7C\{7C7285EF-1DA1-67A8-92E3-65FF3B2203BF}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Main_Immune_Disable\enm_boss_lv3_main_immune_disable_02		29215
+	964889122	enm_boss_lv4_final_spirit_attack_04	I:\MA2\Magenta-Arcade_Wwise\.cache\C9\{C9083B17-C3BD-F97B-3ABC-CD227CA66D29}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Final\Spirit\Spirit_Attack\enm_boss_lv4_final_spirit_attack_04		11369
+	966915590	enm_bomb_jump_impact_03	I:\MA2\Magenta-Arcade_Wwise\.cache\59\{5974F49B-EBE6-1620-F029-FEBAA24BA88C}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Fall\enm_bomb_jump_impact_03		5097
+	972412042	enm_boss_lv2_ball_bounce_09	I:\MA2\Magenta-Arcade_Wwise\.cache\52\{52F4847A-E3D3-CF62-8AEB-16518E14946D}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv2\Ball_Bounce\enm_boss_lv2_ball_bounce_09		1878
+	974041015	enm_bomb_voice_short_12	I:\MA2\Magenta-Arcade_Wwise\.cache\77\{77D0918D-7802-60F0-2607-2D857C95E636}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Short\enm_bomb_voice_short_12		2052
+	974910142	world_lanes_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\15\{15E172FF-07E6-62E3-EC75-FE681A6A6B61}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Final\Machine_Walk\Lanes_Loop\world_lanes_loop_01		50823
+	980259225	enm_boss_lv1_shield_disable_01	I:\MA2\Magenta-Arcade_Wwise\.cache\2D\{2D2940BD-80BC-5C84-CFF2-2C74743216F4}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv1\Shield_Disable\enm_boss_lv1_shield_disable_01		42397
+	988635782	enm_boss_lv2_ball_bounce_05	I:\MA2\Magenta-Arcade_Wwise\.cache\35\{35F64337-B08B-943C-E415-B4198A676D8E}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv2\Ball_Bounce\enm_boss_lv2_ball_bounce_05		1882
+	992717742	enm_damage_generic_v2_03	I:\MA2\Magenta-Arcade_Wwise\.cache\13\{13ADD204-03A0-8DB5-80B2-F90516F12640}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Hit\Damage_Generic\enm_damage_generic_v2_03		3220
+	993562187	enm_boss_lv3_main_immune_disable_03	I:\MA2\Magenta-Arcade_Wwise\.cache\84\{842D15DE-7F69-8344-DFE3-9D437F6A1FC7}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Main_Immune_Disable\enm_boss_lv3_main_immune_disable_03		29421
+	996862949	enm_boss_lv3_train_movement_single_03	I:\MA2\Magenta-Arcade_Wwise\.cache\1C\{1C7E32E1-373D-5794-B7C2-290CEC3736DB}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Train_Movement_Single\enm_boss_lv3_train_movement_single_03		4062
+	997476720	enm_damage_generic_v2_04	I:\MA2\Magenta-Arcade_Wwise\.cache\E3\{E3A75349-E93F-F7DB-6BE4-111CA65BA708}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Hit\Damage_Generic\enm_damage_generic_v2_04		2902
+	1002473808	enm_boss_death_light_ray_04	I:\MA2\Magenta-Arcade_Wwise\.cache\47\{479771E6-A2AE-C2DB-C6CA-EB2586DB0037}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Death\Light_Ray\enm_boss_death_light_ray_04		17530
+	1004496309	enm_damage_generic_v2_07	I:\MA2\Magenta-Arcade_Wwise\.cache\30\{30FE0D15-07EF-FA2F-42AA-C1977EA0225D}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Hit\Damage_Generic\enm_damage_generic_v2_07		3225
+	1005198659	enm_boss_lv0_anim_firstphase_01	I:\MA2\Magenta-Arcade_Wwise\.cache\9C\{9CE07871-FAE1-F83B-576C-BD4A0C6EE48C}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv0\enm_boss_lv0_anim_firstphase_01		25881
+	1007819066	enm_carpa_voice_path_02	I:\MA2\Magenta-Arcade_Wwise\.cache\CB\{CB831CC0-A231-48DC-3006-0A61253CF8F9}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_CARPA\Voice\Voice_Path\enm_carpa_voice_path_02		19834
+	1011262200	enm_boss_lv4_hand_tap_impact_01	I:\MA2\Magenta-Arcade_Wwise\.cache\EB\{EB4E6EA4-79AE-3D47-2457-120AD55792B2}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Hand\Tap\Tap_Impact\enm_boss_lv4_hand_tap_impact_01		34572
+	1013993605	enm_bomb_voice_up_09	I:\MA2\Magenta-Arcade_Wwise\.cache\D5\{D5B8DAEB-ED79-B188-7085-2BD6EB0355C2}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Up\enm_bomb_voice_up_09		3279
+	1015634363	enm_boss_lv1_shield_block_02	I:\MA2\Magenta-Arcade_Wwise\.cache\94\{9477A5C6-4576-632C-6C9E-06049AB2F737}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv1\Shield_Block\enm_boss_lv1_shield_block_02		3473
+	1017278201	enm_boss_lv3_train_movement_single_06	I:\MA2\Magenta-Arcade_Wwise\.cache\A8\{A8A09AB9-B96F-64C4-AE8D-6D254EB24631}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Train_Movement_Single\enm_boss_lv3_train_movement_single_06		4280
+	1018879475	enm_boss_lv2_ball_bounce_04	I:\MA2\Magenta-Arcade_Wwise\.cache\05\{05556B6B-3527-6F14-8030-9D3C030EB5E4}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv2\Ball_Bounce\enm_boss_lv2_ball_bounce_04		1864
+	1018962752	enm_boss_lv4_final_coffin_drag_01	I:\MA2\Magenta-Arcade_Wwise\.cache\D4\{D4A8C7B4-4552-8085-DE3F-EE4B1CD98093}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Final\Coffin\enm_boss_lv4_final_coffin_drag_01		84504
+	1019305851	enm_boss_lv0_shoot_release_04	I:\MA2\Magenta-Arcade_Wwise\.cache\C6\{C66F4607-FDED-3932-2AB4-1806D37D4075}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv0\Shoot Release\enm_boss_lv0_shoot_release_04		19389
+	1026328465	enm_damage_explosion_basic_10	I:\MA2\Magenta-Arcade_Wwise\.cache\BD\{BD29FEB1-32A4-0F7B-AE4B-3BF879B31E29}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Death\Explosion_Basic\enm_damage_explosion_basic_10		23238
+	1026830687	enm_damage_explosion_basic_02	I:\MA2\Magenta-Arcade_Wwise\.cache\91\{91E8DD71-DC15-9A17-AA8F-21F697E3E966}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Death\Explosion_Basic_Part\enm_damage_explosion_basic_02		18333
+	1028528915	enm_boss_lv1_shoot_speaker_01	I:\MA2\Magenta-Arcade_Wwise\.cache\B5\{B5E2CBF2-6707-5D0A-10E4-0A8DA351E888}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv1\Shoot_Speaker\Shoot_Speaker\enm_boss_lv1_shoot_speaker_01		14382
+	1031751048	enm_boss_lv1_shield_disable_03	I:\MA2\Magenta-Arcade_Wwise\.cache\B5\{B5813051-99CC-9472-3ADF-5E0B692F1EDA}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv1\Shield_Disable\enm_boss_lv1_shield_disable_03		41491
+	1032293178	enm_boss_lv4_hand_punch_prepare_01	I:\MA2\Magenta-Arcade_Wwise\.cache\39\{39410010-D06F-9705-143C-A2BF7F0057AD}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Hand\Punch\Punch_Prepare\enm_boss_lv4_hand_punch_prepare_01		53920
+	1033309299	enm_boss_lv3_child_immune_disable_02	I:\MA2\Magenta-Arcade_Wwise\.cache\B4\{B48B58CA-9B23-F62C-85C1-B6E100D5F970}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Child_Immune_Disable\enm_boss_lv3_child_immune_disable_02		21528
+	1037964464	enm_attack_warning_start_03	I:\MA2\Magenta-Arcade_Wwise\.cache\0F\{0F5597A0-EEAA-1F1A-AAD9-39449EE5509B}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_ATTACK_Warning\Warning_Start\enm_attack_warning_start_03		28956
+	1038235612	enm_damage_immune_07	I:\MA2\Magenta-Arcade_Wwise\.cache\10\{101639BD-E7CD-6889-05B1-05C279284766}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Hit\Damage_Immune\enm_damage_immune_07		3215
+	1042662865	enm_bomb_jump_impact_06	I:\MA2\Magenta-Arcade_Wwise\.cache\35\{3511C4F0-1E23-64C1-6B53-75C31BCB5FB7}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Fall\enm_bomb_jump_impact_06		4324
+	1045325593	enm_boss_lv4_final_coffin_close_01	I:\MA2\Magenta-Arcade_Wwise\.cache\7E\{7EF38547-83F8-E6D7-13D8-C7786AFF08A8}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Final\Coffin\Coffin_Close\enm_boss_lv4_final_coffin_close_01		4308
+	1046935147	enm_damage_immune_10	I:\MA2\Magenta-Arcade_Wwise\.cache\8B\{8B5E6E97-4FD6-8829-78C9-85459530CEAD}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Hit\Damage_Immune\enm_damage_immune_10		3176
+	1052657572	enm_boss_lv4_final_laser_charge_01	I:\MA2\Magenta-Arcade_Wwise\.cache\ED\{ED8659D1-0FD3-C7D5-61AF-2DBE127934AD}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Final\Laser\Laser_Charge\enm_boss_lv4_final_laser_charge_01		34450
+	1054484312	enm_boss_lv2_goal_player_01	I:\MA2\Magenta-Arcade_Wwise\.cache\63\{632DBF93-9E6D-52C3-A70E-6D9F63A4D34C}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv2\Goal_Player\enm_boss_lv2_goal_player_01		17014
+	1057349539	enm_carpa_voice_impact_02	I:\MA2\Magenta-Arcade_Wwise\.cache\F7\{F7F0B854-4FCC-ABB6-443B-74FF504D37F0}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_CARPA\Voice\Voice_Impact\enm_carpa_voice_impact_02		9685
+	1058066865	enm_boss_lv4_dog_eat_start_01	I:\MA2\Magenta-Arcade_Wwise\.cache\2F\{2FBD8FE3-3424-EEC8-62FB-E8340925FF36}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Dog\Eat\Eat_Start\enm_boss_lv4_dog_eat_start_01		16421
+	1058847660	enm_boss_lv0_anim_secondphase_01	I:\MA2\Magenta-Arcade_Wwise\.cache\A7\{A79BCB0B-151A-3D0D-1484-E1142BCF115D}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_FAKESTATUE\Death\enm_boss_lv0_anim_secondphase_01		23271
+	1062657050	enm_damage_metal_bits_09	I:\MA2\Magenta-Arcade_Wwise\.cache\F6\{F67F34ED-9A23-A6FE-6D16-A16BE8CC24EC}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Death\Metal_Bits\enm_damage_metal_bits_09		12460
+	1063385400	enm_damage_metal_bits_02	I:\MA2\Magenta-Arcade_Wwise\.cache\53\{53BD7565-C993-9ADF-C814-022177966E53}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Death\Metal_Bits\enm_damage_metal_bits_02		13206
+	1067689354	enm_boss_lv1_anim_firstphase_01	I:\MA2\Magenta-Arcade_Wwise\.cache\4E\{4E8B2D7A-510A-7CC3-1348-1A8F26E1E52F}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv1\enm_boss_lv1_anim_firstphase_01		81368
+	1067812731	enm_damage_explosion_basic_01	I:\MA2\Magenta-Arcade_Wwise\.cache\32\{329D2E4C-9251-FBD3-FE35-FAC91B9557F9}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\DAMAGE\Death\Explosion_Basic_Part\enm_damage_explosion_basic_01		19058
+	1068873634	enm_bomb_voice_up_12	I:\MA2\Magenta-Arcade_Wwise\.cache\04\{04521F9B-319E-1B20-8C58-185324BB3ED7}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\ENEMY_BOMB\Voice\Voice_Up\enm_bomb_voice_up_12		3676
+	1072821850	enm_boss_lv4_dog_eat_suck_01	I:\MA2\Magenta-Arcade_Wwise\.cache\C1\{C157E2A1-DEC5-A0D6-B293-6040F48642E2}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv4_Dog\Eat\Eat_Suck\enm_boss_lv4_dog_eat_suck_01		50945
+	1073383560	enm_boss_lv3_child_immune_enable_01	I:\MA2\Magenta-Arcade_Wwise\.cache\C0\{C0DAA05D-98C8-BA83-4B83-F6D63C1615A7}.wem		\Actor-Mixer Hierarchy\Enemy\Enemies\BOSS\Lv3\Child_Immune_Enable\enm_boss_lv3_child_immune_enable_01		23086
+

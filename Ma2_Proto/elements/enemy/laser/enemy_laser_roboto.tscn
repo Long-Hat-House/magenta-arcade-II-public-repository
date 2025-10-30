@@ -1,0 +1,122 @@
+[gd_scene load_steps=15 format=3 uid="uid://c200go5gdekh0"]
+
+[ext_resource type="Script" uid="uid://cnn0folfpvnk2" path="res://elements/enemy/laser/ai_laser_roboto.gd" id="1_8xdq7"]
+[ext_resource type="PackedScene" uid="uid://tlfhh2r1inw3" path="res://elements/enemy/laser/mesh/laserroboto_graphic.tscn" id="2_1xjko"]
+[ext_resource type="PackedScene" uid="uid://ywymskkj85vs" path="res://elements/vfx/vfx_explosion/vfx_explosion.tscn" id="2_8ssuj"]
+[ext_resource type="Script" uid="uid://daxqix7g0q5bj" path="res://systems/pooling/poolable.gd" id="3_4duus"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="3_tcjxk"]
+[ext_resource type="Script" uid="uid://dj2x7ekyg32b7" path="res://systems/score/score_giver.gd" id="4_bola8"]
+[ext_resource type="PackedScene" uid="uid://elu46raggotb" path="res://elements/enemy/projectiles/proj_laser/laser_area.tscn" id="4_wxjl1"]
+[ext_resource type="Resource" uid="uid://byvfb5i4ltg7h" path="res://systems/time/frame_freeze_medium.tres" id="5_4nsxh"]
+[ext_resource type="Resource" uid="uid://dnok2q0jiq0to" path="res://elements/score/score_info_laser.tres" id="7_36x7c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uppq3"]
+size = Vector3(1.2606, 1.07518, 1.28847)
+
+[sub_resource type="Animation" id="Animation_5rm7k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Render:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_q6ymc"]
+resource_name = "damaged"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Render:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(0.307786, 1),
+"update": 0,
+"values": [Vector3(1.05, 1.05, 1.05), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_i5e1k"]
+resource_name = "idle"
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pyqkc"]
+_data = {
+&"RESET": SubResource("Animation_5rm7k"),
+&"damaged": SubResource("Animation_q6ymc"),
+&"idle": SubResource("Animation_i5e1k")
+}
+
+[node name="Enemy Laser Roboto" type="Node3D"]
+script = ExtResource("1_8xdq7")
+angleMax = 60.0
+vfxOnDie = ExtResource("2_8ssuj")
+distanceMax = 8.0
+walkAndStop = true
+walkVelocity = Vector3(0, 0, 3)
+
+[node name="Poolable" type="Node" parent="."]
+script = ExtResource("3_4duus")
+
+[node name="Body" type="CharacterBody3D" parent="." groups=["enemy_position"]]
+collision_layer = 4
+collision_mask = 2
+velocity = Vector3(0, 0, 100)
+
+[node name="Health" type="Node" parent="Body" node_paths=PackedStringArray("feedback") groups=["enemy_healths"]]
+script = ExtResource("3_tcjxk")
+max_amount = 2.4
+feedback = [NodePath("../Render/laserroboto_graphic")]
+frame_freeze_on_death = ExtResource("5_4nsxh")
+
+[node name="ScoreGiver" type="Node" parent="Body" node_paths=PackedStringArray("health")]
+script = ExtResource("4_bola8")
+info = ExtResource("7_36x7c")
+health = NodePath("../Health")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0239785, 0.534749, 0.197833)
+shape = SubResource("BoxShape3D_uppq3")
+
+[node name="Render" type="Node3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+
+[node name="laserroboto_graphic" parent="Body/Render" instance=ExtResource("2_1xjko")]
+
+[node name="LaserArea" parent="Body" instance=ExtResource("4_wxjl1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.710735, 0.909964)
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.686264, 0)
+aabb = AABB(-0.732452, -0.694691, -0.915079, 1.4649, 1.38938, 1.83016)
+
+[node name="AI" type="Node" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AI"]
+root_node = NodePath("../../Body")
+libraries = {
+&"": SubResource("AnimationLibrary_pyqkc")
+}
+autoplay = "idle"
+
+[node name="TimerWarning" type="Timer" parent="."]
+wait_time = 0.85
+
+[node name="TimerLaser" type="Timer" parent="."]
+wait_time = 2.15
+
+[node name="TimerAfter" type="Timer" parent="."]
+wait_time = 0.55
+
+[connection signal="dead" from="Body/Health" to="." method="_on_health_dead"]
+[connection signal="hit" from="Body/Health" to="." method="_on_health_hit"]
+[connection signal="screen_entered" from="Body/VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]
+[connection signal="screen_exited" from="Body/VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

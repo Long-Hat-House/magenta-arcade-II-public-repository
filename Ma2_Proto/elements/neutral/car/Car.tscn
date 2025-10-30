@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbd1pp3440nlr"]
+
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="1_2m5tx"]
+[ext_resource type="Script" uid="uid://ddswssaudlw51" path="res://elements/neutral/car/element_car.gd" id="1_7y86h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3vm7d"]
+size = Vector3(1.97765, 1.78174, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_loeyg"]
+albedo_color = Color(0.152941, 0.152941, 0.152941, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rgmey"]
+material = SubResource("StandardMaterial3D_loeyg")
+top_radius = 0.3
+bottom_radius = 0.3
+height = 2.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_mrvll"]
+size = Vector3(2, 1.5, 3)
+
+[node name="Car" type="StaticBody3D"]
+script = ExtResource("1_7y86h")
+
+[node name="CenterOfMass" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00502396, 0.890869, 0)
+shape = SubResource("BoxShape3D_3vm7d")
+
+[node name="Model" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.298673, 0)
+
+[node name="Wheel" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -1)
+mesh = SubResource("CylinderMesh_rgmey")
+skeleton = NodePath("../..")
+
+[node name="Wheel2" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 1)
+mesh = SubResource("CylinderMesh_rgmey")
+skeleton = NodePath("../..")
+
+[node name="Box" type="Node3D" parent="Model"]
+
+[node name="Box" type="MeshInstance3D" parent="Model/Box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.746962, 0)
+mesh = SubResource("BoxMesh_mrvll")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("1_2m5tx")
+
+[connection signal="dead" from="Health" to="." method="_on_health_dead"]
+[connection signal="hit" from="Health" to="." method="_on_health_hit"]

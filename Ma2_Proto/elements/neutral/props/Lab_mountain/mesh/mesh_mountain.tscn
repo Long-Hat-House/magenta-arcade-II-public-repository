@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0ljskkckqxgx"]
+
+[ext_resource type="PackedScene" uid="uid://do3bydpffkws4" path="res://elements/neutral/props/Lab_mountain/mesh/mountain.glb" id="1_ukwq0"]
+[ext_resource type="Material" uid="uid://dw1bp0ujuxfex" path="res://elements/neutral/props/Lab_mountain/material/m_mountain.tres" id="2_dbghn"]
+
+[node name="mountain" instance=ExtResource("1_ukwq0")]
+
+[node name="mountain" parent="." index="0"]
+material_override = ExtResource("2_dbghn")

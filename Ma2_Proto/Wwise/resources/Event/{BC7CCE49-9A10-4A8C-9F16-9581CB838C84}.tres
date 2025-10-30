@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://cxmqr8ty86jfb"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_TitleScreenStart"
+id = 2656257272
+guid = "{BC7CCE49-9A10-4A8C-9F16-9581CB838C84}"
+dummy = true

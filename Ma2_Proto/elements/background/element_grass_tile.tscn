@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyqa4jwyio6sd"]
+
+[ext_resource type="Material" uid="uid://c1jb3hbbmw1an" path="res://elements/background/material/m_grass_tile01.tres" id="1_pl75u"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_mla1p"]
+
+[node name="grass_tile" type="Node3D"]
+
+[node name="grass" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 3, 0, -3, -1.31134e-07, 0, 0, -0.00544859)
+material_override = ExtResource("1_pl75u")
+mesh = SubResource("QuadMesh_mla1p")

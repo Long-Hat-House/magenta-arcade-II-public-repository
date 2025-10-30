@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvn70k86sknr6"]
+
+[ext_resource type="PackedScene" uid="uid://d4jauiwmtup0j" path="res://elements/enemy/smoke/enemy_smoke.tscn" id="1_5s85f"]
+[ext_resource type="Script" uid="uid://c04hf1fjmqgil" path="res://elements/enemy/projectiles/damage_area/damage_node.gd" id="2_40wgc"]
+[ext_resource type="Shader" uid="uid://dbo2ciyspgktb" path="res://elements/enemy/smoke/shader_smoke_poison.tres" id="2_ssoyd"]
+[ext_resource type="PackedScene" uid="uid://b4md3siixvr8q" path="res://systems/projectile/projectile_proxy.tscn" id="4_w3amc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2bpgu"]
+render_priority = 0
+shader = ExtResource("2_ssoyd")
+shader_parameter/ColorA = Color(1, 0.364706, 1, 1)
+shader_parameter/ColorB = Color(1, 0.364706, 0.27451, 1)
+shader_parameter/TimeMultiplier = Vector3(0.6, 0.1, -0.3)
+shader_parameter/PositionMultiplier = Vector3(0.5, 0, -2)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mo5e8"]
+custom_solver_bias = 0.05
+radius = 0.75
+height = 3.0
+
+[node name="EnemySmoke_Poison" instance=ExtResource("1_5s85f")]
+time_delay = 1.5
+height = -0.25
+max_velocity = 8.0
+max_acceleration_done = 10.0
+sensivity_acceleration = 3.0
+time_to_accelerate = 1.5
+
+[node name="MeshInstance3D" parent="Scaler/graphic" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0657824, 0, -0.197012)
+surface_material_override/0 = SubResource("ShaderMaterial_2bpgu")
+
+[node name="AccessibilityHighContrastObject" parent="Scaler/graphic/MeshInstance3D" index="0"]
+high_contrast_group = &"danger"
+
+[node name="Area3D" parent="Scaler" index="1"]
+collision_mask = 26
+
+[node name="Health" parent="Scaler/Area3D" index="0"]
+max_amount = 0.45
+debug = true
+
+[node name="DamageArea" type="Area3D" parent="Scaler" index="2"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Scaler/DamageArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.625, 0)
+shape = SubResource("CapsuleShape3D_mo5e8")
+
+[node name="DamageNode" type="Node" parent="Scaler/DamageArea" index="1" node_paths=PackedStringArray("origin")]
+script = ExtResource("2_40wgc")
+origin = NodePath("..")
+scores = false
+
+[node name="ProjectileProxy" parent="." index="1" instance=ExtResource("4_w3amc")]
+
+[connection signal="body_entered" from="Scaler/DamageArea" to="Scaler/DamageArea/DamageNode" method="add_body"]
+[connection signal="call_destroy" from="ProjectileProxy" to="." method="_on_projectile_proxy_call_destroy"]

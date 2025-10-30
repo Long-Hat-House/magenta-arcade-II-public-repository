@@ -1,0 +1,69 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1046921192	Play_UI_Power_Tap_Ready			\DEV\Lucas (PLACEHOLDER SOUNDS)\Play_UI_Power_Tap_Ready	
+	1268101726	Play_Amb_Hub			\World\Ambience\Play_Amb_Hub	
+	1660391987	VFX_Destroy_Leaves			\World\Ambience\VFX_Destroy_Leaves	
+	2037655476	VFX_Destroy_Metal			\World\Ambience\VFX_Destroy_Metal	
+	2312513128	Play_Level_Entry_CloudsShoosh			\World\Ambience\Play_Level_Entry_CloudsShoosh	
+	2379343577	Play_Amb_Lv0_Flag_Destroy			\World\Ambience\Play_Amb_Lv0_Flag_Destroy	
+	2977984093	Play_Thommaz_v2			\Default Work Unit\Play_Thommaz_v2	
+	2984140529	Play_UI_Challenge_TextPop			\DEV\Lucas (PLACEHOLDER SOUNDS)\Play_UI_Challenge_TextPop	
+	3133474680	VFX_Destroy_Wood			\World\Ambience\VFX_Destroy_Wood	
+	4075747422	Play_DEBUG_Stereo			\Default Work Unit\Play_DEBUG_Stereo	
+
+State Group	ID	Name			Wwise Object Path	Notes
+	646625282	Hub			\Default Work Unit\Hub	
+
+State	ID	Name	State Group			Notes
+	26822469	Exit	Hub			
+	748895195	None	Hub			
+	782826392	Default	Hub			
+	2368844905	Enter	Hub			
+	3349798655	Phone_Zap	Hub			
+	4265022948	Phone_Ringtone	Hub			
+
+Modulator Envelope	ID	Name			Wwise Object Path	Notes
+	300298973	Modulator Envelope (Custom)				
+
+Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
+	75097291	Sine	Wwise Sine		\Actor-Mixer Hierarchy\_DEBUG\DEBUG_Sounds\Beep_Short\Sine	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	38262972	side_left	I:\MA2\Magenta-Arcade_Wwise\.cache\CA\{CAD7113B-652E-BAC5-4673-0B954425EE5B}.wem		\Interactive Music Hierarchy\Accessibility\Debug Stereo\side_left\side_left		1300
+	41468827	world_destructable_leaves_08	I:\MA2\Magenta-Arcade_Wwise\.cache\00\{00B83284-AF12-5A95-794C-56FC1C4F5731}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\Leaves\world_destructable_leaves_08		12141
+	67829217	world_destructable_wood_09	I:\MA2\Magenta-Arcade_Wwise\.cache\31\{3110F6A2-CE12-CA41-7B7B-60CA3F6172B2}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\Wood\world_destructable_wood_09		11440
+	177252190	world_destructable_leaves_10	I:\MA2\Magenta-Arcade_Wwise\.cache\4B\{4BB67C09-EC26-2FDD-5C7C-534DDAA139C9}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\Leaves\world_destructable_leaves_10		12079
+	306624223	world_destructable_leaves_04	I:\MA2\Magenta-Arcade_Wwise\.cache\9C\{9C471038-D70A-6C0A-B9EA-6430D93B23BE}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\Leaves\world_destructable_leaves_04		10851
+	318317322	world_destructable_leaves_05	I:\MA2\Magenta-Arcade_Wwise\.cache\D4\{D4F20552-36E5-45B1-DBE8-754E1F1AD6BC}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\Leaves\world_destructable_leaves_05		10609
+	342250292	world_destructable_wood_05	I:\MA2\Magenta-Arcade_Wwise\.cache\2A\{2AC0315D-C7B0-7DB9-FD56-D56AA9DE80D1}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\Wood\world_destructable_wood_05		11162
+	358167682	world_destructable_wood_04	I:\MA2\Magenta-Arcade_Wwise\.cache\BA\{BA6D8E67-A001-29BE-6C16-9A74BC9C219D}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\Wood\world_destructable_wood_04		11701
+	363654483	world_destructable_wood_07	I:\MA2\Magenta-Arcade_Wwise\.cache\3A\{3AF119C1-6E40-3929-DFC5-54064BF65C8E}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\Wood\world_destructable_wood_07		13064
+	396481149	world_destructable_metal_07	I:\MA2\Magenta-Arcade_Wwise\.cache\1F\{1FDDEEBB-470B-52EC-CD45-1869E234E7CF}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\Metal\world_destructable_metal_07		14022
+	426923852	world_destructable_leaves_09	I:\MA2\Magenta-Arcade_Wwise\.cache\0F\{0F6428FA-558E-F205-E4A0-B69CC1961F52}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\Leaves\world_destructable_leaves_09		10573
+	483303756	world_destructable_metal_04	I:\MA2\Magenta-Arcade_Wwise\.cache\5E\{5ECC4901-D35B-0890-FFD3-2837476DC5E8}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\Metal\world_destructable_metal_04		11679
+	573195642	world_destructable_wood_02	I:\MA2\Magenta-Arcade_Wwise\.cache\3A\{3A0DC212-D048-482D-1352-7EAB64F6FE30}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\Wood\world_destructable_wood_02		15228
+	586385634	world_flag_fall_01	I:\MA2\Magenta-Arcade_Wwise\.cache\9F\{9FCA7E29-DE69-95D9-1E83-262FFB377FDA}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\world_flag_fall_01		82140
+	591683459	side_right	I:\MA2\Magenta-Arcade_Wwise\.cache\F2\{F2ADFC63-2123-A4AD-FEE6-7F4769CF4745}.wem		\Interactive Music Hierarchy\Accessibility\Debug Stereo\side_stereo\side_right		1300
+	629513376	world_destructable_wood_01	I:\MA2\Magenta-Arcade_Wwise\.cache\36\{361A1FC9-4D09-2C48-828D-13E15D54BD15}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\Wood\world_destructable_wood_01		12600
+	642526476	world_ambience_hub_01	I:\MA2\Magenta-Arcade_Wwise\.cache\EF\{EF3C16D4-8E1B-C291-F8D2-0ACD9D7FB1CB}.wem		\Actor-Mixer Hierarchy\World\WORLD_Ambience\Ambience_Main\world_ambience_hub_01		1140362
+	683876415	world_destructable_leaves_03	I:\MA2\Magenta-Arcade_Wwise\.cache\D8\{D80BAF13-391C-9566-F8AE-A34F152C4BFF}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\Leaves\world_destructable_leaves_03		10523
+	713259567	world_destructable_wood_08	I:\MA2\Magenta-Arcade_Wwise\.cache\DA\{DAD6A33A-5B3F-CC46-8889-CEAD8CCAD5DF}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\Wood\world_destructable_wood_08		13657
+	736304229	world_destructable_metal_06	I:\MA2\Magenta-Arcade_Wwise\.cache\A9\{A9F5C4CA-059A-AA28-54EC-D2EA43A025C6}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\Metal\world_destructable_metal_06		14142
+	745268164	world_destructable_leaves_01	I:\MA2\Magenta-Arcade_Wwise\.cache\1B\{1BABC2C2-EC14-EC1E-9849-3F50ACC1B7CE}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\Leaves\world_destructable_leaves_01		10817
+	750103033	world_destructable_wood_10	I:\MA2\Magenta-Arcade_Wwise\.cache\E0\{E07B1046-284C-825F-BC9E-E9E0E0DD77AD}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\Wood\world_destructable_wood_10		11511
+	805737547	world_destructable_wood_03	I:\MA2\Magenta-Arcade_Wwise\.cache\05\{05BF1429-999F-2914-CBDE-983966D1F73E}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\Wood\world_destructable_wood_03		10580
+	833345511	world_destructable_leaves_07	I:\MA2\Magenta-Arcade_Wwise\.cache\57\{5711646F-391C-196F-3F35-EE0C100DFDB9}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\Leaves\world_destructable_leaves_07		10797
+	877809281	ui_level_clear_step_complete_01	I:\MA2\Magenta-Arcade_Wwise\.cache\B0\{B0D180D0-0354-D147-1B00-06C13DA374D7}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Screens\Level Clear\LevelClear_Complete\ui_level_clear_step_complete_01		150868
+	897574328	world_destructable_leaves_02	I:\MA2\Magenta-Arcade_Wwise\.cache\BC\{BC8E1C23-12B7-C65B-E5EB-AC64BC43104A}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\Leaves\world_destructable_leaves_02		12004
+	943685488	ui_button_slider_02	I:\MA2\Magenta-Arcade_Wwise\.cache\66\{66F013EF-493D-2569-F2B9-6D40AE82AC0B}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Buttons\Button_Slider_Change\ui_button_slider_02		468
+	955210360	ui_button_slider_01	I:\MA2\Magenta-Arcade_Wwise\.cache\38\{3833D584-CFD7-0FC5-5726-341932D128A3}.wem		\Actor-Mixer Hierarchy\UI\UI_Sounds\Buttons\Button_Slider_Change\ui_button_slider_01		464
+	970652592	world_destructable_wood_06	I:\MA2\Magenta-Arcade_Wwise\.cache\05\{05926FF7-BE98-4F94-8ADC-E761054E800D}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\Wood\world_destructable_wood_06		12044
+	994893637	world_destructable_metal_05	I:\MA2\Magenta-Arcade_Wwise\.cache\4F\{4F6A9D92-BEB6-E8B3-02D2-FB4A0D509374}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\Metal\world_destructable_metal_05		12835
+	1011547700	world_destructable_leaves_06	I:\MA2\Magenta-Arcade_Wwise\.cache\4A\{4A26EF83-269F-2BA2-C0A2-48E46E368594}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\Leaves\world_destructable_leaves_06		12163
+	1031695539	world_destructable_metal_03	I:\MA2\Magenta-Arcade_Wwise\.cache\8E\{8E25C003-23FD-75B2-2E13-858A6FEBE0E9}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\Metal\world_destructable_metal_03		14412
+	1064484946	world_destructable_metal_01	I:\MA2\Magenta-Arcade_Wwise\.cache\93\{933D411A-C791-E264-8F62-C3530FDB2F6C}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\Metal\world_destructable_metal_01		13244
+	1067286691	world_destructable_metal_02	I:\MA2\Magenta-Arcade_Wwise\.cache\62\{621A48D5-CE82-BDF9-142E-144956CE2ECE}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Destructables\Metal\world_destructable_metal_02		14689
+
+Streamed Audio	ID	Name	Audio source file	Generated audio file	Wwise Object Path	Notes
+	38262972	side_left	I:\MA2\Magenta-Arcade_Wwise\.cache\CA\{CAD7113B-652E-BAC5-4673-0B954425EE5B}.wem	38262972.wem	\Interactive Music Hierarchy\Accessibility\Debug Stereo\side_left\side_left	
+	591683459	side_right	I:\MA2\Magenta-Arcade_Wwise\.cache\F2\{F2ADFC63-2123-A4AD-FEE6-7F4769CF4745}.wem	591683459.wem	\Interactive Music Hierarchy\Accessibility\Debug Stereo\side_stereo\side_right	
+

@@ -1,0 +1,85 @@
+Event	ID	Name			Wwise Object Path	Notes
+	124492286	Play_Int_Pressable_Button_Cassette_Open			\World\Interactable\Pressable_Button\Play_Int_Pressable_Button_Cassette_Open	
+	326371423	Play_Int_Altar_Close_End			\World\Interactable\Altar\Play_Int_Altar_Close_End	
+	579027082	Play_Int_Holdable_Button_On			\World\Interactable\Holdable_Button\Play_Int_Holdable_Button_On	
+	753128724	Stop_World_Lanes_Hub			\World\Interactable\Lanes\Stop_World_Lanes_Hub	
+	807251578	Play_World_Lanes_Hub			\World\Interactable\Lanes\Play_World_Lanes_Hub	
+	1308077237	Play_Int_Pressable_Button_UpgradeSet_On			\World\Interactable\Pressable_Button\Play_Int_Pressable_Button_UpgradeSet_On	
+	1428185736	Reset_UI_Upgrade_Stars			\UI\Upgrade\Reset_UI_Upgrade_Stars	
+	1622153173	Play_Int_Pressable_Button_Cassette_Off			\World\Interactable\Pressable_Button\Play_Int_Pressable_Button_Cassette_Off	
+	1905457451	Play_Int_Pressable_Button_Round_Off			\World\Interactable\Pressable_Button\Play_Int_Pressable_Button_Round_Off	
+	1929620237	Stop_Int_Phone_Ringing			\World\Interactable\Phone\Stop_Int_Phone_Ringing	
+	2045046241	Play_Int_Pressable_Button_UpgradeSet_Off			\World\Interactable\Pressable_Button\Play_Int_Pressable_Button_UpgradeSet_Off	
+	2486052939	Play_Int_Phone_Ringing			\World\Interactable\Phone\Play_Int_Phone_Ringing	
+	2524483255	Stop_Int_Holdable_Button_Charge			\World\Interactable\Holdable_Button\Stop_Int_Holdable_Button_Charge	
+	2601660719	Play_Int_Phone_Open			\World\Interactable\Phone\Play_Int_Phone_Open	
+	2854315415	Play_Int_Pressable_Button_Round_On			\World\Interactable\Pressable_Button\Play_Int_Pressable_Button_Round_On	
+	2939933975	Play_Int_Altar_Open			\World\Interactable\Altar\Play_Int_Altar_Open	
+	3291165179	Play_Int_Altar_Destroy			\World\Interactable\Altar\Play_Int_Altar_Destroy	
+	3307402533	Play_Int_Phone_Close			\World\Interactable\Phone\Play_Int_Phone_Close	
+	3506300265	Play_Int_Pressable_Button_Cassette_On			\World\Interactable\Pressable_Button\Play_Int_Pressable_Button_Cassette_On	
+	3531596961	Play_Int_Holdable_Button_Charge			\World\Interactable\Holdable_Button\Play_Int_Holdable_Button_Charge	
+	3600714944	Play_Int_Holdable_Button_Off			\World\Interactable\Holdable_Button\Play_Int_Holdable_Button_Off	
+	4059652730	Play_Int_Pressable_Button_Cassette_Close			\World\Interactable\Pressable_Button\Play_Int_Pressable_Button_Cassette_Close	
+	4119019645	Play_Int_Altar_Close			\World\Interactable\Altar\Play_Int_Altar_Close	
+
+State Group	ID	Name			Wwise Object Path	Notes
+	646625282	Hub			\Default Work Unit\Hub	
+
+State	ID	Name	State Group			Notes
+	26822469	Exit	Hub			
+	748895195	None	Hub			
+	782826392	Default	Hub			
+	2368844905	Enter	Hub			
+	3349798655	Phone_Zap	Hub			
+	4265022948	Phone_Ringtone	Hub			
+
+Modulator Envelope	ID	Name			Wwise Object Path	Notes
+	1071721072	Modulator Envelope (Custom)				
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	23679032	world_int_altar_open_02	I:\MA2\Magenta-Arcade_Wwise\.cache\52\{52F6C91F-2F93-6FA7-3011-F73442C30AEF}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Altar\Altar_Open\world_int_altar_open_02		8524
+	24412398	world_int_altar_destroy_05	I:\MA2\Magenta-Arcade_Wwise\.cache\A6\{A6027543-94FD-B6C1-5BB6-7807B7895F5D}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Altar\Altar_Destroy\world_int_altar_destroy_05		25156
+	71724442	world_int_pressable_button_round_off_01	I:\MA2\Magenta-Arcade_Wwise\.cache\35\{35A0CAF2-5A7E-B2C4-346E-BA51F45ADCA2}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Clicks\Round_Off\world_int_pressable_button_round_off_01		4358
+	91302350	world_int_altar_close_end_03	I:\MA2\Magenta-Arcade_Wwise\.cache\FA\{FA38F2D3-A340-1AFE-85E9-251AF775748E}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Altar\Altar_Close_End\world_int_altar_close_end_03		6156
+	123794605	world_int_pressable_button_cassete_on_02	I:\MA2\Magenta-Arcade_Wwise\.cache\EF\{EFB8ECAA-64F8-61CE-837F-48C732AE37A8}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Clicks\Cassette_On\world_int_pressable_button_cassete_on_02		11865
+	136481630	world_int_altar_close_01	I:\MA2\Magenta-Arcade_Wwise\.cache\2F\{2F0A43ED-F9DB-012D-D19D-E41D78C1427E}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Altar\Altar_Close\world_int_altar_close_01		5531
+	148086566	world_int_holdable_button_click_off_03	I:\MA2\Magenta-Arcade_Wwise\.cache\0A\{0A048ED2-504F-54A1-7E9F-120EEA0F3CB5}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Clicks\Holdable_Off\world_int_holdable_button_click_off_03		3718
+	168160162	world_int_altar_close_03	I:\MA2\Magenta-Arcade_Wwise\.cache\07\{07744F97-351D-9CAC-DDE5-706355B6497A}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Altar\Altar_Close\world_int_altar_close_03		6405
+	181189918	world_int_altar_close_end_01	I:\MA2\Magenta-Arcade_Wwise\.cache\5B\{5B403D59-CAFB-C2CD-D3BB-264247ADBE0F}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Altar\Altar_Close_End\world_int_altar_close_end_01		5957
+	271404527	world_int_altar_open_01	I:\MA2\Magenta-Arcade_Wwise\.cache\95\{95583BD8-D4A3-6DE5-B81E-DA7D03769E72}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Altar\Altar_Open\world_int_altar_open_01		11193
+	275774841	world_int_pressable_button_round_on_03	I:\MA2\Magenta-Arcade_Wwise\.cache\B6\{B6B41A99-6968-5AAF-A20A-EAAD1D049B13}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Clicks\Round_On\world_int_pressable_button_round_on_03		14200
+	280869895	world_int_altar_open_03	I:\MA2\Magenta-Arcade_Wwise\.cache\95\{9500D1B9-9A7E-2938-B551-7E2344CD6945}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Altar\Altar_Open\world_int_altar_open_03		11900
+	301530366	world_int_pressable_button_round_on_02	I:\MA2\Magenta-Arcade_Wwise\.cache\17\{1710E1A5-E021-C64F-AFE8-B509BDE8B77C}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Clicks\Round_On\world_int_pressable_button_round_on_02		13826
+	304711488	world_int_pressable_button_cassete_open_01	I:\MA2\Magenta-Arcade_Wwise\.cache\0C\{0CACC9BC-1948-F194-3D04-E799BAA4F31F}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Hub_Objects\Cassette\Cassette_Open\world_int_pressable_button_cassete_open_01		15684
+	369411917	world_int_pressable_button_round_on_01	I:\MA2\Magenta-Arcade_Wwise\.cache\C3\{C393B127-EC12-B3A2-1A0A-DD2FE2B9157B}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Clicks\Round_On\world_int_pressable_button_round_on_01		13296
+	381512371	world_phone_ringtone_01	I:\MA2\Magenta-Arcade_Wwise\.cache\D6\{D63D21ED-67C4-69AF-7736-3AC8A93FD08C}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Hub_Objects\Phone\world_phone_ringtone_01		483407
+	416866362	world_int_altar_destroy_01	I:\MA2\Magenta-Arcade_Wwise\.cache\BA\{BAFE4470-09D9-45BB-77EE-E7E72B587620}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Altar\Altar_Destroy\world_int_altar_destroy_01		24709
+	453381900	world_int_pressable_button_round_off_02	I:\MA2\Magenta-Arcade_Wwise\.cache\AB\{AB14E280-F564-7766-D7B9-DD2CADA9C1ED}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Clicks\Round_Off\world_int_pressable_button_round_off_02		3840
+	485767167	world_int_pressable_button_upgrade_on_02	I:\MA2\Magenta-Arcade_Wwise\.cache\A8\{A8E50F04-F45D-D9D0-15A1-B80CBB2741F3}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Clicks\UpgradeSet_On\world_int_pressable_button_upgrade_on_02		14817
+	486423175	world_int_pressable_button_upgrade_on_03	I:\MA2\Magenta-Arcade_Wwise\.cache\C3\{C3B5D3FB-E39F-85A8-BFED-2DEBC817B38B}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Clicks\UpgradeSet_On\world_int_pressable_button_upgrade_on_03		14306
+	506857354	world_int_button_charge_01	I:\MA2\Magenta-Arcade_Wwise\.cache\92\{92FCA0A6-63C3-EA96-BF9A-A2EE09F437E6}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Charges\world_int_button_charge_01		78748
+	508054095	world_int_holdable_button_click_on_02	I:\MA2\Magenta-Arcade_Wwise\.cache\26\{266D6C3A-924D-6951-3D12-4BE152F5AFCC}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Clicks\Holdable_On\world_int_holdable_button_click_on_02		2778
+	511891507	world_int_button_charge_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\24\{249E15F0-C532-C9CE-47B2-D359D8947B4E}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Charges\world_int_button_charge_loop_01		7203
+	526644685	world_int_pressable_button_upgrade_off_01	I:\MA2\Magenta-Arcade_Wwise\.cache\9B\{9B78BB86-D538-FAC0-BE34-43755C8106D3}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Clicks\UpgradeSet_Off\world_int_pressable_button_upgrade_off_01		8322
+	566355601	world_int_pressable_button_round_off_03	I:\MA2\Magenta-Arcade_Wwise\.cache\44\{44455426-9F66-9718-A461-AFAA0421E5FF}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Clicks\Round_Off\world_int_pressable_button_round_off_03		4206
+	591659579	world_int_holdable_button_click_on_03	I:\MA2\Magenta-Arcade_Wwise\.cache\25\{25FBEF2C-417D-B478-9D6C-29E7A3519D28}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Clicks\Holdable_On\world_int_holdable_button_click_on_03		2602
+	596795654	world_int_holdable_button_click_off_02	I:\MA2\Magenta-Arcade_Wwise\.cache\86\{861686E9-128D-CED1-B0FF-A8C2A7DA17E4}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Clicks\Holdable_Off\world_int_holdable_button_click_off_02		3885
+	644096736	world_int_pressable_button_cassete_close_01	I:\MA2\Magenta-Arcade_Wwise\.cache\6F\{6F1592E8-966A-403C-66E2-DF98C5672EE6}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Hub_Objects\Cassette\Cassette_Close\world_int_pressable_button_cassete_close_01		14558
+	644281927	world_int_pressable_button_cassete_on_01	I:\MA2\Magenta-Arcade_Wwise\.cache\8A\{8AD11B1B-03E2-F4B2-340D-91DD753B2FAA}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Clicks\Cassette_On\world_int_pressable_button_cassete_on_01		12712
+	689697624	world_lanes_hub_cogs_01	I:\MA2\Magenta-Arcade_Wwise\.cache\C0\{C0AA28D3-3858-DD2B-5BCB-298F0B5D95AF}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Hub_Objects\Cogs\world_lanes_hub_cogs_01		11564
+	708031335	world_int_pressable_button_upgrade_on_01	I:\MA2\Magenta-Arcade_Wwise\.cache\FC\{FC208DAC-025C-D34D-0C30-0A9D1D60321D}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Clicks\UpgradeSet_On\world_int_pressable_button_upgrade_on_01		14533
+	743852740	world_int_altar_close_02	I:\MA2\Magenta-Arcade_Wwise\.cache\8D\{8D537E77-04BA-6EFD-83BF-27651633AF19}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Altar\Altar_Close\world_int_altar_close_02		7258
+	756017864	world_phone_open_movement_01	I:\MA2\Magenta-Arcade_Wwise\.cache\4F\{4F945243-6A95-D70D-E288-C0465514DCEB}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Hub_Objects\Phone\Phone_Open\world_phone_open_movement_01		88046
+	844801816	world_int_holdable_button_click_off_01	I:\MA2\Magenta-Arcade_Wwise\.cache\7F\{7FF73523-BCCF-DDCA-C419-D80D5E2855AE}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Clicks\Holdable_Off\world_int_holdable_button_click_off_01		4776
+	861518492	world_lanes_hub_cogs_02	I:\MA2\Magenta-Arcade_Wwise\.cache\4D\{4D9D3AB7-3699-852F-060F-2190BA3AFFCA}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Hub_Objects\Cogs\world_lanes_hub_cogs_02		13722
+	867480489	world_int_holdable_button_click_on_01	I:\MA2\Magenta-Arcade_Wwise\.cache\63\{6346012C-DDB5-7A3D-428C-0B5BC76E2C87}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Clicks\Holdable_On\world_int_holdable_button_click_on_01		2340
+	878864194	world_phone_close_movement_01	I:\MA2\Magenta-Arcade_Wwise\.cache\57\{5718C517-6ADD-50A4-9DA6-595D2BABF9B5}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Hub_Objects\Phone\Phone_Close\world_phone_close_movement_01		75887
+	883865691	world_int_altar_close_end_02	I:\MA2\Magenta-Arcade_Wwise\.cache\82\{82B772D7-CCE5-C9A7-88A2-14EB2D2D954A}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Altar\Altar_Close_End\world_int_altar_close_end_02		4062
+	906136710	world_int_altar_destroy_02	I:\MA2\Magenta-Arcade_Wwise\.cache\17\{17650F15-FDCF-E43F-4AE4-7D15BF187895}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Altar\Altar_Destroy\world_int_altar_destroy_02		23993
+	973215378	world_int_pressable_button_round_on_04	I:\MA2\Magenta-Arcade_Wwise\.cache\E4\{E404A4B4-38E3-7DCF-1754-028B95A84AB1}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Clicks\Round_On\world_int_pressable_button_round_on_04		13542
+	974910142	world_lanes_loop_01	I:\MA2\Magenta-Arcade_Wwise\.cache\15\{15E172FF-07E6-62E3-EC75-FE681A6A6B61}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Hub_Objects\Lanes_Loop\world_lanes_loop_01		50823
+	1041881472	world_int_altar_destroy_04	I:\MA2\Magenta-Arcade_Wwise\.cache\D6\{D67B76E2-ADEF-696F-EAC4-BB8288FC07AE}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Altar\Altar_Destroy\world_int_altar_destroy_04		24637
+	1059683087	world_int_holdable_button_click_on_04	I:\MA2\Magenta-Arcade_Wwise\.cache\BA\{BA83980E-550D-9F0A-F383-6BA3AE33B3BF}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Clicks\Holdable_On\world_int_holdable_button_click_on_04		2559
+	1067043048	world_int_altar_destroy_03	I:\MA2\Magenta-Arcade_Wwise\.cache\5B\{5B71EEF0-E7BA-FCE1-2E62-239D8A304BE3}.wem		\Actor-Mixer Hierarchy\World\WORLD_Interactable\Altar\Altar_Destroy\world_int_altar_destroy_03		21799
+

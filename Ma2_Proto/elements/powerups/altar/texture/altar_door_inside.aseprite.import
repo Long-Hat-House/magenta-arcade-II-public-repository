@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://bowawwednwcx6"
+path="res://.godot/imported/altar_door_inside.aseprite-57aa31af21b417690bfadead90744bf8.res"
+
+[deps]
+
+source_file="res://elements/powerups/altar/texture/altar_door_inside.aseprite"
+dest_files=["res://.godot/imported/altar_door_inside.aseprite-57aa31af21b417690bfadead90744bf8.res"]
+
+[params]
+
+exclude_layers_pattern="#.*"
+only_visible_layers=false

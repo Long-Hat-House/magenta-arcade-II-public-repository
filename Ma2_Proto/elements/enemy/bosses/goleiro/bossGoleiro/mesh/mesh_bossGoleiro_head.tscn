@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bftfha8mle0c1"]
+
+[ext_resource type="PackedScene" uid="uid://cctnmqigmockm" path="res://elements/enemy/bosses/goleiro/bossGoleiro/mesh/bossGoleiro_head.glb" id="1_xyjkm"]
+[ext_resource type="Material" uid="uid://dml4tdm8qkb6g" path="res://elements/enemy/bosses/goleiro/bossGoleiro/material/m_bossGoleiro.tres" id="2_y0y4s"]
+
+[node name="boss03_head" instance=ExtResource("1_xyjkm")]
+
+[node name="head" parent="." index="0"]
+material_override = ExtResource("2_y0y4s")

@@ -1,0 +1,572 @@
+[gd_scene load_steps=45 format=3 uid="uid://bu2ifemqeaqmv"]
+
+[ext_resource type="Script" uid="uid://bt3rgk2gx218p" path="res://systems/stage/level_stage_piece.gd" id="1_cib48"]
+[ext_resource type="Material" uid="uid://dg6b7og6mbtm8" path="res://elements/background/material/m_grass_full.tres" id="2_vk858"]
+[ext_resource type="PackedScene" uid="uid://hlh5cmnd748w" path="res://elements/neutral/car/element_car.tscn" id="2_x35yq"]
+[ext_resource type="PackedScene" uid="uid://dtjg7g4ej01lh" path="res://elements/background/element_water.tscn" id="3_xjop4"]
+[ext_resource type="PackedScene" uid="uid://ofnacu44b8gj" path="res://elements/background/element_curb_walking_track_path.tscn" id="4_2adf0"]
+[ext_resource type="PackedScene" uid="uid://cd6ymp4wmjksa" path="res://elements/background/element_asphalt.tscn" id="4_2mt0s"]
+[ext_resource type="PackedScene" uid="uid://cyq2gafngh08" path="res://elements/neutral/props/poles/element_pole_light_small.tscn" id="4_c6274"]
+[ext_resource type="PackedScene" uid="uid://cnp3rf2clqmym" path="res://elements/background/element_grass_full.tscn" id="4_lhjqq"]
+[ext_resource type="PackedScene" uid="uid://c00kqth38jmst" path="res://systems/stage/stage_screen_measure.tscn" id="5_isigb"]
+[ext_resource type="PackedScene" uid="uid://c4m4rwgvduke7" path="res://elements/neutral/props/rock/mesh/mesh_little_rock.tscn" id="5_r6qdb"]
+[ext_resource type="PackedScene" uid="uid://dg51ehomjdm26" path="res://elements/background/element_curb2_sidewalk_path.tscn" id="5_sudw5"]
+[ext_resource type="PackedScene" uid="uid://bbth6qhwn1uow" path="res://elements/neutral/compartiment/Compartiment.tscn" id="5_uk6yv"]
+[ext_resource type="PackedScene" uid="uid://sbnc0uylbyp5" path="res://elements/npc/capybara/npc_capybara.tscn" id="6_bysi5"]
+[ext_resource type="PackedScene" uid="uid://ta33edhasg1x" path="res://elements/powerups/button/holdable_button_health.tscn" id="6_w8pnp"]
+[ext_resource type="PackedScene" uid="uid://gnbxexqyxadj" path="res://elements/background/element_curb_sidewalk_pampulha_path.tscn" id="9_q3b6e"]
+[ext_resource type="PackedScene" uid="uid://i7twd8wugajr" path="res://elements/background/element_curb_asphalt_stained_path.tscn" id="9_y6cg5"]
+[ext_resource type="PackedScene" uid="uid://cxqe15ub6mrk1" path="res://elements/neutral/props/vegetation/element_tree.tscn" id="12_5ulj4"]
+[ext_resource type="PackedScene" uid="uid://cklahqgo1utte" path="res://elements/neutral/props/poles/element_pole_light.tscn" id="12_agxx7"]
+[ext_resource type="PackedScene" uid="uid://cfqb1t3qdu78v" path="res://elements/neutral/props/traffic_decals/element_decal_lane_arrow.tscn" id="13_00vr5"]
+[ext_resource type="Material" uid="uid://ccwjji7njtwxw" path="res://elements/background/material/m_floor_tiled.tres" id="13_32ueo"]
+[ext_resource type="PackedScene" uid="uid://cvrxspt6by06j" path="res://elements/neutral/props/vegetation/element_palm.tscn" id="13_p82wu"]
+[ext_resource type="PackedScene" uid="uid://byq8x53twtmjo" path="res://elements/background/element_curb_asphalt_grass_sidewalk_path.tscn" id="13_wi8ur"]
+[ext_resource type="PackedScene" uid="uid://8clihqgqklqi" path="res://elements/neutral/props/traffic_decals/element_decal_bike.tscn" id="14_f81u5"]
+[ext_resource type="PackedScene" uid="uid://dfi4oip83lo3f" path="res://elements/background/element_grass.tscn" id="15_mc4i3"]
+[ext_resource type="PackedScene" uid="uid://bli56i7oi7ylq" path="res://elements/neutral/props/traffic_decals/element_decal_lane_line.tscn" id="15_ngany"]
+[ext_resource type="PackedScene" uid="uid://bb1ghixcy2bam" path="res://elements/neutral/props/vegetation/mesh/mesh_grass_border.tscn" id="15_uppen"]
+[ext_resource type="PackedScene" uid="uid://di223ec2wt2mc" path="res://elements/neutral/props/vegetation/mesh/mesh_plant_grass.tscn" id="15_w0o6f"]
+[ext_resource type="PackedScene" uid="uid://ctbkjd21yqlm4" path="res://elements/neutral/props/vegetation/element_bush.tscn" id="17_1utla"]
+[ext_resource type="Resource" uid="uid://b4sm3a668ml1i" path="res://elements/levels/level_structure/camera_movement_data_by_duration.tres" id="26_677uv"]
+[ext_resource type="Script" uid="uid://b56c3dq1oftud" path="res://systems/level/level_camera_movement_data.gd" id="29_w8pnp"]
+
+[sub_resource type="Curve3D" id="Curve3D_1ndr8"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.92272, -2.39238e-05, -17.8295, -0.0881004, 0, 1.78403, 0.0881004, 0, -1.78403, 1.02229, -0.000745118, -31.0145, -0.550334, 0, 1.1577, 0.550334, 0, -1.1577, 1.77336, -1.26958e-05, -36.1315, 0.0203829, 0, 1.52877, -0.0203829, 0, -1.52877, 2.17998, -1.26958e-05, -39.9834, 0.230614, 0, 3.63579, -0.230614, 0, -3.63579, 1.73804, -1.26958e-05, -50.1785, 0.602631, 0, 1.15047, -0.602631, 0, -1.15047, 0.348005, -1.26958e-05, -57.1116, 0.78355, 0, 1.10468, -0.78355, 0, -1.10468, -2.47254, -0.000623047, -60.9886, 0.253781, -0.000610352, 0.730995, -0.253781, 0.000610352, -0.730995, -4.63541, -1.26958e-05, -64.8135, 0.0749121, 0, 1.60313, -0.0749121, 0, -1.60313, -5.50904, -0.000867188, -70.474, -0.374907, 0, 1.55354, 0.374907, 0, -1.55354, -5.18967, -0.000134766, -74.4496, -1.06283, 0, 2.15943, 1.06283, 0, -2.15943, -3.31811, -1.26958e-05, -78.4795, -0.475508, 0, 0.832138, 0.475508, 0, -0.832138, -0.906508, 0.000109375, -82.3389, -1.01138, 0.000976563, 2.17513, 1.01138, -0.000976563, -2.17513, 1.6829, -1.26958e-05, -86.9051, 0.0951004, 0, 2.92439, -0.0951004, 0, -2.92439, 2.79704, -0.00294238, -94.8221, 0.0760493, 0, 1.94471, -0.0760493, 0, -1.94471, 2.56066, -1.26958e-05, -108.21, -0.187361, 0, 1.69727, 0.187361, 0, -1.69727, 2.94329, -1.26958e-05, -116.256, -0.876496, 0, 1.56953, 0.876496, 0, -1.56953, 5.15757, -1.26958e-05, -121.495, -1.02283, 0.0124512, 2.56976, 1.02283, -0.0124512, -2.56976, 9.28063, -0.00196582, -129.396, 0.640334, -0.0174561, 3.4422, -0.640334, 0.0174561, -3.4422, 10.5082, -0.00282031, -139.843, 0.580182, -0.0252686, 1.83737, -0.580182, 0.0252686, -1.83737, 7.30475, -0.00391895, -148.893, 0.371136, -0.0201416, 3.8837, -0.371136, 0.0201416, -3.8837, 6.03355, -0.000623047, -153.887, 0.0644665, -0.0131836, 1.32341, -0.0644665, 0.0131836, -1.32341, 6.16653, -0.00184375, -162.142, 0.0310307, -0.00610352, 3.07092, -0.0310307, 0.00610352, -3.07092, 6.48039, -0.00465137, -167.95, -0.459472, 0.0012207, 2.44643, 0.459472, -0.0012207, -2.44643, 6.9729, -0.00135547, -176.002, -1.28574, 0, 1.427, 1.28574, 0, -1.427, 9.25292, -1.26958e-05, -180.642, -2.06847, 0, 1.16501, 2.06847, 0, -1.16501, 13.2015, -1.26958e-05, -183.59, 0, 0, 0, 0, 0, 0, 19.5496, -1.26958e-05, -185.92),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 27
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_fyipw"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0.018312, 0.0191646, 1.29383, -0.018312, -0.0191646, -1.29383, 0, 0, 0, -0.0294795, 0.00500488, 0.983688, 0.0294795, -0.00500488, -0.983688, 0.0431056, -0.00366113, -5.00631, 0.0493484, 0, 1.28592, -0.0493484, 0, -1.28592, 0.0571733, -0.00366113, -10.715, -0.0724988, 0.000366211, 0.920891, 0.0724988, -0.000366211, -0.920891, 0.311885, -0.0041189, -15.2889, -0.696257, -0.00463867, 1.51302, 0.696257, 0.00463867, -1.51302, 0.931896, 0.0134592, -18.5032, 0.164741, 0, 2.23076, -0.164741, 0, -2.23076, 0.752047, -0.00363062, -32.8175, 1.7238, 0, 1.97104, -1.7238, 0, -1.97104, -1.24462, -0.00363062, -39.5562, 0.305046, 0, 2.3849, -0.305046, 0, -2.3849, -5.82624, -0.00363062, -47.7289, -0.0907049, -3.72529e-09, 1.48503, 0.0907049, 3.72529e-09, -1.48503, -6.4086, 0.00296118, -53.4693, -0.413733, -0.00268555, 1.8405, 0.413733, 0.00268555, -1.8405, -6.04809, 0.00271704, -56.8248, -1.39258, 0, 1.85109, 1.39258, 0, -1.85109, -1.44158, -0.00363062, -65.6513, -0.609116, 0.0020752, 2.34547, 0.609116, -0.0020752, -2.34547, 1.62574, -0.00472925, -71.8388, -0.176557, 0, 2.68366, 0.176557, 0, -2.68366, 1.69351, -0.00448511, -83.1758, -1.04143, 0, 2.52257, 1.04143, 0, -2.52257, 2.47758, -0.00366113, -100.32, 0, 0, 0, 0, 0, 0, 4.26932, -0.00366113, -104.069, -0.865819, 0.00476074, 1.24586, 0.865819, -0.00476074, -1.24586, 7.40657, 0.00174048, -109.742, -0.310525, 6.10352e-05, 1.14806, 0.310525, -6.10352e-05, -1.14806, 9.34195, 0.00149634, -115.023, 0.163031, -0.00939941, 1.64637, -0.163031, 0.00939941, -1.64637, 9.68032, -0.00210474, -121.299, 1.133, -0.00183105, 2.41043, -1.133, 0.00183105, -2.41043, 5.98459, -0.00436304, -131.482, -0.059577, -3.05222e-05, 1.24881, 0.059577, 3.05222e-05, -1.24881, 5.0767, -0.0046377, -141.237, -0.137023, 0, 2.69571, 0.137023, 0, -2.69571, 5.52224, -0.00363062, -148.353, -2.91677, 4.65661e-09, 3.39638, 2.91677, -4.65661e-09, -3.39638, 7.97204, -0.00363062, -163.05, -6.38157, 0, 2.21967, 6.38157, 0, -2.21967, 19.1836, -0.00363062, -169.663),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 23
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_r0f7e"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(-0.408177, -5.96046e-08, 4.56429, 0.408177, 5.96046e-08, -4.56429, -0.386582, 0.166456, -17.1405, 0.784582, -0.0311279, 1.40274, -0.784582, 0.0311279, -1.40274, -4.35115, 0.177809, -25.9005, 0.437292, -0.019043, 1.6819, -0.437292, 0.019043, -1.6819, -6.50929, 0.232008, -30.4111, -0.232356, -2.08616e-07, 3.26297, 0.232356, 2.08616e-07, -3.26297, -7.55154, 0.158033, -39.114, -0.666838, -0.040894, 1.70723, 0.666838, 0.040894, -1.70723, -6.07545, 0.172438, -44.6789, -1.83269, 0, 3.11079, 1.83269, 0, -3.11079, -0.386217, 0.168043, -54.3571, 0.0731331, -0.0128183, 2.04935, -0.0731331, 0.0128183, -2.04935, 0.631439, 0.178175, -65.7455, 0.152319, 0.000732422, 4.07607, -0.152319, -0.000732422, -4.07607, 0.740998, 0.171583, -75.5979, -0.515265, 0, 3.09158, 0.515265, 0, -3.09158, 1.21436, 0.185499, -84.5321, -1.55296, 0, 2.93954, 1.55296, 0, -2.93954, 5.35833, 0.182081, -93.1128, -0.342061, 4.15593e-05, 2.25826, 0.342061, -4.15593e-05, -2.25826, 8.34037, 0.185377, -100.329, 1.73469, 2.98023e-07, 4.7248, -1.73469, -2.98023e-07, -4.7248, 7.10679, 0.187696, -110.249, -0.0605021, -0.000121832, 6.78903, 0.0605021, 0.000121832, -6.78903, 3.9838, 0.17024, -122.929, -0.159328, 0.00012207, 3.52594, 0.159328, -0.00012207, -3.52594, 4.41084, 0.184034, -138.527, -0.398281, 0, 0.874252, 0.398281, 0, -0.874252, 5.59208, 0.179518, -145.722, -1.3168, 0, 1.81059, 1.3168, 0, -1.81059, 7.51688, 0.174269, -149.508, -6.96164, 3.72529e-07, 1.86862, 6.96164, -3.72529e-07, -1.86862, 19.6294, 0.170484, -156.526),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 17
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_xsjmh"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(-0.177002, 0, 1.13881, 0.177002, 0, -1.13881, 9.45001, 0.000152611, -4.2618, -0.495487, 2.2701e-08, 2.03683, 0.495487, -2.2701e-08, -2.03683, 9.40424, 0.000152588, -6.6742, -2.2258, 0, 2.4059, 2.2258, 0, -2.4059, 12.8205, 0.000152588, -14.3563, 0, 0, 0, 0, 0, 0, 21.4858, 0.000152588, -19.6721, -3.41809, 0, 0.863503, 3.41809, 0, -0.863503, 29.4908, 0.000152588, -22.5343, -2.45566, 0, 0.270962, 2.45566, 0, -0.270962, 41.6543, 0.000152588, -24.4194, -1.91672, 0, -0.289154, 1.91672, 0, 0.289154, 49.5754, 0.000152588, -24.5992, -1.22636, 0, -0.454815, 1.22636, 0, 0.454815, 55.0028, 0.000152611, -22.8646, -0.903122, 0, -1.10299, 0.903122, 0, 1.10299, 60.5121, 0.000152588, -18.6425, 0, 0, 0, 0, 0, 0, 61.6417, 0.000152611, -14.8579),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 10
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_ye5ba"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0.518178, 0, -1.35938, -0.518178, 0, 1.35938, -5.08449, -0.00838379, -67.5993, 0, 0, 0, 0, 0, 0, -1.32283, -0.00838379, -74.1221, 0.0647576, 0, -0.270798, -0.0647576, 0, 0.270798, -0.515056, -0.00838379, -75.9485, -0.17969, 0, 0.637085, 0.17969, 0, -0.637085, -0.183565, -0.00838379, -77.2688, 0, 0, 0, 0, 0, 0, 0.0911009, -0.00838379, -79.2464, 0, 0, 0, 0, 0, 0, 0.0904877, -0.00838379, -90.5007),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_27vum"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 2, 0, 0, 0, -0.249843, 0, -5.02551, 0, 0, 0, 0, 0, 0, -0.551426, 5.27352e-05, -7.50043),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_3g7d7"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 0, 0.266034, -4.97997e-05, 1.95961, -0.266034, 4.97997e-05, -1.95961, 0.120183, -4.97997e-05, -14.1751, -0.0570443, 0, 1.45743, 0.0570443, 0, -1.45743, 1.41694, -4.97997e-05, -21.4664, 0.577365, 0, 3.98894, -0.577365, 0, -3.98894, 0.535642, -4.97997e-05, -36.7648, 0.860449, 0, 1.63383, -0.860449, 0, -1.63383, -3.70855, -4.97997e-05, -44.0472, 0.388204, 0, 1.21415, -0.388204, 0, -1.21415, -5.33265, -4.97997e-05, -47.8687, 0.186982, 0, 1.5857, -0.186982, 0, -1.5857, -6.17063, -4.97997e-05, -52.6429, 0, 0, 0, 0, 0, 0, -5.53918, -4.97997e-05, -57.5786, 0, 0, 0, 0, 0, 0, -3.06365, -4.97997e-05, -62.6579, -0.961966, 0, 1.84441, 0.961966, 0, -1.84441, 0.577053, -4.97997e-05, -67.6514, -0.440817, 0, 1.73682, 0.440817, 0, -1.73682, 1.6797, -4.97997e-05, -71.2265, 0, 0, 0, 0, 0, 0, 1.96728, -4.97997e-05, -76.8474, -0.0455285, 0, 3.31622, 0.0455285, 0, -3.31622, 1.93042, -4.97997e-05, -85.9234, -0.272661, 0, 3.35023, 0.272661, 0, -3.35023, 1.78442, -4.97997e-05, -96.8355, -1.08162, 0, 1.984, 1.08162, 0, -1.984, 3.15822, -4.97997e-05, -101.661, -1.68386, 0, 2.97209, 1.68386, 0, -2.97209, 7.8026, -4.97997e-05, -110.24, 0, 0, 0, 0, 0, 0, 9.74052, -4.97997e-05, -118.001, 1.61801, 0, 4.68806, -1.61801, 0, -4.68806, 8.41385, -4.97997e-05, -125.992, 0.472885, 0, 3.18478, -0.472885, 0, -3.18478, 5.13164, -4.97997e-05, -135.195, -0.216292, 0, 3.08179, 0.216292, 0, -3.08179, 5.56046, -4.97997e-05, -155.39, -3.14093, 0, 2.22609, 3.14093, 0, -2.22609, 9.1893, -4.97997e-05, -163.715, 0, 0, 0, 0, 0, 0, 18.6426, -4.97997e-05, -167.771),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 22
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_pmgrw"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0.269793, 0, 13.3425, -0.269793, 0, -13.3425, 0, 0, 0, -0.531301, 0, 9.6298, 0.531301, 0, -9.6298, 7.74209, 0.038208, -20.5248, -0.549821, 0, 12.6087, 0.549821, 0, -12.6087, -0.133477, 0, -41.7669),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_3gd8j"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 10.0918, 0, 0, 2, 0, 0, 0, 0, 0, -14.7307),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_j5vnq"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 10.0918, 0, 0, 2, 0, 0, 0, 0, 0, -14.7307),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_jpsjd"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 10.0918, 0, 0, 2, 0, 0, 0, 0, 0, -14.7307),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_c7i04"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 10.0918, 0, 0, 2, 0, 0, 0, 0, 0, -14.7307),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[sub_resource type="Resource" id="Resource_evitp"]
+script = ExtResource("29_w8pnp")
+camera_duration = 2.5
+camera_speed = 25.0
+camera_duration_style = 1
+ease_x = 2
+trans_x = 4
+duration_multiplier_x = 0.5
+ease_z = 2
+trans_z = 4
+duration_multiplier_z = 1.0
+metadata/_custom_type_script = "uid://b56c3dq1oftud"
+
+[sub_resource type="Resource" id="Resource_w8pnp"]
+script = ExtResource("29_w8pnp")
+camera_duration = 3.0
+camera_speed = 25.0
+camera_duration_style = 1
+ease_x = 2
+trans_x = 2
+duration_multiplier_x = 1.0
+ease_z = 2
+trans_z = 4
+duration_multiplier_z = 0.9
+metadata/_custom_type_script = "uid://b56c3dq1oftud"
+
+[node name="Stage_Piece_Pampulha_Orla_Primeira" type="Node3D" node_paths=PackedStringArray("pivot_forward", "pivot_backward")]
+script = ExtResource("1_cib48")
+pivot_forward = NodePath("Config/forward")
+pivot_backward = NodePath("Config/back")
+
+[node name="Config" type="Node3D" parent="."]
+
+[node name="Wind Direction" type="Node3D" parent="Config"]
+transform = Transform3D(-2.04648e-07, 0, -1, 0, 1, 0, 1, 0, -2.04648e-07, -9, 6, -4.5)
+
+[node name="forward" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -107.475)
+gizmo_extents = 1.0
+
+[node name="back" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.83208, 0, 60.5361)
+gizmo_extents = 1.0
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1241, 0, -20.4048)
+aabb = AABB(-10.029, 0, -87.4088, 20.057, 13.796, 168.657)
+metadata/_edit_lock_ = true
+
+[node name="Scenery" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -31)
+
+[node name="Asphalt" parent="Scenery" instance=ExtResource("4_2mt0s")]
+transform = Transform3D(19.8, 0, 0, 0, 1, 0, 0, 0, 64.07, 11.8747, -0.165488, -76.483)
+
+[node name="Asphalt3" parent="Scenery" instance=ExtResource("4_2mt0s")]
+transform = Transform3D(23.8, 0, 0, 0, 1, 0, 0, 0, 40.165, 5.737, -0.165, -14.007)
+
+[node name="Asphalt2" parent="Scenery" instance=ExtResource("4_2mt0s")]
+transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 68.209, -0.411, -0.165, 24.02)
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Scenery"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 0.2, 0, -1, -8.74228e-09, 0, -0.007, 92.034)
+material_override = ExtResource("13_32ueo")
+polygon = PackedVector2Array(-1, 0, -1, 6, -1.02289, 15.7804, -0.948556, 16.3841, -3.0391, 22.4953, -3.28309, 23.5378, -3.69748, 32.4083, 1.90631, 32.7236, 4.28892, 32.7849, 4.6728, 29.3792, 5, 23, 5.06242, 18.9841, 4.05733, 15.751, 3.82646, -0.0170441, 1.78303, 0.00490952)
+
+[node name="Poles" type="Node3D" parent="Scenery"]
+
+[node name="pole_light_small5" parent="Scenery/Poles" instance=ExtResource("4_c6274")]
+transform = Transform3D(0.215979, 0, 0.976398, 0, 1, 0, -0.976398, 0, 0.215979, 1.58444, 0, 26.5746)
+
+[node name="pole_light_small7" parent="Scenery/Poles" instance=ExtResource("4_c6274")]
+transform = Transform3D(0.215979, 0, 0.976398, 0, 1, 0, -0.976398, 0, 0.215979, 6.94503, 0, -10.8901)
+
+[node name="pole_light_small2" parent="Scenery/Poles" instance=ExtResource("4_c6274")]
+transform = Transform3D(-0.0789637, 0, 0.996877, 0, 1, 0, -0.996877, 0, -0.0789637, 3.8188, 0, 56.3789)
+
+[node name="pole_light_small3" parent="Scenery/Poles" instance=ExtResource("4_c6274")]
+transform = Transform3D(0.393525, 0, 0.919314, 0, 1, 0, -0.919314, 0, 0.393525, 12.1814, 0, -21.2898)
+
+[node name="pole_light_small4" parent="Scenery/Poles" instance=ExtResource("4_c6274")]
+transform = Transform3D(-0.117676, 0, 0.993052, 0, 1, 0, -0.993052, 0, -0.117676, 8.70132, 0, -41.709)
+
+[node name="pole_light_small6" parent="Scenery/Poles" instance=ExtResource("4_c6274")]
+transform = Transform3D(0.608429, 0, 0.793608, 0, 1, 0, -0.793608, 0, 0.608429, 11.9167, -0.142761, -72.2612)
+
+[node name="Compartiment" parent="Scenery/Poles/pole_light_small6" instance=ExtResource("5_uk6yv")]
+
+[node name="HoldableButton-HEALTH" parent="Scenery/Poles/pole_light_small6/Compartiment" instance=ExtResource("6_w8pnp")]
+transform = Transform3D(0.60872, 0, -0.793385, 0, 1, 0, 0.793385, 0, 0.60872, -0.462135, 0, -0.654247)
+
+[node name="Rock" type="Node3D" parent="Scenery"]
+
+[node name="little_rock" parent="Scenery/Rock" instance=ExtResource("5_r6qdb")]
+transform = Transform3D(0.121861, -1.00294, -4.90459, 6.9653, 0.464199, 0, 0.614824, -5.0601, 0.972114, -1.80742, 0.109112, 3.67337)
+
+[node name="little_rock2" parent="Scenery/Rock" instance=ExtResource("5_r6qdb")]
+transform = Transform3D(6.08145, 0.143196, -2.90151, 1.90659, 1.2711, 8.7177, 0.562483, -5.85673, 1.82108, -0.706826, -0.329285, 15.9061)
+
+[node name="little_rock3" parent="Scenery/Rock" instance=ExtResource("5_r6qdb")]
+transform = Transform3D(6.55092, 0.261918, -2.8276, -2.01183, -2.9908, -8.3679, -0.733245, 10.546, -2.30288, -6.62273, -0.329285, 70.5675)
+
+[node name="little_rock6" parent="Scenery/Rock" instance=ExtResource("5_r6qdb")]
+transform = Transform3D(6.65358, 0.266003, -2.87221, -2.04336, -3.03744, -8.49991, -0.744735, 10.7104, -2.33921, -5.07099, -0.3974, 88.9856)
+
+[node name="little_rock5" parent="Scenery/Rock" instance=ExtResource("5_r6qdb")]
+transform = Transform3D(1.17229, -0.12946, -2.75936, -2.06621, -0.582091, -1.52083, -0.279585, 3.759, -0.330537, -4.47775, 0.240295, 74.5405)
+
+[node name="little_rock8" parent="Scenery/Rock" instance=ExtResource("5_r6qdb")]
+transform = Transform3D(0.749258, 0.791399, 5.12438, 3.87296, 0.595133, -1.05715, -0.464261, 6.24195, -0.548912, -1.66015, -0.123474, 86.0121)
+
+[node name="little_rock9" parent="Scenery/Rock" instance=ExtResource("5_r6qdb")]
+transform = Transform3D(-0.0582892, -7.60791, -3.34275, 5.27219, 0.810117, -1.43914, 1.19846, -3.93383, 6.1684, 5.20514, -0.123474, -55.4107)
+
+[node name="little_rock10" parent="Scenery/Rock" instance=ExtResource("5_r6qdb")]
+transform = Transform3D(5.53806, 7.86259, -0.503976, 4.69313, -8.611, -2.62225, -1.59343, 1.96494, -9.47492, 12.6556, 0.0728149, -80.0271)
+
+[node name="little_rock11" parent="Scenery/Rock" instance=ExtResource("5_r6qdb")]
+transform = Transform3D(6.88085, 6.38062, -1.52463, 2.26683, -17.1994, -2.35455, -1.59023, 3.09131, -9.95333, 2.00038, 0.160461, -68.4133)
+
+[node name="little_rock7" parent="Scenery/Rock" instance=ExtResource("5_r6qdb")]
+transform = Transform3D(2.0863, -0.230381, -4.91075, -2.40819, -5.23306, -1.62446, -2.82312, 4.29367, -2.24336, 1.44787, 0.240295, 68.6058)
+
+[node name="little_rock4" parent="Scenery/Rock" instance=ExtResource("5_r6qdb")]
+transform = Transform3D(6.08145, 0.143196, -2.90151, 1.90659, 1.2711, 8.7177, 0.562483, -5.85673, 1.82108, -5.84765, -0.329285, 42.8147)
+
+[node name="Cars" type="Node3D" parent="Scenery"]
+
+[node name="Element_Car" parent="Scenery/Cars" instance=ExtResource("2_x35yq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40784, 0.0531311, 36.8307)
+
+[node name="Curbs" type="Node3D" parent="Scenery"]
+
+[node name="Curb Sidewalk Path" parent="Scenery/Curbs" instance=ExtResource("5_sudw5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.61174, 0.037, 109.94)
+curve = SubResource("Curve3D_1ndr8")
+
+[node name="Curb Sidewalk Path5" parent="Scenery/Curbs" instance=ExtResource("4_2adf0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.56328, -0.00625708, 91.9473)
+curve = SubResource("Curve3D_fyipw")
+
+[node name="Curb Sidewalk Path3" parent="Scenery/Curbs" instance=ExtResource("9_q3b6e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.287, -0.149, 76.576)
+curve = SubResource("Curve3D_r0f7e")
+
+[node name="Curb Sidewalk Path4" parent="Scenery/Curbs" instance=ExtResource("13_wi8ur")]
+transform = Transform3D(0.0403221, 0, 0.187718, 0, 0.192, 0, -0.187718, 0, 0.0403221, 4.2693, -0.00149415, 88.8801)
+curve = SubResource("Curve3D_xsjmh")
+
+[node name="Curb Sidewalk Path2" parent="Scenery/Curbs" instance=ExtResource("5_sudw5")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 10.1261, 0.04, 1.55346)
+curve = SubResource("Curve3D_ye5ba")
+
+[node name="Curb Sidewalk Path6" parent="Scenery/Curbs" instance=ExtResource("5_sudw5")]
+transform = Transform3D(0.786698, 0, -0.617338, 0, 1, 0, 0.617338, 0, 0.786698, 18.7867, 0.029, 90.3372)
+curve = SubResource("Curve3D_27vum")
+
+[node name="Curb Sidewalk Path7" parent="Scenery/Curbs" instance=ExtResource("9_y6cg5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.345, 0, 92.239)
+curve = SubResource("Curve3D_3g7d7")
+
+[node name="Curb Sidewalk Path8" parent="Scenery/Curbs" instance=ExtResource("5_sudw5")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 11.5047, 0, 18.2029)
+curve = SubResource("Curve3D_pmgrw")
+
+[node name="Pole Light" parent="Scenery/Curbs" instance=ExtResource("12_agxx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.63031, 0, 39.6978)
+
+[node name="Decalls" type="Node3D" parent="Scenery"]
+
+[node name="Decal Lane Arrow" parent="Scenery/Decalls" instance=ExtResource("13_00vr5")]
+transform = Transform3D(0.499978, 0, -0.00467742, 0, 0.5, 0, 0.00467742, 0, 0.499978, 5.98199, 0.01, 5.41049)
+
+[node name="Decal Bike" parent="Scenery/Decalls" instance=ExtResource("14_f81u5")]
+transform = Transform3D(0.45, 0, 2.86078e-08, 0, 0.45, 0, -2.86078e-08, 0, 0.45, 5.97114, 0.01, 6.365)
+
+[node name="Decal Bike2" parent="Scenery/Decalls" instance=ExtResource("14_f81u5")]
+transform = Transform3D(-0.45, 0, -6.79481e-08, 0, 0.45, 0, 6.79481e-08, 0, -0.45, 6.90066, 0.01, 4.49357)
+
+[node name="Decal Lane Arrow2" parent="Scenery/Decalls" instance=ExtResource("13_00vr5")]
+transform = Transform3D(-0.499978, 0, 0.00467737, 0, 0.5, 0, -0.00467737, 0, -0.499978, 6.90881, 0.01, 5.42038)
+
+[node name="Decal Lane Line" parent="Scenery/Decalls" instance=ExtResource("15_ngany")]
+transform = Transform3D(0.997988, 0, 0.0634005, 0, 1, 0, -0.0634005, 0, 0.997988, 5.92423, 0.0566406, 60.5073)
+
+[node name="Decal Lane Line2" parent="Scenery/Decalls" instance=ExtResource("15_ngany")]
+transform = Transform3D(0.997988, 0, 0.0634005, 0, 1, 0, -0.0634005, 0, 0.997988, 5.56827, 0.0566406, 60.5326)
+
+[node name="Decal Lane Line3" parent="Scenery/Decalls" instance=ExtResource("15_ngany")]
+transform = Transform3D(0.997988, 0, 0.0634005, 0, 1, 0, -0.0634005, 0, 0.997988, 5.1885, 0.0566406, 60.5602)
+
+[node name="Decal Lane Line4" parent="Scenery/Decalls" instance=ExtResource("15_ngany")]
+transform = Transform3D(0.997988, 0, 0.0634005, 0, 1, 0, -0.0634005, 0, 0.997988, 4.8185, 0.0566406, 60.5986)
+
+[node name="Grass" type="Node3D" parent="Scenery"]
+
+[node name="plant_grass" parent="Scenery/Grass" instance=ExtResource("15_w0o6f")]
+transform = Transform3D(1.66382, -0.415854, 0, 0.415854, 1.66382, 0, 0, 0, 1.715, 11.7281, -0.14566, -72.2484)
+
+[node name="plant_grass4" parent="Scenery/Grass" instance=ExtResource("15_w0o6f")]
+transform = Transform3D(1.98008, 0.281359, -0.0115227, -0.281343, 1.98011, 0.00361874, 0.0119172, -0.00196177, 1.99996, 1.75967, -0.0511093, 68.1552)
+
+[node name="plant_grass5" parent="Scenery/Grass" instance=ExtResource("15_w0o6f")]
+transform = Transform3D(1.97974, -0.283697, -0.012075, 0.259507, 1.84218, -0.734184, 0.115265, 0.72518, 1.86033, 1.06842, -0.0511093, 69.1685)
+
+[node name="plant_grass2" parent="Scenery/Grass" instance=ExtResource("15_w0o6f")]
+transform = Transform3D(1.65489, 0.450088, 0, -0.450088, 1.65489, 0, 0, 0, 1.715, 11.9896, -0.14566, -72.2484)
+
+[node name="Grass5" parent="Scenery/Grass" instance=ExtResource("15_mc4i3")]
+transform = Transform3D(7.81144, 0, -4.7883, 0, 6.074, 0, 2.35945, 0, 15.8526, 4.01721, -0.24, -16.9909)
+
+[node name="grass_border" parent="Scenery/Grass" instance=ExtResource("15_uppen")]
+transform = Transform3D(0.223048, 0, -1.39583, 0, 1.03343, 0, 1.82447, 0, 0.170645, -3.96817, -0.600677, 85.9359)
+
+[node name="grass_border2" parent="Scenery/Grass" instance=ExtResource("15_uppen")]
+transform = Transform3D(0.0691127, 0, -1.57794, 0, 1.03934, 0, 2.76663, 0, 0.0394182, -4.42012, -0.644836, 75.8903)
+
+[node name="grass_border3" parent="Scenery/Grass" instance=ExtResource("15_uppen")]
+transform = Transform3D(-0.0650661, 0, -1.5963, 0, 0.772936, 0, 1.79238, 0, -0.0579482, -4.27027, -0.600677, 61.3924)
+
+[node name="grass_border4" parent="Scenery/Grass" instance=ExtResource("15_uppen")]
+transform = Transform3D(0.367885, 0, -1.2746, 0, 1.16, 0, 1.83475, 0, 0.255568, -5.00141, -0.600677, 50.1099)
+
+[node name="grass_border5" parent="Scenery/Grass" instance=ExtResource("15_uppen")]
+transform = Transform3D(0.106214, 0, -1.32835, 0, 1.16, 0, 1.75315, 0, 0.0804774, -6.6366, -0.600677, 39.4118)
+
+[node name="grass_border6" parent="Scenery/Grass" instance=ExtResource("15_uppen")]
+transform = Transform3D(-1.13196, 0, -1.44205, 0, 1.06754, 0, 2.31226, 0, -0.705952, -3.11408, -0.6008, 27.097)
+
+[node name="grass_border8" parent="Scenery/Grass" instance=ExtResource("15_uppen")]
+transform = Transform3D(0.110827, 0, -1.32925, 0, 0.70487, 0, 2.3006, 0, 0.0640341, 0.769784, -0.6008, 12.9388)
+
+[node name="grass_border9" parent="Scenery/Grass" instance=ExtResource("15_uppen")]
+transform = Transform3D(0.203236, 0, -1.71899, 0, 1.16, 0, 1.81075, 0, 0.192937, -1.03956, -0.568573, 2.60212)
+
+[node name="grass_border10" parent="Scenery/Grass" instance=ExtResource("15_uppen")]
+transform = Transform3D(-1.65007, 0, -1.54957, 0, 1.16, 0, 2.7587, 0, -0.926848, 3.32132, -0.611908, -12.9165)
+
+[node name="grass_border11" parent="Scenery/Grass" instance=ExtResource("15_uppen")]
+transform = Transform3D(0.265786, 0, -2.30794, 0, 1.14773, 0, 3.8847, 0, 0.157905, 6.61675, -0.659637, -27.5172)
+
+[node name="grass_border13" parent="Scenery/Grass" instance=ExtResource("15_uppen")]
+transform = Transform3D(0.494785, 0, -2.17609, 0, 1.16, 0, 2.59031, 0, 0.415663, 4.6236, -0.659637, -43.8096)
+
+[node name="grass_border14" parent="Scenery/Grass" instance=ExtResource("15_uppen")]
+transform = Transform3D(-0.238162, 0, -1.3953, 0, 1.16, 0, 3.25404, 0, -0.102122, 4.37998, -0.659637, -60.4027)
+
+[node name="grass_border15" parent="Scenery/Grass" instance=ExtResource("15_uppen")]
+transform = Transform3D(0.732037, -0.00364879, -1.30091, 0.000323281, 1.15999, -0.00464259, 1.85037, 0.00124085, 0.514663, 3.12721, -0.650073, -71.4934)
+
+[node name="grass3" type="CSGPolygon3D" parent="Scenery/Grass"]
+transform = Transform3D(1.067, 0, 0, 0, -4.37114e-08, 0.02, 0, -1, -8.74228e-10, -3.96138, 0.0365557, 85.1248)
+material_override = ExtResource("2_vk858")
+polygon = PackedVector2Array(7.4025, 8.4558, 7.35034, -1.70768, 6.97644, -1.65303, 6.30546, -1.27047, 5.92643, -0.937092, 5.60704, -0.562321, 5.25087, 0.495304, 4.99192, 1.86488, 4.91452, 3.19815, 5.08039, 5.16856, 5.25732, 6.45464, 5.8104, 7.52574, 6.7245, 8.31504)
+
+[node name="grass4" type="CSGPolygon3D" parent="Scenery/Grass"]
+transform = Transform3D(1.067, 0, 0, 0, -4.37114e-08, 0.02, 0, -1, -8.74228e-10, 9.25509, 0.0365557, 85.1248)
+material_override = ExtResource("2_vk858")
+polygon = PackedVector2Array(12.8232, 1.11946, 7.71185, -6.93692, 0.848803, -6.93447, 0.695165, 4.22916, 1.12809, 7.44431, 5.21995, 15.5911)
+
+[node name="Curb Sidewalk Path" parent="Scenery/Grass" instance=ExtResource("13_wi8ur")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.55674, 0, 67.8657)
+curve = SubResource("Curve3D_3gd8j")
+
+[node name="Curb Sidewalk Path2" parent="Scenery/Grass" instance=ExtResource("13_wi8ur")]
+transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0.484653, 0, 64.8382)
+curve = SubResource("Curve3D_j5vnq")
+
+[node name="Curb Sidewalk Path5" parent="Scenery/Grass" instance=ExtResource("13_wi8ur")]
+transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 1.45599, 0, 69.9036)
+curve = SubResource("Curve3D_jpsjd")
+
+[node name="Curb Sidewalk Path4" parent="Scenery/Grass" instance=ExtResource("13_wi8ur")]
+transform = Transform3D(-0.2, 0, 1.74846e-08, 0, 0.2, 0, -1.74846e-08, 0, -0.2, 3.50279, 0, 66.8835)
+curve = SubResource("Curve3D_c7i04")
+
+[node name="Grass" parent="Scenery/Grass" instance=ExtResource("4_lhjqq")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -1.507, -0.1, 64.862)
+
+[node name="Grass4" parent="Scenery/Grass" instance=ExtResource("4_lhjqq")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 22.23, 8.89592, -0.24, -37.0434)
+
+[node name="Grass10" parent="Scenery/Grass" instance=ExtResource("4_lhjqq")]
+transform = Transform3D(6.91948, 0, 0, 0, 5, 0, 0, 0, 43.2468, 4.98287, -0.24, -77.8602)
+
+[node name="Grass11" parent="Scenery/Grass" instance=ExtResource("4_lhjqq")]
+transform = Transform3D(13.4359, 0, 4.2913, 0, 5, 0, -4.72282, 0, 12.2083, 1.79477, -0.24, -78.9031)
+
+[node name="Grass6" parent="Scenery/Grass" instance=ExtResource("4_lhjqq")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 25.455, 0.630038, -0.24, -1.27842)
+
+[node name="Grass7" parent="Scenery/Grass" instance=ExtResource("4_lhjqq")]
+transform = Transform3D(4.49653, 0, -8.16039, 0, 5, 0, 2.1866, 0, 16.7811, 1.11087, -0.24, 21.1476)
+
+[node name="Grass8" parent="Scenery/Grass" instance=ExtResource("4_lhjqq")]
+transform = Transform3D(6.08756, 0, 4.56485, 0, 5, 0, -1.01226, 0, 27.4521, -7.04245, -0.24, 33.3562)
+
+[node name="Grass9" parent="Scenery/Grass" instance=ExtResource("4_lhjqq")]
+transform = Transform3D(9.979, 0, 0, 0, 5, 0, 0, 0, 40.125, -3.31952, -0.24, 52.1654)
+
+[node name="water" parent="Scenery" instance=ExtResource("3_xjop4")]
+transform = Transform3D(20, 0, 0, 0, 1.2, 0, 0, 0, 168.75, -1.877, -0.7, 7.915)
+
+[node name="Bushs" type="Node3D" parent="Scenery"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0120916, 0, 0)
+
+[node name="Bush" parent="Scenery/Bushs" instance=ExtResource("17_1utla")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.377, 0.278, 0.544001)
+
+[node name="Bush2" parent="Scenery/Bushs" instance=ExtResource("17_1utla")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.738899, 0, 0.351807)
+
+[node name="Bush3" parent="Scenery/Bushs" instance=ExtResource("17_1utla")]
+transform = Transform3D(0.895, 0, 0, 0, 0.895, 0, 0, 0, 0.895, -0.893, 0.25, -0.540001)
+
+[node name="Bush4" parent="Scenery/Bushs" instance=ExtResource("17_1utla")]
+transform = Transform3D(1.275, 0, 0, 0, 1.275, 0, 0, 0, 1.275, -0.0889997, 0.065, 68.086)
+
+[node name="Bush5" parent="Scenery/Bushs" instance=ExtResource("17_1utla")]
+transform = Transform3D(1.04258, -0.124633, 0, 0.124633, 1.04258, 0, 0, 0, 1.05, -4.49545, 0.09, 70.229)
+
+[node name="Bush6" parent="Scenery/Bushs" instance=ExtResource("17_1utla")]
+transform = Transform3D(1.27346, -0.616875, 0, 0.616875, 1.27346, 0, 0, 0, 1.415, -5.691, 0, 69.531)
+
+[node name="Bush7" parent="Scenery/Bushs" instance=ExtResource("17_1utla")]
+transform = Transform3D(1.25957, 0, 0.197761, 0, 1.275, 0, -0.197761, 0, 1.25957, 2.30366, 0.113767, 80.3276)
+
+[node name="Bush9" parent="Scenery/Bushs" instance=ExtResource("17_1utla")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 7.14248, -0.0187073, -73.6063)
+
+[node name="Bush10" parent="Scenery/Bushs" instance=ExtResource("17_1utla")]
+transform = Transform3D(0.88, 0, 0, 0, 0.88, 0, 0, 0, 0.88, 7.84024, 0.10022, -73.0222)
+
+[node name="Tree" type="Node3D" parent="Scenery"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0120916, 0, 0)
+
+[node name="Tree" parent="Scenery/Tree" instance=ExtResource("12_5ulj4")]
+transform = Transform3D(0.978921, 0, 0.20424, 0, 1, 0, -0.20424, 0, 0.978921, 3.65764, 0, 81.1968)
+
+[node name="Tree2" parent="Scenery/Tree" instance=ExtResource("12_5ulj4")]
+transform = Transform3D(0.978921, 0, 0.20424, 0, 1, 0, -0.20424, 0, 0.978921, 0.119911, 0, 22.552)
+
+[node name="Tree5" parent="Scenery/Tree" instance=ExtResource("12_5ulj4")]
+transform = Transform3D(0.79085, 0, -0.61201, 0, 1, 0, 0.61201, 0, 0.79085, -3.51038, 0, 28.3303)
+
+[node name="Tree12" parent="Scenery/Tree" instance=ExtResource("12_5ulj4")]
+transform = Transform3D(0.79085, 0, -0.61201, 0, 1, 0, 0.61201, 0, 0.79085, -5.99247, 0, 44.6757)
+
+[node name="Tree13" parent="Scenery/Tree" instance=ExtResource("12_5ulj4")]
+transform = Transform3D(0.960118, 0, 0.279595, 0, 1, 0, -0.279595, 0, 0.960118, -6.29826, 0, 36.5255)
+
+[node name="Tree3" parent="Scenery/Tree" instance=ExtResource("12_5ulj4")]
+transform = Transform3D(-0.225308, 0, -0.974288, 0, 1, 0, 0.974288, 0, -0.225308, 0.176467, 0, -0.545437)
+
+[node name="Tree7" parent="Scenery/Tree" instance=ExtResource("12_5ulj4")]
+transform = Transform3D(0.969531, 0, -0.244969, 0, 1, 0, 0.244969, 0, 0.969531, 9.23897, 0, -26.7697)
+
+[node name="Tree14" parent="Scenery/Tree" instance=ExtResource("12_5ulj4")]
+transform = Transform3D(0.0714278, 0, -0.997446, 0, 1, 0, 0.997446, 0, 0.0714278, 5.49001, 0, -17.4541)
+
+[node name="Tree10" parent="Scenery/Tree" instance=ExtResource("12_5ulj4")]
+transform = Transform3D(0.0153235, 0, -0.999883, 0, 1, 0, 0.999883, 0, 0.0153235, 5.89787, 0, -33.0208)
+
+[node name="Tree11" parent="Scenery/Tree" instance=ExtResource("12_5ulj4")]
+transform = Transform3D(0.876735, 0, -0.480973, 0, 1, 0, 0.480973, 0, 0.876735, 6.11187, 0, -39.612)
+
+[node name="Tree6" parent="Scenery/Tree" instance=ExtResource("12_5ulj4")]
+transform = Transform3D(0.969531, 0, -0.244969, 0, 1, 0, 0.244969, 0, 0.969531, 3.38723, 0, -44.325)
+
+[node name="Tree8" parent="Scenery/Tree" instance=ExtResource("12_5ulj4")]
+transform = Transform3D(0.969531, 0, -0.244969, 0, 1, 0, 0.244969, 0, 0.969531, 2.39432, 0, -76.7762)
+
+[node name="Tree9" parent="Scenery/Tree" instance=ExtResource("12_5ulj4")]
+transform = Transform3D(0.273674, 0, -0.961823, 0, 1, 0, 0.961823, 0, 0.273674, 8.05536, 0, -74.0322)
+
+[node name="Tree4" parent="Scenery/Tree" instance=ExtResource("12_5ulj4")]
+transform = Transform3D(0.361137, 0, -0.932513, 0, 1, 0, 0.932513, 0, 0.361137, -3.35806, 0, 57.263)
+
+[node name="Palm" parent="Scenery/Tree" instance=ExtResource("13_p82wu")]
+transform = Transform3D(0.987688, -0.156434, 0, 0.154334, 0.974426, -0.163326, 0.0255498, 0.161315, 0.986572, 0.880054, -0.883584, 67.6217)
+
+[node name="Palm2" parent="Scenery/Tree" instance=ExtResource("13_p82wu")]
+transform = Transform3D(-0.216221, 0.194637, 0.956747, 0.154338, 0.974421, -0.163354, -0.964069, 0.112341, -0.24073, -4.52865, -0.883584, 47.9077)
+
+[node name="Palm4" parent="Scenery/Tree" instance=ExtResource("13_p82wu")]
+transform = Transform3D(-0.686772, 0.224642, 0.691289, 0.154334, 0.974426, -0.163326, -0.7103, -0.00547861, -0.703878, -5.36989, -0.883584, 32.3013)
+
+[node name="Palm5" parent="Scenery/Tree" instance=ExtResource("13_p82wu")]
+transform = Transform3D(-0.686772, 0.224642, 0.691289, 0.154334, 0.974426, -0.163326, -0.7103, -0.00547861, -0.703878, 0.905066, -0.883584, -6.95781)
+
+[node name="Palm3" parent="Scenery/Tree" instance=ExtResource("13_p82wu")]
+transform = Transform3D(0.987688, -0.156434, 0, 0.154334, 0.974426, -0.163326, 0.0255498, 0.161315, 0.986572, 7.49845, -0.883584, -79.2679)
+
+[node name="Palm6" parent="Scenery/Tree" instance=ExtResource("13_p82wu")]
+transform = Transform3D(0.987688, -0.156434, 0, 0.154334, 0.974426, -0.163326, 0.0255498, 0.161315, 0.986572, 5.7345, -0.883584, -49.1978)
+
+[node name="StageScreenMeasure" parent="." instance=ExtResource("5_isigb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6041, 0, 34.6865)
+default_movement = ExtResource("26_677uv")
+
+[node name="StageScreenMeasure2" parent="." instance=ExtResource("5_isigb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.35089, 0, -37.6244)
+default_movement = SubResource("Resource_evitp")
+
+[node name="StageScreenMeasure3" parent="." instance=ExtResource("5_isigb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05719, 0, -108.25)
+default_movement = SubResource("Resource_w8pnp")
+
+[node name="Capybaras" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -31)
+
+[node name="NpcCapybara2" parent="Capybaras" instance=ExtResource("6_bysi5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.90153, 0, 45.7545)
+
+[node name="NpcCapybara3" parent="Capybaras" instance=ExtResource("6_bysi5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.27194, 0, 42.5863)
+
+[node name="NpcCapybara4" parent="Capybaras" instance=ExtResource("6_bysi5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74562, 0, 87.6007)
+
+[node name="NpcCapybara5" parent="Capybaras" instance=ExtResource("6_bysi5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.612164, 0, 35.4901)
+
+[node name="NpcCapybara6" parent="Capybaras" instance=ExtResource("6_bysi5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.19175, 0, 31.5068)
+
+[node name="NpcCapybara7" parent="Capybaras" instance=ExtResource("6_bysi5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.41393, 0, 23.6099)
+
+[connection signal="screen_entered" from="Config/VisibleOnScreenNotifier3D" to="." method="_on_screen_entered"]
+[connection signal="screen_exited" from="Config/VisibleOnScreenNotifier3D" to="." method="_on_screen_exited"]

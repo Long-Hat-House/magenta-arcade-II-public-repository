@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://yphfjwtexs40"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Stop_FinalBoss_Lv4_Final_Appear"
+id = 2749392763
+guid = "{DEE79DFC-E565-4DCD-8E0E-4FEAAE3D3FED}"
+dummy = true

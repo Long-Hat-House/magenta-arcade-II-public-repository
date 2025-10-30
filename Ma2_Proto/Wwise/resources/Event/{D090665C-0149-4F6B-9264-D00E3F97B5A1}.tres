@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://c5l5w8l7tuuou"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Enemy_Carpa_Missile_Impact"
+id = 3624987022
+guid = "{D090665C-0149-4F6B-9264-D00E3F97B5A1}"
+dummy = true

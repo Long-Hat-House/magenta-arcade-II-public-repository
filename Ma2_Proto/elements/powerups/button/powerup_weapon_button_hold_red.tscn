@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqf8spkpeqp02"]
+
+[ext_resource type="PackedScene" uid="uid://drbtolhhj7dys" path="res://elements/powerups/button/powerup_weapon_button_hold.tscn" id="1_07or2"]
+[ext_resource type="PackedScene" uid="uid://ku8b1fm4emee" path="res://elements/player/weapons/weapon_red_hold.tscn" id="3_1p7ne"]
+
+[node name="WeaponButton_Hold_Red" instance=ExtResource("1_07or2")]
+
+[node name="Condition_HasMaxedWeapon" parent="." index="4" node_paths=PackedStringArray("specific_weapon")]
+specific_weapon = NodePath("../ParallelTask/Task_AddWeapon/Weapon_Red Hold")
+
+[node name="Weapon_Red Hold" parent="ParallelTask/Task_AddWeapon" index="0" instance=ExtResource("3_1p7ne")]

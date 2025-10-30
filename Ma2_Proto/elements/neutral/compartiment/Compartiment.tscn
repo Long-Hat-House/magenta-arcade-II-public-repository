@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbth6qhwn1uow"]
+
+[ext_resource type="Script" uid="uid://dn3vuy32o2i3l" path="res://elements/neutral/compartiment/compartiment.gd" id="1_3i4q0"]
+
+[node name="Compartiment" type="Node3D" node_paths=PackedStringArray("origin", "destination")]
+script = ExtResource("1_3i4q0")
+origin = NodePath("Origin")
+destination = NodePath("Destination")
+global_basis_identity = true
+
+[node name="Origin" type="Node3D" parent="."]
+
+[node name="Destination" type="Node3D" parent="."]

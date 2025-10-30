@@ -1,0 +1,411 @@
+[gd_scene load_steps=20 format=3 uid="uid://bpnio6w6nvq4g"]
+
+[ext_resource type="Texture2D" uid="uid://jvl2nsob4yl7" path="res://elements/ui/ui_art/ui_icon_health_lined.png" id="3_gs7cs"]
+[ext_resource type="Script" uid="uid://c3yme4hxpatpv" path="res://systems/utils/control_shaker.gd" id="3_i7al1"]
+[ext_resource type="Script" uid="uid://bi4yfgewvcvwq" path="res://systems/switchable/switch_oning_offing_animation_player.gd" id="4_jp8e4"]
+
+[sub_resource type="GDScript" id="GDScript_dj228"]
+script/source = "extends ProgressBarIndexedElementSwitchAnimation
+
+@export var _to_set_size:Array[Control]
+@export var _width:int = 64
+@export var _height_min:int = 64
+@export var _height_max:int = 128
+
+@export var _warning_animation:Switch_Oning_Offing_AnimationPlayer
+
+func set_state(index:int, max:int, fill:int, imediate:bool):
+	super.set_state(index, max, fill, imediate)
+
+	max -= 1
+	if max <= 0: return
+
+	var height = lerp(_height_min, _height_max, float(index)/max)
+	if height > _height_max:
+		height = _height_max
+
+	for obj in _to_set_size:
+		obj.custom_minimum_size = Vector2(_width, height)
+
+	_warning_animation.set_switch(fill <= 1)
+"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xpdcp"]
+texture = ExtResource("3_gs7cs")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="Animation" id="Animation_fpasf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Keep Centered/Control/ShakePivot:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Keep Centered/Control/ShakePivot:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.01),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Keep Centered/Control/ShakePivot:shake_amplitude_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vgfx2"]
+resource_name = "off"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Keep Centered/Control/ShakePivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1.93187),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Keep Centered/Control/ShakePivot:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Keep Centered/Control/ShakePivot:shake_amplitude_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_kp8nm"]
+resource_name = "offing"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Keep Centered/Control/ShakePivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.510772, 0.8, 1.1),
+"transitions": PackedFloat32Array(6.72717, 4, 0.378929, 3.24901, 1.93187),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 2), Vector2(2, 2), Vector2(1.5, 1.5), Vector2(5, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Keep Centered/Control/ShakePivot:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.510772, 1, 1.1),
+"transitions": PackedFloat32Array(0, 0, 1, 1, 1),
+"update": 0,
+"values": [Color(0.658824, 1, 0.909804, 1), Color(0.901961, 0, 0.494118, 1), Color(1, 0, 1, 1), Color(1, 0, 1, 1), Color(1, 0, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Keep Centered/Control/ShakePivot:shake_amplitude_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.7),
+"transitions": PackedFloat32Array(1, 1, -2, 1),
+"update": 0,
+"values": [0.0, 1.0, 2.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_5u08t"]
+resource_name = "on"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Keep Centered/Control/ShakePivot:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Keep Centered/Control/ShakePivot:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_28xq8"]
+resource_name = "oning"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Keep Centered/Control/ShakePivot:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6),
+"transitions": PackedFloat32Array(0.466517, -4.14106, 0.554785),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Keep Centered/Control/ShakePivot:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6),
+"transitions": PackedFloat32Array(3.36358, -3.13834, 1),
+"update": 0,
+"values": [Color(0.0980392, 0.0980392, 0.0980392, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_na5lm"]
+_data = {
+&"RESET": SubResource("Animation_fpasf"),
+&"off": SubResource("Animation_vgfx2"),
+&"offing": SubResource("Animation_kp8nm"),
+&"on": SubResource("Animation_5u08t"),
+&"oning": SubResource("Animation_28xq8")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6kb7q"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5drg8"]
+texture = ExtResource("3_gs7cs")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="Animation" id="Animation_uckjk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rsgmr"]
+resource_name = "off"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qst7p"]
+resource_name = "offing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 1, 1), Color(0.713726, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bu0wg"]
+resource_name = "on"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.6),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_l6h24"]
+resource_name = "oning"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.556863, 1, 1), Color(1, 1, 1, 1), Color(1, 0.52549, 1, 1), Color(1, 1, 1, 1), Color(1, 0.266667, 1, 1), Color(1, 1, 1, 1), Color(1, 0, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3gt41"]
+_data = {
+&"RESET": SubResource("Animation_uckjk"),
+&"off": SubResource("Animation_rsgmr"),
+&"offing": SubResource("Animation_qst7p"),
+&"on": SubResource("Animation_bu0wg"),
+&"oning": SubResource("Animation_l6h24")
+}
+
+[node name="HP Unit" type="Control" node_paths=PackedStringArray("_to_set_size", "_warning_animation", "_animation")]
+custom_minimum_size = Vector2(32, 128)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 32.0
+offset_bottom = 64.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 2
+script = SubResource("GDScript_dj228")
+_to_set_size = [NodePath("Keep Centered/Control/ShakePivot/Panel"), NodePath(".")]
+_width = 32
+_warning_animation = NodePath("WarningAnimation")
+_animation = NodePath("AnimationPlayer")
+_when_disabling_play_off_first = true
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(0.3239, 0.79, 0.766695, 0.329412)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xpdcp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_na5lm")
+}
+autoplay = "oning"
+script = ExtResource("4_jp8e4")
+
+[node name="Keep Centered" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6kb7q")
+
+[node name="Control" type="Control" parent="Keep Centered"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="ShakePivot" type="Control" parent="Keep Centered/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_i7al1")
+shake_amplitude_ratio = 0.0
+shake_amplitude = 5.0
+shake_frequency = 15.0
+
+[node name="Panel" type="Panel" parent="Keep Centered/Control/ShakePivot"]
+z_index = 1
+custom_minimum_size = Vector2(32, 128)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -32.0
+offset_right = 16.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5drg8")
+
+[node name="WarningAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3gt41")
+}
+script = ExtResource("4_jp8e4")

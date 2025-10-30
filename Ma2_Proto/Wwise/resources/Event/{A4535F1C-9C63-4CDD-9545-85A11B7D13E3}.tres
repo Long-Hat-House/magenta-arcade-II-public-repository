@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://3wlkmkt46dft"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Amb_Lv0_Flag_Destroy"
+id = 2379343577
+guid = "{A4535F1C-9C63-4CDD-9545-85A11B7D13E3}"
+dummy = true

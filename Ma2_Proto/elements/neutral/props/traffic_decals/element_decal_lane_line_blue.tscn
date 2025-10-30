@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu8nido6d1s4t"]
+
+[ext_resource type="Material" uid="uid://canddoq28f0ha" path="res://elements/neutral/props/traffic_decals/materials/m_decal_lane_line_blue.tres" id="1_i5bvy"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_mw08t"]
+size = Vector2(0.2, 1.6)
+orientation = 1
+
+[node name="Decal Lane Line" type="MeshInstance3D"]
+material_override = ExtResource("1_i5bvy")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_mw08t")
+skeleton = NodePath("../..")

@@ -1,0 +1,909 @@
+[gd_scene load_steps=24 format=3 uid="uid://budaj640highl"]
+
+[ext_resource type="Material" uid="uid://dtgb6ayfe8f3o" path="res://elements/levels/lvl_hub/hub_elements/hub_letter/m_hub_letter.tres" id="1_dsgfv"]
+[ext_resource type="Script" uid="uid://b3mexdvtub15i" path="res://elements/levels/lvl_hub/hub_elements/hub_letter/hub_letter.gd" id="1_qdypw"]
+[ext_resource type="Script" uid="uid://hbsjipy3xak5" path="res://systems/pressable/pressable.gd" id="2_34o2q"]
+[ext_resource type="Texture2D" uid="uid://b21xih7kom404" path="res://elements/icons/icon_lvl_arcade.png" id="4_ibu33"]
+[ext_resource type="Script" uid="uid://cng1e6lu5d3ho" path="res://systems/ui/timed_button.gd" id="4_n41ne"]
+[ext_resource type="Texture2D" uid="uid://cm5belis6bq0x" path="res://elements/icons/icon_star.png" id="4_px3yu"]
+[ext_resource type="Texture2D" uid="uid://41wb730oj2ed" path="res://elements/icons/icon_star_empty.png" id="5_hitkj"]
+[ext_resource type="Texture2D" uid="uid://bflh2uw7muqr3" path="res://elements/icons/icon_fingerprint.png" id="5_n41ne"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_34o2q"]
+size = Vector2(1.5, 0.6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dsgfv"]
+albedo_color = Color(0, 0.686275, 0.654902, 1)
+metallic = 0.55
+metallic_specular = 0.56
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_34o2q"]
+top_radius = 0.079
+bottom_radius = 0.15
+height = 0.025
+radial_segments = 8
+rings = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_dsgfv"]
+size = Vector2(1.5, 1.2)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qdypw"]
+radius = 1.19259
+height = 2.38518
+
+[sub_resource type="Animation" id="Animation_px3yu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Letter_1/Letter_2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5708, -0.614949, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Letter_1/Letter_2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0526257, 0.158387, -0.134861)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Letter_1:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Letter_1:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Letter_1:position:z")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Letter_1/Letter_2/LetterObj/LetterTop:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-3.14857, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Letter_1/Letter_2/LetterObj/LetterBottom:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.12613, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Control:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Control:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.392157, 0.239216, 0.137255, 0.690196)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Letter_1:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n41ne"]
+resource_name = "exiting"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Letter_1/Letter_2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.466667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.15192, 0, 0), Vector3(-1.15192, 0, 0), Vector3(-0.807717, 1.08653, -0.941603), Vector3(-1.15192, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Letter_1/Letter_2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(8, 0, 0)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Letter_1:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Letter_1:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(21.5, -0.25, 0, 0.25, 0, 21.5, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 1)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Letter_1:position:z")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(4.38, -0.25, 0, 0.25, 0, 4.38, -0.25, 0, 0.25, 0, 9.425, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.466667, 1)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.392157, 0.239216, 0.137255, 0.690196), Color(0.392157, 0.239216, 0.137255, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Letter_1/Letter_2/LetterObj/LetterTop:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(-2, 1, 1),
+"update": 0,
+"values": [Vector3(-6.05106, 0, 0), Vector3(-3.14857, 0, 0), Vector3(-3.14857, 0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Letter_1/Letter_2/LetterObj/LetterBottom:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(-2, 1, 1),
+"update": 0,
+"values": [Vector3(6.05978, 0, 0), Vector3(3.12613, 0, 0), Vector3(3.12613, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hitkj"]
+resource_name = "off"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Letter_1/Letter_2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.5),
+"update": 0,
+"values": [Vector3(-1.5708, -0.236894, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Letter_1/Letter_2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.5),
+"update": 0,
+"values": [Vector3(6.5944, 1.08793, -0.134861)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ibu33"]
+resource_name = "open"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Letter_1:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Letter_1:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(21.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Letter_1:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(4.38, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Letter_1/Letter_2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Letter_1/Letter_2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.15192, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Letter_1/Letter_2/LetterObj/LetterTop:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.633333, 1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(-6.05106, 0, 0), Vector3(-5.99521, 0, 0), Vector3(-6.05106, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Letter_1/Letter_2/LetterObj/LetterBottom:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.366667, 1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(6.05978, 0, 0), Vector3(6.02139, 0, 0), Vector3(6.05978, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Control:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_3kp44"]
+resource_name = "opening"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Letter_1/Letter_2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.433333, 1, 1.66667, 2, 3),
+"transitions": PackedFloat32Array(1, -2, -2, -2, 1, 1),
+"update": 0,
+"values": [Vector3(-1.5708, -0.614949, 0), Vector3(6.28319, -0.321141, -0.254818), Vector3(4.05615, -1.49924, 1.50971), Vector3(0.0802851, 0, 0), Vector3(-1.15192, 0, 0), Vector3(-1.15192, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Letter_1/Letter_2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.46667, 2, 3),
+"transitions": PackedFloat32Array(0.5, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0526257, 0.158387, -0.134861), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Letter_1:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -1.975, -0.25, 0, 0.25, 0, 0.453167, -0.166667, 0.0324708, 0.133333, -0.0324708, 0, -0.353188, -0.0338954, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.666667, 1.2, 1.7, 3)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Letter_1:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.1, 2.43615, 6.27194, -0.183216, 0.937035, 0.3, -1.53431, 21.5, -0.25, 0, 0.25, 0, 21.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.566667, 1.7, 3)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Letter_1:position:z")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -3.255, -0.25, 0, 0.25, 0, 1.41, -0.25, 0, 0.25, 0, 4.38, -0.25, 0, 0.25, 0, 4.38, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.433333, 0.966667, 1.7, 3)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.76667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.9, 2.16667, 3),
+"transitions": PackedFloat32Array(1, -2, 1, 1),
+"update": 0,
+"values": [Color(0.392157, 0.239216, 0.137255, 0), Color(0.392157, 0.239216, 0.137255, 0), Color(0.392157, 0.239216, 0.137255, 0.690196), Color(0.392157, 0.239216, 0.137255, 0.690196)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Letter_1/Letter_2/LetterObj/LetterTop:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.26667, 2, 3),
+"transitions": PackedFloat32Array(1, -2, -2, -2),
+"update": 0,
+"values": [Vector3(-3.14857, 0, 0), Vector3(-3.14857, 0, 0), Vector3(-6.05106, 0, 0), Vector3(-6.05106, 0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Letter_1/Letter_2/LetterObj/LetterBottom:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.26667, 2, 3),
+"transitions": PackedFloat32Array(1, -2, -2, -2),
+"update": 0,
+"values": [Vector3(3.12613, 0, 0), Vector3(3.12613, 0, 0), Vector3(6.05978, 0, 0), Vector3(6.05978, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qdypw"]
+resource_name = "starting"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Letter_1/Letter_2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.433333),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(-1.5708, -0.236894, 0), Vector3(-1.5708, -0.614949, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Letter_1/Letter_2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.666667),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(6.5944, 1.08793, -0.134861), Vector3(0.0526257, 0.158387, -0.134861)]
+}
+
+[sub_resource type="Animation" id="Animation_34o2q"]
+resource_name = "waiting"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Letter_1/Letter_2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.433333, 0.533333, 0.933333),
+"transitions": PackedFloat32Array(0.5, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.05713, -1.20352, 0.795039), Vector3(-0.993085, 0.00102538, -0.535239), Vector3(-0.993085, 0.00102538, -0.535239), Vector3(-1.05713, -1.20352, 0.795039)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Letter_1/Letter_2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.433333, 0.533333, 0.7, 0.933333),
+"transitions": PackedFloat32Array(0.5, 0.5, 1, 1, 0.5, 1),
+"update": 0,
+"values": [Vector3(0.0526257, 0.158387, -0.134861), Vector3(0.053, 0.803, -0.135), Vector3(0.0526257, 0.158387, -0.134861), Vector3(0.0526257, 0.158387, -0.134861), Vector3(0.053, 0.803, -0.135), Vector3(0.0526257, 0.158387, -0.134861)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Letter_1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.3, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ibu33"]
+_data = {
+&"RESET": SubResource("Animation_px3yu"),
+&"exiting": SubResource("Animation_n41ne"),
+&"off": SubResource("Animation_hitkj"),
+&"open": SubResource("Animation_ibu33"),
+&"opening": SubResource("Animation_3kp44"),
+&"starting": SubResource("Animation_qdypw"),
+&"waiting": SubResource("Animation_34o2q")
+}
+
+[sub_resource type="Gradient" id="Gradient_px3yu"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wivvb"]
+gradient = SubResource("Gradient_px3yu")
+width = 1
+
+[node name="HubLetter" type="Node3D" node_paths=PackedStringArray("_animation", "_pressable")]
+script = ExtResource("1_qdypw")
+_animation = NodePath("AnimationPlayer")
+_pressable = NodePath("LetterPressable")
+
+[node name="Letter_1" type="Node3D" parent="."]
+
+[node name="Letter_2" type="Node3D" parent="Letter_1"]
+transform = Transform3D(0.816803, 0.576917, 2.08843e-06, 0, -3.61999e-06, 1, 0.576917, -0.816803, -2.95682e-06, 0.0526257, 0.158387, -0.134861)
+
+[node name="LetterObj" type="Node3D" parent="Letter_1/Letter_2"]
+
+[node name="LetterTop" type="Node3D" parent="Letter_1/Letter_2/LetterObj"]
+transform = Transform3D(1, 0, 0, 0, -0.999976, -0.00697735, 0, 0.00697735, -0.999976, 0, 0.6, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Letter_1/Letter_2/LetterObj/LetterTop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+material_override = ExtResource("1_dsgfv")
+mesh = SubResource("QuadMesh_34o2q")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Letter_1/Letter_2/LetterObj/LetterTop"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.59, -0.025)
+material_override = SubResource("StandardMaterial3D_dsgfv")
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_34o2q")
+
+[node name="LetterMiddle" type="Node3D" parent="Letter_1/Letter_2/LetterObj"]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Letter_1/Letter_2/LetterObj/LetterMiddle"]
+material_override = ExtResource("1_dsgfv")
+mesh = SubResource("QuadMesh_dsgfv")
+skeleton = NodePath("../../LetterTop")
+
+[node name="LetterBottom" type="Node3D" parent="Letter_1/Letter_2/LetterObj"]
+transform = Transform3D(1, 0, 0, 0, -0.99988, -0.0154619, 0, 0.0154619, -0.99988, 0, -0.6, 0)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Letter_1/Letter_2/LetterObj/LetterBottom"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -0.3, 0)
+material_override = ExtResource("1_dsgfv")
+mesh = SubResource("QuadMesh_34o2q")
+skeleton = NodePath("../../LetterTop")
+
+[node name="LetterPressable" type="Node3D" parent="."]
+script = ExtResource("2_34o2q")
+search_for_area_inside = true
+
+[node name="PressArea" type="Area3D" parent="LetterPressable"]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LetterPressable/PressArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("CapsuleShape3D_qdypw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ibu33")
+}
+autoplay = "off"
+
+[node name="Control" type="BoxContainer" parent="."]
+modulate = Color(0.392157, 0.239216, 0.137255, 0.690196)
+custom_minimum_size = Vector2(800, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -380.0
+offset_top = -681.0
+offset_right = 380.0
+offset_bottom = 681.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+alignment = 1
+vertical = true
+
+[node name="Header" type="Control" parent="Control"]
+custom_minimum_size = Vector2(0, 325)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Header"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -83.0
+offset_bottom = 83.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="HSeparator2" type="HSeparator" parent="Control/Header/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.588235)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Header/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="Control/Header/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Control/Header/VBoxContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0.588235)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("4_px3yu")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Title_Label" type="Label" parent="Control/Header/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 80
+text = "Parabéns!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Translated_Label" type="Label" parent="Control/Header/VBoxContainer/HBoxContainer/Title_Label"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -212.5
+offset_top = -31.35
+offset_right = 212.5
+offset_bottom = 128.65
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+text = "hub_letter_congratz"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect3" type="TextureRect" parent="Control/Header/VBoxContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0.588235)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("4_px3yu")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Control" type="Control" parent="Control/Header/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="Control/Header/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.588235)
+layout_mode = 2
+
+[node name="Content" type="ScrollContainer" parent="Control"]
+custom_minimum_size = Vector2(0, 660)
+layout_mode = 2
+mouse_filter = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="BoxContainer" type="BoxContainer" parent="Control/Content/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+vertical = true
+
+[node name="Label4" type="Label" parent="Control/Content/MarginContainer/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "hub_letter_1"
+horizontal_alignment = 3
+autowrap_mode = 3
+justification_flags = 33
+
+[node name="HSeparator2" type="HSeparator" parent="Control/Content/MarginContainer/BoxContainer"]
+modulate = Color(1, 1, 1, 0.588235)
+layout_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="Control/Content/MarginContainer/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 30
+
+[node name="TextureRect" type="TextureRect" parent="Control/Content/MarginContainer/BoxContainer/BoxContainer"]
+modulate = Color(1, 1, 1, 0.588235)
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_ibu33")
+stretch_mode = 5
+
+[node name="Label5" type="Label" parent="Control/Content/MarginContainer/BoxContainer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "hub_letter_2"
+horizontal_alignment = 3
+autowrap_mode = 3
+justification_flags = 33
+
+[node name="HSeparator" type="HSeparator" parent="Control/Content/MarginContainer/BoxContainer"]
+modulate = Color(1, 1, 1, 0.588235)
+layout_mode = 2
+
+[node name="BoxContainer2" type="BoxContainer" parent="Control/Content/MarginContainer/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 30
+
+[node name="Label5" type="Label" parent="Control/Content/MarginContainer/BoxContainer/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "hub_letter_3"
+horizontal_alignment = 3
+autowrap_mode = 3
+justification_flags = 33
+
+[node name="TextureRect" type="TextureRect" parent="Control/Content/MarginContainer/BoxContainer/BoxContainer2"]
+modulate = Color(1, 1, 1, 0.588235)
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_hitkj")
+stretch_mode = 4
+
+[node name="Footer" type="Control" parent="Control"]
+custom_minimum_size = Vector2(0, 330)
+layout_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="Control/Footer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Label4" type="Label" parent="Control/Footer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "hub_letter_4"
+horizontal_alignment = 3
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 33
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/Footer/BoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_type_variation = &"panel_outline_round"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Footer/BoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="Control/Footer/BoxContainer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+max_value = 1.0
+step = 0.0
+value = 1.0
+fill_mode = 6
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_wivvb")
+tint_progress = Color(0, 0, 0, 1)
+
+[node name="TimedButton" type="Button" parent="Control/Footer/BoxContainer/PanelContainer"]
+modulate = Color(1, 1, 1, 0.423529)
+layout_mode = 2
+theme_type_variation = &"button_magenta"
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("4_n41ne")
+target_time = 2.0
+metadata/_custom_type_script = "uid://cng1e6lu5d3ho"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control/Footer/BoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+max_value = 1.0
+step = 0.0
+value = 0.44
+fill_mode = 8
+texture_under = ExtResource("5_n41ne")
+texture_progress = ExtResource("5_n41ne")
+tint_progress = Color(0, 0, 0, 1)
+
+[node name="Spacer" type="Control" parent="Control/Footer/BoxContainer"]
+layout_mode = 2
+
+[connection signal="time_changed" from="Control/Footer/BoxContainer/PanelContainer/TimedButton" to="Control/Footer/BoxContainer/PanelContainer/TextureProgressBar" method="set_value"]
+[connection signal="time_changed" from="Control/Footer/BoxContainer/PanelContainer/TimedButton" to="Control/Footer/BoxContainer/PanelContainer/VBoxContainer/TextureProgressBar2" method="set_value"]
+[connection signal="time_completed" from="Control/Footer/BoxContainer/PanelContainer/TimedButton" to="." method="close_letter"]

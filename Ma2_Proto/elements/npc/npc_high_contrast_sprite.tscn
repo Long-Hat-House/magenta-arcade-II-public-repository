@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dskpdh8c11ga7"]
+
+[ext_resource type="Script" uid="uid://dnsjfpmcxo7es" path="res://addons/gap/api/accessibility_high_contrast_sprite.gd" id="1_ou6uq"]
+[ext_resource type="Texture2D" uid="uid://oepxrr27eot7" path="res://elements/npc/npc_art/NPC_fanatic_01.png" id="2_5x0wb"]
+
+[sub_resource type="Curve" id="Curve_ou6uq"]
+_data = [Vector2(0.406907, 0), 0.0, 0.389207, 0, 0, Vector2(0.557057, 0.0517148), 0.0, 2.99635, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="NPC_HighContrastSprite" type="Node3D"]
+
+[node name="NPC_HighContrastSprite" type="Node3D" parent="."]
+script = ExtResource("1_ou6uq")
+high_contrast_group = &"player"
+texture = ExtResource("2_5x0wb")
+size = Vector2(2, 2)
+uv_amount = Vector2i(7, 6)
+uv_frame = Vector2i(3, 0)
+center_offset = Vector3(0, 1, 0)
+billboard = true
+bg_sensibility_curve = SubResource("Curve_ou6uq")

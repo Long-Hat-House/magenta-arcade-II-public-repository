@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://btm47xa5e3tp"]
+
+[ext_resource type="PackedScene" uid="uid://mjs6c3ht04es" path="res://elements/neutral/props/vegetation/mesh/mesh_plant_pot.tscn" id="1_yakdv"]
+[ext_resource type="Script" uid="uid://0wf4obm88h88" path="res://elements/neutral/props/generic_tumbler.gd" id="2_5tnxu"]
+[ext_resource type="Script" uid="uid://bgdocsgotim3u" path="res://elements/player/force_tumble_data.gd" id="3_1wc3j"]
+[ext_resource type="Script" uid="uid://biqjvlcudqx0t" path="res://elements/player/force_receiver.gd" id="4_um206"]
+
+[sub_resource type="GDScript" id="GDScript_yakdv"]
+resource_name = "add_as_child"
+script/source = "extends Node3D
+
+@export var parent:Node3D;
+@export var inside_what:Node3D;
+@export var exception:Node3D;
+
+func _ready() -> void:
+	await get_tree().process_frame;
+	for child:Node3D in parent.get_children():
+		if child != inside_what and child != exception:
+			child.reparent(inside_what);
+"
+
+[sub_resource type="Resource" id="Resource_36yf0"]
+script = ExtResource("3_1wc3j")
+force_response_multiplier = 48.0
+return_force_multiplier = 64.0
+mass = 1.25
+scaled_mass = true
+min_velocity = 2.0
+min_force_to_min_velocity = 4.5
+velocity_dissipation = 2.0
+tumble_sensitivity = 0.8
+vibration_max_value_amplitude = 0.5
+vibration_frequency = 32.0
+vibration_increase = 4.0
+vibration_decrease = 32.0
+force_min_to_increase_vibration = 0.5
+add_tumble_hit_multiplier = 0.1
+add_tumble_hit_velocity_multiplier = 1.0
+add_vibration_influence_on_hit = 0.8
+
+[node name="ElementPlantPot" type="Node3D"]
+
+[node name="Tumbler" type="Node3D" parent="."]
+
+[node name="plant_pot" parent="Tumbler" node_paths=PackedStringArray("parent", "inside_what", "exception") instance=ExtResource("1_yakdv")]
+script = SubResource("GDScript_yakdv")
+parent = NodePath("../..")
+inside_what = NodePath("..")
+exception = NodePath("../../GenericTumbler")
+
+[node name="GenericTumbler" type="Node3D" parent="." node_paths=PackedStringArray("receiver", "to_tumble")]
+script = ExtResource("2_5tnxu")
+receiver = NodePath("ForceReceiver")
+to_tumble = NodePath("../Tumbler")
+tumble_data = SubResource("Resource_36yf0")
+tumble_radius = 0.25
+random_force = 0.5
+metadata/_custom_type_script = "uid://0wf4obm88h88"
+
+[node name="ForceReceiver" type="Node3D" parent="GenericTumbler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+script = ExtResource("4_um206")
+metadata/_custom_type_script = "uid://biqjvlcudqx0t"
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

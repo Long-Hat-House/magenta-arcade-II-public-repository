@@ -1,0 +1,24 @@
+Event	ID	Name			Wwise Object Path	Notes
+	22310327	Play_Player_Finger_Tap_Attempt			\Player\Play_Player_Finger_Tap_Attempt	
+	887999531	Play_Player_Hurt			\Player\Play_Player_Hurt	
+	1490777887	Stop_Player_Finger_Hold			\Player\Stop_Player_Finger_Hold	
+	3754632425	Play_Player_Finger_Hold			\Player\Play_Player_Finger_Hold	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	1517601475	plr_DragSpeed			\Default Work Unit\plr_DragSpeed	
+
+Effect plug-ins	ID	Name	Type				Notes
+	286025635	Metal_Hangar (Custom)	Wwise RoomVerb			
+	805626462	Guitar Distortion (Custom)	Wwise Guitar Distortion			
+
+Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
+	104449724	Tone Generator	Wwise Tone Generator		\Actor-Mixer Hierarchy\World\WORLD_Ambience\Player_Tap_Effect\Tap_Effect_Sound\Tone Generator	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	25673464	plr_hurt_impact_01	I:\MA2\Magenta-Arcade_Wwise\.cache\08\{08910A54-26C3-E8D2-DE6A-5DBF8D3A600C}.wem		\Actor-Mixer Hierarchy\Player\SFXs_Player\Player_Hurt\plr_hurt_impact_01		108917
+	31796854	plr_movement_drag_dirt_01	I:\MA2\Magenta-Arcade_Wwise\.cache\5B\{5BAC4FB1-3698-4973-E3BD-564E987BFAD9}.wem		\Actor-Mixer Hierarchy\World\WORLD_Ambience\Player_Movement\Player_Drag_Dirt\plr_movement_drag_dirt_01		124398
+	52581006	plr_hurt_impact_03	I:\MA2\Magenta-Arcade_Wwise\.cache\56\{564BF096-B275-D61B-E5D9-D17119653ACC}.wem		\Actor-Mixer Hierarchy\Player\SFXs_Player\Player_Hurt\plr_hurt_impact_03		94738
+	174811141	plr_movement_wind_gust_01	I:\MA2\Magenta-Arcade_Wwise\.cache\DE\{DE030B9C-FFCC-F0D1-D921-7E277CE3C311}.wem		\Actor-Mixer Hierarchy\World\WORLD_Ambience\Player_Movement_Wind\plr_movement_wind_gust_01		329711
+	814608433	plr_hurt_impact_02	I:\MA2\Magenta-Arcade_Wwise\.cache\C7\{C7342E47-EDEB-968C-F8CE-726F927F5DA2}.wem		\Actor-Mixer Hierarchy\Player\SFXs_Player\Player_Hurt\plr_hurt_impact_02		97034
+	979438359	plr_movement_drag_dirt_02	I:\MA2\Magenta-Arcade_Wwise\.cache\87\{87615AEB-AAA8-AAF1-E1B5-FB0F3FB677FD}.wem		\Actor-Mixer Hierarchy\World\WORLD_Ambience\Player_Movement\Player_Drag_Dirt\plr_movement_drag_dirt_02		119119
+

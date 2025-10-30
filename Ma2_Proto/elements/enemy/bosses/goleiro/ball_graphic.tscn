@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://cb8v2qv2g3nr2"]
+
+[ext_resource type="PackedScene" uid="uid://cp4lajdqy2rqe" path="res://elements/neutral/props/ball/mesh/mesh_ball.tscn" id="1_etyb2"]
+[ext_resource type="Script" path="res://elements/enemy/bosses/goleiro/ball_graphic.gd" id="2_i0r5l"]
+
+[node name="ball" instance=ExtResource("1_etyb2")]
+script = ExtResource("2_i0r5l")

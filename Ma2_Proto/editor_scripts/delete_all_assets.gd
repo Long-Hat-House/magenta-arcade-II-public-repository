@@ -7,9 +7,14 @@ var ignore_path:Array[String] = [
 ]
 
 var to_delete:Array[String] = [
+	"bnk",
+	
+	##Change this later
+	"glb",
+	"png",
 	"ase",
 	"aseprite",
-	"bnk",
+	"import"
 ]
 func get_name()->String:
 	return "Deleting all assets!"

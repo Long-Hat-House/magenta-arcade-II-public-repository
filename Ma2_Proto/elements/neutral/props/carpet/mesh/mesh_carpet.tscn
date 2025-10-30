@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkeloy33222af"]
+
+[ext_resource type="PackedScene" uid="uid://kmqf3kqcw1dr" path="res://elements/neutral/props/carpet/mesh/carpet.glb" id="1_d1o3g"]
+[ext_resource type="Material" uid="uid://dgk1lpp7pdc2o" path="res://elements/neutral/props/carpet/material/m_carpet.tres" id="2_n7akx"]
+
+[node name="carpet" instance=ExtResource("1_d1o3g")]
+
+[node name="carpet01" parent="." index="0"]
+material_override = ExtResource("2_n7akx")
+cast_shadow = 0
+
+[node name="carpet02" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.422742)
+material_override = ExtResource("2_n7akx")
+cast_shadow = 0

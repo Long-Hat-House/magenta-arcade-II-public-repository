@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://0d5drwyumy54"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Int_Altar_Destroy"
+id = 3291165179
+guid = "{2D3FC5DF-3DD4-4B82-8A0F-8E99E3B32F92}"
+dummy = true

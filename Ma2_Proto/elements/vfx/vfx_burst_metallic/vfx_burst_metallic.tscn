@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://7u3jb3qum3ff"]
+
+[ext_resource type="Script" uid="uid://db6tliyv2a0no" path="res://elements/vfx/simple_vfx.gd" id="1_bgmbe"]
+[ext_resource type="WwiseEvent" uid="uid://c25b01m4j2gxe" path="res://Wwise/resources/Event/{50217ED6-EFD5-4A95-8067-13D7C8248140}.tres" id="2_80r63"]
+[ext_resource type="Material" uid="uid://b0b7tfim0wfjv" path="res://elements/enemy/projectiles/materials/wpn_glow_white_double_sided.tres" id="3_f6b1e"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_firtc"]
+material = ExtResource("3_f6b1e")
+radius = 0.1
+height = 0.5
+radial_segments = 4
+rings = 1
+
+[sub_resource type="Curve" id="Curve_dl15w"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 10), 0.0, -52.2554, 0, 1, Vector2(0.15015, 2.15385), -18.1442, -18.1442, 0, 0, Vector2(0.36036, 0.692308), -1.60096, -1.60096, 0, 0, Vector2(0.711712, 0.482407), -1.93121, -1.93121, 0, 0, Vector2(1, 0), -1.67335, 0.0, 1, 0]
+point_count = 5
+
+[node name="Vfx Burst Metallic" type="Node3D" node_paths=PackedStringArray("_cpu_particles_3d", "sound")]
+script = ExtResource("1_bgmbe")
+_cpu_particles_3d = NodePath("CPUParticles3D4")
+animationSpeedScaleRange = 0.35
+xzRandomRange = 0.2
+sound = NodePath("SFX")
+
+[node name="SFX" type="AkEvent3D" parent="."]
+event = ExtResource("2_80r63")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00219727, 0.00830078, -0.00402832)
+
+[node name="CPUParticles3D4" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.995975, 0.0353444)
+sorting_offset = 10.0
+cast_shadow = 0
+emitting = false
+amount = 40
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+mesh = SubResource("CapsuleMesh_firtc")
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.1
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+particle_flag_align_y = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 3.0
+initial_velocity_max = 15.0
+damping_min = 10.0
+damping_max = 10.0
+scale_amount_min = 0.2
+scale_amount_max = 0.4
+scale_amount_curve = SubResource("Curve_dl15w")

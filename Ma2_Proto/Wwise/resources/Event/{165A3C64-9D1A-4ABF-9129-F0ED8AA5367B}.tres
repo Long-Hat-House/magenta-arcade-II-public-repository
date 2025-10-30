@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" load_steps=0 format=3 uid="uid://2is2vnsq7gl4"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Boss_Lv3_Train_Deaccelerate"
+id = 2618773963
+guid = "{165A3C64-9D1A-4ABF-9129-F0ED8AA5367B}"
+dummy = true

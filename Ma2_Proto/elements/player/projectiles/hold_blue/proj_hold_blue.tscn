@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://dyfqihdhaiywa"]
+
+[ext_resource type="Script" uid="uid://d1paq4x7d6g7l" path="res://elements/player/projectiles/proj_hold_forward.gd" id="1_pa7lp"]
+[ext_resource type="PackedScene" uid="uid://cqlmiiyyfqe3w" path="res://elements/vfx/vfx_hit/vfx_hit_blue.tscn" id="2_pn6b4"]
+[ext_resource type="Resource" uid="uid://com3qf7kk6fby" path="res://systems/ma2_meta/upgrades/upgrade_hold_damage.tres" id="3_0gauh"]
+[ext_resource type="WwiseEvent" uid="uid://cwkhoddiwv60n" path="res://Wwise/resources/Event/{7192C767-5ED3-46FC-8A06-A0EE1D3C50E9}.tres" id="5_a253v"]
+[ext_resource type="PackedScene" uid="uid://cb3v7wgh283h8" path="res://elements/player/projectiles/hold_blue/proj_hold_blue_v2/proj_hold_blue_v_2_mesh.tscn" id="5_sf7dm"]
+
+[sub_resource type="GDScript" id="GDScript_i2oyl"]
+script/source = "extends Node
+
+@onready var mesh: Node3D = $\"../proj_hold_blue_V2_Mesh\"
+
+@export var max:float = 5.0;
+@export var min:float = 2.8;
+
+func _on_projectile_blue_hold_velocity_tween_change(value: float) -> void:
+	mesh.scale.z = lerpf(min, max, value);
+"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x5ac5"]
+
+[node name="ProjectileBlueHold" type="Area3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+collision_layer = 8
+collision_mask = 132
+script = ExtResource("1_pa7lp")
+hitVFX = ExtResource("2_pn6b4")
+projectileVelocityRelative = Vector3(0, 0, -27.5)
+projectileVelocityAbsolute = Vector3(0, 0, 0)
+tween_on_start = 2
+projectileTweenDistance = Vector3(0, 0, -35)
+projectileTweenDuration = 0.45
+projectileTweenEase = 2
+projectileTweenTrans = 4
+amountDamage = 0.2
+bonus_resource = ExtResource("3_0gauh")
+damagePriority = 3
+
+[node name="Scale Change" type="Node" parent="."]
+script = SubResource("GDScript_i2oyl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_x5ac5")
+
+[node name="proj_hold_blue_V2_Mesh" parent="." instance=ExtResource("5_sf7dm")]
+transform = Transform3D(2.8, 0, 0, 0, 2.8, 0, 0, 0, 2.8, 0, 0, -0.183434)
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-0.607547, -0.528831, -1, 1.21509, 1.05766, 2)
+
+[node name="SFX" type="AkEvent3D" parent="."]
+event = ExtResource("5_a253v")
+trigger_on = 1
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="velocity_tween_change" from="." to="Scale Change" method="_on_projectile_blue_hold_velocity_tween_change"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

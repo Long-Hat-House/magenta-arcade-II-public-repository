@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwc6itsm0sbb2"]
+
+[ext_resource type="Material" uid="uid://dg6b7og6mbtm8" path="res://elements/background/material/m_grass_full.tres" id="1_ti5rt"]
+
+[sub_resource type="Curve3D" id="Curve3D_y1f1j"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, -6),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[node name="Curb Sidewalk Path" type="Path3D"]
+curve = SubResource("Curve3D_y1f1j")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+material_override = ExtResource("1_ti5rt")
+cast_shadow = 0
+polygon = PackedVector2Array(-0.155, 0, 0.015, 0.02, 0.341, 0)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 3.0
+path_rotation = 1
+path_local = true
+path_continuous_u = true
+path_u_distance = 6.0
+path_joined = false

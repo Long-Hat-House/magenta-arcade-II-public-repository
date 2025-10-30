@@ -1,0 +1,255 @@
+[gd_scene load_steps=17 format=3 uid="uid://3sktcgpweu5e"]
+
+[ext_resource type="PackedScene" uid="uid://bu2ifemqeaqmv" path="res://elements/stage_pieces/pampulha/stage_piece_pampulha_orla_primeira.tscn" id="1_vu1u3"]
+[ext_resource type="Script" uid="uid://c2ervhy7ph3fd" path="res://systems/line3d/constant_creator_line_3d.gd" id="2_1epdy"]
+[ext_resource type="PackedScene" uid="uid://cmekr0guqqnyd" path="res://elements/npc/npc_basic_regular.tscn" id="3_nqysh"]
+[ext_resource type="PackedScene" uid="uid://b2kjae1mx8vaj" path="res://elements/neutral/cargo/element_cargo_box.tscn" id="5_0h46a"]
+[ext_resource type="PackedScene" uid="uid://4qqcmtywm6p0" path="res://elements/powerups/button/holdable_button_holdlvlup.tscn" id="6_icw8y"]
+[ext_resource type="PackedScene" uid="uid://bbth6qhwn1uow" path="res://elements/neutral/compartiment/Compartiment.tscn" id="6_kn6at"]
+[ext_resource type="Script" uid="uid://bpd5xfw6gcj6a" path="res://systems/level/level_snippet_sequence_use_measures.gd" id="7_dfbeg"]
+[ext_resource type="PackedScene" uid="uid://djhown2ulvtjc" path="res://elements/powerups/button/powerup_weapon_button_tap_blue.tscn" id="8_icw8y"]
+[ext_resource type="PackedScene" uid="uid://cyh3qxcb2s7gv" path="res://elements/powerups/button/powerup_weapon_button_tap_yellow.tscn" id="9_4drkq"]
+[ext_resource type="PackedScene" uid="uid://dcxopovxim3xx" path="res://elements/powerups/button/holdable_button_fire_rate.tscn" id="10_umx22"]
+[ext_resource type="PackedScene" uid="uid://1w3067r22ffa" path="res://elements/powerups/button/holdable_button_warmup.tscn" id="11_7prip"]
+
+[sub_resource type="GDScript" id="GDScript_mvg20"]
+resource_name = "lvl_sub"
+script/source = "extends Level
+
+## enemies
+const ENEMY_PIZZA_ROBOTO = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto.tscn\")
+@export var level_snippet_sequence_repeat_piece: Level_Snippet_Node;
+
+var group:String = \"main\";
+
+@export var piece:LevelStagePiece;
+
+func _ready():
+	await await_for_level_ready()
+	self.stage.attach_piece(piece);
+
+	cmd(level_snippet_sequence_repeat_piece.cmd(self));
+"
+
+[sub_resource type="Curve3D" id="Curve3D_j7ynl"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.0244055, 0, 0.277, 0.789913, 0, -3.03706, -0.789913, 0, 3.03706, -8.66501, 0, 8.70684, 0.400743, 0, -1.75943, -0.400743, 0, 1.75943, -10.0123, 0, 22.5772, 0.150904, 0, -2.86333, -0.150904, 0, 2.86333, -12.9997, 0, 33.2448, 0.00752068, 0, -2.57791, -0.00752068, 0, 2.57791, -11.6375, 0, 50.5031, 1.77692, 0, -2.14754, -1.77692, 0, 2.14754, -13.7765, 0, 60.0339, 0.00537682, 0, -2.58543, -0.00537682, 0, 2.58543, -15.8375, 0, 69.5057, 0.639585, 0, -3.24316, -0.639585, 0, 3.24316, -16.0138, 0, 90.0945, 0.567033, 0, -2.02565, -0.567033, 0, 2.02565, -19.8101, 0, 98.9635, 1.58525, 0, -4.11887, -1.58525, 0, 4.11887, -26.7791, 0, 113.054, -1.30082, 0, -3.77453, 1.30082, 0, 3.77453, -24.7143, 0, 126.808, 0, 0, 0, 0, 0, 0, -21.0221, 0, 131.536, 0.112446, 0, -2.26489, -0.112446, 0, 2.26489, -20.2207, 0, 138.608, -0.137302, 0, -2.3018, 0.137302, 0, 2.3018, -17.3703, 0, 146.857, 0.514643, 0, -1.97241, -0.514643, 0, 1.97241, -22.3938, 0, 153.987, 0, 0, 0, 0, 0, 0, -23.2431, 0, 171.539, 0, 0, 0, 0, 0, 0, -23.145, 0, 201.291),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 17
+
+[sub_resource type="GDScript" id="GDScript_w86b4"]
+script/source = "extends Level_Snippet_Node
+const ENEMY_JACARE = preload(\"res://elements/enemy/roboto_jacare/enemy_jacare.tscn\")
+
+var group:String = \"snippet_group\";
+
+func cmd(lvl:Level)->Level.CMD:
+	return Level.CMD_Sequence.new([
+		Level.CMD_Wait_Seconds.new(1.25),
+		Level.CMD_Callable.new(func():
+			lvl.objs.create_object(ENEMY_JACARE, group, lvl.stage.get_grid(-7, 9), Vector3(1, 0, 0.75));
+			),
+		lvl.objs.cmd_wait_group(group),
+	])
+"
+
+[sub_resource type="GDScript" id="GDScript_hpkhm"]
+script/source = "extends Level_Snippet_Node
+const ENEMY_JACARE = preload(\"res://elements/enemy/roboto_jacare/enemy_jacare.tscn\")
+const ENEMY_PIZZA_ROBOTO = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto.tscn\")
+const ENEMY_PIZZA_ROBOTO_SHOOTER = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto_shooter.tscn\")
+const POWERUP_ALTAR = preload(\"res://elements/powerups/altar/powerup_altar.tscn\")
+
+@export var powerups_altar:Array[PackedScene];
+
+var group:String = \"snippet_group\";
+var group2:String = \"jacs\"
+
+func cmd(lvl:Level)->Level.CMD:
+	var walk_forever:Callable = func(pizza:AI_WalkAndDo):
+		pizza.walkAndStop = false;
+		pizza.accelerationBegin = 6;
+		pizza.accelerationDuration = 2;
+		
+	return Level.CMD_Sequence.new([
+		Level.CMD_Parallel_Complete.new([
+			
+			##Lane
+			Level.CMD_Sequence.new([
+				lvl.cmd_enemy_line([ENEMY_PIZZA_ROBOTO, ENEMY_PIZZA_ROBOTO_SHOOTER], [0,0,0,1], 0, 3, -1, Vector2(0,-2), group, walk_forever),
+				Level.CMD_Wait_Seconds.new(2),
+				lvl.cmd_enemy_line([ENEMY_PIZZA_ROBOTO, ENEMY_PIZZA_ROBOTO_SHOOTER], [0,0,1], 0, 1, -1, Vector2(0,-2), group, walk_forever),
+				lvl.objs.cmd_wait_group(group),
+				Level.CMD_Wait_Seconds.new(0.15),
+				Level_Cmd_Utils.cmd_multiple_altars_in_camera(POWERUP_ALTAR, powerups_altar, lvl, group, Vector2(1.5, -2), Vector3(2, 0, 3), Vector3.BACK),
+				lvl.objs.cmd_wait_group_or_time(group, 7),
+				Level.CMD_Wait_Seconds.new(0.15),
+				lvl.cmd_enemy_line([ENEMY_PIZZA_ROBOTO, ENEMY_PIZZA_ROBOTO_SHOOTER], [0,0,1,1], 0, 4, -1, Vector2(0,-2), group, walk_forever),
+				Level.CMD_Wait_Seconds.new(2),
+				lvl.cmd_enemy_line([ENEMY_PIZZA_ROBOTO, ENEMY_PIZZA_ROBOTO_SHOOTER], [1,0,1], 0, 1, -1, Vector2(0,-2), group, walk_forever),
+				lvl.objs.cmd_wait_group(group),
+			]),
+			
+			##Jacs
+			Level.CMD_Sequence.new([
+				Level.CMD_Wait_Seconds.new(3),
+				Level.CMD_Callable.new(func():
+					lvl.objs.create_object(ENEMY_JACARE, group2, lvl.stage.get_grid(-9, 10), Vector3(1, 0, 0.75));
+					),
+				lvl.objs.cmd_wait_group(group2),
+				Level.CMD_Wait_Seconds.new(1),
+				Level.CMD_Callable.new(func():
+					lvl.objs.create_object(ENEMY_JACARE, group2, lvl.stage.get_grid(-8, 6), Vector3(1, 0, 0.75));
+					lvl.objs.create_object(ENEMY_JACARE, group2, lvl.stage.get_grid(-8.5, 8), Vector3(1, 0, 0.75));
+					#lvl.objs.create_object(ENEMY_JACARE, group, lvl.stage.get_grid(-9, 10), Vector3(1, 0, 0.75));
+					),
+				lvl.objs.cmd_wait_group(group2),
+				Level.CMD_Callable.new(func():
+					lvl.objs.create_object(ENEMY_JACARE, group2, lvl.stage.get_grid(-8, 8), Vector3(1, 0, 0.75));
+					),
+				lvl.objs.cmd_wait_group(group2),
+			]),
+		]),
+		Level.CMD_Wait_Seconds.new(1),
+		
+		
+		
+	])
+"
+
+[sub_resource type="GDScript" id="GDScript_sx5qu"]
+script/source = "extends Level_Snippet_Node
+const ENEMY_JACARE = preload(\"res://elements/enemy/roboto_jacare/enemy_jacare.tscn\")
+const ENEMY_LASER_ROBOTO = preload(\"res://elements/enemy/laser/enemy_laser_roboto.tscn\")
+const SHOOTER = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto_shooter.tscn\")
+const PIZZA = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto_stopped.tscn\")
+
+@export var powerups:Array[PackedScene]
+
+var group1:String = \"snippet_group\";
+var group2:String = \"jac_group\";
+
+func cmd_jac(lvl:Level, x:float, z:float, right:bool, jac_group:String, shoot_time:float = 4)->Level.CMD:
+	return Level.CMD_Callable.new(func():
+		var jac = lvl.objs.create_object(ENEMY_JACARE, jac_group, lvl.stage.get_grid(x, z), Vector3(1 if right else -1, 0, 0.65))
+		jac.shoot_time = shoot_time;
+		)
+		
+func cmd_pizza_line(lvl:Level, time_between:float, x:float, z:float, distance:Vector2, walk_distance:float, grp:String, pizzas:Array[int])->Level.CMD:
+	return lvl.cmd_enemy_line([PIZZA, SHOOTER], pizzas, time_between, x, z, distance, grp, func(pizza:AI_WalkAndDo): 
+					pizza.walkVelocity = Vector3.LEFT * pizza.walkVelocity.length();
+					pizza.distanceMax = walk_distance;
+					pizza.accelerationBegin = 10;
+					pizza.accelerationDuration = 3;
+					);
+
+func cmd(lvl:Level)->Level.CMD:
+		
+	return Level.CMD_Sequence.new([
+		Level.CMD_Wait_Seconds.new(0.25),
+		cmd_jac(lvl, -9, 12, true, group1),
+		Level.CMD_Wait_Seconds.new(0.25),
+		cmd_jac(lvl, -8, 10, true, group1),
+		Level.CMD_Wait_Seconds.new(0.25),
+		cmd_jac(lvl, -7, 8, true, group1, 5),
+		lvl.objs.cmd_wait_group(group1),
+		
+		Level.CMD_Wait_Seconds.new(0.25),
+		Level.CMD_Parallel_Complete.new([
+			Level.CMD_Sequence.new([
+				lvl.objs.cmd_create_object(ENEMY_LASER_ROBOTO, \"laser\", func(): return lvl.stage.get_grid(-2, -3)),
+				lvl.objs.cmd_wait_group(\"laser\"),
+				cmd_pizza_line(lvl, 0.5, 8, 5, Vector2(1.5,0), 10, \"laser\", [1,0,0,1]),
+				lvl.objs.cmd_wait_group(\"laser\"),
+			]),
+			
+			Level.CMD_Sequence.new([
+				cmd_jac(lvl, 11.75, 8.5, false, group2, 5),
+				lvl.objs.cmd_wait_group(group2),
+				
+				cmd_pizza_line(lvl, 0.5, 8, 15.5, Vector2(2.5,0), 9, group2, [0,0,1]),
+					
+				lvl.objs.cmd_wait_group(group2),
+			]),
+			Level.CMD_Sequence.new([
+				Level.CMD_Wait_Seconds.new(0.25),
+				cmd_jac(lvl, 10.5, 6.5, false, group1, 6),
+				Level.CMD_Wait_Seconds.new(0.50),
+				cmd_jac(lvl, 9.25, 4.5, false, group1, 7),
+				Level.CMD_Wait_Seconds.new(0.25),
+				cmd_jac(lvl, 8, 2.5, false, group1, 8),
+				
+				lvl.objs.cmd_wait_group(group1),
+			])
+		]),
+		
+		
+	])
+"
+
+[node name="LVL_ORLA" type="Node3D" node_paths=PackedStringArray("level_snippet_sequence_repeat_piece", "piece")]
+script = SubResource("GDScript_mvg20")
+level_snippet_sequence_repeat_piece = NodePath("Level_Snippet_Sequence_UseMeasures")
+piece = NodePath("Stage_Piece_Pampulha_Orla_Primeira")
+
+[node name="Stage_Piece_Pampulha_Orla_Primeira" parent="." instance=ExtResource("1_vu1u3")]
+
+[node name="ConstantCreatorLine3D" type="Node3D" parent="Stage_Piece_Pampulha_Orla_Primeira" node_paths=PackedStringArray("paths")]
+script = ExtResource("2_1epdy")
+paths = [NodePath("Path3D")]
+where_from = 1
+scenes = Array[PackedScene]([ExtResource("3_nqysh")])
+create_interval = 5.0
+create_interval_random_plus = 2.0
+create_random_position_circle_radius = 2.0
+warmed_time = 40.0
+
+[node name="Path3D" type="Path3D" parent="Stage_Piece_Pampulha_Orla_Primeira/ConstantCreatorLine3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.914, 0.5, -108.066)
+curve = SubResource("Curve3D_j7ynl")
+
+[node name="ExtraPowerups" type="Node3D" parent="Stage_Piece_Pampulha_Orla_Primeira"]
+
+[node name="ElementCargoBox" parent="Stage_Piece_Pampulha_Orla_Primeira/ExtraPowerups" instance=ExtResource("5_0h46a")]
+transform = Transform3D(0.975917, 0, -0.218143, 0, 1, 0, 0.218143, 0, 0.975917, -6.75, 0, 41.5)
+
+[node name="Compartiment" parent="Stage_Piece_Pampulha_Orla_Primeira/ExtraPowerups/ElementCargoBox" instance=ExtResource("6_kn6at")]
+
+[node name="HoldableButton-HOLD_LEVELUP" parent="Stage_Piece_Pampulha_Orla_Primeira/ExtraPowerups/ElementCargoBox/Compartiment" instance=ExtResource("6_icw8y")]
+transform = Transform3D(0.973901, 0, 0.226974, 0, 1, 0, -0.226974, 0, 0.973901, -0.812312, 0, 0.950081)
+
+[node name="ElementCargoBox2" parent="Stage_Piece_Pampulha_Orla_Primeira/ExtraPowerups" instance=ExtResource("5_0h46a")]
+transform = Transform3D(0.450878, 0, 0.892586, 0, 1, 0, -0.892586, 0, 0.450878, -6.80915, -0.123882, -14.75)
+
+[node name="Compartiment" parent="Stage_Piece_Pampulha_Orla_Primeira/ExtraPowerups/ElementCargoBox2" instance=ExtResource("6_kn6at")]
+
+[node name="WeaponButton_Tap_Blue" parent="Stage_Piece_Pampulha_Orla_Primeira/ExtraPowerups/ElementCargoBox2/Compartiment" instance=ExtResource("8_icw8y")]
+transform = Transform3D(0.458944, 0, -0.888465, 0, 1, 0, 0.888465, 0, 0.458944, -0.265817, 0, 0.144927)
+
+[node name="ElementCargoBox3" parent="Stage_Piece_Pampulha_Orla_Primeira/ExtraPowerups" instance=ExtResource("5_0h46a")]
+transform = Transform3D(-0.815514, 0.116948, -0.566798, 0.0960318, 0.993138, 0.0667439, 0.570714, 0, -0.821149, -8.75, 0.259387, -28.5)
+
+[node name="Compartiment" parent="Stage_Piece_Pampulha_Orla_Primeira/ExtraPowerups/ElementCargoBox3" instance=ExtResource("6_kn6at")]
+transform = Transform3D(1, 0, -2.98023e-08, 1.27751e-08, 1, 3.05902e-09, 2.98023e-08, 0, 1, 0.0516376, -0.225538, -1.80762)
+
+[node name="WeaponButton_Tap_Yellow" parent="Stage_Piece_Pampulha_Orla_Primeira/ExtraPowerups/ElementCargoBox3/Compartiment" instance=ExtResource("9_4drkq")]
+transform = Transform3D(-0.818591, 0, 0.574377, 0, 1, 0, -0.574377, 0, -0.818591, 0.130363, 0, -0.171678)
+
+[node name="Level_Snippet_Sequence_UseMeasures" type="Node" parent="."]
+script = ExtResource("7_dfbeg")
+use_measures_data = true
+time_to_camera_to_go_type = 1
+time_to_camera_to_go = 25.0
+time_to_camera_to_go_extra = Array[float]([-15.0])
+time_to_wait_before_wave = 0.8
+
+[node name="Jacare Intro" type="Node" parent="Level_Snippet_Sequence_UseMeasures"]
+script = SubResource("GDScript_w86b4")
+
+[node name="Jacare Com Pizza" type="Node" parent="Level_Snippet_Sequence_UseMeasures"]
+script = SubResource("GDScript_hpkhm")
+powerups_altar = Array[PackedScene]([ExtResource("10_umx22"), ExtResource("11_7prip")])
+
+[node name="Jacare Dois" type="Node" parent="Level_Snippet_Sequence_UseMeasures"]
+script = SubResource("GDScript_sx5qu")

@@ -1,0 +1,95 @@
+[gd_scene load_steps=17 format=3 uid="uid://b630igcqwhnvu"]
+
+[ext_resource type="Script" uid="uid://dlck735nkky7v" path="res://elements/levels/lvl_hub/hub_elements/hub_buttons/hub_holdable_button_star_recover.gd" id="1_o7mji"]
+[ext_resource type="PackedScene" uid="uid://bvhxeq8y0rqon" path="res://elements/powerups/button/mesh/button_base.tscn" id="2_ngqsl"]
+[ext_resource type="WwiseEvent" uid="uid://bh6yblr25tn3p" path="res://Wwise/resources/Event/{4F96845E-73C1-4C56-A3E7-CB844B50D724}.tres" id="2_tcpqb"]
+[ext_resource type="WwiseEvent" uid="uid://c5ausye44wl0" path="res://Wwise/resources/Event/{BFDEDA07-587D-4063-B14A-3576E5D0AB1B}.tres" id="2_tpknv"]
+[ext_resource type="PackedScene" uid="uid://nb17cr8eb6jh" path="res://elements/vfx/vfx_screen_flash/vfx_screen_flash_quick.tscn" id="2_vj0nh"]
+[ext_resource type="WwiseEvent" uid="uid://covnkj8eim0g1" path="res://Wwise/resources/Event/{B4199BE6-29B8-4E6F-B05C-0025FBC4AD50}.tres" id="3_tcpqb"]
+[ext_resource type="Texture2D" uid="uid://bbgxpkfmxk4k0" path="res://elements/powerups/button/texture/m_button_base_BaseColor.png" id="3_xxl2o"]
+[ext_resource type="Script" uid="uid://cw4qh8hx2nyh0" path="res://systems/pressable/holdable_button_graphic.gd" id="4_7pahc"]
+[ext_resource type="Texture2D" uid="uid://b7erplmxlcytv" path="res://elements/icons/icons_upgrades/icon_star_recover.png" id="5_kotaj"]
+[ext_resource type="PackedScene" uid="uid://brxg5f374xr1a" path="res://elements/powerups/button/holdable_charging_feedback.tscn" id="6_1mbvs"]
+[ext_resource type="PackedScene" uid="uid://bonkfyjwa0edb" path="res://elements/powerups/button/mesh/button_04.tscn" id="6_72hck"]
+[ext_resource type="PackedScene" uid="uid://do1glvxx8f5jb" path="res://elements/neutral/interactables/coins_changer_tag/coins_changer_tag.tscn" id="9_7d2gc"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xq0xn"]
+height = 0.5
+radius = 0.6
+
+[sub_resource type="Gradient" id="Gradient_7mewh"]
+offsets = PackedFloat32Array(0.992288)
+colors = PackedColorArray(0.45098, 0.45098, 0.560784, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_us8j0"]
+gradient = SubResource("Gradient_7mewh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mt4tb"]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.223529, 0.223529, 0.278431, 1)
+roughness = 0.65
+emission_energy_multiplier = 2.21
+rim_tint = 1.0
+clearcoat = 0.69
+anisotropy = 0.33
+backlight = Color(0.0313726, 0.0313726, 0.0313726, 1)
+detail_enabled = true
+detail_mask = ExtResource("3_xxl2o")
+detail_albedo = SubResource("GradientTexture1D_us8j0")
+
+[node name="HoldableButtonStarRecover" type="Node3D" node_paths=PackedStringArray("button_pressed_feedback", "button_graphic", "_coins_changer_tag")]
+script = ExtResource("1_o7mji")
+_vfx_upgrade_removed = ExtResource("2_vj0nh")
+_sfx_upgrade_removed = ExtResource("2_tcpqb")
+hold_finished_mode = 2
+button_pressed_feedback = NodePath("button_pressed_feedback")
+button_graphic = NodePath("Area3D/button_graphic")
+_coins_changer_tag = NodePath("CoinsChangerTag")
+_sfx_pressed = ExtResource("2_tpknv")
+_sfx_released = ExtResource("3_tcpqb")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175618, 0, 0.0770077)
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2502, 0)
+shape = SubResource("CylinderShape3D_xq0xn")
+
+[node name="button_base" parent="Area3D" instance=ExtResource("2_ngqsl")]
+
+[node name="button_base" parent="Area3D/button_base" index="0"]
+material_override = SubResource("StandardMaterial3D_mt4tb")
+
+[node name="button_graphic" type="Node3D" parent="Area3D" node_paths=PackedStringArray("_button_parent", "_mesh_container", "_icon_sprite")]
+script = ExtResource("4_7pahc")
+_button_parent = NodePath("button_parent")
+_mesh_container = NodePath("button_parent/button04")
+_icon_sprite = NodePath("button_parent/Sprite3D")
+
+[node name="button_parent" type="Node3D" parent="Area3D/button_graphic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.164877, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Area3D/button_graphic/button_parent"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.479564, 0)
+modulate = Color(0.47451, 0.545098, 0.635294, 1)
+pixel_size = 0.006
+shaded = true
+double_sided = false
+texture = ExtResource("5_kotaj")
+
+[node name="button04" parent="Area3D/button_graphic/button_parent" instance=ExtResource("6_72hck")]
+
+[node name="button_pressed_feedback" parent="." instance=ExtResource("6_1mbvs")]
+visible = false
+
+[node name="CoinsChangerTag" parent="." instance=ExtResource("9_7d2gc")]
+transform = Transform3D(0.84431, 0.42153, -0.33084, -0.38872, 0.906767, 0.16331, 0.368836, -0.00928042, 0.929448, 0.188502, -0.131837, -0.49279)
+_enable_hud = false
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+
+[editable path="Area3D/button_base"]

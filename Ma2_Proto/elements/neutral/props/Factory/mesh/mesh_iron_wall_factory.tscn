@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0g4gq4kr1e6p"]
+
+[ext_resource type="PackedScene" uid="uid://6xnkqvk6rn0l" path="res://elements/neutral/props/Factory/mesh/iron_wall_factory.glb" id="1_66l1h"]
+[ext_resource type="Material" uid="uid://h22chf1td40x" path="res://elements/neutral/props/Factory/material/m_iron_gate_factory.tres" id="2_n51iq"]
+
+[node name="iron_wall_factory" instance=ExtResource("1_66l1h")]
+
+[node name="iron_wall" parent="." index="0"]
+material_override = ExtResource("2_n51iq")

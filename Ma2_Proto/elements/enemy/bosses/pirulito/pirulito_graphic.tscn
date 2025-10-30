@@ -1,0 +1,239 @@
+[gd_scene load_steps=22 format=3 uid="uid://c0mouclb7du2"]
+
+[ext_resource type="Script" uid="uid://c5p1w4sdoq4qq" path="res://elements/enemy/bosses/pirulito/graphic_boss_pirulito.gd" id="1_c27l6"]
+[ext_resource type="PackedScene" uid="uid://g74df5f26cmk" path="res://elements/enemy/bosses/pirulito/pirulito_piece/mesh_base.tscn" id="1_ddvib"]
+[ext_resource type="PackedScene" uid="uid://bcyqxd4aryhkf" path="res://elements/enemy/bosses/pirulito/pirulito_piece/mesh_cap_base.tscn" id="2_3qf3h"]
+[ext_resource type="PackedScene" uid="uid://bo6gfwj56y5kj" path="res://elements/enemy/bosses/pirulito/pirulito_piece/mesh_cap_middle.tscn" id="3_msn1u"]
+[ext_resource type="PackedScene" uid="uid://ippkhx7fhfpp" path="res://elements/enemy/bosses/pirulito/nando_and_nene/pirulito_nando_and_nene.tscn" id="3_vn4ce"]
+[ext_resource type="PackedScene" uid="uid://8rgrhq6r2hp0" path="res://elements/enemy/bosses/pirulito/pirulito_piece/mesh_cap_top.tscn" id="4_0qkny"]
+[ext_resource type="PackedScene" uid="uid://7xk85glmehxi" path="res://elements/enemy/bosses/pirulito/pirulito_piece/mesh_column.tscn" id="5_hmv67"]
+[ext_resource type="PackedScene" uid="uid://b8opslu1yxc8f" path="res://elements/enemy/bosses/pirulito/pirulito_piece/mesh_lamp.tscn" id="7_xjr8a"]
+[ext_resource type="PackedScene" uid="uid://gx6uy0lmc0nj" path="res://elements/enemy/bosses/pirulito/enemy_boss_pirulito_lamp.tscn" id="8_0hqdn"]
+[ext_resource type="WwiseEvent" uid="uid://yk0bh86a81iq" path="res://Wwise/resources/Event/{C3153BC9-D109-4538-A0A5-10E098BDEBC9}.tres" id="9_4mypy"]
+[ext_resource type="PackedScene" uid="uid://br7dcu5it8nhi" path="res://elements/enemy/bosses/pirulito/pirulito_piece/graphic_column_door_sound.tscn" id="10_wyn2c"]
+[ext_resource type="PackedScene" uid="uid://cs11u31phqy72" path="res://elements/enemy/bosses/pirulito/pirulito_piece/mesh_base_elevetor.tscn" id="13_3sam1"]
+[ext_resource type="PackedScene" uid="uid://c8s8uff28rexx" path="res://elements/enemy/bosses/pirulito/graphic_boss_pirulito_ornament.tscn" id="13_f0cu7"]
+[ext_resource type="PackedScene" uid="uid://cq7kf1cthndvr" path="res://elements/enemy/bosses/pirulito/enemy_boss_pirulito_screen_graphic.tscn" id="14_36h75"]
+[ext_resource type="WwiseEvent" uid="uid://ck003o2u0svfe" path="res://Wwise/resources/Event/{173CA6AA-CDFE-4AE4-957D-300BFF429142}.tres" id="14_qpmm6"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="16_m1n15"]
+
+[sub_resource type="Animation" id="Animation_ltcs0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:shield_broken")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:shield_gonna_break")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_alre0"]
+resource_name = "shield_off"
+length = 0.001
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:shield_gonna_break")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:shield_broken")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ygqld"]
+resource_name = "shield_offing"
+length = 0.300002
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:shield_gonna_break")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(2.14355, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:shield_broken")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_tv05r"]
+resource_name = "shielded"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:shield_gonna_break")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:shield_broken")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kcxsq"]
+_data = {
+&"RESET": SubResource("Animation_ltcs0"),
+&"shield_off": SubResource("Animation_alre0"),
+&"shield_offing": SubResource("Animation_ygqld"),
+&"shield_on": SubResource("Animation_tv05r")
+}
+
+[node name="pirulito" type="Node3D"]
+script = ExtResource("1_c27l6")
+
+[node name="SHAKER" type="Node3D" parent="."]
+
+[node name="Enemy_Boss_Nando_And_Nene" parent="SHAKER" instance=ExtResource("3_vn4ce")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.036, 0, 0.85)
+
+[node name="TUMBLER" type="Node3D" parent="SHAKER"]
+
+[node name="cap_base2" parent="SHAKER/TUMBLER" instance=ExtResource("2_3qf3h")]
+
+[node name="cap_middle" parent="SHAKER/TUMBLER/cap_base2" instance=ExtResource("3_msn1u")]
+
+[node name="cap_top" parent="SHAKER/TUMBLER/cap_base2/cap_middle" instance=ExtResource("4_0qkny")]
+
+[node name="HighContrastTop" type="Node" parent="SHAKER/TUMBLER/cap_base2"]
+script = ExtResource("16_m1n15")
+high_contrast_group = &"enemy"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="base" parent="SHAKER" instance=ExtResource("1_ddvib")]
+
+[node name="column" parent="SHAKER/base" instance=ExtResource("5_hmv67")]
+
+[node name="Lamp Target Left" type="Node3D" parent="SHAKER/base/column"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.63858, 1.71533, 2.59229)
+
+[node name="SFX_ShotLeft" type="AkEvent3D" parent="SHAKER/base/column/Lamp Target Left"]
+event = ExtResource("9_4mypy")
+
+[node name="Lamp_Left" parent="SHAKER/base/column" instance=ExtResource("8_0hqdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0140947, -4.76837e-07, -0.000282764)
+
+[node name="column sound left" parent="SHAKER/base/column" instance=ExtResource("10_wyn2c")]
+
+[node name="column2" parent="SHAKER/base" instance=ExtResource("5_hmv67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25802, 0, 0)
+
+[node name="Lamp_Right" parent="SHAKER/base/column2" instance=ExtResource("8_0hqdn")]
+
+[node name="Lamp Target Right" type="Node3D" parent="SHAKER/base/column2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.63858, 1.71533, 2.59229)
+
+[node name="SFX_ShotRight" type="AkEvent3D" parent="SHAKER/base/column2/Lamp Target Right"]
+event = ExtResource("9_4mypy")
+
+[node name="column sound right" parent="SHAKER/base/column2" instance=ExtResource("10_wyn2c")]
+
+[node name="column3" parent="SHAKER/base" instance=ExtResource("5_hmv67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25802, 0, -5.06782)
+
+[node name="lamp3" parent="SHAKER/base/column3" instance=ExtResource("7_xjr8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.24393, -4.76837e-07, -0.0184598)
+
+[node name="column4" parent="SHAKER/base" instance=ExtResource("5_hmv67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.06782)
+
+[node name="lamp4" parent="SHAKER/base/column4" instance=ExtResource("7_xjr8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3027, -4.76837e-07, -0.0184598)
+
+[node name="base_elevetor" parent="SHAKER/base" instance=ExtResource("13_3sam1")]
+
+[node name="boss_pirulito_ornament_graphic" parent="SHAKER/base" instance=ExtResource("13_f0cu7")]
+
+[node name="shot origin" type="Node3D" parent="SHAKER/base/boss_pirulito_ornament_graphic"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1.5)
+
+[node name="SFX_ShotMiddle" type="AkEvent3D" parent="SHAKER/base/boss_pirulito_ornament_graphic/shot origin"]
+event = ExtResource("14_qpmm6")
+
+[node name="HighContrastBase" type="Node" parent="SHAKER/base"]
+script = ExtResource("16_m1n15")
+high_contrast_group = &"neutral"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_kcxsq")
+}
+autoplay = "shield_off"
+
+[node name="enemy_boss_pirulito_screen_graphic" parent="." instance=ExtResource("14_36h75")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -4.75, 0, -4.25)
+
+[node name="HighContrastScreen" type="Node" parent="enemy_boss_pirulito_screen_graphic"]
+script = ExtResource("16_m1n15")
+high_contrast_group = &"scenery"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="enemy_boss_pirulito_screen_graphic2" parent="." instance=ExtResource("14_36h75")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 4.75, 0, -4.25)
+
+[node name="HighContrastScreen" type="Node" parent="enemy_boss_pirulito_screen_graphic2"]
+script = ExtResource("16_m1n15")
+high_contrast_group = &"scenery"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"

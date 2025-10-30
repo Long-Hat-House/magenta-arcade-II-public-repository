@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvhxeq8y0rqon"]
+
+[ext_resource type="PackedScene" uid="uid://c2mfqapa6jsfw" path="res://elements/powerups/button/mesh/button_base.glb" id="1_lnx2v"]
+[ext_resource type="Material" uid="uid://81bmwgjyhid5" path="res://elements/powerups/button/material/m_button_base.tres" id="2_f8xgg"]
+
+[node name="button_base" instance=ExtResource("1_lnx2v")]
+
+[node name="button_base" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0917382, 0)
+material_override = ExtResource("2_f8xgg")

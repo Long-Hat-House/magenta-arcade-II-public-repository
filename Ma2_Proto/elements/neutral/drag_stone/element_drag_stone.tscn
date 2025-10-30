@@ -1,0 +1,132 @@
+[gd_scene load_steps=12 format=3 uid="uid://r7mjv4ke76p7"]
+
+[ext_resource type="Script" uid="uid://drirulvcpl31c" path="res://systems/pressable/draggable.gd" id="1_ketht"]
+[ext_resource type="Script" uid="uid://c1a23qdrmn8d1" path="res://elements/enemy/projectiles/damage_area/damage_area.gd" id="2_6oguc"]
+[ext_resource type="PackedScene" uid="uid://brd0sep4kjq2d" path="res://elements/neutral/drag_stone/mesh/mesh_drag_stone.tscn" id="2_y5c4w"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="3_e3gyb"]
+[ext_resource type="Script" uid="uid://gp330idf3b2i" path="res://systems/pressable/pressable_feedback.gd" id="4_ep4h6"]
+[ext_resource type="PackedScene" uid="uid://cgftoju7i36ae" path="res://elements/general_use/feedback/squish_feedback.tscn" id="5_mdtbh"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_thi6t"]
+height = 8.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_l2lct"]
+
+[sub_resource type="GDScript" id="GDScript_pjtek"]
+script/source = "extends VisibleOnScreenNotifier3D
+
+@export var node:Node;
+
+@export var time_in:float = 0.5;
+@export var time_out:float = 0.5;
+
+var inside:bool;
+
+var count:int = 0;
+
+func _on_screen_entered() -> void:
+	count += 1;
+	var id:int = count;
+	await get_tree().create_timer(time_in).timeout;
+	if id == count and is_on_screen():
+		inside = true;
+
+func _on_screen_exited() -> void:
+	if not inside:
+		return;
+	count += 1;
+	var self_id:int = count;
+	await get_tree().create_timer(time_out).timeout;
+	if self_id != count: 
+		return;
+	if !is_on_screen() and node and is_instance_valid(node):
+		node.queue_free();
+		
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eskjg"]
+size = Vector3(2.25, 1, 2.25)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ep4h6"]
+radius = 1.75
+
+[node name="ElementDragStone" type="Node3D" node_paths=PackedStringArray("body", "pressable_area")]
+script = ExtResource("1_ketht")
+body = NodePath("Drag Body")
+pressable_area = NodePath("WalkTogether/Pressable Area")
+search_for_area_inside = true
+debug = true
+
+[node name="Drag Body" type="AnimatableBody3D" parent="."]
+collision_layer = 512
+collision_mask = 129
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Drag Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.25, -0.5)
+shape = SubResource("CylinderShape3D_thi6t")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Drag Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.25, -0.5)
+shape = SubResource("CylinderShape3D_thi6t")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Drag Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.25, 0.5)
+shape = SubResource("CylinderShape3D_thi6t")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Drag Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.25, 0.5)
+shape = SubResource("CylinderShape3D_thi6t")
+
+[node name="dragStone" parent="Drag Body" instance=ExtResource("2_y5c4w")]
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="Drag Body/dragStone"]
+script = ExtResource("3_e3gyb")
+high_contrast_group = &"interactable"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="Drag Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+enabled = false
+shape = SubResource("SphereShape3D_l2lct")
+target_position = Vector3(0, 0, 1)
+max_results = 4
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Drag Body" node_paths=PackedStringArray("node")]
+aabb = AABB(-1.33347, -1, -1.45738, 2.66694, 2, 2.91475)
+script = SubResource("GDScript_pjtek")
+node = NodePath("../..")
+
+[node name="WalkTogether" type="Node3D" parent="."]
+
+[node name="Pressable Area" type="Area3D" parent="WalkTogether"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
+collision_layer = 32
+collision_mask = 34
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WalkTogether/Pressable Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.428571, 0)
+shape = SubResource("BoxShape3D_eskjg")
+
+[node name="DamageArea" type="Area3D" parent="WalkTogether"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("2_6oguc")
+amountDamage = 200
+damage_beat_duration = 0.1
+recover_mana = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WalkTogether/DamageArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.428571, 0)
+shape = SubResource("SphereShape3D_ep4h6")
+
+[node name="PressableFeedback" type="Node" parent="." node_paths=PackedStringArray("mesh_getter", "only_if_seen")]
+script = ExtResource("4_ep4h6")
+mesh_getter = [NodePath("../Drag Body/dragStone")]
+only_if_seen = NodePath("../Drag Body/VisibleOnScreenNotifier3D")
+metadata/_custom_type_script = "uid://gp330idf3b2i"
+
+[node name="SquishFeedback" parent="." node_paths=PackedStringArray("scaler") instance=ExtResource("5_mdtbh")]
+scaler = NodePath("../Drag Body/dragStone")
+
+[connection signal="screen_entered" from="Drag Body/VisibleOnScreenNotifier3D" to="Drag Body/VisibleOnScreenNotifier3D" method="_on_screen_entered"]
+[connection signal="screen_exited" from="Drag Body/VisibleOnScreenNotifier3D" to="Drag Body/VisibleOnScreenNotifier3D" method="_on_screen_exited"]

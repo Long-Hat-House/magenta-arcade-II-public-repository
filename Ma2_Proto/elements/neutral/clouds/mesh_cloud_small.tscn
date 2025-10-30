@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://csfcv1ydpgya5"]
+
+[ext_resource type="PackedScene" uid="uid://nblhh3ni08ab" path="res://elements/neutral/clouds/cloud_small.glb" id="1_ipr7g"]
+[ext_resource type="Material" uid="uid://5ra46jjkoflf" path="res://elements/neutral/clouds/m_clouds.tres" id="2_lwjaw"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="3_1hfuc"]
+
+[node name="cloud_small" instance=ExtResource("1_ipr7g")]
+
+[node name="cloud_small" parent="." index="0"]
+material_override = ExtResource("2_lwjaw")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="." index="1"]
+script = ExtResource("3_1hfuc")
+high_contrast_group = &"neutral"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"

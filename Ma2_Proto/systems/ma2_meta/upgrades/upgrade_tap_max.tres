@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeInfo" load_steps=3 format=3 uid="uid://cl6t72yjpqxmx"]
+
+[ext_resource type="Script" uid="uid://dospanm60t0v5" path="res://systems/ma2_meta/upgrade_info.gd" id="1_gj8pt"]
+[ext_resource type="Texture2D" uid="uid://dq7pxqbdvwice" path="res://elements/icons/icons_upgrades/icon_upgrade_tap_max.png" id="2_2m8ti"]
+
+[resource]
+script = ExtResource("1_gj8pt")
+upgrade_id = &"upgrade_tap_max"
+upgrade_description = &"upgrade_tap_max_dialogue"
+upgrade_icon = ExtResource("2_2m8ti")
+stars_per_progress = Array[int]([1, 2, 3, 3])
+upgrade_developer_instruction = "Player Tap Level will be clamped in between 0 and 1 + progress()"
+float_val = 0.0
+float_val_array = Array[float]([])

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="FloatValue" load_steps=2 format=3 uid="uid://bvs8v0jcs1hln"]
+
+[ext_resource type="Script" path="res://systems/float_value.gd" id="1_vdulk"]
+
+[resource]
+script = ExtResource("1_vdulk")
+value = 0.017

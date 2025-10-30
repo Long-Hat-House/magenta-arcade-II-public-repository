@@ -1,0 +1,103 @@
+[gd_scene load_steps=12 format=3 uid="uid://q5dyyjn6uwxn"]
+
+[ext_resource type="PackedScene" uid="uid://cqrb2x17wcl14" path="res://elements/levels/level_structure/level_environment_day_bright.tscn" id="1_dku5k"]
+[ext_resource type="PackedScene" uid="uid://lnk1uxthf1qj" path="res://elements/enemy/roboto_jacare/enemy_jacare.tscn" id="1_fnq5v"]
+[ext_resource type="PackedScene" uid="uid://bwc704cbltkqa" path="res://elements/enemy/pizza/enemy_pizza_roboto_stopped.tscn" id="1_jluvk"]
+[ext_resource type="PackedScene" uid="uid://t7wocwarj2c3" path="res://elements/enemy/pizza/enemy_pizza_roboto.tscn" id="2_jj1m6"]
+[ext_resource type="PackedScene" uid="uid://c7ft4lc6ukiy0" path="res://elements/levels/level_structure/level_game_pack.tscn" id="2_mdukt"]
+[ext_resource type="Script" uid="uid://4y4vnhey183g" path="res://elements/levels/lvl_tests/enemy_position.gd" id="2_ofhns"]
+[ext_resource type="PackedScene" uid="uid://bfp6hll5p8pd" path="res://elements/enemy/pizza/enemy_pizza_roboto_shooter.tscn" id="3_fnq5v"]
+[ext_resource type="PackedScene" uid="uid://ngmv6dynft76" path="res://elements/stage_pieces/stage_piece_afonso_pena_lanes1.tscn" id="3_yy4oi"]
+
+[sub_resource type="GDScript" id="GDScript_an7n0"]
+resource_name = "lvl_test"
+script/source = "extends Level
+
+@export var enemy:PackedScene;
+@export var enemies_palette:Array[PackedScene];
+@export var enemy_positions:Array[EnemyPosition];
+@export var enemy_direction_angle:float;
+
+var group:String = \"g\";
+
+const STAGE_PIECE_AFONSO_PENA_LANES = preload(\"res://elements/stage_pieces/stage_piece_afonso_pena_lanes3.tscn\")
+const TEST_GENERIC_OBJECT = preload(\"res://elements/levels/lvl_tests/test_generic_object.tscn\")
+
+@export var _pieces_street:Array[PackedScene] = [STAGE_PIECE_AFONSO_PENA_LANES]
+
+func _ready():
+	prepare_level()
+	cmd_array([
+		CMD_Callable.new(scene_1),
+	])
+
+func prepare_level():
+	stage.set_stage_size(Vector3(12,0,27))
+	cam.set_offset(Vector3(0,26,28))
+	stage.set_grid_spacing(1, 1)
+	if _pieces_street.size() > 0:
+		stage.fill_with(_pieces_street, stage._stage_size.z)
+
+
+func scene_1(invert:bool = false):
+	stage.set_pivot_offset(Vector3(6,0,0))
+	stage.repivot()
+	cam.set_instant_position(stage.get_grid(0,0))
+	cam.tween_position(stage.get_pos_x(), 0.25, LevelCameraController.MovementAxis.X,Tween.TransitionType.TRANS_SINE)
+	cam.tween_position(stage.get_pos_z(), 0.25, LevelCameraController.MovementAxis.Z,Tween.TransitionType.TRANS_SINE)
+
+	var state = {
+		iteration = 0,
+	}
+
+	var walkingPizza:Array[Array] = 	[[1,0,1],\\
+										 [0,2,0],\\
+										 [1,0,1]]
+	var walkingPizzaPlus:Array[Array] = 	[[1,2,1],\\
+										 	[0,1,0],\\
+										 	[1,0,1]]
+	var shootingPizza:Array[Array] = 	[[1,0,1],\\
+										 [0,3,0],\\
+										 [1,0,1]]
+
+	var tutorialPizza:Array[Array] =	[[3, 3],\\
+										 [3, 3],\\
+										 [1, 1],\\
+										 [1, 1]]
+
+
+
+	cmd(CMD_Sequence.new([
+		CMD_Callable.new(func():
+			var enemy = objs.create_object(enemy, group);
+			enemy_positions[state.iteration % enemy_positions.size()].setup(enemy);
+			state.iteration += 1;
+
+			#formation_stage_grid(walkingPizza, enemies_palette, -3, 2, group);
+			#formation_stage_grid(walkingPizza, enemies_palette, 1, 2, group);
+
+			,),
+		objs.cmd_wait_group(group),
+	], -1))
+"
+
+[sub_resource type="Resource" id="Resource_n6v0a"]
+script = ExtResource("2_ofhns")
+grid_position = Vector2(-3, 6)
+forward = Vector3(0.5, 0, 0.5)
+
+[sub_resource type="Resource" id="Resource_f7axc"]
+script = ExtResource("2_ofhns")
+grid_position = Vector2(3, 6)
+forward = Vector3(-1, 0, 0.25)
+
+[node name="LVL1_TEST" type="Node3D"]
+script = SubResource("GDScript_an7n0")
+enemy = ExtResource("1_fnq5v")
+enemies_palette = Array[PackedScene]([ExtResource("1_jluvk"), ExtResource("2_jj1m6"), ExtResource("3_fnq5v")])
+enemy_positions = Array[ExtResource("2_ofhns")]([SubResource("Resource_n6v0a"), SubResource("Resource_f7axc")])
+_pieces_street = Array[PackedScene]([ExtResource("3_yy4oi")])
+
+[node name="LevelEnvironmentDayBright" parent="." instance=ExtResource("1_dku5k")]
+
+[node name="LevelGamePack" parent="." instance=ExtResource("2_mdukt")]

@@ -1,0 +1,338 @@
+[gd_scene load_steps=23 format=3 uid="uid://b27s0w4ku18gm"]
+
+[ext_resource type="Script" uid="uid://dovpd85emvy34" path="res://elements/stage_pieces/shop/stage_piece_shop.tres.gd" id="1_n2i65"]
+[ext_resource type="Material" uid="uid://du0re2cpcbjbq" path="res://elements/stage_pieces/shop/m_shop_clouds_plane.tres" id="2_6gx1n"]
+[ext_resource type="PackedScene" uid="uid://cusw4kvh5h17k" path="res://elements/stage_pieces/shop/element_shop_cloud_medium.tscn" id="2_sohha"]
+[ext_resource type="PackedScene" uid="uid://blqujpngannf2" path="res://elements/powerups/altar/cloud_altar.tscn" id="4_jwbw3"]
+[ext_resource type="PackedScene" uid="uid://msvi6pa1pf18" path="res://elements/stage_pieces/shop/shop_text_title.tscn" id="4_xor2w"]
+[ext_resource type="Script" uid="uid://dbvews5vjmnxf" path="res://elements/stage_pieces/shop/shop_object_info.gd" id="5_7n1e0"]
+[ext_resource type="PackedScene" uid="uid://cfuplhe2nrpje" path="res://elements/powerups/button/sacrifice_button_health.tscn" id="6_il8ip"]
+[ext_resource type="PackedScene" uid="uid://cnyvamjd1vxv5" path="res://elements/powerups/button/sacrifice_button_hold.tscn" id="7_qmnq1"]
+[ext_resource type="PackedScene" uid="uid://ny8m2vrq0djt" path="res://elements/powerups/button/sacrifice_button_tap.tscn" id="8_vbs6o"]
+[ext_resource type="PackedScene" uid="uid://ct2usghwibgvw" path="res://elements/powerups/button/sacrifice_button_score.tscn" id="9_qpyxj"]
+[ext_resource type="WwiseEvent" uid="uid://byqtgurpxw30m" path="res://Wwise/resources/Event/{21864CA0-1B65-4F39-A098-5533DCCB4A31}.tres" id="11_hyme7"]
+
+[sub_resource type="Curve" id="Curve_1bvn3"]
+_data = [Vector2(0, 0.20839), 0.0, -0.414073, 0, 0, Vector2(1, 0), -0.218344, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_x7jw5"]
+script = ExtResource("5_7n1e0")
+object_scene = ExtResource("6_il8ip")
+object_cost = 0
+
+[sub_resource type="Resource" id="Resource_sy7s6"]
+script = ExtResource("5_7n1e0")
+object_scene = ExtResource("7_qmnq1")
+object_cost = 0
+
+[sub_resource type="Resource" id="Resource_af0yp"]
+script = ExtResource("5_7n1e0")
+object_scene = ExtResource("8_vbs6o")
+object_cost = 0
+
+[sub_resource type="Resource" id="Resource_3iy7e"]
+script = ExtResource("5_7n1e0")
+object_scene = ExtResource("9_qpyxj")
+object_cost = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yii2g"]
+size = Vector2(20, 80)
+center_offset = Vector3(0, 0, 40)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8bq5b"]
+size = Vector3(20, 3, 80)
+
+[sub_resource type="Animation" id="Animation_bj2c5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:speed")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [10.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scenery:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Scenery:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Scenery/CloudsPlane2/ElementShopCloudMedium5:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.975878, -2.35423, -6.24752)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Scenery/CloudsPlane2/ElementShopCloudMedium6:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.04308, -3.4873, -9.89857)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Scenery/CloudsPlane2/ElementShopCloudMedium7:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.96379, 2.58492, 8.69946)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Scenery:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_df761"]
+resource_name = "idle"
+loop_mode = 1
+capture_included = true
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:speed")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [25.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scenery:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.233333, 0.566667),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 2,
+"values": [Vector3(0, -1, 0), Vector3(0, -0.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xkdeu"]
+resource_name = "stop"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:speed")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.3),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [50.0, 0.0]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scenery:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 25, -0.266667, -24.1221, 0.25, 0),
+"times": PackedFloat32Array(0, 3.3)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Scenery/CloudsPlane2/ElementShopCloudMedium5:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.3, 3.3),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector3(-0.975878, -2.35423, -6.24752), Vector3(-10, -2.354, -6.248)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Scenery/CloudsPlane2/ElementShopCloudMedium6:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.3, 3.3),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector3(3.04308, -3.4873, -9.89857), Vector3(7, -3.487, -9.899)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Scenery/CloudsPlane2/ElementShopCloudMedium7:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.66667, 2.6),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector3(-2.96379, 2.58492, 8.69946), Vector3(-6.964, 2.585, 8.699)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Scenery:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3.5, 3.53333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kn3vg"]
+_data = {
+&"RESET": SubResource("Animation_bj2c5"),
+&"idle": SubResource("Animation_df761"),
+&"stop": SubResource("Animation_xkdeu")
+}
+
+[node name="Stage Piece Shop" type="Node3D" node_paths=PackedStringArray("objs_container", "animation", "pivot_forward", "pivot_backward", "pivot_right", "pivot_left")]
+script = ExtResource("1_n2i65")
+objs_container = NodePath("Scenery/Objs")
+position_to_return = -80.0
+mat_to_move = ExtResource("2_6gx1n")
+mat_to_move_speed_multiplier = -0.1
+animation = NodePath("AnimationPlayer")
+line_title_scene = ExtResource("4_xor2w")
+altar_scene = ExtResource("4_jwbw3")
+speed = 10.0
+altars_appear_delay = SubResource("Curve_1bvn3")
+sacrifice_line = Array[ExtResource("5_7n1e0")]([SubResource("Resource_x7jw5"), SubResource("Resource_sy7s6"), SubResource("Resource_af0yp"), SubResource("Resource_3iy7e")])
+pivot_forward = NodePath("Config/forward")
+pivot_backward = NodePath("Config/back")
+pivot_right = NodePath("Config/right")
+pivot_left = NodePath("Config/left")
+
+[node name="Config" type="Node3D" parent="."]
+
+[node name="Wind Direction" type="Node3D" parent="Config"]
+transform = Transform3D(-2.04648e-07, 0, -1, 0, 1, 0, 1, 0, -2.04648e-07, 0.25, 6, 0)
+
+[node name="forward" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -70)
+gizmo_extents = 1.0
+
+[node name="back" type="Marker3D" parent="Config"]
+gizmo_extents = 1.0
+
+[node name="right" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -34)
+gizmo_extents = 1.0
+
+[node name="left" type="Marker3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -34)
+gizmo_extents = 1.0
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -80)
+aabb = AABB(-10, 0, 0, 20, 20, 80)
+
+[node name="Scenery" type="Node3D" parent="."]
+
+[node name="CloudsPlane2" type="MeshInstance3D" parent="Scenery"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -80)
+material_override = ExtResource("2_6gx1n")
+mesh = SubResource("PlaneMesh_yii2g")
+skeleton = NodePath("")
+
+[node name="CloudPlaneBody" type="StaticBody3D" parent="Scenery/CloudsPlane2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 40)
+collision_layer = 257
+collision_mask = 0
+
+[node name="PlaneShape" type="CollisionShape3D" parent="Scenery/CloudsPlane2/CloudPlaneBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_8bq5b")
+
+[node name="ElementShopCloudMedium" parent="Scenery/CloudsPlane2" instance=ExtResource("2_sohha")]
+transform = Transform3D(0.923297, 0, 0.384086, 0, 1, 0, -0.384086, 0, 0.923297, 4.02838, 0, 2.60411)
+
+[node name="ElementShopCloudMedium2" parent="Scenery/CloudsPlane2" instance=ExtResource("2_sohha")]
+transform = Transform3D(0.986586, 0, 0.16324, -0.0980763, 0.799391, 0.592752, -0.130493, -0.600811, 0.788668, 2.3526, 0, 0.175201)
+
+[node name="ElementShopCloudMedium3" parent="Scenery/CloudsPlane2" instance=ExtResource("2_sohha")]
+transform = Transform3D(0.98213, 0, -0.188204, 0, 1, 0, 0.188204, 0, 0.98213, -3.46309, 0, 0.175201)
+
+[node name="ElementShopCloudMedium4" parent="Scenery/CloudsPlane2" instance=ExtResource("2_sohha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.79303, 1.9327, 4.0202)
+
+[node name="ElementShopCloudMedium5" parent="Scenery/CloudsPlane2" instance=ExtResource("2_sohha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.975878, -2.35423, -6.24752)
+
+[node name="ElementShopCloudMedium7" parent="Scenery/CloudsPlane2" instance=ExtResource("2_sohha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.96379, 2.58492, 8.69946)
+
+[node name="ElementShopCloudMedium6" parent="Scenery/CloudsPlane2" instance=ExtResource("2_sohha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.04308, -3.4873, -9.89857)
+
+[node name="Objs" type="Node3D" parent="Scenery"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_kn3vg")
+}
+autoplay = "idle"
+
+[node name="ShopMenu" type="Node3D" parent="."]
+
+[node name="SFX Out of shop" type="AkEvent3D" parent="."]
+event = ExtResource("11_hyme7")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40)
+
+[connection signal="shop_finished" from="." to="SFX Out of shop" method="post_event"]
+[connection signal="screen_entered" from="Config/VisibleOnScreenNotifier3D" to="." method="_on_screen_entered"]
+[connection signal="screen_exited" from="Config/VisibleOnScreenNotifier3D" to="." method="_on_screen_exited"]

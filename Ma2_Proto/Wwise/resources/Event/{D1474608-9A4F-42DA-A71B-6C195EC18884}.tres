@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://bvqfsk4uwn1j1"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_MidBoss_Lv4_Hand_Death"
+id = 2731174523
+guid = "{D1474608-9A4F-42DA-A71B-6C195EC18884}"
+dummy = true

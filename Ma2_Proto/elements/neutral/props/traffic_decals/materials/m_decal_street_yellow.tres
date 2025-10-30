@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cjhkjy1y7xwgw"]
+
+[ext_resource type="Shader" uid="uid://c4wctjid17eas" path="res://elements/neutral/props/traffic_decals/materials/new_shader.tres" id="1_lx7fo"]
+[ext_resource type="Texture2D" uid="uid://bu1uubi52awk8" path="res://elements/neutral/props/traffic_decals/textures/traffic_decal_wear_noise.tres" id="2_kj8so"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_lx7fo")
+shader_parameter/Albedo_Color = Color(0.596078, 0.533333, 0.305882, 1)
+shader_parameter/Noise = ExtResource("2_kj8so")

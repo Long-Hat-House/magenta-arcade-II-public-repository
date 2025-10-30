@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://bwcnb72bt7l8d"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_UI_Slider_Changed"
+id = 3452408789
+guid = "{C41B5F1F-65E6-4DD7-9F1C-8EE5D8536949}"
+dummy = true

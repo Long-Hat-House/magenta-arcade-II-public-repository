@@ -1,0 +1,219 @@
+[gd_scene load_steps=20 format=3 uid="uid://dhmlaxsu710sv"]
+
+[ext_resource type="Script" uid="uid://bwkeq6vnu35fv" path="res://systems/pressable/pressable_button_graphic.gd" id="1_8b65a"]
+[ext_resource type="PackedScene" uid="uid://bvhxeq8y0rqon" path="res://elements/powerups/button/mesh/button_base.tscn" id="2_jvjme"]
+[ext_resource type="Texture2D" uid="uid://b3s6bubwjtovt" path="res://elements/icons/icon_hold_yellow.png" id="2_o1lmx"]
+[ext_resource type="Script" uid="uid://bi4yfgewvcvwq" path="res://systems/switchable/switch_oning_offing_animation_player.gd" id="4_lje40"]
+
+[sub_resource type="Gradient" id="Gradient_jwtwq"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.545098, 0.623529, 0.729412, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c5w3d"]
+gradient = SubResource("Gradient_jwtwq")
+width = 1
+
+[sub_resource type="Gradient" id="Gradient_nwio1"]
+offsets = PackedFloat32Array(0.288608, 0.387342, 0.529114)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pfhb0"]
+gradient = SubResource("Gradient_nwio1")
+width = 1
+height = 8
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fh0nu"]
+resource_local_to_scene = true
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.341176, 0.341176, 0.427451, 1)
+emission_enabled = true
+emission = Color(0.877616, 0.877616, 0.877616, 1)
+emission_energy_multiplier = 0.0
+detail_enabled = true
+detail_mask = SubResource("GradientTexture2D_pfhb0")
+detail_albedo = SubResource("GradientTexture1D_c5w3d")
+
+[sub_resource type="SphereMesh" id="SphereMesh_x75rn"]
+radius = 0.7
+height = 0.3
+radial_segments = 16
+rings = 4
+is_hemisphere = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_60djd"]
+resource_local_to_scene = true
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("2_o1lmx")
+
+[sub_resource type="QuadMesh" id="QuadMesh_qx82g"]
+size = Vector2(0.9, 0.9)
+orientation = 1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5nvwn"]
+height = 0.5
+radius = 0.7
+
+[sub_resource type="Animation" id="Animation_4di45"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("button_mesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("button_mesh:material_override:emission_energy_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_sea0h"]
+resource_name = "off"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("button_mesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("button_mesh:material_override:emission_energy_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ieduv"]
+resource_name = "offing"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("button_mesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5, 1),
+"update": 0,
+"values": [Vector3(1, 0.2, 1), Vector3(1, 1.5, 1), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("button_mesh:material_override:emission_energy_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_tyje3"]
+resource_name = "on"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("button_mesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 0.1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("button_mesh:material_override:emission_energy_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [0.8, 0.6, 0.8]
+}
+
+[sub_resource type="Animation" id="Animation_0r74a"]
+resource_name = "oning"
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jrvwv"]
+_data = {
+&"RESET": SubResource("Animation_4di45"),
+&"off": SubResource("Animation_sea0h"),
+&"offing": SubResource("Animation_ieduv"),
+&"on": SubResource("Animation_tyje3"),
+&"oning": SubResource("Animation_0r74a")
+}
+
+[node name="pressable_button_graphic_round" type="Node3D" node_paths=PackedStringArray("_icon_mesh", "_button_mesh", "_area_3d", "_on_off_animation_player")]
+script = ExtResource("1_8b65a")
+_icon_mesh = NodePath("button_mesh/icon_mesh")
+_button_mesh = NodePath("button_mesh")
+_area_3d = NodePath("button_mesh/Area3D")
+_on_off_animation_player = NodePath("Switch_Oning_Offing_AnimationPlayer")
+
+[node name="button_base3" parent="." instance=ExtResource("2_jvjme")]
+transform = Transform3D(0.9, 0, 0, 0, 1, 0, 0, 0, 0.9, 0, 0, 0)
+
+[node name="button_mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.163015, 0)
+material_override = SubResource("StandardMaterial3D_fh0nu")
+mesh = SubResource("SphereMesh_x75rn")
+
+[node name="icon_mesh" type="MeshInstance3D" parent="button_mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.309333, 0)
+material_override = SubResource("StandardMaterial3D_60djd")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_qx82g")
+skeleton = NodePath("../..")
+
+[node name="Area3D" type="Area3D" parent="button_mesh"]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="button_mesh/Area3D"]
+shape = SubResource("CylinderShape3D_5nvwn")
+
+[node name="Switch_Oning_Offing_AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jrvwv")
+}
+script = ExtResource("4_lje40")

@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx7wn8f8wqt22"]
+
+[sub_resource type="GDScript" id="GDScript_mvg20"]
+resource_name = "lvl_sub"
+script/source = "extends Level
+
+const ENEMY_STATUE = preload(\"res://elements/enemy/bosses/estatua/enemy_statue_boss.tscn\")
+const LVL_INFO_1 = preload(\"res://elements/levels/lvl_info_1.tres\")
+
+## stage pieces
+const STAGE_PIECE_AFONSO_PENA_AV_BRASIL = preload(\"res://elements/stage_pieces/stage_piece_afonso_pena_av_brasil.tscn\")
+const STAGE_PIECE_AFONSO_PENA_LANES_2 = preload(\"res://elements/stage_pieces/stage_piece_afonso_pena_lanes2.tscn\")
+
+func _ready():
+	await await_for_level_ready()
+
+	stage.create_piece_and_attach(STAGE_PIECE_AFONSO_PENA_LANES_2);
+	stage.create_piece_and_attach(STAGE_PIECE_AFONSO_PENA_AV_BRASIL);
+	stage.set_pivot_offset(Vector3.ZERO)
+	stage.repivot();
+
+	var pos:Vector3 = Vector3(0,0,stage.get_pos_z()+55)
+	var statue:Enemy_Statue_Ivo = objs.create_object(ENEMY_STATUE, \"statue\", pos) as Enemy_Statue_Ivo;
+	statue.initial_position = pos
+	statue.destroy_face_immediately()
+	statue.state_fall_immediate()
+
+	stage.set_pivot_offset(Vector3(0,0,32))
+
+	cmd_array([
+		cmd_camera_go_to_pivot0(4, false, Vector2.ZERO, Tween.TransitionType.TRANS_QUAD),
+		CMD_Wait_Seconds.new(0.5),
+		CMD_Show_Level_Info.new(LVL_INFO_1),
+		CMD_Wait_Seconds.new(0.5),
+		CMD_Music_Event.new(AK.EVENTS.MUSIC_LEVEL2_GAMEPLAY_START),
+		CMD_Wait_Seconds.new(3),
+		], false
+	)
+"
+
+[node name="LVL AV BRASIL" type="Node3D"]
+script = SubResource("GDScript_mvg20")

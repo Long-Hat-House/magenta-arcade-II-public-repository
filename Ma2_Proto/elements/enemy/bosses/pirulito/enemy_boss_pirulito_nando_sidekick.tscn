@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://4gvraixxsqai"]
+
+[ext_resource type="Script" uid="uid://c3hkr4dyibjbh" path="res://elements/enemy/bosses/pirulito/enemy_boss_pirulito_nando_sidekick.gd" id="1_h5s8p"]
+[ext_resource type="PackedScene" uid="uid://cuvluixwm8sqv" path="res://elements/enemy/bosses/pirulito/nando_and_nene/nando_magenta/boss_nando_defeat_graphic.tscn" id="2_osv3r"]
+[ext_resource type="PackedScene" uid="uid://cux5kcyvhvhq4" path="res://modules/text_flow/scenes/text_flow_player_bubbles.tscn" id="2_pnn8d"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="3_12ev6"]
+[ext_resource type="PackedScene" uid="uid://bc8er7wjckssi" path="res://elements/npc/npc_high_contrast_sprite_boss.tscn" id="4_3osrp"]
+[ext_resource type="Script" uid="uid://dj2x7ekyg32b7" path="res://systems/score/score_giver.gd" id="5_ebyry"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ngvge"]
+height = 3.0
+
+[node name="EnemyBossPirulitoNandoSidekick" type="Node3D" node_paths=PackedStringArray("flow")]
+script = ExtResource("1_h5s8p")
+hit_direction = Vector3(0.4, 0, -1)
+flow = NodePath("TextFlowPlayerBubbles")
+
+[node name="TextFlowPlayerBubbles" parent="." instance=ExtResource("2_pnn8d")]
+
+[node name="Boss_Nando_Defeat_Graphic" parent="." instance=ExtResource("2_osv3r")]
+flip_h = true
+animation = &"pirulito_nando_cry"
+frame_progress = 0.0
+
+[node name="Shadow" parent="Boss_Nando_Defeat_Graphic" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0.0487123, 0)
+
+[node name="NPC_HighContrastSprite_Boss" parent="Boss_Nando_Defeat_Graphic" instance=ExtResource("4_3osrp")]
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.275, 0)
+
+[node name="Area3D" type="CharacterBody3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+collision_layer = 132
+collision_mask = 24
+
+[node name="Health" type="Node" parent="Pivot/Area3D"]
+script = ExtResource("3_12ev6")
+max_amount = 9999.0
+immortal = true
+debug = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/Area3D"]
+shape = SubResource("CapsuleShape3D_ngvge")
+
+[node name="Bubble Origin" type="Node3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.132081, -0.254483)
+
+[node name="ScoreGiverPosition" type="Node3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1.25, 2)
+
+[node name="ScoreGiver" type="Node" parent="." node_paths=PackedStringArray("point_position")]
+script = ExtResource("5_ebyry")
+point_position = NodePath("../Pivot/ScoreGiverPosition")
+
+[connection signal="hit" from="Pivot/Area3D/Health" to="." method="_on_health_hit"]
+[connection signal="try_damage" from="Pivot/Area3D/Health" to="." method="_on_health_try_damage"]
+
+[editable path="Boss_Nando_Defeat_Graphic"]

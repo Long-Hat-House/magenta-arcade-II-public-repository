@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=3 uid="uid://c0gnros7eajsc"]
+
+[ext_resource type="SpriteFrames" uid="uid://csmsln4gem53w" path="res://elements/enemy/bosses/cachorro/turing/enemy_boss_turing_magenta.ase" id="2_yxims"]
+[ext_resource type="Script" uid="uid://gt8mex4k3e8b" path="res://elements/enemy/bosses/cachorro/boss_cachorro_npc_intro.gd" id="3_1h03v"]
+[ext_resource type="PackedScene" uid="uid://bc8er7wjckssi" path="res://elements/npc/npc_high_contrast_sprite_boss.tscn" id="3_cueqi"]
+[ext_resource type="PackedScene" uid="uid://b2g5r65iw01ae" path="res://elements/base_shadow.tscn" id="3_v2fb0"]
+[ext_resource type="Texture2D" uid="uid://cl6cndwm4yp40" path="res://elements/enemy/bosses/cachorro/turing/enemy_boss_turing_magenta.png" id="4_1nkga"]
+[ext_resource type="Script" uid="uid://bkt3i1q8w53tl" path="res://modules/text_flow/quick_dialogue.gd" id="4_lamke"]
+[ext_resource type="Script" uid="uid://hbsjipy3xak5" path="res://systems/pressable/pressable.gd" id="5_v2fb0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_smeaa"]
+radius = 1.4
+
+[node name="Boss_Cachorro_NPC_Intro" type="Node3D" node_paths=PackedStringArray("img")]
+script = ExtResource("3_1h03v")
+img = NodePath("Sprite")
+
+[node name="Sprite" type="AnimatedSprite3D" parent="."]
+cast_shadow = 0
+offset = Vector2(0, 80)
+pixel_size = 0.0078
+billboard = 1
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = ExtResource("2_yxims")
+animation = &"run"
+speed_scale = 1.5
+
+[node name="NPC_HighContrastSprite_Boss" parent="Sprite" instance=ExtResource("3_cueqi")]
+
+[node name="NPC_HighContrastSprite" parent="Sprite/NPC_HighContrastSprite_Boss" index="0"]
+texture = ExtResource("4_1nkga")
+uv_frame = Vector2i(0, 0)
+center_offset = Vector3(0, 0.75, 0)
+
+[node name="BaseShadow" parent="Sprite" instance=ExtResource("3_v2fb0")]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0.2, 0)
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Sprite"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+aabb = AABB(-2, -1, -2, 4, 2, 4)
+
+[node name="QuickDialogue" type="Node3D" parent="Sprite"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 0)
+script = ExtResource("4_lamke")
+voice = 10
+dialogue_id = &"dial_lvl4_1st_boss_intro"
+needs_call = true
+metadata/_custom_type_script = "uid://bkt3i1q8w53tl"
+
+[node name="DialogueHole" type="Node3D" parent="Sprite"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("4_lamke")
+voice = 10
+dialogue_id = &"dial_lvl4_1st_boss_intro_2"
+needs_call = true
+metadata/_custom_type_script = "uid://bkt3i1q8w53tl"
+
+[node name="Avoider" type="Area3D" parent="Sprite"]
+collision_layer = 4
+collision_mask = 10
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sprite/Avoider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_smeaa")
+
+[node name="Pressable" type="Node3D" parent="." node_paths=PackedStringArray("pressable_area")]
+script = ExtResource("5_v2fb0")
+pressable_area = NodePath("PressableArea")
+metadata/_custom_type_script = "uid://hbsjipy3xak5"
+
+[node name="PressableArea" type="Area3D" parent="Pressable"]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Pressable/PressableArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_smeaa")
+
+[connection signal="area_entered" from="Sprite/Avoider" to="." method="avoid"]
+[connection signal="body_entered" from="Sprite/Avoider" to="." method="avoid"]
+[connection signal="changed_pressed_state" from="Pressable" to="." method="set_pressed"]
+
+[editable path="Sprite/NPC_HighContrastSprite_Boss"]

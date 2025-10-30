@@ -1,0 +1,186 @@
+[gd_scene load_steps=10 format=3 uid="uid://snrabr3rnpj2"]
+
+[ext_resource type="Script" uid="uid://dsxgk1ogku4uq" path="res://systems/level/level_transition.gd" id="1_irk8d"]
+[ext_resource type="Material" uid="uid://4m2kn4p6htqb" path="res://systems/ui/m_ui_add.tres" id="3_d3ulm"]
+
+[sub_resource type="Animation" id="Animation_ml5rq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Switch_Oning_Offing_AnimationPlayer/AddPanel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Switch_Oning_Offing_AnimationPlayer/ProgressBar:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_raquo"]
+resource_name = "off"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Switch_Oning_Offing_AnimationPlayer/AddPanel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(2),
+"update": 0,
+"values": [Color(0.545098, 0.623529, 0.729412, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wxa8a"]
+resource_name = "offing"
+capture_included = true
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Switch_Oning_Offing_AnimationPlayer/AddPanel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 1),
+"transitions": PackedFloat32Array(0.5, 1, 254.295),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0.690196, 0.654902, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Switch_Oning_Offing_AnimationPlayer/ProgressBar:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.166667),
+"transitions": PackedFloat32Array(-2),
+"update": 2,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_t32qf"]
+resource_name = "on"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Switch_Oning_Offing_AnimationPlayer/AddPanel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(2),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_y8wmb"]
+resource_name = "offing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Switch_Oning_Offing_AnimationPlayer/AddPanel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 1),
+"transitions": PackedFloat32Array(2, 0.5, 2),
+"update": 0,
+"values": [Color(0, 0.690196, 0.654902, 0), Color(0, 0.690196, 0.654902, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Switch_Oning_Offing_AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"set_may_transition"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Switch_Oning_Offing_AnimationPlayer/ProgressBar:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q6ycm"]
+_data = {
+&"RESET": SubResource("Animation_ml5rq"),
+&"off": SubResource("Animation_raquo"),
+&"offing": SubResource("Animation_wxa8a"),
+&"on": SubResource("Animation_t32qf"),
+&"oning": SubResource("Animation_y8wmb")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ihb7"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Switch_Oning_Offing_AnimationPlayer" type="AnimationPlayer" node_paths=PackedStringArray("input_blocker")]
+process_mode = 3
+libraries = {
+&"": SubResource("AnimationLibrary_q6ycm")
+}
+script = ExtResource("1_irk8d")
+input_blocker = NodePath("AddPanel")
+
+[node name="AddPanel" type="Panel" parent="."]
+modulate = Color(0, 0.690196, 0.654902, 0)
+material = ExtResource("3_d3ulm")
+custom_minimum_size = Vector2(900, 0)
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -450.0
+offset_right = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1ihb7")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(30, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -42.0
+offset_right = 50.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+max_value = 1.0
+show_percentage = false
+indeterminate = true
+editor_preview_indeterminate = false

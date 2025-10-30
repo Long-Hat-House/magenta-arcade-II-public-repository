@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://byqtgurpxw30m"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Level_Entry_CloudsShoosh"
+id = 2312513128
+guid = "{21864CA0-1B65-4F39-A098-5533DCCB4A31}"
+dummy = true

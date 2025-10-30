@@ -1,0 +1,297 @@
+[gd_scene load_steps=16 format=3 uid="uid://bp54dncxtr7q6"]
+
+[ext_resource type="Script" uid="uid://bt3rgk2gx218p" path="res://systems/stage/level_stage_piece.gd" id="1_6kooc"]
+[ext_resource type="WwiseEvent" uid="uid://i4l061bmuwfy" path="res://Wwise/resources/Event/{C79B1C4F-1C1F-4A7D-B240-20B6B3AA9588}.tres" id="1_fuia3"]
+[ext_resource type="PackedScene" uid="uid://chupj3gavxy34" path="res://elements/enemy/lair_door/enemy_lair_door.tscn" id="2_5d4jm"]
+[ext_resource type="PackedScene" uid="uid://clp76n38cjy7n" path="res://elements/enemy/bosses/hand/boss_hand.tscn" id="3_1umi0"]
+[ext_resource type="PackedScene" uid="uid://cl5uv7qchkiti" path="res://elements/background/element_clay_floor.tscn" id="3_jgw3h"]
+[ext_resource type="PackedScene" uid="uid://dyc8nxjcgl5ck" path="res://elements/neutral/props/Lab_mountain/mesh/mesh_floor_mid_boss_lvl_04.tscn" id="3_y6s2s"]
+[ext_resource type="PackedScene" uid="uid://c00kqth38jmst" path="res://systems/stage/stage_screen_measure.tscn" id="4_wc66d"]
+[ext_resource type="PackedScene" uid="uid://d0ljskkckqxgx" path="res://elements/neutral/props/Lab_mountain/mesh/mesh_mountain.tscn" id="4_xl1fm"]
+[ext_resource type="PackedScene" uid="uid://l3dy36lol626" path="res://elements/neutral/props/rock/mesh/mesh_rock.tscn" id="5_afb6k"]
+[ext_resource type="PackedScene" uid="uid://r5hbiso3v7c" path="res://elements/neutral/props/gear/mesh_gear.tscn" id="6_74jwm"]
+[ext_resource type="PackedScene" uid="uid://cm4h8qb8fxpwr" path="res://elements/neutral/props/Lab_mountain/mesh/element_mesh_grid.tscn" id="7_74jwm"]
+[ext_resource type="PackedScene" uid="uid://rgewvf6vlllw" path="res://elements/enemy/statue_ivo/mesh/ivo_estatua.tscn" id="7_tobd2"]
+[ext_resource type="Resource" uid="uid://b4sm3a668ml1i" path="res://elements/levels/level_structure/camera_movement_data_by_duration.tres" id="9_tobd2"]
+[ext_resource type="PackedScene" uid="uid://bbxjl2oorljv5" path="res://elements/neutral/props/Lab_mountain/mesh/mesh_firelvl04.tscn" id="9_uytee"]
+
+[sub_resource type="GDScript" id="GDScript_d1btk"]
+script/source = "extends Level
+
+const BOSS_5A = preload(\"res://systems/boss/boss_5_a.tres\")
+
+
+@export var boss:Boss_EvilHand;
+@export var piece_main:LevelStagePiece;
+
+@export var cpu_particles:Array[CPUParticles3D];
+@export var gpu_particles:Array[GPUParticles3D];
+
+@export var music_end:WwiseEvent;
+
+@export var door_measure:StageMeasure;
+@export var door:Node3D;
+
+
+func _ready():
+	await await_for_level_ready()
+
+	self.stage.attach_piece(piece_main);
+
+	for particle in cpu_particles:
+		particle.emitting = false;
+	for particle in gpu_particles:
+		particle.emitting = false;
+
+	cmd_array([
+		cmd_all(),
+		cmd_clear_measures(),
+		]);
+
+func cmd_all()->Level.CMD:
+	return Level.CMD_Sequence.new([
+		CMD_Level_Environment.new(\"inside\"),
+		CMD_Music_Event.new(AK.EVENTS.MUSIC_STOP),
+		cmd_set_pivot_to_next_measure(0),
+		cmd_camera_go_to_pivot0(),
+		boss.cmd_boss(self, set_arena_on),
+		Level.CMD_Callable.new(func():
+			music_end.post(self);
+			),
+		door_measure.cmd_default_camera_tween(self),
+		CMD_Wait_Callable.new(func wait_for_door():
+			return !is_instance_valid(door);
+			),
+	]);
+
+func set_arena_on():
+	LevelEnvironment.set_state(\"mid_boss\")
+	for particle in cpu_particles:
+		particle.emitting = true;
+	for particle in gpu_particles:
+		particle.emitting = true;
+
+func _get_configuration_warnings() -> PackedStringArray:
+	for child in get_children():
+		if child is LevelStagePiece:
+			return [];
+	return [\"Need a level stage piece as child of this!\"];
+"
+
+[node name="LEVEL 4 HAND BOSS" type="Node3D" node_paths=PackedStringArray("boss", "piece_main", "cpu_particles", "door_measure", "door")]
+script = SubResource("GDScript_d1btk")
+boss = NodePath("Stage Piece Fabrica Room/BossHand")
+piece_main = NodePath("Stage Piece Fabrica Room")
+cpu_particles = [NodePath("Stage Piece Fabrica Room/Scenery/particle_fire/CPUParticles3D"), NodePath("Stage Piece Fabrica Room/Scenery/particle_fire2/CPUParticles3D")]
+music_end = ExtResource("1_fuia3")
+door_measure = NodePath("Stage Piece Fabrica Room/StageScreenMeasure Door")
+door = NodePath("Stage Piece Fabrica Room/Enemy_Lair_Door")
+
+[node name="Stage Piece Fabrica Room" type="Node3D" parent="." node_paths=PackedStringArray("pivot_forward", "pivot_backward", "pivot_right", "pivot_left")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, -29.25)
+script = ExtResource("1_6kooc")
+pivot_forward = NodePath("Config/forward")
+pivot_backward = NodePath("Config/back")
+pivot_right = NodePath("Config/right")
+pivot_left = NodePath("Config/left")
+
+[node name="Enemy_Lair_Door" parent="Stage Piece Fabrica Room" instance=ExtResource("2_5d4jm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -23.5)
+
+[node name="Config" type="Node3D" parent="Stage Piece Fabrica Room"]
+
+[node name="Wind Direction" type="Node3D" parent="Stage Piece Fabrica Room/Config"]
+transform = Transform3D(-2.04648e-07, 0, -1, 0, 1, 0, 1, 0, -2.04648e-07, 0.25, 6, 0)
+
+[node name="forward" type="Marker3D" parent="Stage Piece Fabrica Room/Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 0, -52)
+gizmo_extents = 1.0
+
+[node name="back" type="Marker3D" parent="Stage Piece Fabrica Room/Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35)
+gizmo_extents = 1.0
+
+[node name="right" type="Marker3D" parent="Stage Piece Fabrica Room/Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 6)
+gizmo_extents = 1.0
+
+[node name="left" type="Marker3D" parent="Stage Piece Fabrica Room/Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 6)
+gizmo_extents = 1.0
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Stage Piece Fabrica Room/Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13)
+aabb = AABB(-7.5, 0, -35, 15, 13.796, 75.035)
+
+[node name="Scenery" type="Node3D" parent="Stage Piece Fabrica Room"]
+
+[node name="mountain" parent="Stage Piece Fabrica Room/Scenery" instance=ExtResource("4_xl1fm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -0.25, 28.25)
+
+[node name="mountain2" parent="Stage Piece Fabrica Room/Scenery" instance=ExtResource("4_xl1fm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, -0.25, 29)
+
+[node name="floor_mid_boss_lvl04" parent="Stage Piece Fabrica Room/Scenery" instance=ExtResource("3_y6s2s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.1492)
+
+[node name="Clay" parent="Stage Piece Fabrica Room/Scenery" instance=ExtResource("3_jgw3h")]
+transform = Transform3D(23.925, 0, 0, 0, 1.25, 0, 0, 0, 50, -11.25, 0, -52)
+
+[node name="GEARS" type="Node3D" parent="Stage Piece Fabrica Room/Scenery"]
+
+[node name="gear4" parent="Stage Piece Fabrica Room/Scenery/GEARS" instance=ExtResource("6_74jwm")]
+transform = Transform3D(3, 0, 0, 0, 2.95442, -0.520945, 0, 0.520945, 2.95442, 4.25, -0.075, 17.25)
+
+[node name="gear5" parent="Stage Piece Fabrica Room/Scenery/GEARS" instance=ExtResource("6_74jwm")]
+transform = Transform3D(4.35, 0, 0, 0, 2.78413, 1.12453, 0, -0.746004, 4.19682, -3.25, -0.25, 22.25)
+
+[node name="gear6" parent="Stage Piece Fabrica Room/Scenery/GEARS" instance=ExtResource("6_74jwm")]
+transform = Transform3D(2.10089, -0.627334, 0.150484, 0.562931, 2.34124, -0.561614, 0, 0.649464, 2.16991, -4.25, -0.25, 7.25)
+
+[node name="gear7" parent="Stage Piece Fabrica Room/Scenery/GEARS" instance=ExtResource("6_74jwm")]
+transform = Transform3D(1.06897, 2.18441, 0.0574325, -1.88857, 1.23478, -0.140404, -0.145697, 0.021376, 2.24133, 4.5, -0.325, 2.25)
+
+[node name="GRIDS" type="Node3D" parent="Stage Piece Fabrica Room/Scenery"]
+
+[node name="grid" parent="Stage Piece Fabrica Room/Scenery/GRIDS" instance=ExtResource("7_74jwm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0.25, 0.5)
+
+[node name="grid2" parent="Stage Piece Fabrica Room/Scenery/GRIDS" instance=ExtResource("7_74jwm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.25, 0.5)
+
+[node name="ROCK" type="Node3D" parent="Stage Piece Fabrica Room/Scenery"]
+
+[node name="rock2" parent="Stage Piece Fabrica Room/Scenery/ROCK" instance=ExtResource("5_afb6k")]
+transform = Transform3D(0.016052, 1.67097, 0.0313687, 0.801513, -0.030606, -0.247267, -0.0868992, 0.0263682, -2.27487, -4.70672, -0.317464, 19.5659)
+
+[node name="rock8" parent="Stage Piece Fabrica Room/Scenery/ROCK" instance=ExtResource("5_afb6k")]
+transform = Transform3D(-0.0906987, 0.0447816, -2.56396, 0.836558, -0.0519791, -0.278691, -0.0167539, -2.83786, -0.0353551, 3.54328, -0.367464, 13.8159)
+
+[node name="rock9" parent="Stage Piece Fabrica Room/Scenery/ROCK" instance=ExtResource("5_afb6k")]
+transform = Transform3D(0.247209, 0.146676, -3.03324, 1.62889, 0.432235, 0.491751, 0.403774, -1.83351, -0.126726, -3.45672, -0.71746, 4.06595)
+
+[node name="rock3" parent="Stage Piece Fabrica Room/Scenery/ROCK" instance=ExtResource("5_afb6k")]
+transform = Transform3D(-0.0078678, 1.88185, -0.92793, 0.897591, 0.0879806, 0.551589, 0.137799, -0.465642, -3.64593, -0.489418, -0.380226, 9.14405)
+
+[node name="rock4" parent="Stage Piece Fabrica Room/Scenery/ROCK" instance=ExtResource("5_afb6k")]
+transform = Transform3D(-0.0404086, -1.58681, -0.030262, 1.09611, -0.0606122, 0.186446, -0.113894, -0.020342, 1.80509, -4.12791, -0.319525, 15.159)
+
+[node name="rock5" parent="Stage Piece Fabrica Room/Scenery/ROCK" instance=ExtResource("5_afb6k")]
+transform = Transform3D(-0.201443, -1.92572, -0.930695, 1.75561, -0.0855709, -0.294489, 0.207598, -1.14498, 1.58733, 4.10058, -0.699476, 20.5919)
+
+[node name="rock7" parent="Stage Piece Fabrica Room/Scenery/ROCK" instance=ExtResource("5_afb6k")]
+transform = Transform3D(0.169529, 1.09893, 1.61296, 1.06962, -0.0858601, -0.296936, -0.0481701, 1.96104, -0.916878, -0.74942, -0.424476, 10.0919)
+
+[node name="rock6" parent="Stage Piece Fabrica Room/Scenery/ROCK" instance=ExtResource("5_afb6k")]
+transform = Transform3D(-0.47789, 1.1835, -0.90149, 0.466286, 0.374481, -1.23897, -0.193692, -2.0185, -0.758429, 2.99628, -0.327509, 2.35115)
+
+[node name="Estatuas" type="Node3D" parent="Stage Piece Fabrica Room/Scenery"]
+
+[node name="ivo_estatua" parent="Stage Piece Fabrica Room/Scenery/Estatuas" instance=ExtResource("7_tobd2")]
+transform = Transform3D(0.987016, -0.122254, -0.104181, 0.149424, 0.460928, 0.874767, -0.0589235, -0.878976, 0.473211, -4.10197, -2.19269, 8.08339)
+
+[node name="ivo_estatua3" parent="Stage Piece Fabrica Room/Scenery/Estatuas" instance=ExtResource("7_tobd2")]
+transform = Transform3D(-0.79528, 0.17813, 0.579482, 0.592515, 0.430641, 0.68079, -0.128279, 0.88477, -0.448025, 1.70425, -2.21704, 12.9061)
+
+[node name="ivo_estatua2" parent="Stage Piece Fabrica Room/Scenery/Estatuas" instance=ExtResource("7_tobd2")]
+transform = Transform3D(0.419122, 0.849351, 0.320843, -0.73034, 0.105453, 0.674895, 0.539389, -0.517187, 0.664513, -0.668488, -0.369989, 29.5069)
+
+[node name="particle_fire" parent="Stage Piece Fabrica Room/Scenery" instance=ExtResource("9_uytee")]
+transform = Transform3D(0.0757967, 0, -0.997123, 0, 1, 0, 0.997123, 0, 0.0757967, -5.29681, 1.45947, 13.5805)
+
+[node name="particle_fire2" parent="Stage Piece Fabrica Room/Scenery" instance=ExtResource("9_uytee")]
+transform = Transform3D(0.0736385, 0, 0.997285, 0, 1, 0, -0.997285, 0, 0.0736385, 5.5827, 1.45947, 13.5805)
+
+[node name="mountain3" parent="Stage Piece Fabrica Room/Scenery" instance=ExtResource("4_xl1fm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, -0.25, -13.25)
+
+[node name="mountain4" parent="Stage Piece Fabrica Room/Scenery" instance=ExtResource("4_xl1fm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, -0.25, -12.5)
+
+[node name="StageScreenMeasure BOSS" parent="Stage Piece Fabrica Room" instance=ExtResource("4_wc66d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1.25)
+default_movement = ExtResource("9_tobd2")
+
+[node name="Taps" type="VisibleOnScreenNotifier3D" parent="Stage Piece Fabrica Room/StageScreenMeasure BOSS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.25)
+aabb = AABB(-4, -1, -2.5, 8, 2, 5)
+
+[node name="Movement" type="VisibleOnScreenNotifier3D" parent="Stage Piece Fabrica Room/StageScreenMeasure BOSS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.5)
+aabb = AABB(-5, -1, -5.5, 10, 2, 11)
+
+[node name="Boss Death Position" type="Marker3D" parent="Stage Piece Fabrica Room/StageScreenMeasure BOSS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 16.25)
+
+[node name="Boss Initial Position" type="Marker3D" parent="Stage Piece Fabrica Room/StageScreenMeasure BOSS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 11)
+
+[node name="StageScreenMeasure Door" parent="Stage Piece Fabrica Room" instance=ExtResource("4_wc66d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, -32.25)
+default_movement = ExtResource("9_tobd2")
+
+[node name="BossHand" parent="Stage Piece Fabrica Room" node_paths=PackedStringArray("aabb_movement", "aabb_taps", "boss_death_pos", "center_position") instance=ExtResource("3_1umi0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.75)
+aabb_movement = NodePath("../StageScreenMeasure BOSS/Movement")
+aabb_taps = NodePath("../StageScreenMeasure BOSS/Taps")
+boss_death_pos = NodePath("../StageScreenMeasure BOSS/Boss Death Position")
+center_position = NodePath("../StageScreenMeasure BOSS/Boss Initial Position")
+
+[node name="hand" parent="Stage Piece Fabrica Room/BossHand/CharacterBody3D/Node3DShaker/boss_hand" index="0"]
+transform = Transform3D(0.976345, -0.216218, 3.20803e-08, 0.206442, 0.932202, 0.297292, -0.0642798, -0.29026, 0.954787, -3.38273, 3.13263, -3.91385)
+
+[node name="falange" parent="Stage Piece Fabrica Room/BossHand/CharacterBody3D/Node3DShaker/boss_hand/hand" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.659477, -0.751725, 0, 0.751725, 0.659477, 3.23231, 0.334661, 6.62177)
+
+[node name="falanges_001" parent="Stage Piece Fabrica Room/BossHand/CharacterBody3D/Node3DShaker/boss_hand/hand/falange" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.725579, -0.688139, 0, 0.688139, 0.725579, -0.0120075, 0, 3.55596)
+
+[node name="falange_001" parent="Stage Piece Fabrica Room/BossHand/CharacterBody3D/Node3DShaker/boss_hand/hand" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.800302, -0.599596, 0, 0.599596, 0.800302, 0.730583, 0.027936, 6.52625)
+
+[node name="falange_006" parent="Stage Piece Fabrica Room/BossHand/CharacterBody3D/Node3DShaker/boss_hand/hand/falange_001" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.227672, -0.973738, 0, 0.973738, 0.227672, -0.0120077, -0.146012, 3.53414)
+
+[node name="falange_007" parent="Stage Piece Fabrica Room/BossHand/CharacterBody3D/Node3DShaker/boss_hand/hand/falange_001/falange_006" index="0"]
+transform = Transform3D(1, 0, 0, 0, -0.226579, -0.973993, 0, 0.973993, -0.226579, -2.38419e-07, -1.19209e-07, 3.48046)
+
+[node name="falange_002" parent="Stage Piece Fabrica Room/BossHand/CharacterBody3D/Node3DShaker/boss_hand/hand" index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.642787, -0.766044, 0, 0.766044, 0.642787, -1.78199, 0.334661, 6.06847)
+
+[node name="falange_009" parent="Stage Piece Fabrica Room/BossHand/CharacterBody3D/Node3DShaker/boss_hand/hand/falange_002" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.358337, -0.933592, 0, 0.933592, 0.358337, -0.0120081, 0, 3.55596)
+
+[node name="falange_010" parent="Stage Piece Fabrica Room/BossHand/CharacterBody3D/Node3DShaker/boss_hand/hand/falange_002/falange_009" index="0"]
+transform = Transform3D(0.99871, 3.20375e-06, 0.0507833, 0.0495597, -0.218258, -0.974632, 0.0110808, 0.975891, -0.217977, 0, 0, 3.48046)
+
+[node name="falange_003" parent="Stage Piece Fabrica Room/BossHand/CharacterBody3D/Node3DShaker/boss_hand/hand" index="3"]
+transform = Transform3D(1, 0, 0, 0, 0.171297, -0.985219, 0, 0.985219, 0.171297, -4.16811, 0.334661, 5.34226)
+
+[node name="falange_013" parent="Stage Piece Fabrica Room/BossHand/CharacterBody3D/Node3DShaker/boss_hand/hand/falange_003" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.183176, -0.98308, 0, 0.98308, 0.183176, -0.0120087, 0, 3.55596)
+
+[node name="falange_014" parent="Stage Piece Fabrica Room/BossHand/CharacterBody3D/Node3DShaker/boss_hand/hand/falange_003/falange_013" index="0"]
+transform = Transform3D(0.988938, 2.35438e-06, 0.148327, 0.14677, -0.144494, -0.97856, 0.0214301, 0.989506, -0.142896, 0, 0, 3.48046)
+
+[node name="falange_004" parent="Stage Piece Fabrica Room/BossHand/CharacterBody3D/Node3DShaker/boss_hand/hand" index="4"]
+transform = Transform3D(0.133042, 0.910319, 0.391944, -0.930359, 0.251032, -0.267238, -0.341662, -0.329095, 0.88032, 5.37187, -2.09169, 2.01585)
+
+[node name="falange_017" parent="Stage Piece Fabrica Room/BossHand/CharacterBody3D/Node3DShaker/boss_hand/hand/falange_004" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.564477, -0.825449, 0, 0.825449, 0.564477, 0.149465, 0.0402329, 3.29167)
+
+[node name="SimpleSkeleton" parent="Stage Piece Fabrica Room/BossHand" index="1" node_paths=PackedStringArray("copied_to_copier")]
+copied_to_copier = {
+NodePath("../CharacterBody3D/Node3DShaker/boss_hand/hand/falange/falanges_001/falange_005/eva_car/FirstShotOrigin/Dedo1Collisor"): NodePath("../CharacterBody3D/CollisionShape3D"),
+NodePath("../CharacterBody3D/Node3DShaker/boss_hand/hand/falange_001/falange_006/falange_007/SecondShotOrigin/Dedo2Collisor"): NodePath("../CharacterBody3D/CollisionShape3D2"),
+null: NodePath("../CharacterBody3D/CollisionShape3D2")
+}
+
+[connection signal="screen_entered" from="Stage Piece Fabrica Room/Config/VisibleOnScreenNotifier3D" to="Stage Piece Fabrica Room" method="_on_screen_entered"]
+[connection signal="screen_exited" from="Stage Piece Fabrica Room/Config/VisibleOnScreenNotifier3D" to="Stage Piece Fabrica Room" method="_on_screen_exited"]
+
+[editable path="Stage Piece Fabrica Room/Scenery/particle_fire"]
+[editable path="Stage Piece Fabrica Room/Scenery/particle_fire2"]
+[editable path="Stage Piece Fabrica Room/BossHand"]
+[editable path="Stage Piece Fabrica Room/BossHand/CharacterBody3D/Node3DShaker/boss_hand"]
+[editable path="Stage Piece Fabrica Room/BossHand/CharacterBody3D/Node3DShaker/boss_hand/hand/falange/falanges_001/falange_005/eva_car"]
+[editable path="Stage Piece Fabrica Room/BossHand/eva_car_dest"]

@@ -1,0 +1,181 @@
+[gd_scene load_steps=13 format=3 uid="uid://brbg6mxa4scjw"]
+
+[ext_resource type="Script" path="res://systems/switchable/switch_oning_offing_animation_player.gd" id="2_77l32"]
+
+[sub_resource type="Curve3D" id="Curve3D_66saf"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1.43785, 0, 0, 1.43785, -0.0409875, 0, 2.17613, 0, 0, 0, 0, 0, 0, 3.402, 0, 3.864),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="GDScript" id="GDScript_poxp2"]
+resource_name = "hub_cable"
+script/source = "extends Path3D
+
+@export var _animation:Switch_Oning_Offing_AnimationPlayer
+@export var _cable_mesh:CSGPolygon3D
+
+var _mat:StandardMaterial3D
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	_mat = _cable_mesh.material_override
+
+	HUBLevel.instance.upgrade_set_selected.connect(_hub_upgrade_set_selected)
+
+	var parent = get_parent()
+	if parent is PressableButton:
+		parent.graphic_toggled_on.connect(set_on)
+		parent.graphic_toggled_off.connect(set_off)
+
+func _hub_upgrade_set_selected(new_set:UpgradeSet):
+	if new_set && _mat:
+		_mat.emission = new_set.color_highlight
+
+func set_on():
+	_animation.set_switch(true)
+
+func set_off():
+	_animation.set_switch(false)
+"
+
+[sub_resource type="Gradient" id="Gradient_tiymk"]
+offsets = PackedFloat32Array(0.0943775, 0.123153, 0.174699, 0.231527, 0.25502)
+colors = PackedColorArray(0, 0, 0, 1, 0.691357, 0.691357, 0.691357, 1, 1, 1, 1, 1, 0.703807, 0.703808, 0.703807, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sehk5"]
+gradient = SubResource("Gradient_tiymk")
+width = 1
+height = 32
+fill_from = Vector2(1, 0)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d1cde"]
+resource_local_to_scene = true
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.45098, 0.45098, 0.560784, 1)
+emission_enabled = true
+emission = Color(0, 0.831373, 0.792157, 1)
+emission_energy_multiplier = 0.0
+emission_operator = 1
+emission_texture = SubResource("GradientTexture2D_sehk5")
+
+[sub_resource type="Animation" id="Animation_qspxi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGPolygon3D:material_override:emission_energy_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_wedny"]
+resource_name = "off"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGPolygon3D:material_override:emission_energy_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(2),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_4xadl"]
+resource_name = "offing"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGPolygon3D:material_override:emission_energy_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [0.6, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_i3hf7"]
+resource_name = "on"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGPolygon3D:material_override:emission_energy_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.55, 1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [2.0, 2.5, 2.0]
+}
+
+[sub_resource type="Animation" id="Animation_7preg"]
+resource_name = "oning"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGPolygon3D:material_override:emission_energy_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [1.0, 5.0, 1.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8qkil"]
+_data = {
+"RESET": SubResource("Animation_qspxi"),
+"off": SubResource("Animation_wedny"),
+"offing": SubResource("Animation_4xadl"),
+"on": SubResource("Animation_i3hf7"),
+"oning": SubResource("Animation_7preg")
+}
+
+[node name="HUBCable" type="Path3D" node_paths=PackedStringArray("_animation", "_cable_mesh")]
+curve = SubResource("Curve3D_66saf")
+script = SubResource("GDScript_poxp2")
+_animation = NodePath("Switch_Oning_Offing_AnimationPlayer")
+_cable_mesh = NodePath("CSGPolygon3D")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+material_override = SubResource("StandardMaterial3D_d1cde")
+polygon = PackedVector2Array(-0.1, 0, -0.05, 0.05, 0.05, 0.05, 0.1, 0)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 0.15
+path_simplify_angle = 2.0
+path_rotation = 1
+path_local = true
+path_continuous_u = true
+path_u_distance = 0.0
+path_joined = false
+smooth_faces = true
+
+[node name="Switch_Oning_Offing_AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8qkil")
+}
+script = ExtResource("2_77l32")

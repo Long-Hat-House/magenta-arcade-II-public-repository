@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://d24xkg0nym42w"]
+
+[ext_resource type="PackedScene" uid="uid://c3cnwfu2dvs7a" path="res://elements/neutral/props/mineirao_stadium/mesh/mineirao_stadium.glb" id="1_vinrr"]
+[ext_resource type="Material" uid="uid://d3y6yukxcgb03" path="res://elements/neutral/props/mineirao_stadium/material/m_mineirao.tres" id="2_aeqa0"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="3_3pc7b"]
+[ext_resource type="Material" uid="uid://bppligmd2ml1p" path="res://elements/neutral/props/mineirao_stadium/material/m_mineirim.tres" id="3_eos7n"]
+
+[node name="mineirao_stadium" instance=ExtResource("1_vinrr")]
+
+[node name="mineirao" parent="." index="0"]
+material_override = ExtResource("2_aeqa0")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="mineirao" index="0"]
+script = ExtResource("3_3pc7b")
+high_contrast_group = &"scenery"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="mineirim" parent="." index="1"]
+material_override = ExtResource("3_eos7n")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="mineirim" index="0"]
+script = ExtResource("3_3pc7b")
+high_contrast_group = &"enemy"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"

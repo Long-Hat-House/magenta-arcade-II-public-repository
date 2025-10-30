@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7tkjwuij2q3y"]
+
+[ext_resource type="PackedScene" uid="uid://cxeo3sqv5l8o4" path="res://elements/ui/menus/pause_menu/pause_sub_2.tscn" id="1_kaabq"]
+[ext_resource type="Texture2D" uid="uid://bhafqdo5dlyxr" path="res://elements/ui/logos/Fund - Logos - Vertical.png" id="2_8rlw1"]
+[ext_resource type="Texture2D" uid="uid://lg2aioyb3c1f" path="res://elements/ui/logos/Long Hat - Logo White.png" id="3_mm6si"]
+
+[node name="Publi" type="PanelContainer"]
+self_modulate = Color(0, 0, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pause Sub 2" parent="." instance=ExtResource("1_kaabq")]
+layout_mode = 2
+
+[node name="Title" parent="Pause Sub 2/Container - All" index="0"]
+text = "Em breve!"
+
+[node name="Subtitle" parent="Pause Sub 2/Container - All" index="1"]
+text = "Poder dos deuses na ponta dos seus dedos"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Pause Sub 2/Container - All" index="3"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Pause Sub 2/Container - All/HBoxContainer"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_8rlw1")
+expand_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="Pause Sub 2/Container - All/HBoxContainer"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_mm6si")
+expand_mode = 3
+
+[editable path="Pause Sub 2"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://di2sa0kua34ou"]
+
+[ext_resource type="PackedScene" uid="uid://dbdn4xil3maea" path="res://elements/neutral/props/square_chair/mesh/square_chair02.glb" id="1_s6v5f"]
+[ext_resource type="Material" uid="uid://c6baulditixrc" path="res://elements/neutral/props/square_chair/material/m_square_chair02.tres" id="2_nsq2i"]
+[ext_resource type="Script" uid="uid://c3hu8ggatndrt" path="res://elements/general_use/feedback/squish_feedback.gd" id="3_6xnwf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6xnwf"]
+size = Vector3(3, 0.25, 1)
+
+[node name="square_chair02" instance=ExtResource("1_s6v5f")]
+
+[node name="square_chair02" parent="." index="0"]
+material_override = ExtResource("2_nsq2i")
+
+[node name="Feedback_Squish" type="Node" parent="." index="1" node_paths=PackedStringArray("scaler")]
+script = ExtResource("3_6xnwf")
+unsquished_begin = Vector3(1.2, 0.1, 1.2)
+scaler = NodePath("../square_chair02")
+metadata/_custom_type_script = "uid://c3hu8ggatndrt"
+
+[node name="Squish Area" type="Area3D" parent="." index="2"]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Squish Area" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0.5)
+shape = SubResource("BoxShape3D_6xnwf")
+
+[connection signal="body_entered" from="Squish Area" to="Feedback_Squish" method="enter_body"]
+[connection signal="body_exited" from="Squish Area" to="Feedback_Squish" method="leave_body"]
+[connection signal="ready" from="Squish Area" to="Feedback_Squish" method="unsquish" flags=3]

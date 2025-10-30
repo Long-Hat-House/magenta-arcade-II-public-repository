@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfe3ra50t87aq"]
+
+[ext_resource type="Material" uid="uid://dyvj4hreno57m" path="res://elements/enemy/roboto_carpa/material/m_roboto_carpa.tres" id="1_12qdc"]
+[ext_resource type="Script" uid="uid://c728jaxka6oy3" path="res://elements/enemy/roboto_carpa/mesh/graphic_carpa.gd" id="2_8vs8t"]
+
+[sub_resource type="Curve" id="Curve_asgjr"]
+_data = [Vector2(0.019802, 0), 0.0, 0.0, 0, 0, Vector2(0.811828, 0.21978), 0.541048, 0.541048, 0, 0, Vector2(0.919355, 1), 1.94231, 0.0, 0, 0]
+point_count = 3
+
+[node name="roboto_carpa"]
+script = ExtResource("2_8vs8t")
+face_progress = SubResource("Curve_asgjr")
+
+[node name="Skeleton3D" parent="rig_peixe" index="0"]
+bones/2/rotation = Quaternion(-0.0308126, 3.28293e-12, -2.09886e-11, 0.999525)
+bones/3/rotation = Quaternion(0.0118684, 2.5707e-12, -3.15038e-10, 0.99993)
+bones/4/rotation = Quaternion(0.199618, 0.605168, 0.0773382, 0.766774)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.164525, -0.617357, -0.121029, 0.759706)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0.79187, -8.73597e-07, -1.13278e-06, 0.61069)
+bones/7/rotation = Quaternion(-0.79187, 8.77038e-07, 1.1594e-06, 0.61069)
+bones/8/rotation = Quaternion(-0.79187, 8.77037e-07, 1.1594e-06, 0.61069)
+
+[node name="body01" parent="rig_peixe/Skeleton3D" index="0"]
+material_override = ExtResource("1_12qdc")
+
+[node name="body02" parent="rig_peixe/Skeleton3D" index="1"]
+material_override = ExtResource("1_12qdc")
+
+[node name="eye" parent="rig_peixe/Skeleton3D" index="2"]
+material_override = ExtResource("1_12qdc")
+
+[node name="eye_white" parent="rig_peixe/Skeleton3D" index="3"]
+material_override = ExtResource("1_12qdc")
+
+[node name="eye_x" parent="rig_peixe/Skeleton3D" index="4"]
+visible = false
+material_override = ExtResource("1_12qdc")
+
+[node name="hand_L" parent="rig_peixe/Skeleton3D" index="5"]
+material_override = ExtResource("1_12qdc")
+
+[node name="hand_R" parent="rig_peixe/Skeleton3D" index="6"]
+material_override = ExtResource("1_12qdc")
+
+[node name="head" parent="rig_peixe/Skeleton3D" index="7"]
+material_override = ExtResource("1_12qdc")
+"blend_shapes/Key 1" = -1.0
+
+[node name="tail" parent="rig_peixe/Skeleton3D" index="8"]
+material_override = ExtResource("1_12qdc")
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "IDLE"

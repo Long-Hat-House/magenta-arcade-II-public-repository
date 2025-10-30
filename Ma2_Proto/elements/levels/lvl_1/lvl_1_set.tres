@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="LevelSet" load_steps=9 format=3 uid="uid://x12ssq58o52m"]
+
+[ext_resource type="PackedScene" uid="uid://h36lpk1h65nj" path="res://elements/levels/lvl_1/lvl_1_sub_boss.tscn" id="1_b8ptl"]
+[ext_resource type="PackedScene" uid="uid://3yk50xbrq31" path="res://elements/levels/lvl_1/lvl_1.tscn" id="1_x4nsm"]
+[ext_resource type="Script" uid="uid://vg7ppcjjqdpt" path="res://systems/level/level_set.gd" id="2_uoout"]
+[ext_resource type="PackedScene" uid="uid://cn28msj0s013g" path="res://elements/levels/lvl_shop_sub.tscn" id="3_kw5v0"]
+[ext_resource type="PackedScene" uid="uid://chs84t4vpnwmy" path="res://elements/levels/lvl_1/lvl_1_sub_brawny.tscn" id="3_nioag"]
+[ext_resource type="PackedScene" uid="uid://dx7wn8f8wqt22" path="res://elements/levels/lvl_1/lvl_1_sub_av_brasil.tscn" id="3_ve5sq"]
+[ext_resource type="PackedScene" uid="uid://dy4e2ntr4g1x8" path="res://elements/levels/lvl_1/lvl_1_sub_challenge_traffic_crazy.tscn" id="6_ftpgb"]
+[ext_resource type="PackedScene" uid="uid://nrr5og0bhl16" path="res://elements/levels/lvl_1/lvl_1_sub_last_waves.tscn" id="8_gp3ef"]
+
+[resource]
+script = ExtResource("2_uoout")
+open = false
+parent_level = ExtResource("1_x4nsm")
+sub_levels = Array[Resource]([ExtResource("3_kw5v0"), ExtResource("3_ve5sq"), ExtResource("3_nioag"), ExtResource("6_ftpgb"), ExtResource("8_gp3ef"), ExtResource("1_b8ptl")])

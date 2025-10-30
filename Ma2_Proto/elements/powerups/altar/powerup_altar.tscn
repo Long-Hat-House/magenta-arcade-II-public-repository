@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://bcpgsfbgm245l"]
+
+[ext_resource type="Script" uid="uid://bhlggxxxv8fxh" path="res://elements/powerups/altar/powerup_altar_walk_open.gd" id="1_4igp1"]
+[ext_resource type="PackedScene" uid="uid://ci4xfbipmpkca" path="res://elements/vfx/vfx_altar_destroy.tscn" id="2_7uoki"]
+[ext_resource type="PackedScene" uid="uid://c3d1vwr8fvkor" path="res://elements/powerups/altar/graphic_altar.tscn" id="2_m5i8p"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="3_iog8d"]
+[ext_resource type="PackedScene" uid="uid://busv6sx15qccg" path="res://elements/npc/npc_graphic_regular.tscn" id="3_lu2u1"]
+[ext_resource type="Script" uid="uid://c1a23qdrmn8d1" path="res://elements/enemy/projectiles/damage_area/damage_area.gd" id="4_yekwe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dwibj"]
+size = Vector3(2, 0.75, 2.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sfqux"]
+size = Vector3(1.8, 0.8, 2.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a1h33"]
+size = Vector3(2.00201, 0.794922, 2.40601)
+
+[node name="powerup_altar" type="Node3D"]
+script = ExtResource("1_4igp1")
+vfx_explode = ExtResource("2_7uoki")
+
+[node name="Body" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.303525, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="Health" type="Node" parent="Body" node_paths=PackedStringArray("feedback")]
+script = ExtResource("3_iog8d")
+max_amount = 0.8
+feedback = [NodePath("../../Altar_Graphic")]
+metadata/_custom_type_script = "uid://b3g5atumyrird"
+
+[node name="NPC_Graphic_Regular" parent="Body" instance=ExtResource("3_lu2u1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -1.5)
+animation = &"walk"
+
+[node name="RandomizeSpriteFrames" parent="Body/NPC_Graphic_Regular" index="1"]
+type_on_ready = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0921959, 0.0202026)
+shape = SubResource("BoxShape3D_dwibj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
+visible = false
+mesh = SubResource("BoxMesh_sfqux")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.696475, 0)
+aabb = AABB(-2.67465, -1.59827, -3.58412, 5.34929, 3.19653, 7.58621)
+
+[node name="DamageArea" type="Area3D" parent="Body"]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("4_yekwe")
+scores = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/DamageArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.15527e-05, 0.102539, 0.324829)
+shape = SubResource("BoxShape3D_a1h33")
+
+[node name="Altar_Graphic" parent="." instance=ExtResource("2_m5i8p")]
+
+[connection signal="dead_parameterless" from="Body/Health" to="." method="destroy"]
+[connection signal="screen_entered" from="Body/VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]
+[connection signal="screen_exited" from="Body/VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
+
+[editable path="Body/NPC_Graphic_Regular"]
+[editable path="Body/NPC_Graphic_Regular/NPC_HighContrastSprite"]

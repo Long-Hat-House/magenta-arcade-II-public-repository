@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvrelk2vrhcdq"]
+
+[ext_resource type="PackedScene" uid="uid://bw8q8tsybmxad" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_level_selection/button_level_selection_base.glb" id="1_lxcfl"]
+[ext_resource type="Material" uid="uid://id1onhncfx4r" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_level_selection/material/m_base_button_level_selection.tres" id="2_4n1dc"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="3_up52b"]
+
+[node name="button_base" instance=ExtResource("1_lxcfl")]
+
+[node name="button_base" parent="." index="0"]
+material_override = ExtResource("2_4n1dc")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="button_base" index="0"]
+script = ExtResource("3_up52b")
+high_contrast_group = &"interactable"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"

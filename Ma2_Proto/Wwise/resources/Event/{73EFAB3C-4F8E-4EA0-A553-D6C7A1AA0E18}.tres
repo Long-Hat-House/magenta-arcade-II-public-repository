@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://bhug4fyq0a1pw"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Player_Hurt"
+id = 887999531
+guid = "{73EFAB3C-4F8E-4EA0-A553-D6C7A1AA0E18}"
+dummy = true

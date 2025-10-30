@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://j0s8fg53i224"]
+
+[ext_resource type="PackedScene" uid="uid://hiua7w6bmx36" path="res://elements/enemy/bosses/pirulito/pirulito_piece/column_door_r.glb" id="1_7pw6f"]
+[ext_resource type="Material" uid="uid://cdbjx8ca34s4r" path="res://elements/enemy/bosses/pirulito/material/m_column_pirulito.tres" id="2_8da60"]
+
+[node name="column_door_r" instance=ExtResource("1_7pw6f")]
+
+[node name="colunm_door" parent="." index="0"]
+material_override = ExtResource("2_8da60")

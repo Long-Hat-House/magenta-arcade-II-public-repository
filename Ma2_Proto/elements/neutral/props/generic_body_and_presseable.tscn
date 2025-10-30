@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bk3c6a8vre6yr"]
+
+[ext_resource type="Script" uid="uid://bmq1yx6r1xhck" path="res://elements/neutral/props/generic_body_and_presseable.gd" id="1_g88mq"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="1_ujpwg"]
+[ext_resource type="PackedScene" uid="uid://diqpx0aj2pk0a" path="res://elements/vfx/vfx_destroy_metal/vfx_destroy_metal.tscn" id="2_5ina8"]
+[ext_resource type="Script" uid="uid://dn83sg6631tiv" path="res://elements/neutral/props/generic_exploder.gd" id="2_auryh"]
+[ext_resource type="PackedScene" uid="uid://ywymskkj85vs" path="res://elements/vfx/vfx_explosion/vfx_explosion.tscn" id="3_2sqtb"]
+[ext_resource type="Script" uid="uid://3r76e6oallgw" path="res://systems/pressable/pressable_kill.gd" id="4_vk4es"]
+
+[node name="GenericBodyAndPresseable" type="AnimatableBody3D"]
+collision_layer = 129
+collision_mask = 0
+script = ExtResource("1_g88mq")
+explosion_vfx = ExtResource("2_5ina8")
+
+[node name="Exploder" type="Node3D" parent="." node_paths=PackedStringArray("health_on_die_explode")]
+unique_name_in_owner = true
+script = ExtResource("2_auryh")
+explosion_VFX = ExtResource("3_2sqtb")
+add_all_children_as_places = true
+position_offset_random = 0.25
+health_on_die_explode = NodePath("../Health")
+
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("to_queue_free_on_death")]
+script = ExtResource("1_ujpwg")
+max_amount = 0.5
+to_queue_free_on_death = [null]
+
+[node name="Pressable_Kill" type="Node3D" parent="." node_paths=PackedStringArray("health_to_kill")]
+script = ExtResource("4_vk4es")
+health_to_kill = NodePath("../Health")
+search_for_area_inside = true
+
+[node name="Area3D" type="Area3D" parent="Pressable_Kill"]
+collision_layer = 32
+collision_mask = 158
+monitorable = false
+
+[connection signal="exploded" from="Exploder" to="." method="_on_exploder_exploded"]
+[connection signal="dead_parameterless" from="Health" to="." method="_on_health_dead_parameterless"]
+[connection signal="hit_parameterless" from="Health" to="." method="_on_health_hit_parameterless"]
+[connection signal="try_damage_parameterless" from="Health" to="." method="_on_health_try_damage_parameterless"]
+[connection signal="pressed" from="Pressable_Kill" to="." method="_on_pressable_kill_pressed"]
+[connection signal="released" from="Pressable_Kill" to="." method="_on_pressable_kill_released"]

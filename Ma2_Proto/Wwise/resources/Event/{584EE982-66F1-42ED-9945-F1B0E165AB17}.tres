@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" load_steps=0 format=3 uid="uid://cg3itudt7maxj"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Boss_Lv2_Ball_Bounce"
+id = 2749677879
+guid = "{584EE982-66F1-42ED-9945-F1B0E165AB17}"
+dummy = true

@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://dnihqv8x12tfi"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_MidBoss_Lv4_Hand_Hold"
+id = 3405995788
+guid = "{E0F2D1C2-E5B2-4E0E-A2AC-BA3E6C0D5501}"
+dummy = true

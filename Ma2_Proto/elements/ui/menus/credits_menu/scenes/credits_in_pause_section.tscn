@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4gyud0kfkg52"]
+
+[ext_resource type="Script" uid="uid://bs2h5fjcnpuke" path="res://elements/ui/menus/credits_menu/scripts/credits_section_display.gd" id="1_avt6l"]
+[ext_resource type="PackedScene" uid="uid://ftaxf20hbhei" path="res://elements/ui/menus/credits_menu/scenes/credits_in_pause_entry.tscn" id="2_tsj2m"]
+[ext_resource type="Script" uid="uid://dkfbksfshet22" path="res://modules/ui_factory/extended_label.gd" id="3_wg8uq"]
+
+[node name="CreditsInPauseSection" type="BoxContainer" node_paths=PackedStringArray("section_title", "section_information", "section_entry_container")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+alignment = 1
+vertical = true
+script = ExtResource("1_avt6l")
+section_title = NodePath("PanelContainer/BoxContainer/Title and Separator/Title")
+section_information = NodePath("PanelContainer/BoxContainer/Info")
+section_entry_container = NodePath("PanelContainer/BoxContainer/EntriesContainer")
+scene_section_entry = ExtResource("2_tsj2m")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"panelcontainer_sub2"
+
+[node name="BoxContainer" type="BoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+vertical = true
+
+[node name="Title and Separator" type="VBoxContainer" parent="PanelContainer/BoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Title" type="Label" parent="PanelContainer/BoxContainer/Title and Separator"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.658824, 1, 0.909804, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.0235294, 0.435294, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 52
+text = "Title!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+uppercase = true
+script = ExtResource("3_wg8uq")
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/BoxContainer/Title and Separator"]
+layout_mode = 2
+
+[node name="EntriesContainer" type="BoxContainer" parent="PanelContainer/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 30
+vertical = true
+
+[node name="CreditsInPauseEntry" parent="PanelContainer/BoxContainer/EntriesContainer" instance=ExtResource("2_tsj2m")]
+layout_mode = 2
+
+[node name="CreditsInPauseEntry2" parent="PanelContainer/BoxContainer/EntriesContainer" instance=ExtResource("2_tsj2m")]
+layout_mode = 2
+
+[node name="CreditsInPauseEntry3" parent="PanelContainer/BoxContainer/EntriesContainer" instance=ExtResource("2_tsj2m")]
+layout_mode = 2
+
+[node name="Info" type="Label" parent="PanelContainer/BoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_constants/line_spacing = -5
+text = "A lot of informationnnnn "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("3_wg8uq")

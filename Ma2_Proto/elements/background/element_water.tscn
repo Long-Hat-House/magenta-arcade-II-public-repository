@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtjg7g4ej01lh"]
+
+[ext_resource type="Material" uid="uid://b7rv4pd1a68m6" path="res://elements/background/material/m_waterl.tres" id="1_da387"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_q2xdr"]
+orientation = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mpwb8"]
+size = Vector3(1, 0.1, 1)
+
+[node name="water" type="Node3D"]
+
+[node name="water" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+mesh = SubResource("QuadMesh_q2xdr")
+surface_material_override/0 = ExtResource("1_da387")
+
+[node name="WaterBody" type="StaticBody3D" parent="."]
+collision_layer = 256
+collision_mask = 0
+
+[node name="WaterShape" type="CollisionShape3D" parent="WaterBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
+shape = SubResource("BoxShape3D_mpwb8")

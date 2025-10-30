@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://hlh5cmnd748w"]
+
+[ext_resource type="Script" uid="uid://ddswssaudlw51" path="res://elements/neutral/car/element_car.gd" id="1_dpnyi"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="2_7bbv1"]
+[ext_resource type="PackedScene" uid="uid://7u3jb3qum3ff" path="res://elements/vfx/vfx_burst_metallic/vfx_burst_metallic.tscn" id="2_u25he"]
+[ext_resource type="Script" uid="uid://hbsjipy3xak5" path="res://systems/pressable/pressable.gd" id="3_guw4j"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="3_uul71"]
+[ext_resource type="PackedScene" uid="uid://ds6heafau8h2d" path="res://elements/neutral/car/car_graphic.tscn" id="4_meex3"]
+[ext_resource type="PackedScene" uid="uid://cgftoju7i36ae" path="res://elements/general_use/feedback/squish_feedback.tscn" id="6_wfka2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3vm7d"]
+size = Vector3(1.79902, 1.16943, 2.99475)
+
+[node name="Element_Car" type="StaticBody3D"]
+collision_layer = 128
+collision_mask = 26
+script = ExtResource("1_dpnyi")
+vfx_destroy = ExtResource("2_u25he")
+
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("feedback")]
+script = ExtResource("2_7bbv1")
+max_amount = 8.0
+feedback = [NodePath("../Model")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0204644, 0.820928, 0.183411)
+shape = SubResource("BoxShape3D_3vm7d")
+
+[node name="Pressable" type="Node3D" parent="."]
+script = ExtResource("3_guw4j")
+search_for_area_inside = true
+
+[node name="PresseableArea" type="Area3D" parent="Pressable"]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pressable/PresseableArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0189314, 0.768682, 0.164217)
+shape = SubResource("BoxShape3D_3vm7d")
+
+[node name="Model" parent="." instance=ExtResource("4_meex3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="farol" parent="Model/Box/Fine" index="1"]
+visible = false
+
+[node name="farol_off" parent="Model/Box/Fine" index="2"]
+visible = true
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="Model"]
+script = ExtResource("3_uul71")
+high_contrast_group = &"neutral"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="."]
+aabb = AABB(-1.21, -0.23, -1.788, 2.41, 1.862, 3.575)
+
+[node name="SquishFeedback" parent="." node_paths=PackedStringArray("scaler") instance=ExtResource("6_wfka2")]
+scaler = NodePath("../Model")
+
+[connection signal="pressed" from="." to="SquishFeedback" method="squish"]
+[connection signal="unpressed" from="." to="SquishFeedback" method="unsquish"]
+[connection signal="dead" from="Health" to="." method="_on_health_dead"]
+[connection signal="hit" from="Health" to="." method="_on_health_hit"]
+[connection signal="pressed_player" from="Pressable" to="." method="_on_pressable_pressed_player"]
+[connection signal="released_player" from="Pressable" to="." method="_on_pressable_released_player"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler3D" to="." method="queue_free"]
+
+[editable path="Model"]
+[editable path="Model/Box/Fine"]

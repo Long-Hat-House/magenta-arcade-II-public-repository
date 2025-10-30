@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://cs11u31phqy72"]
+
+[ext_resource type="PackedScene" uid="uid://bvcytb7cs4ek7" path="res://elements/enemy/bosses/pirulito/pirulito_piece/base_elevetor.glb" id="1_bbb4b"]
+[ext_resource type="Material" uid="uid://dnblqgcyj734p" path="res://elements/enemy/bosses/pirulito/material/m_pirulito.tres" id="2_lho6j"]
+
+[sub_resource type="Animation" id="Animation_a81bi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("base_elevator:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_83k2s"]
+resource_name = "elevetor"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("base_elevator:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.52, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cgi6k"]
+_data = {
+"RESET": SubResource("Animation_a81bi"),
+"elevetor": SubResource("Animation_83k2s")
+}
+
+[node name="base_elevetor" instance=ExtResource("1_bbb4b")]
+
+[node name="base_elevator" parent="." index="0"]
+material_override = ExtResource("2_lho6j")
+
+[node name="anim" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_cgi6k")
+}

@@ -1,0 +1,90 @@
+[gd_scene load_steps=16 format=3 uid="uid://cqjsikkq0oj4j"]
+
+[ext_resource type="Script" uid="uid://sloe2b8iyyoj" path="res://elements/enemy/bosses/ivo/boss_element_lair_chase_pillar.gd" id="1_n7w76"]
+[ext_resource type="PackedScene" path="res://elements/neutral/props/rock/mesh/mesh_rock_pillar.tscn" id="1_qnnnc"]
+[ext_resource type="Script" uid="uid://b7n1kj0lt03wh" path="res://systems/utils/node3d_shaker.gd" id="2_4kdov"]
+[ext_resource type="WwiseEvent" uid="uid://ce0uwlvghdopt" path="res://Wwise/resources/Event/{20CDA3B3-7376-4AB3-B2B8-2105A5060AC3}.tres" id="2_sp1ec"]
+[ext_resource type="Texture2D" uid="uid://dr2x1oqniupe3" path="res://elements/general_use/texture/t_basic_shake_noise.tres" id="3_hxhga"]
+[ext_resource type="Resource" uid="uid://ch2sx8gskxgfw" path="res://elements/neutral/props/totem/element_iron_box_tumble_data.tres" id="4_3d0u2"]
+[ext_resource type="Script" uid="uid://0wf4obm88h88" path="res://elements/neutral/props/generic_tumbler.gd" id="4_22frj"]
+[ext_resource type="Script" uid="uid://biqjvlcudqx0t" path="res://elements/player/force_receiver.gd" id="5_22frj"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="5_hxhga"]
+[ext_resource type="PackedScene" uid="uid://bc1bjl6ovy5s6" path="res://elements/enemy/projectiles/damage_area/damage_area.tscn" id="6_t3h8w"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="7_mluwo"]
+[ext_resource type="Script" uid="uid://bls4vce0lfvfc" path="res://elements/vfx/spawn_area.gd" id="8_3d0u2"]
+[ext_resource type="PackedScene" uid="uid://dvyjdcy6lg6ld" path="res://elements/vfx/vfx_explosion/vfx_explosion_final_pillar_fall.tscn" id="12_hxhga"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t3h8w"]
+radius = 1.25
+height = 22.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3d0u2"]
+radius = 2.5
+height = 22.0
+
+[node name="Element_Lair_Chase_Pillar" type="Node3D"]
+script = ExtResource("1_n7w76")
+sound_fall = ExtResource("2_sp1ec")
+
+[node name="Node3DShaker" type="Node3D" parent="."]
+script = ExtResource("2_4kdov")
+noise_texture = ExtResource("3_hxhga")
+shake_amplitude_ratio = 0.0
+shake_amplitude = 0.75
+shake_frequency = 0.75
+shake_y = false
+metadata/_custom_type_script = "uid://b7n1kj0lt03wh"
+
+[node name="rock_pillar" parent="Node3DShaker" instance=ExtResource("1_qnnnc")]
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="Node3DShaker/rock_pillar"]
+script = ExtResource("5_hxhga")
+high_contrast_group = &"scenery"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="GenericTumbler" type="Node3D" parent="." node_paths=PackedStringArray("receiver", "to_tumble")]
+script = ExtResource("4_22frj")
+receiver = NodePath("ForceReceiver")
+to_tumble = NodePath("../Node3DShaker/rock_pillar")
+tumble_data = ExtResource("4_3d0u2")
+tumble_radius = 1.35
+metadata/_custom_type_script = "uid://0wf4obm88h88"
+
+[node name="ForceReceiver" type="Node3D" parent="GenericTumbler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+script = ExtResource("5_22frj")
+metadata/_custom_type_script = "uid://biqjvlcudqx0t"
+
+[node name="DamageArea" parent="." instance=ExtResource("6_t3h8w")]
+
+[node name="PillarShape" type="CollisionShape3D" parent="DamageArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.75, 0)
+shape = SubResource("CapsuleShape3D_t3h8w")
+
+[node name="VulnerableArea" parent="." instance=ExtResource("6_t3h8w")]
+collision_layer = 128
+collision_mask = 0
+script = null
+
+[node name="PillarShape" type="CollisionShape3D" parent="VulnerableArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.75, 0)
+shape = SubResource("CapsuleShape3D_3d0u2")
+
+[node name="Health" type="Node" parent="VulnerableArea"]
+script = ExtResource("7_mluwo")
+max_amount = 5.0
+metadata/_custom_type_script = "uid://b3g5atumyrird"
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.75, 0)
+aabb = AABB(-1, -9.75, -1, 2, 19.5, 2)
+
+[node name="SpawnArea" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("8_3d0u2")
+scenes = Array[PackedScene]([ExtResource("12_hxhga")])
+metadata/_custom_type_script = "uid://bls4vce0lfvfc"
+
+[connection signal="hit" from="VulnerableArea/Health" to="." method="_on_health_hit"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

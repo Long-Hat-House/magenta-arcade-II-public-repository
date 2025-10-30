@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuvluixwm8sqv"]
+
+[ext_resource type="SpriteFrames" uid="uid://co4mmo2bbfre4" path="res://elements/enemy/bosses/pirulito/nando_and_nene/nando_magenta/pirulito_nando_defeat.aseprite" id="1_r78dr"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_h6xis"]
+height = 0.1
+radial_segments = 12
+rings = 1
+cap_bottom = false
+
+[node name="Boss_Nando_Defeat_Graphic" type="AnimatedSprite3D"]
+cast_shadow = 0
+offset = Vector2(0, 128)
+pixel_size = 0.0078
+billboard = 1
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = ExtResource("1_r78dr")
+animation = &"pirulito_nando_fly"
+frame_progress = 0.156173
+
+[node name="Shadow" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0.2, 0)
+cast_shadow = 3
+mesh = SubResource("CylinderMesh_h6xis")

@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbxuel5aj5o6c"]
+
+[ext_resource type="PackedScene" uid="uid://ccn6065djpwhr" path="res://elements/powerups/button/powerup_holdable_button.tscn" id="1_rosib"]
+[ext_resource type="Texture2D" uid="uid://xdcby7j0r0re" path="res://elements/icons/icon_wish_challenge.png" id="2_w0tha"]
+[ext_resource type="Script" uid="uid://p63yd7gojurk" path="res://systems/tasks/task_global_signal.gd" id="3_sleep"]
+[ext_resource type="Resource" uid="uid://bwfu17gobf18k" path="res://elements/score/score_info_wish.tres" id="4_2mliy"]
+
+[sub_resource type="GDScript" id="GDScript_2mliy"]
+script/source = "extends Node
+
+
+func _on_task_done() -> void:
+	print(\"Holdable Wish button pressed! %s\" % [$\"../..\"]);
+"
+
+[node name="HoldableButton-WISH" node_paths=PackedStringArray("condition_false_task") instance=ExtResource("1_rosib")]
+animation_loops = 2
+condition_false_task = NodePath("Task")
+queue_free_on_exit_screen = false
+
+[node name="button_graphic" parent="Area3D" index="1"]
+default_icon = ExtResource("2_w0tha")
+default_color = Color(0.703808, 0.703808, 0.703808, 1)
+
+[node name="ScoreGiver" parent="." index="3"]
+info = ExtResource("4_2mliy")
+
+[node name="Task" type="Node" parent="." index="4"]
+script = ExtResource("3_sleep")
+
+[node name="Debug Print" type="Node" parent="Task" index="0"]
+script = SubResource("GDScript_2mliy")
+
+[connection signal="done" from="Task" to="Task/Debug Print" method="_on_task_done"]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bghucoieqpoh7"]
+
+[ext_resource type="PackedScene" uid="uid://dor4uaik2wnkd" path="res://elements/neutral/props/pampulha_church/pampulha_church_grass.glb" id="1_pibng"]
+[ext_resource type="Material" uid="uid://dg6b7og6mbtm8" path="res://elements/background/material/m_grass_full.tres" id="2_172wr"]
+[ext_resource type="PackedScene" uid="uid://m82250nsvvk7" path="res://elements/neutral/props/pampulha_church/mesh_pampulha_church_border.tscn" id="4_fnpnr"]
+
+[node name="pampulha_church_grass" instance=ExtResource("1_pibng")]
+
+[node name="pampulha_church_grass" parent="." index="0"]
+material_override = ExtResource("2_172wr")
+
+[node name="pampulha_church_border" parent="." index="1" instance=ExtResource("4_fnpnr")]
+visible = false

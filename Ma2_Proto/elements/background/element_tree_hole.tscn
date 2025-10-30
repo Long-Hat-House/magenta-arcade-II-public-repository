@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://dai2gw3u8skq"]
+
+[ext_resource type="Material" uid="uid://c1yd0eqp0mpc6" path="res://elements/background/material/m_clay.tres" id="1_gkvl6"]
+[ext_resource type="Texture2D" uid="uid://bmw0atepl7pat" path="res://elements/background/texture/generic_street_texture/asphalt_floor_basecolor.png" id="2_dhtp7"]
+[ext_resource type="Texture2D" uid="uid://c3sbrjkkf560h" path="res://elements/enemy/pizza/Texture/M_Pizza_Emission.png" id="3_8rlrx"]
+[ext_resource type="Texture2D" uid="uid://cwe0gsmvvoehv" path="res://elements/background/texture/generic_street_texture/T_asfalto_seamless_Normal.png" id="4_qenmi"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ao4am"]
+size = Vector2(1, 1)
+center_offset = Vector3(0.5, 0, 0.5)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7ykpu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8vbib"]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.466311, 0.466097, 0.506111, 1)
+albedo_texture = ExtResource("2_dhtp7")
+emission_energy_multiplier = 16.0
+emission_texture = ExtResource("3_8rlrx")
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = ExtResource("4_qenmi")
+rim_tint = 1.0
+clearcoat = 0.2
+clearcoat_roughness = 0.59
+anisotropy = 0.33
+ao_texture = SubResource("CompressedTexture2D_7ykpu")
+backlight = Color(0.0313726, 0.0313726, 0.0313726, 1)
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_lajph"]
+size = Vector3(1, -0.15, 1)
+
+[node name="Tree Hole" type="Node3D"]
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0)
+layers = 3
+material_override = ExtResource("1_gkvl6")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_ao4am")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.016628, 0.5)
+material_override = SubResource("StandardMaterial3D_8vbib")
+cast_shadow = 2
+mesh = SubResource("BoxMesh_lajph")

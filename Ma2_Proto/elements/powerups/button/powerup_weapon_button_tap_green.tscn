@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcmggsmmlhf30"]
+
+[ext_resource type="PackedScene" uid="uid://rbu0uggp4d07" path="res://elements/powerups/button/powerup_weapon_button_tap.tscn" id="1_6aibf"]
+[ext_resource type="PackedScene" uid="uid://3qmk5ehflj3s" path="res://elements/player/weapons/weapon_green_tap.tscn" id="2_4kpyo"]
+
+[node name="WeaponButton_Tap_Green" instance=ExtResource("1_6aibf")]
+
+[node name="ScoreGiver" parent="Task_GiveScore" index="0"]
+debug = false
+
+[node name="Condition_HasMaxedWeapon" parent="." index="4" node_paths=PackedStringArray("specific_weapon")]
+specific_weapon = NodePath("../ParallelTask/Task_AddWeapon/Weapon_Green Tap")
+
+[node name="Weapon_Green Tap" parent="ParallelTask/Task_AddWeapon" index="0" instance=ExtResource("2_4kpyo")]

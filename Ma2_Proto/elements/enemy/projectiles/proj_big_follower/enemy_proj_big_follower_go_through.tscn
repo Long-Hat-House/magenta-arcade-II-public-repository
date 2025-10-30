@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbyxanpfrv7cb"]
+
+[ext_resource type="PackedScene" uid="uid://swc2oo3gesm4" path="res://elements/enemy/projectiles/proj_big_follower/proj_enemy_big_follower.tscn" id="1_ly11c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q6335"]
+resource_local_to_scene = true
+shading_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.0
+rim = 0.5
+rim_tint = 1.0
+disable_receive_shadows = true
+grow_amount = -0.252
+
+[node name="EnemyProjBigFollower" instance=ExtResource("1_ly11c")]
+die_on_touch_anything = false
+
+[node name="White" parent="Graphic" index="0"]
+material_override = SubResource("StandardMaterial3D_q6335")
+
+[node name="White2" parent="Graphic" index="3"]
+material_override = SubResource("StandardMaterial3D_q6335")

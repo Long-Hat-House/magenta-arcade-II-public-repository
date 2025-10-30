@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdfrvd5vgt8hh"]
+
+[ext_resource type="PackedScene" uid="uid://did4qoda8dsqp" path="res://elements/neutral/props/belt/mesh/mesh_belt.tscn" id="1_0klqw"]
+[ext_resource type="Script" uid="uid://c2b0w8x7myf0c" path="res://elements/neutral/props/belt/element_belt.gd" id="2_ol2hi"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="3_gnvgw"]
+
+[node name="belt" instance=ExtResource("1_0klqw")]
+script = ExtResource("2_ol2hi")
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="belt" index="0"]
+script = ExtResource("3_gnvgw")
+high_contrast_group = &"scenery"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"

@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://3hqafiu208vf"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Game_Paused"
+id = 1736447005
+guid = "{6EF98D36-ACFD-40BD-BA5A-F55B76261305}"
+dummy = true

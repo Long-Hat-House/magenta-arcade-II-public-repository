@@ -1,0 +1,15 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://bbugpt37qt2sn"]
+
+[ext_resource type="Texture2D" uid="uid://bbh7gkvardf7y" path="res://elements/ui/ui_art/UI_button_tab_pressed.png" id="1_tgvn8"]
+
+[resource]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+texture = ExtResource("1_tgvn8")
+texture_margin_left = 19.076
+texture_margin_top = 14.0862
+texture_margin_right = 18.9183
+texture_margin_bottom = 13.4404
+region_rect = Rect2(0, 0, 64, 64)

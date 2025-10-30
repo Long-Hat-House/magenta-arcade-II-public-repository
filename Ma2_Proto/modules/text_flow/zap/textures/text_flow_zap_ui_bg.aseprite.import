@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://dbsent0e1fofo"
+path="res://.godot/imported/text_flow_zap_ui_bg.aseprite-e7d57fc943be11aafd849132116d2199.res"
+
+[deps]
+
+source_file="res://modules/text_flow/zap/textures/text_flow_zap_ui_bg.aseprite"
+dest_files=["res://.godot/imported/text_flow_zap_ui_bg.aseprite-e7d57fc943be11aafd849132116d2199.res"]
+
+[params]
+
+exclude_layers_pattern="#.*"
+only_visible_layers=false

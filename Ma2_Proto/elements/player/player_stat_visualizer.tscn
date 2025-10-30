@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://j7pyxuqdhbrx"]
+
+[ext_resource type="Script" path="res://elements/player/player_stat_visualizer.gd" id="1_bv7gi"]
+[ext_resource type="Texture2D" uid="uid://cytfdqlbh3xyd" path="res://elements/player/direction_marker.png" id="2_jlldl"]
+
+[node name="PlayerStatVisualizer" type="Node3D"]
+script = ExtResource("1_bv7gi")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+axis = 1
+texture = ExtResource("2_jlldl")

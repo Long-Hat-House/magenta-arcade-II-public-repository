@@ -1,0 +1,7 @@
+[gd_resource type="WwiseRTPC" format=3 uid="uid://bgbviatlewkim"]
+
+[resource]
+name = "pwr_Yellow_ProjectileLife"
+id = 845184309
+guid = "{DC2C1BFB-2C4A-4D5F-A71B-23D3E0A71919}"
+dummy = true

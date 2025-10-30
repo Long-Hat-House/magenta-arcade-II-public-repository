@@ -1,0 +1,128 @@
+[gd_scene load_steps=11 format=3 uid="uid://dq6sq5f4lwprf"]
+
+[ext_resource type="PackedScene" uid="uid://bwc704cbltkqa" path="res://elements/enemy/pizza/enemy_pizza_roboto_stopped.tscn" id="2_85jrn"]
+[ext_resource type="PackedScene" uid="uid://t7wocwarj2c3" path="res://elements/enemy/pizza/enemy_pizza_roboto.tscn" id="3_86ono"]
+[ext_resource type="PackedScene" uid="uid://bfp6hll5p8pd" path="res://elements/enemy/pizza/enemy_pizza_roboto_shooter.tscn" id="4_4wrfg"]
+[ext_resource type="Script" uid="uid://4y4vnhey183g" path="res://elements/levels/lvl_tests/enemy_position.gd" id="5_aqit5"]
+[ext_resource type="PackedScene" uid="uid://ngmv6dynft76" path="res://elements/stage_pieces/stage_piece_afonso_pena_lanes1.tscn" id="6_h2nll"]
+[ext_resource type="PackedScene" uid="uid://cqrb2x17wcl14" path="res://elements/levels/level_structure/level_environment_day_bright.tscn" id="7_3dmyf"]
+[ext_resource type="PackedScene" uid="uid://c7ft4lc6ukiy0" path="res://elements/levels/level_structure/level_game_pack.tscn" id="8_ahkin"]
+
+[sub_resource type="GDScript" id="GDScript_an7n0"]
+resource_name = "lvl_test"
+script/source = "extends Level
+
+@export var enemy:PackedScene;
+@export var enemies_palette:Array[PackedScene];
+@export var enemy_positions:Array[EnemyPosition];
+@export var enemy_direction_angle:float;
+
+var group:String = \"g\";
+
+const STAGE_PIECE_AFONSO_PENA_LANES = preload(\"res://elements/stage_pieces/stage_piece_afonso_pena_lanes3.tscn\")
+const TEST_GENERIC_OBJECT = preload(\"res://elements/levels/lvl_tests/test_generic_object.tscn\")
+
+@export var _pieces_street:Array[PackedScene] = [STAGE_PIECE_AFONSO_PENA_LANES]
+
+const ENEMY_PIZZA_ROBOTO_STOPPED = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto_stopped.tscn\")
+
+func _ready():
+	prepare_level()
+	cmd_array([
+		CMD_Callable.new(scene_1),
+	])
+
+func prepare_level():
+	stage.set_stage_size(Vector3(12,0,27))
+	cam.set_offset(Vector3(0,26,28))
+	stage.set_grid_spacing(1, 1)
+	if _pieces_street.size() > 0:
+		stage.fill_with(_pieces_street, stage._stage_size.z)
+
+
+var current_line:int;
+
+func scene_1(invert:bool = false):
+	stage.repivot()
+	stage.set_pivot_offset(Vector3(6,0,0))
+	cam.set_instant_position(stage.get_grid(0,0))
+	cam.tween_position(stage.get_pos_x(), 0.25, LevelCameraController.MovementAxis.X,Tween.TransitionType.TRANS_SINE)
+	cam.tween_position(stage.get_pos_z(), 0.25, LevelCameraController.MovementAxis.Z,Tween.TransitionType.TRANS_SINE)
+
+	var state = {
+		iteration = 0,
+	}
+
+	var line_x:Array [int] = [ -4,-3,-2,-1,0,1,2,3,4];
+
+	var key_codes:Array[Key] = [
+		KEY_1,
+		KEY_2,
+		KEY_3,
+		KEY_4,
+		KEY_5,
+		KEY_6,
+		KEY_7,
+		KEY_8,
+		KEY_9,
+		KEY_0,
+	]
+
+	cmd(
+		CMD_Callable.new(func():
+			
+			var parallel_cmds:Array[Level.CMD] = [];
+			
+			var each_pizza = func each_pizza(pizza:AI_WalkAndDo, more:float):
+				pizza.distanceMax *= 1.8;
+				pizza.distanceMax += more;
+				pass;
+			
+			for i in 10:
+				var enemies:Array[int] = [];
+				for j in (i+1):
+					enemies.append(0);
+				var key:Key = key_codes[i];
+				var seq = Level.CMD_Sequence.new([
+					Level.CMD_Wait_Callable.new(func():
+						if Input.is_key_label_pressed(key):
+							return true;
+						else:
+							return false;
+						),
+					Level.CMD_Callable.new(func():
+						make_instant_enemy_line([enemy], enemies, line_x[current_line], -1, Vector2(0, -1.5), group, each_pizza.bind(i));
+						current_line = posmod(current_line + 1, line_x.size());
+						),
+					Level.CMD_Wait_Seconds.new(1),
+				], -1)
+				parallel_cmds.append(seq);
+				
+			cmd(CMD_Sequence.new([
+					CMD_Parallel.new(parallel_cmds),
+				], -1),
+			);
+			)
+	);
+"
+
+[sub_resource type="Resource" id="Resource_n6v0a"]
+script = ExtResource("5_aqit5")
+grid_position = Vector2(-3, 6)
+forward = Vector3(0.5, 0, 0.5)
+
+[sub_resource type="Resource" id="Resource_f7axc"]
+script = ExtResource("5_aqit5")
+grid_position = Vector2(3, 6)
+forward = Vector3(-1, 0, 0.25)
+
+[node name="LVL1_TEST_LINE" type="Node3D"]
+script = SubResource("GDScript_an7n0")
+enemy = ExtResource("3_86ono")
+enemies_palette = Array[PackedScene]([ExtResource("2_85jrn"), ExtResource("3_86ono"), ExtResource("4_4wrfg")])
+enemy_positions = Array[ExtResource("5_aqit5")]([SubResource("Resource_n6v0a"), SubResource("Resource_f7axc")])
+_pieces_street = Array[PackedScene]([ExtResource("6_h2nll")])
+
+[node name="LevelEnvironmentDayBright" parent="." instance=ExtResource("7_3dmyf")]
+
+[node name="LevelGamePack" parent="." instance=ExtResource("8_ahkin")]

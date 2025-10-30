@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcxopovxim3xx"]
+
+[ext_resource type="PackedScene" uid="uid://ccn6065djpwhr" path="res://elements/powerups/button/powerup_holdable_button.tscn" id="1_huwe0"]
+[ext_resource type="Texture2D" uid="uid://ddn0r7jymio12" path="res://elements/icons/hud_icon_firerate.png" id="2_huwe0"]
+[ext_resource type="Resource" uid="uid://cxrharcloxerh" path="res://elements/powerups/button/fire_rate_powerup_graphic_info.tres" id="3_57pbn"]
+[ext_resource type="Script" uid="uid://cwaq3i3ph60hk" path="res://systems/tasks/specific/player_effect_task.gd" id="3_huwe0"]
+
+[node name="HoldableButton-FIRERATE" node_paths=PackedStringArray("condition_false_task") instance=ExtResource("1_huwe0")]
+condition_false_task = NodePath("Task")
+
+[node name="button_graphic" parent="Area3D" index="1"]
+default_icon = ExtResource("2_huwe0")
+powerup_style = ExtResource("3_57pbn")
+
+[node name="Task" type="Node" parent="." index="4"]
+script = ExtResource("3_huwe0")
+_effect_type = 2

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://6achph0grs83"]
+
+[sub_resource type="GDScript" id="GDScript_4ku7x"]
+resource_name = "main_scene"
+script/source = "extends Node
+
+func _ready() -> void:
+	await get_tree().process_frame
+	GameInit.reparent(self)
+	await GameInit.do_init()
+	queue_free()
+"
+
+[node name="Ma2MainScene" type="Node"]
+script = SubResource("GDScript_4ku7x")

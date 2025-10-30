@@ -1,0 +1,24 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://c1jb3hbbmw1an"]
+
+[ext_resource type="Texture2D" uid="uid://bjso3s12unv0j" path="res://elements/background/texture/generic_street_texture/t_grass_tile01_BaseColor.png" id="1_bmpt5"]
+[ext_resource type="Texture2D" uid="uid://cg6m460jnp4na" path="res://elements/background/texture/generic_street_texture/grass_normal.png" id="3_m664d"]
+[ext_resource type="Texture2D" uid="uid://c3sbrjkkf560h" path="res://elements/enemy/pizza/Texture/M_Pizza_Emission.png" id="4_fpuwx"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jie0d"]
+
+[resource]
+diffuse_mode = 3
+albedo_texture = ExtResource("1_bmpt5")
+emission_energy_multiplier = 16.0
+emission_texture = ExtResource("4_fpuwx")
+normal_enabled = true
+normal_texture = ExtResource("3_m664d")
+rim_tint = 1.0
+clearcoat = 0.2
+clearcoat_roughness = 0.59
+anisotropy = 0.33
+ao_texture = SubResource("CompressedTexture2D_jie0d")
+backlight = Color(0.0313726, 0.0313726, 0.0313726, 1)
+uv1_scale = Vector3(1.18, 1.18, 1.18)
+uv1_offset = Vector3(-0.11, -0.03, 0)
+uv1_world_triplanar = true

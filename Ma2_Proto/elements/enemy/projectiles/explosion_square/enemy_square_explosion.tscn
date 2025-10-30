@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://dc32mpbtq6y6m"]
+
+[ext_resource type="Script" uid="uid://w646j2s6171j" path="res://elements/enemy/projectiles/explosion_square/enemy_square_explosion_matrix.gd" id="1_6x3pj"]
+[ext_resource type="PackedScene" uid="uid://b0725vypyiy6m" path="res://elements/enemy/projectiles/explosion_square/enemy_square_explosion_part.tscn" id="2_fdavv"]
+[ext_resource type="Resource" uid="uid://bpcww073hgdho" path="res://systems/screen/camera_shake_enemy_explosion.tres" id="3_pxjcm"]
+[ext_resource type="WwiseEvent" uid="uid://drcgw32sq7s2t" path="res://Wwise/resources/Event/{80301109-5236-4DA5-8EAA-5C5093730604}.tres" id="4_h2afl"]
+[ext_resource type="WwiseEvent" uid="uid://bp164dygybh5r" path="res://Wwise/resources/Event/{CFDCC204-CE83-4191-98E8-90FBF4B52C1F}.tres" id="5_kjcfk"]
+
+[node name="SquareExplosion" type="Node3D" node_paths=PackedStringArray("sfx_explosion", "sfx_explosion_start")]
+script = ExtResource("1_6x3pj")
+explosion_part = ExtResource("2_fdavv")
+explosion_size = 1.75
+explosion_layers = 3
+explosion_delay = 0.25
+screen_shake = ExtResource("3_pxjcm")
+sfx_explosion = NodePath("SFXExplosion")
+sfx_explosion_start = NodePath("SFXExplosionStart")
+
+[node name="SFXExplosion" type="AkEvent3D" parent="."]
+event = ExtResource("4_h2afl")
+
+[node name="SFXExplosionStart" type="AkEvent3D" parent="."]
+event = ExtResource("5_kjcfk")

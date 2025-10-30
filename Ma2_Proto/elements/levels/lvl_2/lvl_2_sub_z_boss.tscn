@@ -1,0 +1,232 @@
+[gd_scene load_steps=21 format=3 uid="uid://dahut7l8lnw6c"]
+
+[ext_resource type="Script" uid="uid://oi1cur6kqq80" path="res://elements/enemy/bosses/goleiro/boss_goleiro_level.tres.gd" id="1_sl13f"]
+[ext_resource type="PackedScene" uid="uid://deyywk746ihpe" path="res://elements/stage_pieces/pampulha/stage_piece_pampulha_boss.tscn" id="3_m35bi"]
+[ext_resource type="PackedScene" uid="uid://c1oynncp4xm2p" path="res://elements/enemy/bosses/goleiro/boss_goleiro.tscn" id="4_xts6d"]
+[ext_resource type="PackedScene" uid="uid://cfk2smlril5ke" path="res://elements/enemy/bosses/goleiro/boss_goleiro_wall.tscn" id="5_0veyt"]
+[ext_resource type="PackedScene" uid="uid://bxlslw2qsudjn" path="res://elements/enemy/bosses/goleiro/boss_goleiro_ball.tscn" id="6_7ad2l"]
+[ext_resource type="WwiseEvent" uid="uid://cjpspmuptkbmh" path="res://Wwise/resources/Event/{E661EEAB-19C3-43F2-90E7-491829D46643}.tres" id="6_dotbw"]
+[ext_resource type="Script" uid="uid://b64lm8enhaqem" path="res://elements/enemy/bosses/goleiro/boss_goal_area.gd" id="7_2d386"]
+[ext_resource type="PackedScene" uid="uid://ywymskkj85vs" path="res://elements/vfx/vfx_explosion/vfx_explosion.tscn" id="8_8jm0y"]
+[ext_resource type="PackedScene" uid="uid://d24xkg0nym42w" path="res://elements/neutral/props/mineirao_stadium/mesh/mesh_mineirao_stadium.tscn" id="10_rycrt"]
+[ext_resource type="Material" uid="uid://rckyerubbb18" path="res://elements/levels/lvl_2/m_lvl_2_boss.tres" id="14_lo6n3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jt57w"]
+size = Vector3(25, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jagj0"]
+size = Vector3(21.9718, 1, 9.29132)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oy24m"]
+size = Vector3(9, 1, 6)
+
+[sub_resource type="GDScript" id="GDScript_7j4bt"]
+script/source = "extends Task
+
+@export var boss:Boss_Goleiro;
+@export var ball:Boss_Goleiro_Ball;
+@export var duration:float = 0.70;
+@export var height:float = 10;
+@export var hit_vfx:PackedScene;
+
+func _start_task() -> void:
+	await TransformUtils.tween_jump_global_dynamic(ball, 
+			ball.create_tween(), func(): return boss.hit_head_position.global_position, Vector3.UP * height, duration)\\
+			.set_ease(Tween.EASE_IN)\\
+			.finished;
+	if hit_vfx:
+		InstantiateUtils.InstantiateInTree(hit_vfx, boss.hit_head_position);
+	boss.hit_in_the_head();
+"
+
+[sub_resource type="QuadMesh" id="QuadMesh_kbtq3"]
+material = ExtResource("14_lo6n3")
+size = Vector2(30, 36)
+orientation = 1
+
+[sub_resource type="Curve3D" id="Curve3D_j8yjy"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -3.61189, 3.44013, 0.118098, -0.683706, 1.36725, -1.6819, 0.683706, -1.36725, 1.6819, -4.86457, 1.94244, 8.63219, 0, 0, -1, 0, 0, 0, -3.698, 0, 10.761),
+"tilts": PackedFloat32Array(0, 5, 0)
+}
+point_count = 3
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_s8cji"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -3.61189, 3.44013, 0.118098, -0.00880289, 0.472551, -0.928064, 0.00880289, -0.472551, 0.928064, -3.70312, 2.79753, 4.86123, -0.189147, -0.0870986, -2.1679, 0.189147, 0.0870986, 2.1679, -3.74943, 3.35704, 8.48646, 0, 0, -1.401, -0.346838, -0.265658, 1.40055, -3.69777, 0.156511, 12.0165),
+"tilts": PackedFloat32Array(0, -5, -170, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_qvheu"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -3.61189, 3.19029, 0.109177, 0.18296, 0.785967, -2.51581, -0.18296, -0.785967, 2.51581, -3.78961, 3.77046, 8.65886, 0, 0, -1, 0, 0, 0, -3.712, -0.0965265, 12.2768),
+"tilts": PackedFloat32Array(0, -5, 0)
+}
+point_count = 3
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_dy7ux"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.053, 3.052, 0.058, -1.04064, 0.307983, -0.485596, 1.04064, -0.307983, 0.485596, -0.486348, 3.5437, 4.32373, 0.622808, 1.02243, -0.499678, -0.622808, -1.02243, 0.499678, -0.201245, 2.17453, 6.20662, -1, 0, -1, 3.31958, 0.484742, 3.56629, -1.44886, 0.369019, 8.11011),
+"tilts": PackedFloat32Array(-10, 10, 0, 0)
+}
+point_count = 4
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_t2i5r"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.0529785, 2.25098, 0.0581493, 2.44571, -1.10068, -2.19366, -2.44571, 1.10068, 2.19366, -0.145874, 3.44229, 8.5102, 1.07168, -0.809812, -1.4198, -1.07168, 0.809812, 1.4198, -3.48965, 2.8042, 9.17298, -5, 0, 0, 0, 0, 0, -3.67001, 0.394389, 12.954),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+up_vector_enabled = false
+
+[node name="LVL_BOSS" type="Node3D" node_paths=PackedStringArray("boss", "piece", "campo", "ball", "sfx_reveal")]
+script = ExtResource("1_sl13f")
+boss = NodePath("Lvl 2 Piece Boss Goleiro/Boss/BossGoleiro")
+boss_occlusion_material = ExtResource("14_lo6n3")
+piece = NodePath("Lvl 2 Piece Boss Goleiro")
+campo = NodePath("Lvl 2 Piece Boss Goleiro/Campo Meio")
+ball = NodePath("Lvl 2 Piece Boss Goleiro/Boss/BossGoleiro_Ball")
+camera_border_offset = Vector2(0, 0)
+sfx_reveal = NodePath("Lvl 2 Piece Boss Goleiro/Boss/BossGoleiro/RevealSFX")
+
+[node name="Lvl 2 Piece Boss Goleiro" parent="." instance=ExtResource("3_m35bi")]
+
+[node name="Boss" type="Node3D" parent="Lvl 2 Piece Boss Goleiro"]
+
+[node name="Ball Origin" type="Marker3D" parent="Lvl 2 Piece Boss Goleiro/Boss"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75, 0.5, -25)
+
+[node name="BossGoleiro" parent="Lvl 2 Piece Boss Goleiro/Boss" instance=ExtResource("4_xts6d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75, 0.5, -33.849)
+
+[node name="Totó" type="MeshInstance3D" parent="Lvl 2 Piece Boss Goleiro/Boss/BossGoleiro"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.75, -0.75)
+visible = false
+mesh = SubResource("BoxMesh_jt57w")
+skeleton = NodePath("../../..")
+
+[node name="RevealSFX" type="AkEvent3D" parent="Lvl 2 Piece Boss Goleiro/Boss/BossGoleiro"]
+event = ExtResource("6_dotbw")
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 8.75)
+
+[node name="BossGoleiro_Ball" parent="Lvl 2 Piece Boss Goleiro/Boss" instance=ExtResource("6_7ad2l")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.75, 0.5, -25.099)
+
+[node name="Boss_Goleiro_Wall" parent="Lvl 2 Piece Boss Goleiro/Boss" instance=ExtResource("5_0veyt")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.75, 0, -22.25)
+visible = false
+
+[node name="Boss_Goleiro_Wall2" parent="Lvl 2 Piece Boss Goleiro/Boss" instance=ExtResource("5_0veyt")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.25, 0, -22.25)
+visible = false
+
+[node name="Boss_Goleiro_Wall5" parent="Lvl 2 Piece Boss Goleiro/Boss" instance=ExtResource("5_0veyt")]
+transform = Transform3D(2.74073e-09, 0, -1, 0, 1, 0, -0.0627006, 0, -4.37114e-08, 20.25, 2.60101, -34.8538)
+visible = false
+
+[node name="Boss_Goleiro_Wall3" parent="Lvl 2 Piece Boss Goleiro/Boss" instance=ExtResource("5_0veyt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.25, 0, -38.25)
+visible = false
+
+[node name="Boss_Goleiro_Wall4" parent="Lvl 2 Piece Boss Goleiro/Boss" instance=ExtResource("5_0veyt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.75, 0, -38.25)
+visible = false
+
+[node name="Boss_Goal_Area_Enemy" type="Area3D" parent="Lvl 2 Piece Boss Goleiro/Boss" node_paths=PackedStringArray("goal_center", "ball_spawn_position")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.90407, 1, -6.8491)
+collision_layer = 8
+collision_mask = 128
+script = ExtResource("7_2d386")
+goal_center = NodePath("CollisionShape3D")
+ball_spawn_position = NodePath("../Ball Origin")
+final_jump_to_neutral_height = 30.0
+time_to_center = 0.25
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lvl 2 Piece Boss Goleiro/Boss/Boss_Goal_Area_Enemy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.107849, 0, -1.16232)
+shape = SubResource("BoxShape3D_jagj0")
+
+[node name="Boss_Goal_Area_Allied" type="Area3D" parent="Lvl 2 Piece Boss Goleiro/Boss" node_paths=PackedStringArray("goal_center", "ball_spawn_position", "task_after_goal")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75, 1, -40.849)
+collision_layer = 8
+collision_mask = 128
+script = ExtResource("7_2d386")
+allied = true
+goal_center = NodePath("CollisionShape3D")
+ball_spawn_position = NodePath("../Ball Origin")
+final_jump_to_neutral_height = 20.0
+time_to_center = 0.25
+task_after_goal = NodePath("Hurt Boss")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lvl 2 Piece Boss Goleiro/Boss/Boss_Goal_Area_Allied"]
+shape = SubResource("BoxShape3D_oy24m")
+
+[node name="Hurt Boss" type="Node" parent="Lvl 2 Piece Boss Goleiro/Boss/Boss_Goal_Area_Allied" node_paths=PackedStringArray("boss", "ball")]
+script = SubResource("GDScript_7j4bt")
+boss = NodePath("../../BossGoleiro")
+ball = NodePath("../../BossGoleiro_Ball")
+hit_vfx = ExtResource("8_8jm0y")
+
+[node name="Campo Meio" type="Marker3D" parent="Lvl 2 Piece Boss Goleiro"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75, 0, -12)
+
+[node name="Dark Plane3" type="MeshInstance3D" parent="Lvl 2 Piece Boss Goleiro"]
+transform = Transform3D(1, 0, 0, 0, 0.204131, -0.350917, 0, 0.791365, 0.0905182, 9.0364, 3.58885, 13.9681)
+mesh = SubResource("QuadMesh_kbtq3")
+
+[node name="Dark Plane4" type="MeshInstance3D" parent="Lvl 2 Piece Boss Goleiro"]
+transform = Transform3D(0.5, 0, 0, 0, 0.814939, -0.00237314, 0, 0.0076235, 0.253676, 9.0364, 2.84214, 13.2731)
+mesh = SubResource("QuadMesh_kbtq3")
+
+[node name="Dark Plane" type="MeshInstance3D" parent="Lvl 2 Piece Boss Goleiro"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.89591, 8.90099, -3.35408)
+mesh = SubResource("QuadMesh_kbtq3")
+skeleton = NodePath("../..")
+
+[node name="Dark Plane2" type="MeshInstance3D" parent="Lvl 2 Piece Boss Goleiro"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.95111, 10.7293, -23.5722)
+mesh = SubResource("QuadMesh_kbtq3")
+skeleton = NodePath("../..")
+
+[node name="mineirao_stadium" parent="." instance=ExtResource("10_rycrt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 14.5)
+
+[node name="Path3D Top Left" type="Path3D" parent="mineirao_stadium"]
+transform = Transform3D(1, 0, 0, 0, 0.999363, 0.0356844, 0, -0.0356844, 0.999363, -0.0529995, 0, 3.08862)
+curve = SubResource("Curve3D_j8yjy")
+
+[node name="Path3D Top Center" type="Path3D" parent="mineirao_stadium"]
+transform = Transform3D(1, 0, 0, 0, 0.999363, 0.0356844, 0, -0.0356844, 0.999363, 3.65035, 0, 3.08862)
+curve = SubResource("Curve3D_s8cji")
+
+[node name="Path3D Top Right" type="Path3D" parent="mineirao_stadium"]
+transform = Transform3D(1, 0, 0, 0, 0.999363, 0.0356844, 0, -0.0356844, 0.999363, 7.27748, 0, 3.08862)
+curve = SubResource("Curve3D_qvheu")
+
+[node name="Path3D Center Left" type="Path3D" parent="mineirao_stadium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5078, 0, 3.16638)
+curve = SubResource("Curve3D_dy7ux")
+
+[node name="Path3D Center Left2" type="Path3D" parent="mineirao_stadium"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4922, 0, 3.16638)
+curve = SubResource("Curve3D_dy7ux")
+
+[node name="Path3D Center Center To Side" type="Path3D" parent="mineirao_stadium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0529995, 0, 3.08862)
+curve = SubResource("Curve3D_t2i5r")
+
+[node name="Path3D Center Center To Side2" type="Path3D" parent="mineirao_stadium"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0529995, 0, 3.08862)
+curve = SubResource("Curve3D_t2i5r")
+
+[connection signal="goal_allied" from="Lvl 2 Piece Boss Goleiro/Boss/BossGoleiro_Ball" to="Lvl 2 Piece Boss Goleiro/Boss/BossGoleiro" method="_on_boss_goleiro_ball_goal_allied"]
+[connection signal="goal_enemy" from="Lvl 2 Piece Boss Goleiro/Boss/BossGoleiro_Ball" to="Lvl 2 Piece Boss Goleiro/Boss/BossGoleiro" method="_on_boss_goleiro_ball_goal_enemy"]
+[connection signal="hit_boss" from="Lvl 2 Piece Boss Goleiro/Boss/BossGoleiro_Ball" to="Lvl 2 Piece Boss Goleiro/Boss/BossGoleiro" method="_on_boss_goleiro_ball_hit_boss"]
+[connection signal="started" from="Lvl 2 Piece Boss Goleiro/Boss/BossGoleiro_Ball" to="Lvl 2 Piece Boss Goleiro/Boss/BossGoleiro" method="_on_boss_goleiro_ball_started"]
+[connection signal="body_entered" from="Lvl 2 Piece Boss Goleiro/Boss/Boss_Goal_Area_Enemy" to="Lvl 2 Piece Boss Goleiro/Boss/Boss_Goal_Area_Enemy" method="_on_body_entered"]
+[connection signal="body_entered" from="Lvl 2 Piece Boss Goleiro/Boss/Boss_Goal_Area_Allied" to="Lvl 2 Piece Boss Goleiro/Boss/Boss_Goal_Area_Allied" method="_on_body_entered"]

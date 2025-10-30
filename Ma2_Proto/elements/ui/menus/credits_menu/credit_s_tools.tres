@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="CreditsSectionInfo" load_steps=7 format=3 uid="uid://bkxnhsrbja3u7"]
+
+[ext_resource type="Script" uid="uid://bkle5ca8utscg" path="res://elements/ui/menus/credits_menu/scripts/credits_entry_info.gd" id="1_qnv6l"]
+[ext_resource type="Texture2D" uid="uid://onvoko17bdjo" path="res://elements/ui/logos/logo_godot.png" id="3_jmnnk"]
+[ext_resource type="Texture2D" uid="uid://cl1pnj22i6oga" path="res://elements/ui/logos/logo_wwise.png" id="3_qnv6l"]
+[ext_resource type="Script" uid="uid://brm0i2bj1yuok" path="res://elements/ui/menus/credits_menu/scripts/credits_section_info.gd" id="4_hksg8"]
+
+[sub_resource type="Resource" id="Resource_f07r1"]
+script = ExtResource("1_qnv6l")
+entry_name = &""
+entry_role = &"credits_tools_godot_info"
+entry_information = &" "
+entry_texture = ExtResource("3_jmnnk")
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[sub_resource type="Resource" id="Resource_c7234"]
+script = ExtResource("1_qnv6l")
+entry_name = &""
+entry_role = &"credits_tools_wwise_info"
+entry_information = &""
+entry_texture = ExtResource("3_qnv6l")
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[resource]
+script = ExtResource("4_hksg8")
+section_title = &"credits_tools"
+section_info = &""
+section_color_highlight = Color(1, 1, 1, 1)
+section_color_bg = Color(0, 0.831373, 0.792157, 1)
+entries_list = Array[ExtResource("1_qnv6l")]([SubResource("Resource_f07r1"), SubResource("Resource_c7234")])
+metadata/_custom_type_script = "uid://brm0i2bj1yuok"

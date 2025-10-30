@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwjbwfeflpdnq"]
+
+[ext_resource type="PackedScene" uid="uid://c3fu6kgipt726" path="res://elements/player/projectiles/hold_green/proj_hold_green.tscn" id="1_l5wps"]
+[ext_resource type="Resource" uid="uid://dmhdkw8urmjwc" path="res://systems/ma2_meta/upgrades/upgrade_tap_damage.tres" id="2_k2yjv"]
+[ext_resource type="Shader" uid="uid://clbaserrhs5so" path="res://elements/player/projectiles/instance_color_albedo.gdshader" id="3_qy7nm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_voytj"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_qy7nm")
+
+[node name="ProjectileGreenTapAttack" instance=ExtResource("1_l5wps")]
+full_turning_speed = 0.0
+bonus_resource = ExtResource("2_k2yjv")
+recovers_mana = false
+
+[node name="WaveMovement" parent="." index="0"]
+amplitude = 0.65
+frequency = 1.0
+
+[node name="leaf" parent="WaveMovement/Area3D/leaf" index="0"]
+material_override = SubResource("ShaderMaterial_voytj")
+
+[editable path="WaveMovement/Area3D/leaf"]

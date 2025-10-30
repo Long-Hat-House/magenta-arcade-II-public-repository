@@ -1,0 +1,202 @@
+[gd_scene load_steps=17 format=3 uid="uid://tf8a3ac804mj"]
+
+[ext_resource type="Script" uid="uid://dik5x5wbd0xn4" path="res://elements/player/projectiles/hold_green/proj_hold_green_cut.gd" id="1_js06x"]
+[ext_resource type="Script" uid="uid://c1a23qdrmn8d1" path="res://elements/enemy/projectiles/damage_area/damage_area.gd" id="2_rn8ps"]
+[ext_resource type="Resource" uid="uid://com3qf7kk6fby" path="res://systems/ma2_meta/upgrades/upgrade_hold_damage.tres" id="3_fyf02"]
+[ext_resource type="Material" uid="uid://qbulo6kx4vms" path="res://elements/neutral/props/vegetation/material/m_leaf_particle.tres" id="5_v73k1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w0dvw"]
+radius = 0.25
+height = 15.0
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_v2sp0"]
+parameter_name = "Cutoff"
+qualifier = 2
+default_value_enabled = true
+default_value = 0.5
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_wt81k"]
+output_port_for_preview = 0
+size = Vector2(560, 740)
+expression = "vec2 dist = vec2(0.5, 0.5) - uv;
+
+float entirety = (1.0 - length(dist));
+
+float dist_x = 1.0-abs(dist.x);
+float dist_y = uv.y;
+
+float x_mask = smoothstep(0.45, 1.0, dist_x * 1.0);
+float top_y_mask = smoothstep(0.7, 1.0, dist_y);
+float top_x_mask = 1.0-smoothstep(0.0, 0.5, 1.0 - dist_x);
+value = dist_y;
+value *= top_x_mask;
+value *= floor(clamp(0.0, 1.0, entirety * 2.0));"
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_wt81k"]
+parameter_name = "Color"
+default_value_enabled = true
+default_value = Color(0.0392157, 0.796078, 0, 1)
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ktul0"]
+output_port_for_preview = 0
+expanded_output_ports = [0]
+input_name = "uv"
+
+[sub_resource type="VisualShader" id="VisualShader_cdu1w"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform vec4 Color : source_color = vec4(0.039216, 0.796078, 0.000000, 1.000000);
+instance uniform float Cutoff = 0.5;
+
+
+
+void fragment() {
+// ColorParameter:2
+	vec4 n_out2p0 = Color;
+
+
+// Input:3
+	vec2 n_out3p0 = UV;
+
+
+	float n_out14p0;
+// Expression:14
+	n_out14p0 = 0.0;
+	{
+		vec2 dist = vec2(0.5, 0.5) - n_out3p0;
+		
+		float entirety = (1.0 - length(dist));
+		
+		float dist_x = 1.0-abs(dist.x);
+		float dist_y = n_out3p0.y;
+		
+		float x_mask = smoothstep(0.45, 1.0, dist_x * 1.0);
+		float top_y_mask = smoothstep(0.7, 1.0, dist_y);
+		float top_x_mask = 1.0-smoothstep(0.0, 0.5, 1.0 - dist_x);
+		n_out14p0 = dist_y;
+		n_out14p0 *= top_x_mask;
+		n_out14p0 *= floor(clamp(0.0, 1.0, entirety * 2.0));
+	}
+
+
+// FloatParameter:13
+	float n_out13p0 = Cutoff;
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+	ALPHA = n_out14p0;
+	ALPHA_SCISSOR_THRESHOLD = n_out13p0;
+
+
+}
+"
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_wt81k")
+nodes/fragment/2/position = Vector2(-280, 20)
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_ktul0")
+nodes/fragment/3/position = Vector2(-1480, 300)
+nodes/fragment/13/node = SubResource("VisualShaderNodeFloatParameter_v2sp0")
+nodes/fragment/13/position = Vector2(-180, 800)
+nodes/fragment/14/node = SubResource("VisualShaderNodeExpression_wt81k")
+nodes/fragment/14/position = Vector2(-940, 220)
+nodes/fragment/14/size = Vector2(560, 740)
+nodes/fragment/14/input_ports = "0,3,uv;"
+nodes/fragment/14/output_ports = "0,0,value;"
+nodes/fragment/14/expression = "vec2 dist = vec2(0.5, 0.5) - uv;
+
+float entirety = (1.0 - length(dist));
+
+float dist_x = 1.0-abs(dist.x);
+float dist_y = uv.y;
+
+float x_mask = smoothstep(0.45, 1.0, dist_x * 1.0);
+float top_y_mask = smoothstep(0.7, 1.0, dist_y);
+float top_x_mask = 1.0-smoothstep(0.0, 0.5, 1.0 - dist_x);
+value = dist_y;
+value *= top_x_mask;
+value *= floor(clamp(0.0, 1.0, entirety * 2.0));"
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 13, 0, 0, 19, 3, 0, 14, 0, 14, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3o1c0"]
+render_priority = 0
+shader = SubResource("VisualShader_cdu1w")
+shader_parameter/Color = Color(0.039216, 0.796078, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_wt81k"]
+material = SubResource("ShaderMaterial_3o1c0")
+size = Vector2(0.5, 15)
+orientation = 1
+
+[sub_resource type="Curve" id="Curve_lj6tc"]
+_data = [Vector2(0, 0.534299), 0.0, 2.35103, 0, 0, Vector2(0.753623, 1), -0.303297, -0.303297, 0, 0, Vector2(1, 0), -3.41209, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_q56ns"]
+curve = SubResource("Curve_lj6tc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e3sot"]
+lifetime_randomness = 0.56
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+spread = 60.0
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+angular_velocity_min = -155.08
+angular_velocity_max = 44.31
+orbit_velocity_max = 0.09
+radial_velocity_min = 0.999978
+radial_velocity_max = 1.99998
+gravity = Vector3(0, -6, 0)
+linear_accel_max = 1.0
+radial_accel_max = 3.0
+tangential_accel_max = 2.0
+damping_min = 5.0
+damping_max = 5.0
+scale_min = 0.5
+scale_max = 1.2
+scale_curve = SubResource("CurveTexture_q56ns")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xm2ll"]
+material = ExtResource("5_v73k1")
+size = Vector2(0.4, 0.4)
+
+[node name="ProjHoldGreenCut" type="Node3D"]
+script = ExtResource("1_js06x")
+duration_in = 0.2
+max_range = 20.0
+
+[node name="Damage Area" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
+collision_layer = 0
+collision_mask = 132
+script = ExtResource("2_rn8ps")
+recover_mana = true
+bonus_resource = ExtResource("3_fyf02")
+damage_per_progress = 0.05
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Damage Area"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 4.75)
+shape = SubResource("CapsuleShape3D_w0dvw")
+debug_color = Color(0.972549, 0, 0.435294, 1)
+
+[node name="Scaler" type="Node3D" parent="Damage Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Damage Area/Scaler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.25)
+instance_shader_parameters/Cutoff = 0.01
+mesh = SubResource("QuadMesh_wt81k")
+skeleton = NodePath("../..")
+
+[node name="LeafParticle" type="GPUParticles3D" parent="Damage Area/Scaler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 7)
+emitting = false
+amount = 2
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.8
+randomness = 1.0
+trail_lifetime = 0.01
+process_material = SubResource("ParticleProcessMaterial_e3sot")
+draw_pass_1 = SubResource("PlaneMesh_xm2ll")

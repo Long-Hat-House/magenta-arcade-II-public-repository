@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://blq1xr5fc4gff"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_MidBoss_Lv4_Hand_Tap_BangFinger"
+id = 3355175508
+guid = "{4EAE920C-0458-42C9-ADA1-3D019DCFECFD}"
+dummy = true

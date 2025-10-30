@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdjt4fo8ucei4"]
+
+[ext_resource type="Texture2D" uid="uid://da1c3vx7yckc7" path="res://elements/vfx/vfx_wind/vfx_wind_curve_forward.tres" id="1_iipj4"]
+[ext_resource type="Texture2D" uid="uid://b7loyt1pktps8" path="res://elements/vfx/vfx_wind/vfx_wind2.png" id="1_uu4cf"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qvbj6"]
+lifetime_randomness = 0.75
+particle_flag_rotate_y = true
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(0, 0, 1)
+flatness = 1.0
+initial_velocity_min = 4.0
+initial_velocity_max = 7.0
+gravity = Vector3(0, 2, 0)
+damping_min = 0.5
+damping_max = 1.0
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+anim_speed_curve = ExtResource("1_iipj4")
+anim_offset_max = 0.0874
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4fywx"]
+transparency = 1
+albedo_color = Color(0.703808, 0.703808, 0.703808, 1)
+albedo_texture = ExtResource("1_uu4cf")
+metallic = 0.1
+metallic_specular = 0.0
+texture_filter = 0
+billboard_mode = 3
+particles_anim_h_frames = 4
+particles_anim_v_frames = 3
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_iipj4"]
+material = SubResource("StandardMaterial3D_4fywx")
+size = Vector2(0.5, 0.5)
+
+[node name="VFX Wind" type="GPUParticles3D"]
+amount = 50
+lifetime = 1.2
+preprocess = 0.2
+explosiveness = 0.25
+randomness = 0.5
+fixed_fps = 60
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_qvbj6")
+draw_pass_1 = SubResource("QuadMesh_iipj4")

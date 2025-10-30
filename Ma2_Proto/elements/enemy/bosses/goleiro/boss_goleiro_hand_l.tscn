@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkbiirfemow2"]
+
+[ext_resource type="PackedScene" uid="uid://bbg6jxj582g6s" path="res://elements/enemy/bosses/goleiro/boss_goleiro_hand.tscn" id="1_cymf8"]
+[ext_resource type="PackedScene" uid="uid://bakvdw67atune" path="res://elements/enemy/bosses/goleiro/bossGoleiro/mesh/mesh_boss_goleiro_hand_L.tscn" id="2_8u4k5"]
+
+[node name="BossGoleiroHand_L" instance=ExtResource("1_cymf8")]
+time_multiplier = -3.0
+circle_normal = Vector3(-0.25, -0.1, 1)
+
+[node name="bossGoleiro_hand_L" parent="Graphic" index="0" instance=ExtResource("2_8u4k5")]

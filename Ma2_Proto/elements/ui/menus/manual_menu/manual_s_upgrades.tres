@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="CreditsSectionInfo" load_steps=9 format=3 uid="uid://dit4qhh5ky2wu"]
+
+[ext_resource type="Script" uid="uid://bkle5ca8utscg" path="res://elements/ui/menus/credits_menu/scripts/credits_entry_info.gd" id="1_5vryi"]
+[ext_resource type="Texture2D" uid="uid://d3v87fgglk6ib" path="res://elements/ui/ui_art/ui_icon_manual_bg.png" id="1_kc0lv"]
+[ext_resource type="Texture2D" uid="uid://b7erplmxlcytv" path="res://elements/icons/icons_upgrades/icon_star_recover.png" id="2_2v3s3"]
+[ext_resource type="Script" uid="uid://brm0i2bj1yuok" path="res://elements/ui/menus/credits_menu/scripts/credits_section_info.gd" id="2_043n2"]
+[ext_resource type="Texture2D" uid="uid://41wb730oj2ed" path="res://elements/icons/icon_star_empty.png" id="3_kc0lv"]
+[ext_resource type="Texture2D" uid="uid://cm5belis6bq0x" path="res://elements/icons/icon_star.png" id="4_scmtp"]
+
+[sub_resource type="Resource" id="Resource_qwulc"]
+script = ExtResource("1_5vryi")
+entry_name = &"manual_upgrades_stars_title"
+entry_role = &"manual_upgrades_stars_description"
+entry_information = &"manual_upgrades_stars_info"
+entry_texture = ExtResource("3_kc0lv")
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[sub_resource type="Resource" id="Resource_kc0lv"]
+script = ExtResource("1_5vryi")
+entry_name = &"manual_upgrades_recoup_title"
+entry_role = &"manual_upgrades_recoup_description"
+entry_information = &"manual_upgrades_recoup_info"
+entry_texture = ExtResource("2_2v3s3")
+entry_color_highlight = Color(1, 1, 1, 1)
+entry_color_bg = Color(0, 0.831373, 0.792157, 1)
+metadata/_custom_type_script = "uid://bkle5ca8utscg"
+
+[resource]
+script = ExtResource("2_043n2")
+section_title = &"manual_s_upgrades_title"
+section_info = &"manual_s_upgrades_description"
+section_image = ExtResource("4_scmtp")
+default_entry_texture_2 = ExtResource("1_kc0lv")
+section_color_highlight = Color(1, 1, 1, 1)
+section_color_bg = Color(0, 0.831373, 0.792157, 1)
+entries_list = Array[ExtResource("1_5vryi")]([SubResource("Resource_qwulc"), SubResource("Resource_kc0lv")])
+metadata/_custom_type_script = "uid://brm0i2bj1yuok"

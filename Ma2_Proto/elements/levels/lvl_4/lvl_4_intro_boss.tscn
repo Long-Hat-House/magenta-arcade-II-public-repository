@@ -1,0 +1,510 @@
+[gd_scene load_steps=32 format=3 uid="uid://cq5wpeo36uqm8"]
+
+[ext_resource type="WwiseEvent" uid="uid://08efckgmmw8w" path="res://Wwise/resources/Event/{C921BBE4-C1C4-422E-B995-5518B654620B}.tres" id="1_goang"]
+[ext_resource type="PackedScene" uid="uid://c00kqth38jmst" path="res://systems/stage/stage_screen_measure.tscn" id="2_3jyug"]
+[ext_resource type="PackedScene" uid="uid://bsy18pj7t3kwo" path="res://elements/enemy/copter/enemy_roboto_copter.tscn" id="2_seao8"]
+[ext_resource type="Script" uid="uid://bt3rgk2gx218p" path="res://systems/stage/level_stage_piece.gd" id="3_2r40a"]
+[ext_resource type="PackedScene" uid="uid://bb728fxgflnuf" path="res://elements/stage_pieces/lair/stage_piece_lair_repeat.tscn" id="3_6ildn"]
+[ext_resource type="PackedScene" uid="uid://j5gd0d5631dy" path="res://elements/enemy/bosses/cachorro/boss_cachorro.tscn" id="3_jeeko"]
+[ext_resource type="PackedScene" uid="uid://4wxgfh50q8et" path="res://elements/enemy/copter/enemy_roboto_copter_golden.tscn" id="3_ri8wl"]
+[ext_resource type="PackedScene" uid="uid://cl5uv7qchkiti" path="res://elements/background/element_clay_floor.tscn" id="4_u6fy3"]
+[ext_resource type="PackedScene" uid="uid://chupj3gavxy34" path="res://elements/enemy/lair_door/enemy_lair_door.tscn" id="5_dyofq"]
+[ext_resource type="PackedScene" uid="uid://cnp3rf2clqmym" path="res://elements/background/element_grass_full.tscn" id="5_qv2gr"]
+[ext_resource type="PackedScene" uid="uid://baj27etarf4uq" path="res://systems/stage/constant_piece_creator.tscn" id="5_tg8i1"]
+[ext_resource type="PackedScene" uid="uid://d0ljskkckqxgx" path="res://elements/neutral/props/Lab_mountain/mesh/mesh_mountain.tscn" id="6_dyofq"]
+[ext_resource type="PackedScene" uid="uid://d2nqmop143ayt" path="res://elements/background/element_curb_train_station_path.tscn" id="6_lw0kv"]
+[ext_resource type="PackedScene" uid="uid://byq8x53twtmjo" path="res://elements/background/element_curb_asphalt_grass_sidewalk_path.tscn" id="7_jspc2"]
+[ext_resource type="PackedScene" uid="uid://cyqa4jwyio6sd" path="res://elements/background/element_grass_tile.tscn" id="9_hvt6r"]
+[ext_resource type="PackedScene" uid="uid://bwom4h3plpt56" path="res://elements/neutral/props/Factory/mesh/mesh_rail_factory.tscn" id="10_8q4bo"]
+[ext_resource type="PackedScene" uid="uid://d0ttq2bgxj0nf" path="res://elements/background/element_clay.tscn" id="11_y3l8r"]
+[ext_resource type="PackedScene" uid="uid://dlrrolvsllr23" path="res://elements/neutral/props/Lab_mountain/mesh/mesh_colunm.tscn" id="13_6u8pc"]
+[ext_resource type="PackedScene" uid="uid://l3dy36lol626" path="res://elements/neutral/props/rock/mesh/mesh_rock.tscn" id="14_u6fy3"]
+[ext_resource type="Material" uid="uid://dg6b7og6mbtm8" path="res://elements/background/material/m_grass_full.tres" id="16_6u8pc"]
+[ext_resource type="Script" uid="uid://b56c3dq1oftud" path="res://systems/level/level_camera_movement_data.gd" id="17_6u8pc"]
+[ext_resource type="PackedScene" uid="uid://c0gnros7eajsc" path="res://elements/enemy/bosses/cachorro/boss_cachorro_npc_intro.tscn" id="17_htu45"]
+[ext_resource type="WwiseEvent" uid="uid://8xxw4j7fa7oi" path="res://Wwise/resources/Event/{3C1BFF7E-9332-49DF-B66B-0C4C4D46CB2D}.tres" id="20_l6sgs"]
+[ext_resource type="PackedScene" uid="uid://si0hnb5cwxif" path="res://elements/neutral/revolution/lair_npc_revolution_line.tscn" id="20_u6fy3"]
+
+[sub_resource type="GDScript" id="GDScript_d1btk"]
+script/source = "extends Level
+
+const BOSS_4 = preload(\"res://systems/boss/boss_4.tres\")
+const LVL_INFO_4 = preload(\"res://elements/levels/lvl_info_4.tres\")
+
+var group:String = \"main\";
+
+@onready var constant_piece_creator: Node3D = $ConstantPieceCreator
+@onready var lair_door: Enemy_Lair_Door = $\"Stage Piece Fabrica Room/Door/Lair_Door\"
+
+@export var piece_main:LevelStagePiece;
+
+@export var intro:Boss_Cachorro_Intro;
+@export var boss:Boss_Cachorro;
+@export var creator:ConstantPieceCreator;
+@export var npcs:Array[ConstantCreatorLine3D];
+
+@export var measure_pre:StageMeasure;
+@export var measure_boss:StageMeasure;
+@export var measure_boss_intro:StageMeasure;
+
+@export var music_end:WwiseEvent;
+
+@export var cachorro_intro_wait_place:Node3D;
+@export var cachorro_intro_jump_place:Node3D;
+
+@export var copter_ok:PackedScene;
+@export var copter_gold:PackedScene;
+
+@export var sfx_revolution: AkEvent3D;
+
+func _ready():
+	await await_for_level_ready()
+
+	self.stage.attach_piece(piece_main);
+
+	AudioManager.post_music_event(AK.EVENTS.MUSIC_LEVEL5_GAMEPLAY_START)
+	HUD.instance.show_level_info(LVL_INFO_4)
+
+
+	cmd_array([
+		cmd_all(),
+		cmd_clear_measures(),
+		]);
+
+func cmd_all()->Level.CMD:
+	return Level.CMD_Sequence.new([
+		Level.CMD_Parallel.new([
+			Level.CMD_Sequence.new([
+				cmd_wait_door(),
+				cmd_to_door(),
+			]),
+			Level.CMD_Sequence.new([
+				cmd_boss_intro(),
+				Level.CMD_Parallel_Complete.new([
+					cmd_go_backwards(),
+					boss.cmd_boss(),
+				]),
+				Level.CMD_Wait_Seconds.new(1),
+				Level.CMD_Callable.new(func():
+					music_end.post(self);
+					),
+				Level.CMD_Wait_Seconds.new(1.5),
+				cmd_to_door(),
+				Level.CMD_Wait_Seconds.new(6),
+				Level.CMD_Parallel_Complete.new([
+					AI_Roboto_Copter.cmd_make_copters_quick(self, [copter_ok, copter_gold], [0,0,0,0,0,0,0,0,0,0,1], func(): return stage.get_grid(-7.5, 10), Vector3.RIGHT, [-5,1,4,-1,5], \"copter\"),
+					Level.CMD_Sequence.new([
+						Level.CMD_Wait_Seconds.new(2),
+						AI_Roboto_Copter.cmd_make_copters_quick(self, [copter_ok, copter_gold], [0,0,0,0,0], func(): return stage.get_grid(7.5, 13), Vector3.LEFT, [100], \"copter\"),
+					])
+				]),
+				Level.CMD_Wait_Forever.new(),
+			]),
+		]),
+		cmd_revolution(),
+	]);
+
+func cmd_boss_intro()->Level.CMD:
+	return Level.CMD_Sequence.new([
+		##Go to the boss
+		measure_pre.cmd_default_camera_tween(self, 0.75),
+		intro.cmd(self, measure_boss_intro, cachorro_intro_wait_place, cachorro_intro_jump_place, boss),
+		Level.CMD_Wait_Seconds.new(0.25),
+		CMD_Callable.new(boss.boss_into_screen),
+		Level.CMD_Wait_Seconds.new(1),
+		cmd_show_boss_hp(),
+		CMD_Wait_Seconds.new(0.75),
+		measure_boss.cmd_default_camera_tween(self, 0.0, 2.5),
+		CMD_Wait_Seconds.new(1.25),
+		CMD_Callable.new(func():
+			boss.reparent(InstantiateUtils.get_topmost_instantiate_node());
+			),
+	]);
+
+func cmd_go_backwards()->Level.CMD:
+	return Level.CMD_Sequence.new([
+		#cam.cmd_speed(-1.0, 25.0, LevelCameraController.MovementAxis.Z, Tween.TRANS_SINE, Tween.EASE_IN),
+	]);
+
+func cmd_show_boss_hp()->Level.CMD:
+	return Level.CMD_Callable.new(func():
+		HUD.instance.show_boss_life(BOSS_4, boss.boss_health.get_health_percentage, AK.EVENTS.MUSIC_BOSS_DOG_START)
+		);
+		
+func cmd_to_door()->Level.CMD:
+	return Level.CMD_Sequence.new([
+		measure_pre.cmd_default_camera_tween(self),
+	])
+	
+func cmd_wait_door()->Level.CMD:
+	return Level.CMD_Wait_Callable.new(func():
+		return !is_instance_valid(lair_door);
+	);
+
+func cmd_revolution()->Level.CMD:
+	return Level.CMD_Sequence.new([
+		Level.CMD_Callable.new(func():
+			for line in npcs:
+				line.creating = true;
+			),
+		Level.CMD_Wait_Seconds.new(0.75),
+		Level.CMD_Callable.new(func():
+			sfx_revolution.post_event();
+			),
+		Level.CMD_Wait_Seconds.new(3.25),
+	]);
+
+func _get_configuration_warnings() -> PackedStringArray:
+	for child in get_children():
+		if child is LevelStagePiece:
+			return [];
+	return [\"Need a level stage piece as child of this!\"];
+"
+
+[sub_resource type="Curve3D" id="Curve3D_jspc2"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 3.8147e-06, 0, -15.5),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_hvt6r"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, -15),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[sub_resource type="Resource" id="Resource_6u8pc"]
+script = ExtResource("17_6u8pc")
+camera_duration = 1.9
+camera_speed = 35.0
+camera_duration_style = 1
+ease_x = 2
+trans_x = 4
+duration_multiplier_x = 1.0
+ease_z = 1
+trans_z = 1
+duration_multiplier_z = 1.0
+metadata/_custom_type_script = "uid://b56c3dq1oftud"
+
+[sub_resource type="Resource" id="Resource_u6fy3"]
+script = ExtResource("17_6u8pc")
+camera_duration = 1.9
+camera_speed = 35.0
+camera_duration_style = 1
+ease_x = 2
+trans_x = 4
+duration_multiplier_x = 1.0
+ease_z = 2
+trans_z = 4
+duration_multiplier_z = 1.0
+metadata/_custom_type_script = "uid://b56c3dq1oftud"
+
+[sub_resource type="Resource" id="Resource_l6sgs"]
+script = ExtResource("17_6u8pc")
+camera_duration = 1.9
+camera_speed = 25.0
+camera_duration_style = 1
+ease_x = 2
+trans_x = 4
+duration_multiplier_x = 1.0
+ease_z = 2
+trans_z = 4
+duration_multiplier_z = 1.0
+metadata/_custom_type_script = "uid://b56c3dq1oftud"
+
+[sub_resource type="Curve3D" id="Curve3D_l6sgs"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, -5, 0, -40, 0, 0, 0, -8, 0, -2, 0, 0, 0, 14, 0, -45),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="LEVEL 4 INTRO BOSS" type="Node3D" node_paths=PackedStringArray("piece_main", "intro", "boss", "creator", "npcs", "measure_pre", "measure_boss", "measure_boss_intro", "cachorro_intro_wait_place", "cachorro_intro_jump_place", "sfx_revolution")]
+script = SubResource("GDScript_d1btk")
+piece_main = NodePath("Stage Piece Fabrica Room")
+intro = NodePath("Stage Piece Fabrica Room/Boss_Cachorro_NPC_Intro")
+boss = NodePath("Stage Piece Fabrica Room/BossCachorro")
+creator = NodePath("ConstantPieceCreator")
+npcs = [NodePath("Stage Piece Fabrica Room/Door/Lair_NPC_Revolution_Line"), NodePath("Stage Piece Fabrica Room/Door/Lair_NPC_Revolution_Line2")]
+measure_pre = NodePath("Stage Piece Fabrica Room/StageScreenMeasure Intro")
+measure_boss = NodePath("Stage Piece Fabrica Room/StageScreenMeasure Boss")
+measure_boss_intro = NodePath("Stage Piece Fabrica Room/StageScreenMeasure Boss Show")
+music_end = ExtResource("1_goang")
+cachorro_intro_wait_place = NodePath("Stage Piece Fabrica Room/BossCachorro/Cachorro Rest Place")
+cachorro_intro_jump_place = NodePath("Stage Piece Fabrica Room/BossCachorro/Cachorro Hole Destination")
+copter_ok = ExtResource("2_seao8")
+copter_gold = ExtResource("3_ri8wl")
+sfx_revolution = NodePath("Stage Piece Fabrica Room/Door/SFX_Revolution")
+
+[node name="ConstantPieceCreator" parent="." instance=ExtResource("5_tg8i1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 145.5, 0, -35)
+direction = 0
+pieces = Array[PackedScene]([ExtResource("3_6ildn")])
+
+[node name="Stage Piece Fabrica Room" type="Node3D" parent="." node_paths=PackedStringArray("pivot_forward", "pivot_backward", "pivot_right", "pivot_left")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, -29.25)
+script = ExtResource("3_2r40a")
+pivot_forward = NodePath("Config/forward")
+pivot_backward = NodePath("Config/back")
+pivot_right = NodePath("Config/right")
+pivot_left = NodePath("Config/left")
+
+[node name="Config" type="Node3D" parent="Stage Piece Fabrica Room"]
+
+[node name="Wind Direction" type="Node3D" parent="Stage Piece Fabrica Room/Config"]
+transform = Transform3D(-2.04648e-07, 0, -1, 0, 1, 0, 1, 0, -2.04648e-07, 0.25, 6, 0)
+
+[node name="forward" type="Marker3D" parent="Stage Piece Fabrica Room/Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -68)
+gizmo_extents = 1.0
+
+[node name="back" type="Marker3D" parent="Stage Piece Fabrica Room/Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35)
+gizmo_extents = 1.0
+
+[node name="right" type="Marker3D" parent="Stage Piece Fabrica Room/Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 6)
+gizmo_extents = 1.0
+
+[node name="left" type="Marker3D" parent="Stage Piece Fabrica Room/Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 6)
+gizmo_extents = 1.0
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Stage Piece Fabrica Room/Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24.25)
+aabb = AABB(-13.75, 0, -47.9825, 27.5, 13.796, 101)
+
+[node name="Scenery" type="Node3D" parent="Stage Piece Fabrica Room"]
+
+[node name="Clay" parent="Stage Piece Fabrica Room/Scenery" instance=ExtResource("4_u6fy3")]
+transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 32.5, -14, 0, -68)
+
+[node name="MOUNTAINS" type="Node3D" parent="Stage Piece Fabrica Room/Scenery"]
+
+[node name="mountain" parent="Stage Piece Fabrica Room/Scenery/MOUNTAINS" instance=ExtResource("6_dyofq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9069, 0, -30.7644)
+
+[node name="mountain2" parent="Stage Piece Fabrica Room/Scenery/MOUNTAINS" instance=ExtResource("6_dyofq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3024, 0, -32.0866)
+
+[node name="RAILs" type="Node3D" parent="Stage Piece Fabrica Room/Scenery"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.75)
+
+[node name="rail_factory" parent="Stage Piece Fabrica Room/Scenery/RAILs" instance=ExtResource("10_8q4bo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.5, 0.1, 3.75)
+
+[node name="rail_factory12" parent="Stage Piece Fabrica Room/Scenery/RAILs" instance=ExtResource("10_8q4bo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.5, 0.1, 3.75)
+
+[node name="rail_factory14" parent="Stage Piece Fabrica Room/Scenery/RAILs" instance=ExtResource("10_8q4bo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -13.5, 0.1, 3.75)
+
+[node name="rail_factory15" parent="Stage Piece Fabrica Room/Scenery/RAILs" instance=ExtResource("10_8q4bo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.5, 0.1, 3.75)
+
+[node name="rail_factory2" parent="Stage Piece Fabrica Room/Scenery/RAILs" instance=ExtResource("10_8q4bo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.5, 0.1, 3.75)
+
+[node name="rail_factory3" parent="Stage Piece Fabrica Room/Scenery/RAILs" instance=ExtResource("10_8q4bo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.5, 0.1, 3.75)
+
+[node name="rail_factory4" parent="Stage Piece Fabrica Room/Scenery/RAILs" instance=ExtResource("10_8q4bo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.5, 0.1, 3.75)
+
+[node name="rail_factory5" parent="Stage Piece Fabrica Room/Scenery/RAILs" instance=ExtResource("10_8q4bo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.5, 0.1, 3.75)
+
+[node name="rail_factory6" parent="Stage Piece Fabrica Room/Scenery/RAILs" instance=ExtResource("10_8q4bo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.5, 0.1, 3.75)
+
+[node name="rail_factory7" parent="Stage Piece Fabrica Room/Scenery/RAILs" instance=ExtResource("10_8q4bo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 0.1, 3.75)
+
+[node name="rail_factory9" parent="Stage Piece Fabrica Room/Scenery/RAILs" instance=ExtResource("10_8q4bo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.5, 0.1, 3.75)
+
+[node name="rail_factory10" parent="Stage Piece Fabrica Room/Scenery/RAILs" instance=ExtResource("10_8q4bo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.5, 0.1, 3.75)
+
+[node name="rail_factory11" parent="Stage Piece Fabrica Room/Scenery/RAILs" instance=ExtResource("10_8q4bo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.5, 0.1, 3.75)
+
+[node name="rail_factory13" parent="Stage Piece Fabrica Room/Scenery/RAILs" instance=ExtResource("10_8q4bo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.5, 0.1, 3.75)
+
+[node name="rail_factory8" parent="Stage Piece Fabrica Room/Scenery/RAILs" instance=ExtResource("10_8q4bo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.5, 0.1, 3.75)
+
+[node name="Curb Sidewalk Path" parent="Stage Piece Fabrica Room/Scenery" instance=ExtResource("6_lw0kv")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -8, 0.02, -34.975)
+curve = SubResource("Curve3D_jspc2")
+
+[node name="Curb Sidewalk Path2" parent="Stage Piece Fabrica Room/Scenery" instance=ExtResource("7_jspc2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8, 0.05, -33.825)
+curve = SubResource("Curve3D_hvt6r")
+
+[node name="grass_tile" parent="Stage Piece Fabrica Room/Scenery" instance=ExtResource("9_hvt6r")]
+transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 3, 5, 0.075, 19)
+
+[node name="Clay2" parent="Stage Piece Fabrica Room/Scenery" instance=ExtResource("11_y3l8r")]
+transform = Transform3D(28, 0, 0, 0, 8.015, 0, 0, 0, 39.794, -14.5, -0.112, -33.25)
+
+[node name="colunm" parent="Stage Piece Fabrica Room/Scenery" instance=ExtResource("13_6u8pc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -41)
+
+[node name="ROCKS" type="Node3D" parent="Stage Piece Fabrica Room/Scenery"]
+
+[node name="rock" parent="Stage Piece Fabrica Room/Scenery/ROCKS" instance=ExtResource("14_u6fy3")]
+transform = Transform3D(-0.916495, 1.82482, 1.9077, -3.42041, -0.488959, -0.511168, -2.98023e-08, -1.09073, 3.4208, 6.47913, 0.855102, -25)
+
+[node name="rock2" parent="Stage Piece Fabrica Room/Scenery/ROCKS" instance=ExtResource("14_u6fy3")]
+transform = Transform3D(1.36212, 2.97424, -0.0760052, -5.81813, 0.678039, -0.508834, -0.729488, 0.145817, 3.91635, -7.34316, 0.691631, -24.728)
+
+[node name="rock3" parent="Stage Piece Fabrica Room/Scenery/ROCKS" instance=ExtResource("14_u6fy3")]
+transform = Transform3D(-0.214735, 0.82212, 4.90435, 1.42676, -0.038117, 0.805545, 0.074507, 3.09933, -1.29101, -7.35088, -0.124471, -26.763)
+
+[node name="rock4" parent="Stage Piece Fabrica Room/Scenery/ROCKS" instance=ExtResource("14_u6fy3")]
+transform = Transform3D(-0.214735, -3.0627, 0.947861, 1.42676, -0.503052, -0.0439467, 0.074507, 0.806217, 3.57336, 6.85987, 0.38212, -30.5262)
+
+[node name="rock5" parent="Stage Piece Fabrica Room/Scenery/ROCKS" instance=ExtResource("14_u6fy3")]
+transform = Transform3D(-0.515364, 0.82212, 3.53113, 3.42423, -0.0381172, 0.579993, 0.178817, 3.09933, -0.929526, -7.71848, 0.831265, -31.3226)
+
+[node name="rock6" parent="Stage Piece Fabrica Room/Scenery/ROCKS" instance=ExtResource("14_u6fy3")]
+transform = Transform3D(-0.515364, 0.82212, 3.53113, 3.42423, -0.0381172, 0.579993, 0.178817, 3.09933, -0.929526, -7.28388, 0.253331, -19.0029)
+
+[node name="rock7" parent="Stage Piece Fabrica Room/Scenery/ROCKS" instance=ExtResource("14_u6fy3")]
+transform = Transform3D(0.9202, 0.00799079, -4.05235, 5.79135, -0.0378, 0.643682, -0.0665314, -3.17982, -0.0178356, 7.46612, 0.253331, -17.7529)
+
+[node name="rock11" parent="Stage Piece Fabrica Room/Scenery/ROCKS" instance=ExtResource("14_u6fy3")]
+transform = Transform3D(0.521762, 0.00802071, -5.29847, 3.28375, -0.0379416, 0.841618, -0.0377239, -3.19173, -0.0233201, -7.53388, 0.253331, -3.00294)
+
+[node name="rock12" parent="Stage Piece Fabrica Room/Scenery/ROCKS" instance=ExtResource("14_u6fy3")]
+transform = Transform3D(0.214601, 1.88164, -1.90721, 1.78126, -0.0315537, 0.430323, 0.185661, -1.8722, -1.92408, 5.71612, 0.253331, -1.25294)
+
+[node name="rock13" parent="Stage Piece Fabrica Room/Scenery/ROCKS" instance=ExtResource("14_u6fy3")]
+transform = Transform3D(0.0921256, 2.0886, -3.14411, 0.764673, -0.0350243, 0.709404, 0.0797022, -2.07813, -3.17191, 2.96612, -0.156764, -14.2529)
+
+[node name="rock8" parent="Stage Piece Fabrica Room/Scenery/ROCKS" instance=ExtResource("14_u6fy3")]
+transform = Transform3D(0.273784, 0.00954824, -3.45997, 1.72308, -0.0451675, 0.549587, -0.0197949, -3.79959, -0.0152283, 1.71612, -0.503078, -25.5029)
+
+[node name="rock9" parent="Stage Piece Fabrica Room/Scenery/ROCKS" instance=ExtResource("14_u6fy3")]
+transform = Transform3D(-0.00952756, -1.35332, -0.0054044, 0.829344, -0.0160876, 0.195045, -0.131776, -0.00340079, 1.22792, -2.78388, 0.00333065, -23.5029)
+
+[node name="rock10" parent="Stage Piece Fabrica Room/Scenery/ROCKS" instance=ExtResource("14_u6fy3")]
+transform = Transform3D(-0.569711, -0.663122, -0.680693, 0.598718, -0.837869, -0.409509, -0.149109, -0.830658, 0.956466, -1.28388, -0.0966693, -31.2529)
+
+[node name="rock14" parent="Stage Piece Fabrica Room/Scenery/ROCKS" instance=ExtResource("14_u6fy3")]
+transform = Transform3D(0.130011, 5.10386, 0.0973422, 3.52663, -0.194955, 0.599729, 0.366443, 0.0654291, -5.8063, -7.5946, -0.319525, -59.1501)
+
+[node name="rock15" parent="Stage Piece Fabrica Room/Scenery/ROCKS" instance=ExtResource("14_u6fy3")]
+transform = Transform3D(0.387606, 1.38418, -5.58326, 3.52663, -0.194955, 0.599729, -0.0307384, -4.91301, -1.59681, 6.4054, -0.319525, -66.1501)
+
+[node name="rock16" parent="Stage Piece Fabrica Room/Scenery/ROCKS" instance=ExtResource("14_u6fy3")]
+transform = Transform3D(-8.28322, -1.03368, -0.245557, -1.67373, 4.57076, -1.734, 0.766037, -1.19057, -6.44387, 7.4054, 0.680475, -53.1501)
+
+[node name="rock18" parent="Stage Piece Fabrica Room/Scenery/ROCKS" instance=ExtResource("14_u6fy3")]
+transform = Transform3D(1.40392, 1.41754, 6.28786, -1.67373, 4.57076, -1.734, -8.19925, -0.690321, 1.43061, -8.5946, 0.680475, -48.1501)
+
+[node name="rock21" parent="Stage Piece Fabrica Room/Scenery/ROCKS" instance=ExtResource("14_u6fy3")]
+transform = Transform3D(0.527278, 1.05381, 3.15812, -0.628611, 3.39796, -0.870913, -3.07943, -0.513192, 0.718532, -6.5946, -0.319525, -37.1501)
+
+[node name="rock22" parent="Stage Piece Fabrica Room/Scenery/ROCKS" instance=ExtResource("14_u6fy3")]
+transform = Transform3D(-2.40323, 0.0824689, 2.20132, -0.628611, 3.39796, -0.870913, -1.99635, -1.16923, -2.37574, 6.27008, -0.319525, -36.5046)
+
+[node name="rock23" parent="Stage Piece Fabrica Room/Scenery/ROCKS" instance=ExtResource("14_u6fy3")]
+transform = Transform3D(-1.42852, 0.025308, 2.18018, -0.373657, 1.04276, -0.862545, -1.18666, -0.358809, -2.35292, -3.5946, -0.0669615, -46.5046)
+
+[node name="rock24" parent="Stage Piece Fabrica Room/Scenery/ROCKS" instance=ExtResource("14_u6fy3")]
+transform = Transform3D(-1.0746, 0.0368704, 0.984529, -0.281083, 1.51916, -0.38951, -0.892666, -0.522737, -1.06254, 1.4054, -0.0669615, -48.5046)
+
+[node name="rock20" parent="Stage Piece Fabrica Room/Scenery/ROCKS" instance=ExtResource("14_u6fy3")]
+transform = Transform3D(1.61731, -0.0900018, 0.23424, 0.19175, 0.944756, -0.475092, -0.147634, 0.24111, 1.94901, -2.5946, -0.0195251, -56.1501)
+
+[node name="rock19" parent="Stage Piece Fabrica Room/Scenery/ROCKS" instance=ExtResource("14_u6fy3")]
+transform = Transform3D(0.589964, 1.29611, 7.09612, -0.703344, 4.17921, -1.9569, -3.44553, -0.631185, 1.6145, 7.4054, 0.680475, -45.1501)
+
+[node name="rock17" parent="Stage Piece Fabrica Room/Scenery/ROCKS" instance=ExtResource("14_u6fy3")]
+transform = Transform3D(-2.92216, -0.777179, -0.144451, -0.590458, 3.43654, -1.02004, 0.270243, -0.895132, -3.79068, -3.5946, -0.319525, -63.1501)
+
+[node name="GRASS" type="Node3D" parent="Stage Piece Fabrica Room/Scenery"]
+
+[node name="grass5" type="CSGPolygon3D" parent="Stage Piece Fabrica Room/Scenery/GRASS"]
+transform = Transform3D(1.067, 0, 0, 0, -4.37114e-08, 0.02, 0, -1, -8.74228e-10, -18.245, 0.073, -16.407)
+material_override = ExtResource("16_6u8pc")
+polygon = PackedVector2Array(10.5, -0.5, 10.5, -2, 9.75, -3.5, 8.75, -4.75, 7.5, -5.25, 3.5, -5, 0.695165, 4.22916, 1.12809, 7.44431, 5.21995, 15.5911, 10.25, 1.25)
+
+[node name="grass6" type="CSGPolygon3D" parent="Stage Piece Fabrica Room/Scenery/GRASS"]
+transform = Transform3D(-1.067, -8.74228e-08, -7.64274e-17, 0, -4.37114e-08, 0.02, -9.32801e-08, 1, 8.74228e-10, 17.255, 0.073, -7.407)
+material_override = ExtResource("16_6u8pc")
+polygon = PackedVector2Array(6.75, -3, 8.75, -3.75, 9.75, -5.5, 9.5, -7.5, 9, -10, 8.75, -9.5, 8.75, -11.75, 0.75, -12, 3.5, -4)
+
+[node name="grass7" type="CSGPolygon3D" parent="Stage Piece Fabrica Room/Scenery/GRASS"]
+transform = Transform3D(-1.067, -8.74228e-08, -7.64274e-17, 0, -4.37114e-08, 0.02, -9.32801e-08, 1, 8.74228e-10, 13.73, 0.075, 5.843)
+material_override = ExtResource("16_6u8pc")
+polygon = PackedVector2Array(6.5, -2.75, 9, -4.75, 8.5, -8.25, 7.25, -9.5, 6.75, -10.75, 5.25, -12, 0.25, -12.5, 0.25, -11.25, 0.25, 7.25, 5.25, 7.5)
+
+[node name="grass8" type="CSGPolygon3D" parent="Stage Piece Fabrica Room/Scenery/GRASS"]
+transform = Transform3D(1.067, 1.74846e-07, 1.52855e-16, -3.31397e-22, -4.37114e-08, 0.02, 1.8656e-07, -1, -8.74228e-10, -15.995, 0.075, -5.407)
+material_override = ExtResource("16_6u8pc")
+polygon = PackedVector2Array(6.25, 1.5, 9, -1.5, 10.25, -3.5, 10.75, -5.5, 11.75, -6.75, 11.5, -9.5, 8.25, -8.25, 6.25, -18.5, 1.5, -18.5, 1.5, 1.75)
+
+[node name="Grass" parent="Stage Piece Fabrica Room/Scenery/GRASS" instance=ExtResource("5_qv2gr")]
+transform = Transform3D(28, 0, 0, 0, 16, 0, 0, 0, 16, -14.5, -0.25, 13)
+
+[node name="Grass4" parent="Stage Piece Fabrica Room/Scenery/GRASS" instance=ExtResource("5_qv2gr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, -0.25, -17.25)
+
+[node name="BossCachorro" parent="Stage Piece Fabrica Room" instance=ExtResource("3_jeeko")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.25)
+
+[node name="Cachorro Rest Place" type="Node3D" parent="Stage Piece Fabrica Room/BossCachorro"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0.5, 0)
+
+[node name="Cachorro Hole Destination" type="Node3D" parent="Stage Piece Fabrica Room/BossCachorro"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.5, 4.25)
+
+[node name="StageScreenMeasure Boss" parent="Stage Piece Fabrica Room" instance=ExtResource("2_3jyug")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -4.5)
+default_movement = SubResource("Resource_6u8pc")
+
+[node name="StageScreenMeasure Boss Show" parent="Stage Piece Fabrica Room" instance=ExtResource("2_3jyug")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1)
+default_movement = SubResource("Resource_u6fy3")
+
+[node name="Boss_Cachorro_NPC_Intro" parent="Stage Piece Fabrica Room" instance=ExtResource("17_htu45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -27.25)
+
+[node name="StageScreenMeasure Intro" parent="Stage Piece Fabrica Room" instance=ExtResource("2_3jyug")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -43)
+default_movement = SubResource("Resource_l6sgs")
+
+[node name="Door" type="Node3D" parent="Stage Piece Fabrica Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20.9276)
+
+[node name="SFX_Revolution" type="AkEvent3D" parent="Stage Piece Fabrica Room/Door"]
+event = ExtResource("20_l6sgs")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.75)
+
+[node name="Lair_Door" parent="Stage Piece Fabrica Room/Door" instance=ExtResource("5_dyofq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.75)
+
+[node name="Lair_NPC_Revolution_Line" parent="Stage Piece Fabrica Room/Door" instance=ExtResource("20_u6fy3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 9.75)
+curve = SubResource("Curve3D_l6sgs")
+creating = false
+warmed_time = 0.0
+
+[node name="Lair_NPC_Revolution_Line2" parent="Stage Piece Fabrica Room/Door" instance=ExtResource("20_u6fy3")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 9.75)
+curve = SubResource("Curve3D_l6sgs")
+creating = false
+warmed_time = 0.0
+
+[connection signal="screen_entered" from="Stage Piece Fabrica Room/Config/VisibleOnScreenNotifier3D" to="Stage Piece Fabrica Room" method="_on_screen_entered"]
+[connection signal="screen_exited" from="Stage Piece Fabrica Room/Config/VisibleOnScreenNotifier3D" to="Stage Piece Fabrica Room" method="_on_screen_exited"]

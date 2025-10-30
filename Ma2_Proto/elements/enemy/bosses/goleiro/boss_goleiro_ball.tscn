@@ -1,0 +1,93 @@
+[gd_scene load_steps=11 format=3 uid="uid://bxlslw2qsudjn"]
+
+[ext_resource type="Script" uid="uid://dxhnc3wskdnhl" path="res://elements/enemy/bosses/goleiro/boss_goleiro_ball.gd" id="1_mu8mc"]
+[ext_resource type="Script" uid="uid://b3g5atumyrird" path="res://systems/health/health.gd" id="2_oh35d"]
+[ext_resource type="PackedScene" uid="uid://1hsjfwbjawv6" path="res://elements/vfx/vfx_player/movement_particle_vfx.tscn" id="3_uityf"]
+[ext_resource type="PackedScene" uid="uid://cb8v2qv2g3nr2" path="res://elements/enemy/bosses/goleiro/ball_graphic.tscn" id="3_yujx3"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="4_noc23"]
+[ext_resource type="Script" uid="uid://hbsjipy3xak5" path="res://systems/pressable/pressable.gd" id="5_ajoib"]
+[ext_resource type="Script" uid="uid://gp330idf3b2i" path="res://systems/pressable/pressable_feedback.gd" id="6_sbijc"]
+[ext_resource type="WwiseEvent" uid="uid://bvax5pki5bfaj" path="res://Wwise/resources/Event/{28AE8C9B-E0E1-4F00-BBF2-B64D64ACD379}.tres" id="7_mc33o"]
+[ext_resource type="WwiseEvent" uid="uid://cg3itudt7maxj" path="res://Wwise/resources/Event/{584EE982-66F1-42ED-9945-F1B0E165AB17}.tres" id="8_noc23"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0ce4y"]
+radius = 1.0
+
+[node name="BossGoleiro_Ball" type="CharacterBody3D"]
+collision_layer = 128
+collision_mask = 30
+script = ExtResource("1_mu8mc")
+initial_speed = 8.0
+extra_hit_speed = 7.0
+extra_hit_speed_time = 2.0
+speed_collision_add = 0.125
+screen_energy_weight = 1.0
+normal_energy_weight = 0.0
+player_touch_time = 0.25
+speed_to_rot = 1.0
+
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("feedback")]
+script = ExtResource("2_oh35d")
+feedback = [NodePath("../PressScale/Elasticity/Direction/Rotation/ball")]
+
+[node name="PressScale" type="Node3D" parent="."]
+
+[node name="Elasticity" type="Node3D" parent="PressScale"]
+
+[node name="Direction" type="Node3D" parent="PressScale/Elasticity"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+
+[node name="Rotation" type="Node3D" parent="PressScale/Elasticity/Direction"]
+
+[node name="ball" parent="PressScale/Elasticity/Direction/Rotation" instance=ExtResource("3_yujx3")]
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="PressScale/Elasticity/Direction/Rotation/ball"]
+script = ExtResource("4_noc23")
+high_contrast_group = &"player"
+metadata/_custom_type_script = "uid://cr5xxhd04vkgu"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_0ce4y")
+
+[node name="MovementParticleVFX" parent="." instance=ExtResource("3_uityf")]
+
+[node name="Pressable" type="Node3D" parent="."]
+script = ExtResource("5_ajoib")
+search_for_area_inside = true
+
+[node name="Area3D" type="Area3D" parent="Pressable"]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pressable/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("SphereShape3D_0ce4y")
+
+[node name="PressableFeedback" type="Node" parent="." node_paths=PackedStringArray("mesh_getter")]
+script = ExtResource("6_sbijc")
+mesh_getter = [NodePath("../PressScale/Elasticity/Direction/Rotation/ball")]
+needs_call = true
+effect_tween_delay = 0.5
+metadata/_custom_type_script = "uid://gp330idf3b2i"
+
+[node name="SFX" type="Node3D" parent="."]
+
+[node name="FallSFX" type="AkEvent3D" parent="SFX"]
+event = ExtResource("7_mc33o")
+
+[node name="BounceSFX" type="AkEvent3D" parent="SFX"]
+event = ExtResource("8_noc23")
+
+[node name="PlayerHitSFX" type="AkEvent3D" parent="SFX"]
+
+[node name="BossHitSFX" type="AkEvent3D" parent="SFX"]
+
+[node name="EnemyHitSFX" type="AkEvent3D" parent="SFX"]
+
+[connection signal="hit_boss" from="." to="SFX/BossHitSFX" method="post_event"]
+[connection signal="hit_enemy" from="." to="SFX/EnemyHitSFX" method="post_event"]
+[connection signal="hit_player" from="." to="SFX/PlayerHitSFX" method="post_event"]
+[connection signal="dead" from="Health" to="." method="_on_health_dead"]
+[connection signal="pressed_player" from="Pressable" to="." method="_on_pressable_pressed_player"]
+[connection signal="released_player" from="Pressable" to="." method="_on_pressable_released_player"]

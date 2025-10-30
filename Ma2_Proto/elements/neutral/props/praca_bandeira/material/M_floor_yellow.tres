@@ -1,0 +1,31 @@
+[gd_resource type="StandardMaterial3D" load_steps=7 format=3 uid="uid://bsogem1di6hee"]
+
+[ext_resource type="Texture2D" uid="uid://bag4x5b8oapcc" path="res://elements/neutral/props/praca_bandeira/textura/floor_yellow_BaseColor.png" id="1_lp6ol"]
+[ext_resource type="Texture2D" uid="uid://dtf0la8c0firj" path="res://elements/icons/icon_hold.svg" id="1_u1ju4"]
+[ext_resource type="Texture2D" uid="uid://c3sbrjkkf560h" path="res://elements/enemy/pizza/Texture/M_Pizza_Emission.png" id="2_yy6pu"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jie0d"]
+
+[sub_resource type="Gradient" id="Gradient_22nqt"]
+offsets = PackedFloat32Array(0.6, 1)
+colors = PackedColorArray(0.596078, 0.533333, 0.305882, 1, 0.596078, 0.533333, 0.305882, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ohx4s"]
+gradient = SubResource("Gradient_22nqt")
+
+[resource]
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("1_lp6ol")
+emission_energy_multiplier = 16.0
+emission_texture = ExtResource("2_yy6pu")
+rim_tint = 1.0
+clearcoat = 0.2
+clearcoat_roughness = 0.59
+anisotropy = 0.33
+ao_texture = SubResource("CompressedTexture2D_jie0d")
+backlight = Color(0.0313726, 0.0313726, 0.0313726, 1)
+detail_mask = ExtResource("1_u1ju4")
+detail_albedo = SubResource("GradientTexture1D_ohx4s")
+uv1_world_triplanar = true

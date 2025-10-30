@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwttly10gpo73"]
+
+[ext_resource type="PackedScene" uid="uid://cklahqgo1utte" path="res://elements/neutral/props/poles/element_pole_light.tscn" id="1_i62xn"]
+[ext_resource type="PackedScene" uid="uid://dyx65e8gj0elb" path="res://elements/neutral/props/pole_pieces/element_arm_light_short.tscn" id="2_ikoms"]
+
+[node name="Pole Light High" instance=ExtResource("1_i62xn")]
+"GenericTumbler/Transform/Slot - Top Left*scene" = ExtResource("2_ikoms")
+"GenericTumbler/Transform/Slot - Top Right*scene" = ExtResource("2_ikoms")
+
+[node name="VisibleOnScreenEnabler3D" parent="GenericBodyAndPresseable" index="11"]
+aabb = AABB(1.84663, -3.01359, -0.485289, 6.00181, 18.2205, 0.970577)
+
+[node name="pole_light" parent="GenericTumbler/Transform" index="0"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 2, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Slot - Top Left" parent="GenericTumbler/Transform" index="1"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.1, 13.5446, 0)
+scene = ExtResource("2_ikoms")
+
+[node name="Slot - Top Right" parent="GenericTumbler/Transform" index="2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.1, 13.5446, 0)
+scene = ExtResource("2_ikoms")

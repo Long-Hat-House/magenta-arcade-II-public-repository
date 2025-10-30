@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="LevelInfo" load_steps=16 format=3 uid="uid://cndppwxry5osd"]
+
+[ext_resource type="Script" uid="uid://r36vu12ey5m8" path="res://systems/level/level_info.gd" id="1_3l6wk"]
+[ext_resource type="Script" uid="uid://dbvews5vjmnxf" path="res://elements/stage_pieces/shop/shop_object_info.gd" id="1_slrsy"]
+[ext_resource type="Texture2D" uid="uid://b47xfaanjqpjr" path="res://elements/icons/icon_lvl_0.png" id="1_u7sdr"]
+[ext_resource type="PackedScene" uid="uid://ta33edhasg1x" path="res://elements/powerups/button/holdable_button_health.tscn" id="2_2v11b"]
+[ext_resource type="Texture2D" uid="uid://d2wj1dwim3j0w" path="res://modules/text_flow/zap/textures/text_flow_zap_speaker_icon_eva.png" id="2_ivm8q"]
+[ext_resource type="PackedScene" uid="uid://dnob4476tuq1s" path="res://elements/powerups/button/powerup_weapon_button_hold_touch_only.tscn" id="3_f7oo4"]
+[ext_resource type="Resource" uid="uid://doweup3nyeyf3" path="res://systems/ma2_meta/stars/stars_lvl_0/star_lvl_0_score_1.tres" id="5_it0j2"]
+[ext_resource type="Script" uid="uid://yt80jeaa705j" path="res://systems/ma2_meta/star_info.gd" id="5_wse1a"]
+[ext_resource type="Resource" uid="uid://5kth5jb6jeba" path="res://systems/ma2_meta/stars/stars_lvl_0/star_lvl_0_score_2.tres" id="6_w15yx"]
+[ext_resource type="Script" uid="uid://cwxu6khojrwjt" path="res://modules/text_flow/zap/src/text_flow_zap_speaker.gd" id="7_c5kbs"]
+[ext_resource type="Resource" uid="uid://cj3txk0d520hp" path="res://systems/ma2_meta/stars/stars_lvl_0/star_lvl_0_score_3.tres" id="7_qhmie"]
+[ext_resource type="Resource" uid="uid://bnh1nkl4ncbtf" path="res://elements/zap_characters/zap_speaker_eva.tres" id="8_8jbky"]
+
+[sub_resource type="Resource" id="Resource_7akry"]
+script = ExtResource("1_slrsy")
+object_scene = ExtResource("2_2v11b")
+object_cost = 300
+
+[sub_resource type="Resource" id="Resource_yiwq1"]
+script = ExtResource("1_slrsy")
+object_scene = ExtResource("2_2v11b")
+object_cost = 600
+
+[sub_resource type="Resource" id="Resource_2hfsl"]
+script = ExtResource("1_slrsy")
+object_scene = ExtResource("3_f7oo4")
+object_cost = 0
+
+[resource]
+script = ExtResource("1_3l6wk")
+lvl_id = &"lvl_0"
+lvl_resource_path = "res://elements/levels/lvl_0/lvl_0_set.tres"
+zap_speaker_bosses = Array[ExtResource("7_c5kbs")]([ExtResource("8_8jbky")])
+is_arcade_mode = false
+npc_mode = 0
+church_npc_max_count = 2
+always_unlocked = false
+score_max_seconds = 270
+level_goal_text = "lvl_0_goal"
+star_list = Array[ExtResource("5_wse1a")]([ExtResource("5_it0j2"), ExtResource("6_w15yx"), ExtResource("7_qhmie")])
+lvl_texture = ExtResource("2_ivm8q")
+lvl_icon = ExtResource("1_u7sdr")
+lvl_color = Color(0, 0.360784, 0.658824, 1)
+lvl_color_highlight = Color(0.34902, 0.717647, 1, 1)
+map_coordinate = Vector3(2.12046, 0, -0.335026)
+map_scale = 2.3
+dial_zap = "zap_lvl0"
+dial_hub_welcome = "dial_hub_welcome"
+dial_hub_win = "dial_hub_lvl_0_win"
+dial_hub_win_array = Array[String]([])
+dial_hub_pre_unlock = "dial_hub_lvl_0_pre_unlock"
+dial_hub_pos_unlock = "dial_hub_lvl_0_pos_unlock"
+dial_hub_lvl_still_locked = "dial_hub_lvl_still_locked"
+dial_hub_stars_locked = "dial_hub_stars_locked"
+dial_hub_stars_unlocked_first = "dial_hub_stars_unlocked_first"
+dial_hub_stars_unlocked_full = "dial_hub_stars_unlocked_full"
+buy_as_many = Array[ExtResource("1_slrsy")]([SubResource("Resource_7akry"), SubResource("Resource_yiwq1")])
+buy_one = Array[ExtResource("1_slrsy")]([])
+buy_start = Array[ExtResource("1_slrsy")]([SubResource("Resource_2hfsl")])
+_leaderboard_id = 1
+_achievement_beat_id = 1

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://p1646blom23j"]
+
+[ext_resource type="PackedScene" uid="uid://3ovk8k8aoto1" path="res://elements/stage_pieces/factory/stage_piece_fabrica_room.tscn" id="1_lgx0w"]
+[ext_resource type="PackedScene" uid="uid://dq80q0mj0xxfn" path="res://elements/background/element_factory_wall.tscn" id="2_whwgw"]
+
+[node name="Stage Piece Fabrica Room _Walled" instance=ExtResource("1_lgx0w")]
+
+[node name="right" parent="Config" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 24)
+
+[node name="left" parent="Config" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 24)
+
+[node name="FactoryWall3" parent="Scenery" index="1" instance=ExtResource("2_whwgw")]
+transform = Transform3D(5.5, 0, 0, 0, 4, 0, 0, 0, 1, -7.5, 0, 1.75)
+
+[node name="FactoryWall4" parent="Scenery" index="2" instance=ExtResource("2_whwgw")]
+transform = Transform3D(5.5, 0, 0, 0, 4, 0, 0, 0, 1, 2, 0, 1.75)

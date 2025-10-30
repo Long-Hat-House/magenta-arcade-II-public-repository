@@ -1,0 +1,102 @@
+[gd_resource type="Resource" script_class="SheetData" load_steps=2 format=3 uid="uid://i4mtiey625s1"]
+
+[ext_resource type="Script" uid="uid://d0gdh5yrptva7" path="res://addons/google_sheet_importer/google_sheet_data.gd" id="1_0t6ti"]
+
+[resource]
+script = ExtResource("1_0t6ti")
+spreadsheet_id = "1JR36bWGjwASHKkCGeSoUZyO7q9bEEM8lROV7VgvMOVk"
+sheet_id = "credits_sets"
+fields = PackedStringArray("set_id", "section_title", "section_info", "@section_image", "@default_entry_texture_2", "section_color_highlight", "section_color_bg", "pt_br")
+rows = Array[Dictionary]([{
+"@default_entry_texture_2": "",
+"@section_image": "",
+"pt_br": "Desenvolvido por",
+"section_color_bg": "",
+"section_color_highlight": "",
+"section_info": "",
+"section_title": "credits_dev_studio",
+"set_id": "longhat"
+}, {
+"@default_entry_texture_2": "",
+"@section_image": "",
+"pt_br": "Equipe Principal",
+"section_color_bg": "",
+"section_color_highlight": "",
+"section_info": "",
+"section_title": "credits_dev_team",
+"set_id": "dev"
+}, {
+"@default_entry_texture_2": "",
+"@section_image": "",
+"pt_br": "Ferramentas de Acessibilidade",
+"section_color_bg": "",
+"section_color_highlight": "",
+"section_info": "",
+"section_title": "credits_ufmg",
+"set_id": "ufmg"
+}, {
+"@default_entry_texture_2": "",
+"@section_image": "",
+"pt_br": "Playtest de Acessibilidade",
+"section_color_bg": "",
+"section_color_highlight": "",
+"section_info": "",
+"section_title": "credits_ufmg_testing",
+"set_id": "ufmg_test"
+}, {
+"@default_entry_texture_2": "",
+"@section_image": "",
+"pt_br": "Integração de SDKs",
+"section_color_bg": "",
+"section_color_highlight": "",
+"section_info": "",
+"section_title": "credits_integrations",
+"set_id": "integrations"
+}, {
+"@default_entry_texture_2": "",
+"@section_image": "",
+"pt_br": "Localização",
+"section_color_bg": "",
+"section_color_highlight": "",
+"section_info": "",
+"section_title": "credits_localization",
+"set_id": "localization"
+}, {
+"@default_entry_texture_2": "",
+"@section_image": "",
+"pt_br": "Playtest",
+"section_color_bg": "",
+"section_color_highlight": "",
+"section_info": "",
+"section_title": "credits_testing",
+"set_id": "test"
+}, {
+"@default_entry_texture_2": "",
+"@section_image": "",
+"pt_br": "\"Apoio
+Magenta Arcade II é um projeto realizado com recursos da Lei Paulo Gustavo (LC 195/2022) por meio do Edital BH nas Telas - Edição Paulo Gustavo",
+"section_color_bg": "",
+"section_color_highlight": "",
+"section_info": "credits_support_text",
+"section_title": "credits_support",
+"set_id": "lpg"
+}, {
+"@default_entry_texture_2": "",
+"@section_image": "",
+"pt_br": "Desenvolvido com",
+"section_color_bg": "",
+"section_color_highlight": "",
+"section_info": "",
+"section_title": "credits_tools",
+"set_id": "tools"
+}, {
+"@default_entry_texture_2": "",
+"@section_image": "",
+"pt_br": "Agradecimentos Especiais",
+"section_color_bg": "",
+"section_color_highlight": "",
+"section_info": "",
+"section_title": "credits_thanks",
+"set_id": "thanks"
+}])
+metadata/_custom_type_script = "uid://d0gdh5yrptva7"

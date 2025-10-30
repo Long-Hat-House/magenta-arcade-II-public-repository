@@ -1,0 +1,11 @@
+[gd_resource type="WwiseSwitch" load_steps=2 format=3 uid="uid://ct5s0mu5j362o"]
+
+[ext_resource type="WwiseSwitchGroup" uid="uid://b1phtk0sgalxx" path="res://Wwise/resources/Switch Group/{F0D9B32D-6570-4430-9E05-C1CC372ED8F8}.tres" id="1_1aog1"]
+
+[resource]
+group_ref = ExtResource("1_1aog1")
+group_id = 3937790049
+name = "Decrease"
+id = 1544965421
+guid = "{05BA2BB3-6841-4D39-ABB3-DD6DC729A99D}"
+dummy = true

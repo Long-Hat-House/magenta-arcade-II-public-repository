@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://dlp8u8pf6y834"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_FinalBoss_Lv4_Final_Spirit_Warning"
+id = 334431868
+guid = "{70FF6435-C98F-440A-B27F-84A3BC07EA2D}"
+dummy = true

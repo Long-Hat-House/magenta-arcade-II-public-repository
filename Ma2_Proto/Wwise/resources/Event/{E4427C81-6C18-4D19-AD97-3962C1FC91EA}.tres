@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" load_steps=0 format=3 uid="uid://ghrncq2n2d6q"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Int_Pressable_Button_Round_On"
+id = 2854315415
+guid = "{E4427C81-6C18-4D19-AD97-3962C1FC91EA}"
+dummy = true

@@ -1,0 +1,14 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dbjstirp1y8x4"]
+
+[ext_resource type="FontVariation" uid="uid://cq5jkjaykkaeu" path="res://elements/ui/fonts/BalooBhaina2_ExtraBold.tres" id="1_hqdd7"]
+
+[resource]
+line_spacing = -90.0
+font = ExtResource("1_hqdd7")
+font_size = 100
+font_color = Color(0.972549, 0.933333, 0.894118, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 15
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)

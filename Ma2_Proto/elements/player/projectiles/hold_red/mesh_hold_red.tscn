@@ -1,0 +1,208 @@
+[gd_scene load_steps=12 format=3 uid="uid://dc38kup30frfo"]
+
+[ext_resource type="Script" uid="uid://bjnpmcrptfb85" path="res://systems/utils/random_rotation_local.gd" id="1_7u2w3"]
+[ext_resource type="Shader" uid="uid://bemxrjxbxn0q7" path="res://elements/player/projectiles/materials/proj_hold_red_shader.tres" id="1_h6wp0"]
+[ext_resource type="Material" uid="uid://r1m6m874b01v" path="res://elements/m_simple_color_emission.tres" id="2_hdb7g"]
+[ext_resource type="Material" uid="uid://60yy2jvxby7c" path="res://elements/player/projectiles/hold_red/material/m_hold_red_magma.tres" id="3_nafv7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4hpbm"]
+render_priority = 0
+shader = ExtResource("1_h6wp0")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qywea"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ob3il"]
+radial_segments = 16
+rings = 8
+
+[sub_resource type="Animation" id="Animation_xhsni"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sphere:material_override:uv1_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sphere:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("fire:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sphere2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sphere2:instance_shader_parameters/energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+
+[sub_resource type="Animation" id="Animation_5i881"]
+resource_name = "hold_red"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sphere:material_override:uv1_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sphere:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.533333, 0.766667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.8, 0.8, 0.8), Vector3(1, 1, 1), Vector3(0.8, 0.8, 0.8), Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("fire:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.333333),
+"transitions": PackedFloat32Array(1, 2, 1),
+"update": 0,
+"values": [Vector3(1.2, 1.5, 1), Vector3(1.2, 1.5, 1), Vector3(1.5, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sphere2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.533333, 0.766667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.8, 0.8, 0.8), Vector3(1, 1, 1), Vector3(0.8, 0.8, 0.8), Vector3(1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sphere2:instance_shader_parameters/energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1.46409, 0.307786, 1),
+"update": 0,
+"values": [0.5, 20.0, 0.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h1m5h"]
+_data = {
+&"RESET": SubResource("Animation_xhsni"),
+&"hold_red": SubResource("Animation_5i881")
+}
+
+[sub_resource type="GDScript" id="GDScript_m8aqi"]
+script/source = "extends AnimationPlayer
+
+
+func _enter_tree() -> void:
+	play(\"RESET\")
+	play(\"hold_red\")
+"
+
+[node name="hold_red" type="Node3D"]
+
+[node name="fire" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.138885, 0)
+
+[node name="vfx_fire" type="MeshInstance3D" parent="fire"]
+transform = Transform3D(0.53033, -0.707107, 3.09086e-08, 0, -4.37114e-08, -1, 0.53033, 0.707107, -3.09086e-08, 0, 1, 0)
+material_override = SubResource("ShaderMaterial_4hpbm")
+mesh = SubResource("PlaneMesh_qywea")
+skeleton = NodePath("../..")
+
+[node name="vfx_fire2" type="MeshInstance3D" parent="fire"]
+transform = Transform3D(-0.53033, -0.707107, 3.09086e-08, 0, -4.37114e-08, -1, 0.53033, -0.707107, 3.09086e-08, 0, 1, 0)
+material_override = SubResource("ShaderMaterial_4hpbm")
+mesh = SubResource("PlaneMesh_qywea")
+skeleton = NodePath("../..")
+
+[node name="vfx_fire3" type="MeshInstance3D" parent="fire"]
+transform = Transform3D(-0.53033, -0.707107, 4.37114e-08, -2.31815e-08, -3.09086e-08, -1, 0.53033, -0.707107, 1.91069e-15, 0, 1, 0)
+visible = false
+material_override = SubResource("ShaderMaterial_4hpbm")
+mesh = SubResource("PlaneMesh_qywea")
+skeleton = NodePath("../..")
+
+[node name="vfx_fire4" type="MeshInstance3D" parent="fire"]
+transform = Transform3D(-0.482902, 0.765135, -3.34451e-08, 0, -4.37114e-08, -1, -0.573851, -0.64387, 2.81444e-08, 0, 1, 0)
+visible = false
+material_override = SubResource("ShaderMaterial_4hpbm")
+mesh = SubResource("PlaneMesh_qywea")
+skeleton = NodePath("../..")
+
+[node name="sphere2" type="MeshInstance3D" parent="."]
+visible = false
+material_override = ExtResource("2_hdb7g")
+instance_shader_parameters/color = Color(0.898039, 0.4, 0.0235294, 1)
+instance_shader_parameters/emissive = Color(0.827451, 0.12549, 0.286275, 1)
+instance_shader_parameters/energy = 0.5
+mesh = SubResource("SphereMesh_ob3il")
+skeleton = NodePath("../sphere")
+
+[node name="sphere" type="MeshInstance3D" parent="."]
+material_override = ExtResource("3_nafv7")
+mesh = SubResource("SphereMesh_ob3il")
+script = ExtResource("1_7u2w3")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_h1m5h")
+}
+script = SubResource("GDScript_m8aqi")

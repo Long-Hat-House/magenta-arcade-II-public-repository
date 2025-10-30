@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjltgpinxxocw"]
+
+[ext_resource type="PackedScene" uid="uid://c7ft4lc6ukiy0" path="res://elements/levels/level_structure/level_game_pack.tscn" id="2_8t2tw"]
+[ext_resource type="PackedScene" uid="uid://cqrb2x17wcl14" path="res://elements/levels/level_structure/level_environment_day_bright.tscn" id="4_pxdad"]
+
+[sub_resource type="GDScript" id="GDScript_i8a77"]
+resource_name = "lvl_test"
+script/source = "extends Level
+
+const STAGE_PIECE_AFONSO_PENA_LANES = preload(\"res://elements/stage_pieces/stage_piece_afonso_pena_lanes3.tscn\")
+
+#enemies
+const ENEMY_ROBOTO_COPTER = preload(\"res://elements/enemy/copter/enemy_roboto_copter.tscn\")
+const TEXT_FLOW_PLAYER_ZAP = preload(\"res://modules/text_flow/zap/scenes/text_flow_player_zap.tscn\")
+
+@onready var _pieces_street:Array[PackedScene] = [STAGE_PIECE_AFONSO_PENA_LANES]
+
+func _ready():
+	prepare_level()
+	cmd_array([
+		CMD_Callable.new(scene_1),
+	])
+
+func prepare_level():
+	stage.set_stage_size(Vector3(12,0,27))
+	cam.set_offset(Vector3(0,26,28))
+
+func _create_obj(scene, positon:Vector3, speaker_id:String, speaker_offset:Vector3 = Vector3.UP):
+	var obj = objs.create_object(scene)
+	var spk = TextFlowBubbleSpeaker.new()
+	spk.followee = obj
+	spk.offset = speaker_offset
+	TextFlowPlayer.SET_GLOBAL_SPEAKER(spk, speaker_id)
+	obj.position = positon
+	var text = Label3D.new()
+	text.text = speaker_id
+	text.rotation_degrees = Vector3(-90,0,0)
+	text.position = Vector3.UP*0.1 + Vector3.FORWARD*-1.5
+	text.font_size *= 3
+	text.outline_size = 50
+	text.outline_modulate = Color.BLACK
+	obj.add_child(text)
+	return obj
+
+func scene_1(invert:bool = false):
+	stage.fill_with(_pieces_street, stage._stage_size.z)
+	stage.set_pivot_offset(Vector3(-6 if invert else 6,0,0))
+	stage.repivot()
+
+	stage.set_grid_spacing(2, 2)
+
+	var flow_player:TextFlowPlayerZap = TEXT_FLOW_PLAYER_ZAP.instantiate() as TextFlowPlayerZap
+	add_child(flow_player)
+
+	var copter = _create_obj(ENEMY_ROBOTO_COPTER, stage.get_grid(0, 7), \"copter\")
+	objs.add_to_group_node(copter, \"e\")
+
+	flow_player.queue_flow(\"zap_lvl0\", false, true)
+	flow_player.queue_flow(\"zap_lvl1\", false, true)
+	flow_player.queue_flow(\"zap_lvl2\", false, false)
+
+	cmd(CMD_Sequence.new([
+		CMD_Wait_Signal.new(flow_player.play_pressed),
+		cam.cmd_position(stage.get_pos_x(), 1, LevelCameraController.MovementAxis.X),
+		cam.cmd_position_wait(stage.get_pos_z(), 1.5, LevelCameraController.MovementAxis.Z),
+		objs.cmd_wait_group(\"e\"),
+	]))
+"
+
+[node name="LVL ZAP" type="Node3D"]
+script = SubResource("GDScript_i8a77")
+
+[node name="LevelEnvironmentDayBright" parent="." instance=ExtResource("4_pxdad")]
+
+[node name="LevelGamePack" parent="." instance=ExtResource("2_8t2tw")]

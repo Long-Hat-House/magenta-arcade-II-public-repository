@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://cl77r3ldqpiqc"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Enemy_Brawny_Fall_Impact"
+id = 1631403871
+guid = "{139F6479-29C5-49E2-B8EA-0D26CD0003F0}"
+dummy = true

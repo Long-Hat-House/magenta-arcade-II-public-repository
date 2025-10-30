@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c444c2ol5myg"]
+
+[ext_resource type="PackedScene" uid="uid://cslmqsxlcswj3" path="res://elements/neutral/props/vegetation/mesh/trunk.glb" id="1_s3ck3"]
+[ext_resource type="Material" uid="uid://d2wh0t6852qko" path="res://elements/neutral/props/vegetation/material/m_trunk.tres" id="2_xspwl"]
+
+[node name="trunk" instance=ExtResource("1_s3ck3")]
+
+[node name="trunk" parent="." index="0"]
+material_override = ExtResource("2_xspwl")

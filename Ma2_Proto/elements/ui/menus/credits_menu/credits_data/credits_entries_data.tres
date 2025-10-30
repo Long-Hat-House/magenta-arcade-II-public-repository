@@ -1,0 +1,562 @@
+[gd_resource type="Resource" script_class="SheetData" load_steps=2 format=3 uid="uid://chmmi5588r7jd"]
+
+[ext_resource type="Script" uid="uid://d0gdh5yrptva7" path="res://addons/google_sheet_importer/google_sheet_data.gd" id="1_ji04t"]
+
+[resource]
+script = ExtResource("1_ji04t")
+spreadsheet_id = "1JR36bWGjwASHKkCGeSoUZyO7q9bEEM8lROV7VgvMOVk"
+sheet_id = "credits_entries"
+fields = PackedStringArray("set_id", "entry_name", "entry_role", "entry_information", "@entry_texture", "@entry_texture_2", "entry_color_highlight", "entry_color_bg", "pt_br")
+rows = Array[Dictionary]([{
+"@entry_texture": "uid://lg2aioyb3c1f",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "",
+"entry_role": "",
+"pt_br": "",
+"set_id": "longhat"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "@LRasoMattos",
+"entry_name": "Lucas Mattos",
+"entry_role": "credits_dev_production",
+"pt_br": "Produção e Desenvolvimento",
+"set_id": "dev"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "@jobrantjo",
+"entry_name": "João Brant",
+"entry_role": "credits_dev_design",
+"pt_br": "Design e Desenvolvimento",
+"set_id": "dev"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "@lailalory",
+"entry_name": "Laila Alves",
+"entry_role": "credits_dev_art2d",
+"pt_br": "Arte e Animação 2D",
+"set_id": "dev"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "@end_z_",
+"entry_name": "Juliendrios Oliveira",
+"entry_role": "credits_dev_art3d",
+"pt_br": "Arte e Animação 3D",
+"set_id": "dev"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "@tavosmm",
+"entry_name": "Tavos Mata Machado",
+"entry_role": "credits_dev_narrative",
+"pt_br": "Roteiro & Tradução",
+"set_id": "dev"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "@thommaz",
+"entry_name": "Thommaz Kauffmann",
+"entry_role": "credits_dev_audio",
+"pt_br": "Música e Efeitos Sonoros",
+"set_id": "dev"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "COLTEC - UFMG",
+"entry_role": "credits_ufmg_partner",
+"pt_br": "Parceria",
+"set_id": "ufmg"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "credits_ufmg_coordinator_info",
+"entry_name": "Virgínia Fernandes Mota",
+"entry_role": "credits_ufmg_coordinator",
+"pt_br": "Coordenadora
+Professora & Pesquisadora especialista em Acessibilidade para Jogos",
+"set_id": "ufmg"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Helena Muniz",
+"entry_role": "credits_ufmg_master",
+"pt_br": "Bolsista de Mestrado",
+"set_id": "ufmg"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "João Smolinski",
+"entry_role": "credits_ufmg_grad",
+"pt_br": "Bolsista de Graduação",
+"set_id": "ufmg"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Heitor Henrique dos Santos",
+"entry_role": "credits_ufmg_grad",
+"pt_br": "Bolsista de Graduação",
+"set_id": "ufmg"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Eduardo Santos Birchal",
+"entry_role": "",
+"pt_br": "",
+"set_id": "ufmg_test"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Kailainy Cardoso",
+"entry_role": "",
+"pt_br": "",
+"set_id": "ufmg_test"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Layla Barcala Leão",
+"entry_role": "",
+"pt_br": "",
+"set_id": "ufmg_test"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Thaís Mayara Rodrigues de Almeida Oliveira",
+"entry_role": "",
+"pt_br": "",
+"set_id": "ufmg_test"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Tuender Durães de Lima",
+"entry_role": "",
+"pt_br": "",
+"set_id": "ufmg_test"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Gil Barbosa Reis",
+"entry_role": "",
+"pt_br": "",
+"set_id": "integrations"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Andrés GM González",
+"entry_role": "credits_localization_spanish",
+"pt_br": "Espanhol",
+"set_id": "localization"
+}, {
+"@entry_texture": "uid://bhafqdo5dlyxr",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "",
+"entry_role": "",
+"pt_br": "",
+"set_id": "lpg"
+}, {
+"@entry_texture": "uid://onvoko17bdjo",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "",
+"entry_role": "credits_tools_godot_info",
+"pt_br": "© godotengine.org/license",
+"set_id": "tools"
+}, {
+"@entry_texture": "uid://cl1pnj22i6oga",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "",
+"entry_role": "credits_tools_wwise_info",
+"pt_br": "Desenvolvido com Wwise © 2006 – 2025 Audiokinetic Inc. Todos os direitos reservados.",
+"set_id": "tools"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "AC Jogos - MG",
+"entry_role": "",
+"pt_br": "",
+"set_id": "thanks"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Amigos do Gujo",
+"entry_role": "",
+"pt_br": "",
+"set_id": "thanks"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Bia Pappone",
+"entry_role": "",
+"pt_br": "",
+"set_id": "thanks"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Hannah Pinheiro",
+"entry_role": "",
+"pt_br": "",
+"set_id": "thanks"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Ieda Maria C. Pinto Alves",
+"entry_role": "",
+"pt_br": "",
+"set_id": "thanks"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "José Silva Tavares",
+"entry_role": "",
+"pt_br": "",
+"set_id": "thanks"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Julival Caetano",
+"entry_role": "",
+"pt_br": "",
+"set_id": "thanks"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Laércio Mattos",
+"entry_role": "",
+"pt_br": "",
+"set_id": "thanks"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Luana Darque",
+"entry_role": "",
+"pt_br": "",
+"set_id": "thanks"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Luis Guilherme Kauffmann",
+"entry_role": "",
+"pt_br": "",
+"set_id": "thanks"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Marcela Raso",
+"entry_role": "",
+"pt_br": "",
+"set_id": "thanks"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Marcelo Costa",
+"entry_role": "",
+"pt_br": "",
+"set_id": "thanks"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Maria da Gloria",
+"entry_role": "",
+"pt_br": "",
+"set_id": "thanks"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Maria Inez Raso",
+"entry_role": "",
+"pt_br": "",
+"set_id": "thanks"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Norton José Caldeira",
+"entry_role": "",
+"pt_br": "",
+"set_id": "thanks"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Paula Raso",
+"entry_role": "",
+"pt_br": "",
+"set_id": "thanks"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Rafaela Pascoal",
+"entry_role": "",
+"pt_br": "",
+"set_id": "thanks"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Renata Padilha",
+"entry_role": "",
+"pt_br": "",
+"set_id": "thanks"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Sandra Hévila Reis",
+"entry_role": "",
+"pt_br": "",
+"set_id": "thanks"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Tarsila Kauffmann",
+"entry_role": "",
+"pt_br": "",
+"set_id": "thanks"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Thaïs Pappone Kauffmann",
+"entry_role": "",
+"pt_br": "",
+"set_id": "thanks"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Tiago Gualter",
+"entry_role": "",
+"pt_br": "",
+"set_id": "thanks"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "credits_thanks_you",
+"entry_role": "",
+"pt_br": "Você :)",
+"set_id": "thanks"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Camila Laranjeira",
+"entry_role": "",
+"pt_br": "",
+"set_id": "test"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Renata Padilha",
+"entry_role": "",
+"pt_br": "",
+"set_id": "test"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Lucas Mello",
+"entry_role": "",
+"pt_br": "",
+"set_id": "test"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Lourenço Lage",
+"entry_role": "",
+"pt_br": "",
+"set_id": "test"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "eDChronos",
+"entry_role": "",
+"pt_br": "",
+"set_id": "test"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Beheks",
+"entry_role": "",
+"pt_br": "",
+"set_id": "test"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "DaniloMalzao",
+"entry_role": "",
+"pt_br": "",
+"set_id": "test"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Hugo Vellozo",
+"entry_role": "",
+"pt_br": "",
+"set_id": "test"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Matheus Felicetti",
+"entry_role": "",
+"pt_br": "",
+"set_id": "test"
+}, {
+"@entry_texture": "",
+"@entry_texture_2": "",
+"entry_color_bg": "",
+"entry_color_highlight": "",
+"entry_information": "",
+"entry_name": "Dani Serranú",
+"entry_role": "",
+"pt_br": "",
+"set_id": "test"
+}])
+metadata/_custom_type_script = "uid://d0gdh5yrptva7"

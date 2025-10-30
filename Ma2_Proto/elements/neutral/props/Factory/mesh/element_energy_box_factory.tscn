@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2uqxti6p0agc"]
+
+[ext_resource type="PackedScene" uid="uid://cmukmuak08vjp" path="res://elements/neutral/props/Factory/mesh/energy_box_factory.glb" id="1_rxtce"]
+[ext_resource type="Material" uid="uid://dvb3etner4tpy" path="res://elements/neutral/props/Factory/material/m_lamp_box_tube_factory.tres" id="2_q4b11"]
+
+[node name="energy_box_factory" instance=ExtResource("1_rxtce")]
+
+[node name="ENERGY_BOX" parent="." index="0"]
+material_override = ExtResource("2_q4b11")
+cast_shadow = 0

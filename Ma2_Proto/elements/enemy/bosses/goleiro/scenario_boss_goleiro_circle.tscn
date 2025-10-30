@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://l7vi55idti5r"]
+
+[sub_resource type="GDScript" id="GDScript_j4ltr"]
+script/source = "@tool
+extends Node3D
+
+@export var line_size:float = 1;
+
+@onready var mesh: CSGTorus3D = $Mesh
+
+func _process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		var scale:Vector3 = mesh.global_basis.get_scale();
+		var max_scale:float = maxf(absf(scale.x), maxf(absf(scale.y), absf(scale.z)));
+		mesh.inner_radius = mesh.outer_radius - line_size / max_scale;
+		
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mipfd"]
+albedo_color = Color(0.703808, 0.703808, 0.703808, 1)
+
+[node name="Scenario_Boss_Goleiro_Circle" type="Node3D"]
+script = SubResource("GDScript_j4ltr")
+
+[node name="Mesh" type="CSGTorus3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, 0, 0)
+sides = 16
+material = SubResource("StandardMaterial3D_mipfd")

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2g5r65iw01ae"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_h6xis"]
+height = 0.1
+radial_segments = 12
+rings = 1
+cap_bottom = false
+
+[node name="BaseShadow" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
+cast_shadow = 3
+mesh = SubResource("CylinderMesh_h6xis")

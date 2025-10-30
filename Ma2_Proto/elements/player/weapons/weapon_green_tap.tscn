@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://3qmk5ehflj3s"]
+
+[ext_resource type="Script" uid="uid://g3lfu2g84isn" path="res://elements/player/weapons/player_weapon_tap.gd" id="1_nwuts"]
+[ext_resource type="Texture2D" uid="uid://bie73vt0g62kn" path="res://elements/icons/icon_tap_green.png" id="2_1txtc"]
+[ext_resource type="Script" uid="uid://dra7nitmq3ukf" path="res://elements/player/weapons/player_weapon_level_instantiate.gd" id="3_dbyax"]
+[ext_resource type="PackedScene" uid="uid://bqlsobhuorx7g" path="res://elements/player/projectiles/tap_green/proj_tap_green.tscn" id="4_mtcj4"]
+
+[node name="Weapon_Green Tap" type="Node"]
+script = ExtResource("1_nwuts")
+_tap_cost = 18.0
+icon = ExtResource("2_1txtc")
+title = "powerup_tap_green_title"
+id = 3
+type = 1
+color = Color(0, 0.364706, 0.27451, 1)
+color_highlight = Color(0.0392157, 0.796078, 0, 1)
+
+[node name="PlayerWeaponLevel_Instantiate" type="Node3D" parent="."]
+script = ExtResource("3_dbyax")
+projectile = ExtResource("4_mtcj4")

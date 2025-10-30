@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1x13fa0nh2cw"]
+
+[ext_resource type="PackedScene" uid="uid://bw2hylvp70n01" path="res://elements/neutral/props/pole_pieces/element_traffic_sign_1x2_base.tscn" id="1_u5apb"]
+[ext_resource type="Texture2D" uid="uid://b2s6x6fjchad5" path="res://elements/neutral/props/pole_pieces/signs/trafficsign_busstation_2x3.png" id="2_as8wc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpbll"]
+resource_local_to_scene = true
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("2_as8wc")
+
+[node name="Traffic Sign" instance=ExtResource("1_u5apb")]
+texture = ExtResource("2_as8wc")
+
+[node name="square_sign" parent="." index="1"]
+transform = Transform3D(1.025, 0, 0, 0, 1.299, 0, 0, 0, 1, 0, 0, 0.20727)
+surface_material_override/0 = SubResource("StandardMaterial3D_hpbll")
+
+[node name="MeshInstance3D" parent="." index="2"]
+transform = Transform3D(2.5, 0, 0, 0, 1.668, 0, 0, 0, 1, 0, 0, 0)

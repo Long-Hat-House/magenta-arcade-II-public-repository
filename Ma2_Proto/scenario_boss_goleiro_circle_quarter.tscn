@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dof6x7c7qhv2b"]
+
+[ext_resource type="PackedScene" uid="uid://wv2n2lwu48rf" path="res://scenario_boss_goleiro_circle_half.tscn" id="1_hah11"]
+
+[node name="Scenario_Boss_Goleiro_Circle_Quarter" instance=ExtResource("1_hah11")]
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0.1, 0)
+script = null
+
+[node name="Mesh" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Mesh" index="1"]
+transform = Transform3D(1, 0, 0, 0, 10, 0, 0, 0, 1, 0, 0, -1)
+operation = 2
+size = Vector3(2.25, 1, 2)

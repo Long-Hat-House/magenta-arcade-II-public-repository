@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://d2a36efdg3s4b"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Int_Phone_Ringing"
+id = 2486052939
+guid = "{522B1239-12E4-4E81-BE28-80FFE6FEE318}"
+dummy = true

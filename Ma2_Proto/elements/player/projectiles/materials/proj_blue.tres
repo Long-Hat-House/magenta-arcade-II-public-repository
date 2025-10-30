@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://by2ylqngsrx1p"]
+
+[resource]
+resource_local_to_scene = true
+emission_enabled = true
+emission_energy_multiplier = 2.0
+rim = 0.3
+rim_tint = 1.0
+anisotropy = 1.0
+disable_receive_shadows = true

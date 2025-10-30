@@ -1,0 +1,658 @@
+[gd_scene load_steps=21 format=3 uid="uid://tf1v5yknkl5b"]
+
+[ext_resource type="Script" uid="uid://bt3rgk2gx218p" path="res://systems/stage/level_stage_piece.gd" id="1_7a68u"]
+[ext_resource type="PackedScene" uid="uid://dtjg7g4ej01lh" path="res://elements/background/element_water.tscn" id="3_b0xss"]
+[ext_resource type="PackedScene" uid="uid://cyydcxwe3mm54" path="res://elements/neutral/props/pampulha_church/element_pampulha_church.tscn" id="4_gni64"]
+[ext_resource type="PackedScene" uid="uid://yjglagfjn8er" path="res://elements/npc/npc.tscn" id="5_8ml8i"]
+[ext_resource type="PackedScene" uid="uid://cnp3rf2clqmym" path="res://elements/background/element_grass_full.tscn" id="5_lik4u"]
+[ext_resource type="PackedScene" uid="uid://c00kqth38jmst" path="res://systems/stage/stage_screen_measure.tscn" id="5_vvorr"]
+[ext_resource type="PackedScene" uid="uid://ctbkjd21yqlm4" path="res://elements/neutral/props/vegetation/element_bush.tscn" id="5_wg0d6"]
+[ext_resource type="PackedScene" uid="uid://sbnc0uylbyp5" path="res://elements/npc/capybara/npc_capybara.tscn" id="5_wws4v"]
+[ext_resource type="PackedScene" uid="uid://cvrxspt6by06j" path="res://elements/neutral/props/vegetation/element_palm.tscn" id="5_yfr2f"]
+[ext_resource type="PackedScene" uid="uid://cxqe15ub6mrk1" path="res://elements/neutral/props/vegetation/element_tree.tscn" id="6_5acyb"]
+[ext_resource type="PackedScene" uid="uid://di223ec2wt2mc" path="res://elements/neutral/props/vegetation/mesh/mesh_plant_grass.tscn" id="6_wolsk"]
+[ext_resource type="PackedScene" uid="uid://l3dy36lol626" path="res://elements/neutral/props/rock/mesh/mesh_rock.tscn" id="7_3p3h6"]
+[ext_resource type="Script" uid="uid://dsvfipg4mxr7k" path="res://systems/line3d/child_line_3d.gd" id="7_fwvrw"]
+[ext_resource type="PackedScene" uid="uid://cyq2gafngh08" path="res://elements/neutral/props/poles/element_pole_light_small.tscn" id="7_kpdga"]
+[ext_resource type="PackedScene" uid="uid://cyqa4jwyio6sd" path="res://elements/background/element_grass_tile.tscn" id="14_owmxk"]
+[ext_resource type="Resource" uid="uid://b4sm3a668ml1i" path="res://elements/levels/level_structure/camera_movement_data_by_duration.tres" id="14_tu75e"]
+[ext_resource type="PackedScene" uid="uid://bb1ghixcy2bam" path="res://elements/neutral/props/vegetation/mesh/mesh_grass_border.tscn" id="15_h4011"]
+
+[sub_resource type="GDScript" id="GDScript_mvg20"]
+resource_name = "lvl_sub"
+script/source = "extends Level
+
+const CHALLENGE_CHURCH = preload(\"res://systems/challenge/challenges/challenge_church.tres\")
+const CHALLENGE_DISPLAY_FLOAT_CURRENT_OF_TARGET = preload(\"res://elements/challenge/challenge_display_float_current_of_target.tscn\")
+const CHALLENGE_DISPLAY_PROGRESS_BAR = preload(\"res://elements/challenge/challenge_display_float_progress_bar.tscn\")
+
+## enemies
+const ENEMY_PIZZA_ROBOTO = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto.tscn\")
+const ENEMY_PIZZA_ROBOTO_SHOOTER = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto_shooter.tscn\")
+const ENEMY_PIZZA_ROBOTO_STOPPED = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto_stopped.tscn\")
+const ENEMY_ROBOTO_COPTER = preload(\"res://elements/enemy/copter/enemy_roboto_copter.tscn\")
+const ENEMY_JACARE = preload(\"res://elements/enemy/roboto_jacare/enemy_jacare.tscn\")
+const ENEMY_TUCANO = preload(\"res://elements/enemy/roboto_tucano/enemy_tucano.tscn\")
+
+var group_challenge:String = \"challenge\";
+
+@onready var element_pampulha_church: Element_PampulhaChurch = $CHURCH/Scenery/ElementPampulhaChurch
+
+@onready var line_left_full: ChildLine3D = $\"CHURCH/Copters/Line LeftFull\"
+@onready var line_left_mid: ChildLine3D = $\"CHURCH/Copters/Line LeftMid\"
+@onready var line_right_full: ChildLine3D = $\"CHURCH/Copters/Line RightFull\"
+@onready var line_right_mid: ChildLine3D = $\"CHURCH/Copters/Line RightMid\"
+
+
+@export var piece:LevelStagePiece;
+@export var enemies_id:String = \"challenge_church_enemies\";
+@export var church_hp_id:String = \"challenge_church_churchHP\";
+@export var challenge_follow_up_id:String = \"challenge_church_followup\"
+
+@export var enemies_to_win:int = 12;
+
+func _ready():
+	await await_for_level_ready()
+
+	current_measure_index = -1;
+	stage.attach_piece(piece);
+	stage.repivot();
+
+	var challenge = {
+		displayEnemies = CHALLENGE_DISPLAY_FLOAT_CURRENT_OF_TARGET.instantiate(),
+		displayChurchHP = CHALLENGE_DISPLAY_PROGRESS_BAR.instantiate(),
+		killed = 0,
+	}
+
+	var make_pizzas = func make_pizzas(what:Array, where:Vector3, dir:Vector3, quantity:int, vel_multiplier:float = 1, interval:float = 2, extra_call:Callable = Callable()):
+		dir = dir.normalized();
+		var dist:Vector3 = -dir * interval;
+		var max_what:int = what.size() - 1;
+		for i in range(quantity):
+			var pizza:AI_WalkAndDo = objs.create_object(what[mini(i, max_what)], group_challenge, where + dist * i, Vector3.ZERO, true);
+			pizza.walkVelocity = dir * pizza.walkVelocity.length() * vel_multiplier;
+			pizza.walkAndStop = false;
+			pizza.spawn_direction = Vector3.FORWARD;
+			if extra_call:
+				extra_call.call(pizza);
+			print(\"pizza is %s going to %s (%s objects in group %s)\" % [where + dist * i, pizza.walkVelocity, objs.get_group_elements_count(group_challenge), group_challenge]);
+
+	var make_copters = func make_copters(line:ChildLine3D, quantity:int, interval:float = 2, vel_multiplier:float = 0.5):
+		for i in range(quantity):
+			var copter:AI_Roboto_Copter = objs.create_object(ENEMY_ROBOTO_COPTER, group_challenge, Vector3.ZERO, Vector3.ZERO, true);
+			copter.set_line(line, true, -i * interval);
+			copter.velocityLine *= vel_multiplier;
+
+	var cmd_copters = func cmd_copters(line:ChildLine3D, quantity:int, interval:float = 2, vel_multiplier:float = 0.75):
+		return CMD_Callable.new(make_copters.bind(line, quantity, interval, vel_multiplier))
+
+	var cmd_eternal_jacare = func cmd_eternal_jacare(where:Callable, dir:Vector3):
+		var dic:Dictionary = {
+			jacare = null,
+		}
+		return CMD_Sequence.new([
+			CMD_Wait_Seconds.new(0.25),
+			CMD_Callable.new(func create_the_jac():
+				dic.jacare = objs.create_object(ENEMY_JACARE, group_challenge, where.call(), dir, true);
+				),
+			CMD_Wait_Callable.new(func wait_the_jac():
+				return not is_instance_valid(dic.jacare)),
+			CMD_Wait_Seconds.new(4),
+		], -1);
+
+	var out:float = 6;
+	var number_of_enemies:int = enemies_to_win;
+
+
+	cmd_array([
+		##Measure 0
+		CMD_Callable.new(func():
+			stage.set_pivot_offset_to_exactly_node(get_next_measure());
+			cam.tween_position_vector(stage.get_grid(0,0), 2);
+			),
+		CMD_Wait_Seconds.new(1.8),
+
+
+		##Measure 1 (challenge)
+		CMD_Callable.new(func():
+			stage.set_pivot_offset_to_exactly_node(get_next_measure());
+			cam.tween_position_vector(stage.get_grid(0,0), 2);
+			),
+		CMD_Wait_Seconds.new(1.8),
+		CMD_Callable.new(func():
+			challenge.displayEnemies.set_display(enemies_id, 0, number_of_enemies, 0);
+			challenge.displayChurchHP.set_display(church_hp_id, 0, element_pampulha_church.amount_damage_to_destroy, element_pampulha_church.get_remaining_hp(), MA2Colors.GREENISH_BLUE);
+			ChallengeController.instance.add_metric_display(challenge.displayEnemies);
+			ChallengeController.instance.add_metric_display(challenge.displayChurchHP);
+			element_pampulha_church.start_challenge();
+			),
+		ChallengeController.instance.cmd_begin(CHALLENGE_CHURCH),
+		CMD_Parallel.new([
+			## Display update enemies
+			CMD_Sequence.new([
+				objs.cmd_wait_group_element_killed(group_challenge),
+				CMD_Callable.new(func check_enemy_killed():
+					challenge.killed += 1;
+					ChallengeController.instance.set_text_pop(str(int(challenge.killed)));
+					if is_instance_valid(challenge.displayEnemies):
+						challenge.displayEnemies.set_display_value(challenge.killed);
+					),
+			], -1),
+
+			##Display update church hp
+			CMD_Sequence.new([
+				CMD_Wait_Signal.new(element_pampulha_church.damaged),
+				CMD_Callable.new(func():
+					if is_instance_valid(challenge.displayChurchHP):
+						challenge.displayChurchHP.set_display_value(element_pampulha_church.get_remaining_hp());
+					),
+			], -1),
+
+			## Losing check
+			CMD_Sequence.new([
+				CMD_Wait_Callable.new(func():
+					return element_pampulha_church.is_destroyed();
+					),
+				ChallengeController.instance.cmd_fail(CHALLENGE_CHURCH),
+				CMD_Wait_Callable.new(func():
+					return element_pampulha_church.is_grounded();
+					),
+				CMD_Wait_Seconds.new(0.5),
+			]),
+
+			## The enemies that appear, and check if killed all
+			CMD_Sequence.new([
+				CMD_Callable.new(func():
+					challenge.killed = 0;
+					),
+				CMD_Parallel.new([
+					## Camera 1, dont shoot too much
+					CMD_Sequence.new([
+						CMD_Callable.new(func():
+							make_pizzas.call([ENEMY_PIZZA_ROBOTO],stage.get_grid(-out, 15), Vector3.RIGHT, 2, 0.75, 2.5);
+							),
+						objs.cmd_wait_group_or_time(group_challenge, 4, 1),
+						CMD_Wait_Seconds.new(0.25),
+						CMD_Callable.new(func():
+							make_pizzas.call([ENEMY_PIZZA_ROBOTO, ENEMY_PIZZA_ROBOTO, ENEMY_PIZZA_ROBOTO_SHOOTER],stage.get_grid(out, 12), Vector3.LEFT, 3, 0.85);
+							),
+						CMD_Wait_Seconds.new(2),
+						CMD_Callable.new(func():
+							make_pizzas.call([ENEMY_PIZZA_ROBOTO], stage.get_grid(-out, 16.5), Vector3.RIGHT, 2, 1.0, 2.75);
+							),
+						CMD_Wait_Seconds.new(2.25),
+						CMD_Callable.new(func():
+							make_pizzas.call([ENEMY_PIZZA_ROBOTO_SHOOTER], stage.get_grid(-out, 16.5), Vector3.RIGHT, 1, 1.0, 2.75, func(pizza:AI_WalkAndDo):
+								pizza.accelerationDuration = 0.8;
+								pizza.accelerationBegin = 5;
+								pizza.accelerationEnd = 0;
+								pizza.accelerationTrans = Tween.TRANS_LINEAR;
+								);
+							),
+						CMD_Wait_Seconds.new(2.25),
+						CMD_Callable.new(func():
+							objs.create_object(ENEMY_TUCANO, \"\", stage.get_grid(out * 2, 15.5), Vector3.LEFT);
+							objs.create_object(ENEMY_TUCANO, \"\", stage.get_grid(out * 2, 13.5), Vector3.LEFT);
+							make_pizzas.call([ENEMY_PIZZA_ROBOTO_SHOOTER], stage.get_grid(-out, 15), Vector3.RIGHT, 3, 0.8, 3.5);
+							),
+						CMD_Wait_Seconds.new(1.00),
+						CMD_Callable.new(func():
+							make_pizzas.call([ENEMY_PIZZA_ROBOTO], stage.get_grid(out, 13), Vector3.LEFT, 1, 1.75);
+							),
+						objs.cmd_wait_group_or_time(group_challenge, 4.5),
+						Level.CMD_Wait_Seconds.new(0.5),
+						CMD_Parallel.new([
+							cmd_eternal_jacare.call(func(): return stage.get_grid(-out, 11), Vector3(1,0, 0.5)),
+							cmd_eternal_jacare.call(func(): return stage.get_grid(out, 13), Vector3(-1,0, 0.5)),
+							CMD_Sequence.new([ ## Copters dance
+								CMD_Wait_Seconds.new(4.5),
+								cmd_copters.call(line_left_full, 4),
+								CMD_Wait_Seconds.new(3.9),
+								cmd_copters.call(line_right_full, 5),
+								CMD_Wait_Seconds.new(5),
+								cmd_copters.call(line_left_mid, 1),
+								CMD_Wait_Seconds.new(2),
+								cmd_copters.call(line_right_mid, 3),
+								#cmd_copters.call(line_left_full, 1),
+								#CMD_Wait_Seconds.new(4),
+								#cmd_copters.call(line_left_mid, 1),
+								#cmd_copters.call(line_right_full, 3),
+							])
+						]),
+						CMD_Wait_Seconds.new(1.00),
+						objs.cmd_wait_group_or_time(group_challenge, 5.00),
+						CMD_Print_Log.new(\"group finish\"),
+					]),
+
+					## Win condition
+					CMD_Sequence.new([
+						CMD_Wait_Callable.new(func():
+							return challenge.killed >= number_of_enemies;
+							)
+					])
+				]),
+
+				#Transition to next
+				CMD_Callable.new(Game.instance.kill_all_enemies),
+				cmd_set_pivot_to_next_measure(),
+				cmd_camera_go_to_pivot0(2, false),
+				CMD_Wait_Seconds.new(0.5),
+
+				## Camera 2 - Defend the church
+				Level.CMD_Sequence.new([
+					Level.CMD_Parallel_Complete.new([
+						Level.CMD_Sequence.new([
+							cmd_enemy_line([ENEMY_PIZZA_ROBOTO_STOPPED, ENEMY_PIZZA_ROBOTO_SHOOTER], [1, 0], 0.0, -2, -2, Vector2(0, 1.5), \"side\"),
+							cmd_enemy_line([ENEMY_PIZZA_ROBOTO_STOPPED, ENEMY_PIZZA_ROBOTO_SHOOTER], [1, 0], 0.0, 2, -2, Vector2(0, 1.5), \"side\"),
+
+							Level.CMD_Parallel_Complete.new([
+								Level.CMD_Sequence.new([
+									Level.CMD_Wait_Seconds.new(1.75),
+									Level.CMD_Callable.new(func():
+										if challenge.displayEnemies and is_instance_valid(challenge.displayEnemies):
+											ChallengeController.instance.set_text_pop(challenge_follow_up_id);
+											challenge.displayEnemies.queue_free();
+										)
+								]),
+								objs.cmd_wait_group(\"side\"),
+							]),
+
+
+							cmd_enemy_line([ENEMY_PIZZA_ROBOTO_STOPPED, ENEMY_PIZZA_ROBOTO_SHOOTER], [1, 0], 0.0, -2, -2, Vector2(0, 1.5), \"side\"),
+							cmd_enemy_line([ENEMY_PIZZA_ROBOTO_STOPPED, ENEMY_PIZZA_ROBOTO_SHOOTER], [1, 0], 0.0, 2, -2, Vector2(0, 1.5), \"side\"),
+
+							objs.cmd_wait_group(\"side\"),
+
+
+						]),
+						Level.CMD_Sequence.new([
+							CMD_Wait_Seconds.new(4),
+
+							Level.CMD_Await_AsyncCallable.new(func():
+
+								var make_pizza_run:Callable = func(x:float, speed:float, delay:float):
+									await get_tree().create_timer(delay).timeout;
+									var pos:Vector3 = stage.get_grid(x, -0.5);
+									var pizza:AI_WalkAndDo = objs.create_object(ENEMY_PIZZA_ROBOTO, group_challenge, pos);
+									pizza.walkVelocity = pizza.walkVelocity.normalized() * speed;
+
+
+								await make_pizza_run.call(-1, 7, 0);
+								await make_pizza_run.call(1, 7, 2);
+								await make_pizza_run.call(0, 7, 2);
+								await make_pizza_run.call(-1, 10, 1.8);
+								await make_pizza_run.call(-1, 7, 1);
+								await make_pizza_run.call(-1, 5, 1);
+
+								await make_pizza_run.call(-1, 10, 3);
+								await make_pizza_run.call(0, 10, 0);
+								await make_pizza_run.call(1, 10, 0);
+
+								await make_pizza_run.call(0, 12, 2.5);
+								await make_pizza_run.call(1, 12, 1.6)
+								await make_pizza_run.call(1, 11, 1);
+								await make_pizza_run.call(0, 13, 0.75);
+								await make_pizza_run.call(-1, 14, 0.5);
+								await make_pizza_run.call(1, 15, 0.5);
+								await make_pizza_run.call(-1, 20, 3);
+
+								, self),
+
+						]),
+						objs.cmd_wait_group(group_challenge),
+						Level.CMD_Wait_Seconds.new(1),
+						Level.CMD_Callable.new(func():
+							element_pampulha_church.make_invincible();
+							)
+					]),
+				]),
+
+				cmd_set_pivot_to_next_measure(),
+				cmd_camera_go_to_pivot0(1.25, false),
+				Level.CMD_Wait_Seconds.new(1.25 * 0.5),
+				CMD_Branch.new(func(): return challenge.killed >= number_of_enemies and not element_pampulha_church.is_destroyed(),
+						ChallengeController.instance.cmd_victory(CHALLENGE_CHURCH),
+						ChallengeController.instance.cmd_fail(CHALLENGE_CHURCH)
+					)
+
+			]),
+		]),
+		cmd_clear_measures(),
+		#objs.cmd_wait_group(group)
+	])
+"
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_tp00u"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_skkif"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("ORMMaterial3D_tp00u")
+
+[node name="LVL_CHURCH" type="Node3D" node_paths=PackedStringArray("piece")]
+script = SubResource("GDScript_mvg20")
+piece = NodePath("CHURCH")
+
+[node name="CHURCH" type="Node3D" parent="." node_paths=PackedStringArray("pivot_forward", "pivot_backward")]
+script = ExtResource("1_7a68u")
+pivot_forward = NodePath("Config/forward")
+pivot_backward = NodePath("Config/back")
+
+[node name="Config" type="Node3D" parent="CHURCH"]
+
+[node name="Wind Direction" type="Node3D" parent="CHURCH/Config"]
+transform = Transform3D(-2.04648e-07, 0, -1, 0, 1, 0, 1, 0, -2.04648e-07, -36, 6, -23.5)
+
+[node name="forward" type="Marker3D" parent="CHURCH/Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.27466, 0, -58)
+gizmo_extents = 1.0
+
+[node name="back" type="Marker3D" parent="CHURCH/Config"]
+transform = Transform3D(1, 0, 0, 0, 0.290702, 0.956814, 0, -0.956814, 0.290702, 0, 0, 0.732972)
+gizmo_extents = 1.0
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="CHURCH/Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8759, 0, -48.0326)
+aabb = AABB(-44.2929, 0, -50.5172, 88.5856, 13.796, 101.034)
+
+[node name="Scenery" type="Node3D" parent="CHURCH"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, -50)
+
+[node name="water" parent="CHURCH/Scenery" instance=ExtResource("3_b0xss")]
+transform = Transform3D(62.403, 0, 0, 0, 30, 0, 0, 0, 60.6141, 23.1453, -1.26402, 12.034)
+
+[node name="ElementPampulhaChurch" parent="CHURCH/Scenery" instance=ExtResource("4_gni64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6109, 0, 21.3943)
+
+[node name="NPCs" type="Node3D" parent="CHURCH/Scenery"]
+
+[node name="Npc8" parent="CHURCH/Scenery/NPCs" instance=ExtResource("5_8ml8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 10)
+graphic_mode = 2
+
+[node name="Npc9" parent="CHURCH/Scenery/NPCs" instance=ExtResource("5_8ml8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 13)
+graphic_mode = 2
+
+[node name="Npc10" parent="CHURCH/Scenery/NPCs" instance=ExtResource("5_8ml8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 6)
+graphic_mode = 2
+
+[node name="Npc11" parent="CHURCH/Scenery/NPCs" instance=ExtResource("5_8ml8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 8.5)
+graphic_mode = 2
+
+[node name="Npc12" parent="CHURCH/Scenery/NPCs" instance=ExtResource("5_8ml8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 10)
+graphic_mode = 2
+
+[node name="Npc13" parent="CHURCH/Scenery/NPCs" instance=ExtResource("5_8ml8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.89049, 0, 7.00096)
+graphic_mode = 2
+
+[node name="Npc_Capybara" parent="CHURCH/Scenery/NPCs" instance=ExtResource("5_wws4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, 0)
+
+[node name="Npc_Capybara2" parent="CHURCH/Scenery/NPCs" instance=ExtResource("5_wws4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 0, -2)
+
+[node name="Npc_Capybara3" parent="CHURCH/Scenery/NPCs" instance=ExtResource("5_wws4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, 5)
+
+[node name="Npc_Capybara4" parent="CHURCH/Scenery/NPCs" instance=ExtResource("5_wws4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0, 2)
+
+[node name="Npc_Capybara5" parent="CHURCH/Scenery/NPCs" instance=ExtResource("5_wws4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 0, 11)
+
+[node name="Npc_Capybara6" parent="CHURCH/Scenery/NPCs" instance=ExtResource("5_wws4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 0, 8)
+
+[node name="Bush" type="Node3D" parent="CHURCH/Scenery"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.9894, 0, -2.52684)
+
+[node name="Bush" parent="CHURCH/Scenery/Bush" instance=ExtResource("5_wg0d6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.0649, 0, 12.1273)
+
+[node name="Bush2" parent="CHURCH/Scenery/Bush" instance=ExtResource("5_wg0d6")]
+transform = Transform3D(0.32548, 0, 0.675694, 0, 0.75, 0, -0.675694, 0, 0.32548, -26.9402, 0, 11.3423)
+
+[node name="Bush3" parent="CHURCH/Scenery/Bush" instance=ExtResource("5_wg0d6")]
+transform = Transform3D(0.32548, 0, 0.675694, 0, 0.75, 0, -0.675694, 0, 0.32548, -26.3114, 0, 15.4808)
+
+[node name="Tree" type="Node3D" parent="CHURCH/Scenery"]
+
+[node name="Palm" parent="CHURCH/Scenery/Tree" instance=ExtResource("5_yfr2f")]
+transform = Transform3D(-0.942305, 0.0954668, -0.320855, 0.154334, 0.974426, -0.163326, 0.297057, -0.203421, -0.93294, 9.72622, 0, 37.2797)
+
+[node name="Palm2" parent="CHURCH/Scenery/Tree" instance=ExtResource("5_yfr2f")]
+transform = Transform3D(-0.534563, -0.0566691, -0.843227, 0.154334, 0.974426, -0.163326, 0.830917, -0.217446, -0.512146, 28.9338, 0, 38.2252)
+
+[node name="Palm3" parent="CHURCH/Scenery/Tree" instance=ExtResource("5_yfr2f")]
+transform = Transform3D(-0.534563, -0.0566691, -0.843227, 0.154334, 0.974426, -0.163326, 0.830917, -0.217446, -0.512146, 36.3693, 0.155474, -2.40475)
+
+[node name="Tree" parent="CHURCH/Scenery/Tree" instance=ExtResource("6_5acyb")]
+transform = Transform3D(0.126407, -4.33608e-08, -0.991979, 4.33608e-08, 1, -3.8186e-08, 0.991979, -3.8186e-08, 0.126407, 0.937904, 0, 21.9761)
+
+[node name="Tree8" parent="CHURCH/Scenery/Tree" instance=ExtResource("6_5acyb")]
+transform = Transform3D(-0.980621, 5.00016e-08, 0.195912, 4.33608e-08, 1, -3.8186e-08, -0.195912, -2.89511e-08, -0.980621, -0.42527, 0, 11.1177)
+
+[node name="Tree4" parent="CHURCH/Scenery/Tree" instance=ExtResource("6_5acyb")]
+transform = Transform3D(-0.972962, 3.33687e-08, -0.230967, 4.33608e-08, 1, -3.8186e-08, 0.230967, -4.71684e-08, -0.972962, 36.5045, 0, 38.6311)
+
+[node name="Tree5" parent="CHURCH/Scenery/Tree" instance=ExtResource("6_5acyb")]
+transform = Transform3D(-0.453975, 5.37089e-08, 0.891014, 4.33608e-08, 1, -3.8186e-08, -0.891014, 2.12996e-08, -0.453975, 34.0104, 0, 46.4331)
+
+[node name="Tree6" parent="CHURCH/Scenery/Tree" instance=ExtResource("6_5acyb")]
+transform = Transform3D(0.144833, 2.78328e-08, 0.893336, 3.92415e-08, 0.905, -3.45583e-08, -0.893336, 4.42663e-08, 0.144833, 40.1497, 0, 42.9798)
+
+[node name="Tree2" parent="CHURCH/Scenery/Tree" instance=ExtResource("6_5acyb")]
+transform = Transform3D(0.924426, -5.46465e-08, -0.381361, 4.33608e-08, 1, -3.8186e-08, 0.381361, 1.8764e-08, 0.924426, 34.0232, 0, 8.19808)
+
+[node name="Tree7" parent="CHURCH/Scenery/Tree" instance=ExtResource("6_5acyb")]
+transform = Transform3D(0.965382, -3.18992e-08, 0.260841, 4.33608e-08, 1, -3.8186e-08, -0.260841, 4.81743e-08, 0.965382, 37.4546, 0, 19.8086)
+
+[node name="Tree3" parent="CHURCH/Scenery/Tree" instance=ExtResource("6_5acyb")]
+transform = Transform3D(0.924426, -5.46465e-08, -0.381361, 4.33608e-08, 1, -3.8186e-08, 0.381361, 1.8764e-08, 0.924426, 32.4806, 0, -7.25623)
+
+[node name="Pole" type="Node3D" parent="CHURCH/Scenery"]
+
+[node name="pole_light_small" parent="CHURCH/Scenery/Pole" instance=ExtResource("7_kpdga")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.17497, 0, 29.6322)
+
+[node name="pole_light_small4" parent="CHURCH/Scenery/Pole" instance=ExtResource("7_kpdga")]
+transform = Transform3D(-0.805122, 0, -0.59311, 0, 1, 0, 0.59311, 0, -0.805122, 5.96448, 0, 15.3344)
+
+[node name="pole_light_small5" parent="CHURCH/Scenery/Pole" instance=ExtResource("7_kpdga")]
+transform = Transform3D(-0.679633, 0, 0.733552, 0, 1, 0, -0.733552, 0, -0.679633, 28.065, 0.0697632, 6.62067)
+
+[node name="pole_light_small2" parent="CHURCH/Scenery/Pole" instance=ExtResource("7_kpdga")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.9624, 0, 30.1925)
+
+[node name="pole_light_small3" parent="CHURCH/Scenery/Pole" instance=ExtResource("7_kpdga")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.76437, 0, 7.0365)
+
+[node name="Rock" type="Node3D" parent="CHURCH/Scenery"]
+
+[node name="rock" parent="CHURCH/Scenery/Rock" instance=ExtResource("7_3p3h6")]
+transform = Transform3D(1.435, 0, 0, 0, 0.81, 0, 0, 0, 1.43, 36.9949, -0.110168, 41.7103)
+
+[node name="Grass" type="Node3D" parent="CHURCH/Scenery"]
+
+[node name="Grass" parent="CHURCH/Scenery/Grass" instance=ExtResource("5_lik4u")]
+transform = Transform3D(68.585, 0, 0, 0, 60.375, 0, 0, 0, 44.9, -9.98294, -1.376, 12.4664)
+
+[node name="Grass2" parent="CHURCH/Scenery/Grass" instance=ExtResource("5_lik4u")]
+transform = Transform3D(32.4899, 0, 0, 0, 60.375, 0, 0, 0, 44.9, 26.609, -1.376, -22.3326)
+
+[node name="plant_grass" parent="CHURCH/Scenery/Grass" instance=ExtResource("6_wolsk")]
+transform = Transform3D(2.81361, 0, 0, 0, 2.78756, -0.330846, 0, 0.507139, 1.81855, 21.4245, 0, 25.8392)
+
+[node name="plant_grass8" parent="CHURCH/Scenery/Grass" instance=ExtResource("6_wolsk")]
+transform = Transform3D(1.48311, -0.492346, -1.35221, -0.180763, 2.67131, -0.372757, 2.66919, 0.454474, 0.7261, 22.9316, 0, 25.8392)
+
+[node name="plant_grass13" parent="CHURCH/Scenery/Grass" instance=ExtResource("6_wolsk")]
+transform = Transform3D(1.48311, -0.492346, -1.35221, -0.180763, 2.67131, -0.372757, 2.66919, 0.454474, 0.7261, 24.4904, 0, 25.8392)
+
+[node name="plant_grass14" parent="CHURCH/Scenery/Grass" instance=ExtResource("6_wolsk")]
+transform = Transform3D(1.48311, -0.492346, -1.35221, -0.180763, 2.67131, -0.372757, 2.66919, 0.454474, 0.7261, 26.0982, 0, 25.8392)
+
+[node name="plant_grass7" parent="CHURCH/Scenery/Grass" instance=ExtResource("6_wolsk")]
+transform = Transform3D(-2.76684, -0.0920879, -0.330218, -0.0660411, 2.82864, -0.0969081, 0.506619, -0.134195, -1.81608, 20.1237, 0, 25.8392)
+
+[node name="plant_grass2" parent="CHURCH/Scenery/Grass" instance=ExtResource("6_wolsk")]
+transform = Transform3D(2.16116, -0.261469, -0.820201, -0.217828, 2.32936, -0.394255, 1.60308, 0.669009, 1.05216, 18.9098, 0, 25.7677)
+
+[node name="plant_grass3" parent="CHURCH/Scenery/Grass" instance=ExtResource("6_wolsk")]
+transform = Transform3D(1.97424, 0.07257, 0.295689, -1.1929e-08, 2.49358, -0.336284, -0.319935, 0.447813, 1.82463, 17.4619, 0, 25.8053)
+
+[node name="plant_grass4" parent="CHURCH/Scenery/Grass" instance=ExtResource("6_wolsk")]
+transform = Transform3D(3.07501, 0.192501, -0.255515, -0.333075, 2.26937, -0.290846, 0.39902, 0.41083, 1.72632, 13.3872, 0, 25.8053)
+
+[node name="plant_grass11" parent="CHURCH/Scenery/Grass" instance=ExtResource("6_wolsk")]
+transform = Transform3D(3.07501, 0.192501, -0.255515, -0.333075, 2.26937, -0.290846, 0.39902, 0.41083, 1.72632, 11.7466, 0, 25.8053)
+
+[node name="plant_grass12" parent="CHURCH/Scenery/Grass" instance=ExtResource("6_wolsk")]
+transform = Transform3D(3.07501, 0.192501, -0.255515, -0.333075, 2.26937, -0.290846, 0.39902, 0.41083, 1.72632, 9.54828, 0, 25.8053)
+
+[node name="plant_grass5" parent="CHURCH/Scenery/Grass" instance=ExtResource("6_wolsk")]
+transform = Transform3D(3.47757, 0.127641, 0.679147, -1.47194e-08, 2.40944, -0.424321, -1.05849, 0.419352, 2.23128, 14.867, 0, 25.8053)
+
+[node name="plant_grass6" parent="CHURCH/Scenery/Grass" instance=ExtResource("6_wolsk")]
+transform = Transform3D(1.95647, -0.476594, -0.871763, -0.039696, 2.76257, -0.402535, 1.5899, 0.655452, 1.06271, 16.27, 0, 25.8053)
+
+[node name="StageScreenMeasure2" parent="CHURCH" instance=ExtResource("5_vvorr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -25)
+default_movement = ExtResource("14_tu75e")
+
+[node name="StageScreenMeasure3" parent="CHURCH" instance=ExtResource("5_vvorr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.2, -35)
+default_movement = ExtResource("14_tu75e")
+
+[node name="StageScreenMeasureRight" parent="CHURCH" instance=ExtResource("5_vvorr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0.2, -59)
+default_movement = ExtResource("14_tu75e")
+
+[node name="StageScreenMeasureRight2" parent="CHURCH" instance=ExtResource("5_vvorr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.2, -59)
+default_movement = ExtResource("14_tu75e")
+
+[node name="Copters" type="Node3D" parent="CHURCH"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, -50)
+
+[node name="Line LeftFull" type="Node3D" parent="CHURCH/Copters"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 30)
+script = ExtResource("7_fwvrw")
+editor_color = Color(0, 0.549174, 0.515218, 1)
+
+[node name="Node3D" type="Node3D" parent="CHURCH/Copters/Line LeftFull"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Node3D2" type="Node3D" parent="CHURCH/Copters/Line LeftFull"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4523, 0, 1)
+
+[node name="Node3D3" type="Node3D" parent="CHURCH/Copters/Line LeftFull"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4523, 0, -4)
+
+[node name="Node3D4" type="Node3D" parent="CHURCH/Copters/Line LeftFull"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4523, 0, -4)
+
+[node name="Node3D5" type="Node3D" parent="CHURCH/Copters/Line LeftFull"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4523, 0, -1)
+
+[node name="Node3D6" type="Node3D" parent="CHURCH/Copters/Line LeftFull"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4523, 0, -1)
+
+[node name="Line RightFull" type="Node3D" parent="CHURCH/Copters"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 25.9723)
+script = ExtResource("7_fwvrw")
+editor_color = Color(0.825219, 3.32102e-05, 0.600393, 1)
+
+[node name="Node3D" type="Node3D" parent="CHURCH/Copters/Line RightFull"]
+
+[node name="Node3D2" type="Node3D" parent="CHURCH/Copters/Line RightFull"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4523, 0, 0)
+
+[node name="Node3D3" type="Node3D" parent="CHURCH/Copters/Line RightFull"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4523, 0, 3)
+
+[node name="Node3D4" type="Node3D" parent="CHURCH/Copters/Line RightFull"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4523, 0, 3)
+
+[node name="Node3D5" type="Node3D" parent="CHURCH/Copters/Line RightFull"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4523, 0, 0)
+
+[node name="Node3D6" type="Node3D" parent="CHURCH/Copters/Line RightFull"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4523, 0, 0)
+
+[node name="Line LeftMid" type="Node3D" parent="CHURCH/Copters"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 31)
+script = ExtResource("7_fwvrw")
+editor_color = Color(1, 1, 0.282353, 1)
+
+[node name="Node3D" type="Node3D" parent="CHURCH/Copters/Line LeftMid"]
+
+[node name="Node3D2" type="Node3D" parent="CHURCH/Copters/Line LeftMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4523, 0, 0)
+
+[node name="Node3D3" type="Node3D" parent="CHURCH/Copters/Line LeftMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4523, 0, -5)
+
+[node name="Node3D4" type="Node3D" parent="CHURCH/Copters/Line LeftMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.547695, 0, -5)
+
+[node name="Line RightMid" type="Node3D" parent="CHURCH/Copters"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 25.9723)
+script = ExtResource("7_fwvrw")
+editor_color = Color(0, 0, 0.6, 1)
+
+[node name="Node3D" type="Node3D" parent="CHURCH/Copters/Line RightMid"]
+
+[node name="Node3D2" type="Node3D" parent="CHURCH/Copters/Line RightMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4523, 0, 0)
+
+[node name="Node3D3" type="Node3D" parent="CHURCH/Copters/Line RightMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4523, 0, 3)
+
+[node name="Node3D4" type="Node3D" parent="CHURCH/Copters/Line RightMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.547699, 0, 3)
+
+[node name="Shape" type="MeshInstance3D" parent="CHURCH/Copters"]
+transform = Transform3D(0.551937, 0, 0.833886, 0, 1, 0, -0.833886, 0, 0.551937, 19.4841, 1, 30.365)
+visible = false
+mesh = SubResource("PrismMesh_skkif")
+
+[node name="Shape2" type="MeshInstance3D" parent="CHURCH/Copters"]
+transform = Transform3D(0.46793, 0, -0.883766, 0, 1, 0, 0.883766, 0, 0.46793, 16.5303, 0.498802, 31.8252)
+visible = false
+mesh = SubResource("PrismMesh_skkif")
+
+[node name="grass_tile" parent="." instance=ExtResource("14_owmxk")]
+transform = Transform3D(2.03411, 0, 0, 0, 1, 0, 0, 0, 1.8821, -18.9557, -0.166626, -10.9681)
+
+[node name="grass_tile2" parent="." instance=ExtResource("14_owmxk")]
+transform = Transform3D(2.03411, 0, 0, 0, 1, 0, 0, 0, 1.8821, -14.7092, 0.00691509, -23.7482)
+
+[node name="grass_tile3" parent="." instance=ExtResource("14_owmxk")]
+transform = Transform3D(2.03411, 0, 0, 0, 1, 0, 0, 0, 1.8821, -1.46695, -0.160126, -11.4743)
+
+[node name="grass_tile4" parent="." instance=ExtResource("14_owmxk")]
+transform = Transform3D(2.03411, 0, 0, 0, 1, 0, 0, 0, 1.8821, 4.63511, -0.160126, -0.573493)
+
+[node name="grass_border" parent="." instance=ExtResource("15_h4011")]
+transform = Transform3D(-3.07306, 0, -0.74689, 0, 1.44888, 0, 1.19881, 0, -1.91459, -27.2654, -1.19643, -58.5513)
+
+[node name="grass_border4" parent="." instance=ExtResource("15_h4011")]
+transform = Transform3D(-2.01096, 0, 0.722134, 0, 1.44888, 0, -0.75475, 0, -1.92406, -12.6123, -1.19643, -59.8505)
+
+[node name="grass_border5" parent="." instance=ExtResource("15_h4011")]
+transform = Transform3D(-0.0580057, 0, -2.0546, 0, 1.44888, 0, 2.60217, 0, -0.0458, -10.033, -1.38234, -63.4959)
+
+[node name="grass_border2" parent="." instance=ExtResource("15_h4011")]
+transform = Transform3D(-1.6616, 0, -1.77533, 0, 1.44888, 0, 2.84954, 0, -1.03522, -41.3024, -1.19643, -46.6936)
+
+[node name="grass_border3" parent="." instance=ExtResource("15_h4011")]
+transform = Transform3D(-0.0170405, 0, -2.7515, 0, 1.44888, 0, 3.29857, 0, -0.0142146, -45.9179, -1.19643, -28.9189)
+
+[connection signal="screen_entered" from="CHURCH/Config/VisibleOnScreenNotifier3D" to="CHURCH" method="_on_screen_entered"]
+[connection signal="screen_exited" from="CHURCH/Config/VisibleOnScreenNotifier3D" to="CHURCH" method="_on_screen_exited"]

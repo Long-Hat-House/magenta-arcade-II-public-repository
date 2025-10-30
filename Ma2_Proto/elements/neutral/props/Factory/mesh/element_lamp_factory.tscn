@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://bhs2oprh7fk36"]
+
+[ext_resource type="PackedScene" uid="uid://bu0q0w7ia8yed" path="res://elements/neutral/props/Factory/mesh/lamp_factory.glb" id="1_swf67"]
+[ext_resource type="Material" uid="uid://dvb3etner4tpy" path="res://elements/neutral/props/Factory/material/m_lamp_box_tube_factory.tres" id="2_suv2w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6lxbk"]
+albedo_color = Color(0.6, 0.121569, 0.2, 1)
+emission_enabled = true
+emission = Color(0.6, 0.121569, 0.2, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cymop"]
+albedo_color = Color(0.827451, 0.12549, 0.286275, 1)
+emission_enabled = true
+emission = Color(0.827451, 0.12549, 0.286275, 1)
+emission_energy_multiplier = 10.0
+
+[sub_resource type="Animation" id="Animation_gpuor"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shine:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7wj23"]
+resource_name = "rot_shine"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shine:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qpcod"]
+_data = {
+&"RESET": SubResource("Animation_gpuor"),
+&"rot_shine": SubResource("Animation_7wj23")
+}
+
+[node name="lamp_factory" instance=ExtResource("1_swf67")]
+
+[node name="lamp" parent="." index="0"]
+cast_shadow = 0
+surface_material_override/0 = ExtResource("2_suv2w")
+surface_material_override/1 = SubResource("StandardMaterial3D_6lxbk")
+
+[node name="shine" parent="." index="1"]
+material_override = SubResource("StandardMaterial3D_cymop")
+cast_shadow = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+&"": SubResource("AnimationLibrary_qpcod")
+}
+autoplay = "rot_shine"

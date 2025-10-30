@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://kblx7f3qtt0w"]
+
+[ext_resource type="PackedScene" uid="uid://cgjijxik44oyi" path="res://elements/player/projectiles/tap_red/mesh/tap_red.glb" id="1_yffmt"]
+[ext_resource type="Material" uid="uid://ckqqn3ssdg3wa" path="res://elements/player/projectiles/tap_red/material/m_tap_red.tres" id="2_rlouu"]
+[ext_resource type="Script" path="res://systems/utils/random_rotation_local.gd" id="3_5ru5p"]
+
+[node name="tap_red" instance=ExtResource("1_yffmt")]
+
+[node name="fireball" parent="." index="0"]
+material_override = ExtResource("2_rlouu")
+
+[node name="rocks" parent="." index="1"]
+material_override = ExtResource("2_rlouu")
+script = ExtResource("3_5ru5p")

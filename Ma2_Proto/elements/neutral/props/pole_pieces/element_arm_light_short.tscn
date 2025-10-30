@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyx65e8gj0elb"]
+
+[ext_resource type="PackedScene" path="res://elements/neutral/props/pole_pieces/meshes/mesh_arm_light.tscn" id="1_klra1"]
+
+[node name="ElementArmLight" type="Node3D"]
+
+[node name="mesh_arm_light" parent="." instance=ExtResource("1_klra1")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)

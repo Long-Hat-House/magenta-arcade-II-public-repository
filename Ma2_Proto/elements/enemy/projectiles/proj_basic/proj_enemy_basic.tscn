@@ -1,0 +1,101 @@
+[gd_scene load_steps=11 format=3 uid="uid://dhmi2sv2mhuqe"]
+
+[ext_resource type="Script" uid="uid://lmjhevx0nwsl" path="res://elements/enemy/projectiles/proj_basic/proj_enemy_basic.gd" id="1_wf06c"]
+[ext_resource type="PackedScene" uid="uid://cttqjlxr0np2w" path="res://elements/vfx/vfx_hit/vfx_hit_magenta.tscn" id="2_c76pc"]
+[ext_resource type="PackedScene" uid="uid://dfgulrftuhytd" path="res://elements/vfx/vfx_create_shot/vfx_create_shot.tscn" id="3_xtd0m"]
+[ext_resource type="Script" uid="uid://cr5xxhd04vkgu" path="res://addons/gap/api/accessibility_high_contrast_object.gd" id="4_wulke"]
+[ext_resource type="Script" uid="uid://cccnp54xda20b" path="res://elements/enemy/constant_rotation.gd" id="5_2e6m7"]
+[ext_resource type="Material" uid="uid://r1m6m874b01v" path="res://elements/m_simple_color_emission.tres" id="5_veea3"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_afdb8"]
+radius = 0.25
+
+[sub_resource type="SphereMesh" id="SphereMesh_g56cg"]
+flip_faces = true
+radius = 0.25
+height = 0.5
+radial_segments = 9
+rings = 4
+
+[sub_resource type="SphereMesh" id="SphereMesh_1ce7o"]
+radius = 0.25
+height = 0.5
+radial_segments = 10
+rings = 3
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fsdk4"]
+top_radius = 0.24
+bottom_radius = 0.3
+height = 0.1
+radial_segments = 15
+rings = 1
+cap_top = false
+cap_bottom = false
+
+[node name="EnemyProjectile" type="Area3D" groups=["enemy_projectile"]]
+collision_layer = 16
+collision_mask = 130
+script = ExtResource("1_wf06c")
+relativeVelocity = Vector3(0, 0, 8)
+vfx_explode = ExtResource("2_c76pc")
+vfx_create = ExtResource("3_xtd0m")
+
+[node name="ProjCollider" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_afdb8")
+
+[node name="VisibleNotifier" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-0.374394, -0.325943, -0.387608, 0.748789, 0.651887, 0.775217)
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Scale" type="Node3D" parent="Pivot"]
+
+[node name="Graphic" type="Node3D" parent="Pivot/Scale"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="AccessibilityHighContrastObject" type="Node" parent="Pivot/Scale/Graphic"]
+script = ExtResource("4_wulke")
+high_contrast_group = &"danger"
+
+[node name="Pink" type="MeshInstance3D" parent="Pivot/Scale/Graphic"]
+material_override = ExtResource("5_veea3")
+instance_shader_parameters/color = Color(0.901961, 0, 0.494118, 1)
+instance_shader_parameters/emissive = Color(0.901961, 0, 0.494118, 1)
+instance_shader_parameters/energy = 1.0
+mesh = SubResource("SphereMesh_g56cg")
+skeleton = NodePath("../../../..")
+
+[node name="White" type="MeshInstance3D" parent="Pivot/Scale/Graphic"]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0, 0)
+material_override = ExtResource("5_veea3")
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emissive = Color(1, 1, 1, 1)
+instance_shader_parameters/energy = 10.0
+mesh = SubResource("SphereMesh_g56cg")
+skeleton = NodePath("../../../..")
+
+[node name="Dark Pink" type="MeshInstance3D" parent="Pivot/Scale/Graphic"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+material_override = ExtResource("5_veea3")
+instance_shader_parameters/color = Color(0.180392, 0.00392157, 0.231373, 1)
+instance_shader_parameters/emissive = Color(0.180392, 0.00392157, 0.231373, 1)
+instance_shader_parameters/energy = 1.0
+mesh = SubResource("SphereMesh_1ce7o")
+skeleton = NodePath("../../../..")
+
+[node name="Glow" type="MeshInstance3D" parent="Pivot/Scale/Graphic"]
+material_override = ExtResource("5_veea3")
+cast_shadow = 0
+instance_shader_parameters/color = Color(1, 1, 1, 1)
+instance_shader_parameters/emissive = Color(1, 1, 1, 1)
+instance_shader_parameters/energy = 10.0
+mesh = SubResource("CylinderMesh_fsdk4")
+skeleton = NodePath("../../../..")
+script = ExtResource("5_2e6m7")
+axis = Vector3(1, 0, 0)
+angleVelocity = -11.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleNotifier" to="." method="_on_visible_notifier_screen_exited"]

@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://cmnn0751h11gf"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_MidBoss_Lv4_Hand_Tap_Projectile_Part_Appear"
+id = 1508277944
+guid = "{D50E7C7E-D618-4253-9B07-9C564DFF00FC}"
+dummy = true

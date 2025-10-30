@@ -1,0 +1,811 @@
+[gd_scene load_steps=35 format=3 uid="uid://dmrrmkyu8ffu3"]
+
+[ext_resource type="Script" uid="uid://b0ibamfw4dbyb" path="res://systems/level/level_piece_children.tres.gd" id="1_4xmuj"]
+[ext_resource type="PackedScene" uid="uid://p1646blom23j" path="res://elements/stage_pieces/factory/stage_piece_fabrica_room_single_wall.tscn" id="2_vuo60"]
+[ext_resource type="PackedScene" uid="uid://dsppxkyccjpcs" path="res://elements/enemy/factory_door/enemy_factory_door.tscn" id="3_tvj4k"]
+[ext_resource type="PackedScene" uid="uid://c00kqth38jmst" path="res://systems/stage/stage_screen_measure.tscn" id="4_j3ow5"]
+[ext_resource type="PackedScene" uid="uid://b5ywgn67tfmvg" path="res://elements/neutral/props/Factory/mesh/element_silo_factory.tscn" id="5_7ricr"]
+[ext_resource type="Resource" uid="uid://b4sm3a668ml1i" path="res://elements/levels/level_structure/camera_movement_data_by_duration.tres" id="5_p3san"]
+[ext_resource type="Script" uid="uid://dfui1ofuptgkq" path="res://systems/level/level_snippet_goto_specific_node.gd" id="6_dwsb2"]
+[ext_resource type="PackedScene" uid="uid://d1und4qgj6int" path="res://elements/neutral/props/Factory/mesh/element_factory_support_roof.tscn" id="6_oif7h"]
+[ext_resource type="Script" uid="uid://bono021r3hijq" path="res://systems/level/level_snippet_until_specific_dead.gd" id="7_cipgh"]
+[ext_resource type="PackedScene" uid="uid://vqedhb303kpn" path="res://elements/neutral/drag_stone/element_drag_goal.tscn" id="8_edw27"]
+[ext_resource type="FontFile" uid="uid://c3tg0mdxhjidx" path="res://elements/ui/fonts/BalooBhaina2-ExtraBold.ttf" id="8_sg71j"]
+[ext_resource type="PackedScene" uid="uid://d2uqxti6p0agc" path="res://elements/neutral/props/Factory/mesh/element_energy_box_factory.tscn" id="8_y7ecr"]
+[ext_resource type="PackedScene" uid="uid://r7mjv4ke76p7" path="res://elements/neutral/drag_stone/element_drag_stone.tscn" id="9_0mty8"]
+[ext_resource type="Script" uid="uid://e2ht3lnekbjc" path="res://systems/ui/flickering.gd" id="9_l3lyo"]
+[ext_resource type="PackedScene" uid="uid://cqfl6r82tc8ni" path="res://elements/background/element_factory_gray_floor.tscn" id="9_sc46v"]
+[ext_resource type="PackedScene" uid="uid://cfuuuh2ng3yca" path="res://elements/neutral/drag_stone/element_drag_wall.tscn" id="10_rfof7"]
+[ext_resource type="PackedScene" uid="uid://c200go5gdekh0" path="res://elements/enemy/laser/enemy_laser_roboto.tscn" id="10_wl6vk"]
+[ext_resource type="PackedScene" uid="uid://bfp6hll5p8pd" path="res://elements/enemy/pizza/enemy_pizza_roboto_shooter.tscn" id="11_bk0l0"]
+[ext_resource type="PackedScene" uid="uid://dotib3ihtekkq" path="res://elements/neutral/drag_stone/element_drag_wall_curve.tscn" id="11_hwp0k"]
+[ext_resource type="PackedScene" uid="uid://cyrihpv5hlptt" path="res://elements/enemy/pizza/enemy_pizza_shooter_super.tscn" id="11_ln4c1"]
+[ext_resource type="PackedScene" uid="uid://t7wocwarj2c3" path="res://elements/enemy/pizza/enemy_pizza_roboto.tscn" id="12_sniq3"]
+[ext_resource type="PackedScene" uid="uid://djhown2ulvtjc" path="res://elements/powerups/button/powerup_weapon_button_tap_blue.tscn" id="14_gdrsu"]
+[ext_resource type="PackedScene" uid="uid://lnk1uxthf1qj" path="res://elements/enemy/roboto_jacare/enemy_jacare.tscn" id="15_4injw"]
+[ext_resource type="PackedScene" uid="uid://d0twtk6f36p1c" path="res://elements/neutral/props/Factory/mesh/element_barrel_factory.tscn" id="15_5w0nl"]
+[ext_resource type="PackedScene" uid="uid://cmt1jcefx4r77" path="res://elements/enemy/toupeira/enemy_toupeira.tscn" id="16_h3lyv"]
+[ext_resource type="PackedScene" uid="uid://dmf1l5p7w47hi" path="res://elements/neutral/props/Factory/mesh/element_pipe_curve_factory.tscn" id="16_n88ww"]
+[ext_resource type="PackedScene" uid="uid://dpeu4kli3hep7" path="res://elements/neutral/props/Factory/mesh/element_pipe_tube_factory.tscn" id="17_i021e"]
+[ext_resource type="PackedScene" uid="uid://bhnvri2r370cj" path="res://elements/background/element_factory_icon_ivo_floor.tscn" id="19_wfx7r"]
+[ext_resource type="PackedScene" uid="uid://bhs2oprh7fk36" path="res://elements/neutral/props/Factory/mesh/element_lamp_factory.tscn" id="23_a87wi"]
+[ext_resource type="PackedScene" uid="uid://4qqcmtywm6p0" path="res://elements/powerups/button/holdable_button_holdlvlup.tscn" id="24_p3san"]
+[ext_resource type="PackedScene" uid="uid://b3vmw8tthof34" path="res://elements/neutral/drag_stone/element_drag_wall_T.tscn" id="27_2tggk"]
+[ext_resource type="PackedScene" uid="uid://cit3i1jacb7ul" path="res://elements/neutral/drag_stone/element_drag_wall_border.tscn" id="28_b5f5s"]
+[ext_resource type="PackedScene" uid="uid://5hcp1j1sttyq" path="res://elements/stage_pieces/factory/fabrica_prize_room.tscn" id="30_krc4y"]
+
+[sub_resource type="GDScript" id="GDScript_dxyvm"]
+resource_name = "Factory_Challenge1"
+script/source = "extends Level_Snippet_Sequence
+
+const CHALLENGE_FACTORY = preload(\"res://systems/challenge/challenges/challenge_factory.tres\")
+const CHALLENGE_DISPLAY_FLOAT_PROGRESS_BAR = preload(\"res://elements/challenge/challenge_display_float_progress_bar.tscn\")
+
+@export var time_left_text:String;
+@export var victory_text:String;
+@export var index_start:int;
+@export var final_measure:StageMeasure;
+@export var back_measure:StageMeasure;
+
+@export var total_time_seconds:float = 15;
+
+var display:DisplayFloat;
+var count:float;
+
+func cmd(lvl:Level)->Level.CMD:
+	var cmds = get_commands(lvl);
+
+	var beginning:Array[Level.CMD] = cmds.slice(0, index_start + 1);
+	var in_test:Array[Level.CMD] = cmds.slice(index_start);
+
+	return Level.CMD_Sequence.new([
+		Level.CMD_Sequence.new(beginning),
+		cmd_start(),
+		Level.CMD_Parallel.new([
+			cmd_test_constantly(),
+			Level.CMD_Sequence.new(in_test),
+		]),
+		Level.CMD_Branch.new(condition_success, cmd_success(lvl), cmd_fail()),
+		lvl.cmd_clear_measures(),
+	])
+
+func cmd_start()->Level.CMD:
+	return Level.CMD_Sequence.new([
+		Level.CMD_Callable.new(func():
+			display = CHALLENGE_DISPLAY_FLOAT_PROGRESS_BAR.instantiate();
+			display.set_display(time_left_text % floori(total_time_seconds), 0, 1, 1);
+			ChallengeController.instance.add_metric_display(display);
+
+			),
+		ChallengeController.instance.cmd_begin(CHALLENGE_FACTORY, false),
+	])
+
+func cmd_test_constantly()->Level.CMD:
+	return Level.CMD_Sequence.new([
+		Level.CMD_Process.new(func(delta:float):
+			count += delta;
+			display.set_display_value(1 - (count/total_time_seconds));
+			return !condition_success();
+			),
+		cmd_fail(),
+	])
+
+func condition_success()->bool:
+	return count < total_time_seconds;
+
+func cmd_success(lvl:Level)->Level.CMD:
+	return Level.CMD_Sequence.new([
+		final_measure.cmd_default_camera_tween(lvl),
+		ChallengeController.instance.cmd_victory(CHALLENGE_FACTORY, 2),
+		back_measure.cmd_default_camera_tween(lvl, 0.9),
+	])
+
+func cmd_fail()->Level.CMD:
+	return Level.CMD_Sequence.new([
+		ChallengeController.instance.cmd_fail(CHALLENGE_FACTORY),
+	])
+"
+
+[node name="LVL_FABRICA_Challenge1" type="Node3D" node_paths=PackedStringArray("level_snippet")]
+script = ExtResource("1_4xmuj")
+level_snippet = NodePath("Sequence")
+
+[node name="Stage Piece Fabrica Room" parent="." instance=ExtResource("2_vuo60")]
+
+[node name="FactoryDoor" parent="Stage Piece Fabrica Room" instance=ExtResource("3_tvj4k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.25)
+
+[node name="StageScreenMeasure" parent="Stage Piece Fabrica Room/FactoryDoor" instance=ExtResource("4_j3ow5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -5)
+default_movement = ExtResource("5_p3san")
+
+[node name="Scenery2" type="Node3D" parent="Stage Piece Fabrica Room"]
+
+[node name="silo_factory" parent="Stage Piece Fabrica Room/Scenery2" instance=ExtResource("5_7ricr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 9.25)
+
+[node name="silo_factory2" parent="Stage Piece Fabrica Room/Scenery2" instance=ExtResource("5_7ricr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25, 0, 18)
+
+[node name="silo_factory3" parent="Stage Piece Fabrica Room/Scenery2" instance=ExtResource("5_7ricr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 0, 18)
+
+[node name="silo_factory4" parent="Stage Piece Fabrica Room/Scenery2" instance=ExtResource("5_7ricr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 8.75)
+
+[node name="support_roof2" parent="Stage Piece Fabrica Room/Scenery2" instance=ExtResource("6_oif7h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 13.25)
+
+[node name="energy_box_factory" parent="Stage Piece Fabrica Room/Scenery2" instance=ExtResource("8_y7ecr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, 2.75)
+
+[node name="FactoryGrayFloor" parent="Stage Piece Fabrica Room/Scenery2" instance=ExtResource("9_sc46v")]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 6, -7.5, 0.001, 15)
+
+[node name="FactoryGrayFloor2" parent="Stage Piece Fabrica Room/Scenery2" instance=ExtResource("9_sc46v")]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 6, -7.5, 0.001, 1)
+
+[node name="lamp_factory" parent="Stage Piece Fabrica Room/Scenery2" instance=ExtResource("23_a87wi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6299, 2.40771, 2.75)
+
+[node name="lamp_factory2" parent="Stage Piece Fabrica Room/Scenery2" instance=ExtResource("23_a87wi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6201, 2.40771, 2.75)
+
+[node name="ElementDragWall" parent="Stage Piece Fabrica Room/Scenery2" instance=ExtResource("11_hwp0k")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.25, 0, 13.25)
+
+[node name="ElementDragWall2" parent="Stage Piece Fabrica Room/Scenery2" instance=ExtResource("11_hwp0k")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.25, 0, 11.25)
+
+[node name="ElementDragWall3" parent="Stage Piece Fabrica Room/Scenery2" instance=ExtResource("11_hwp0k")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 5.25, 0, 11.25)
+
+[node name="ElementDragWall4" parent="Stage Piece Fabrica Room/Scenery2" instance=ExtResource("11_hwp0k")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 5.25, 0, 13.25)
+
+[node name="ElementDragStone" parent="Stage Piece Fabrica Room" instance=ExtResource("9_0mty8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25, 0, 12.25)
+
+[node name="ElementDragWall" parent="Stage Piece Fabrica Room" instance=ExtResource("10_rfof7")]
+transform = Transform3D(9.5, 0, 0, 0, 1, 0, 0, 0, 1, -4.25, 0, 10.25)
+
+[node name="ElementDragWall3" parent="Stage Piece Fabrica Room" instance=ExtResource("10_rfof7")]
+transform = Transform3D(-8.74228e-08, 0, -1, 0, 1, 0, 2, 0, -4.37114e-08, -4.25, 0, 11.25)
+
+[node name="ElementDragWall4" parent="Stage Piece Fabrica Room" instance=ExtResource("10_rfof7")]
+transform = Transform3D(-8.74228e-08, 0, -1, 0, 1, 0, 2, 0, -4.37114e-08, 6.25, 0, 11.25)
+
+[node name="ElementDragWall2" parent="Stage Piece Fabrica Room" instance=ExtResource("10_rfof7")]
+transform = Transform3D(9.5, 0, 0, 0, 1, 0, 0, 0, 1, -4.25, 0, 13.25)
+
+[node name="ElementDragGoal" parent="Stage Piece Fabrica Room" instance=ExtResource("8_edw27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25, 0, 12.25)
+
+[node name="Label3D" type="Label3D" parent="Stage Piece Fabrica Room"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3, 0.148743, 12.25)
+pixel_size = 0.0078
+modulate = Color(1, 1, 0.282353, 1)
+text = "challenge_factory_drag"
+font = ExtResource("8_sg71j")
+font_size = 80
+horizontal_alignment = 2
+width = 100.0
+script = ExtResource("9_l3lyo")
+
+[node name="Stage Piece Fabrica Room2" parent="." instance=ExtResource("2_vuo60")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -30)
+
+[node name="FactoryDoor" parent="Stage Piece Fabrica Room2" instance=ExtResource("3_tvj4k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.25)
+
+[node name="StageScreenMeasure" parent="Stage Piece Fabrica Room2/FactoryDoor" instance=ExtResource("4_j3ow5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -5)
+default_movement = ExtResource("5_p3san")
+
+[node name="Scenery2" type="Node3D" parent="Stage Piece Fabrica Room2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.25)
+
+[node name="FactoryGrayFloor2" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("9_sc46v")]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 4, -7.5, 0.001, 14.75)
+
+[node name="energy_box_factory" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("8_y7ecr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, 0.5)
+
+[node name="barrel_factory" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("15_5w0nl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25, 0, 2)
+
+[node name="barrel_factory2" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("15_5w0nl")]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -3.25, 0, 2)
+
+[node name="barrel_factory3" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("15_5w0nl")]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 4.5, 0, 14.75)
+
+[node name="barrel_factory4" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("15_5w0nl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 14.75)
+
+[node name="barrel_factory5" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("15_5w0nl")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 4, 0, 15.75)
+
+[node name="pipe_curve_factory" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("16_n88ww")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, 4.75)
+
+[node name="pipe_curve_factory2" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("16_n88ww")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4, 0, 7.75)
+
+[node name="pipe_tube_factory" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("17_i021e")]
+transform = Transform3D(-1.31134e-07, 0, -1, 0, 1, 0, 3, 0, -4.37114e-08, -4, 0, 4.75)
+
+[node name="pipe_curve_factory3" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("16_n88ww")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -4.5, 0, 4.75)
+
+[node name="pipe_curve_factory4" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("16_n88ww")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.5, 0, 7.75)
+
+[node name="pipe_tube_factory2" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("17_i021e")]
+transform = Transform3D(-1.31134e-07, 0, -1, 0, 1, 0, 3, 0, -4.37114e-08, -4.5, 0, 4.75)
+
+[node name="lamp_factory" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("23_a87wi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6299, 2.40771, 0.5)
+
+[node name="lamp_factory2" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("23_a87wi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6201, 2.40771, 0.5)
+
+[node name="silo_factory3" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("5_7ricr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 2.75)
+
+[node name="silo_factory4" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("5_7ricr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 9)
+
+[node name="silo_factory5" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("5_7ricr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 2.75)
+
+[node name="silo_factory6" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("5_7ricr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8.75)
+
+[node name="FactoryIconIvoFloor" parent="Stage Piece Fabrica Room2/Scenery2" instance=ExtResource("19_wfx7r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022, 5.75)
+
+[node name="ElementDragStone" parent="Stage Piece Fabrica Room2" instance=ExtResource("9_0mty8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75, 0, 14.4335)
+
+[node name="ElementDragWall" parent="Stage Piece Fabrica Room2" instance=ExtResource("10_rfof7")]
+transform = Transform3D(9.5, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, 0, 2.75)
+
+[node name="ElementDragWall3" parent="Stage Piece Fabrica Room2" instance=ExtResource("10_rfof7")]
+transform = Transform3D(-5.13609e-07, 0, -1, 0, 1, 0, 11.75, 0, -4.37114e-08, -4.75, 0, 3.75)
+
+[node name="ElementDragWall4" parent="Stage Piece Fabrica Room2" instance=ExtResource("10_rfof7")]
+transform = Transform3D(-5.13609e-07, 0, -1, 0, 1, 0, 11.75, 0, -4.37114e-08, 5.75, 0, 3.75)
+
+[node name="ElementDragWall2" parent="Stage Piece Fabrica Room2" instance=ExtResource("10_rfof7")]
+transform = Transform3D(9.5, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, 0, 15.5)
+
+[node name="ElementDragGoal" parent="Stage Piece Fabrica Room2" instance=ExtResource("8_edw27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 0, 4.68348)
+
+[node name="Enemy_PizzaRoboto" parent="Stage Piece Fabrica Room2" instance=ExtResource("12_sniq3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75, 0, 11.75)
+distanceMax = 0.0
+walkAndStop = true
+invertedPosition = true
+
+[node name="Enemy_PizzaRoboto2" parent="Stage Piece Fabrica Room2" instance=ExtResource("12_sniq3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 14.25)
+distanceMax = 0.0
+walkAndStop = true
+invertedPosition = true
+
+[node name="Enemy_PizzaRoboto3" parent="Stage Piece Fabrica Room2" instance=ExtResource("12_sniq3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 11.75)
+distanceMax = 0.0
+walkAndStop = true
+invertedPosition = true
+
+[node name="Enemy_PizzaRoboto8" parent="Stage Piece Fabrica Room2" instance=ExtResource("12_sniq3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 9)
+distanceMax = 0.0
+walkAndStop = true
+invertedPosition = true
+
+[node name="Enemy_PizzaRoboto9" parent="Stage Piece Fabrica Room2" instance=ExtResource("12_sniq3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0, 6)
+distanceMax = 0.0
+walkAndStop = true
+invertedPosition = true
+
+[node name="Enemy_PizzaRoboto4" parent="Stage Piece Fabrica Room2" instance=ExtResource("12_sniq3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 10)
+distanceMax = 0.0
+walkAndStop = true
+invertedPosition = true
+
+[node name="Enemy_PizzaRoboto5" parent="Stage Piece Fabrica Room2" instance=ExtResource("12_sniq3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 7.5)
+distanceMax = 0.0
+walkAndStop = true
+invertedPosition = true
+
+[node name="Enemy_PizzaRoboto7" parent="Stage Piece Fabrica Room2" instance=ExtResource("12_sniq3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 0, 7.5)
+distanceMax = 0.0
+walkAndStop = true
+invertedPosition = true
+
+[node name="Enemy_PizzaRoboto6" parent="Stage Piece Fabrica Room2" instance=ExtResource("12_sniq3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 5)
+distanceMax = 0.0
+walkAndStop = true
+invertedPosition = true
+
+[node name="ElementDragWall5" parent="Stage Piece Fabrica Room2" instance=ExtResource("11_hwp0k")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.75, 0, 15.5)
+
+[node name="ElementDragWall8" parent="Stage Piece Fabrica Room2" instance=ExtResource("11_hwp0k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, 0, 15.5)
+
+[node name="ElementDragWall6" parent="Stage Piece Fabrica Room2" instance=ExtResource("11_hwp0k")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.75, 0, 3.75)
+
+[node name="ElementDragWall7" parent="Stage Piece Fabrica Room2" instance=ExtResource("11_hwp0k")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 4.75, 0, 3.75)
+
+[node name="Stage Piece Fabrica Room3" parent="." instance=ExtResource("2_vuo60")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -60)
+
+[node name="FactoryDoor" parent="Stage Piece Fabrica Room3" instance=ExtResource("3_tvj4k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.25)
+
+[node name="StageScreenMeasure" parent="Stage Piece Fabrica Room3/FactoryDoor" instance=ExtResource("4_j3ow5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -5)
+default_movement = ExtResource("5_p3san")
+
+[node name="Scenery2" type="Node3D" parent="Stage Piece Fabrica Room3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.25)
+
+[node name="energy_box_factory" parent="Stage Piece Fabrica Room3/Scenery2" instance=ExtResource("8_y7ecr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, 0.5)
+
+[node name="pipe_curve_factory" parent="Stage Piece Fabrica Room3/Scenery2" instance=ExtResource("16_n88ww")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.25, 0, 14.75)
+
+[node name="pipe_curve_factory2" parent="Stage Piece Fabrica Room3/Scenery2" instance=ExtResource("16_n88ww")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -4.25, 0, 14.75)
+
+[node name="pipe_tube_factory" parent="Stage Piece Fabrica Room3/Scenery2" instance=ExtResource("17_i021e")]
+transform = Transform3D(-8.5, 0, 1.50996e-07, 0, 1, 0, -1.28346e-06, 0, -1, 4.25, 0, 14.75)
+
+[node name="FactoryGrayFloor" parent="Stage Piece Fabrica Room3/Scenery2" instance=ExtResource("9_sc46v")]
+transform = Transform3D(9.6, 0, 0, 0, 1, 0, 0, 0, 2, -4.75, 0.001, 10.75)
+
+[node name="FactoryGrayFloor2" parent="Stage Piece Fabrica Room3/Scenery2" instance=ExtResource("9_sc46v")]
+transform = Transform3D(-8.74228e-07, 0, 2, 0, 1, 0, -20, 0, -8.74228e-08, -3, 0.001, 32.75)
+
+[node name="FactoryGrayFloor3" parent="Stage Piece Fabrica Room3/Scenery2" instance=ExtResource("9_sc46v")]
+transform = Transform3D(-8.74228e-07, 0, 2, 0, 1, 0, -20, 0, -8.74228e-08, 1, 0.001, 32.75)
+
+[node name="lamp_factory" parent="Stage Piece Fabrica Room3/Scenery2" instance=ExtResource("23_a87wi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6299, 2.40771, 0.5)
+
+[node name="lamp_factory2" parent="Stage Piece Fabrica Room3/Scenery2" instance=ExtResource("23_a87wi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6201, 2.40771, 0.5)
+
+[node name="silo_factory" parent="Stage Piece Fabrica Room3/Scenery2" instance=ExtResource("5_7ricr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 2.75)
+
+[node name="silo_factory2" parent="Stage Piece Fabrica Room3/Scenery2" instance=ExtResource("5_7ricr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 2.75)
+
+[node name="silo_factory3" parent="Stage Piece Fabrica Room3/Scenery2" instance=ExtResource("5_7ricr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 11.5)
+
+[node name="silo_factory4" parent="Stage Piece Fabrica Room3/Scenery2" instance=ExtResource("5_7ricr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 11.5)
+
+[node name="ElementDragStone" parent="Stage Piece Fabrica Room3" instance=ExtResource("9_0mty8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75, 0, 14.4335)
+
+[node name="ElementDragWall" parent="Stage Piece Fabrica Room3" instance=ExtResource("10_rfof7")]
+transform = Transform3D(9.5, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, 0, 2.75)
+
+[node name="ElementDragWall5" parent="Stage Piece Fabrica Room3" instance=ExtResource("10_rfof7")]
+transform = Transform3D(5.75, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, 0, 11.25)
+
+[node name="ElementDragWall8" parent="Stage Piece Fabrica Room3" instance=ExtResource("10_rfof7")]
+transform = Transform3D(1.75, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 6.75)
+
+[node name="ElementDragWall3" parent="Stage Piece Fabrica Room3" instance=ExtResource("10_rfof7")]
+transform = Transform3D(-3.27835e-07, 0, -1, 0, 1, 0, 7.5, 0, -4.37114e-08, -4.75, 0, 3.75)
+
+[node name="ElementDragWall12" parent="Stage Piece Fabrica Room3" instance=ExtResource("10_rfof7")]
+transform = Transform3D(-1.42062e-07, 0, -1, 0, 1, 0, 3.25, 0, -4.37114e-08, -4.75, 0, 12.25)
+
+[node name="ElementDragWall6" parent="Stage Piece Fabrica Room3" instance=ExtResource("10_rfof7")]
+transform = Transform3D(-1.63918e-07, 0, -1, 0, 1, 0, 3.75, 0, -4.37114e-08, 2, 0, 7.5)
+
+[node name="ElementDragWall4" parent="Stage Piece Fabrica Room3" instance=ExtResource("10_rfof7")]
+transform = Transform3D(-5.13609e-07, 0, -1, 0, 1, 0, 11.75, 0, -4.37114e-08, 5.75, 0, 3.75)
+
+[node name="ElementDragWall2" parent="Stage Piece Fabrica Room3" instance=ExtResource("10_rfof7")]
+transform = Transform3D(9.5, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, 0, 15.5)
+
+[node name="ElementDragGoal" parent="Stage Piece Fabrica Room3" instance=ExtResource("8_edw27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 9.68348)
+
+[node name="Enemy Laser Roboto2" parent="Stage Piece Fabrica Room3" instance=ExtResource("10_wl6vk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+inverted_direction = true
+distanceMax = 0.0
+invertedPosition = true
+
+[node name="PizzaShooter4" parent="Stage Piece Fabrica Room3" instance=ExtResource("11_bk0l0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 5.25)
+distanceMax = 0.0
+invertedPosition = true
+
+[node name="PizzaShooter5" parent="Stage Piece Fabrica Room3" instance=ExtResource("11_bk0l0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 0, 5.25)
+distanceMax = 0.0
+invertedPosition = true
+
+[node name="PizzaShooter6" parent="Stage Piece Fabrica Room3" instance=ExtResource("11_bk0l0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.25)
+distanceMax = 0.0
+invertedPosition = true
+
+[node name="HoldableButton-HOLD_LEVELUP" parent="Stage Piece Fabrica Room3" instance=ExtResource("24_p3san")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 0, 19.25)
+
+[node name="WeaponButton_Tap_Blue" parent="Stage Piece Fabrica Room3" instance=ExtResource("14_gdrsu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 19.25)
+
+[node name="ElementDragWall7" parent="Stage Piece Fabrica Room3" instance=ExtResource("11_hwp0k")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.75, 0, 15.5)
+
+[node name="ElementDragWall11" parent="Stage Piece Fabrica Room3" instance=ExtResource("11_hwp0k")]
+transform = Transform3D(1, 0, -2.13163e-14, 0, 1, 0, 2.13163e-14, 0, 1, 4.75, 0, 15.5)
+
+[node name="ElementDragWall13" parent="Stage Piece Fabrica Room3" instance=ExtResource("11_hwp0k")]
+transform = Transform3D(1, 0, -2.13163e-14, 0, 1, 0, 2.13163e-14, 0, 1, 1, 0, 11.25)
+
+[node name="ElementDragWall14" parent="Stage Piece Fabrica Room3" instance=ExtResource("11_hwp0k")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, 7.75)
+
+[node name="ElementDragWall9" parent="Stage Piece Fabrica Room3" instance=ExtResource("11_hwp0k")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.75, 0, 3.75)
+
+[node name="ElementDragWall10" parent="Stage Piece Fabrica Room3" instance=ExtResource("11_hwp0k")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 4.75, 0, 3.75)
+
+[node name="ElementDragWall15" parent="Stage Piece Fabrica Room3" instance=ExtResource("28_b5f5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 0, 6.75)
+
+[node name="ElementDragWall16" parent="Stage Piece Fabrica Room3" instance=ExtResource("27_2tggk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.75, 0, 12.25)
+
+[node name="Stage Piece Fabrica Room4" parent="." instance=ExtResource("2_vuo60")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, -90)
+
+[node name="FactoryDoor" parent="Stage Piece Fabrica Room4" instance=ExtResource("3_tvj4k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.25)
+
+[node name="StageScreenMeasure" parent="Stage Piece Fabrica Room4/FactoryDoor" instance=ExtResource("4_j3ow5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -5)
+default_movement = ExtResource("5_p3san")
+
+[node name="Scenery2" type="Node3D" parent="Stage Piece Fabrica Room4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.25)
+
+[node name="silo_factory" parent="Stage Piece Fabrica Room4/Scenery2" instance=ExtResource("5_7ricr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 2.75)
+
+[node name="silo_factory2" parent="Stage Piece Fabrica Room4/Scenery2" instance=ExtResource("5_7ricr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 2.75)
+
+[node name="silo_factory3" parent="Stage Piece Fabrica Room4/Scenery2" instance=ExtResource("5_7ricr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.25, 0, 10.75)
+
+[node name="silo_factory4" parent="Stage Piece Fabrica Room4/Scenery2" instance=ExtResource("5_7ricr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.75, 0, 10.75)
+
+[node name="energy_box_factory" parent="Stage Piece Fabrica Room4/Scenery2" instance=ExtResource("8_y7ecr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, 0.5)
+
+[node name="barrel_factory6" parent="Stage Piece Fabrica Room4/Scenery2" instance=ExtResource("15_5w0nl")]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 4, 0, 18.75)
+
+[node name="barrel_factory7" parent="Stage Piece Fabrica Room4/Scenery2" instance=ExtResource("15_5w0nl")]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 3, 0, 18.75)
+
+[node name="lamp_factory" parent="Stage Piece Fabrica Room4/Scenery2" instance=ExtResource("23_a87wi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.5, 0.5)
+
+[node name="lamp_factory2" parent="Stage Piece Fabrica Room4/Scenery2" instance=ExtResource("23_a87wi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2.5, 0.5)
+
+[node name="FactoryGrayFloor" parent="Stage Piece Fabrica Room4/Scenery2" instance=ExtResource("9_sc46v")]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 2, -7.5, 0.001, 18.75)
+
+[node name="FactoryGrayFloor2" parent="Stage Piece Fabrica Room4/Scenery2" instance=ExtResource("9_sc46v")]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 4, -7.5, 0.001, -1.25)
+
+[node name="ElementDragStone" parent="Stage Piece Fabrica Room4" instance=ExtResource("9_0mty8")]
+transform = Transform3D(-1.00078, 0, 0, 0, 1.00078, 0, 0, 0, 1.00078, 3.5, 0, 18)
+
+[node name="ElementDragWall" parent="Stage Piece Fabrica Room4" instance=ExtResource("10_rfof7")]
+transform = Transform3D(9.5, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 6.75)
+
+[node name="ElementDragWall5" parent="Stage Piece Fabrica Room4" instance=ExtResource("10_rfof7")]
+transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 15)
+
+[node name="ElementDragWall8" parent="Stage Piece Fabrica Room4" instance=ExtResource("10_rfof7")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 10.5)
+
+[node name="ElementDragWall3" parent="Stage Piece Fabrica Room4" instance=ExtResource("10_rfof7")]
+transform = Transform3D(-3.16908e-07, 0, -1, 0, 1, 0, 7.25, 0, -4.37114e-08, 6, 0, 7.75)
+
+[node name="ElementDragWall13" parent="Stage Piece Fabrica Room4" instance=ExtResource("10_rfof7")]
+transform = Transform3D(-1.5299e-07, 0, -1, 0, 1, 0, 3.5, 0, -4.37114e-08, 6, 0, 16)
+
+[node name="ElementDragWall6" parent="Stage Piece Fabrica Room4" instance=ExtResource("10_rfof7")]
+transform = Transform3D(-1.5299e-07, 0, -1, 0, 1, 0, 3.5, 0, -4.37114e-08, -1, 0, 11.5)
+
+[node name="ElementDragWall4" parent="Stage Piece Fabrica Room4" instance=ExtResource("10_rfof7")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -4.64431, 0, 6.67923)
+
+[node name="ElementDragWall2" parent="Stage Piece Fabrica Room4" instance=ExtResource("10_rfof7")]
+transform = Transform3D(9.5, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 19.5)
+
+[node name="ElementDragWall9" parent="Stage Piece Fabrica Room4" instance=ExtResource("10_rfof7")]
+transform = Transform3D(-5.13609e-07, 0, -1, 0, 1, 0, 11.75, 0, -4.37114e-08, -4.5, 0, 7.75)
+
+[node name="ElementDragGoal" parent="Stage Piece Fabrica Room4" instance=ExtResource("8_edw27")]
+transform = Transform3D(-1.00078, 0, 0, 0, 1.00078, 0, 0, 0, 1.00078, 0.359982, 0, 13.6847)
+
+[node name="EnemyJacare" parent="Stage Piece Fabrica Room4" instance=ExtResource("15_4injw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 13)
+distanceMax = 0.0
+invertedPosition = true
+
+[node name="EnemyJacare2" parent="Stage Piece Fabrica Room4" instance=ExtResource("15_4injw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25, 0, 17.75)
+distanceMax = 0.0
+invertedPosition = true
+
+[node name="EnemyMole" parent="Stage Piece Fabrica Room4" instance=ExtResource("16_h3lyv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="ElementDragWall7" parent="Stage Piece Fabrica Room4" instance=ExtResource("11_hwp0k")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.5, 0, 19.5)
+
+[node name="ElementDragWall14" parent="Stage Piece Fabrica Room4" instance=ExtResource("11_hwp0k")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, 15)
+
+[node name="ElementDragWall15" parent="Stage Piece Fabrica Room4" instance=ExtResource("11_hwp0k")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1, 0, 11.5)
+
+[node name="ElementDragWall11" parent="Stage Piece Fabrica Room4" instance=ExtResource("11_hwp0k")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.5, 0, 7.75)
+
+[node name="ElementDragWall12" parent="Stage Piece Fabrica Room4" instance=ExtResource("11_hwp0k")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 5, 0, 7.75)
+
+[node name="ElementDragWall10" parent="Stage Piece Fabrica Room4" instance=ExtResource("11_hwp0k")]
+transform = Transform3D(1, 0, -2.13163e-14, 0, 1, 0, 2.13163e-14, 0, 1, 5, 0, 19.5)
+
+[node name="ElementDragWall16" parent="Stage Piece Fabrica Room4" instance=ExtResource("28_b5f5s")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2, 0, 11.5)
+
+[node name="ElementDragWall17" parent="Stage Piece Fabrica Room4" instance=ExtResource("27_2tggk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 0, 15)
+
+[node name="Stage Piece Fabrica Room5" parent="." instance=ExtResource("2_vuo60")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, -120)
+
+[node name="VisibleOnScreenNotifier3D" parent="Stage Piece Fabrica Room5/Config" index="5"]
+aabb = AABB(-22.251, 0, -18.08, 44.5, 13.796, 40)
+
+[node name="FactoryDoor Final" parent="Stage Piece Fabrica Room5" instance=ExtResource("3_tvj4k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.25)
+
+[node name="StageScreenMeasure Final" parent="Stage Piece Fabrica Room5" instance=ExtResource("4_j3ow5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -2.75)
+default_movement = ExtResource("5_p3san")
+
+[node name="Scenery2" type="Node3D" parent="Stage Piece Fabrica Room5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.25)
+
+[node name="energy_box_factory2" parent="Stage Piece Fabrica Room5/Scenery2" instance=ExtResource("8_y7ecr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, 0.5)
+
+[node name="pipe_curve_factory" parent="Stage Piece Fabrica Room5/Scenery2" instance=ExtResource("16_n88ww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8701, -0.0922852, 17.606)
+
+[node name="pipe_curve_factory2" parent="Stage Piece Fabrica Room5/Scenery2" instance=ExtResource("16_n88ww")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.8701, -0.0922852, 17.606)
+
+[node name="pipe_tube_factory" parent="Stage Piece Fabrica Room5/Scenery2" instance=ExtResource("17_i021e")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, -4.8701, -0.0922852, 17.606)
+
+[node name="pipe_curve_factory3" parent="Stage Piece Fabrica Room5/Scenery2" instance=ExtResource("16_n88ww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1299, -0.0922852, 17.606)
+
+[node name="pipe_curve_factory4" parent="Stage Piece Fabrica Room5/Scenery2" instance=ExtResource("16_n88ww")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.1299, -0.0922852, 17.606)
+
+[node name="pipe_tube_factory2" parent="Stage Piece Fabrica Room5/Scenery2" instance=ExtResource("17_i021e")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 2.1299, -0.0922852, 17.606)
+
+[node name="pipe_curve_factory5" parent="Stage Piece Fabrica Room5/Scenery2" instance=ExtResource("16_n88ww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1299, -0.0922852, 18.106)
+
+[node name="pipe_curve_factory6" parent="Stage Piece Fabrica Room5/Scenery2" instance=ExtResource("16_n88ww")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.1299, -0.0922852, 18.106)
+
+[node name="pipe_tube_factory3" parent="Stage Piece Fabrica Room5/Scenery2" instance=ExtResource("17_i021e")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 2.1299, -0.0922852, 18.106)
+
+[node name="pipe_curve_factory7" parent="Stage Piece Fabrica Room5/Scenery2" instance=ExtResource("16_n88ww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8701, -0.0922852, 18.106)
+
+[node name="pipe_curve_factory8" parent="Stage Piece Fabrica Room5/Scenery2" instance=ExtResource("16_n88ww")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.8701, -0.0922852, 18.106)
+
+[node name="pipe_tube_factory4" parent="Stage Piece Fabrica Room5/Scenery2" instance=ExtResource("17_i021e")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, -4.8701, -0.0922852, 18.106)
+
+[node name="lamp_factory" parent="Stage Piece Fabrica Room5/Scenery2" instance=ExtResource("23_a87wi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6299, 2.40771, 0.5)
+
+[node name="lamp_factory2" parent="Stage Piece Fabrica Room5/Scenery2" instance=ExtResource("23_a87wi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6201, 2.40771, 0.5)
+
+[node name="FactoryGrayFloor" parent="Stage Piece Fabrica Room5/Scenery2" instance=ExtResource("9_sc46v")]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 2, -7.5, 0.001, 18.75)
+
+[node name="FactoryGrayFloor2" parent="Stage Piece Fabrica Room5/Scenery2" instance=ExtResource("9_sc46v")]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 4, -7.5, 0.001, 6.75)
+
+[node name="silo_factory" parent="Stage Piece Fabrica Room5/Scenery2" instance=ExtResource("5_7ricr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75, 0, 2.356)
+
+[node name="silo_factory2" parent="Stage Piece Fabrica Room5/Scenery2" instance=ExtResource("5_7ricr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 2.356)
+
+[node name="silo_factory3" parent="Stage Piece Fabrica Room5/Scenery2" instance=ExtResource("5_7ricr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75, 0, 17.356)
+
+[node name="silo_factory4" parent="Stage Piece Fabrica Room5/Scenery2" instance=ExtResource("5_7ricr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 17.356)
+
+[node name="ElementDragStone" parent="Stage Piece Fabrica Room5" instance=ExtResource("9_0mty8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 17.5)
+
+[node name="ElementDragWall5" parent="Stage Piece Fabrica Room5" instance=ExtResource("10_rfof7")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, -4.25, 0, 3)
+
+[node name="ElementDragWall13" parent="Stage Piece Fabrica Room5" instance=ExtResource("10_rfof7")]
+transform = Transform3D(5.75, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0, 3)
+
+[node name="ElementDragWall3" parent="Stage Piece Fabrica Room5" instance=ExtResource("10_rfof7")]
+transform = Transform3D(-6.33815e-07, 0, -1, 0, 1, 0, 14.5, 0, -4.37114e-08, -4.25, 0, 4)
+
+[node name="ElementDragWall6" parent="Stage Piece Fabrica Room5" instance=ExtResource("10_rfof7")]
+transform = Transform3D(-6.33815e-07, 0, -1, 0, 1, 0, 14.5, 0, -4.37114e-08, 5.5, 0, 4)
+
+[node name="ElementDragWall7" parent="Stage Piece Fabrica Room5" instance=ExtResource("10_rfof7")]
+transform = Transform3D(2.14178e-06, 0, 1, 0, 1, 0, -11, 0, 1.94707e-07, -2.25, 0, 15)
+
+[node name="ElementDragWall8" parent="Stage Piece Fabrica Room5" instance=ExtResource("10_rfof7")]
+transform = Transform3D(-4.80825e-07, 0, -1, 0, 1, 0, 11, 0, -4.37114e-08, 2.5, 0, 7.5)
+
+[node name="ElementDragWall2" parent="Stage Piece Fabrica Room5" instance=ExtResource("10_rfof7")]
+transform = Transform3D(5.75, 0, 0, 0, 1, 0, 0, 0, 1, -4.25, 0, 18.5)
+
+[node name="ElementDragWall4" parent="Stage Piece Fabrica Room5" instance=ExtResource("10_rfof7")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 18.5)
+
+[node name="ElementDragGoal" parent="Stage Piece Fabrica Room5" instance=ExtResource("8_edw27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25, 0, 5)
+
+[node name="PizzaShooter_Super" parent="Stage Piece Fabrica Room5" instance=ExtResource("11_ln4c1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11)
+distanceMax = 0.0
+invertedPosition = true
+
+[node name="ElementDragWall9" parent="Stage Piece Fabrica Room5" instance=ExtResource("11_hwp0k")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.25, 0, 4)
+
+[node name="ElementDragWall10" parent="Stage Piece Fabrica Room5" instance=ExtResource("11_hwp0k")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.25, 0, 18.5)
+
+[node name="ElementDragWall11" parent="Stage Piece Fabrica Room5" instance=ExtResource("11_hwp0k")]
+transform = Transform3D(1, 0, -2.13163e-14, 0, 1, 0, 2.13163e-14, 0, 1, 4.5, 0, 18.5)
+
+[node name="ElementDragWall12" parent="Stage Piece Fabrica Room5" instance=ExtResource("11_hwp0k")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.5, 0, 4)
+
+[node name="ElementDragWall" parent="Stage Piece Fabrica Room5" instance=ExtResource("28_b5f5s")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.5, 0, 6.5)
+
+[node name="ElementDragWall14" parent="Stage Piece Fabrica Room5" instance=ExtResource("28_b5f5s")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.25, 0, 16)
+
+[node name="ElementDragWall15" parent="Stage Piece Fabrica Room5" instance=ExtResource("27_2tggk")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.5, 0, 19.5)
+
+[node name="ElementDragWall16" parent="Stage Piece Fabrica Room5" instance=ExtResource("27_2tggk")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -2.25, 0, 3)
+
+[node name="Stage Piece Fabrica Prize Room" parent="Stage Piece Fabrica Room5" instance=ExtResource("30_krc4y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
+
+[node name="StageScreenMeasure Prize" parent="Stage Piece Fabrica Room5/Stage Piece Fabrica Prize Room" index="0"]
+default_movement = ExtResource("5_p3san")
+
+[node name="Sequence" type="Node" parent="." node_paths=PackedStringArray("final_measure", "back_measure")]
+script = SubResource("GDScript_dxyvm")
+time_left_text = "Time left:"
+victory_text = "Wow, so fast"
+index_start = 1
+final_measure = NodePath("../Stage Piece Fabrica Room5/Stage Piece Fabrica Prize Room/StageScreenMeasure Prize")
+back_measure = NodePath("../Stage Piece Fabrica Room5/StageScreenMeasure Final")
+total_time_seconds = 25.5
+
+[node name="Measure0" type="Node" parent="Sequence" node_paths=PackedStringArray("where")]
+script = ExtResource("6_dwsb2")
+where = NodePath("../../Stage Piece Fabrica Room/FactoryDoor/StageScreenMeasure")
+speed_or_time = 25.0
+style = 1
+waits_tween = false
+
+[node name="Level_Snippet_Until_Element_Dead" type="Node" parent="Sequence" node_paths=PackedStringArray("element_to_wait")]
+script = ExtResource("7_cipgh")
+element_to_wait = NodePath("../../Stage Piece Fabrica Room/FactoryDoor")
+
+[node name="Measure1" type="Node" parent="Sequence" node_paths=PackedStringArray("where")]
+script = ExtResource("6_dwsb2")
+where = NodePath("../../Stage Piece Fabrica Room2/FactoryDoor/StageScreenMeasure")
+speed_or_time = 45.0
+style = 1
+waits_tween = false
+
+[node name="Level_Snippet_Until_Element_Dead2" type="Node" parent="Sequence" node_paths=PackedStringArray("element_to_wait")]
+script = ExtResource("7_cipgh")
+element_to_wait = NodePath("../../Stage Piece Fabrica Room2/FactoryDoor")
+
+[node name="Measure2" type="Node" parent="Sequence" node_paths=PackedStringArray("where")]
+script = ExtResource("6_dwsb2")
+where = NodePath("../../Stage Piece Fabrica Room3/FactoryDoor/StageScreenMeasure")
+speed_or_time = 45.0
+style = 1
+waits_tween = false
+
+[node name="Level_Snippet_Until_Element_Dead3" type="Node" parent="Sequence" node_paths=PackedStringArray("element_to_wait")]
+script = ExtResource("7_cipgh")
+element_to_wait = NodePath("../../Stage Piece Fabrica Room3/FactoryDoor")
+
+[node name="Measure3" type="Node" parent="Sequence" node_paths=PackedStringArray("where")]
+script = ExtResource("6_dwsb2")
+where = NodePath("../../Stage Piece Fabrica Room4/FactoryDoor/StageScreenMeasure")
+speed_or_time = 45.0
+style = 1
+waits_tween = false
+
+[node name="Level_Snippet_Until_Element_Dead4" type="Node" parent="Sequence" node_paths=PackedStringArray("element_to_wait")]
+script = ExtResource("7_cipgh")
+element_to_wait = NodePath("../../Stage Piece Fabrica Room4/FactoryDoor")
+
+[node name="Measure4" type="Node" parent="Sequence" node_paths=PackedStringArray("where")]
+script = ExtResource("6_dwsb2")
+where = NodePath("../../Stage Piece Fabrica Room5/StageScreenMeasure Final")
+speed_or_time = 45.0
+style = 1
+waits_tween = false
+
+[node name="Level_Snippet_Until_Element_Dead5" type="Node" parent="Sequence" node_paths=PackedStringArray("element_to_wait")]
+script = ExtResource("7_cipgh")
+element_to_wait = NodePath("../../Stage Piece Fabrica Room5/FactoryDoor Final")
+
+[editable path="Stage Piece Fabrica Room3"]
+[editable path="Stage Piece Fabrica Room5"]
+[editable path="Stage Piece Fabrica Room5/Stage Piece Fabrica Prize Room"]

@@ -1,0 +1,161 @@
+[gd_scene load_steps=24 format=3 uid="uid://dwkefm5r6xxb6"]
+
+[ext_resource type="Script" uid="uid://lc84xfycic3" path="res://elements/levels/lvl_hub/hub_elements/hub_buttons/hub_pressable_button_upgrade_set.gd" id="1_tpk7p"]
+[ext_resource type="PackedScene" uid="uid://b1n8lkpoiq8mj" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_upgrade_set/graphic_pressable_button_upgrade_set.tscn" id="2_as7at"]
+[ext_resource type="WwiseEvent" uid="uid://beceunohvjy70" path="res://Wwise/resources/Event/{395B3C6D-FAAF-480B-9F38-94E1D5E8815C}.tres" id="2_q873a"]
+[ext_resource type="WwiseEvent" uid="uid://b1clmhmuvq810" path="res://Wwise/resources/Event/{F847C71B-6487-428E-8369-0BB8BE856916}.tres" id="3_b6q1a"]
+[ext_resource type="Texture2D" uid="uid://cc2f1a3pp2h0e" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_upgrade_set/texture/t_mesh_button_upgrade_set_button_BaseColor.png" id="3_mtwbc"]
+[ext_resource type="Texture2D" uid="uid://qn56g55gh8l7" path="res://elements/neutral/interactables/pressable_buttons/pressable_button_upgrade_set/texture/t_mesh_button_upgrade_set_base_BaseColor.png" id="5_nuetv"]
+[ext_resource type="Texture2D" uid="uid://b3s6bubwjtovt" path="res://elements/icons/icon_hold_yellow.png" id="5_p1uli"]
+[ext_resource type="Texture2D" uid="uid://cm5belis6bq0x" path="res://elements/icons/icon_star.png" id="7_2t31l"]
+[ext_resource type="Script" uid="uid://0wf4obm88h88" path="res://elements/neutral/props/generic_tumbler.gd" id="9_wukej"]
+[ext_resource type="Script" uid="uid://bgdocsgotim3u" path="res://elements/player/force_tumble_data.gd" id="10_sblpd"]
+[ext_resource type="Script" uid="uid://biqjvlcudqx0t" path="res://elements/player/force_receiver.gd" id="11_888w8"]
+
+[sub_resource type="Gradient" id="Gradient_jwtwq"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.537841, 0.616838, 0.723474, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c5w3d"]
+gradient = SubResource("Gradient_jwtwq")
+width = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c2hjw"]
+resource_local_to_scene = true
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0, 0.360784, 0.658824, 1)
+emission_enabled = true
+emission = Color(0.28, 0.28, 0.28, 1)
+emission_energy_multiplier = 0.0
+detail_enabled = true
+detail_mask = ExtResource("3_mtwbc")
+detail_albedo = SubResource("GradientTexture1D_c5w3d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nd25v"]
+resource_local_to_scene = true
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("5_p1uli")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="Gradient" id="Gradient_00xjj"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.545098, 0.623529, 0.729412, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fswf6"]
+gradient = SubResource("Gradient_00xjj")
+width = 1
+
+[sub_resource type="Gradient" id="Gradient_y1v31"]
+offsets = PackedFloat32Array(0.288608, 0.387342, 0.529114)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g3hpg"]
+gradient = SubResource("Gradient_y1v31")
+width = 1
+height = 8
+fill = 2
+fill_to = Vector2(0.239316, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fft2d"]
+resource_local_to_scene = true
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("5_nuetv")
+emission_enabled = true
+emission = Color(0.877616, 0.877616, 0.877616, 1)
+emission_energy_multiplier = 0.0
+detail_mask = SubResource("GradientTexture2D_g3hpg")
+detail_albedo = SubResource("GradientTexture1D_fswf6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7nql2"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_color = Color(0.775063, 0.775063, 0.775063, 1)
+albedo_texture = ExtResource("7_2t31l")
+
+[sub_resource type="QuadMesh" id="QuadMesh_prsu5"]
+size = Vector2(0.4, 0.4)
+orientation = 1
+
+[sub_resource type="Resource" id="Resource_eq8e0"]
+script = ExtResource("10_sblpd")
+force_response_multiplier = 72.0
+return_force_multiplier = 70.0
+mass = 3.0
+scaled_mass = true
+min_velocity = 2.0
+min_force_to_min_velocity = 4.5
+velocity_dissipation = 3.0
+tumble_sensitivity = 0.05
+vibration_max_value_amplitude = 0.15
+vibration_frequency = 32.0
+vibration_increase = 4.0
+vibration_decrease = 32.0
+force_min_to_increase_vibration = 0.5
+max_tumble = 20.0
+max_tumble_velocity = 400.0
+add_tumble_hit_multiplier = 1.0
+add_tumble_hit_velocity_multiplier = 1.0
+add_vibration_influence_on_hit = 0.8
+
+[node name="HUBButtonUpgradeSet" type="Node3D" node_paths=PackedStringArray("label_allocated_stars", "graphic")]
+script = ExtResource("1_tpk7p")
+label_allocated_stars = NodePath("Graphic Button Upgrade Set/visuals/button_base/button_base_slide/StarsCountLabel")
+toggle_mode = true
+graphic = NodePath("Graphic Button Upgrade Set")
+_sfx_toggled_on = ExtResource("2_q873a")
+_sfx_toggled_off = ExtResource("3_b6q1a")
+
+[node name="Graphic Button Upgrade Set" parent="." instance=ExtResource("2_as7at")]
+
+[node name="button_upgrade_set_button" parent="Graphic Button Upgrade Set/visuals/button_mesh/button_glb" index="0"]
+material_override = SubResource("StandardMaterial3D_c2hjw")
+
+[node name="icon_mesh" parent="Graphic Button Upgrade Set/visuals/button_mesh" index="1"]
+material_override = SubResource("StandardMaterial3D_nd25v")
+
+[node name="button_upgrade_set_base" parent="Graphic Button Upgrade Set/visuals/button_base/button_upgrade_set_base" index="0"]
+material_override = SubResource("StandardMaterial3D_fft2d")
+
+[node name="button_upgrade_set_" parent="Graphic Button Upgrade Set/visuals/button_base/button_base_slide/button_upgrade_set_slide" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_fft2d")
+
+[node name="StarsCountLabel" type="Label3D" parent="Graphic Button Upgrade Set/visuals/button_base/button_base_slide" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.640536, 0.126165, 0.264837)
+text = "99"
+font_size = 85
+outline_size = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Graphic Button Upgrade Set/visuals/button_base/button_base_slide/StarsCountLabel"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.562546, -2.98023e-08)
+material_override = SubResource("StandardMaterial3D_7nql2")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_prsu5")
+skeleton = NodePath("")
+
+[node name="GenericTumbler" type="Node3D" parent="." node_paths=PackedStringArray("receiver", "to_tumble")]
+script = ExtResource("9_wukej")
+receiver = NodePath("ForceReceiver")
+to_tumble = NodePath("../Graphic Button Upgrade Set")
+tumble_data = SubResource("Resource_eq8e0")
+tumble_radius = 1.1
+random_force = 0.25
+metadata/_custom_type_script = "uid://0wf4obm88h88"
+
+[node name="ForceReceiver" type="Node3D" parent="GenericTumbler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+script = ExtResource("11_888w8")
+metadata/_custom_type_script = "uid://biqjvlcudqx0t"
+
+[editable path="Graphic Button Upgrade Set"]
+[editable path="Graphic Button Upgrade Set/visuals/button_mesh"]
+[editable path="Graphic Button Upgrade Set/visuals/button_mesh/button_glb"]
+[editable path="Graphic Button Upgrade Set/visuals/button_base"]
+[editable path="Graphic Button Upgrade Set/visuals/button_base/button_upgrade_set_base"]
+[editable path="Graphic Button Upgrade Set/visuals/button_base/button_base_slide/button_upgrade_set_slide"]

@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://cilsuv0pyy4t0"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Stop_Game_Paused"
+id = 4158094875
+guid = "{F8563BAB-9BF4-4E75-B277-07E59DA091F8}"
+dummy = true

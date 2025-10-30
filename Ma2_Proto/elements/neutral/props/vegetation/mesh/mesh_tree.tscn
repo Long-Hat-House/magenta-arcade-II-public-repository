@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfbbh88vduydx"]
+
+[ext_resource type="PackedScene" uid="uid://da0tkyup0ojp0" path="res://elements/neutral/props/vegetation/mesh/tree.glb" id="1_4cv44"]
+[ext_resource type="Material" uid="uid://bir6dqqvpk67e" path="res://elements/neutral/props/vegetation/material/m_tree.tres" id="2_2ew3h"]
+[ext_resource type="Material" uid="uid://dly6jmk1k27rl" path="res://elements/neutral/props/vegetation/material/m_leaf.tres" id="3_0j1vd"]
+[ext_resource type="Script" uid="uid://cj5w32j4b2lox" path="res://elements/neutral/props/positional_spring.gd" id="4_dfwqc"]
+
+[node name="Mesh Tree" instance=ExtResource("1_4cv44")]
+
+[node name="trunk" parent="." index="0"]
+material_override = ExtResource("2_2ew3h")
+
+[node name="leaf02_001" parent="." index="1"]
+material_override = ExtResource("3_0j1vd")
+script = ExtResource("4_dfwqc")
+
+[node name="leaf02_002" parent="." index="2"]
+material_override = ExtResource("3_0j1vd")
+script = ExtResource("4_dfwqc")
+
+[node name="leaf02_003" parent="." index="3"]
+material_override = ExtResource("3_0j1vd")
+script = ExtResource("4_dfwqc")
+
+[node name="leaf02_004" parent="." index="4"]
+material_override = ExtResource("3_0j1vd")
+script = ExtResource("4_dfwqc")
+
+[node name="leaf02_005" parent="." index="5"]
+material_override = ExtResource("3_0j1vd")
+script = ExtResource("4_dfwqc")
+
+[node name="leaf01_001" parent="." index="6"]
+material_override = ExtResource("3_0j1vd")
+script = ExtResource("4_dfwqc")
+
+[node name="leaf01_002" parent="." index="7"]
+material_override = ExtResource("3_0j1vd")
+script = ExtResource("4_dfwqc")
+
+[node name="leaf01_003" parent="." index="8"]
+material_override = ExtResource("3_0j1vd")
+script = ExtResource("4_dfwqc")
+
+[node name="leaf01_004" parent="." index="9"]
+material_override = ExtResource("3_0j1vd")
+script = ExtResource("4_dfwqc")
+
+[node name="leaf01_005" parent="." index="10"]
+material_override = ExtResource("3_0j1vd")
+script = ExtResource("4_dfwqc")
+
+[node name="leaf03_001" parent="." index="11"]
+material_override = ExtResource("3_0j1vd")
+script = ExtResource("4_dfwqc")
+
+[node name="leaf03_002" parent="." index="12"]
+material_override = ExtResource("3_0j1vd")
+script = ExtResource("4_dfwqc")
+
+[node name="leaf03_003" parent="." index="13"]
+material_override = ExtResource("3_0j1vd")
+script = ExtResource("4_dfwqc")
+
+[node name="leaf03_004" parent="." index="14"]
+material_override = ExtResource("3_0j1vd")
+script = ExtResource("4_dfwqc")
+
+[node name="leaf03_005" parent="." index="15"]
+material_override = ExtResource("3_0j1vd")
+script = ExtResource("4_dfwqc")

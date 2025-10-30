@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c866v88mqx28q"]
+
+[ext_resource type="Material" uid="uid://bjf4j44ay4e3u" path="res://elements/neutral/props/traffic_decals/materials/m_decal_noparkingarea.tres" id="1_w4ssy"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_qfpbe"]
+size = Vector2(0.5, 2)
+orientation = 1
+
+[node name="Decal No Parking Area" type="MeshInstance3D"]
+material_override = ExtResource("1_w4ssy")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_qfpbe")
+skeleton = NodePath("../../../../..")

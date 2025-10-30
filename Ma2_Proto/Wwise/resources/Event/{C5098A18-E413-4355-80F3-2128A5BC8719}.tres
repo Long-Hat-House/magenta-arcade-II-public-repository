@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" load_steps=0 format=3 uid="uid://gmevt27w7cx2"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Boss_Lv3_Main_Immune_Enable"
+id = 1349950757
+guid = "{C5098A18-E413-4355-80F3-2128A5BC8719}"
+dummy = true

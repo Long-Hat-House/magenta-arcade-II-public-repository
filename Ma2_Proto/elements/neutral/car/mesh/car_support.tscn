@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://djthl7si7q61v"]
+
+[ext_resource type="PackedScene" uid="uid://bti6rpvkhceni" path="res://elements/neutral/car/mesh/car_support.glb" id="1_cw2mb"]
+[ext_resource type="Script" path="res://elements/neutral/car/mesh/car_support_graphic.gd" id="2_6142m"]
+[ext_resource type="Material" uid="uid://nmrtqueae2nu" path="res://elements/neutral/car/material/m_car01_pecas.tres" id="2_mckyt"]
+
+[node name="car_support" instance=ExtResource("1_cw2mb")]
+script = ExtResource("2_6142m")
+
+[node name="teto_solar" parent="." index="0"]
+material_override = ExtResource("2_mckyt")
+
+[node name="antena" parent="." index="1"]
+material_override = ExtResource("2_mckyt")
+
+[node name="rack" parent="." index="2"]
+material_override = ExtResource("2_mckyt")

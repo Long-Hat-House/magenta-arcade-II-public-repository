@@ -1,0 +1,126 @@
+[gd_scene load_steps=6 format=3 uid="uid://drba74dos8ekp"]
+
+[ext_resource type="Script" uid="uid://dqvx843rsr1c" path="res://systems/score/score_show.gd" id="1_qmdvq"]
+
+[sub_resource type="Curve" id="Curve_1hroi"]
+_limits = [0.5, 1.3, 0.0, 1.0]
+_data = [Vector2(0, 0.5), 0.0, 2.89476, 0, 0, Vector2(1, 1.3), 1.3, 0.0, 0, 0]
+point_count = 2
+metadata/_snap_count = 3
+
+[sub_resource type="Animation" id="Animation_33kdd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedPivotAndScale:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedPivotAndScale:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8sw8m"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedPivotAndScale:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.8, 1),
+"transitions": PackedFloat32Array(0.210224, 1, 3.605, 1),
+"update": 0,
+"values": [Vector2(0, 0.8), Vector2(1, 1), Vector2(0.6, 0.6), Vector2(0, 0.3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedPivotAndScale:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 10), Vector2(0, -50)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nhmql"]
+_data = {
+&"RESET": SubResource("Animation_33kdd"),
+&"show": SubResource("Animation_8sw8m")
+}
+
+[node name="ScoreShow" type="Control" node_paths=PackedStringArray("_anim", "_label", "_to_set_size")]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_qmdvq")
+_anim = NodePath("AnimationPlayer")
+_label = NodePath("AnimatedPivotAndScale/PerPointSizeable/ShowContainer/Label")
+_to_set_size = NodePath("AnimatedPivotAndScale/PerPointSizeable")
+_size_per_score = SubResource("Curve_1hroi")
+
+[node name="AnimatedPivotAndScale" type="Control" parent="."]
+anchors_preset = 0
+offset_top = -50.0
+offset_bottom = -50.0
+mouse_filter = 2
+
+[node name="PerPointSizeable" type="Control" parent="AnimatedPivotAndScale"]
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="ShowContainer" type="BoxContainer" parent="AnimatedPivotAndScale/PerPointSizeable"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -34.5
+offset_right = 67.0
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+vertical = true
+
+[node name="Label" type="Label" parent="AnimatedPivotAndScale/PerPointSizeable/ShowContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 100
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nhmql")
+}

@@ -1,0 +1,253 @@
+[gd_scene load_steps=9 format=3 uid="uid://bs5t7n3ydeqas"]
+
+[ext_resource type="Script" uid="uid://bpd5xfw6gcj6a" path="res://systems/level/level_snippet_sequence_use_measures.gd" id="2_2gasf"]
+[ext_resource type="PackedScene" uid="uid://cg4uhcbes35qe" path="res://elements/stage_pieces/pampulha/stage_piece_pampulha_orla_segunda.tscn" id="2_6itft"]
+[ext_resource type="Script" uid="uid://d2nlpuu05j3ho" path="res://systems/level/level_snippet_altars.gd" id="3_16jcc"]
+[ext_resource type="PackedScene" uid="uid://cyh3qxcb2s7gv" path="res://elements/powerups/button/powerup_weapon_button_tap_yellow.tscn" id="4_hn8nd"]
+[ext_resource type="PackedScene" uid="uid://dvd0yb0c66fjj" path="res://elements/powerups/button/powerup_weapon_button_tap_red.tscn" id="5_0njet"]
+
+[sub_resource type="GDScript" id="GDScript_mvg20"]
+resource_name = "lvl_sub"
+script/source = "extends Level
+
+## enemies
+const ENEMY_PIZZA_ROBOTO = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto.tscn\")
+
+var group:String = \"main\";
+
+@export var piece:LevelStagePiece;
+@export var snippet:Level_Snippet_Node;
+
+func _ready():
+	await await_for_level_ready()
+
+	stage.attach_piece(piece);
+
+	cmd(snippet.cmd(self));
+"
+
+[sub_resource type="GDScript" id="GDScript_4mubb"]
+script/source = "extends Level_Snippet_Node
+
+const v2z:Vector2 = Vector2.ZERO;
+const v3z:Vector3 = Vector3.ZERO;
+
+const ENEMY_JACARE = preload(\"res://elements/enemy/roboto_jacare/enemy_jacare.tscn\")
+const ENEMY_PIZZA_ROBOTO = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto.tscn\")
+const ENEMY_PIZZA_ROBOTO_SHOOTER = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto_shooter.tscn\")
+const ENEMY_TUCANO = preload(\"res://elements/enemy/roboto_tucano/enemy_tucano.tscn\")
+const ENEMY_BOMB_ROBOTO = preload(\"res://elements/enemy/bomb/enemy_bomb_roboto.tscn\")
+const ENEMY_LASER_ROBOTO = preload(\"res://elements/enemy/laser/enemy_laser_roboto.tscn\")
+const ENEMY_TUCANO_POISON = preload(\"res://elements/enemy/roboto_tucano/enemy_tucano_poison.tscn\")
+var group:String = \"snippet_group\";
+
+func _cmd(lvl:Level)->Level.CMD:
+	var enemies:Array[PackedScene] = [
+		ENEMY_PIZZA_ROBOTO, 		## 0
+		ENEMY_PIZZA_ROBOTO_SHOOTER,	## 1
+		ENEMY_JACARE,				## 2
+		ENEMY_BOMB_ROBOTO,			## 3
+		ENEMY_LASER_ROBOTO,			## 4
+		ENEMY_TUCANO				## 5
+	]
+	
+	var walk_and_stop:Callable = func(pizza:AI_WalkAndDo):
+		pizza.walkAndStop = true;
+		pizza.distanceMax = 15;
+		pizza.accelerationBegin = 3;
+		pizza.accelerationDuration = 2;
+	var jac:Callable = func(jac:Node3D, dir:Vector3):
+		jac.basis = Basis.looking_at(dir);
+	return Level.CMD_Sequence.new([
+		Level.CMD_Wait_Seconds.new(0.75),
+		Level.CMD_Parallel_Complete.new([
+			## Center pizzas and enemies
+			Level.CMD_Sequence.new([
+				lvl.cmd_enemy_line(enemies, [0,1,-1,-1,1], 0, -3, -1, Vector2.UP * 2, \"main\", walk_and_stop),
+				lvl.cmd_enemy_line(enemies, [0,1,-1,-1,1], 0, 3, -1, Vector2.UP * 2, \"main\", walk_and_stop),
+				lvl.objs.cmd_wait_group(\"main\"),
+				lvl.CMD_Wait_Seconds.new(0.5),
+				lvl.cmd_enemy_line(enemies, [0,-1,0,1,1], 0, -3, -1, Vector2.UP * 2, \"main\", walk_and_stop),
+				lvl.cmd_enemy_line(enemies, [0,-1,0,1,1], 0, 3, -1, Vector2.UP * 2, \"main\", walk_and_stop),
+				lvl.objs.cmd_wait_group(\"main\"),
+				lvl.CMD_Wait_Seconds.new(0.5),
+				lvl.cmd_enemy_line(enemies, [0,1,0,1,1], 0, -3, -1, Vector2.UP * 2, \"main\", walk_and_stop),
+				lvl.cmd_enemy_line(enemies, [0,1,0,1,1], 0, 3, -1, Vector2.UP * 2, \"main\", walk_and_stop),
+				lvl.objs.cmd_wait_group(\"main\", 1),
+				
+			]),
+			
+			##Super center
+			Level.CMD_Sequence.new([
+				lvl.CMD_Wait_Seconds.new(3),
+				lvl.cmd_enemy_line(enemies, [-1,-1,4,-1,-1], 0, 0, -1, Vector2.UP * 2, \"center\", walk_and_stop),
+				lvl.objs.cmd_wait_group(\"center\"),
+				lvl.CMD_Wait_Seconds.new(0.5),
+				lvl.cmd_enemy_line(enemies, [-1,3,-1,-1,-1], 0, 0, -1, Vector2.UP * 2, \"center\", walk_and_stop),
+				lvl.CMD_Wait_Seconds.new(3),
+				lvl.cmd_enemy_line(enemies, [-1,2,-1,4,-1], 0, 0, -1, Vector2.UP * 2, \"center\", walk_and_stop),
+				lvl.objs.cmd_wait_group(\"center\"),
+				lvl.cmd_enemy_line(enemies, [0,1,0,0,1], 0, 0, -1, Vector2.UP * 2, \"center\", walk_and_stop),
+				lvl.objs.cmd_wait_group(\"center\", 2),
+			]),
+			
+			## Side Jacares
+			Level.CMD_Sequence.new([
+				Level.CMD_Callable.new(func():
+					lvl.objs.create_object(ENEMY_JACARE, \"jac\", lvl.stage.get_grid(-11.0, 7.0), Vector3(1, 0, 0.75));
+					lvl.objs.create_object(ENEMY_JACARE, \"jac\", lvl.stage.get_grid(11.0, 7.0), Vector3(-1, 0, 0.75));;
+					),
+				lvl.objs.cmd_wait_group(\"jac\"),
+				lvl.CMD_Wait_Seconds.new(0.5),
+				Level.CMD_Callable.new(func():
+					lvl.objs.create_object(ENEMY_JACARE, \"jac\", lvl.stage.get_grid(-11.0, 7.0), Vector3(1, 0, 0.75));
+					#lvl.objs.create_object(ENEMY_JACARE, \"jac\", lvl.stage.get_grid(-11.0, 5.0), Vector3(1, 0, 0.75));
+					lvl.objs.create_object(ENEMY_JACARE, \"jac\", lvl.stage.get_grid(11.0, 7.0), Vector3(-1, 0, 0.75));
+					#lvl.objs.create_object(ENEMY_JACARE, \"jac\", lvl.stage.get_grid(11.0, 5.0), Vector3(-1, 0, 0.75));
+					),
+				lvl.objs.cmd_wait_group_or_time(\"jac\", 3),
+				lvl.CMD_Wait_Seconds.new(0.5),
+				Level.CMD_Callable.new(func():
+					#lvl.objs.create_object(ENEMY_JACARE, \"jac\", lvl.stage.get_grid(-11.0, 7.0), Vector3(1, 0, 0.75));
+					lvl.objs.create_object(ENEMY_JACARE, \"jac\", lvl.stage.get_grid(-11.0, 5.0), Vector3(1, 0, 0.75));
+					#lvl.objs.create_object(ENEMY_JACARE, \"jac\", lvl.stage.get_grid(11.0, 7.0), Vector3(-1, 0, 0.75));
+					lvl.objs.create_object(ENEMY_JACARE, \"jac\", lvl.stage.get_grid(11.0, 5.0), Vector3(-1, 0, 0.75));
+					),
+				lvl.objs.cmd_wait_group_or_time(\"jac\", 4),
+			])
+		]),
+	])
+"
+
+[sub_resource type="GDScript" id="GDScript_w86b4"]
+script/source = "extends Level_Snippet_Node
+
+const v2z:Vector2 = Vector2.ZERO;
+const v3z:Vector3 = Vector3.ZERO;
+
+const ENEMY_JACARE = preload(\"res://elements/enemy/roboto_jacare/enemy_jacare.tscn\")
+const ENEMY_PIZZA_ROBOTO = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto.tscn\")
+const ENEMY_PIZZA_ROBOTO_SHOOTER = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto_shooter.tscn\")
+const ENEMY_TUCANO = preload(\"res://elements/enemy/roboto_tucano/enemy_tucano.tscn\")
+const ENEMY_BOMB_ROBOTO = preload(\"res://elements/enemy/bomb/enemy_bomb_roboto.tscn\")
+const ENEMY_LASER_ROBOTO = preload(\"res://elements/enemy/laser/enemy_laser_roboto.tscn\")
+const ENEMY_TUCANO_POISON = preload(\"res://elements/enemy/roboto_tucano/enemy_tucano_poison.tscn\")
+const ENEMY_PIZZA_SHOOTER_SUPER = preload(\"res://elements/enemy/pizza/enemy_pizza_shooter_super.tscn\")
+
+var group:String = \"snippet_group\";
+
+func _cmd(lvl:Level)->Level.CMD:
+	var enemies:Array[PackedScene] = [
+		ENEMY_PIZZA_ROBOTO, 		## 0
+		ENEMY_PIZZA_ROBOTO_SHOOTER,	## 1
+		ENEMY_JACARE,				## 2
+		ENEMY_BOMB_ROBOTO,			## 3
+		ENEMY_LASER_ROBOTO,			## 4
+		ENEMY_TUCANO,				## 5
+		ENEMY_TUCANO_POISON,		## 6
+		ENEMY_PIZZA_SHOOTER_SUPER,	## 7
+	]
+	
+	var walk_and_stop:Callable = func(n:Node3D):
+		var pizza:AI_WalkAndDo = n as AI_WalkAndDo;
+		if pizza:
+			pizza.walkAndStop = true;
+			pizza.walkVelocity = pizza.walkVelocity.normalized() * 6;
+			pizza.distanceMax = 16.5;
+			pizza.accelerationBegin = 6;
+			pizza.accelerationDuration = 2;
+	return Level.CMD_Sequence.new([
+		Level.CMD_Wait_Seconds.new(0.75),
+		Level.CMD_Callable.new(func():
+			lvl.objs.create_object(ENEMY_TUCANO, \"main\", lvl.stage.get_grid(-5, -1));
+			lvl.objs.create_object(ENEMY_TUCANO, \"main\", lvl.stage.get_grid(5, -1));
+			),
+		Level.CMD_Wait_Seconds.new(4.1),
+		Level.CMD_Parallel_Complete.new([
+			## Center pizzas and enemies
+			Level.CMD_Sequence.new([
+				lvl.cmd_enemy_line(enemies, [6], 0, 0, -1, Vector2.UP * 2, \"main\", walk_and_stop),
+				lvl.objs.cmd_wait_group(\"main\"),
+				Level.CMD_Wait_Seconds.new(2),
+				])
+		]),
+		Level.CMD_Callable.new(func():
+			lvl.objs.create_object(ENEMY_TUCANO_POISON, \"main\", lvl.stage.get_grid(-4, -1));
+			lvl.objs.create_object(ENEMY_TUCANO_POISON, \"main\", lvl.stage.get_grid(4, -1));
+			),
+		Level.CMD_Wait_Seconds.new(5),
+		cmd_tucanos_side(lvl, ENEMY_TUCANO_POISON, \"main\", 3, -20, 5, 0.5),
+		Level.CMD_Wait_Seconds.new(1.5),
+		Level.CMD_Parallel_Complete.new([
+			lvl.cmd_enemy_line(enemies, [0,0,1,1], 0.5, -3, -1, Vector2.UP * 2, \"side\", walk_and_stop),
+			lvl.cmd_enemy_line(enemies, [0,0,1,1], 0.5, 3, -1, Vector2.UP * 2, \"side\", walk_and_stop),
+		]),
+		Level.CMD_Wait_Seconds.new(3),
+		Level.CMD_Parallel_Complete.new([
+			cmd_tucanos_side(lvl, ENEMY_TUCANO_POISON, \"main\", 6, 20, 3, 0.5),
+			Level.CMD_Sequence.new([
+				Level.CMD_Wait_Seconds.new(1.5),
+				Level.CMD_Parallel_Complete.new([
+					lvl.cmd_enemy_line(enemies, [0,0,-1,2], 0, -1, -1, Vector2.UP * 3, \"center\", walk_and_stop),
+					lvl.cmd_enemy_line(enemies, [0,0,-1,2], 0, 1, -1, Vector2.UP * 3, \"center\", walk_and_stop),
+				]),
+				lvl.objs.cmd_wait_group(\"center\"),
+				Level.CMD_Parallel_Complete.new([
+					lvl.cmd_enemy_line(enemies, [7], 0, 0, -8, Vector2.UP * 3, \"main\", walk_and_stop),
+				]),
+			]),
+			Level.CMD_Sequence.new([
+				lvl.objs.cmd_wait_group(\"side\"),
+				Level.CMD_Wait_Seconds.new(2),
+				Level.CMD_Parallel_Complete.new([
+					lvl.cmd_enemy_line(enemies, [0,1,1], 0, -3, -2, Vector2.UP * 3, \"main\", walk_and_stop),
+					lvl.cmd_enemy_line(enemies, [0,1,1], 0, 3, -2, Vector2.UP * 3, \"main\", walk_and_stop),
+				]),
+			]),
+		]),
+		lvl.objs.cmd_wait_group(\"main\"),
+		Level.CMD_Wait_Seconds.new(1.25),
+		
+	])
+	
+func cmd_tucanos_side(lvl:Level, tuc:PackedScene, group:String, amount:int, x_start:float, z:float, interval_time:float = 0.5, interval_distance:float = 2.5)->Level.CMD:
+	var arr:Array[Level.CMD] = [];
+	var curr_x:float = x_start;
+	for t in range(amount):
+		if t > 0:
+			arr.push_back(Level.CMD_Wait_Seconds.new(interval_time));
+		var curr_z = z + interval_distance * t;
+		arr.push_back(Level.CMD_Callable.new(func():
+			lvl.objs.create_object(tuc, group, lvl.stage.get_grid(curr_x, curr_z), Vector3.RIGHT if curr_x < 0 else Vector3.LEFT);
+			))
+		curr_x = -curr_x;
+	return Level.CMD_Sequence.new(arr);
+	
+"
+
+[node name="LVL_ORLA" type="Node3D" node_paths=PackedStringArray("piece", "snippet")]
+script = SubResource("GDScript_mvg20")
+piece = NodePath("Stage_Piece_Pampulha_Orla_Segunda")
+snippet = NodePath("Level_Snippet_Sequence_UseMeasures")
+
+[node name="Stage_Piece_Pampulha_Orla_Segunda" parent="." instance=ExtResource("2_6itft")]
+
+[node name="Level_Snippet_Sequence_UseMeasures" type="Node" parent="."]
+script = ExtResource("2_2gasf")
+use_measures_data = true
+time_to_camera_to_go_type = 1
+time_to_camera_to_go = 28.0
+time_to_wait_before_wave = 0.8
+
+[node name="Many Jacs" type="Node" parent="Level_Snippet_Sequence_UseMeasures"]
+script = SubResource("GDScript_4mubb")
+disable = true
+
+[node name="Poison Smoke Tutorial" type="Node" parent="Level_Snippet_Sequence_UseMeasures"]
+script = SubResource("GDScript_w86b4")
+
+[node name="Altars" type="Node" parent="Level_Snippet_Sequence_UseMeasures"]
+script = ExtResource("3_16jcc")
+items = Array[PackedScene]([ExtResource("4_hn8nd"), ExtResource("5_0njet")])
+direction = 1
+metadata/_custom_type_script = "uid://d3gwyabb6e0e0"

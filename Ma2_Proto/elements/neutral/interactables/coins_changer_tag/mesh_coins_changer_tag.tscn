@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://deraq5k1tn387"]
+
+[ext_resource type="PackedScene" uid="uid://wdu141wbu8v5" path="res://elements/neutral/interactables/coins_changer_tag/mesh_tag.glb" id="2_2o81e"]
+[ext_resource type="Material" uid="uid://ljsuum41plgg" path="res://elements/neutral/interactables/coins_changer_tag/material/m_coins_changer_tag.tres" id="3_4gpsm"]
+[ext_resource type="Material" uid="uid://bwbvcrruajdfi" path="res://elements/neutral/interactables/coins_changer_tag/material/m_coins_changer_rope.tres" id="4_uay3e"]
+
+[node name="mesh" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015968, 0.00693586, 0)
+
+[node name="mesh_tag" parent="." instance=ExtResource("2_2o81e")]
+
+[node name="tag" parent="mesh_tag" index="0"]
+surface_material_override/0 = ExtResource("3_4gpsm")
+surface_material_override/1 = ExtResource("4_uay3e")
+
+[editable path="mesh_tag"]

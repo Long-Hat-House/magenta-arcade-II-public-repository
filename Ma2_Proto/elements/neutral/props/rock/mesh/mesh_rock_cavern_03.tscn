@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnxchwgajg4dl"]
+
+[ext_resource type="PackedScene" uid="uid://1giay3fe0b3u" path="res://elements/neutral/props/rock/mesh/rock_cavern03.glb" id="1_kice3"]
+[ext_resource type="Material" uid="uid://bd3xn5ldgrh5" path="res://elements/neutral/props/rock/material/m_pillar_rock.tres" id="2_mbvg4"]
+
+[node name="rock_cavern03" instance=ExtResource("1_kice3")]
+
+[node name="rock_cavern03" parent="." index="0"]
+material_override = ExtResource("2_mbvg4")

@@ -1,0 +1,768 @@
+[gd_scene load_steps=42 format=3 uid="uid://by6wrj0nikfrf"]
+
+[ext_resource type="PackedScene" uid="uid://bp5axpssjvtb8" path="res://elements/enemy/bosses/ivo/mesh/base_caixao.glb" id="1_0tlt1"]
+[ext_resource type="Script" uid="uid://082tu45ty74d" path="res://elements/enemy/bosses/ivo/ai_boss_final_ivo_scenery.gd" id="2_f4a7a"]
+[ext_resource type="Material" uid="uid://dtj6qwhugygwk" path="res://elements/enemy/bosses/ivo/material/m_cabo_comuns.tres" id="2_trcyj"]
+[ext_resource type="Material" uid="uid://deukxpg3ppmjr" path="res://elements/enemy/bosses/ivo/material/m_base.tres" id="2_vn32l"]
+[ext_resource type="Material" uid="uid://byi1plxft6mnn" path="res://elements/enemy/bosses/ivo/material/m_cabo02.tres" id="3_iflas"]
+[ext_resource type="Material" uid="uid://x6srvfdlkmdr" path="res://elements/enemy/bosses/ivo/material/m_cabo01.tres" id="4_h7v2k"]
+[ext_resource type="Material" uid="uid://djc84ja0d81md" path="res://elements/enemy/bosses/ivo/material/m_cabo03.tres" id="4_h636h"]
+[ext_resource type="Material" uid="uid://dew7jmgoli5mh" path="res://elements/enemy/bosses/ivo/material/m_cabo04.tres" id="5_pihvs"]
+[ext_resource type="Material" uid="uid://bjiuo410u7hr1" path="res://elements/neutral/props/Lab_mountain/material/m_cable_emissive.tres" id="7_iflas"]
+[ext_resource type="Material" uid="uid://d2h6c0vv73m3i" path="res://elements/enemy/bosses/ivo/material/m_cabo05.tres" id="8_sodi3"]
+[ext_resource type="Material" uid="uid://br0smhfbdbn5v" path="res://elements/enemy/bosses/ivo/material/m_cabo06.tres" id="9_vs28k"]
+[ext_resource type="Material" uid="uid://pd8voep3cn7b" path="res://elements/enemy/bosses/ivo/material/m_cabo07.tres" id="10_f4a7a"]
+[ext_resource type="Material" uid="uid://chtg7jecklrhe" path="res://elements/enemy/bosses/ivo/material/m_cabo08.tres" id="11_hirs3"]
+[ext_resource type="Material" uid="uid://v6rnalnjcn2g" path="res://elements/enemy/bosses/ivo/material/m_cabo09.tres" id="12_exj3f"]
+[ext_resource type="Material" uid="uid://g5jiufcc3g74" path="res://elements/neutral/props/Lab_mountain/material/m_base_emissive.tres" id="13_sodi3"]
+[ext_resource type="Material" uid="uid://c6amuuygeltf8" path="res://elements/enemy/bosses/ivo/material/m_cabo10.tres" id="14_vs28k"]
+
+[sub_resource type="Curve3D" id="Curve3D_h636h"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -5.46028, 0, 13.9388, 0, 0, 0, 0, 0, 0, -3.93674, 0.218445, 14.3356, 0, 0, 0, 0, 0, 0, -3.07975, 0.111542, 14.9862, 0, 0, 0, 0, 0, 0, -2.42908, 0, 15.1291, 0, 0, 0, 0, 0, 0, -1.92628, -0.0384521, 14.7767, 0, 0, 0, 0, 0, 0, -0.637737, 0, 13.3197, 0, 0, 0, 0, 0, 0, -0.867961, -0.000772443, 12.6755, 0, 0, 0, 0, 0, 0, -1.15946, 0.0853882, 11.8598, 0, 0, 0, 0, 0, 0, -0.965914, 0.103027, 10.7843, 0, 0, 0, 0, 0, 0, -0.700055, 0.0186949, 10.2838, 0, 0, 0, 0, 0, 0, -0.543073, 0.103699, 9.90993, 0, 0, 0, 0, 0, 0, -0.650303, 0.134277, 9.69547, 0, 0, 0, 0, 0, 0, -1.30229, 0, 9.38408, 0, 0, 0, 0, 0, 0, -1.39751, 0, 9.06668, 0, 0, 0, 0, 0, 0, -1.1682, 0.0535278, 7.75298, 0, 0, 0, 0, 0, 0, -1.28864, 0.0616455, 7.41945, 0, 0, 0, 0, 0, 0, -1.58511, 0.0603027, 7.16004, 0, 0, 0, 0, 0, 0, -2.40967, -0.0687256, 7.17394, 0, 0, 0, 0, 0, 0, -2.68761, -0.02948, 7.09982, 0, 0, 0, 0, 0, 0, -3.32224, 0.0982056, 6.60879, 0, 0, 0, 0, 0, 0, -3.6052, 0.117676, 5.96266, 0, 0, 0, 0, 0, 0, -3.60347, 0.0751953, 5.01978, 0, 0, 0, 0, 0, 0, -3.30193, -0.0158997, 4.24214, 0, 0, 0, 0, 0, 0, -3.14551, 0.0590331, 4.02525, 0, 0, 0, 0, 0, 0, -3.04669, 0.178711, 3.85239, 0, 0, 0, 0, 0, 0, -2.92036, 0.201538, 3.37011, 0, 0, 0, 0, 0, 0, -2.74073, 0.146057, 3.26001, 0, 0, 0, 0, 0, 0, -2.29453, 0.0899353, 3.12673, 0, 0, 0, 0, 0, 0, -2.1188, 0.0651662, 2.9461, 0, 0, 0, 0, 0, 0, -2.06274, 0.0731812, 2.724, 0, 0, 0, 0, 0, 0, -2.09409, 0.0639648, 2.42002, 0, 0, 0, 0, 0, 0, -2.03563, 0.0787659, 2.06639, 0, 0, 0, 0, 0, 0, -1.81543, 0.123291, 1.68973, 0, 0, 0, 0, 0, 0, -1.45616, 0.123291, 1.41449, 0, 0, 0, 0, 0, 0, -0.856405, 0.123291, 1.09867, 0, 0, 0, 0, 0, 0, -0.353798, -0.0149536, 0.922401),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 36
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_pihvs"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.3
+radial_segments = 4
+rings = 0
+
+[sub_resource type="Curve3D" id="Curve3D_iflas"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5.91609, 0, 11.9656, 0, 0, 0, 0, 0, 0, 5.63998, 0.0263672, 10.955, 0, 0, 0, 0, 0, 0, 5.2069, 0.0469971, 10.1628, 0, 0, 0, 0, 0, 0, 4.58952, 0.0587158, 9.71149, 0, 0, 0, 0, 0, 0, 3.39162, 0.0222168, 9.4812, 0, 0, 0, 0, 0, 0, 3.1244, -0.0203552, 9.30618, 0, 0, 0, 0, 0, 0, 3.21495, 0.0258179, 8.5469, 0, 0, 0, 0, 0, 0, 3.19652, 0.0508423, 7.9758, 0, 0, 0, 0, 0, 0, 2.95694, 0.0870972, 7.60734, 0, 0, 0, 0, 0, 0, 2.66207, 0.116699, 7.4968, 0, 0, 0, 0, 0, 0, 1.86427, -0.0301391, 7.69383, 0, 0, 0, 0, 0, 0, 1.35734, -0.0550901, 7.73945, 0, 0, 0, 0, 0, 0, 0.933037, 0.0462778, 7.62093, 0, 0, 0, 0, 0, 0, 0.749064, 0.119629, 7.38338, 0, 0, 0, 0, 0, 0, 0.647704, 0.128052, 7.06099, 0, 0, 0, 0, 0, 0, 0.718619, 0.14502, 6.41533, 0, 0, 0, 0, 0, 0, 0.9116, 0.0856822, 5.78056, 0, 0, 0, 0, 0, 0, 0.722703, -0.0168772, 5.04454, 0, 0, 0, 0, 0, 0, 0.420852, 0.161646, 4.50053, 0, 0, 0, 0, 0, 0, 0.171138, 0.163026, 4.20921, 0, 0, 0, 0, 0, 0, 0.176247, 0.162588, 3.84058, 0, 0, 0, 0, 0, 0, 0.166158, 0.219238, 3.57936, 0, 0, 0, 0, 0, 0, -0.0172602, 0.109908, 3.39802, 0, 0, 0, 0, 0, 0, -0.173394, 0.0824516, 3.07948, 0, 0, 0, 0, 0, 0, -0.333427, 0.0769715, 2.68269, 0, 0, 0, 0, 0, 0, -0.257713, 0.113159, 2.27134, 0, 0, 0, 0, 0, 0, -0.220855, 0.130371, 2.06868, 0, 0, 0, 0, 0, 0, -0.296216, 0.119574, 1.49773, 0, 0, 0, 0, 0, 0, -0.254981, -0.0521906, 0.735138),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 29
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_h636h"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.3
+radial_segments = 4
+rings = 0
+
+[sub_resource type="Curve3D" id="Curve3D_pihvs"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -7.58457, 0.130493, -2.07381, 0, 0, 0, 0, 0, 0, -5.60758, 0.0783386, -1.8299, 0, 0, 0, 0, 0, 0, -3.56641, 0.0990295, -1.70152, 0, 0, 0, 0, 0, 0, -1.64077, 0.0762024, -1.81706, 0, 0, 0, 0, 0, 0, -0.690785, 0.0914307, -1.41909, 0, 0, 0, 0, 0, 0, -0.382683, 0.0450439, -0.347694, 0, 0, 0, 0, 0, 0, -0.279981, -0.198242, 0.262632),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hr3gn"]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.3
+radial_segments = 4
+
+[sub_resource type="Curve3D" id="Curve3D_r6rk3"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 7.77419, -0.0834503, 0.587141, 0, 0, 0, 0, 0, 0, 7.46136, 0.0300039, -0.400237, 0, 0, 0, 0, 0, 0, 6.97884, 0.040259, -0.9031, 0, 0, 0, 0, 0, 0, 5.71417, 0.063592, -1.20501, 0, 0, 0, 0, 0, 0, 4.27828, 0.0822123, -1.37921, 0, 0, 0, 0, 0, 0, 2.19208, 0.118656, -1.52613, 0, 0, 0, 0, 0, 0, 1.08039, 0.128257, -1.51458, 0, 0, 0, 0, 0, 0, 0.53911, 0.136917, -1.323, 0, 0, 0, 0, 0, 0, 0.392128, 0.116669, -0.950645, 0, 0, 0, 0, 0, 0, 0.392128, 0.0925903, -0.480304, 0, 0, 0, 0, 0, 0, 0.518392, -0.328209, 0.462336),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 11
+
+[sub_resource type="BoxMesh" id="BoxMesh_iflas"]
+size = Vector3(0.25, 0.25, 0.25)
+
+[sub_resource type="Curve3D" id="Curve3D_hr3gn"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -7.42781, 0.131805, -2.56833, 0, 0, 0, 0, 0, 0, -5.82807, 0.114227, -2.54167, 0, 0, 0, 0, 0, 0, -4.08168, 0.09375, -2.54167, 0, 0, 0, 0, 0, 0, -2.3353, 0.0965271, -2.555, 0, 0, 0, 0, 0, 0, -1.29547, 0.0730896, -2.42169, 0, 0, 0, 0, 0, 0, -0.575583, 0.102295, -2.28838, 0, 0, 0, 0, 0, 0, -0.20231, 0.109741, -1.83512, 0, 0, 0, 0, 0, 0, -0.0956602, 0.0521851, -0.328695, 0, 0, 0, 0, 0, 0, -0.158813, -0.424377, 0.12915),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
+
+[sub_resource type="BoxMesh" id="BoxMesh_r6rk3"]
+size = Vector3(0.3, 0.25, 0.25)
+
+[sub_resource type="Curve3D" id="Curve3D_2emb2"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5.02516, -1.96898e-11, 15.2991, 0, 0, 0, 0, 0, 0, 5.95043, -0.0875549, 13.7391, 0, 0, 0, 0, 0, 0, 5.93489, -0.0870209, 13.0086, 0, 0, 0, 0, 0, 0, 5.51524, 0, 12.5734, 0, 0, 0, 0, 0, 0, 4.75365, 0, 12.2625, 0, 0, 0, 0, 0, 0, 3.99325, 0.053692, 12.1868, 0, 0, 0, 0, 0, 0, 3.49272, 0.182373, 12.2777, 0, 0, 0, 0, 0, 0, 2.97123, 0.227966, 12.0707, 0, 0, 0, 0, 0, 0, 2.80176, 0.142151, 11.6363, 0, 0, 0, 0, 0, 0, 2.79846, -0.0057688, 11.1898, 0, 0, 0, 0, 0, 0, 2.92418, -0.0840454, 10.5062, 0, 0, 0, 0, 0, 0, 2.84438, -0.135742, 10.0858, 0, 0, 0, 0, 0, 0, 2.14648, -0.00802865, 9.78637, 0, 0, 0, 0, 0, 0, 1.69572, -0.00603063, 9.27514, 0, 0, 0, 0, 0, 0, 1.4662, 0, 8.89797, 0, 0, 0, 0, 0, 0, 0.66113, 0.00653216, 8.5451, 0, 0, 0, 0, 0, 0, 0.321836, 0.00695663, 8.18124, 0, 0, 0, 0, 0, 0, 0.165104, 0, 7.70481, 0, 0, 0, 0, 0, 0, 0.283675, 0.0081067, 7.11309, 0, 0, 0, 0, 0, 0, 0.55438, -0.00267784, 6.51562, 0, 0, 0, 0, 0, 0, 1.13102, 0.0417905, 6.17201, 0, 0, 0, 0, 0, 0, 2.79097, 0.169952, 5.51671, 0, 0, 0, 0, 0, 0, 3.47516, 0.0600739, 4.95101, 0, 0, 0, 0, 0, 0, 3.83566, -0.0471497, 4.52412, 0, 0, 0, 0, 0, 0, 4.10201, -0.0760498, 4.29477, 0, 0, 0, 0, 0, 0, 3.83026, 0, 3.99114, 0, 0, 0, 0, 0, 0, 3.66125, 0.0956116, 3.76587, 0, 0, 0, 0, 0, 0, 3.62641, 0.309717, 3.28041, 0, 0, 0, 0, 0, 0, 3.51208, 0.1928, 2.93678, 0, 0, 0, 0, 0, 0, 3.25896, 0.0956362, 2.69382, 0, 0, 0, 0, 0, 0, 2.98313, 0.0712242, 2.16841, 0, 0, 0, 0, 0, 0, 2.74275, 0.0850888, 2.01908, 0, 0, 0, 0, 0, 0, 2.29527, 0.104193, 2.02528, 0, 0, 0, 0, 0, 0, 1.8176, 0.109071, 2.02519, 0, 0, 0, 0, 0, 0, 1.48641, 0.132019, 1.5843, 0, 0, 0, 0, 0, 0, 1.27094, 0.140808, 1.25129, 0, 0, 0, 0, 0, 0, 0.722438, 0.146727, 1.00463, 0, 0, 0, 0, 0, 0, 0.0172365, -0.573883, 0.565674),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 38
+
+[sub_resource type="BoxMesh" id="BoxMesh_h636h"]
+size = Vector3(0.2, 0.25, 0.315)
+
+[sub_resource type="Curve3D" id="Curve3D_h7v2k"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -5.15084, 0, 12.676, 0, 0, 0, 0, 0, 0, -4.49772, 0, 11.7518, 0, 0, 0, 0, 0, 0, -3.57349, 0.0761871, 11.5423, 0, 0, 0, 0, 0, 0, -3.35168, 0.128784, 11.2958, 0, 0, 0, 0, 0, 0, -3.32703, 0.0735931, 10.692, 0, 0, 0, 0, 0, 0, -2.69856, 0.0262909, 9.91567, 0, 0, 0, 0, 0, 0, -2.55068, 0.0315552, 9.52134, 0, 0, 0, 0, 0, 0, -2.76613, 0.0342712, 9.21062, 0, 0, 0, 0, 0, 0, -3.09885, 0.0558167, 8.95452, 0, 0, 0, 0, 0, 0, -3.28369, 0.068573, 8.6218, 0, 0, 0, 0, 0, 0, -3.12349, 0.0857239, 8.09191, 0, 0, 0, 0, 0, 0, -3.33231, 0, 7.78862, 0, 0, 0, 0, 0, 0, -3.72836, 0, 7.57118, 0, 0, 0, 0, 0, 0, -4.02345, 0.0429688, 7.29939, 0, 0, 0, 0, 0, 0, -4.10887, 0.106445, 6.93441, 0, 0, 0, 0, 0, 0, -4.09745, 0.204102, 6.09735, 0, 0, 0, 0, 0, 0, -4.68139, 0, 4.75767, 0, 0, 0, 0, 0, 0, -4.39394, -0.0144802, 4.03498, 0, 0, 0, 0, 0, 0, -4.02544, 0.212646, 3.10853, 0, 0, 0, 0, 0, 0, -3.76918, 0.101379, 2.69696, 0, 0, 0, 0, 0, 0, -3.66417, 0.0828857, 1.77953, 0, 0, 0, 0, 0, 0, -3.35355, 0.113708, 1.19711, 0, 0, 0, 0, 0, 0, -2.96527, 0.116394, 0.940843, 0, 0, 0, 0, 0, 0, -2.69348, 0.111206, 0.948609, 0, 0, 0, 0, 0, 0, -2.17318, 0.117096, 1.09615, 0, 0, 0, 0, 0, 0, -1.76161, 0.160339, 1.04956, 0, 0, 0, 0, 0, 0, -1.2051, 0.160339, 0.714945, 0, 0, 0, 0, 0, 0, -0.12307, -0.689301, 0.389487),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 28
+
+[sub_resource type="BoxMesh" id="BoxMesh_pihvs"]
+size = Vector3(0.15, 0.25, 0.3)
+
+[sub_resource type="Curve3D" id="Curve3D_sodi3"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -6.71648, 0.0797729, 0.888293, 0, 0, 0, 0, 0, 0, -5.25547, 0.0720825, 1.17184, 0, 0, 0, 0, 0, 0, -4.90195, 0.0682983, 1.10157, 0, 0, 0, 0, 0, 0, -4.45877, 0.0797119, 0.537979, 0, 0, 0, 0, 0, 0, -4.17933, 0.102539, 0.245098, 0, 0, 0, 0, 0, 0, -3.69511, 0.108917, 0.0651949, 0, 0, 0, 0, 0, 0, -2.95433, 0.0938416, 0.16644, 0, 0, 0, 0, 0, 0, -2.54647, 0.114136, 0.169446, 0, 0, 0, 0, 0, 0, -2.05452, 0.12207, -0.246849, 0, 0, 0, 0, 0, 0, -1.77036, 0.155396, -0.321499, 0, 0, 0, 0, 0, 0, -1.3934, 0.166382, -0.217248, 0, 0, 0, 0, 0, 0, -0.977101, 0.154785, -0.163473, 0, 0, 0, 0, 0, 0, -0.676249, -0.294264, -0.0439277, 0, 0, 0, 0, 0, 0, -0.306794, -0.578129, 0.137424),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 14
+
+[sub_resource type="BoxMesh" id="BoxMesh_vs28k"]
+size = Vector3(0.175, 0.25, 0.25)
+
+[sub_resource type="Animation" id="Animation_r6rk3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path_02/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path_01/PathFollow3D:progress_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Path_03/PathFollow3D:progress_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Path_04/PathFollow3D:progress_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Path_05/PathFollow3D:progress_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Path_06/PathFollow3D:progress_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Path_07/PathFollow3D:progress_ratio")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Path_08/PathFollow3D:progress_ratio")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_hr3gn"]
+resource_name = "path_animation"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path_02/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.28, 2.2),
+"transitions": PackedFloat32Array(2, 0),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path_01/PathFollow3D:progress_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.133333, 2.86667),
+"transitions": PackedFloat32Array(1.46409, 0),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Path_03/PathFollow3D:progress_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.03333, 1.06667, 1.96667, 2.2, 2.66667),
+"transitions": PackedFloat32Array(2.73208, 0, 2, 0, 2, 0),
+"update": 0,
+"values": [0.0, 1.0, 0.0, 1.0, 0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Path_04/PathFollow3D:progress_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.933334, 1.9, 2.1, 3),
+"transitions": PackedFloat32Array(2, 0, 2, 0),
+"update": 0,
+"values": [0.0, 1.0, 0.0, 1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Path_05/PathFollow3D:progress_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5, 1.16667, 1.86667, 2.5),
+"transitions": PackedFloat32Array(2, 0, 2, 0),
+"update": 0,
+"values": [0.0, 1.0, 0.0, 1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Path_06/PathFollow3D:progress_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.133333, 1.3, 1.63333, 2.83333),
+"transitions": PackedFloat32Array(2, 0, 2, 0),
+"update": 0,
+"values": [0.0, 1.0, 0.0, 1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Path_07/PathFollow3D:progress_ratio")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.266666, 1.3, 1.66667, 2.23333),
+"transitions": PackedFloat32Array(2, 0, 2, 0),
+"update": 0,
+"values": [0.0, 1.0, 0.0, 1.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Path_08/PathFollow3D:progress_ratio")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.7, 1, 1.86667, 2, 3),
+"transitions": PackedFloat32Array(2, 0, 2, 0, 2, 2),
+"update": 0,
+"values": [0.0, 1.0, 0.0, 1.0, 0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2emb2"]
+_data = {
+&"RESET": SubResource("Animation_r6rk3"),
+&"path_animation": SubResource("Animation_hr3gn")
+}
+
+[sub_resource type="Animation" id="Animation_f4a7a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Base_emisiva:material_override:emission_energy_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vs28k"]
+resource_name = "base_emissive"
+length = 120.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Base_emisiva:material_override:emission_energy_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(6.13333, 101.533),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 100.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hirs3"]
+_data = {
+&"RESET": SubResource("Animation_f4a7a"),
+&"base_emissive": SubResource("Animation_vs28k")
+}
+
+[sub_resource type="Animation" id="Animation_5k8xh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cabo01:material_override:emission_energy_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("cabo02:material_override:emission_energy_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("cabo04:material_override:emission_energy_multiplier")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("cabo05:material_override:emission_energy_multiplier")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("cabo06:material_override:emission_energy_multiplier")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("cabo03:material_override:emission_energy_multiplier")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("cabo07:material_override:emission_energy_multiplier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("cabo08:material_override:emission_energy_multiplier")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.3]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("cabo09:material_override:emission_energy_multiplier")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.25]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("cabo10:material_override:emission_energy_multiplier")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_exj3f"]
+resource_name = "piscar_cabos"
+length = 24.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cabo01:material_override:emission_energy_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 7.36667, 11.8667, 12.5667, 22.4333),
+"transitions": PackedFloat32Array(5, 2, 1, 5, 2, 1),
+"update": 0,
+"values": [0.0, 0.35, 0.0, 0.0, 0.35, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("cabo02:material_override:emission_energy_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.66667, 5.1, 11.1, 14.1667, 17.6, 23.6),
+"transitions": PackedFloat32Array(5, 2, 1, 5, 2, 1),
+"update": 0,
+"values": [0.0, 0.35, 0.0, 0.0, 0.35, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("cabo04:material_override:emission_energy_multiplier")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.06667, 3.46667, 9.93333, 13, 16.5667, 23.0333),
+"transitions": PackedFloat32Array(5, 2, 1, 5, 2, 1),
+"update": 0,
+"values": [0.0, 0.35, 0.0, 0.0, 0.35, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("cabo05:material_override:emission_energy_multiplier")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.7, 5.13333, 11.6333, 15.8, 17.2333, 23.7333),
+"transitions": PackedFloat32Array(5, 2, 1, 5, 2, 1),
+"update": 0,
+"values": [0.0, 0.35, 0.0, 0.0, 0.35, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("cabo06:material_override:emission_energy_multiplier")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.3, 3.26667, 9.3, 13, 14.9667, 21),
+"transitions": PackedFloat32Array(5, 2, 1, 5, 2, 1),
+"update": 0,
+"values": [0.0, 0.35, 0.0, 0.0, 0.35, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("cabo03:material_override:emission_energy_multiplier")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2.7, 4.63333, 11.2, 12.6875, 14.6208, 21.1875),
+"transitions": PackedFloat32Array(5, 2, 1, 5, 2, 1),
+"update": 0,
+"values": [0.0, 0.35, 0.0, 0.0, 0.35, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("cabo07:material_override:emission_energy_multiplier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.23333, 2.53333, 3.76667, 5, 6.23333, 7.53333, 8.76667, 10.0667, 11.3, 12.6, 13.8333, 15.0667, 16.3, 17.6, 18.8333, 19.9983, 21.2316, 22.5316, 23.7649),
+"transitions": PackedFloat32Array(1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2),
+"update": 0,
+"values": [0.0, 0.2, 0.0, 0.2, 0.0, 0.2, 0.0, 0.2, 0.0, 0.2, 0.0, 0.2, 0.0, 0.2, 0.0, 0.2, 0.0, 0.2, 0.0, 0.2]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("cabo08:material_override:emission_energy_multiplier")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.23333, 2.6, 3.83333, 5, 6.23333, 7.56667, 8.8, 10.1667, 11.4, 12.5667, 13.8, 15.1333, 16.3667, 17.7333, 18.9667, 19.9983, 21.2317, 22.5983, 23.8317),
+"transitions": PackedFloat32Array(0.482968, 1, 0.482968, 1, 0.482968, 1, 0.482968, 1, 0.482968, 1, 0.482968, 1, 0.482968, 1, 0.482968, 1, 0.482968, 1, 0.482968, 1),
+"update": 0,
+"values": [0.3, 0.0, 0.3, 0.0, 0.3, 0.0, 0.3, 0.0, 0.3, 0.0, 0.3, 0.0, 0.3, 0.0, 0.3, 0.0, 0.3, 0.0, 0.3, 0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("cabo09:material_override:emission_energy_multiplier")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.7, 1.96667, 3.3, 4.56667, 5.66667, 6.93333, 8.26667, 9.53333, 10.7667, 12.0333, 13.3667, 14.6333, 15.6667, 16.9333, 18.2667, 19.5333, 19.9983, 21.2649, 22.5983, 23.8649),
+"transitions": PackedFloat32Array(0.5, 1, 0.5, 1, 0.5, 1, 0.5, 1, 0.5, 1, 0.5, 1, 0.5, 1, 0.5, 1, 0.5, 1, 0.5, 1),
+"update": 0,
+"values": [0.25, 0.0, 0.25, 0.0, 0.25, 0.0, 0.25, 0.0, 0.25, 0.0, 0.25, 0.0, 0.25, 0.0, 0.25, 0.0, 0.25, 0.0, 0.25, 0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("cabo10:material_override:emission_energy_multiplier")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.366667, 2.5, 8.2, 12.3924, 14.5257, 20.2257),
+"transitions": PackedFloat32Array(5, 2, 1, 5, 2, 1),
+"update": 0,
+"values": [0.0, 0.35, 0.0, 0.0, 0.35, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3p75r"]
+_data = {
+&"RESET": SubResource("Animation_5k8xh"),
+&"piscar_cabos": SubResource("Animation_exj3f")
+}
+
+[node name="base_caixao" node_paths=PackedStringArray("anim_before", "anim_during", "anim_after") instance=ExtResource("1_0tlt1")]
+script = ExtResource("2_f4a7a")
+anim_before = [NodePath("anim_fluxos_cabos")]
+animation_before = Array[StringName]([&"path_animation"])
+anim_during = [NodePath("anim_base_emissivo")]
+animation_during = Array[StringName]([&"base_emissive"])
+anim_after = [NodePath("Anim_piscar_cabos")]
+animation_after = Array[StringName]([&"piscar_cabos"])
+
+[node name="base_caixao" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_trcyj")
+surface_material_override/1 = ExtResource("2_vn32l")
+
+[node name="cabo01" parent="." index="1"]
+material_override = ExtResource("4_h7v2k")
+
+[node name="cabo02" parent="." index="2"]
+material_override = ExtResource("3_iflas")
+
+[node name="cabo03" parent="." index="3"]
+material_override = ExtResource("4_h636h")
+
+[node name="cabo04" parent="." index="4"]
+material_override = ExtResource("5_pihvs")
+
+[node name="cabo05" parent="." index="5"]
+material_override = ExtResource("8_sodi3")
+
+[node name="cabo06" parent="." index="6"]
+material_override = ExtResource("9_vs28k")
+
+[node name="cabo07" parent="." index="7"]
+material_override = ExtResource("10_f4a7a")
+
+[node name="cabo08" parent="." index="8"]
+material_override = ExtResource("11_hirs3")
+
+[node name="cabo09" parent="." index="9"]
+material_override = ExtResource("12_exj3f")
+
+[node name="Base_emisiva" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00341797, 0)
+material_override = ExtResource("13_sodi3")
+
+[node name="cabo10" parent="." index="11"]
+material_override = ExtResource("14_vs28k")
+
+[node name="PATHS" type="Node3D" parent="." index="12"]
+
+[node name="Path_01" type="Path3D" parent="PATHS" index="0"]
+curve = SubResource("Curve3D_h636h")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="PATHS/Path_01" index="0"]
+transform = Transform3D(0.740236, 0.114594, -0.66222, -0.170165, 0.985039, -0.0197617, 0.65016, 0.127341, 0.748795, -1.58486, -0.0282637, 14.3907)
+progress = 4.47861
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PATHS/Path_01/PathFollow3D" index="0"]
+transform = Transform3D(0.966611, 0.0334829, -0.254053, 0.25585, -0.0707448, 0.964125, 0.0143088, -0.996933, -0.0769494, 0.00765978, 0.0052106, -0.00749456)
+material_override = ExtResource("7_iflas")
+mesh = SubResource("CylinderMesh_pihvs")
+
+[node name="Path_02" type="Path3D" parent="PATHS" index="1"]
+curve = SubResource("Curve3D_iflas")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="PATHS/Path_02" index="0"]
+transform = Transform3D(0.590154, 0.00420563, 0.807091, 0.0138266, 0.999687, -0.0153197, -0.806956, 0.0202046, 0.589991, 4.77838, 0.0551309, 9.84955)
+progress = 2.48143
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PATHS/Path_02/PathFollow3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+material_override = ExtResource("7_iflas")
+mesh = SubResource("CylinderMesh_h636h")
+
+[node name="Path_03" type="Path3D" parent="PATHS" index="2"]
+curve = SubResource("Curve3D_pihvs")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="PATHS/Path_03" index="0"]
+transform = Transform3D(-0.983231, 0.0954698, -0.154408, 0.0328481, 0.929991, 0.365769, 0.178546, 0.354644, -0.917597, -0.279981, -0.198242, 0.262632)
+progress = 8.77809
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PATHS/Path_03/PathFollow3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0143778, -5.08868e-18, -1.16415e-10)
+material_override = ExtResource("7_iflas")
+mesh = SubResource("CylinderMesh_hr3gn")
+
+[node name="Path_04" type="Path3D" parent="PATHS" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00979877, 0, 0)
+curve = SubResource("Curve3D_r6rk3")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="PATHS/Path_04" index="0"]
+transform = Transform3D(0.953252, 0.0328841, 0.300199, 0, 0.993955, -0.108873, -0.302018, 0.103791, 0.94751, 7.73336, -0.0686423, 0.458269)
+progress = 0.137839
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PATHS/Path_04/PathFollow3D" index="0"]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, -0.0460239, -0.00529004, 0)
+material_override = ExtResource("7_iflas")
+mesh = SubResource("BoxMesh_iflas")
+
+[node name="Path_05" type="Path3D" parent="PATHS" index="4"]
+curve = SubResource("Curve3D_hr3gn")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="PATHS/Path_05" index="0"]
+transform = Transform3D(-0.182081, -0.0390682, -0.982354, 0.000674942, 0.999155, -0.0398535, 0.983108, -0.00792177, -0.181914, -0.983208, 0.0857579, -2.36386)
+progress = 6.46013
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PATHS/Path_05/PathFollow3D" index="0"]
+transform = Transform3D(1, 0, 0, -2.91038e-11, 1, -4.62478e-10, 0, 1.32263e-09, 1, 0.0269365, 0.00349648, 0.00398397)
+material_override = ExtResource("7_iflas")
+mesh = SubResource("BoxMesh_r6rk3")
+
+[node name="Path_06" type="Path3D" parent="PATHS" index="5"]
+curve = SubResource("Curve3D_2emb2")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="PATHS/Path_06" index="0"]
+transform = Transform3D(0.354924, -0.115136, -0.927668, 0.1334, 0.988391, -0.0716235, 0.925153, -0.0983473, 0.366217, 1.9298, 0.103462, 5.85668)
+progress = 14.4733
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PATHS/Path_06/PathFollow3D" index="0"]
+transform = Transform3D(1, 0, 0, 1.86265e-09, 1, 0, 0, 0, 1, -0.000490911, -0.000587284, 0.0121613)
+material_override = ExtResource("7_iflas")
+mesh = SubResource("BoxMesh_h636h")
+
+[node name="Path_07" type="Path3D" parent="PATHS" index="6"]
+curve = SubResource("Curve3D_h7v2k")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="PATHS/Path_07" index="0"]
+transform = Transform3D(0.908828, 0.131163, 0.395681, -0.200179, 0.969794, 0.138301, -0.365642, -0.204921, 0.907774, -4.68046, 0.00163667, 4.77558)
+progress = 10.0929
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PATHS/Path_07/PathFollow3D" index="0"]
+material_override = ExtResource("7_iflas")
+mesh = SubResource("BoxMesh_pihvs")
+
+[node name="Path_08" type="Path3D" parent="PATHS" index="7"]
+curve = SubResource("Curve3D_sodi3")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="PATHS/Path_08" index="0"]
+transform = Transform3D(-0.190489, 0.00507189, -0.981543, 2.32792e-10, 0.999842, 0.0051666, 0.981519, 0.000984331, -0.190494, -6.70435, 0.079709, 0.890648)
+progress = 0.0208412
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PATHS/Path_08/PathFollow3D" index="0"]
+material_override = ExtResource("7_iflas")
+mesh = SubResource("BoxMesh_vs28k")
+
+[node name="anim_fluxos_cabos" type="AnimationPlayer" parent="." index="13"]
+root_node = NodePath("../PATHS")
+libraries = {
+&"": SubResource("AnimationLibrary_2emb2")
+}
+
+[node name="anim_base_emissivo" type="AnimationPlayer" parent="." index="14"]
+libraries = {
+&"": SubResource("AnimationLibrary_hirs3")
+}
+autoplay = "base_emissive"
+
+[node name="Anim_piscar_cabos" type="AnimationPlayer" parent="." index="15"]
+libraries = {
+&"": SubResource("AnimationLibrary_3p75r")
+}
+autoplay = "piscar_cabos"

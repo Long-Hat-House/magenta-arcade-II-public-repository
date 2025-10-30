@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://ds6heafau8h2d"]
+
+[ext_resource type="Script" uid="uid://3121xhjjhv6t" path="res://elements/neutral/car/car_graphic.gd" id="1_hmfcr"]
+[ext_resource type="PackedScene" uid="uid://bbwqadshgm2xa" path="res://elements/neutral/car/mesh/car_armor_graphic.tscn" id="2_f6b7l"]
+[ext_resource type="PackedScene" uid="uid://r032qwi6wnh2" path="res://elements/neutral/car/mesh/wheel.tscn" id="3_5re51"]
+[ext_resource type="PackedScene" uid="uid://cuaqc1jjq6lh0" path="res://elements/neutral/car/mesh/car_armor_destroyed_graphic.tscn" id="3_aur3h"]
+[ext_resource type="PackedScene" uid="uid://7huvvl11vyd2" path="res://elements/neutral/car/mesh/car_support_graphic.tscn" id="4_0e6q0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7rri1"]
+albedo_color = Color(0.188235, 0.188235, 0.243137, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_01vt1"]
+material = SubResource("StandardMaterial3D_7rri1")
+size = Vector3(1.4, 0.1, 2.5)
+
+[node name="Model" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.411963, 0)
+script = ExtResource("1_hmfcr")
+rotating_hit_time = 3.0
+rotating_circular_time = 9.0
+
+[node name="CenterOfMass" type="Node3D" parent="."]
+
+[node name="Box" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999848, -0.0174524, 0, 0.0174524, 0.999848, 0, 0, 0)
+
+[node name="Fine" parent="Box" instance=ExtResource("2_f6b7l")]
+
+[node name="farol_off" parent="Box/Fine" index="2"]
+visible = false
+
+[node name="Destroyed" parent="Box" instance=ExtResource("3_aur3h")]
+transform = Transform3D(1, 0, 0, 0, 0.999847, 0.0174524, 0, -0.0174524, 0.999847, 0, 0, 0)
+visible = false
+
+[node name="Supports" parent="Box" instance=ExtResource("4_0e6q0")]
+
+[node name="Wheels" type="Node3D" parent="."]
+
+[node name="roda" parent="Wheels" instance=ExtResource("3_5re51")]
+transform = Transform3D(0.999974, 0, 0.00717324, 0, 1, 0, -0.00717324, 0, 0.999974, 0.75, 0.25, 1.1)
+
+[node name="roda2" parent="Wheels" instance=ExtResource("3_5re51")]
+transform = Transform3D(0.999974, 0, 0.00717324, 0, 1, 0, -0.00717324, 0, 0.999974, -0.75, 0.25, 1.1)
+
+[node name="roda3" parent="Wheels" instance=ExtResource("3_5re51")]
+transform = Transform3D(0.999974, 0, 0.00717324, 0, 1, 0, -0.00717324, 0, 0.999974, 0.75, 0.25, -0.83)
+
+[node name="roda4" parent="Wheels" instance=ExtResource("3_5re51")]
+transform = Transform3D(0.999974, 0, 0.00717324, 0, 1, 0, -0.00717324, 0, 0.999974, -0.75, 0.25, -0.83)
+
+[node name="FixedCarThing" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.00543e-05, 0.329149, 0.146677)
+mesh = SubResource("BoxMesh_01vt1")
+
+[editable path="Box/Fine"]

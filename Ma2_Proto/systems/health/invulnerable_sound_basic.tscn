@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmn01cyspcdav"]
+
+[ext_resource type="WwiseEvent" uid="uid://1w3u2yixl54v" path="res://Wwise/resources/Event/{26F98670-94B7-4413-A0E2-CB7D153AB815}.tres" id="1_i04g4"]
+
+[node name="InvulnerableSoundBasic" type="AkEvent3D"]
+event = ExtResource("1_i04g4")

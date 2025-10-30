@@ -1,0 +1,130 @@
+[gd_scene load_steps=4 format=3 uid="uid://bee3p2a004g7v"]
+
+[ext_resource type="PackedScene" uid="uid://c7ft4lc6ukiy0" path="res://elements/levels/level_structure/level_game_pack.tscn" id="2_obj4y"]
+[ext_resource type="PackedScene" uid="uid://cqrb2x17wcl14" path="res://elements/levels/level_structure/level_environment_day_bright.tscn" id="4_krppl"]
+
+[sub_resource type="GDScript" id="GDScript_an7n0"]
+resource_name = "lvl_test"
+script/source = "extends Level
+const CHALLENGE_TRAFFIC_EASY = preload(\"res://systems/challenge/challenges/challenge_traffic_easy.tres\")
+
+const NPC_BELIEVER = preload(\"res://elements/npc/npc.tscn\")
+const STAGE_PIECE_AFONSO_PENA_LANES_3 = preload(\"res://elements/stage_pieces/stage_piece_afonso_pena_lanes3.tscn\")
+
+#powerups
+const WEAPON_BUTTON_TAP_BLUE = preload(\"res://elements/powerups/button/powerup_weapon_button_tap_blue.tscn\")
+const WEAPON_BUTTON_HOLD_BLUE = preload(\"res://elements/powerups/button/powerup_weapon_button_hold_blue.tscn\")
+const WEAPON_BUTTON_HOLD_YELLOW = preload(\"res://elements/powerups/button/powerup_weapon_button_hold_yellow.tscn\")
+
+#enemies
+const ENEMY_BRAWNY = preload(\"res://elements/enemy/brawny/Mesh/brawny_graphic.tscn\")
+const ENEMY_ROBOTO_COPTER = preload(\"res://elements/enemy/copter/enemy_roboto_copter.tscn\")
+const ENEMY_LASER_ROBOTO = preload(\"res://elements/enemy/laser/enemy_laser_roboto.tscn\")
+const ENEMY_PIZZA_ROBOTO = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto.tscn\")
+
+#weapons
+const WEAPON_BLUE_HOLD = preload(\"res://elements/player/weapons/weapon_blue_hold.tscn\")
+const WEAPON_YELLOW_HOLD = preload(\"res://elements/player/weapons/weapon_yellow_hold.tscn\")
+const WEAPON_BLUE_TAP = preload(\"res://elements/player/weapons/weapon_blue_tap.tscn\")
+
+const CHALLENGE_DISPLAY_FLOAT_CHECK = preload(\"res://elements/challenge/challenge_display_float_check.tscn\")
+const CHALLENGE_DISPLAY_FLOAT_PROGRESS_BAR = preload(\"res://elements/challenge/challenge_display_float_progress_bar.tscn\")
+
+@onready var _pieces_street:Array[PackedScene] = [STAGE_PIECE_AFONSO_PENA_LANES_3]
+
+var pizza_first:int
+
+func _ready():
+	prepare_level()
+	cmd_array([
+		CMD_Callable.new(scene_1),
+	])
+
+func prepare_level():
+	stage.set_stage_size(Vector3(12,0,27))
+	cam.set_offset(Vector3(0,26,28))
+
+func scene_1(invert:bool = false):
+	stage.fill_with(_pieces_street, stage._stage_size.z)
+	stage.set_pivot_offset(Vector3(-6 if invert else 6,0,0))
+	stage.repivot()
+
+	stage.set_grid_spacing(2, 2)
+
+	pizza_first = 0
+
+	var display:DisplayFloat = CHALLENGE_DISPLAY_FLOAT_CHECK.instantiate()
+	ChallengeController.instance.add_metric_display(display)
+	display.set_display(\"Pizza Antes\", 0, 0, pizza_first)
+
+	var display_bar:DisplayFloat = CHALLENGE_DISPLAY_FLOAT_PROGRESS_BAR.instantiate()
+	ChallengeController.instance.add_metric_display(display_bar)
+	display_bar.set_display(\"Time\", 0, 10, 0)
+
+	var pizza = func pizza():
+		if(pizza_first == 0):
+			pizza_first = 1
+		if display:
+			display.set_display_value(pizza_first)
+
+	var copter = func copter():
+		if(pizza_first == 0):
+			pizza_first = -1
+		if display:
+			display.set_display_value(pizza_first)
+
+	var obj = objs.create_object(ENEMY_PIZZA_ROBOTO, \"a\") as AI_WalkAndDo
+	obj.position = stage.get_grid_line(0, 5)
+	obj.stop()
+	obj.tree_exiting.connect(pizza)
+
+	obj = objs.create_object(ENEMY_ROBOTO_COPTER,\"a\")
+	obj.position = stage.get_grid_line(2, 5)
+	obj.tree_exiting.connect(copter)
+
+	#obj = objs.create_object(ENEMY_LASER_ROBOTO,\"e\") as AI_WalkAndDo
+	#obj.position = stage.get_grid_line(-2, 5)
+	#obj.rotate_y(deg_to_rad(60))
+	#obj.walkVelocityAdd = Vector3.ZERO
+	#obj.walkVelocity = obj.global_basis.z * 3
+	#obj.position -= obj.global_basis.z * 3
+	#obj.distanceMax = 3
+
+	for x in [-2,-1,0,1,2]:
+		for z in [7,8,9]:
+			if (z + x) % 2 == 0:
+				obj = objs.create_object(NPC_BELIEVER)
+				obj.position = stage.get_grid(x, z)
+
+	cmd(CMD_Sequence.new([
+		cam.cmd_position(stage.get_pos_x(), 1, LevelCameraController.MovementAxis.X),
+		cam.cmd_position_wait(stage.get_pos_z(), 1.5, LevelCameraController.MovementAxis.Z),
+		ChallengeController.instance.cmd_begin(CHALLENGE_TRAFFIC_EASY, false),
+		CMD_Parallel.new([
+			objs.cmd_wait_group(\"a\"),
+			CMD_Wait_Seconds.new(10, func(t): display_bar.set_display_value(10-t))
+			]),
+		objs.cmd_free_group(\"a\"),
+		CMD_Branch.new(
+			func(): return pizza_first == 1,
+			CMD_Sequence.new(
+				[
+					CMD_Callable.new(func():
+						stage.set_grid_spacing(1, 1)
+						stage.set_pivot_offset(Vector3(6 if invert else -6,0,0))
+						cam.tween_position(stage.get_pos_x(), 1, LevelCameraController.MovementAxis.X),
+						),
+					ChallengeController.instance.cmd_victory(CHALLENGE_TRAFFIC_EASY,1.5)
+				]
+			),
+			ChallengeController.instance.cmd_fail(CHALLENGE_TRAFFIC_EASY)),
+		CMD_Callable.new(scene_1.bind(!invert)),
+	]))
+"
+
+[node name="LVL1_MAIN" type="Node3D"]
+script = SubResource("GDScript_an7n0")
+
+[node name="LevelEnvironmentDayBright" parent="." instance=ExtResource("4_krppl")]
+
+[node name="LevelGamePack" parent="." instance=ExtResource("2_obj4y")]

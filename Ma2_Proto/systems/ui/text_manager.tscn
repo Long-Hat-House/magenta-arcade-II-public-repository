@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://blxt471dt87ag"]
+
+[ext_resource type="Script" path="res://systems/ui/text_manager.gd" id="1_k1l8c"]
+
+[node name="TextManager" type="Node"]
+script = ExtResource("1_k1l8c")

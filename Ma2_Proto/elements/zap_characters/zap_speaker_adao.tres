@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TextFlowZapSpeaker" load_steps=4 format=3 uid="uid://m8ej5p2w2f1w"]
+
+[ext_resource type="Script" path="res://modules/text_flow/zap/src/text_flow_zap_speaker.gd" id="1_7uhet"]
+[ext_resource type="Texture2D" uid="uid://680muis4snnx" path="res://modules/text_flow/zap/textures/text_flow_zap_speaker_icon_adao.png" id="2_lxj6c"]
+[ext_resource type="Texture2D" uid="uid://csb4g0p2ydb86" path="res://elements/icons/icons_magenta_adao.png" id="2_qcf5u"]
+
+[resource]
+script = ExtResource("1_7uhet")
+id = "adao"
+color = Color(0.901961, 0.858824, 0, 1)
+icon_1 = ExtResource("2_lxj6c")
+icon_2 = ExtResource("2_qcf5u")

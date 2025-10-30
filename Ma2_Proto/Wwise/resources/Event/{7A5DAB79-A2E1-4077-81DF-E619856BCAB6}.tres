@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" load_steps=0 format=3 uid="uid://c1xwqtyryicku"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Boss_Lv0_Anim_Death"
+id = 3460728917
+guid = "{7A5DAB79-A2E1-4077-81DF-E619856BCAB6}"
+dummy = true

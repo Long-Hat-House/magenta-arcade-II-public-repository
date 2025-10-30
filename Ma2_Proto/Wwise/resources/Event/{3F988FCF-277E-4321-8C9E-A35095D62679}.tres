@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://caicmgeuxne2s"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_UI_Prompt_Close"
+id = 3534002376
+guid = "{3F988FCF-277E-4321-8C9E-A35095D62679}"
+dummy = true

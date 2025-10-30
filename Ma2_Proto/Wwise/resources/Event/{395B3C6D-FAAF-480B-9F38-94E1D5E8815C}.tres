@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" load_steps=0 format=3 uid="uid://beceunohvjy70"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Int_Pressable_Button_UpgradeSet_On"
+id = 1308077237
+guid = "{395B3C6D-FAAF-480B-9F38-94E1D5E8815C}"
+dummy = true

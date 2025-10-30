@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcofb0egxu6eh"]
+
+[ext_resource type="WwiseEvent" uid="uid://ddos8lqgc0pw6" path="res://Wwise/resources/Event/{58AB6BBE-7F58-44E6-8D19-C4AFB2E4AEF1}.tres" id="1_rylnt"]
+
+[node name="DamagedSoundBasic" type="AkEvent3D"]
+event = ExtResource("1_rylnt")

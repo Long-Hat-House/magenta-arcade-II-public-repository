@@ -1,0 +1,399 @@
+[gd_scene load_steps=23 format=3 uid="uid://cpunghr2hiwkb"]
+
+[ext_resource type="Script" uid="uid://bt3rgk2gx218p" path="res://systems/stage/level_stage_piece.gd" id="1_i4ury"]
+[ext_resource type="PackedScene" uid="uid://cxqe15ub6mrk1" path="res://elements/neutral/props/vegetation/element_tree.tscn" id="2_2gski"]
+[ext_resource type="PackedScene" uid="uid://dfi4oip83lo3f" path="res://elements/background/element_grass.tscn" id="2_4po40"]
+[ext_resource type="PackedScene" uid="uid://cyq2gafngh08" path="res://elements/neutral/props/poles/element_pole_light_small.tscn" id="2_f3362"]
+[ext_resource type="PackedScene" uid="uid://cd6ymp4wmjksa" path="res://elements/background/element_asphalt.tscn" id="3_brrge"]
+[ext_resource type="PackedScene" uid="uid://ctbkjd21yqlm4" path="res://elements/neutral/props/vegetation/element_bush.tscn" id="3_emg37"]
+[ext_resource type="PackedScene" uid="uid://c00kqth38jmst" path="res://systems/stage/stage_screen_measure.tscn" id="4_bpj6q"]
+[ext_resource type="PackedScene" uid="uid://dg51ehomjdm26" path="res://elements/background/element_curb2_sidewalk_path.tscn" id="5_ktcky"]
+[ext_resource type="PackedScene" uid="uid://bji4ujbq7oww0" path="res://elements/enemy/brawny/Mesh/brawny.tscn" id="6_3njbp"]
+[ext_resource type="PackedScene" uid="uid://d24xkg0nym42w" path="res://elements/neutral/props/mineirao_stadium/mesh/mesh_mineirao_stadium.tscn" id="6_bcfbs"]
+[ext_resource type="PackedScene" uid="uid://bli56i7oi7ylq" path="res://elements/neutral/props/traffic_decals/element_decal_lane_line.tscn" id="8_8ix2g"]
+[ext_resource type="PackedScene" uid="uid://l3dy36lol626" path="res://elements/neutral/props/rock/mesh/mesh_rock.tscn" id="9_qfbip"]
+[ext_resource type="Script" uid="uid://b56c3dq1oftud" path="res://systems/level/level_camera_movement_data.gd" id="12_juvn0"]
+
+[sub_resource type="GDScript" id="GDScript_mvg20"]
+resource_name = "lvl_sub"
+script/source = "extends Level
+
+## enemies
+const ENEMY_PIZZA_ROBOTO = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto.tscn\")
+const ENEMY_PIZZA_SHOOTER_SUPER = preload(\"res://elements/enemy/pizza/enemy_pizza_shooter_super.tscn\")
+const ENEMY_PIZZA_ROBOTO_SHOOTER = preload(\"res://elements/enemy/pizza/enemy_pizza_roboto_shooter.tscn\")
+const ENEMY_BRAWNY = preload(\"res://elements/enemy/brawny/enemy_brawny.tscn\")
+const ENEMY_TUCANO_POISON = preload(\"res://elements/enemy/roboto_tucano/enemy_tucano_poison.tscn\")
+const ENEMY_TUCANO = preload(\"res://elements/enemy/roboto_tucano/enemy_tucano.tscn\")
+
+
+var group:String = \"main\";
+
+@export var piece:LevelStagePiece;
+@export var paths:Array[Path3D];
+var current_path:int = 0;
+var tucs_alive:int = 10;
+
+func _ready():
+	await await_for_level_ready()
+
+	current_measure_index;
+	stage.attach_piece(piece);
+	stage.repivot();
+
+	var measure:StageMeasure = get_current_measure() as StageMeasure;
+
+	cmd_array([
+		CMD_Callable.new(func():
+			seed(Player.instance.get_seed_based_on_equipped_items(9));
+			paths.shuffle();
+			),
+		CMD_Wait_Seconds.new(0.5),
+		measure.cmd_default_camera_tween(self),
+		CMD_Callable.new(func():
+			walk_measure();
+			print(\"[STADIUM] checking it on %s -> %s (%s)\" % [current_measure_index, get_current_measure(), get_current_measure().global_position]);
+			),
+		CMD_Parallel.new([
+			CMD_Sequence.new([
+				CMD_Repeat_While.new(func(): return self.tucs_alive > 0;
+					,[
+					cmd_call_next_line(\"tuc\"),
+					CMD_Wait_Seconds.new(4),
+					]),
+				CMD_Wait_Forever.new(),
+			]),
+			CMD_Sequence.new([
+				cmd_enemy_line([ENEMY_PIZZA_ROBOTO, ENEMY_PIZZA_ROBOTO_SHOOTER], [0,0,1,1], 0, 8, 11, Vector2(2, 0), \"main\", func(pizza):
+					var wd:AI_WalkAndDo = pizza as AI_WalkAndDo;
+					wd.walkVelocity = Vector3.LEFT * wd.walkVelocity.length();
+					wd.distanceMax = 11;
+					wd.walkAndStop = true
+					),
+				cmd_enemy_line([ENEMY_PIZZA_ROBOTO, ENEMY_PIZZA_ROBOTO_SHOOTER], [0,0,1,1], 0, -8, 13, Vector2(-2, 0), \"main\", func(pizza):
+					var wd:AI_WalkAndDo = pizza as AI_WalkAndDo;
+					wd.walkVelocity = Vector3.RIGHT * wd.walkVelocity.length();
+					wd.distanceMax = 11;
+					wd.walkAndStop = true
+					),
+				objs.cmd_wait_group(\"main\"),
+				CMD_Wait_Seconds.new(0.5),
+				CMD_Callable.new(func():
+					objs.create_object(ENEMY_BRAWNY, \"main\", stage.get_grid(0, 10.5));
+					),
+				objs.cmd_wait_group(\"main\"),
+			]),
+		]),
+		cmd_clear_measures(),
+		CMD_Music_Event.new(AK.EVENTS.MUSIC_LEVEL3_GAMEPLAY_END),
+		CMD_Level_Environment.new(\"pre_boss\")
+		#objs.cmd_wait_group(group)
+	])
+
+func cmd_call_next_line(group:String)->Level.CMD:
+	return Level.CMD_Callable.new(func():
+		var tuc = objs.create_object(ENEMY_TUCANO_POISON, group);
+		tuc.set_path3d(paths[current_path % paths.size()])
+		var htuc:Health = Health.FindHealth(tuc);
+		if htuc:
+			htuc.dead_parameterless.connect(func():
+				self.tucs_alive -= 1;
+				CONNECT_ONE_SHOT)
+		current_path += 1;
+		);
+"
+
+[sub_resource type="Curve3D" id="Curve3D_di03g"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 1.90735e-06, 0, 10.1958, 0, 0, 2, 0, 0, 0, 0, 0, -38.6426),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_clsl1"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, -2, 1.90735e-06, 0, 10.1958, 0, 0, 2, 0, 0, 0, 0, 0, -38.6426),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_s3agx"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -3.61189, 3.44013, 0.118098, -0.683706, 1.36725, -1.6819, 0.683706, -1.36725, 1.6819, -4.86457, 1.94244, 8.63219, 0, 0, -1, 0, 0, 0, -3.698, 0, 10.761),
+"tilts": PackedFloat32Array(0, 5, 0)
+}
+point_count = 3
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_myacg"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -3.61189, 3.44013, 0.118098, -0.00880289, 0.472551, -0.928064, 0.00880289, -0.472551, 0.928064, -3.70312, 2.79753, 4.86123, -0.189147, -0.0870986, -2.1679, 0.189147, 0.0870986, 2.1679, -3.74943, 3.35704, 8.48646, 0, 0, -1.401, -0.346838, -0.265658, 1.40055, -3.69777, 0.156511, 12.0165),
+"tilts": PackedFloat32Array(0, -5, -170, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_d3q8s"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -3.61189, 3.19029, 0.109177, 0.18296, 0.785967, -2.51581, -0.18296, -0.785967, 2.51581, -3.78961, 3.77046, 8.65886, 0, 0, -1, 0, 0, 0, -3.712, -0.0965265, 12.2768),
+"tilts": PackedFloat32Array(0, -5, 0)
+}
+point_count = 3
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_osfpj"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.053, 3.052, 0.058, -1.04064, 0.307983, -0.485596, 1.04064, -0.307983, 0.485596, -0.486348, 3.5437, 4.32373, 0.622808, 1.02243, -0.499678, -0.622808, -1.02243, 0.499678, -0.201245, 2.17453, 6.20662, -1, 0, -1, 3.31958, 0.484742, 3.56629, -1.44886, 0.369019, 8.11011),
+"tilts": PackedFloat32Array(-10, 10, 0, 0)
+}
+point_count = 4
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_us6uy"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.0529785, 2.25098, 0.0581493, 2.44571, -1.10068, -2.19366, -2.44571, 1.10068, 2.19366, -0.145874, 3.44229, 8.5102, 1.07168, -0.809812, -1.4198, -1.07168, 0.809812, 1.4198, -3.48965, 2.8042, 9.17298, -5, 0, 0, 0, 0, 0, -3.67001, 0.394389, 12.954),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+up_vector_enabled = false
+
+[sub_resource type="Resource" id="Resource_wr770"]
+script = ExtResource("12_juvn0")
+camera_duration = 3.5
+camera_speed = 25.0
+camera_duration_style = 1
+ease_x = 2
+trans_x = 2
+duration_multiplier_x = 0.8
+ease_z = 2
+trans_z = 1
+duration_multiplier_z = 1.0
+metadata/_custom_type_script = "uid://b56c3dq1oftud"
+
+[node name="LVL_STADIUM" type="Node3D" node_paths=PackedStringArray("piece", "paths")]
+script = SubResource("GDScript_mvg20")
+piece = NodePath("Estadio")
+paths = [NodePath("Estadio/Scenery/mineirao_stadium/Path3D Top Left"), NodePath("Estadio/Scenery/mineirao_stadium/Path3D Top Center"), NodePath("Estadio/Scenery/mineirao_stadium/Path3D Top Right"), NodePath("Estadio/Scenery/mineirao_stadium/Path3D Center Left"), NodePath("Estadio/Scenery/mineirao_stadium/Path3D Center Center To Side"), NodePath("Estadio/Scenery/mineirao_stadium/Path3D Center Center To Side2"), NodePath("Estadio/Scenery/mineirao_stadium/Path3D Center Left2")]
+
+[node name="Estadio" type="Node3D" parent="." node_paths=PackedStringArray("pivot_forward", "pivot_backward")]
+script = ExtResource("1_i4ury")
+pivot_forward = NodePath("Config/forward")
+pivot_backward = NodePath("Config/back")
+
+[node name="Config" type="Node3D" parent="Estadio"]
+
+[node name="Wind Direction" type="Node3D" parent="Estadio/Config"]
+transform = Transform3D(-2.04648e-07, 0, -1, 0, 1, 0, 1, 0, -2.04648e-07, -1.15835e-06, 6, 26.5)
+
+[node name="forward" type="Marker3D" parent="Estadio/Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.2038)
+gizmo_extents = 1.0
+
+[node name="back" type="Marker3D" parent="Estadio/Config"]
+transform = Transform3D(1, 0, 0, 0, 0.281722, 0.959496, 0, -0.959496, 0.281722, 0, 0, 32.5)
+gizmo_extents = 1.0
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Estadio/Config"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.587299, 0, 1.9674)
+aabb = AABB(-16.1267, 0, -19.5161, 32.2532, 13.796, 39.0318)
+
+[node name="Scenery" type="Node3D" parent="Estadio"]
+
+[node name="pole_light_small" parent="Estadio/Scenery" instance=ExtResource("2_f3362")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.13185, 0, 30.2451)
+
+[node name="pole_light_small2" parent="Estadio/Scenery" instance=ExtResource("2_f3362")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65336, 0, 30.2451)
+
+[node name="pole_light_small3" parent="Estadio/Scenery" instance=ExtResource("2_f3362")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6878, 0, 30.2451)
+
+[node name="decals" type="Node3D" parent="Estadio/Scenery"]
+
+[node name="Decal Lane Line" parent="Estadio/Scenery/decals" instance=ExtResource("8_8ix2g")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2.484, -4.25232, 0, -0.77904)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Line2" parent="Estadio/Scenery/decals" instance=ExtResource("8_8ix2g")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2.484, 4.29054, 0, -0.77904)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Line3" parent="Estadio/Scenery/decals" instance=ExtResource("8_8ix2g")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2.484, -4.1011, 0, 8.28076)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Line5" parent="Estadio/Scenery/decals" instance=ExtResource("8_8ix2g")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2.484, -1.20373, 0, 8.28076)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Line6" parent="Estadio/Scenery/decals" instance=ExtResource("8_8ix2g")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2.484, 1.63213, 0, 8.28076)
+skeleton = NodePath("../../..")
+
+[node name="Decal Lane Line4" parent="Estadio/Scenery/decals" instance=ExtResource("8_8ix2g")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2.484, 4.29978, 0, 8.28076)
+skeleton = NodePath("../../..")
+
+[node name="Curbs" type="Node3D" parent="Estadio/Scenery"]
+
+[node name="Curb Sidewalk Path4" parent="Estadio/Scenery/Curbs" instance=ExtResource("5_ktcky")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13.849, 0, 31.547)
+curve = SubResource("Curve3D_di03g")
+
+[node name="Curb Sidewalk Path2" parent="Estadio/Scenery/Curbs" instance=ExtResource("5_ktcky")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.6038, 0, 11.4306)
+curve = SubResource("Curve3D_clsl1")
+
+[node name="Trees" type="Node3D" parent="Estadio/Scenery"]
+
+[node name="Tree" parent="Estadio/Scenery/Trees" instance=ExtResource("2_2gski")]
+transform = Transform3D(0.0313757, 0, -0.999508, 0, 1, 0, 0.999508, 0, 0.0313757, -18.0171, 0, 14.6004)
+
+[node name="Tree2" parent="Estadio/Scenery/Trees" instance=ExtResource("2_2gski")]
+transform = Transform3D(-0.578655, 0, -0.815572, 0, 1, 0, 0.815572, 0, -0.578655, -7.32845, 0, 15.4809)
+
+[node name="Tree3" parent="Estadio/Scenery/Trees" instance=ExtResource("2_2gski")]
+transform = Transform3D(-0.141385, 0, -0.989955, 0, 1, 0, 0.989955, 0, -0.141385, 1.24708, 0, 14.2897)
+
+[node name="Tree4" parent="Estadio/Scenery/Trees" instance=ExtResource("2_2gski")]
+transform = Transform3D(0.405158, 0, -0.914247, 0, 1, 0, 0.914247, 0, 0.405158, 10.5572, 0, 14.2897)
+
+[node name="Tree5" parent="Estadio/Scenery/Trees" instance=ExtResource("2_2gski")]
+transform = Transform3D(0.0652289, 0, -0.99787, 0, 1, 0, 0.99787, 0, 0.0652289, 18.9404, 0, 14.2897)
+
+[node name="Tree6" parent="Estadio/Scenery/Trees" instance=ExtResource("2_2gski")]
+transform = Transform3D(0.400301, 0, -0.916384, 0, 1, 0, 0.916384, 0, 0.400301, -20.2352, 0, 24.8338)
+
+[node name="Tree7" parent="Estadio/Scenery/Trees" instance=ExtResource("2_2gski")]
+transform = Transform3D(-0.73392, 0, -0.679236, 0, 1, 0, 0.679236, 0, -0.73392, -9.04831, 0, 22.7802)
+
+[node name="Tree12" parent="Estadio/Scenery/Trees" instance=ExtResource("2_2gski")]
+transform = Transform3D(-0.578655, 0, -0.815572, 0, 1, 0, 0.815572, 0, -0.578655, -14.1671, 0, 27.8685)
+
+[node name="Tree13" parent="Estadio/Scenery/Trees" instance=ExtResource("2_2gski")]
+transform = Transform3D(-0.202035, 0, -0.979378, 0, 1, 0, 0.979378, 0, -0.202035, -2.70502, 0, 20.0563)
+
+[node name="Tree14" parent="Estadio/Scenery/Trees" instance=ExtResource("2_2gski")]
+transform = Transform3D(-0.730377, 0, -0.683044, 0, 1, 0, 0.683044, 0, -0.730377, -4.77264, 0, 28.3797)
+
+[node name="Tree15" parent="Estadio/Scenery/Trees" instance=ExtResource("2_2gski")]
+transform = Transform3D(-0.900516, 0, -0.434822, 0, 1, 0, 0.434822, 0, -0.900516, 6.47845, 0, 19.8186)
+
+[node name="Tree16" parent="Estadio/Scenery/Trees" instance=ExtResource("2_2gski")]
+transform = Transform3D(-0.979364, 0, -0.202103, 0, 1, 0, 0.202103, 0, -0.979364, 9.61791, 0, 26.6934)
+
+[node name="Tree11" parent="Estadio/Scenery/Trees" instance=ExtResource("2_2gski")]
+transform = Transform3D(-0.698478, 0, -0.715631, 0, 1, 0, 0.715631, 0, -0.698478, -15.0334, 0, 20.174)
+
+[node name="Tree8" parent="Estadio/Scenery/Trees" instance=ExtResource("2_2gski")]
+transform = Transform3D(-0.141385, 0, -0.989955, 0, 1, 0, 0.989955, 0, -0.141385, 2.01713, 0, 25.0945)
+
+[node name="Tree9" parent="Estadio/Scenery/Trees" instance=ExtResource("2_2gski")]
+transform = Transform3D(0.405158, 0, -0.914247, 0, 1, 0, 0.914247, 0, 0.405158, 16.1263, 0, 21.0657)
+
+[node name="Tree10" parent="Estadio/Scenery/Trees" instance=ExtResource("2_2gski")]
+transform = Transform3D(0.0652289, 0, -0.99787, 0, 1, 0, 0.99787, 0, 0.0652289, 21.3714, 0, 26.0392)
+
+[node name="Bush" parent="Estadio/Scenery/Trees" instance=ExtResource("3_emg37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.04656, 0.0897217, 14.8927)
+
+[node name="Bush9" parent="Estadio/Scenery/Trees" instance=ExtResource("3_emg37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.145278, 0.0897217, 29.3228)
+
+[node name="Bush10" parent="Estadio/Scenery/Trees" instance=ExtResource("3_emg37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.3388, 0.0897217, 26.6887)
+
+[node name="Bush11" parent="Estadio/Scenery/Trees" instance=ExtResource("3_emg37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5073, 0.0897217, 19.3973)
+
+[node name="Bush8" parent="Estadio/Scenery/Trees" instance=ExtResource("3_emg37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1089, 0.0897217, 27.0323)
+
+[node name="Bush2" parent="Estadio/Scenery/Trees" instance=ExtResource("3_emg37")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -11.9729, 0.0897217, 14.5934)
+
+[node name="Bush6" parent="Estadio/Scenery/Trees" instance=ExtResource("3_emg37")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -11.2476, 0.0897217, 17.571)
+
+[node name="Bush7" parent="Estadio/Scenery/Trees" instance=ExtResource("3_emg37")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 5.85476, 0.0897217, 24.1753)
+
+[node name="Bush3" parent="Estadio/Scenery/Trees" instance=ExtResource("3_emg37")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -6.1769, 0.0897217, 18.9973)
+
+[node name="Bush4" parent="Estadio/Scenery/Trees" instance=ExtResource("3_emg37")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 6.443, 0.0897217, 15.6581)
+
+[node name="Bush5" parent="Estadio/Scenery/Trees" instance=ExtResource("3_emg37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.11486, 0.0897217, 18.671)
+
+[node name="Grass" parent="Estadio/Scenery" instance=ExtResource("2_4po40")]
+transform = Transform3D(48.822, 0, 0, 0, 1.2, 0, 0, 0, 18.281, -24.035, 0, 12.392)
+
+[node name="Asphalt" parent="Estadio/Scenery" instance=ExtResource("3_brrge")]
+transform = Transform3D(48.829, 0, 0, 0, 1, 0, 0, 0, 37.2, -24.051, -0.002, -13.703)
+
+[node name="mineirao_stadium" parent="Estadio/Scenery" instance=ExtResource("6_bcfbs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0529995, 0, -12.2511)
+
+[node name="Path3D Top Left" type="Path3D" parent="Estadio/Scenery/mineirao_stadium"]
+transform = Transform3D(1, 0, 0, 0, 0.999363, 0.0356844, 0, -0.0356844, 0.999363, -0.0529995, 0, 3.08862)
+curve = SubResource("Curve3D_s3agx")
+
+[node name="Path3D Top Center" type="Path3D" parent="Estadio/Scenery/mineirao_stadium"]
+transform = Transform3D(1, 0, 0, 0, 0.999363, 0.0356844, 0, -0.0356844, 0.999363, 3.65035, 0, 3.08862)
+curve = SubResource("Curve3D_myacg")
+
+[node name="Path3D Top Right" type="Path3D" parent="Estadio/Scenery/mineirao_stadium"]
+transform = Transform3D(1, 0, 0, 0, 0.999363, 0.0356844, 0, -0.0356844, 0.999363, 7.27748, 0, 3.08862)
+curve = SubResource("Curve3D_d3q8s")
+
+[node name="Path3D Center Left" type="Path3D" parent="Estadio/Scenery/mineirao_stadium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5078, 0, 3.16638)
+curve = SubResource("Curve3D_osfpj")
+
+[node name="Path3D Center Left2" type="Path3D" parent="Estadio/Scenery/mineirao_stadium"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4922, 0, 3.16638)
+curve = SubResource("Curve3D_osfpj")
+
+[node name="Path3D Center Center To Side" type="Path3D" parent="Estadio/Scenery/mineirao_stadium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0529995, 0, 3.08862)
+curve = SubResource("Curve3D_us6uy")
+
+[node name="Path3D Center Center To Side2" type="Path3D" parent="Estadio/Scenery/mineirao_stadium"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0529995, 0, 3.08862)
+curve = SubResource("Curve3D_us6uy")
+
+[node name="rocks" type="Node3D" parent="Estadio/Scenery"]
+
+[node name="rock" parent="Estadio/Scenery/rocks" instance=ExtResource("9_qfbip")]
+transform = Transform3D(0.55, 0, 0, 0, 0.275, 0, 0, 0, 0.55, -3.00364, 0.00195313, 10.2804)
+
+[node name="rock5" parent="Estadio/Scenery/rocks" instance=ExtResource("9_qfbip")]
+transform = Transform3D(0.4, 0, 0, 0, 0.2, 0, 0, 0, 0.4, -2.38823, 0.0065918, -2.10161)
+
+[node name="rock2" parent="Estadio/Scenery/rocks" instance=ExtResource("9_qfbip")]
+transform = Transform3D(-0.18645, 0, -0.353888, 0, 0.201, 0, 0.353888, 0, -0.18645, 2.39471, 0.0253296, 7.00729)
+
+[node name="rock6" parent="Estadio/Scenery/rocks" instance=ExtResource("9_qfbip")]
+transform = Transform3D(-0.186057, 0.0214812, -0.351504, 0.0433077, -0.196651, -0.0705176, -0.351436, -0.0356061, 0.177403, 4.39117, 0.0366135, -3.94889)
+
+[node name="rock3" parent="Estadio/Scenery/rocks" instance=ExtResource("9_qfbip")]
+transform = Transform3D(-0.139837, 0, -0.265416, 0, 0.15, 0, 0.265416, 0, -0.139837, -2.5848, 0.0119934, 10.5752)
+
+[node name="rock4" parent="Estadio/Scenery/rocks" instance=ExtResource("9_qfbip")]
+transform = Transform3D(-0.123397, -0.0228211, 0.269611, -0.0189949, 0.148254, 0.0415018, -0.272786, 0, -0.124851, 3.42713, 0.00149536, 10.3503)
+
+[node name="StageScreenMeasureMineirão" parent="Estadio" instance=ExtResource("4_bpj6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0648994, 0.2, -12.6635)
+default_movement = SubResource("Resource_wr770")
+
+[node name="brawny" parent="." instance=ExtResource("6_3njbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -1)
+visible = false
+
+[connection signal="screen_entered" from="Estadio/Config/VisibleOnScreenNotifier3D" to="Estadio" method="_on_screen_entered"]
+[connection signal="screen_exited" from="Estadio/Config/VisibleOnScreenNotifier3D" to="Estadio" method="_on_screen_exited"]

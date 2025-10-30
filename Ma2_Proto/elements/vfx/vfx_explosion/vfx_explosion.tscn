@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://ywymskkj85vs"]
+
+[ext_resource type="PackedScene" uid="uid://c5f7mdjgxid0m" path="res://elements/vfx/vfx_hit/vfx_hit.tscn" id="1_s7gr5"]
+[ext_resource type="SpriteFrames" uid="uid://tnt2ej5anoto" path="res://elements/vfx/vfx_explosion/vfx_explosion_art/VFX_Explosion.aseprite" id="2_prhre"]
+[ext_resource type="Script" uid="uid://bj8qwbado7bkt" path="res://systems/utils/look_at_camera.gd" id="3_nkbw7"]
+[ext_resource type="WwiseEvent" uid="uid://kwrf2udx87a5" path="res://Wwise/resources/Event/{2CB23925-A20E-4870-84FE-95CF8E8509D3}.tres" id="4_l4ais"]
+[ext_resource type="Script" uid="uid://b788p3gumxgxg" path="res://elements/player/force_generator_spherical_explosion.gd" id="5_stp7l"]
+
+[sub_resource type="Curve" id="Curve_stp7l"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.86581, 0.0, 0, 0]
+point_count = 2
+
+[node name="VfxExplosion" node_paths=PackedStringArray("sound") instance=ExtResource("1_s7gr5")]
+animationSpeedScaleRange = 0.35
+glued_to_screen = 0.0
+xzRandomRange = 0.2
+sound = NodePath("Sprite3D/SFX")
+
+[node name="Sprite3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00219727, 0.00830078, -0.00402832)
+texture_filter = 0
+sprite_frames = ExtResource("2_prhre")
+animation = &"play"
+frame = 8
+frame_progress = 1.0
+script = ExtResource("3_nkbw7")
+disabled = false
+enable_random_rotation = true
+
+[node name="SFX" type="AkEvent3D" parent="Sprite3D" index="0"]
+event = ExtResource("4_l4ais")
+
+[node name="ForceGenerator_Spherical_Explosion" type="Node3D" parent="." index="1"]
+script = ExtResource("5_stp7l")
+force_multiplier_begin = 2.0
+force_multiplier_end = 1.0
+ease = 1
+trans = 7
+min_distance = 2.0
+max_distance = 20.0
+curve = SubResource("Curve_stp7l")
+force_far_max_percentage = 0.8
+metadata/_custom_type_script = "uid://r8pweg6n5ymf"
