@@ -17,7 +17,9 @@ Para mais informações sobre o jogo, visite:
 
 # Tecnologias Utilizadas
 Engine: Godot 4.4
+
 Linguagem: GDScript
+
 Plataformas: iOS, Android
 
 # Licença
