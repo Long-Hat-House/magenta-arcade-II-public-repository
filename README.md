@@ -1,10 +1,10 @@
 # magenta-arcade-II-public-repository
-Este repositório contém o código-fonte do jogo Magenta Arcade II, desenvolvido como parte da contrapartida do Edital Paulo Gustavo de Belo Horizonte. O projeto aqui foi criado para fins educacionais, permitindo que estudantes e entusiastas de desenvolvimento de jogos possam estudar a estrutura, lógica e implementação de um jogo real na engine Godot 4.4.
+Este repositório contém o código-fonte do jogo Magenta Arcade II. O projeto foi contemplado pelo Edital Paulo Gustavo, e esta divulgação do código faz parte das contrapartidas previstas no edital. O projeto aqui foi criado para fins educacionais, permitindo que estudantes e entusiastas de desenvolvimento de jogos possam estudar a estrutura, lógica e implementação de um jogo real na engine Godot 4.4.
 
 Atenção: Os assets gráficos e sonoros não estão incluídos neste repositório por questões de direitos autorais. Portanto, o jogo não é executável apenas com o código disponibilizado aqui.
 
 # Sobre o Jogo
-Magenta Arcade II é um jogo de arcade shootemup onde a nave é seu dedo, desenvolvido pela Long Hat House. O projeto foi contemplado pelo Edital Paulo Gustavo, e esta divulgação do código faz parte das contrapartidas previstas no edital.
+Magenta Arcade II é um jogo de arcade shootemup onde a nave é seu dedo, desenvolvido pela Long Hat House. 
 
 Para jogar a versão completa com todos os assets, baixe o jogo nas lojas oficiais:
 
