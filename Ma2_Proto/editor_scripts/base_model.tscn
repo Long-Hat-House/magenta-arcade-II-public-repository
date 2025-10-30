@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bodtpnlurdb8n"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_s8fsn"]
+radial_segments = 32
+
+[node name="BaseModel" type="MeshInstance3D"]
+mesh = SubResource("CapsuleMesh_s8fsn")
