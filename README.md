@@ -9,6 +9,7 @@ Magenta Arcade II é um jogo de arcade shootemup onde a nave é seu dedo, desenv
 Para jogar a versão completa com todos os assets, baixe o jogo nas lojas oficiais:
 
 Google Play: http://longhathouse.com/ma2_googleplay
+
 App Store: https://longhathouse.com/ma2_appstore
 
 Para mais informações sobre o jogo, visite:
